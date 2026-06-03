@@ -1,0 +1,169 @@
+/* PS Store Enhancer v2.3 */
+:root {
+  --pse-bg-card: #1b2838;
+  --pse-accent: #0070d1;
+  --pse-accent-light: #4da6ff;
+  --pse-text-primary: #fff;
+  --pse-text-secondary: #a0aec0;
+  --pse-text-muted: #718096;
+  --pse-border: rgba(255,255,255,0.08);
+  --pse-border-accent: rgba(0,112,209,0.3);
+  --pse-success: #6dc849;
+  --pse-warning: #f5c518;
+  --pse-danger: #ff4040;
+  --pse-radius: 12px;
+  --pse-radius-sm: 8px;
+  --pse-font: "SST","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --pse-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  --pse-shadow-sm: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* v2.3: light theme overrides — applied per-injected-element via data-pse-theme="light" */
+.pse-injected[data-pse-theme="light"] {
+  --pse-bg-card: #f5f7fb;
+  --pse-text-primary: #1a202c;
+  --pse-text-secondary: #4a5568;
+  --pse-text-muted: #718096;
+  --pse-border: rgba(0,0,0,0.08);
+  --pse-border-accent: rgba(0,112,209,0.45);
+  --pse-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  --pse-shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+  color: var(--pse-text-primary);
+}
+
+/* ─── shared card ─── */
+/* Direction is set per-element via the [dir] attribute (set in content.js based on
+   the user's selected language). LTR users get LTR cards; HE/AR get RTL cards. */
+.pse-price-history,.pse-trophy-box,.pse-xplatform {
+  font-family: var(--pse-font);
+  background: var(--pse-bg-card);
+  border: 1px solid var(--pse-border);
+  border-radius: var(--pse-radius);
+  padding: 16px;
+  margin: 12px 0;
+  box-shadow: var(--pse-shadow);
+  max-width: 380px;
+  transition: border-color 0.2s;
+  animation: pse-fadeIn 0.35s ease-out;
+}
+.pse-price-history:hover,.pse-trophy-box:hover,.pse-xplatform:hover { border-color: var(--pse-border-accent); }
+
+/* ─── Fix #11: Skeleton loading ─── */
+.pse-skeleton {
+  font-family: var(--pse-font);
+  background: var(--pse-bg-card);
+  border: 1px solid var(--pse-border);
+  border-radius: var(--pse-radius);
+  padding: 16px;
+  margin: 12px 0;
+  max-width: 380px;
+  animation: pse-fadeIn 0.2s ease-out;
+}
+.pse-skel-line {
+  background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.04) 75%);
+  background-size: 200% 100%;
+  animation: pse-shimmer 1.5s infinite;
+  border-radius: 6px;
+  height: 14px;
+  margin-bottom: 10px;
+}
+@keyframes pse-shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+
+/* ─── MC badge ─── */
+.pse-mc-link { display:inline-flex; text-decoration:none; vertical-align:middle; transition:transform 0.2s; }
+.pse-mc-link:hover { transform:scale(1.08); }
+.pse-metacritic-badge { display:inline-flex; align-items:center; border-radius:6px; overflow:hidden; box-shadow:var(--pse-shadow-sm); border:1px solid var(--pse-border); line-height:1; animation:pse-popIn 0.3s cubic-bezier(0.34,1.56,0.64,1); }
+.pse-mc-logo { background:#333; color:#fff; font-size:11px; font-weight:700; letter-spacing:0.5px; padding:6px 7px; }
+.pse-mc-score { color:#fff; font-size:14px; font-weight:800; padding:5px 9px; min-width:24px; text-align:center; }
+
+/* ─── price history ─── */
+.pse-ph-header { display:flex; align-items:center; gap:8px; margin-bottom:12px; font-size:14px; font-weight:600; color:var(--pse-text-primary); }
+.pse-ph-icon { color:var(--pse-accent-light); flex-shrink:0; }
+.pse-cache-tag { font-size:9px; padding:2px 6px; background:rgba(109,200,73,0.15); color:var(--pse-success); border-radius:4px; font-weight:500; margin-inline-start:auto; direction:ltr; }
+.pse-estimate-tag { background:rgba(245,197,24,0.15); color:var(--pse-warning); }
+.pse-usd-tag { background:rgba(0,112,209,0.15); color:var(--pse-accent-light); }
+.pse-sparkline-wrap { margin:8px 0 12px; direction:ltr; }
+.pse-sparkline-svg { width:100%; height:auto; display:block; }
+.pse-spark-dot { transition:r 0.15s; cursor:pointer; }
+.pse-spark-dot:hover { r:5; }
+.pse-ph-cheapest { display:flex; align-items:center; justify-content:space-between; padding:8px 12px; background:rgba(109,200,73,0.08); border:1px solid rgba(109,200,73,0.2); border-radius:var(--pse-radius-sm); margin-bottom:12px; }
+.pse-ph-cheapest-label { font-size:12px; color:var(--pse-text-secondary); }
+.pse-ph-cheapest-value { font-size:16px; font-weight:700; color:var(--pse-success); direction:ltr; }
+.pse-ph-link { display:block; color:var(--pse-accent-light); text-decoration:none; font-size:12px; font-weight:500; padding:8px 14px; background:rgba(0,112,209,0.08); border:1px solid var(--pse-border-accent); border-radius:var(--pse-radius-sm); text-align:center; transition:all 0.2s; }
+.pse-ph-link:hover { background:rgba(0,112,209,0.18); color:#fff; }
+
+/* ─── cross-platform ─── */
+.pse-xp-header { display:flex; align-items:center; gap:8px; margin-bottom:12px; font-size:14px; font-weight:600; color:var(--pse-text-primary); }
+.pse-xp-list { display:flex; flex-direction:column; gap:4px; margin-bottom:10px; }
+.pse-xp-row { display:flex; align-items:center; justify-content:space-between; padding:8px 12px; background:rgba(255,255,255,0.03); border:1px solid var(--pse-border); border-radius:var(--pse-radius-sm); text-decoration:none; transition:all 0.15s; direction:ltr; }
+.pse-xp-row:hover { background:rgba(0,112,209,0.1); border-color:var(--pse-border-accent); }
+.pse-xp-store { font-size:12px; font-weight:500; color:var(--pse-text-secondary); }
+.pse-xp-price-group { display:flex; align-items:center; gap:6px; }
+.pse-xp-savings { font-size:10px; font-weight:700; color:var(--pse-success); background:rgba(109,200,73,0.12); padding:2px 6px; border-radius:4px; }
+.pse-xp-original { font-size:11px; color:var(--pse-text-muted); text-decoration:line-through; }
+.pse-xp-current { font-size:14px; font-weight:700; color:var(--pse-text-primary); }
+.pse-xp-note { font-size:10px; color:var(--pse-text-muted); text-align:center; margin:0; direction:ltr; }
+
+/* ─── trophy ─── */
+.pse-trophy-header { display:flex; align-items:center; gap:8px; margin-bottom:14px; font-size:14px; font-weight:600; color:var(--pse-text-primary); }
+.pse-trophy-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px; }
+.pse-trophy-stat { background:rgba(255,255,255,0.04); border-radius:var(--pse-radius-sm); padding:10px 12px; border:1px solid var(--pse-border); }
+.pse-trophy-stat-label { font-size:10px; text-transform:uppercase; letter-spacing:0.8px; color:var(--pse-text-muted); margin-bottom:4px; }
+.pse-trophy-stat-value { font-size:15px; font-weight:600; color:var(--pse-text-primary); }
+.pse-diff-badge { display:inline-block; color:#fff; font-size:13px; font-weight:700; padding:2px 10px; border-radius:20px; min-width:32px; text-align:center; }
+.pse-trophy-link { display:block; color:var(--pse-accent-light); text-decoration:none; font-size:12px; font-weight:500; padding:8px 14px; background:rgba(0,112,209,0.08); border:1px solid var(--pse-border-accent); border-radius:var(--pse-radius-sm); text-align:center; transition:all 0.2s; }
+.pse-trophy-link:hover { background:rgba(0,112,209,0.18); color:#fff; }
+
+/* Fix #12: PSN trophy progress bar */
+.pse-trophy-progress-bar { position:relative; height:20px; background:rgba(255,255,255,0.06); border-radius:10px; overflow:hidden; margin-top:4px; }
+.pse-trophy-progress-fill { height:100%; background:linear-gradient(90deg,#0070d1,#4da6ff); border-radius:10px; transition:width 0.5s ease; }
+.pse-trophy-progress-text { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:600; color:var(--pse-text-primary); }
+
+/* ─── Fix #9: "Mark as owned" button ─── */
+.pse-owned-btn-wrap { margin:10px 0; max-width:380px; }
+.pse-owned-btn {
+  width:100%; padding:10px 16px; border:1px solid var(--pse-border); border-radius:var(--pse-radius-sm);
+  background:rgba(255,255,255,0.04); color:var(--pse-text-secondary); font-family:var(--pse-font);
+  font-size:13px; font-weight:500; cursor:pointer; transition:all 0.2s;
+}
+.pse-owned-btn:hover { border-color:var(--pse-border-accent); background:rgba(0,112,209,0.08); color:var(--pse-accent-light); }
+.pse-owned-btn.pse-owned-active { background:rgba(109,200,73,0.1); border-color:rgba(109,200,73,0.3); color:var(--pse-success); }
+.pse-owned-btn.pse-owned-active:hover { background:rgba(255,64,64,0.1); border-color:rgba(255,64,64,0.3); color:var(--pse-danger); }
+.pse-owned-btn:disabled { opacity:0.5; cursor:wait; }
+
+/* ─── v2.3: Wishlist button ─── */
+.pse-wishlist-btn-wrap { margin:10px 0; max-width:380px; }
+.pse-wishlist-btn {
+  width:100%; padding:10px 16px; border:1px solid rgba(245,197,24,0.35); border-radius:var(--pse-radius-sm);
+  background:rgba(245,197,24,0.08); color:var(--pse-warning); font-family:var(--pse-font);
+  font-size:13px; font-weight:500; cursor:pointer; transition:all 0.2s;
+}
+.pse-wishlist-btn:hover { background:rgba(245,197,24,0.18); border-color:rgba(245,197,24,0.55); }
+.pse-wishlist-btn.pse-wishlist-active { background:rgba(109,200,73,0.12); border-color:rgba(109,200,73,0.4); color:var(--pse-success); }
+.pse-wishlist-btn.pse-wishlist-active:hover { background:rgba(255,64,64,0.08); border-color:rgba(255,64,64,0.3); color:var(--pse-danger); }
+.pse-wishlist-btn:disabled { opacity:0.5; cursor:wait; }
+
+/* ─── v2.3: Inline notice (API down etc.) ─── */
+.pse-inline-notice {
+  font-family: var(--pse-font);
+  background: rgba(245,197,24,0.06);
+  border: 1px dashed rgba(245,197,24,0.3);
+  color: var(--pse-warning);
+  border-radius: var(--pse-radius-sm);
+  padding: 10px 14px;
+  margin: 10px 0;
+  font-size: 12px;
+  max-width: 380px;
+  text-align: center;
+}
+
+/* ─── filter ─── */
+.pse-hidden-addon { display:none !important; }
+
+/* ─── animations ─── */
+@keyframes pse-fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+@keyframes pse-popIn { from{opacity:0;transform:scale(0.7)} to{opacity:1;transform:scale(1)} }
+
+@media(max-width:768px) {
+  .pse-price-history,.pse-trophy-box,.pse-xplatform,.pse-owned-btn-wrap { max-width:100%; margin:12px 16px; }
+}

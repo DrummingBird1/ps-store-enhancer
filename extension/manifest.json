@@ -1,0 +1,59 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_extName__",
+  "version": "2.3.0",
+  "description": "__MSG_extDesc__",
+  "default_locale": "en",
+  "author": "Idan",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": [
+    "storage",
+    "alarms",
+    "cookies",
+    "notifications",
+    "contextMenus"
+  ],
+  "host_permissions": [
+    "https://store.playstation.com/*",
+    "https://ca.account.sony.com/*",
+    "https://m.np.playstation.com/*",
+    "https://www.cheapshark.com/*",
+    "https://api.opencritic.com/*",
+    "https://api.frankfurter.dev/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png"
+    }
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://store.playstation.com/*"],
+      "js": ["i18n.js", "cache.js", "content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "styles.css",
+        "_locales/*/messages.json"
+      ],
+      "matches": ["https://store.playstation.com/*"]
+    }
+  ]
+}

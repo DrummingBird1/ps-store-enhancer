@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>GameDeals+</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"SST","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#0a0f1a;color:#e2e8f0;line-height:1.5;min-height:100vh;transition:background .25s,color .25s}
+body.theme-light{background:#f5f7fb;color:#1a202c}
+body.theme-light .card{background:#fff;border-color:rgba(0,0,0,.06)}
+body.theme-light .card:hover{border-color:rgba(0,112,209,.35)}
+body.theme-light .card-desc,body.theme-light .sub,body.theme-light .cl,body.theme-light .sl2,body.theme-light .psn-meta,body.theme-light .own-empty,body.theme-light .own-count,body.theme-light .hero p{color:#4a5568}
+body.theme-light .tr,body.theme-light .sel-row,body.theme-light .own-item,body.theme-light .psn-status,body.theme-light .psn-stat,body.theme-light .cache-box{background:#f5f7fb;border-color:rgba(0,0,0,.06)}
+body.theme-light .npsso-row input,body.theme-light .own-input input,body.theme-light .sel-row select,body.theme-light .wl-target{background:#f5f7fb !important;border-color:rgba(0,0,0,.1) !important;color:#1a202c !important}
+body.theme-light .sl{background:#cbd5e0}
+body.theme-light .toast{background:#fff;color:#48a014;border-color:rgba(72,160,20,.35)}
+.container{max-width:720px;margin:0 auto;padding:40px 24px 60px}
+.hero{text-align:center;padding:32px 0 40px}
+.hero h1{font-size:28px;font-weight:800;background:linear-gradient(135deg,#4da6ff,#0070d1,#003087);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px}
+.hero p{color:#718096;font-size:14px}
+.card{background:#131b2e;border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:24px;margin-bottom:20px;transition:border-color .2s}
+.card:hover{border-color:rgba(0,112,209,.2)}
+.card-title{font-size:16px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.card-desc{font-size:12px;color:#718096;margin-bottom:16px}
+.tr{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);border-radius:10px;margin-bottom:8px}
+.ti{flex:1}.ti .lb{font-size:13px;font-weight:600}.ti .sub{font-size:10px;color:#718096}
+.sw{position:relative;width:44px;height:24px;flex-shrink:0}.sw input{opacity:0;width:0;height:0;position:absolute}
+.sl{position:absolute;cursor:pointer;inset:0;background:#2d3748;border-radius:24px;transition:background .25s}
+.sl::before{content:"";position:absolute;height:18px;width:18px;right:3px;bottom:3px;background:#fff;border-radius:50%;transition:transform .25s}
+.sw input:checked+.sl{background:#0070d1}.sw input:checked+.sl::before{transform:translateX(-20px)}
+[dir="ltr"] .sl::before{right:auto;left:3px}
+[dir="ltr"] .sw input:checked+.sl::before{transform:translateX(20px)}
+.sel-row{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);border-radius:10px;margin-bottom:8px}
+.sel-row select{background:#1b2838;color:#e2e8f0;border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:6px 12px;font-size:13px;font-family:inherit;cursor:pointer}
+.psn-status{display:flex;align-items:center;gap:14px;padding:16px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:10px;margin-bottom:12px}
+.psn-avatar{width:48px;height:48px;border-radius:50%;background:#2d3748;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;overflow:hidden}
+.psn-avatar img{width:100%;height:100%;object-fit:cover}
+.psn-info{flex:1}.psn-name{font-size:15px;font-weight:700}.psn-meta{font-size:11px;color:#718096;margin-top:2px}
+.psn-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.psn-stat{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:8px;padding:10px;text-align:center}
+.psn-stat .sv{font-size:20px;font-weight:800;color:#4da6ff}.psn-stat .sl2{font-size:9px;color:#718096;text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+.npsso-row{display:flex;gap:8px;margin-bottom:12px}
+.npsso-row input{flex:1;background:#1b2838;border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:10px 14px;color:#e2e8f0;font-size:12px;font-family:monospace;outline:none;transition:border-color .2s}
+.npsso-row input:focus{border-color:#0070d1}.npsso-row input::placeholder{color:#4a5568}
+.guide{font-size:11px;color:#718096;line-height:1.6;margin-top:12px;padding:12px;background:rgba(0,112,209,.06);border:1px solid rgba(0,112,209,.12);border-radius:8px}
+.guide a{color:#4da6ff;text-decoration:none}.guide a:hover{text-decoration:underline}
+.guide code{background:rgba(255,255,255,.08);padding:1px 5px;border-radius:3px;font-size:10px;display:inline-block}
+.btn{padding:10px 18px;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .2s}
+.btn-p{background:#0070d1;color:#fff}.btn-p:hover{background:#005bb5}
+.btn-d{background:rgba(255,64,64,.12);color:#ff6b6b;border:1px solid rgba(255,64,64,.2)}.btn-d:hover{background:rgba(255,64,64,.25)}
+.btn-g{background:rgba(255,255,255,.04);color:#a0aec0;border:1px solid rgba(255,255,255,.08)}.btn-g:hover{background:rgba(255,255,255,.08);color:#fff}
+.btn:disabled{opacity:.5;cursor:wait}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap}
+.own-input{display:flex;gap:8px;margin-bottom:12px}
+.own-input input{flex:1;background:#1b2838;border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:10px 14px;color:#e2e8f0;font-size:13px;font-family:inherit;outline:none;transition:border-color .2s}
+.own-input input:focus{border-color:#0070d1}.own-input input::placeholder{color:#4a5568}
+.own-list{display:flex;flex-direction:column;gap:4px;max-height:300px;overflow-y:auto}
+.own-item{display:flex;align-items:center;justify-content:space-between;padding:8px 14px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);border-radius:8px;font-size:13px}
+.own-item .src-badge{font-size:9px;padding:2px 6px;border-radius:4px;margin-inline-end:8px}
+.own-item .src-psn{background:rgba(0,112,209,.15);color:#4da6ff}
+.own-item .src-manual{background:rgba(109,200,73,.15);color:#6dc849}
+.own-item .rm{background:none;border:none;color:#ff6b6b;cursor:pointer;font-size:16px;padding:2px 6px;border-radius:4px;transition:background .2s}
+.own-item .rm:hover{background:rgba(255,64,64,.15)}
+.own-empty{text-align:center;padding:20px;color:#4a5568;font-size:12px}
+.own-count{font-size:11px;color:#718096;margin-top:8px}
+.cache-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.cache-box{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:10px;padding:14px;text-align:center}
+.cache-box .cv{font-size:22px;font-weight:800;color:#4da6ff}.cache-box .cl{font-size:10px;color:#718096;text-transform:uppercase;letter-spacing:.5px;margin-top:4px}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:#1b2838;color:#6dc849;border:1px solid rgba(109,200,73,.3);padding:10px 24px;border-radius:10px;font-size:13px;font-weight:500;box-shadow:0 8px 30px rgba(0,0,0,.4);transition:transform .3s;z-index:9999}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.2);border-top-color:#4da6ff;border-radius:50%;animation:spin .6s linear infinite;vertical-align:middle;margin-inline-start:6px}
+@keyframes spin{to{transform:rotate(360deg)}}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:#2d3748;border-radius:3px}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="hero"><h1>GameDeals+</h1><p data-i18n="settingsSubtitle">Advanced settings · PSN account · Game management</p></div>
+
+  <div class="card">
+    <div class="card-title">🔗 <span data-i18n="psnConnectTitle">Connect PSN Account</span></div>
+    <p class="card-desc" data-i18n="psnConnectDesc">Connect your PlayStation account to automatically sync your game library and DLCs.</p>
+    <div style="margin:8px 0 16px;padding:10px 14px;background:rgba(245,197,24,0.08);border:1px solid rgba(245,197,24,0.25);border-radius:8px;font-size:11px;color:#f5c518;display:flex;gap:8px;align-items:flex-start">
+      <span style="font-size:14px;flex-shrink:0">⚡</span>
+      <span data-i18n="psnOptionalBanner">Optional advanced feature — requires your own PSN account. The extension works fully without it.</span>
+    </div>
+    <div id="psnConnUI" style="display:none">
+      <div class="psn-status"><div class="psn-avatar" id="psnAvatar">🎮</div><div class="psn-info"><div class="psn-name" id="psnName">—</div><div class="psn-meta" id="psnSync">—</div></div></div>
+      <div class="psn-stats">
+        <div class="psn-stat"><div class="sv" id="psGames">—</div><div class="sl2" data-i18n="psnGames">games</div></div>
+        <div class="psn-stat"><div class="sv" id="psDlcs">—</div><div class="sl2" data-i18n="psnDlcs">DLCs</div></div>
+        <div class="psn-stat"><div class="sv" id="psTotal">—</div><div class="sl2">Total</div></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-p" id="syncBtn">🔄 <span data-i18n="psnSyncNow">Sync now</span></button>
+        <button class="btn btn-d" id="disconnBtn" data-i18n="psnDisconnect">Disconnect</button>
+      </div>
+    </div>
+    <div id="psnDiscUI">
+      <button class="btn btn-p" id="autoBtn" style="width:100%;margin-bottom:10px">🔍 <span data-i18n="psnAutoDetect">Auto-detect (if signed in to PSN)</span></button>
+      <p class="card-desc" style="margin:12px 0 6px;font-size:11px;color:#a0aec0" data-i18n="psnOrManual">Or enter NPSSO Token manually:</p>
+      <div class="npsso-row">
+        <input type="text" id="npssoIn" data-i18n-placeholder="psnPasteToken" placeholder="Paste NPSSO token here..." autocomplete="off">
+        <button class="btn btn-p" id="connBtn" data-i18n="psnConnect">Connect</button>
+      </div>
+      <div class="guide">
+        <strong data-i18n="psnGuideTitle">How to get NPSSO Token:</strong><br>
+        1. <span data-i18n="psnGuide1">Sign in to</span> <a href="https://store.playstation.com" target="_blank">store.playstation.com</a><br>
+        2. <span data-i18n="psnGuide2">Open a new tab and go to:</span> <code>https://ca.account.sony.com/api/v1/ssocookie</code><br>
+        3. <span data-i18n="psnGuide3">Copy the value of</span> <code>npsso</code> <span data-i18n="psnGuide3b">(without quotes)</span><br>
+        4. <span data-i18n="psnGuide4">Paste here and click "Connect"</span>
+      </div>
+    </div>
+    <div id="psnMsg" style="display:none;margin-top:10px;padding:10px 14px;border-radius:8px;font-size:12px"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">⚡ <span data-i18n="featuresTitle">Active Features</span></div>
+    <div class="tr"><div class="ti"><div class="lb" data-i18n="metacriticToggle">OpenCritic / Metacritic Score</div><div class="sub" data-i18n="metacriticDesc">Score badge next to game title</div></div><label class="sw"><input type="checkbox" id="enableMetacritic"><span class="sl"></span></label></div>
+    <div class="tr"><div class="ti"><div class="lb" data-i18n="priceHistoryToggle">Price History + Chart</div><div class="sub" data-i18n="priceHistoryDesc">Sparkline and link to PSPrices</div></div><label class="sw"><input type="checkbox" id="enablePriceHistory"><span class="sl"></span></label></div>
+    <div class="tr"><div class="ti"><div class="lb" data-i18n="crossPlatformToggle">Cross-Platform Price Comparison</div><div class="sub" data-i18n="crossPlatformDesc">Steam, Epic, GOG and more via CheapShark</div></div><label class="sw"><input type="checkbox" id="enableCrossPlatform"><span class="sl"></span></label></div>
+    <div class="tr"><div class="ti"><div class="lb" data-i18n="trophyToggle">Completionist Info (Trophies)</div><div class="sub" data-i18n="trophyDesc">Difficulty, time, playthroughs + PSN progress</div></div><label class="sw"><input type="checkbox" id="enableTrophies"><span class="sl"></span></label></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🧹 <span data-i18n="filterTitle">Search Result Filters</span></div>
+    <div class="tr"><div class="ti"><div class="lb" data-i18n="hideAddons">Hide Add-ons & Currency</div></div><label class="sw"><input type="checkbox" id="hideAddons"><span class="sl"></span></label></div>
+    <div class="tr"><div class="ti"><div class="lb" data-i18n="hideDlc">Hide DLC & Expansions</div></div><label class="sw"><input type="checkbox" id="hideDlc"><span class="sl"></span></label></div>
+    <div class="tr"><div class="ti"><div class="lb" data-i18n="hideOwned">Hide games I already own</div><div class="sub" data-i18n="hideOwnedDesc">Auto from PSN + manual list</div></div><label class="sw"><input type="checkbox" id="hideOwned"><span class="sl"></span></label></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🌍 <span data-i18n="regionTitle">PSPrices Region</span></div>
+    <div class="sel-row"><div class="ti"><div class="lb" data-i18n="regionLabel">Store region</div></div>
+      <select id="region"><option value="IL">Israel</option><option value="US">United States</option><option value="GB">United Kingdom</option><option value="DE">Germany</option><option value="FR">France</option><option value="JP">Japan</option><option value="AU">Australia</option><option value="CA">Canada</option><option value="BR">Brazil</option><option value="TR">Turkey</option><option value="SA">Saudi Arabia</option><option value="AE">UAE</option></select>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">💱 <span data-i18n="currencyTitle">Display Currency</span></div>
+    <p class="card-desc" data-i18n="currencyDesc">Cross-platform prices come from CheapShark in USD. Choose your currency to convert (daily rates from Frankfurter).</p>
+    <div class="sel-row"><div class="ti"><div class="lb" data-i18n="currencyLabel">Currency</div></div>
+      <select id="displayCurrency">
+        <option value="USD">USD — US Dollar</option>
+        <option value="EUR">EUR — Euro</option>
+        <option value="GBP">GBP — British Pound</option>
+        <option value="ILS">ILS — Israeli Shekel</option>
+        <option value="JPY">JPY — Japanese Yen</option>
+        <option value="CAD">CAD — Canadian Dollar</option>
+        <option value="AUD">AUD — Australian Dollar</option>
+        <option value="BRL">BRL — Brazilian Real</option>
+        <option value="RUB">RUB — Russian Ruble</option>
+        <option value="CHF">CHF — Swiss Franc</option>
+        <option value="SEK">SEK — Swedish Krona</option>
+        <option value="NOK">NOK — Norwegian Krone</option>
+        <option value="DKK">DKK — Danish Krone</option>
+        <option value="PLN">PLN — Polish Złoty</option>
+        <option value="CZK">CZK — Czech Koruna</option>
+        <option value="INR">INR — Indian Rupee</option>
+        <option value="KRW">KRW — South Korean Won</option>
+        <option value="MXN">MXN — Mexican Peso</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🎨 <span data-i18n="themeTitle">Theme</span></div>
+    <div class="sel-row"><div class="ti"><div class="lb" data-i18n="themeLabel">Color theme</div></div>
+      <select id="themeSel">
+        <option value="auto" data-i18n="themeAuto">Auto (match system)</option>
+        <option value="dark" data-i18n="themeDark">Dark</option>
+        <option value="light" data-i18n="themeLight">Light</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🗣️ <span data-i18n="languageTitle">Extension Language</span></div>
+    <p class="card-desc" data-i18n="languageDesc">Choose the display language for the extension. "Auto" uses your browser language.</p>
+    <div class="sel-row">
+      <div class="ti"><div class="lb" data-i18n="languageLabel">Language</div></div>
+      <select id="userLanguage">
+        <option value="auto" data-i18n="languageAuto">Auto (browser language)</option>
+        <option value="en">English</option>
+        <option value="he">עברית</option>
+        <option value="ar">العربية</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+        <option value="pt_BR">Português (BR)</option>
+        <option value="ru">Русский</option>
+        <option value="ja">日本語</option>
+        <option value="ko">한국어</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🎮 <span data-i18n="myGamesTitle">My Games</span></div>
+    <p class="card-desc" data-i18n="myGamesDesc">PSN games show as 🔗, manually added as ✏️. Disconnecting PSN removes only 🔗, not ✏️.</p>
+    <div class="own-input">
+      <input type="text" id="newGame" data-i18n-placeholder="addGamePlaceholder" placeholder="Type a game name..." autocomplete="off">
+      <button class="btn btn-p" id="addGameBtn" data-i18n="addGame">Add</button>
+    </div>
+    <div class="own-list" id="ownList"><div class="own-empty" data-i18n="emptyList">List is empty</div></div>
+    <div class="own-count" id="ownCount"></div>
+    <div style="margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.06)">
+      <div style="font-size:13px;font-weight:600;margin-bottom:6px"><span data-i18n="exportImportTitle">Backup & Restore</span></div>
+      <p class="card-desc" style="margin-bottom:10px" data-i18n="exportImportDesc">Export your manually-marked owned games to a JSON file, or restore from a previous backup.</p>
+      <div class="btn-row">
+        <button class="btn btn-g" id="exportBtn" data-i18n="exportBtn">📤 Export JSON</button>
+        <button class="btn btn-g" id="importBtn" data-i18n="importBtn">📥 Import JSON</button>
+        <input type="file" id="importFile" accept="application/json,.json" style="display:none">
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">⭐ <span data-i18n="wishlistTitle">Wishlist</span></div>
+    <p class="card-desc" data-i18n="wishlistDesc">Track games and get notified when their price drops below your target.</p>
+    <div class="own-list" id="wlList"><div class="own-empty" data-i18n="wishlistEmpty">Your wishlist is empty</div></div>
+    <div class="own-count" id="wlCount"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">💾 <span data-i18n="cacheTitle">Cache Management</span></div>
+    <div class="cache-stats">
+      <div class="cache-box"><div class="cv" id="cActive">—</div><div class="cl" data-i18n="cacheActive">Active</div></div>
+      <div class="cache-box"><div class="cv" id="cExpired">—</div><div class="cl" data-i18n="cacheExpired">Expired</div></div>
+      <div class="cache-box"><div class="cv" id="cSize">—</div><div class="cl" data-i18n="cacheSize">Size (KB)</div></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-g" id="purgeBtn">🧹 <span data-i18n="cachePurge">Clean expired</span></button>
+      <button class="btn btn-d" id="clearBtn">🗑 <span data-i18n="cacheClear">Clear all</span></button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ℹ️ <span data-i18n="infoTitle">About & Resources</span></div>
+    <div style="display:flex;flex-direction:column;gap:8px;font-size:13px">
+      <a href="changelog.html" target="_blank" style="color:#4da6ff;text-decoration:none"><span data-i18n="viewChangelog">View changelog →</span></a>
+      <a href="https://github.com/DrummingBird1/gamedeals-plus" target="_blank" rel="noopener noreferrer" style="color:#4da6ff;text-decoration:none">🔗 <span data-i18n="linkSource">Source code on GitHub</span></a>
+      <a href="https://github.com/DrummingBird1/gamedeals-plus/blob/main/docs/privacy-policy.html" target="_blank" rel="noopener noreferrer" style="color:#4da6ff;text-decoration:none">🔒 <span data-i18n="linkPrivacy">Privacy policy</span></a>
+      <p class="card-desc" style="margin-top:8px;font-size:11px" data-i18n="linkCredits">Data: CheapShark · OpenCritic · PSPrices · PSNProfiles</p>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+<script src="i18n.js"></script>
+<script src="options.js"></script>
+</body>
+</html>

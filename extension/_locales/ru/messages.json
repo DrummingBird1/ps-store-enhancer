@@ -1,0 +1,437 @@
+{
+  "extName": {
+    "message": "GameDeals+ for PS Store"
+  },
+  "extDesc": {
+    "message": "История цен, сравнение цен, оценки, трофеи и фильтры для PlayStation Store. Синхронизация PSN опциональна."
+  },
+  "psnAccount": {
+    "message": "Аккаунт PSN"
+  },
+  "psnNotConnected": {
+    "message": "Не подключен"
+  },
+  "psnClickToConnect": {
+    "message": "Нажмите для подключения PSN"
+  },
+  "psnGames": {
+    "message": "игр"
+  },
+  "psnDlcs": {
+    "message": "DLC"
+  },
+  "psnConnectTitle": {
+    "message": "Подключить PSN"
+  },
+  "psnConnectDesc": {
+    "message": "Подключите аккаунт PlayStation для автоматической синхронизации библиотеки игр и DLC."
+  },
+  "psnAutoDetect": {
+    "message": "Автоопределение (если авторизован)"
+  },
+  "psnSearching": {
+    "message": "Поиск..."
+  },
+  "psnOrManual": {
+    "message": "Или введите NPSSO Token вручную:"
+  },
+  "psnPasteToken": {
+    "message": "Вставьте NPSSO token..."
+  },
+  "psnConnect": {
+    "message": "Подключить"
+  },
+  "psnConnecting": {
+    "message": "Подключение..."
+  },
+  "psnSyncNow": {
+    "message": "Синхронизировать"
+  },
+  "psnSyncing": {
+    "message": "Синхронизация..."
+  },
+  "psnDisconnect": {
+    "message": "Отключить"
+  },
+  "psnDisconnectConfirm": {
+    "message": "Отключить PSN?\nВручную добавленные игры (✏️) сохранятся."
+  },
+  "psnLastSync": {
+    "message": "Последняя синхронизация:"
+  },
+  "psnNotSynced": {
+    "message": "Ещё не синхронизировано"
+  },
+  "psnGuideTitle": {
+    "message": "Как получить NPSSO Token:"
+  },
+  "psnGuide1": {
+    "message": "Войдите на"
+  },
+  "psnGuide2": {
+    "message": "Откройте новую вкладку и перейдите:"
+  },
+  "psnGuide3": {
+    "message": "Скопируйте значение"
+  },
+  "psnGuide3b": {
+    "message": "(без кавычек)"
+  },
+  "psnGuide4": {
+    "message": "Вставьте сюда и нажмите \"Подключить\""
+  },
+  "psnTokenFound": {
+    "message": "NPSSO найден! Подключение..."
+  },
+  "psnTokenNotFound": {
+    "message": "Токен не найден. Войдите в PSN Store в другой вкладке и попробуйте снова."
+  },
+  "psnConnectedSync": {
+    "message": "Подключено! Синхронизация..."
+  },
+  "psnSynced": {
+    "message": "PSN подключен, библиотека синхронизирована"
+  },
+  "psnDisconnected": {
+    "message": "PSN отключен"
+  },
+  "psnSyncedItems": {
+    "message": "Синхронизировано $COUNT$ элементов",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "filterTitle": {
+    "message": "Фильтры поиска"
+  },
+  "hideAddons": {
+    "message": "Скрыть дополнения и валюту"
+  },
+  "hideAddonsDesc": {
+    "message": "Пакеты валюты, Starter Packs"
+  },
+  "hideDlc": {
+    "message": "Скрыть DLC и расширения"
+  },
+  "hideDlcDesc": {
+    "message": "Expansion, Season Pass, DLC"
+  },
+  "hideOwned": {
+    "message": "Скрыть купленные игры"
+  },
+  "hideOwnedDesc": {
+    "message": "Авто из PSN + ручной список"
+  },
+  "featuresTitle": {
+    "message": "Активные функции"
+  },
+  "metacriticToggle": {
+    "message": "Оценка OpenCritic / Metacritic"
+  },
+  "metacriticDesc": {
+    "message": "Значок оценки рядом с названием"
+  },
+  "priceHistoryToggle": {
+    "message": "История цен + график"
+  },
+  "priceHistoryDesc": {
+    "message": "Sparkline и ссылка на PSPrices"
+  },
+  "crossPlatformToggle": {
+    "message": "Сравнение цен между платформами"
+  },
+  "crossPlatformDesc": {
+    "message": "Steam, Epic, GOG и др. через CheapShark"
+  },
+  "trophyToggle": {
+    "message": "Инфо для Completionist (Трофеи)"
+  },
+  "trophyDesc": {
+    "message": "Сложность, время, прохождения + прогресс PSN"
+  },
+  "regionTitle": {
+    "message": "Регион PSPrices"
+  },
+  "regionLabel": {
+    "message": "Регион магазина"
+  },
+  "myGamesTitle": {
+    "message": "Мои игры"
+  },
+  "myGamesDesc": {
+    "message": "🔗 = из PSN, ✏️ = вручную. Отключение PSN удаляет только 🔗."
+  },
+  "addGamePlaceholder": {
+    "message": "Введите название игры..."
+  },
+  "addGame": {
+    "message": "Добавить"
+  },
+  "emptyList": {
+    "message": "Список пуст — подключите PSN или добавьте вручную"
+  },
+  "gameAdded": {
+    "message": "\"$NAME$\" добавлена",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "gameRemoved": {
+    "message": "\"$NAME$\" удалена",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "gameAlreadyInList": {
+    "message": "Игра уже в списке"
+  },
+  "srcPsn": {
+    "message": "🔗 PSN"
+  },
+  "srcManual": {
+    "message": "✏️ Вручную"
+  },
+  "cacheTitle": {
+    "message": "Управление кэшем"
+  },
+  "cacheActive": {
+    "message": "Активных"
+  },
+  "cacheExpired": {
+    "message": "Истёкших"
+  },
+  "cacheSize": {
+    "message": "Размер (КБ)"
+  },
+  "cachePurge": {
+    "message": "Очистить истёкшие"
+  },
+  "cachePurged": {
+    "message": "Истёкшие очищены"
+  },
+  "cacheClear": {
+    "message": "Очистить всё"
+  },
+  "cacheCleared": {
+    "message": "Кэш очищен ($COUNT$ записей)",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "priceHistory": {
+    "message": "История цен"
+  },
+  "cheapestEver": {
+    "message": "Самая низкая цена:"
+  },
+  "viewFullHistory": {
+    "message": "Полная история на PSPrices →"
+  },
+  "crossPlatformTitle": {
+    "message": "Сравнение цен"
+  },
+  "crossPlatformSource": {
+    "message": "Цены от CheapShark · PC платформы"
+  },
+  "completionistInfo": {
+    "message": "Инфо Completionist"
+  },
+  "platinum": {
+    "message": "Платина"
+  },
+  "yes": {
+    "message": "Да"
+  },
+  "no": {
+    "message": "Нет"
+  },
+  "difficulty": {
+    "message": "Сложность"
+  },
+  "estimatedTime": {
+    "message": "Примерное время"
+  },
+  "hours": {
+    "message": "часов"
+  },
+  "playthroughs": {
+    "message": "Прохождений"
+  },
+  "psnProgress": {
+    "message": "Прогресс (PSN)"
+  },
+  "trophyGuide": {
+    "message": "Гайд по трофеям на PSNProfiles →"
+  },
+  "markOwned": {
+    "message": "Отметить как купленную"
+  },
+  "iOwnThis": {
+    "message": "У меня есть эта игра"
+  },
+  "settingsTitle": {
+    "message": "Расширенные настройки"
+  },
+  "settingsSubtitle": {
+    "message": "Настройки · Аккаунт PSN · Управление играми"
+  },
+  "activeOnStore": {
+    "message": "Активно на store.playstation.com"
+  },
+  "advancedSettings": {
+    "message": "Расширенные настройки"
+  },
+  "saved": {
+    "message": "Сохранено ✓"
+  },
+  "psnConnected": {
+    "message": "Подключен"
+  },
+  "psnWait30": {
+    "message": "Подождите 30 секунд между синхронизациями"
+  },
+  "languageTitle": {
+    "message": "Язык расширения"
+  },
+  "languageDesc": {
+    "message": "Выберите язык интерфейса. \"Авто\" использует язык браузера."
+  },
+  "languageLabel": {
+    "message": "Язык"
+  },
+  "languageAuto": {
+    "message": "Авто (язык браузера)"
+  },
+  "disclaimer": {
+    "message": "Это расширение не связано с Sony Interactive Entertainment или PlayStation."
+  },
+  "welcomeTitle": {
+    "message": "Добро пожаловать в GameDeals+!"
+  },
+  "welcomeSubtitle": {
+    "message": "Ваш PlayStation™ Store стал лучше."
+  },
+  "welcomeFeature1Title": {
+    "message": "История и сравнение цен"
+  },
+  "welcomeFeature1Desc": {
+    "message": "Графики цен и сравнение между Steam, Epic, GOG и другими."
+  },
+  "welcomeFeature2Title": {
+    "message": "Синхронизация библиотеки PSN (Опционально)"
+  },
+  "welcomeFeature2Desc": {
+    "message": "Функция для продвинутых пользователей: опционально подключите PSN для скрытия купленных игр. Полностью работает и без неё."
+  },
+  "welcomeFeature3Title": {
+    "message": "Оценки и трофеи"
+  },
+  "welcomeFeature3Desc": {
+    "message": "Оценки Metacritic и информация completionist прямо на странице продукта."
+  },
+  "welcomeFeature4Title": {
+    "message": "Умные фильтры"
+  },
+  "welcomeFeature4Desc": {
+    "message": "Скрывайте дополнения, DLC и пакеты валюты из результатов поиска."
+  },
+  "welcomeCta": {
+    "message": "Открыть настройки"
+  },
+  "welcomeNote": {
+    "message": "Совет: Нажмите на иконку расширения для быстрого управления фильтрами."
+  },
+  "errorApiUnavailable": {
+    "message": "Не удалось загрузить данные. Попробуйте позже."
+  },
+  "errorPriceUnavailable": {
+    "message": "Данные о ценах недоступны"
+  },
+  "errorScoreUnavailable": {
+    "message": "Оценка недоступна"
+  },
+  "psnErrTokenShort": {
+    "message": "Токен NPSSO отсутствует или слишком короткий"
+  },
+  "psnErrAuthCode": {
+    "message": "Не удалось получить код авторизации от Sony. Возможно, NPSSO истёк."
+  },
+  "psnErrAccessToken": {
+    "message": "Не удалось получить токен доступа от Sony."
+  },
+  "psnErrNotConnected": {
+    "message": "Не подключено. Сначала подключите аккаунт PSN."
+  },
+  "psnErrAuthExpired": {
+    "message": "Срок действия аутентификации истёк. Пожалуйста, переподключитесь."
+  },
+  "genericError": {
+    "message": "Произошла ошибка"
+  },
+  "priceHistoryEstimated": {
+    "message": "Примерная история"
+  },
+  "crossPlatformUSD": {
+    "message": "Цены в долларах США"
+  },
+  "psnOptionalBanner": {
+    "message": "Опциональная расширенная функция — требуется ваш собственный аккаунт PSN. Расширение полностью работает и без неё."
+  },
+  "psnErrInvalidFormat": {
+    "message": "Это не похоже на NPSSO токен. Ожидаемый формат: ~64 буквенно-цифровых символа. Смотрите инструкцию ниже."
+  },
+  "psnErrFriendly": {
+    "message": "Не удалось подключиться к PSN. Убедитесь, что ваш NPSSO токен свежий (срок действия ~60 дней). Все остальные функции расширения продолжают работать нормально."
+  },
+  "wishlistTitle": { "message": "Список желаний" },
+  "wishlistDesc": { "message": "Отслеживайте игры и получайте уведомления, когда цена упадёт ниже вашего порога." },
+  "wishlistEmpty": { "message": "Ваш список желаний пуст" },
+  "wishlistAddBtn": { "message": "★ В список желаний" },
+  "wishlistInBtn": { "message": "★ В списке (нажмите чтобы убрать)" },
+  "wishlistTargetLabel": { "message": "Целевая цена (USD)" },
+  "wishlistAdded": { "message": "Добавлено в список желаний" },
+  "wishlistRemoved": { "message": "Удалено из списка желаний" },
+  "wishlistAlreadyAdded": { "message": "Уже в вашем списке" },
+  "wishlistPriceDropTitle": { "message": "🎯 Падение цены!" },
+  "wishlistPriceDropBody": { "message": "$NAME$ теперь $NEW$ (было $OLD$)", "placeholders": { "name": { "content": "
+  }" }, "new": { "content": "
+" }, "old": { "content": "$3" } } },
+  "wishlistLastChecked": { "message": "Последняя проверка:" },
+  "wishlistColTarget": { "message": "Цель" },
+  "wishlistColLast": { "message": "Текущая цена" },
+  "currencyTitle": { "message": "Валюта отображения" },
+  "currencyLabel": { "message": "Валюта" },
+  "currencyDesc": { "message": "Кросс-платформенные цены поступают от CheapShark в USD. Выберите свою валюту для конвертации (ежедневные курсы Frankfurter)." },
+  "themeTitle": { "message": "Тема" },
+  "themeLabel": { "message": "Цветовая тема" },
+  "themeAuto": { "message": "Авто (по системе)" },
+  "themeDark": { "message": "Тёмная" },
+  "themeLight": { "message": "Светлая" },
+  "ctxMenuFind": { "message": "Найти на GameDeals+ сравнение цен" },
+  "exportImportTitle": { "message": "Резервная копия" },
+  "exportImportDesc": { "message": "Экспортируйте ваши игры в JSON или восстановите из резервной копии." },
+  "exportBtn": { "message": "📤 Экспорт JSON" },
+  "importBtn": { "message": "📥 Импорт JSON" },
+  "exportSuccess": { "message": "Экспортировано" },
+  "importSuccess": { "message": "Импортировано $COUNT$ игр", "placeholders": { "count": { "content": "
+  }" } } },
+  "importFailed": { "message": "Импорт не удался — недопустимый файл" },
+  "changelogTitle": { "message": "Что нового" },
+  "viewChangelog": { "message": "Журнал изменений →" },
+  "infoTitle": { "message": "О программе" },
+  "linkPrivacy": { "message": "Политика конфиденциальности" },
+  "linkSource": { "message": "Исходный код на GitHub" },
+  "linkCredits": { "message": "Данные: CheapShark · OpenCritic · PSPrices · PSNProfiles" },
+  "errorApiDown": { "message": "Сервис временно недоступен. Попробуйте позже." },
+  "regionAutoDetected": { "message": "Регион определён автоматически: $REGION$", "placeholders": { "region": { "content": "
+  }" } } },
+  "libraryCapWarning": { "message": "В вашей библиотеке PSN более 5000 игр — синхронизированы только первые 5000." }
+}

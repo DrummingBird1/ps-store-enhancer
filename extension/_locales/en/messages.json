@@ -1,0 +1,437 @@
+{
+  "extName": {
+    "message": "GameDeals+ for PS Store"
+  },
+  "extDesc": {
+    "message": "Price history, cross-platform comparison, review scores, trophy info & smart filters for the PlayStation Store. Optional PSN sync."
+  },
+  "psnAccount": {
+    "message": "PSN Account"
+  },
+  "psnConnected": {
+    "message": "Connected"
+  },
+  "psnNotConnected": {
+    "message": "Not connected"
+  },
+  "psnClickToConnect": {
+    "message": "Click to connect your PSN account"
+  },
+  "psnGames": {
+    "message": "games"
+  },
+  "psnDlcs": {
+    "message": "DLCs"
+  },
+  "psnConnectTitle": {
+    "message": "Connect PSN Account"
+  },
+  "psnConnectDesc": {
+    "message": "Connect your PlayStation account to automatically sync your game library and DLCs."
+  },
+  "psnAutoDetect": {
+    "message": "Auto-detect (if signed in to PSN)"
+  },
+  "psnSearching": {
+    "message": "Searching..."
+  },
+  "psnOrManual": {
+    "message": "Or enter NPSSO Token manually:"
+  },
+  "psnPasteToken": {
+    "message": "Paste NPSSO token here..."
+  },
+  "psnConnect": {
+    "message": "Connect"
+  },
+  "psnConnecting": {
+    "message": "Connecting..."
+  },
+  "psnSyncNow": {
+    "message": "Sync now"
+  },
+  "psnSyncing": {
+    "message": "Syncing..."
+  },
+  "psnDisconnect": {
+    "message": "Disconnect"
+  },
+  "psnDisconnectConfirm": {
+    "message": "Disconnect PSN account?\nManually added games (✏️) will be kept."
+  },
+  "psnLastSync": {
+    "message": "Last sync:"
+  },
+  "psnNotSynced": {
+    "message": "Not synced yet"
+  },
+  "psnGuideTitle": {
+    "message": "How to get NPSSO Token:"
+  },
+  "psnGuide1": {
+    "message": "Sign in to"
+  },
+  "psnGuide2": {
+    "message": "Open a new tab and go to:"
+  },
+  "psnGuide3": {
+    "message": "Copy the value of"
+  },
+  "psnGuide3b": {
+    "message": "(without quotes)"
+  },
+  "psnGuide4": {
+    "message": "Paste here and click \"Connect\""
+  },
+  "psnTokenFound": {
+    "message": "NPSSO token found! Connecting..."
+  },
+  "psnTokenNotFound": {
+    "message": "No token found. Sign in to PSN Store in another tab and try again, or enter NPSSO manually."
+  },
+  "psnConnectedSync": {
+    "message": "Connected! Syncing library..."
+  },
+  "psnSynced": {
+    "message": "PSN connected and library synced"
+  },
+  "psnDisconnected": {
+    "message": "PSN account disconnected"
+  },
+  "psnSyncedItems": {
+    "message": "Synced $COUNT$ items",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "psnWait30": {
+    "message": "Please wait 30 seconds between syncs"
+  },
+  "filterTitle": {
+    "message": "Search Result Filters"
+  },
+  "hideAddons": {
+    "message": "Hide Add-ons & Currency"
+  },
+  "hideAddonsDesc": {
+    "message": "Currency packs, Starter Packs"
+  },
+  "hideDlc": {
+    "message": "Hide DLC & Expansions"
+  },
+  "hideDlcDesc": {
+    "message": "Expansion, Season Pass, DLC"
+  },
+  "hideOwned": {
+    "message": "Hide games I already own"
+  },
+  "hideOwnedDesc": {
+    "message": "Auto from PSN + manual list"
+  },
+  "featuresTitle": {
+    "message": "Active Features"
+  },
+  "metacriticToggle": {
+    "message": "OpenCritic / Metacritic Score"
+  },
+  "metacriticDesc": {
+    "message": "Score badge next to game title"
+  },
+  "priceHistoryToggle": {
+    "message": "Price History + Chart"
+  },
+  "priceHistoryDesc": {
+    "message": "Sparkline and link to PSPrices"
+  },
+  "crossPlatformToggle": {
+    "message": "Cross-Platform Price Comparison"
+  },
+  "crossPlatformDesc": {
+    "message": "Steam, Epic, GOG and more via CheapShark"
+  },
+  "trophyToggle": {
+    "message": "Completionist Info (Trophies)"
+  },
+  "trophyDesc": {
+    "message": "Difficulty, time, playthroughs + PSN progress"
+  },
+  "regionTitle": {
+    "message": "PSPrices Region"
+  },
+  "regionLabel": {
+    "message": "Store region"
+  },
+  "myGamesTitle": {
+    "message": "My Games"
+  },
+  "myGamesDesc": {
+    "message": "PSN games show as 🔗, manually added as ✏️. Disconnecting PSN removes only 🔗, not ✏️."
+  },
+  "addGamePlaceholder": {
+    "message": "Type a game name..."
+  },
+  "addGame": {
+    "message": "Add"
+  },
+  "emptyList": {
+    "message": "List is empty — connect PSN or add manually"
+  },
+  "gameAdded": {
+    "message": "\"$NAME$\" added",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "gameRemoved": {
+    "message": "\"$NAME$\" removed",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "gameAlreadyInList": {
+    "message": "Game is already in the list"
+  },
+  "srcPsn": {
+    "message": "🔗 PSN"
+  },
+  "srcManual": {
+    "message": "✏️ Manual"
+  },
+  "cacheTitle": {
+    "message": "Cache Management"
+  },
+  "cacheActive": {
+    "message": "Active"
+  },
+  "cacheExpired": {
+    "message": "Expired"
+  },
+  "cacheSize": {
+    "message": "Size (KB)"
+  },
+  "cachePurge": {
+    "message": "Clean expired"
+  },
+  "cachePurged": {
+    "message": "Expired entries cleaned"
+  },
+  "cacheClear": {
+    "message": "Clear all"
+  },
+  "cacheCleared": {
+    "message": "Cache cleared ($COUNT$ entries)",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "priceHistory": {
+    "message": "Price History"
+  },
+  "cheapestEver": {
+    "message": "Lowest price ever:"
+  },
+  "viewFullHistory": {
+    "message": "View full history on PSPrices →"
+  },
+  "crossPlatformTitle": {
+    "message": "Cross-Platform Price Comparison"
+  },
+  "crossPlatformSource": {
+    "message": "Prices from CheapShark · PC platforms"
+  },
+  "completionistInfo": {
+    "message": "Completionist Info"
+  },
+  "platinum": {
+    "message": "Platinum"
+  },
+  "yes": {
+    "message": "Yes"
+  },
+  "no": {
+    "message": "No"
+  },
+  "difficulty": {
+    "message": "Difficulty"
+  },
+  "estimatedTime": {
+    "message": "Estimated Time"
+  },
+  "hours": {
+    "message": "hours"
+  },
+  "playthroughs": {
+    "message": "Playthroughs"
+  },
+  "psnProgress": {
+    "message": "Progress (PSN)"
+  },
+  "trophyGuide": {
+    "message": "Trophy guide on PSNProfiles →"
+  },
+  "markOwned": {
+    "message": "Mark as owned"
+  },
+  "iOwnThis": {
+    "message": "I own this game"
+  },
+  "settingsTitle": {
+    "message": "Advanced Settings"
+  },
+  "settingsSubtitle": {
+    "message": "Advanced settings · PSN account · Game management"
+  },
+  "activeOnStore": {
+    "message": "Active on store.playstation.com"
+  },
+  "advancedSettings": {
+    "message": "Advanced settings"
+  },
+  "saved": {
+    "message": "Saved ✓"
+  },
+  "languageTitle": {
+    "message": "Extension Language"
+  },
+  "languageDesc": {
+    "message": "Choose the display language for the extension. \"Auto\" uses your browser language."
+  },
+  "languageLabel": {
+    "message": "Language"
+  },
+  "languageAuto": {
+    "message": "Auto (browser language)"
+  },
+  "disclaimer": {
+    "message": "This extension is not affiliated with, endorsed by, or connected to Sony Interactive Entertainment, PlayStation, or any of their subsidiaries."
+  },
+  "welcomeTitle": {
+    "message": "Welcome to GameDeals+!"
+  },
+  "welcomeSubtitle": {
+    "message": "Your PlayStation™ Store just got better."
+  },
+  "welcomeFeature1Title": {
+    "message": "Price History & Comparison"
+  },
+  "welcomeFeature1Desc": {
+    "message": "See price charts and compare prices across Steam, Epic, GOG and more."
+  },
+  "welcomeFeature2Title": {
+    "message": "PSN Library Sync (Optional)"
+  },
+  "welcomeFeature2Desc": {
+    "message": "Power-user feature: optionally connect your PSN account to auto-hide games you already own. Works fully without it."
+  },
+  "welcomeFeature3Title": {
+    "message": "Scores & Trophies"
+  },
+  "welcomeFeature3Desc": {
+    "message": "Metacritic scores and completionist info right on the product page."
+  },
+  "welcomeFeature4Title": {
+    "message": "Smart Filters"
+  },
+  "welcomeFeature4Desc": {
+    "message": "Hide add-ons, DLC, and currency packs from search results."
+  },
+  "welcomeCta": {
+    "message": "Open Settings"
+  },
+  "welcomeNote": {
+    "message": "Tip: Click the extension icon in your toolbar for quick filter toggles."
+  },
+  "errorApiUnavailable": {
+    "message": "Could not load data. Try again later."
+  },
+  "errorPriceUnavailable": {
+    "message": "Price data unavailable"
+  },
+  "errorScoreUnavailable": {
+    "message": "Score unavailable"
+  },
+  "psnErrTokenShort": {
+    "message": "NPSSO token is missing or too short"
+  },
+  "psnErrAuthCode": {
+    "message": "Could not get authorization code from Sony. The NPSSO may have expired."
+  },
+  "psnErrAccessToken": {
+    "message": "Could not get access token from Sony."
+  },
+  "psnErrNotConnected": {
+    "message": "Not connected. Connect your PSN account first."
+  },
+  "psnErrAuthExpired": {
+    "message": "Authentication expired. Please reconnect."
+  },
+  "genericError": {
+    "message": "An error occurred"
+  },
+  "priceHistoryEstimated": {
+    "message": "Estimated history"
+  },
+  "crossPlatformUSD": {
+    "message": "Prices in USD"
+  },
+  "psnOptionalBanner": {
+    "message": "Optional advanced feature — requires your own PSN account. The extension works fully without it."
+  },
+  "psnErrInvalidFormat": {
+    "message": "That doesn't look like an NPSSO token. Expected ~64 alphanumeric characters. See the guide below."
+  },
+  "psnErrFriendly": {
+    "message": "Could not connect to PSN. Make sure your NPSSO token is fresh (they expire after ~60 days). All other extension features still work normally."
+  },
+  "wishlistTitle": { "message": "Wishlist" },
+  "wishlistDesc": { "message": "Track games and get notified when their price drops below your target." },
+  "wishlistEmpty": { "message": "Your wishlist is empty" },
+  "wishlistAddBtn": { "message": "★ Add to Wishlist" },
+  "wishlistInBtn": { "message": "★ On Wishlist (click to remove)" },
+  "wishlistTargetLabel": { "message": "Target price (USD)" },
+  "wishlistAdded": { "message": "Added to wishlist" },
+  "wishlistRemoved": { "message": "Removed from wishlist" },
+  "wishlistAlreadyAdded": { "message": "Already on your wishlist" },
+  "wishlistPriceDropTitle": { "message": "🎯 Price drop alert!" },
+  "wishlistPriceDropBody": { "message": "$NAME$ is now $NEW$ (was $OLD$)", "placeholders": { "name": { "content": "
+  }" }, "new": { "content": "
+" }, "old": { "content": "$3" } } },
+  "wishlistLastChecked": { "message": "Last checked:" },
+  "wishlistColTarget": { "message": "Target" },
+  "wishlistColLast": { "message": "Last seen" },
+  "currencyTitle": { "message": "Display Currency" },
+  "currencyLabel": { "message": "Currency" },
+  "currencyDesc": { "message": "Cross-platform prices come from CheapShark in USD. Choose your currency to convert (daily rates from Frankfurter)." },
+  "themeTitle": { "message": "Theme" },
+  "themeLabel": { "message": "Color theme" },
+  "themeAuto": { "message": "Auto (match system)" },
+  "themeDark": { "message": "Dark" },
+  "themeLight": { "message": "Light" },
+  "ctxMenuFind": { "message": "Find on GameDeals+ price compare" },
+  "exportImportTitle": { "message": "Backup & Restore" },
+  "exportImportDesc": { "message": "Export your manually-marked owned games to a JSON file, or restore from a previous backup." },
+  "exportBtn": { "message": "📤 Export JSON" },
+  "importBtn": { "message": "📥 Import JSON" },
+  "exportSuccess": { "message": "Exported" },
+  "importSuccess": { "message": "Imported $COUNT$ games", "placeholders": { "count": { "content": "
+  }" } } },
+  "importFailed": { "message": "Import failed — file is not a valid GameDeals+ export" },
+  "changelogTitle": { "message": "What's New" },
+  "viewChangelog": { "message": "View changelog →" },
+  "infoTitle": { "message": "About & Resources" },
+  "linkPrivacy": { "message": "Privacy policy" },
+  "linkSource": { "message": "Source code on GitHub" },
+  "linkCredits": { "message": "Data: CheapShark · OpenCritic · PSPrices · PSNProfiles" },
+  "errorApiDown": { "message": "Service temporarily unavailable. Try again later." },
+  "regionAutoDetected": { "message": "Region auto-detected: $REGION$", "placeholders": { "region": { "content": "
+  }" } } },
+  "libraryCapWarning": { "message": "Your PSN library has more than 5000 titles — only the first 5000 were synced." }
+}

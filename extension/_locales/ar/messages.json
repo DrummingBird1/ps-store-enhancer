@@ -1,0 +1,437 @@
+{
+  "extName": {
+    "message": "GameDeals+ for PS Store"
+  },
+  "extDesc": {
+    "message": "سجل الأسعار، مقارنة الأسعار، تقييمات اللعبة، معلومات الكؤوس وفلاتر ذكية لمتجر PlayStation. مزامنة PSN اختيارية."
+  },
+  "psnAccount": {
+    "message": "حساب PSN"
+  },
+  "psnNotConnected": {
+    "message": "غير متصل"
+  },
+  "psnClickToConnect": {
+    "message": "انقر لربط حساب PSN"
+  },
+  "psnGames": {
+    "message": "ألعاب"
+  },
+  "psnDlcs": {
+    "message": "إضافات"
+  },
+  "psnConnectTitle": {
+    "message": "ربط حساب PSN"
+  },
+  "psnConnectDesc": {
+    "message": "اربط حساب PlayStation لمزامنة مكتبة الألعاب والإضافات تلقائياً."
+  },
+  "psnAutoDetect": {
+    "message": "كشف تلقائي (إذا كنت مسجل الدخول)"
+  },
+  "psnSearching": {
+    "message": "جارٍ البحث..."
+  },
+  "psnOrManual": {
+    "message": "أو أدخل NPSSO Token يدوياً:"
+  },
+  "psnPasteToken": {
+    "message": "الصق NPSSO token هنا..."
+  },
+  "psnConnect": {
+    "message": "ربط"
+  },
+  "psnConnecting": {
+    "message": "جارٍ الاتصال..."
+  },
+  "psnSyncNow": {
+    "message": "مزامنة الآن"
+  },
+  "psnSyncing": {
+    "message": "جارٍ المزامنة..."
+  },
+  "psnDisconnect": {
+    "message": "قطع الاتصال"
+  },
+  "psnDisconnectConfirm": {
+    "message": "قطع اتصال حساب PSN؟\nالألعاب المضافة يدوياً (✏️) ستبقى."
+  },
+  "psnLastSync": {
+    "message": "آخر مزامنة:"
+  },
+  "psnNotSynced": {
+    "message": "لم تتم المزامنة بعد"
+  },
+  "psnGuideTitle": {
+    "message": "كيفية الحصول على NPSSO Token:"
+  },
+  "psnGuide1": {
+    "message": "سجل الدخول إلى"
+  },
+  "psnGuide2": {
+    "message": "افتح تبويب جديد واذهب إلى:"
+  },
+  "psnGuide3": {
+    "message": "انسخ قيمة"
+  },
+  "psnGuide3b": {
+    "message": "(بدون علامات الاقتباس)"
+  },
+  "psnGuide4": {
+    "message": "الصق هنا وانقر \"ربط\""
+  },
+  "psnTokenFound": {
+    "message": "تم العثور على NPSSO! جارٍ الاتصال..."
+  },
+  "psnTokenNotFound": {
+    "message": "لم يتم العثور على token. سجل الدخول إلى PSN Store في تبويب آخر وحاول مجدداً."
+  },
+  "psnConnectedSync": {
+    "message": "متصل! جارٍ المزامنة..."
+  },
+  "psnSynced": {
+    "message": "تم ربط PSN ومزامنة المكتبة"
+  },
+  "psnDisconnected": {
+    "message": "تم قطع اتصال PSN"
+  },
+  "psnSyncedItems": {
+    "message": "تمت مزامنة $COUNT$ عنصر",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "filterTitle": {
+    "message": "فلاتر نتائج البحث"
+  },
+  "hideAddons": {
+    "message": "إخفاء الإضافات والعملات"
+  },
+  "hideAddonsDesc": {
+    "message": "حزم العملات، Starter Packs"
+  },
+  "hideDlc": {
+    "message": "إخفاء DLC والتوسعات"
+  },
+  "hideDlcDesc": {
+    "message": "Expansion, Season Pass, DLC"
+  },
+  "hideOwned": {
+    "message": "إخفاء الألعاب التي أملكها"
+  },
+  "hideOwnedDesc": {
+    "message": "تلقائي من PSN + قائمة يدوية"
+  },
+  "featuresTitle": {
+    "message": "الميزات النشطة"
+  },
+  "metacriticToggle": {
+    "message": "تقييم OpenCritic / Metacritic"
+  },
+  "metacriticDesc": {
+    "message": "شارة التقييم بجانب عنوان اللعبة"
+  },
+  "priceHistoryToggle": {
+    "message": "سجل الأسعار + رسم بياني"
+  },
+  "priceHistoryDesc": {
+    "message": "Sparkline ورابط إلى PSPrices"
+  },
+  "crossPlatformToggle": {
+    "message": "مقارنة أسعار عبر المنصات"
+  },
+  "crossPlatformDesc": {
+    "message": "Steam, Epic, GOG والمزيد عبر CheapShark"
+  },
+  "trophyToggle": {
+    "message": "معلومات الإكمال (الكؤوس)"
+  },
+  "trophyDesc": {
+    "message": "الصعوبة، الوقت، المرات + تقدم PSN"
+  },
+  "regionTitle": {
+    "message": "منطقة PSPrices"
+  },
+  "regionLabel": {
+    "message": "منطقة المتجر"
+  },
+  "myGamesTitle": {
+    "message": "ألعابي"
+  },
+  "myGamesDesc": {
+    "message": "🔗 = من PSN، ✏️ = يدوي. قطع PSN يحذف 🔗 فقط."
+  },
+  "addGamePlaceholder": {
+    "message": "اكتب اسم لعبة..."
+  },
+  "addGame": {
+    "message": "إضافة"
+  },
+  "emptyList": {
+    "message": "القائمة فارغة — اربط PSN أو أضف يدوياً"
+  },
+  "gameAdded": {
+    "message": "تمت إضافة \"$NAME$\"",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "gameRemoved": {
+    "message": "تمت إزالة \"$NAME$\"",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "gameAlreadyInList": {
+    "message": "اللعبة موجودة بالفعل"
+  },
+  "srcPsn": {
+    "message": "🔗 PSN"
+  },
+  "srcManual": {
+    "message": "✏️ يدوي"
+  },
+  "cacheTitle": {
+    "message": "إدارة الذاكرة المؤقتة"
+  },
+  "cacheActive": {
+    "message": "نشطة"
+  },
+  "cacheExpired": {
+    "message": "منتهية"
+  },
+  "cacheSize": {
+    "message": "الحجم (KB)"
+  },
+  "cachePurge": {
+    "message": "تنظيف المنتهية"
+  },
+  "cachePurged": {
+    "message": "تم تنظيف المنتهية"
+  },
+  "cacheClear": {
+    "message": "مسح الكل"
+  },
+  "cacheCleared": {
+    "message": "تم مسح الذاكرة ($COUNT$ عنصر)",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "priceHistory": {
+    "message": "سجل الأسعار"
+  },
+  "cheapestEver": {
+    "message": "أقل سعر على الإطلاق:"
+  },
+  "viewFullHistory": {
+    "message": "عرض السجل الكامل على PSPrices →"
+  },
+  "crossPlatformTitle": {
+    "message": "مقارنة أسعار عبر المنصات"
+  },
+  "crossPlatformSource": {
+    "message": "الأسعار من CheapShark · منصات PC"
+  },
+  "completionistInfo": {
+    "message": "معلومات الإكمال"
+  },
+  "platinum": {
+    "message": "بلاتينيوم"
+  },
+  "yes": {
+    "message": "نعم"
+  },
+  "no": {
+    "message": "لا"
+  },
+  "difficulty": {
+    "message": "الصعوبة"
+  },
+  "estimatedTime": {
+    "message": "الوقت المقدر"
+  },
+  "hours": {
+    "message": "ساعات"
+  },
+  "playthroughs": {
+    "message": "مرات اللعب"
+  },
+  "psnProgress": {
+    "message": "التقدم (PSN)"
+  },
+  "trophyGuide": {
+    "message": "دليل الكؤوس على PSNProfiles →"
+  },
+  "markOwned": {
+    "message": "تعليم كمملوكة"
+  },
+  "iOwnThis": {
+    "message": "أملك هذه اللعبة"
+  },
+  "settingsTitle": {
+    "message": "إعدادات متقدمة"
+  },
+  "settingsSubtitle": {
+    "message": "إعدادات متقدمة · حساب PSN · إدارة الألعاب"
+  },
+  "activeOnStore": {
+    "message": "نشط على store.playstation.com"
+  },
+  "advancedSettings": {
+    "message": "إعدادات متقدمة"
+  },
+  "saved": {
+    "message": "تم الحفظ ✓"
+  },
+  "psnConnected": {
+    "message": "متصل"
+  },
+  "psnWait30": {
+    "message": "يرجى الانتظار 30 ثانية بين المزامنات"
+  },
+  "languageTitle": {
+    "message": "لغة الإضافة"
+  },
+  "languageDesc": {
+    "message": "اختر لغة العرض للإضافة. \"تلقائي\" يستخدم لغة المتصفح."
+  },
+  "languageLabel": {
+    "message": "اللغة"
+  },
+  "languageAuto": {
+    "message": "تلقائي (لغة المتصفح)"
+  },
+  "disclaimer": {
+    "message": "هذه الإضافة غير مرتبطة بـ Sony Interactive Entertainment أو PlayStation."
+  },
+  "welcomeTitle": {
+    "message": "!مرحباً بك في GameDeals+"
+  },
+  "welcomeSubtitle": {
+    "message": ".متجر PlayStation™ الخاص بك أصبح أفضل"
+  },
+  "welcomeFeature1Title": {
+    "message": "سجل ومقارنة الأسعار"
+  },
+  "welcomeFeature1Desc": {
+    "message": "رسوم بيانية ومقارنة أسعار عبر Steam و Epic و GOG وأكثر."
+  },
+  "welcomeFeature2Title": {
+    "message": "مزامنة مكتبة PSN (اختيارية)"
+  },
+  "welcomeFeature2Desc": {
+    "message": "ميزة للمستخدمين المتقدمين: اربط حساب PSN اختيارياً لإخفاء الألعاب التي تملكها. يعمل الامتداد بالكامل بدونها."
+  },
+  "welcomeFeature3Title": {
+    "message": "التقييمات والكؤوس"
+  },
+  "welcomeFeature3Desc": {
+    "message": "تقييمات Metacritic ومعلومات الإكمال مباشرة في صفحة المنتج."
+  },
+  "welcomeFeature4Title": {
+    "message": "فلاتر ذكية"
+  },
+  "welcomeFeature4Desc": {
+    "message": "إخفاء الإضافات و DLC وحزم العملات من نتائج البحث."
+  },
+  "welcomeCta": {
+    "message": "فتح الإعدادات"
+  },
+  "welcomeNote": {
+    "message": "تلميح: انقر على أيقونة الإضافة في شريط الأدوات للتحكم السريع."
+  },
+  "errorApiUnavailable": {
+    "message": "تعذر تحميل البيانات. حاول مجدداً لاحقاً."
+  },
+  "errorPriceUnavailable": {
+    "message": "بيانات الأسعار غير متوفرة"
+  },
+  "errorScoreUnavailable": {
+    "message": "التقييم غير متوفر"
+  },
+  "psnErrTokenShort": {
+    "message": "رمز NPSSO مفقود أو قصير جدًا"
+  },
+  "psnErrAuthCode": {
+    "message": "تعذّر الحصول على رمز التفويض من Sony. ربما انتهت صلاحية NPSSO."
+  },
+  "psnErrAccessToken": {
+    "message": "تعذّر الحصول على رمز الوصول من Sony."
+  },
+  "psnErrNotConnected": {
+    "message": "غير متصل. اربط حساب PSN أولاً."
+  },
+  "psnErrAuthExpired": {
+    "message": "انتهت صلاحية المصادقة. يرجى إعادة الاتصال."
+  },
+  "genericError": {
+    "message": "حدث خطأ"
+  },
+  "priceHistoryEstimated": {
+    "message": "تاريخ تقديري"
+  },
+  "crossPlatformUSD": {
+    "message": "الأسعار بالدولار الأمريكي"
+  },
+  "psnOptionalBanner": {
+    "message": "ميزة متقدمة اختيارية — تتطلب حساب PSN خاص بك. يعمل الامتداد بالكامل بدونها."
+  },
+  "psnErrInvalidFormat": {
+    "message": "لا يبدو هذا رمز NPSSO. التنسيق المتوقع: حوالي 64 حرفًا أبجديًا رقميًا. راجع الدليل أدناه."
+  },
+  "psnErrFriendly": {
+    "message": "تعذّر الاتصال بـ PSN. تأكد من أن رمز NPSSO الخاص بك حديث (تنتهي صلاحيته خلال 60 يومًا تقريبًا). تستمر جميع ميزات الامتداد الأخرى في العمل بشكل طبيعي."
+  },
+  "wishlistTitle": { "message": "قائمة الأمنيات" },
+  "wishlistDesc": { "message": "تتبع الألعاب واحصل على إشعار عند انخفاض السعر دون الهدف." },
+  "wishlistEmpty": { "message": "قائمة الأمنيات فارغة" },
+  "wishlistAddBtn": { "message": "★ أضف إلى قائمة الأمنيات" },
+  "wishlistInBtn": { "message": "★ في قائمة الأمنيات (انقر للإزالة)" },
+  "wishlistTargetLabel": { "message": "السعر المستهدف (USD)" },
+  "wishlistAdded": { "message": "تمت الإضافة إلى قائمة الأمنيات" },
+  "wishlistRemoved": { "message": "تمت الإزالة من قائمة الأمنيات" },
+  "wishlistAlreadyAdded": { "message": "موجود بالفعل في قائمة الأمنيات" },
+  "wishlistPriceDropTitle": { "message": "🎯 تنبيه انخفاض السعر!" },
+  "wishlistPriceDropBody": { "message": "$NAME$ الآن $NEW$ (كان $OLD$)", "placeholders": { "name": { "content": "
+  }" }, "new": { "content": "
+" }, "old": { "content": "$3" } } },
+  "wishlistLastChecked": { "message": "آخر فحص:" },
+  "wishlistColTarget": { "message": "الهدف" },
+  "wishlistColLast": { "message": "السعر الحالي" },
+  "currencyTitle": { "message": "عملة العرض" },
+  "currencyLabel": { "message": "العملة" },
+  "currencyDesc": { "message": "تأتي الأسعار من CheapShark بالدولار الأمريكي. اختر عملتك للتحويل (أسعار يومية من Frankfurter)." },
+  "themeTitle": { "message": "السمة" },
+  "themeLabel": { "message": "نمط الألوان" },
+  "themeAuto": { "message": "تلقائي (مطابق للنظام)" },
+  "themeDark": { "message": "داكن" },
+  "themeLight": { "message": "فاتح" },
+  "ctxMenuFind": { "message": "ابحث في GameDeals+ مقارنة الأسعار" },
+  "exportImportTitle": { "message": "نسخ احتياطي واستعادة" },
+  "exportImportDesc": { "message": "صدّر قائمة الألعاب التي ملّكتها يدوياً إلى ملف JSON، أو استعدها من نسخة سابقة." },
+  "exportBtn": { "message": "📤 تصدير JSON" },
+  "importBtn": { "message": "📥 استيراد JSON" },
+  "exportSuccess": { "message": "تم التصدير" },
+  "importSuccess": { "message": "تم استيراد $COUNT$ لعبة", "placeholders": { "count": { "content": "
+  }" } } },
+  "importFailed": { "message": "فشل الاستيراد — الملف ليس تصدير GameDeals+ صالح" },
+  "changelogTitle": { "message": "ما الجديد" },
+  "viewChangelog": { "message": "عرض سجل التغييرات →" },
+  "infoTitle": { "message": "حول والموارد" },
+  "linkPrivacy": { "message": "سياسة الخصوصية" },
+  "linkSource": { "message": "الكود المصدري على GitHub" },
+  "linkCredits": { "message": "البيانات: CheapShark · OpenCritic · PSPrices · PSNProfiles" },
+  "errorApiDown": { "message": "الخدمة غير متوفرة مؤقتاً. حاول لاحقاً." },
+  "regionAutoDetected": { "message": "تم اكتشاف المنطقة تلقائياً: $REGION$", "placeholders": { "region": { "content": "
+  }" } } },
+  "libraryCapWarning": { "message": "تحتوي مكتبة PSN على أكثر من 5000 عنوان — تم مزامنة أول 5000 فقط." }
+}

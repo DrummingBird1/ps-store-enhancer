@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GameDeals+ — Welcome</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#0a0f1a;color:#e2e8f0;min-height:100vh;display:flex;align-items:center;justify-content:center}
+.wrap{max-width:680px;padding:48px 32px;text-align:center}
+.logo{width:80px;height:80px;margin:0 auto 24px;border-radius:20px;overflow:hidden}
+.logo img{width:100%;height:100%}
+h1{font-size:32px;font-weight:800;margin-bottom:8px}
+h1 span{background:linear-gradient(135deg,#4da6ff,#0070d1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{color:#718096;font-size:16px;margin-bottom:48px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:40px;text-align:left}
+.feat{background:#131b2e;border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:20px;transition:border-color .2s}
+.feat:hover{border-color:rgba(0,112,209,.3)}
+.feat-icon{font-size:28px;margin-bottom:10px}
+.feat-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:4px}
+.feat-desc{font-size:12px;color:#a0aec0;line-height:1.5}
+.cta{display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#003087,#0070d1);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,112,209,.3)}
+.note{margin-top:20px;font-size:12px;color:#4a5568}
+.disclaimer{margin-top:32px;font-size:10px;color:#2d3748;padding:12px;border:1px solid rgba(255,255,255,.03);border-radius:8px}
+@media(max-width:600px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="logo"><img src="icons/icon128.png" alt="GameDeals+"></div>
+  <h1 data-i18n="welcomeTitle">Welcome to <span>GameDeals+</span>!</h1>
+  <p class="sub" data-i18n="welcomeSubtitle">Your PlayStation™ Store just got better.</p>
+
+  <div class="grid">
+    <div class="feat">
+      <div class="feat-icon">📉</div>
+      <div class="feat-title" data-i18n="welcomeFeature1Title">Price History & Comparison</div>
+      <div class="feat-desc" data-i18n="welcomeFeature1Desc">See price charts and compare prices across Steam, Epic, GOG and more.</div>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">🔗</div>
+      <div class="feat-title" data-i18n="welcomeFeature2Title">PSN Library Sync (Optional)</div>
+      <div class="feat-desc" data-i18n="welcomeFeature2Desc">Power-user feature: optionally connect your PSN account to auto-hide games you already own.</div>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">📊</div>
+      <div class="feat-title" data-i18n="welcomeFeature3Title">Scores & Trophies</div>
+      <div class="feat-desc" data-i18n="welcomeFeature3Desc">Metacritic scores and completionist info right on the product page.</div>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">🧹</div>
+      <div class="feat-title" data-i18n="welcomeFeature4Title">Smart Filters</div>
+      <div class="feat-desc" data-i18n="welcomeFeature4Desc">Hide add-ons, DLC, and currency packs from search results.</div>
+    </div>
+  </div>
+
+  <a class="cta" id="openSettings" data-i18n="welcomeCta">Open Settings</a>
+  <p class="note" data-i18n="welcomeNote">Tip: Click the extension icon in your toolbar for quick filter toggles.</p>
+
+  <div class="disclaimer" data-i18n="disclaimer">This extension is not affiliated with, endorsed by, or connected to Sony Interactive Entertainment, PlayStation, or any of their subsidiaries.</div>
+</div>
+
+<script src="i18n.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    await initI18n();
+    localizePage();
+    document.getElementById("openSettings").addEventListener("click", e => {
+      e.preventDefault();
+      chrome.runtime.openOptionsPage();
+    });
+  });
+</script>
+</body>
+</html>

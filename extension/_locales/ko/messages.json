@@ -1,0 +1,437 @@
+{
+  "extName": {
+    "message": "GameDeals+ for PS Store"
+  },
+  "extDesc": {
+    "message": "PlayStation Store용 가격 이력, 크로스 플랫폼 비교, 리뷰 점수, 트로피 정보, 스마트 필터. PSN 동기화는 선택 사항."
+  },
+  "psnAccount": {
+    "message": "PSN 계정"
+  },
+  "psnNotConnected": {
+    "message": "미연결"
+  },
+  "psnClickToConnect": {
+    "message": "클릭하여 PSN 계정 연결"
+  },
+  "psnGames": {
+    "message": "게임"
+  },
+  "psnDlcs": {
+    "message": "DLC"
+  },
+  "psnConnectTitle": {
+    "message": "PSN 계정 연결"
+  },
+  "psnConnectDesc": {
+    "message": "PlayStation 계정을 연결하여 게임 라이브러리와 DLC를 자동 동기화합니다."
+  },
+  "psnAutoDetect": {
+    "message": "자동 감지 (PSN 로그인 상태)"
+  },
+  "psnSearching": {
+    "message": "검색 중..."
+  },
+  "psnOrManual": {
+    "message": "또는 NPSSO Token 수동 입력:"
+  },
+  "psnPasteToken": {
+    "message": "NPSSO token 붙여넣기..."
+  },
+  "psnConnect": {
+    "message": "연결"
+  },
+  "psnConnecting": {
+    "message": "연결 중..."
+  },
+  "psnSyncNow": {
+    "message": "지금 동기화"
+  },
+  "psnSyncing": {
+    "message": "동기화 중..."
+  },
+  "psnDisconnect": {
+    "message": "연결 해제"
+  },
+  "psnDisconnectConfirm": {
+    "message": "PSN 계정을 연결 해제하시겠습니까?\n수동 추가한 게임(✏️)은 유지됩니다."
+  },
+  "psnLastSync": {
+    "message": "마지막 동기화:"
+  },
+  "psnNotSynced": {
+    "message": "아직 동기화되지 않음"
+  },
+  "psnGuideTitle": {
+    "message": "NPSSO Token 얻는 방법:"
+  },
+  "psnGuide1": {
+    "message": "로그인"
+  },
+  "psnGuide2": {
+    "message": "새 탭을 열고 이동:"
+  },
+  "psnGuide3": {
+    "message": "값을 복사"
+  },
+  "psnGuide3b": {
+    "message": "(따옴표 제외)"
+  },
+  "psnGuide4": {
+    "message": "여기에 붙여넣고 \"연결\" 클릭"
+  },
+  "psnTokenFound": {
+    "message": "NPSSO 발견! 연결 중..."
+  },
+  "psnTokenNotFound": {
+    "message": "토큰을 찾을 수 없습니다. 다른 탭에서 PSN Store에 로그인 후 다시 시도하세요."
+  },
+  "psnConnectedSync": {
+    "message": "연결됨! 동기화 중..."
+  },
+  "psnSynced": {
+    "message": "PSN 연결 및 라이브러리 동기화 완료"
+  },
+  "psnDisconnected": {
+    "message": "PSN 계정 연결 해제됨"
+  },
+  "psnSyncedItems": {
+    "message": "$COUNT$개 항목 동기화 완료",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "filterTitle": {
+    "message": "검색 필터"
+  },
+  "hideAddons": {
+    "message": "애드온 및 화폐 숨기기"
+  },
+  "hideAddonsDesc": {
+    "message": "화폐 팩, 스타터 팩"
+  },
+  "hideDlc": {
+    "message": "DLC 및 확장팩 숨기기"
+  },
+  "hideDlcDesc": {
+    "message": "확장팩, 시즌 패스, DLC"
+  },
+  "hideOwned": {
+    "message": "소유한 게임 숨기기"
+  },
+  "hideOwnedDesc": {
+    "message": "PSN 자동 + 수동 목록"
+  },
+  "featuresTitle": {
+    "message": "활성 기능"
+  },
+  "metacriticToggle": {
+    "message": "OpenCritic / Metacritic 점수"
+  },
+  "metacriticDesc": {
+    "message": "게임 제목 옆 점수 배지"
+  },
+  "priceHistoryToggle": {
+    "message": "가격 이력 + 차트"
+  },
+  "priceHistoryDesc": {
+    "message": "Sparkline 및 PSPrices 링크"
+  },
+  "crossPlatformToggle": {
+    "message": "크로스 플랫폼 가격 비교"
+  },
+  "crossPlatformDesc": {
+    "message": "Steam, Epic, GOG 등 (CheapShark)"
+  },
+  "trophyToggle": {
+    "message": "컴플리티스트 정보 (트로피)"
+  },
+  "trophyDesc": {
+    "message": "난이도, 시간, 회차 + PSN 진행도"
+  },
+  "regionTitle": {
+    "message": "PSPrices 지역"
+  },
+  "regionLabel": {
+    "message": "스토어 지역"
+  },
+  "myGamesTitle": {
+    "message": "내 게임"
+  },
+  "myGamesDesc": {
+    "message": "🔗 = PSN에서, ✏️ = 수동. PSN 해제 시 🔗만 삭제."
+  },
+  "addGamePlaceholder": {
+    "message": "게임 이름 입력..."
+  },
+  "addGame": {
+    "message": "추가"
+  },
+  "emptyList": {
+    "message": "목록이 비어 있습니다 — PSN 연결 또는 수동 추가"
+  },
+  "gameAdded": {
+    "message": "\"$NAME$\" 추가됨",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "gameRemoved": {
+    "message": "\"$NAME$\" 삭제됨",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "gameAlreadyInList": {
+    "message": "이미 목록에 있는 게임입니다"
+  },
+  "srcPsn": {
+    "message": "🔗 PSN"
+  },
+  "srcManual": {
+    "message": "✏️ 수동"
+  },
+  "cacheTitle": {
+    "message": "캐시 관리"
+  },
+  "cacheActive": {
+    "message": "활성"
+  },
+  "cacheExpired": {
+    "message": "만료"
+  },
+  "cacheSize": {
+    "message": "크기 (KB)"
+  },
+  "cachePurge": {
+    "message": "만료 항목 삭제"
+  },
+  "cachePurged": {
+    "message": "만료 항목 삭제 완료"
+  },
+  "cacheClear": {
+    "message": "전체 삭제"
+  },
+  "cacheCleared": {
+    "message": "캐시 삭제 완료 ($COUNT$개)",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "priceHistory": {
+    "message": "가격 이력"
+  },
+  "cheapestEver": {
+    "message": "역대 최저가:"
+  },
+  "viewFullHistory": {
+    "message": "PSPrices에서 전체 이력 보기 →"
+  },
+  "crossPlatformTitle": {
+    "message": "크로스 플랫폼 가격 비교"
+  },
+  "crossPlatformSource": {
+    "message": "CheapShark 제공 · PC 플랫폼"
+  },
+  "completionistInfo": {
+    "message": "컴플리티스트 정보"
+  },
+  "platinum": {
+    "message": "플래티넘"
+  },
+  "yes": {
+    "message": "예"
+  },
+  "no": {
+    "message": "아니오"
+  },
+  "difficulty": {
+    "message": "난이도"
+  },
+  "estimatedTime": {
+    "message": "예상 시간"
+  },
+  "hours": {
+    "message": "시간"
+  },
+  "playthroughs": {
+    "message": "필요 회차"
+  },
+  "psnProgress": {
+    "message": "진행도 (PSN)"
+  },
+  "trophyGuide": {
+    "message": "PSNProfiles 트로피 가이드 →"
+  },
+  "markOwned": {
+    "message": "소유로 표시"
+  },
+  "iOwnThis": {
+    "message": "이 게임을 소유하고 있습니다"
+  },
+  "settingsTitle": {
+    "message": "고급 설정"
+  },
+  "settingsSubtitle": {
+    "message": "고급 설정 · PSN 계정 · 게임 관리"
+  },
+  "activeOnStore": {
+    "message": "store.playstation.com에서 활성"
+  },
+  "advancedSettings": {
+    "message": "고급 설정"
+  },
+  "saved": {
+    "message": "저장됨 ✓"
+  },
+  "psnConnected": {
+    "message": "연결됨"
+  },
+  "psnWait30": {
+    "message": "동기화 사이에 30초를 기다려주세요"
+  },
+  "languageTitle": {
+    "message": "확장 프로그램 언어"
+  },
+  "languageDesc": {
+    "message": "표시 언어를 선택하세요. \"자동\"은 브라우저 언어를 사용합니다."
+  },
+  "languageLabel": {
+    "message": "언어"
+  },
+  "languageAuto": {
+    "message": "자동 (브라우저 언어)"
+  },
+  "disclaimer": {
+    "message": "이 확장 프로그램은 Sony Interactive Entertainment 또는 PlayStation과 관련이 없습니다."
+  },
+  "welcomeTitle": {
+    "message": "GameDeals+에 오신 것을 환영합니다!"
+  },
+  "welcomeSubtitle": {
+    "message": "PlayStation™ Store가 더 좋아졌습니다."
+  },
+  "welcomeFeature1Title": {
+    "message": "가격 이력 및 비교"
+  },
+  "welcomeFeature1Desc": {
+    "message": "가격 차트와 Steam, Epic, GOG 등과의 가격 비교."
+  },
+  "welcomeFeature2Title": {
+    "message": "PSN 라이브러리 동기화 (선택 사항)"
+  },
+  "welcomeFeature2Desc": {
+    "message": "고급 사용자 기능: 선택적으로 PSN 계정을 연결하여 소유한 게임을 숨깁니다. 연결하지 않아도 완전히 작동합니다."
+  },
+  "welcomeFeature3Title": {
+    "message": "점수 및 트로피"
+  },
+  "welcomeFeature3Desc": {
+    "message": "제품 페이지에서 직접 Metacritic 점수와 컴플리티스트 정보 확인."
+  },
+  "welcomeFeature4Title": {
+    "message": "스마트 필터"
+  },
+  "welcomeFeature4Desc": {
+    "message": "검색 결과에서 애드온, DLC, 화폐 팩을 숨깁니다."
+  },
+  "welcomeCta": {
+    "message": "설정 열기"
+  },
+  "welcomeNote": {
+    "message": "팁: 도구 모음의 확장 프로그램 아이콘을 클릭하여 필터를 빠르게 제어하세요."
+  },
+  "errorApiUnavailable": {
+    "message": "데이터를 로드할 수 없습니다. 나중에 다시 시도하세요."
+  },
+  "errorPriceUnavailable": {
+    "message": "가격 데이터 이용 불가"
+  },
+  "errorScoreUnavailable": {
+    "message": "점수 이용 불가"
+  },
+  "psnErrTokenShort": {
+    "message": "NPSSO 토큰이 없거나 너무 짧습니다"
+  },
+  "psnErrAuthCode": {
+    "message": "Sony에서 인증 코드를 받을 수 없습니다. NPSSO가 만료되었을 수 있습니다."
+  },
+  "psnErrAccessToken": {
+    "message": "Sony에서 액세스 토큰을 받을 수 없습니다."
+  },
+  "psnErrNotConnected": {
+    "message": "연결되지 않았습니다. 먼저 PSN 계정을 연결하세요."
+  },
+  "psnErrAuthExpired": {
+    "message": "인증이 만료되었습니다. 다시 연결하세요."
+  },
+  "genericError": {
+    "message": "오류가 발생했습니다"
+  },
+  "priceHistoryEstimated": {
+    "message": "추정 기록"
+  },
+  "crossPlatformUSD": {
+    "message": "가격은 USD"
+  },
+  "psnOptionalBanner": {
+    "message": "선택적 고급 기능 — 본인의 PSN 계정이 필요합니다. 연결하지 않아도 확장 프로그램의 모든 기능이 작동합니다."
+  },
+  "psnErrInvalidFormat": {
+    "message": "NPSSO 토큰 형식이 아닌 것 같습니다. 예상 형식: 약 64자의 영숫자. 아래 가이드를 참조하세요."
+  },
+  "psnErrFriendly": {
+    "message": "PSN에 연결할 수 없습니다. NPSSO 토큰이 최신 상태인지 확인하세요 (약 60일 후 만료). 확장 프로그램의 다른 모든 기능은 정상적으로 작동합니다."
+  },
+  "wishlistTitle": { "message": "위시리스트" },
+  "wishlistDesc": { "message": "게임을 추적하고 가격이 목표 이하로 떨어지면 알림을 받으세요." },
+  "wishlistEmpty": { "message": "위시리스트가 비어있습니다" },
+  "wishlistAddBtn": { "message": "★ 위시리스트에 추가" },
+  "wishlistInBtn": { "message": "★ 위시리스트에 있음 (클릭하여 제거)" },
+  "wishlistTargetLabel": { "message": "목표 가격 (USD)" },
+  "wishlistAdded": { "message": "위시리스트에 추가됨" },
+  "wishlistRemoved": { "message": "위시리스트에서 제거됨" },
+  "wishlistAlreadyAdded": { "message": "이미 위시리스트에 있습니다" },
+  "wishlistPriceDropTitle": { "message": "🎯 가격 인하 알림!" },
+  "wishlistPriceDropBody": { "message": "$NAME$ 이(가) 현재 $NEW$ (이전 $OLD$)", "placeholders": { "name": { "content": "
+  }" }, "new": { "content": "
+" }, "old": { "content": "$3" } } },
+  "wishlistLastChecked": { "message": "마지막 확인:" },
+  "wishlistColTarget": { "message": "목표" },
+  "wishlistColLast": { "message": "현재 가격" },
+  "currencyTitle": { "message": "표시 통화" },
+  "currencyLabel": { "message": "통화" },
+  "currencyDesc": { "message": "크로스 플랫폼 가격은 CheapShark에서 USD로 제공됩니다. 통화를 선택하여 변환하세요 (Frankfurter의 일일 환율)." },
+  "themeTitle": { "message": "테마" },
+  "themeLabel": { "message": "색상 테마" },
+  "themeAuto": { "message": "자동 (시스템에 따름)" },
+  "themeDark": { "message": "다크" },
+  "themeLight": { "message": "라이트" },
+  "ctxMenuFind": { "message": "GameDeals+에서 가격 비교 찾기" },
+  "exportImportTitle": { "message": "백업 및 복원" },
+  "exportImportDesc": { "message": "수동으로 표시한 게임을 JSON으로 내보내거나 이전 백업에서 복원하세요." },
+  "exportBtn": { "message": "📤 JSON 내보내기" },
+  "importBtn": { "message": "📥 JSON 가져오기" },
+  "exportSuccess": { "message": "내보냄" },
+  "importSuccess": { "message": "$COUNT$ 게임 가져옴", "placeholders": { "count": { "content": "
+  }" } } },
+  "importFailed": { "message": "가져오기 실패 — 잘못된 파일" },
+  "changelogTitle": { "message": "새로운 기능" },
+  "viewChangelog": { "message": "변경 로그 보기 →" },
+  "infoTitle": { "message": "정보 및 리소스" },
+  "linkPrivacy": { "message": "개인정보 보호정책" },
+  "linkSource": { "message": "GitHub 소스 코드" },
+  "linkCredits": { "message": "데이터: CheapShark · OpenCritic · PSPrices · PSNProfiles" },
+  "errorApiDown": { "message": "서비스를 일시적으로 사용할 수 없습니다. 나중에 다시 시도하세요." },
+  "regionAutoDetected": { "message": "지역 자동 감지됨: $REGION$", "placeholders": { "region": { "content": "
+  }" } } },
+  "libraryCapWarning": { "message": "PSN 라이브러리에 5000개 이상의 타이틀이 있습니다 — 처음 5000개만 동기화되었습니다." }
+}

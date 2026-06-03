@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:330px;font-family:"SST","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#0d1b2a;color:#fff;transition:background .25s,color .25s}
+body.theme-light{background:#fff;color:#1a202c}
+body.theme-light .tr{background:#f5f7fb;border-color:rgba(0,0,0,.06)}
+body.theme-light .tl span:last-child{color:#4a5568}
+body.theme-light .sec-t,body.theme-light .ft span{color:#718096}
+body.theme-light .sl{background:#cbd5e0}
+.hdr{background:linear-gradient(135deg,#003087,#0070d1);padding:16px 20px;display:flex;align-items:center;gap:10px}
+.hdr h1{font-size:15px;font-weight:700}.hdr p{font-size:10px;opacity:.7;margin-top:2px}
+.sec{padding:14px 18px 4px}.sec-t{font-size:9px;text-transform:uppercase;letter-spacing:1.2px;color:#718096;margin-bottom:8px}
+.tr{display:flex;align-items:center;justify-content:space-between;background:#1b2838;border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:10px 14px;margin-bottom:6px;transition:border-color .2s}
+.tr:hover{border-color:rgba(0,112,209,.25)}
+.tl span:first-child{font-size:12px;font-weight:600;display:block}.tl span:last-child{font-size:9px;color:#a0aec0}
+.sw{position:relative;width:40px;height:22px;flex-shrink:0}.sw input{opacity:0;width:0;height:0}
+.sl{position:absolute;cursor:pointer;inset:0;background:#333;border-radius:22px;transition:background .25s}
+.sl::before{content:"";position:absolute;height:16px;width:16px;right:3px;bottom:3px;background:#fff;border-radius:50%;transition:transform .25s}
+.sw input:checked+.sl{background:#0070d1}.sw input:checked+.sl::before{transform:translateX(-18px)}
+[dir="ltr"] .sl::before{right:auto;left:3px}
+[dir="ltr"] .sw input:checked+.sl::before{transform:translateX(18px)}
+.psn-row{cursor:pointer}.psn-icon{font-size:18px}
+.tags{padding:6px 18px 10px;display:flex;flex-wrap:wrap;gap:5px}
+.tag{font-size:9px;padding:3px 8px;background:rgba(0,112,209,.1);color:#4da6ff;border-radius:20px;border:1px solid rgba(0,112,209,.15)}
+.status{display:flex;align-items:center;gap:5px;padding:6px 18px 10px;font-size:10px;color:#6dc849}
+.dot{width:5px;height:5px;background:#6dc849;border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.ft{padding:10px 18px;border-top:1px solid rgba(255,255,255,.05);display:flex;justify-content:space-between;align-items:center}
+.ft span{font-size:9px;color:#4a5568}
+.opt{font-size:10px;color:#4da6ff;text-decoration:none;cursor:pointer}.opt:hover{color:#fff}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="6" fill="rgba(255,255,255,.15)"/><path d="M7 13l3 3 7-7" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <div><h1>GameDeals+</h1><p>v2.3.0</p></div>
+</div>
+
+<div class="sec">
+  <div class="sec-t" data-i18n="psnAccount">PSN Account</div>
+  <div class="tr psn-row" id="psnStatus">
+    <div class="tl"><span id="psnText">...</span><span id="psnSub"></span></div>
+    <span class="psn-icon" id="psnIcon">⏳</span>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sec-t" data-i18n="filterTitle">Search Result Filters</div>
+  <div class="tr"><div class="tl"><span data-i18n="hideAddons">Hide Add-ons & Currency</span><span data-i18n="hideAddonsDesc">Currency packs, Starter Packs</span></div><label class="sw"><input type="checkbox" id="hideAddons"><span class="sl"></span></label></div>
+  <div class="tr"><div class="tl"><span data-i18n="hideDlc">Hide DLC & Expansions</span><span data-i18n="hideDlcDesc">Expansion, Season Pass, DLC</span></div><label class="sw"><input type="checkbox" id="hideDlc"><span class="sl"></span></label></div>
+  <div class="tr"><div class="tl"><span data-i18n="hideOwned">Hide games I already own</span><span data-i18n="hideOwnedDesc">Auto from PSN + manual list</span></div><label class="sw"><input type="checkbox" id="hideOwned"><span class="sl"></span></label></div>
+</div>
+
+<div class="tags">
+  <span class="tag">🔗 PSN</span><span class="tag">📊 Metacritic</span><span class="tag">📉 Prices</span>
+  <span class="tag">🔀 Compare</span><span class="tag">🏆 Trophies</span><span class="tag">🧹 Filter</span>
+</div>
+<div class="status"><span class="dot"></span><span data-i18n="activeOnStore">Active on store.playstation.com</span></div>
+<div class="ft"><span>GameDeals+ v2.3.0 · <a id="openChangelog" class="opt" data-i18n="viewChangelog" style="font-size:9px">What's new</a></span><a id="openOptions" class="opt" data-i18n="advancedSettings">⚙ Advanced settings</a></div>
+
+<script src="i18n.js"></script>
+<script src="popup.js"></script>
+</body>
+</html>

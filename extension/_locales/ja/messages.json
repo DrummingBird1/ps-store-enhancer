@@ -1,0 +1,437 @@
+{
+  "extName": {
+    "message": "GameDeals+ for PS Store"
+  },
+  "extDesc": {
+    "message": "PlayStation Store向けの価格履歴、クロスプラットフォーム比較、レビュースコア、トロフィー情報、スマートフィルター。PSN同期はオプション。"
+  },
+  "psnAccount": {
+    "message": "PSNアカウント"
+  },
+  "psnNotConnected": {
+    "message": "未接続"
+  },
+  "psnClickToConnect": {
+    "message": "クリックしてPSNアカウントを接続"
+  },
+  "psnGames": {
+    "message": "ゲーム"
+  },
+  "psnDlcs": {
+    "message": "DLC"
+  },
+  "psnConnectTitle": {
+    "message": "PSNアカウント接続"
+  },
+  "psnConnectDesc": {
+    "message": "PlayStationアカウントを接続してゲームライブラリとDLCを自動同期します。"
+  },
+  "psnAutoDetect": {
+    "message": "自動検出（PSNにログイン済みの場合）"
+  },
+  "psnSearching": {
+    "message": "検索中..."
+  },
+  "psnOrManual": {
+    "message": "またはNPSSO Tokenを手動入力:"
+  },
+  "psnPasteToken": {
+    "message": "NPSSO tokenを貼り付け..."
+  },
+  "psnConnect": {
+    "message": "接続"
+  },
+  "psnConnecting": {
+    "message": "接続中..."
+  },
+  "psnSyncNow": {
+    "message": "今すぐ同期"
+  },
+  "psnSyncing": {
+    "message": "同期中..."
+  },
+  "psnDisconnect": {
+    "message": "切断"
+  },
+  "psnDisconnectConfirm": {
+    "message": "PSNアカウントを切断しますか？\n手動追加したゲーム（✏️）は保持されます。"
+  },
+  "psnLastSync": {
+    "message": "最終同期:"
+  },
+  "psnNotSynced": {
+    "message": "未同期"
+  },
+  "psnGuideTitle": {
+    "message": "NPSSO Tokenの取得方法:"
+  },
+  "psnGuide1": {
+    "message": "ログインする"
+  },
+  "psnGuide2": {
+    "message": "新しいタブを開いて移動:"
+  },
+  "psnGuide3": {
+    "message": "の値をコピー"
+  },
+  "psnGuide3b": {
+    "message": "（引用符なし）"
+  },
+  "psnGuide4": {
+    "message": "ここに貼り付けて「接続」をクリック"
+  },
+  "psnTokenFound": {
+    "message": "NPSSO発見！接続中..."
+  },
+  "psnTokenNotFound": {
+    "message": "トークンが見つかりません。別タブでPSN Storeにログインして再試行してください。"
+  },
+  "psnConnectedSync": {
+    "message": "接続完了！同期中..."
+  },
+  "psnSynced": {
+    "message": "PSN接続・ライブラリ同期完了"
+  },
+  "psnDisconnected": {
+    "message": "PSNアカウント切断済み"
+  },
+  "psnSyncedItems": {
+    "message": "$COUNT$件同期完了",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "filterTitle": {
+    "message": "検索フィルター"
+  },
+  "hideAddons": {
+    "message": "アドオン・通貨を非表示"
+  },
+  "hideAddonsDesc": {
+    "message": "通貨パック、スターターパック"
+  },
+  "hideDlc": {
+    "message": "DLC・拡張を非表示"
+  },
+  "hideDlcDesc": {
+    "message": "拡張、シーズンパス、DLC"
+  },
+  "hideOwned": {
+    "message": "所持ゲームを非表示"
+  },
+  "hideOwnedDesc": {
+    "message": "PSN自動 + 手動リスト"
+  },
+  "featuresTitle": {
+    "message": "有効な機能"
+  },
+  "metacriticToggle": {
+    "message": "OpenCritic / Metacriticスコア"
+  },
+  "metacriticDesc": {
+    "message": "ゲームタイトル横にスコアバッジ"
+  },
+  "priceHistoryToggle": {
+    "message": "価格履歴 + チャート"
+  },
+  "priceHistoryDesc": {
+    "message": "SparklineとPSPricesリンク"
+  },
+  "crossPlatformToggle": {
+    "message": "クロスプラットフォーム価格比較"
+  },
+  "crossPlatformDesc": {
+    "message": "Steam, Epic, GOG等（CheapShark経由）"
+  },
+  "trophyToggle": {
+    "message": "コンプリート情報（トロフィー）"
+  },
+  "trophyDesc": {
+    "message": "難易度、時間、周回 + PSN進捗"
+  },
+  "regionTitle": {
+    "message": "PSPricesリージョン"
+  },
+  "regionLabel": {
+    "message": "ストアリージョン"
+  },
+  "myGamesTitle": {
+    "message": "マイゲーム"
+  },
+  "myGamesDesc": {
+    "message": "🔗 = PSNから、✏️ = 手動。PSN切断で🔗のみ削除。"
+  },
+  "addGamePlaceholder": {
+    "message": "ゲーム名を入力..."
+  },
+  "addGame": {
+    "message": "追加"
+  },
+  "emptyList": {
+    "message": "リストが空です — PSN接続または手動追加"
+  },
+  "gameAdded": {
+    "message": "\"$NAME$\"を追加",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "gameRemoved": {
+    "message": "\"$NAME$\"を削除",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "gameAlreadyInList": {
+    "message": "既にリストにあります"
+  },
+  "srcPsn": {
+    "message": "🔗 PSN"
+  },
+  "srcManual": {
+    "message": "✏️ 手動"
+  },
+  "cacheTitle": {
+    "message": "キャッシュ管理"
+  },
+  "cacheActive": {
+    "message": "有効"
+  },
+  "cacheExpired": {
+    "message": "期限切れ"
+  },
+  "cacheSize": {
+    "message": "サイズ (KB)"
+  },
+  "cachePurge": {
+    "message": "期限切れを削除"
+  },
+  "cachePurged": {
+    "message": "期限切れ削除完了"
+  },
+  "cacheClear": {
+    "message": "全て削除"
+  },
+  "cacheCleared": {
+    "message": "キャッシュ削除完了（$COUNT$件）",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "priceHistory": {
+    "message": "価格履歴"
+  },
+  "cheapestEver": {
+    "message": "過去最安値:"
+  },
+  "viewFullHistory": {
+    "message": "PSPricesで全履歴を見る →"
+  },
+  "crossPlatformTitle": {
+    "message": "クロスプラットフォーム価格比較"
+  },
+  "crossPlatformSource": {
+    "message": "CheapShark提供 · PCプラットフォーム"
+  },
+  "completionistInfo": {
+    "message": "コンプリート情報"
+  },
+  "platinum": {
+    "message": "プラチナ"
+  },
+  "yes": {
+    "message": "あり"
+  },
+  "no": {
+    "message": "なし"
+  },
+  "difficulty": {
+    "message": "難易度"
+  },
+  "estimatedTime": {
+    "message": "推定時間"
+  },
+  "hours": {
+    "message": "時間"
+  },
+  "playthroughs": {
+    "message": "必要周回数"
+  },
+  "psnProgress": {
+    "message": "進捗 (PSN)"
+  },
+  "trophyGuide": {
+    "message": "PSNProfilesのトロフィーガイド →"
+  },
+  "markOwned": {
+    "message": "所持済みにする"
+  },
+  "iOwnThis": {
+    "message": "このゲームを持っています"
+  },
+  "settingsTitle": {
+    "message": "詳細設定"
+  },
+  "settingsSubtitle": {
+    "message": "詳細設定 · PSNアカウント · ゲーム管理"
+  },
+  "activeOnStore": {
+    "message": "store.playstation.comで有効"
+  },
+  "advancedSettings": {
+    "message": "詳細設定"
+  },
+  "saved": {
+    "message": "保存完了 ✓"
+  },
+  "psnConnected": {
+    "message": "接続済み"
+  },
+  "psnWait30": {
+    "message": "同期の間隔は30秒以上あけてください"
+  },
+  "languageTitle": {
+    "message": "拡張機能の言語"
+  },
+  "languageDesc": {
+    "message": "表示言語を選択します。「自動」はブラウザの言語を使用します。"
+  },
+  "languageLabel": {
+    "message": "言語"
+  },
+  "languageAuto": {
+    "message": "自動（ブラウザの言語）"
+  },
+  "disclaimer": {
+    "message": "この拡張機能はSony Interactive EntertainmentまたはPlayStationとは一切関係ありません。"
+  },
+  "welcomeTitle": {
+    "message": "GameDeals+へようこそ！"
+  },
+  "welcomeSubtitle": {
+    "message": "PlayStation™ Storeがさらに便利になりました。"
+  },
+  "welcomeFeature1Title": {
+    "message": "価格履歴と比較"
+  },
+  "welcomeFeature1Desc": {
+    "message": "価格チャートとSteam、Epic、GOGなどとの価格比較。"
+  },
+  "welcomeFeature2Title": {
+    "message": "PSNライブラリ同期(オプション)"
+  },
+  "welcomeFeature2Desc": {
+    "message": "上級者向け機能: オプションでPSNアカウントを接続し、所持ゲームを自動非表示。接続しなくても完全に動作します。"
+  },
+  "welcomeFeature3Title": {
+    "message": "スコアとトロフィー"
+  },
+  "welcomeFeature3Desc": {
+    "message": "Metacriticスコアとコンプリート情報を製品ページに直接表示。"
+  },
+  "welcomeFeature4Title": {
+    "message": "スマートフィルター"
+  },
+  "welcomeFeature4Desc": {
+    "message": "アドオン、DLC、通貨パックを検索結果から非表示。"
+  },
+  "welcomeCta": {
+    "message": "設定を開く"
+  },
+  "welcomeNote": {
+    "message": "ヒント：ツールバーの拡張機能アイコンでフィルターをすばやく操作できます。"
+  },
+  "errorApiUnavailable": {
+    "message": "データを読み込めませんでした。後でもう一度お試しください。"
+  },
+  "errorPriceUnavailable": {
+    "message": "価格データ利用不可"
+  },
+  "errorScoreUnavailable": {
+    "message": "スコア利用不可"
+  },
+  "psnErrTokenShort": {
+    "message": "NPSSOトークンがないか短すぎます"
+  },
+  "psnErrAuthCode": {
+    "message": "Sonyから認証コードを取得できませんでした。NPSSOの有効期限が切れている可能性があります。"
+  },
+  "psnErrAccessToken": {
+    "message": "Sonyからアクセストークンを取得できませんでした。"
+  },
+  "psnErrNotConnected": {
+    "message": "接続されていません。最初にPSNアカウントを接続してください。"
+  },
+  "psnErrAuthExpired": {
+    "message": "認証の有効期限が切れました。再接続してください。"
+  },
+  "genericError": {
+    "message": "エラーが発生しました"
+  },
+  "priceHistoryEstimated": {
+    "message": "推定履歴"
+  },
+  "crossPlatformUSD": {
+    "message": "価格はUSD表示"
+  },
+  "psnOptionalBanner": {
+    "message": "オプションの高度な機能 — ご自身のPSNアカウントが必要です。接続しなくても拡張機能は完全に動作します。"
+  },
+  "psnErrInvalidFormat": {
+    "message": "NPSSOトークンの形式ではないようです。想定される形式: 約64文字の英数字。下のガイドをご覧ください。"
+  },
+  "psnErrFriendly": {
+    "message": "PSNに接続できませんでした。NPSSOトークンが新しいことを確認してください(約60日で期限切れ)。他のすべての機能は通常通り動作します。"
+  },
+  "wishlistTitle": { "message": "ウィッシュリスト" },
+  "wishlistDesc": { "message": "ゲームを追跡し、価格が目標を下回ったら通知を受け取れます。" },
+  "wishlistEmpty": { "message": "ウィッシュリストは空です" },
+  "wishlistAddBtn": { "message": "★ ウィッシュリストに追加" },
+  "wishlistInBtn": { "message": "★ ウィッシュリスト中(クリックで削除)" },
+  "wishlistTargetLabel": { "message": "目標価格 (USD)" },
+  "wishlistAdded": { "message": "ウィッシュリストに追加しました" },
+  "wishlistRemoved": { "message": "ウィッシュリストから削除しました" },
+  "wishlistAlreadyAdded": { "message": "既にウィッシュリストにあります" },
+  "wishlistPriceDropTitle": { "message": "🎯 値下げアラート!" },
+  "wishlistPriceDropBody": { "message": "$NAME$ は現在 $NEW$ (以前は $OLD$)", "placeholders": { "name": { "content": "
+  }" }, "new": { "content": "
+" }, "old": { "content": "$3" } } },
+  "wishlistLastChecked": { "message": "最終チェック:" },
+  "wishlistColTarget": { "message": "目標" },
+  "wishlistColLast": { "message": "現在の価格" },
+  "currencyTitle": { "message": "表示通貨" },
+  "currencyLabel": { "message": "通貨" },
+  "currencyDesc": { "message": "クロスプラットフォーム価格はCheapSharkからUSDで提供されます。通貨を選択して変換できます(Frankfurterの日次レート)。" },
+  "themeTitle": { "message": "テーマ" },
+  "themeLabel": { "message": "カラーテーマ" },
+  "themeAuto": { "message": "自動(システムに従う)" },
+  "themeDark": { "message": "ダーク" },
+  "themeLight": { "message": "ライト" },
+  "ctxMenuFind": { "message": "GameDeals+で価格比較を検索" },
+  "exportImportTitle": { "message": "バックアップと復元" },
+  "exportImportDesc": { "message": "手動で所有マークしたゲームをJSONにエクスポート、または以前のバックアップから復元できます。" },
+  "exportBtn": { "message": "📤 JSONエクスポート" },
+  "importBtn": { "message": "📥 JSONインポート" },
+  "exportSuccess": { "message": "エクスポート済み" },
+  "importSuccess": { "message": "$COUNT$ 件のゲームをインポートしました", "placeholders": { "count": { "content": "
+  }" } } },
+  "importFailed": { "message": "インポート失敗 — 無効なファイル" },
+  "changelogTitle": { "message": "新着情報" },
+  "viewChangelog": { "message": "変更履歴を表示 →" },
+  "infoTitle": { "message": "情報とリソース" },
+  "linkPrivacy": { "message": "プライバシーポリシー" },
+  "linkSource": { "message": "GitHubのソースコード" },
+  "linkCredits": { "message": "データ: CheapShark · OpenCritic · PSPrices · PSNProfiles" },
+  "errorApiDown": { "message": "サービスは一時的に利用できません。後でやり直してください。" },
+  "regionAutoDetected": { "message": "リージョン自動検出: $REGION$", "placeholders": { "region": { "content": "
+  }" } } },
+  "libraryCapWarning": { "message": "PSNライブラリには5000以上のタイトルがあります — 最初の5000のみ同期されました。" }
+}

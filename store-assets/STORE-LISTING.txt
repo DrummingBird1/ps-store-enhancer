@@ -1,0 +1,110 @@
+CHROME WEB STORE LISTING — COPY-PASTE GUIDE
+==============================================
+
+EXTENSION NAME:
+GameDeals+ for PS Store
+
+SHORT DESCRIPTION (132 chars max):
+Price history, cross-platform comparison, review scores, trophy info & smart filters for the PlayStation™ Store.
+
+CATEGORY:
+Shopping
+
+──────────────────────────────────────
+DETAILED DESCRIPTION:
+──────────────────────────────────────
+
+GameDeals+ enhances your PlayStation™ Store browsing experience with powerful tools to help you make smarter purchasing decisions. All core features work out of the box — no sign-in required.
+
+🔍 PRICE INTELLIGENCE
+• Embedded sparkline chart visualizing approximate price history
+• Lowest-ever price highlighted at a glance
+• Direct links to PSPrices for verified historical data
+• Cross-platform comparison table — see prices on Steam, Epic Games Store, GOG, Humble Store, and more (powered by CheapShark, USD)
+
+📊 REVIEW SCORES
+• OpenCritic / Metacritic score badge injected directly next to the game title
+• Color-coded: green (75+), yellow (50-74), red (below 50)
+• Click to view full review details
+
+🏆 COMPLETIONIST INFO
+• Platinum trophy availability
+• Difficulty rating (1-10 scale)
+• Estimated completion time
+• Required playthroughs
+• Optional: live PSN trophy progress bar (when account is connected)
+
+🧹 SMART SEARCH FILTERS
+• Hide add-ons, currency packs, and starter packs
+• Hide DLC, expansions, and season passes
+• Hide games you already own (manual list + optional PSN sync)
+• "Mark as owned" button on every product page
+• Filters work with infinite scroll
+
+⭐ WISHLIST WITH PRICE ALERTS
+• Add games to a wishlist with one click on the product page
+• Set a target price; get a desktop notification when CheapShark sees the cross-platform price drop below it
+• Daily background checks (no constant polling)
+
+💱 CURRENCY CONVERSION
+• Cross-platform prices auto-convert from USD to your local currency
+• 18 currencies supported (EUR, GBP, ILS, JPY, BRL, KRW, MXN, INR, and more)
+• Daily exchange rates via Frankfurter (European Central Bank)
+
+🎨 THEME & UX
+• Light, Dark, and Auto themes — pick what matches your system
+• Right-click any text on PS Store: "Find on GameDeals+" → instant CheapShark lookup
+• Auto-detects your PS Store region from the URL on first visit
+• Backup & restore your owned-games list and wishlist as JSON
+
+🔗 OPTIONAL: PSN LIBRARY SYNC (Advanced)
+• Power-user feature — disabled by default, requires your own PSN account
+• If you choose to connect, your game library auto-syncs every 2 hours
+• Owned games hidden from search results automatically
+• Requires manually copying the NPSSO token from your Sony account page (full instructions inside the extension)
+• You can use 100% of the extension without ever connecting — PSN integration is opt-in only
+• Disconnect anytime; your manual entries are preserved
+
+⚡ PERFORMANCE
+• Smart caching reduces API calls (4-24 hour TTL per data type)
+• Skeleton loading animations while data loads
+• Lightweight: no external libraries, pure vanilla JavaScript
+
+🌍 10 LANGUAGES
+English, עברית (Hebrew), العربية (Arabic), Español, Français, Deutsch, Português (BR), Русский, 日本語, 한국어
+Built-in language selector — override browser language from settings.
+
+🔒 PRIVACY FIRST
+• All data stored locally on your device
+• No analytics, no tracking, no data sharing
+• No remote servers — everything runs in your browser
+• PSN connection is optional and can be removed anytime
+• Full privacy policy available
+
+⚠️ DISCLAIMER
+This extension is not affiliated with, endorsed by, or connected to Sony Interactive Entertainment, PlayStation, or any of their subsidiaries. PlayStation is a registered trademark of Sony Interactive Entertainment. All product names, logos, and brands are property of their respective owners.
+
+──────────────────────────────────────
+PRIVACY PRACTICES JUSTIFICATIONS:
+──────────────────────────────────────
+
+alarms: Periodic PSN library sync (every 2 hours), expired cache cleanup (every 6 hours), and daily wishlist price-drop checks. No data sent externally.
+
+cookies: Detects existing PSN session cookie (npsso) for optional PlayStation Network authentication. This is the standard authentication method used by Sony's official PlayStation App since their public OAuth flow requires the NPSSO token. Only PlayStation/Sony domain cookies are accessed.
+
+notifications: Sends a desktop notification when a wishlisted game's cross-platform price drops below the user's target price. Notifications are local — no server, no push API.
+
+contextMenus: Adds a right-click "Find on GameDeals+" entry on store.playstation.com so users can search highlighted text on CheapShark.
+
+storage: Saves user preferences, cached API responses, owned-games list, and wishlist locally on device.
+
+Host permissions:
+- store.playstation.com — content script injection
+- ca.account.sony.com, m.np.playstation.com — optional PSN authentication & library sync
+- cheapshark.com — cross-platform price comparison API
+- api.opencritic.com — review scores
+- api.frankfurter.dev — daily currency exchange rates for display
+
+Remote code: This extension does not use any remotely hosted code.
+
+Single purpose: Enhances the PlayStation Store website with price history, cross-platform comparison, review scores, trophy information, and search filters to help users make informed purchasing decisions.

@@ -1,0 +1,437 @@
+{
+  "extName": {
+    "message": "GameDeals+ for PS Store"
+  },
+  "extDesc": {
+    "message": "היסטוריית מחירים, השוואת מחירים, ציוני ביקורת, מידע על גביעים וסינון חכם לחנות PlayStation. סנכרון PSN אופציונלי."
+  },
+  "psnAccount": {
+    "message": "חשבון PSN"
+  },
+  "psnConnected": {
+    "message": "מחובר"
+  },
+  "psnNotConnected": {
+    "message": "לא מחובר"
+  },
+  "psnClickToConnect": {
+    "message": "לחץ לחיבור חשבון PSN"
+  },
+  "psnGames": {
+    "message": "משחקים"
+  },
+  "psnDlcs": {
+    "message": "DLCs"
+  },
+  "psnConnectTitle": {
+    "message": "חיבור חשבון PSN"
+  },
+  "psnConnectDesc": {
+    "message": "חבר את חשבון הפלייסטיישן שלך כדי לסנכרן את ספריית המשחקים וה-DLCs אוטומטית."
+  },
+  "psnAutoDetect": {
+    "message": "זהה אוטומטית (אם מחובר ב-PSN)"
+  },
+  "psnSearching": {
+    "message": "מחפש..."
+  },
+  "psnOrManual": {
+    "message": "או הכנס NPSSO Token ידנית:"
+  },
+  "psnPasteToken": {
+    "message": "הדבק NPSSO token כאן..."
+  },
+  "psnConnect": {
+    "message": "חבר"
+  },
+  "psnConnecting": {
+    "message": "מתחבר..."
+  },
+  "psnSyncNow": {
+    "message": "סנכרן עכשיו"
+  },
+  "psnSyncing": {
+    "message": "מסנכרן..."
+  },
+  "psnDisconnect": {
+    "message": "נתק חשבון"
+  },
+  "psnDisconnectConfirm": {
+    "message": "לנתק את חשבון ה-PSN?\nמשחקים שנוספו ידנית (✏️) יישמרו."
+  },
+  "psnLastSync": {
+    "message": "סנכרון אחרון:"
+  },
+  "psnNotSynced": {
+    "message": "טרם סונכרן"
+  },
+  "psnGuideTitle": {
+    "message": "איך להשיג NPSSO Token:"
+  },
+  "psnGuide1": {
+    "message": "היכנס ל-"
+  },
+  "psnGuide2": {
+    "message": "פתח טאב חדש וגש ל:"
+  },
+  "psnGuide3": {
+    "message": "העתק את הערך של"
+  },
+  "psnGuide3b": {
+    "message": "(בלי הגרשיים)"
+  },
+  "psnGuide4": {
+    "message": "הדבק כאן ולחץ \"חבר\""
+  },
+  "psnTokenFound": {
+    "message": "נמצא NPSSO! מתחבר..."
+  },
+  "psnTokenNotFound": {
+    "message": "לא נמצא token. התחבר ל-PSN Store בטאב אחר ונסה שוב, או הכנס NPSSO ידנית."
+  },
+  "psnConnectedSync": {
+    "message": "מחובר! מסנכרן ספרייה..."
+  },
+  "psnSynced": {
+    "message": "חשבון PSN מחובר וספרייה סונכרנה"
+  },
+  "psnDisconnected": {
+    "message": "חשבון PSN נותק"
+  },
+  "psnSyncedItems": {
+    "message": "סונכרנו $COUNT$ פריטים",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "psnWait30": {
+    "message": "נא להמתין 30 שניות בין סנכרונים"
+  },
+  "filterTitle": {
+    "message": "סינון תוצאות חיפוש"
+  },
+  "hideAddons": {
+    "message": "הסתר Add-ons ומטבעות"
+  },
+  "hideAddonsDesc": {
+    "message": "חבילות מטבעות, Starter Packs"
+  },
+  "hideDlc": {
+    "message": "הסתר DLC ותוספות"
+  },
+  "hideDlcDesc": {
+    "message": "Expansion, Season Pass, DLC"
+  },
+  "hideOwned": {
+    "message": "הסתר משחקים שכבר קניתי"
+  },
+  "hideOwnedDesc": {
+    "message": "אוטומטי מ-PSN + רשימה ידנית"
+  },
+  "featuresTitle": {
+    "message": "תכונות פעילות"
+  },
+  "metacriticToggle": {
+    "message": "ציון OpenCritic / Metacritic"
+  },
+  "metacriticDesc": {
+    "message": "תג ציון ליד כותרת המשחק"
+  },
+  "priceHistoryToggle": {
+    "message": "היסטוריית מחירים + גרף"
+  },
+  "priceHistoryDesc": {
+    "message": "Sparkline וקישור ל-PSPrices"
+  },
+  "crossPlatformToggle": {
+    "message": "השוואת מחירים Cross-Platform"
+  },
+  "crossPlatformDesc": {
+    "message": "Steam, Epic, GOG ועוד דרך CheapShark"
+  },
+  "trophyToggle": {
+    "message": "מידע ל-Completionist (גביעים)"
+  },
+  "trophyDesc": {
+    "message": "קושי, זמן, מעברים + PSN progress"
+  },
+  "regionTitle": {
+    "message": "אזור PSPrices"
+  },
+  "regionLabel": {
+    "message": "אזור חנות"
+  },
+  "myGamesTitle": {
+    "message": "המשחקים שלי"
+  },
+  "myGamesDesc": {
+    "message": "🔗 = סונכרן מ-PSN, ✏️ = נוסף ידנית. ניתוק PSN מוחק רק את 🔗, לא ✏️."
+  },
+  "addGamePlaceholder": {
+    "message": "הקלד שם משחק…"
+  },
+  "addGame": {
+    "message": "הוסף"
+  },
+  "emptyList": {
+    "message": "הרשימה ריקה — חבר PSN או הוסף ידנית"
+  },
+  "gameAdded": {
+    "message": "\"$NAME$\" נוסף",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "gameRemoved": {
+    "message": "\"$NAME$\" הוסר",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "gameAlreadyInList": {
+    "message": "המשחק כבר ברשימה"
+  },
+  "srcPsn": {
+    "message": "🔗 PSN"
+  },
+  "srcManual": {
+    "message": "✏️ ידני"
+  },
+  "cacheTitle": {
+    "message": "ניהול Cache"
+  },
+  "cacheActive": {
+    "message": "פעילות"
+  },
+  "cacheExpired": {
+    "message": "פגי תוקף"
+  },
+  "cacheSize": {
+    "message": "גודל (KB)"
+  },
+  "cachePurge": {
+    "message": "נקה פגי תוקף"
+  },
+  "cachePurged": {
+    "message": "פגי תוקף נמחקו"
+  },
+  "cacheClear": {
+    "message": "מחק הכל"
+  },
+  "cacheCleared": {
+    "message": "Cache נמחק ($COUNT$ רשומות)",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "priceHistory": {
+    "message": "היסטוריית מחירים"
+  },
+  "cheapestEver": {
+    "message": "המחיר הנמוך ביותר אי פעם:"
+  },
+  "viewFullHistory": {
+    "message": "צפה בהיסטוריה מלאה ב-PSPrices ←"
+  },
+  "crossPlatformTitle": {
+    "message": "השוואת מחירים Cross-Platform"
+  },
+  "crossPlatformSource": {
+    "message": "מחירים ממקור CheapShark · PC platforms"
+  },
+  "completionistInfo": {
+    "message": "מידע ל-Completionist"
+  },
+  "platinum": {
+    "message": "פלטינה"
+  },
+  "yes": {
+    "message": "כן"
+  },
+  "no": {
+    "message": "לא"
+  },
+  "difficulty": {
+    "message": "דרגת קושי"
+  },
+  "estimatedTime": {
+    "message": "זמן משוער"
+  },
+  "hours": {
+    "message": "שעות"
+  },
+  "playthroughs": {
+    "message": "מעברים נדרשים"
+  },
+  "psnProgress": {
+    "message": "התקדמות (PSN)"
+  },
+  "trophyGuide": {
+    "message": "מדריך גביעים ב-PSNProfiles ←"
+  },
+  "markOwned": {
+    "message": "סמן כנרכש"
+  },
+  "iOwnThis": {
+    "message": "יש לי את המשחק"
+  },
+  "settingsTitle": {
+    "message": "הגדרות מתקדמות"
+  },
+  "settingsSubtitle": {
+    "message": "הגדרות מתקדמות · חשבון PSN · ניהול משחקים"
+  },
+  "activeOnStore": {
+    "message": "פעיל על store.playstation.com"
+  },
+  "advancedSettings": {
+    "message": "הגדרות מתקדמות"
+  },
+  "saved": {
+    "message": "נשמר ✓"
+  },
+  "languageTitle": {
+    "message": "שפת התוסף"
+  },
+  "languageDesc": {
+    "message": "בחר את שפת התצוגה של התוסף. \"אוטומטי\" משתמש בשפת הדפדפן."
+  },
+  "languageLabel": {
+    "message": "שפה"
+  },
+  "languageAuto": {
+    "message": "אוטומטי (שפת הדפדפן)"
+  },
+  "disclaimer": {
+    "message": "תוסף זה אינו מזוהה עם, ממומן על ידי, או קשור ל-Sony Interactive Entertainment, PlayStation או כל חברת בת שלהם."
+  },
+  "welcomeTitle": {
+    "message": "!ברוך הבא ל-GameDeals+"
+  },
+  "welcomeSubtitle": {
+    "message": ".חנות ה-PlayStation™ שלך השתדרגה"
+  },
+  "welcomeFeature1Title": {
+    "message": "היסטוריית מחירים והשוואה"
+  },
+  "welcomeFeature1Desc": {
+    "message": "גרפי מחירים והשוואה בין Steam, Epic, GOG ועוד."
+  },
+  "welcomeFeature2Title": {
+    "message": "סנכרון ספריית PSN (אופציונלי)"
+  },
+  "welcomeFeature2Desc": {
+    "message": "פיצ׳ר למשתמשים מתקדמים: חיבור חשבון PSN להסתרה אוטומטית של משחקים שכבר יש לך. התוסף פועל במלואו גם בלי לחבר."
+  },
+  "welcomeFeature3Title": {
+    "message": "ציונים וגביעים"
+  },
+  "welcomeFeature3Desc": {
+    "message": "ציוני Metacritic ומידע ל-Completionist ישירות בעמוד המוצר."
+  },
+  "welcomeFeature4Title": {
+    "message": "סינון חכם"
+  },
+  "welcomeFeature4Desc": {
+    "message": "הסתר תוספים, DLC וחבילות מטבעות מתוצאות חיפוש."
+  },
+  "welcomeCta": {
+    "message": "פתח הגדרות"
+  },
+  "welcomeNote": {
+    "message": "טיפ: לחץ על אייקון התוסף בסרגל הכלים לשליטה מהירה בסינון."
+  },
+  "errorApiUnavailable": {
+    "message": "לא הצלחנו לטעון נתונים. נסה שוב מאוחר יותר."
+  },
+  "errorPriceUnavailable": {
+    "message": "נתוני מחיר לא זמינים"
+  },
+  "errorScoreUnavailable": {
+    "message": "ציון לא זמין"
+  },
+  "psnErrTokenShort": {
+    "message": "NPSSO token חסר או קצר מדי"
+  },
+  "psnErrAuthCode": {
+    "message": "לא הצלחתי לקבל authorization code מסוני. ייתכן שה-NPSSO פג תוקף."
+  },
+  "psnErrAccessToken": {
+    "message": "לא הצלחתי לקבל access token מסוני."
+  },
+  "psnErrNotConnected": {
+    "message": "לא מחובר. חבר את חשבון ה-PSN קודם."
+  },
+  "psnErrAuthExpired": {
+    "message": "ההתחברות פגה. נא להתחבר מחדש."
+  },
+  "genericError": {
+    "message": "אירעה שגיאה"
+  },
+  "priceHistoryEstimated": {
+    "message": "היסטוריה משוערת"
+  },
+  "crossPlatformUSD": {
+    "message": "מחירים בדולר ארה״ב"
+  },
+  "psnOptionalBanner": {
+    "message": "פיצ׳ר מתקדם אופציונלי — דורש חשבון PSN שלך. התוסף פועל במלואו גם בלי לחבר."
+  },
+  "psnErrInvalidFormat": {
+    "message": "זה לא נראה כמו NPSSO token. הפורמט הצפוי: כ-64 תווים אלפאנומריים. ראה את ההסבר למטה."
+  },
+  "psnErrFriendly": {
+    "message": "לא הצלחנו להתחבר ל-PSN. ודא שה-NPSSO token שלך טרי (תוקפם כ-60 יום). כל שאר פיצ׳רי התוסף ממשיכים לעבוד רגיל."
+  },
+  "wishlistTitle": { "message": "רשימת משאלות" },
+  "wishlistDesc": { "message": "עקוב אחר משחקים וקבל התראה כשהמחיר יורד מתחת ליעד שהגדרת." },
+  "wishlistEmpty": { "message": "רשימת המשאלות שלך ריקה" },
+  "wishlistAddBtn": { "message": "★ הוסף לרשימת משאלות" },
+  "wishlistInBtn": { "message": "★ ברשימת המשאלות (לחץ להסיר)" },
+  "wishlistTargetLabel": { "message": "מחיר יעד (USD)" },
+  "wishlistAdded": { "message": "נוסף לרשימת המשאלות" },
+  "wishlistRemoved": { "message": "הוסר מרשימת המשאלות" },
+  "wishlistAlreadyAdded": { "message": "כבר ברשימת המשאלות" },
+  "wishlistPriceDropTitle": { "message": "🎯 התראת ירידת מחיר!" },
+  "wishlistPriceDropBody": { "message": "$NAME$ עכשיו $NEW$ (היה $OLD$)", "placeholders": { "name": { "content": "
+  }" }, "new": { "content": "
+" }, "old": { "content": "$3" } } },
+  "wishlistLastChecked": { "message": "נבדק לאחרונה:" },
+  "wishlistColTarget": { "message": "יעד" },
+  "wishlistColLast": { "message": "מחיר נוכחי" },
+  "currencyTitle": { "message": "מטבע תצוגה" },
+  "currencyLabel": { "message": "מטבע" },
+  "currencyDesc": { "message": "המחירים החוצה-פלטפורמיים מגיעים מ-CheapShark בדולרים. בחר מטבע להמרה (שערים יומיים מ-Frankfurter)." },
+  "themeTitle": { "message": "ערכת נושא" },
+  "themeLabel": { "message": "ערכת צבעים" },
+  "themeAuto": { "message": "אוטומטי (לפי המערכת)" },
+  "themeDark": { "message": "כהה" },
+  "themeLight": { "message": "בהיר" },
+  "ctxMenuFind": { "message": "חפש ב-GameDeals+ השוואת מחירים" },
+  "exportImportTitle": { "message": "גיבוי ושחזור" },
+  "exportImportDesc": { "message": "ייצא את רשימת המשחקים שסימנת ידנית לקובץ JSON, או שחזר מגיבוי קודם." },
+  "exportBtn": { "message": "📤 ייצוא JSON" },
+  "importBtn": { "message": "📥 ייבוא JSON" },
+  "exportSuccess": { "message": "יוצא" },
+  "importSuccess": { "message": "יובאו $COUNT$ משחקים", "placeholders": { "count": { "content": "
+  }" } } },
+  "importFailed": { "message": "הייבוא נכשל — הקובץ אינו ייצוא תקין של GameDeals+" },
+  "changelogTitle": { "message": "מה חדש" },
+  "viewChangelog": { "message": "הצג היסטוריית גרסאות →" },
+  "infoTitle": { "message": "אודות ומקורות" },
+  "linkPrivacy": { "message": "מדיניות פרטיות" },
+  "linkSource": { "message": "קוד מקור ב-GitHub" },
+  "linkCredits": { "message": "נתונים: CheapShark · OpenCritic · PSPrices · PSNProfiles" },
+  "errorApiDown": { "message": "השירות אינו זמין כרגע. נסה שוב מאוחר יותר." },
+  "regionAutoDetected": { "message": "אזור זוהה אוטומטית: $REGION$", "placeholders": { "region": { "content": "
+  }" } } },
+  "libraryCapWarning": { "message": "ספריית ה-PSN שלך כוללת יותר מ-5000 כותרים — רק 5000 הראשונים סונכרנו." }
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GameDeals+ for PS Store — Privacy Policy</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0a0f1a; color: #c9d1d9; line-height: 1.7; }
+  .container { max-width: 720px; margin: 0 auto; padding: 48px 24px 80px; }
+  h1 { font-size: 28px; color: #fff; margin-bottom: 8px; }
+  .subtitle { color: #718096; font-size: 14px; margin-bottom: 40px; }
+  h2 { font-size: 18px; color: #4da6ff; margin: 32px 0 12px; }
+  p, li { font-size: 15px; margin-bottom: 12px; }
+  ul { padding-left: 24px; }
+  li { margin-bottom: 8px; }
+  a { color: #4da6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .badge { display: inline-block; background: rgba(0,112,209,0.15); color: #4da6ff; padding: 2px 8px; border-radius: 4px; font-size: 12px; }
+  .card { background: #131b2e; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 20px; margin: 16px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+  th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 14px; }
+  th { color: #4da6ff; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); color: #4a5568; font-size: 12px; text-align: center; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>🔒 GameDeals+ for PS Store — Privacy Policy</h1>
+<p class="subtitle">Last updated: April 2026</p>
+
+<h2>Overview</h2>
+<p>GameDeals+ for PS Store is a browser extension that enhances the PlayStation Store website. Your privacy is important to us. This policy explains what data the extension accesses, how it's used, and how it's stored.</p>
+
+<h2>Data We Collect</h2>
+<div class="card">
+<table>
+  <tr><th>Data</th><th>Purpose</th><th>Storage</th></tr>
+  <tr><td>User preferences</td><td>Filter toggles, region, language settings</td><td>Local (chrome.storage.sync)</td></tr>
+  <tr><td>PSN session token</td><td>Optional PSN account authentication</td><td>Local (chrome.storage.local)</td></tr>
+  <tr><td>Game library</td><td>Showing owned games, hiding them from search</td><td>Local (chrome.storage.local)</td></tr>
+  <tr><td>Manually added games</td><td>User's custom owned games list</td><td>Local (chrome.storage.local)</td></tr>
+  <tr><td>API response cache</td><td>Reduce API calls, improve performance</td><td>Local (chrome.storage.local)</td></tr>
+</table>
+</div>
+
+<h2>Data We Do NOT Collect</h2>
+<ul>
+  <li><strong>No personal information</strong> — we do not collect your name, email, address, or payment information.</li>
+  <li><strong>No analytics or tracking</strong> — we do not use Google Analytics, telemetry, or any tracking service.</li>
+  <li><strong>No data sharing</strong> — we do not sell, share, or transmit your data to any third party.</li>
+  <li><strong>No remote servers</strong> — all data is stored locally on your device. We do not operate any backend servers.</li>
+</ul>
+
+<h2>Third-Party APIs</h2>
+<p>The extension communicates with the following external services to provide its features:</p>
+<div class="card">
+<table>
+  <tr><th>Service</th><th>Data Sent</th><th>Purpose</th></tr>
+  <tr><td>Sony / PSN API</td><td>Authentication token (user-initiated)</td><td>Fetch game library and trophy data</td></tr>
+  <tr><td>CheapShark API</td><td>Game title (text only)</td><td>Cross-platform price comparison</td></tr>
+  <tr><td>OpenCritic API</td><td>Game title (text only)</td><td>Review scores</td></tr>
+  <tr><td>PSPrices</td><td>None (link only)</td><td>Price history (external link)</td></tr>
+</table>
+</div>
+<p>No personal or identifying information is sent to these services. Only game titles are used as search queries.</p>
+
+<h2>PSN Account Connection</h2>
+<p>Connecting your PSN account is <strong>entirely optional</strong>. If you choose to connect:</p>
+<ul>
+  <li>Your NPSSO authentication token is stored locally and used solely to communicate with Sony's API.</li>
+  <li>Your game library data (game titles and categories) is stored locally for the owned-games filter.</li>
+  <li>You can disconnect your PSN account at any time from the extension's settings page, which immediately deletes all PSN-related data from local storage.</li>
+  <li>No PSN credentials or data are ever sent to any server other than Sony's official API endpoints.</li>
+</ul>
+
+<h2>Permissions</h2>
+<div class="card">
+<table>
+  <tr><th>Permission</th><th>Why It's Needed</th></tr>
+  <tr><td><span class="badge">activeTab</span></td><td>Inject UI elements (price cards, scores) into the PlayStation Store page you're viewing</td></tr>
+  <tr><td><span class="badge">storage</span></td><td>Save your preferences and cached data locally</td></tr>
+  <tr><td><span class="badge">alarms</span></td><td>Schedule periodic library sync and cache cleanup</td></tr>
+  <tr><td><span class="badge">cookies</span></td><td>Detect existing PSN session for optional auto-login</td></tr>
+</table>
+</div>
+
+<h2>Data Retention</h2>
+<ul>
+  <li>All data is stored locally on your device using Chrome's storage API.</li>
+  <li>Cached API responses expire automatically (4-24 hours depending on type).</li>
+  <li>Uninstalling the extension removes all stored data.</li>
+  <li>You can manually clear all cached data from the extension's settings page.</li>
+</ul>
+
+<h2>Children's Privacy</h2>
+<p>This extension does not knowingly collect data from children under 13. The extension does not collect personal information from any user.</p>
+
+<h2>Changes to This Policy</h2>
+<p>We may update this privacy policy from time to time. Changes will be reflected by updating the "Last updated" date at the top of this page.</p>
+
+<h2>Disclaimer</h2>
+<p><strong>This extension is not affiliated with, endorsed by, or connected to Sony Interactive Entertainment, PlayStation, or any of their subsidiaries.</strong> PlayStation is a registered trademark of Sony Interactive Entertainment. All product names, logos, and brands are property of their respective owners.</p>
+
+<h2>Contact</h2>
+<p>If you have questions about this privacy policy, you can open an issue on the extension's support page or contact the developer through the Chrome Web Store listing.</p>
+
+<footer>
+  GameDeals+ for PS Store · Privacy Policy · April 2026
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GameDeals+ — Changelog</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#0a0f1a;color:#e2e8f0;line-height:1.65;min-height:100vh;transition:background .25s,color .25s}
+body.theme-light{background:#f5f7fb;color:#1a202c}
+.container{max-width:720px;margin:0 auto;padding:40px 24px 80px}
+h1{font-size:28px;font-weight:800;background:linear-gradient(135deg,#4da6ff,#0070d1,#003087);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
+.subtitle{color:#718096;font-size:14px;margin-bottom:32px}
+.release{background:#131b2e;border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:24px;margin-bottom:20px;transition:background .25s,border-color .25s}
+body.theme-light .release{background:#fff;border-color:rgba(0,0,0,.06)}
+.release h2{font-size:18px;color:#4da6ff;margin-bottom:4px;display:flex;align-items:center;gap:10px}
+.release h2 .ver{background:rgba(0,112,209,.15);color:#4da6ff;padding:2px 10px;border-radius:6px;font-size:13px}
+.release .date{font-size:12px;color:#718096;margin-bottom:14px}
+.release h3{font-size:14px;font-weight:600;color:#a0aec0;margin:14px 0 6px;text-transform:uppercase;letter-spacing:.5px}
+body.theme-light .release h3{color:#4a5568}
+.release ul{padding-left:20px;font-size:14px}
+.release li{margin-bottom:5px}
+.release li code{background:rgba(255,255,255,.08);padding:1px 6px;border-radius:4px;font-size:12px}
+body.theme-light .release li code{background:rgba(0,0,0,.06)}
+.release p{font-size:14px;color:#a0aec0;margin-top:6px}
+.back{display:inline-block;color:#4da6ff;text-decoration:none;margin-bottom:24px;font-size:13px}
+.back:hover{text-decoration:underline}
+.foot{margin-top:40px;font-size:11px;color:#4a5568;text-align:center}
+</style>
+</head>
+<body>
+<div class="container">
+  <a class="back" href="options.html">← Back to settings</a>
+  <h1>📝 Changelog</h1>
+  <p class="subtitle">GameDeals+ for PS Store — what's changed in each version</p>
+
+  <div class="release">
+    <h2>What's new <span class="ver">v2.3.0</span></h2>
+    <p class="date">2026</p>
+    <h3>New features</h3>
+    <ul>
+      <li><strong>⭐ Wishlist with price alerts</strong> — track games on PS Store, get a desktop notification when their cross-platform cheapest price drops below your target.</li>
+      <li><strong>💱 Display currency</strong> — convert cross-platform prices to your local currency (EUR, GBP, ILS, JPY and 14 more), powered by Frankfurter daily rates.</li>
+      <li><strong>🎨 Light theme</strong> — choose Auto / Dark / Light from settings. Applies to popup, options, injected cards, and changelog.</li>
+      <li><strong>🌍 Auto-detect region</strong> — your PS Store region is now picked up from the URL on first visit.</li>
+      <li><strong>🖱️ Right-click search</strong> — highlight any text on PS Store, right-click "Find on GameDeals+ price compare" to look it up on CheapShark.</li>
+      <li><strong>📤 Backup &amp; Restore</strong> — export your manually-marked owned games and wishlist to JSON, restore from any previous backup.</li>
+    </ul>
+    <h3>Improvements</h3>
+    <ul>
+      <li>Trophy database expanded with 50+ popular PS5 titles (Spider-Man 2, Stellar Blade, Black Myth, Persona, FC 24/25/26, Helldivers 2, Tekken 8 and many more).</li>
+      <li>Cross-platform card now shows currency tag and converts prices using daily exchange rates.</li>
+      <li>Search-grid filtering debounced from 200ms to 500ms with <code>requestIdleCallback</code> — lower CPU on infinite scroll.</li>
+      <li>Friendlier error messages when CheapShark/OpenCritic are temporarily down.</li>
+      <li>Theme-aware injected cards on PS Store match your selected theme.</li>
+    </ul>
+  </div>
+
+  <div class="release">
+    <h2><span class="ver">v2.2.3</span></h2>
+    <p class="date">Compliance &amp; review-friction fixes</p>
+    <ul>
+      <li>De-emphasized PSN integration in description &amp; UI — clearly marked Optional Advanced.</li>
+      <li>Added NPSSO format validation to catch invalid tokens before hitting Sony's API.</li>
+      <li>Friendlier error messaging for PSN auth failures.</li>
+      <li>Shortened extension description in 5 locales to fit Chrome Web Store's 132-char limit.</li>
+      <li>Added <code>REVIEWER-NOTES.md</code> for Chrome Web Store reviewers.</li>
+    </ul>
+  </div>
+
+  <div class="release">
+    <h2><span class="ver">v2.2.2</span></h2>
+    <ul>
+      <li>Removed unused <code>activeTab</code> permission (Purple Potassium compliance).</li>
+      <li>Removed unused <code>web.np.playstation.com</code> host permission.</li>
+    </ul>
+  </div>
+
+  <div class="release">
+    <h2><span class="ver">v2.2.1</span></h2>
+    <ul>
+      <li>i18n: replaced all hardcoded Hebrew error strings with locale keys.</li>
+      <li>RTL: cards now respect the user's selected language direction (was hardcoded RTL).</li>
+      <li>PSN: trophy lookup now paginates through up to 1500 titles (was capped at 50).</li>
+      <li>PSN: library cap raised from 2000 to 5000 titles.</li>
+      <li>PSN: <code>psn_owned</code> now excludes DLC to avoid false filter matches.</li>
+      <li>Price chart now transparently tagged as "Estimated history" instead of "CheapShark".</li>
+      <li>Better base-price formula for indie vs AAA games (no more $60 floor for $5 games).</li>
+      <li>Stricter fuzzy-match threshold (0.75) + length-ratio check.</li>
+      <li>Avatar URL XSS hardening (DOM API + URL validation).</li>
+      <li>Background message handler now catches handler errors.</li>
+    </ul>
+  </div>
+
+  <p class="foot">GameDeals+ for PS Store · MIT License · Not affiliated with Sony Interactive Entertainment</p>
+</div>
+<script>
+  // Apply theme based on storage
+  (async () => {
+    try {
+      const r = await chrome.storage.sync.get(["theme"]);
+      const mode = r.theme || "auto";
+      const resolved = mode === "light" ? "light" : mode === "dark" ? "dark" : (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) ? "light" : "dark";
+      if (resolved === "light") document.body.classList.add("theme-light");
+    } catch {}
+  })();
+</script>
+</body>
+</html>
