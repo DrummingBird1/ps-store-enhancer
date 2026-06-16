@@ -409,10 +409,10 @@
     const region = settings.pspricesRegion || "IL";
     const pspUrl = `https://psprices.com/search/?q=${encodeURIComponent(gameName)}&platform=PS5&region=${region}`;
 
-    let priceData = null, fromCache = false;
+    let priceData = null;
     try {
       const resp = await chrome.runtime.sendMessage({ type: "FETCH_PRICE_HISTORY", gameName });
-      if (resp?.success) { priceData = resp.data; fromCache = resp.fromCache || false; }
+      if (resp?.success) { priceData = resp.data; }
     } catch {}
 
     // Replace skeleton with real content
@@ -634,6 +634,7 @@
         ${progressHTML}
       </div>
       <a href="https://psnprofiles.com/search/games?q=${encodeURIComponent(gameName)}" target="_blank" rel="noopener noreferrer" class="pse-trophy-link">${t("trophyGuide")}</a>
+      <a href="https://howlongtobeat.com/?q=${encodeURIComponent(gameName)}" target="_blank" rel="noopener noreferrer" class="pse-trophy-link" style="margin-top:6px">${t("hltbLink")}</a>
     `;
 
     if (skeleton.parentElement) {

@@ -1,0 +1,40 @@
+name: 💡 Feature request
+description: Suggest a new feature or improvement
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: What gets harder/slower/more annoying because this feature isn't there?
+      placeholder: "I often want to know X but have to do Y..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: idea
+    attributes:
+      label: Your idea
+      description: How should it work?
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Any workarounds you've tried, other extensions that do this, etc.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Does this fit the project's single purpose?
+      description: GameDeals+ enhances *the PlayStation Store* with shopping-decision tools. Cross-platform / Steam-only features are usually out of scope.
+      options:
+        - "Yes — it's about helping users make PS Store buying decisions"
+        - "Not sure — let me discuss"
+        - "Probably out of scope but want to suggest anyway"
+    validations:
+      required: true

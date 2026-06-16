@@ -35,7 +35,29 @@ body.theme-light .release li code{background:rgba(0,0,0,.06)}
   <p class="subtitle">GameDeals+ for PS Store — what's changed in each version</p>
 
   <div class="release">
-    <h2>What's new <span class="ver">v2.3.0</span></h2>
+    <h2>What's new <span class="ver">v2.3.1</span></h2>
+    <p class="date">2026</p>
+    <h3>UX honesty &amp; clarifications</h3>
+    <ul>
+      <li><strong>Wishlist disclaimer</strong> — the Wishlist UI now clearly states alerts use cross-platform PC prices from CheapShark (Steam/Epic/GOG, USD). PSN-only prices aren't tracked.</li>
+      <li><strong>HowLongToBeat link</strong> — trophy card now includes a "Story / completion times on HowLongToBeat →" link for accurate playtime data.</li>
+      <li><strong>"What's New" popup on minor/major updates</strong> — `chrome.runtime.onInstalled` opens the changelog automatically when 2.x → 2.y bumps land.</li>
+      <li><strong>Keyboard shortcut</strong> — Alt+Shift+G opens the popup (configurable in <code>chrome://extensions/shortcuts</code>).</li>
+      <li><strong>Import loading state</strong> — the Import button spinner runs while JSON is parsed.</li>
+    </ul>
+    <h3>Developer experience</h3>
+    <ul>
+      <li>Pure helpers (<code>slugify</code>, <code>fuzzyMatch</code>, <code>computeBasePrice</code>, <code>classifyTitle</code>) extracted to <code>extension/match.js</code> for unit testing.</li>
+      <li><strong>21 Jest tests</strong> covering the matching/pricing/classification logic.</li>
+      <li><strong>ESLint + Prettier</strong> configs added; CI workflow runs lint + tests + locale validation on every PR.</li>
+      <li><strong>GitHub Actions release workflow</strong> — push a <code>v*</code> tag, get a Release with both zips attached automatically.</li>
+      <li><strong>GitHub Pages</strong> live at <a href="https://drummingbird1.github.io/gamedeals-plus/">drummingbird1.github.io/gamedeals-plus/</a> — landing page + privacy policy.</li>
+      <li>Hebrew README, CONTRIBUTING guide, issue templates.</li>
+    </ul>
+  </div>
+
+  <div class="release">
+    <h2><span class="ver">v2.3.0</span></h2>
     <p class="date">2026</p>
     <h3>New features</h3>
     <ul>

@@ -1,0 +1,130 @@
+name: Build & Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build zips and create release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Read manifest version
+        id: version
+        run: |
+          VERSION=$(python -c "import json; print(json.load(open('extension/manifest.json'))['version'])")
+          TAG="${GITHUB_REF_NAME:-v$VERSION}"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "Building version $VERSION from tag $TAG"
+
+      - name: Build zips
+        run: |
+          python <<'PY'
+          import json, shutil, zipfile, tempfile
+          from pathlib import Path
+
+          root = Path(".")
+          ext_src = root / "extension"
+          ext_zip = root / "GameDeals-Plus-Extension.zip"
+          full_zip = root / "GameDeals-Plus-Full-Project.zip"
+
+          ext_readme = """# GameDeals+ for PS Store - Extension
+
+          ## Load in Chrome (Developer Mode)
+
+          1. Open `chrome://extensions`
+          2. Enable Developer mode (top right)
+          3. Click Load unpacked
+          4. Select this folder
+          5. Go to store.playstation.com
+
+          ## Disclaimer
+
+          This extension is not affiliated with Sony Interactive Entertainment or PlayStation.
+          """
+
+          def zip_dir(src_dir, dest_zip, root_name):
+              count = 0
+              with zipfile.ZipFile(dest_zip, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as zf:
+                  for path in src_dir.rglob("*"):
+                      if path.is_file():
+                          rel = path.relative_to(src_dir)
+                          zf.write(path, f"{root_name}/{rel.as_posix()}")
+                          count += 1
+              return count
+
+          with tempfile.TemporaryDirectory() as stage:
+              stage_path = Path(stage) / "gamedeals-plus"
+              shutil.copytree(ext_src, stage_path)
+              (stage_path / "README.md").write_text(ext_readme, encoding="utf-8")
+              n_ext = zip_dir(stage_path, ext_zip, "gamedeals-plus")
+          print(f"Extension.zip: {n_ext} files, {ext_zip.stat().st_size} bytes")
+
+          n_full = zip_dir(Path("."), full_zip, "gamedeals-plus")
+          # Above includes the zip itself; rebuild excluding the zip
+          full_zip.unlink()
+          n_full = 0
+          with zipfile.ZipFile(full_zip, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as zf:
+              for path in root.rglob("*"):
+                  if not path.is_file(): continue
+                  parts = path.parts
+                  if any(p.startswith(".git") for p in parts): continue
+                  if parts[0] in ("GameDeals-Plus-Extension.zip", "GameDeals-Plus-Full-Project.zip"): continue
+                  if path.name in ("GameDeals-Plus-Extension.zip", "GameDeals-Plus-Full-Project.zip"): continue
+                  rel = path.relative_to(root)
+                  zf.write(path, f"gamedeals-plus/{rel.as_posix()}")
+                  n_full += 1
+          print(f"Full-Project.zip: {n_full} files, {full_zip.stat().st_size} bytes")
+          PY
+
+      - name: Verify zips
+        run: |
+          python - <<'PY'
+          import zipfile, json
+          z = zipfile.ZipFile("GameDeals-Plus-Extension.zip")
+          names = z.namelist()
+          assert "gamedeals-plus/manifest.json" in names, "missing manifest in extension zip"
+          with z.open("gamedeals-plus/manifest.json") as f:
+              m = json.load(f)
+          print(f"OK — Extension.zip has {len(names)} entries; manifest version={m['version']}")
+          z.close()
+          PY
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.tag }}
+          name: GameDeals+ for PS Store ${{ steps.version.outputs.tag }}
+          body: |
+            ## GameDeals+ for PS Store ${{ steps.version.outputs.tag }}
+
+            Built from manifest version `${{ steps.version.outputs.version }}`.
+
+            ### Downloads
+
+            - **`GameDeals-Plus-Extension.zip`** — unzip & load via `chrome://extensions` → "Load unpacked", or upload to the Chrome Web Store dashboard.
+            - **`GameDeals-Plus-Full-Project.zip`** — full source bundle including docs and store assets.
+
+            ### Changelog
+
+            See [extension/changelog.html](https://github.com/DrummingBird1/gamedeals-plus/blob/main/extension/changelog.html) for the human-readable changelog, or compare commits since the previous tag.
+          files: |
+            GameDeals-Plus-Extension.zip
+            GameDeals-Plus-Full-Project.zip
+          draft: false
+          prerelease: false
+          generate_release_notes: true

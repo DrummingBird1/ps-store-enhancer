@@ -1,0 +1,6 @@
+node_modules
+*.zip
+*.crx
+*.pem
+extension/_locales
+docs/privacy-policy.html

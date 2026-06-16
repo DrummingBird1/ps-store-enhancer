@@ -1,0 +1,84 @@
+name: 🐛 Bug report
+description: Something isn't working right
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please fill out the form below — it speeds up triage.
+
+  - type: input
+    id: ext-version
+    attributes:
+      label: Extension version
+      description: Visible in the popup footer (e.g. "v2.3.1") or in `chrome://extensions`
+      placeholder: v2.3.1
+    validations:
+      required: true
+
+  - type: input
+    id: chrome-version
+    attributes:
+      label: Chrome version
+      description: Open `chrome://version` and copy the first line
+      placeholder: "Google Chrome 130.0.6723.117"
+    validations:
+      required: true
+
+  - type: input
+    id: ps-region
+    attributes:
+      label: PS Store region / URL
+      description: Which region URL were you on? (e.g. https://store.playstation.com/en-il/...)
+      placeholder: https://store.playstation.com/en-us/concept/10000091
+    validations:
+      required: false
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: A clear description of the bug
+      placeholder: "When I click 'Add to wishlist', nothing happens..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected to happen
+    validations:
+      required: false
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Go to https://store.playstation.com/en-us/concept/10000091
+        2. Wait for cards to load
+        3. Click "Add to wishlist"
+        4. See nothing happens
+    validations:
+      required: false
+
+  - type: textarea
+    id: console
+    attributes:
+      label: DevTools console output
+      description: Any errors? Open DevTools (F12) → Console tab. Paste relevant errors here.
+      render: shell
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Sanity checks
+      options:
+        - label: I'm running the latest extension version
+          required: false
+        - label: I tried reloading the extension and the page
+          required: false
+        - label: I checked the existing issues for duplicates
+          required: false

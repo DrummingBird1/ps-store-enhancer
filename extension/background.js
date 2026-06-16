@@ -1,7 +1,9 @@
 /**
  * GameDeals+ for PS Store — Background Service Worker (v2.3)
  */
-importScripts("cache.js", "psn.js");
+// match.js must load first — it defines slugify/fuzzyMatch/computeBasePrice/classifyTitle
+// used by both background.js and psn.js.
+importScripts("match.js", "cache.js", "psn.js");
 
 const PSE_DEFAULTS_SYNC = {
   hideAddons: false, hideDlc: false, hideOwned: false,
@@ -29,6 +31,17 @@ chrome.runtime.onInstalled.addListener(async (details) => {
     // Ensure wishlist storage exists
     const loc = await chrome.storage.local.get(["wishlist"]);
     if (!loc.wishlist) await chrome.storage.local.set({ wishlist: [] });
+    // Show "What's New" — only for minor/major bumps (not patch), to avoid spamming on every fix release
+    const prev = details.previousVersion || "";
+    const next = chrome.runtime.getManifest().version;
+    const isMinorOrMajor = (() => {
+      const a = prev.split(".").map(Number);
+      const b = next.split(".").map(Number);
+      return (a[0] || 0) !== (b[0] || 0) || (a[1] || 0) !== (b[1] || 0);
+    })();
+    if (isMinorOrMajor && prev) {
+      chrome.tabs.create({ url: chrome.runtime.getURL("changelog.html") });
+    }
   }
   chrome.alarms.create("pse-cache-purge", { periodInMinutes: 360 });
   chrome.alarms.create("pse-psn-sync", { periodInMinutes: 120 });
@@ -56,7 +69,7 @@ chrome.alarms.onAlarm.addListener(async (alarm) => {
 });
 
 /* ──── context menu click ──── */
-chrome.contextMenus.onClicked.addListener((info, tab) => {
+chrome.contextMenus.onClicked.addListener((info, _tab) => {
   if (info.menuItemId === "pse-find-on-cheapshark" && info.selectionText) {
     const q = info.selectionText.trim().substring(0, 100);
     if (q.length < 2) return;
@@ -357,14 +370,7 @@ async function handlePriceHistory(gameName) {
   } catch (err) { return { success: false, error: err.message }; }
 }
 
-// Pick a sensible synthetic-history base price for a given cheapest value.
-// Indie titles ($5) shouldn't pretend they once cost $60. AAA ($70) shouldn't pretend $112.
-function computeBasePrice(cheapest) {
-  if (cheapest <= 0) return 59.99;
-  if (cheapest < 15) return cheapest * 1.5;        // indies
-  if (cheapest < 40) return cheapest * 1.4;        // mid-tier
-  return Math.min(cheapest * 1.2, 79.99);          // AAA
-}
+// computeBasePrice now lives in match.js (shared with Jest tests).
 
 function generatePricePoints(cheapest, basePrice, gameName = "") {
   const points = [];
@@ -387,17 +393,4 @@ function generatePricePoints(cheapest, basePrice, gameName = "") {
   return { points, basePrice, cheapestEver: cheapest };
 }
 
-/* ──── utils ──── */
-function slugify(s) { return s.toLowerCase().replace(/[™®©''":;,.!?()[\]{}]/g, "").replace(/\s+/g, "-").replace(/-+/g, "-").trim(); }
-function fuzzyMatch(q, c) {
-  const n = s => s.toLowerCase().replace(/[™®©''":;,.!?()[\]{}]/g, "").replace(/\s+/g, " ").trim();
-  const a = n(q), b = n(c);
-  if (a === b) return true;
-  // Substring match — but only if lengths are comparable (otherwise "Hades" matches
-  // "Hades II Anniversary Special Edition")
-  if ((b.includes(a) || a.includes(b)) && Math.max(a.length, b.length) <= Math.min(a.length, b.length) * 1.6) return true;
-  const wa = a.split(" ").filter(Boolean);
-  const wb = new Set(b.split(" ").filter(Boolean));
-  if (!wa.length) return false;
-  return wa.filter(w => wb.has(w)).length / wa.length >= 0.75;
-}
+/* slugify and fuzzyMatch now live in match.js (shared with Jest tests). */

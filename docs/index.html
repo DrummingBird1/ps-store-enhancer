@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GameDeals+ for PS Store</title>
+<meta name="description" content="Chrome extension that enhances the PlayStation Store with price history, cross-platform comparison, review scores, trophy info, wishlist alerts, and smart filters. 10 languages.">
+<meta property="og:title" content="GameDeals+ for PS Store">
+<meta property="og:description" content="Smart shopping for the PlayStation Store: price history, cross-platform comparison, scores, trophies, wishlist alerts.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://drummingbird1.github.io/gamedeals-plus/og-image.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#0a0f1a;color:#e2e8f0;line-height:1.6;min-height:100vh}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+header{padding:80px 0 60px;text-align:center}
+.logo{width:96px;height:96px;margin:0 auto 24px;border-radius:24px;background:linear-gradient(135deg,#003087,#0070d1);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 40px rgba(0,112,209,0.25)}
+.logo svg{width:56px;height:56px}
+h1{font-size:56px;font-weight:800;background:linear-gradient(135deg,#4da6ff,#0070d1,#003087);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px;letter-spacing:-1px}
+.tagline{font-size:20px;color:#a0aec0;max-width:640px;margin:0 auto 32px}
+.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:linear-gradient(135deg,#003087,#0070d1);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,112,209,0.35)}
+.btn-secondary{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12)}
+.btn-secondary:hover{background:rgba(255,255,255,0.1)}
+.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:8px}
+.badge{font-size:12px;padding:4px 10px;background:rgba(0,112,209,0.15);color:#4da6ff;border-radius:20px;border:1px solid rgba(0,112,209,0.25)}
+section{padding:60px 0}
+h2{font-size:36px;font-weight:800;margin-bottom:8px;text-align:center}
+.sub-h2{color:#718096;text-align:center;max-width:560px;margin:0 auto 48px;font-size:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.feat{background:#131b2e;border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:28px;transition:border-color .2s,transform .2s}
+.feat:hover{border-color:rgba(0,112,209,0.3);transform:translateY(-3px)}
+.feat-icon{font-size:36px;margin-bottom:14px;display:block}
+.feat-title{font-size:18px;font-weight:700;color:#fff;margin-bottom:6px}
+.feat-desc{font-size:14px;color:#a0aec0;line-height:1.65}
+.demo-row{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;margin-bottom:48px}
+.demo-row.reverse{direction:rtl}
+.demo-row.reverse > *{direction:ltr}
+.demo-text h3{font-size:24px;margin-bottom:10px}
+.demo-text p{font-size:15px;color:#a0aec0;margin-bottom:14px}
+.demo-img{background:#131b2e;border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:0;overflow:hidden}
+.demo-img img{width:100%;display:block}
+.langs{background:#131b2e;border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:32px;text-align:center}
+.langs-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:18px}
+.lang-tag{padding:8px 14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:20px;font-size:13px}
+footer{padding:48px 0 60px;border-top:1px solid rgba(255,255,255,0.06);text-align:center}
+footer p{color:#4a5568;font-size:13px;margin-bottom:8px}
+footer a{color:#4da6ff;text-decoration:none;margin:0 6px}
+footer a:hover{text-decoration:underline}
+.disclaimer{font-size:11px;color:#2d3748;max-width:560px;margin:24px auto 0}
+@media(max-width:768px){
+  h1{font-size:38px}
+  .demo-row{grid-template-columns:1fr}
+  header{padding:48px 0 40px}
+  section{padding:40px 0}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="logo">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M7 13l3 3 7-7" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  <h1>GameDeals+ for PS Store</h1>
+  <p class="tagline">Smart shopping for the PlayStation™ Store. Price history, cross-platform comparison, review scores, trophy info, wishlist alerts, and 10 languages — all in your browser.</p>
+  <div class="cta-row">
+    <a class="btn" href="#install">Install</a>
+    <a class="btn btn-secondary" href="https://github.com/DrummingBird1/gamedeals-plus" target="_blank" rel="noopener">⭐ Star on GitHub</a>
+  </div>
+  <div class="badges">
+    <span class="badge">v2.3.0</span>
+    <span class="badge">Manifest V3</span>
+    <span class="badge">10 languages</span>
+    <span class="badge">MIT License</span>
+    <span class="badge">No tracking</span>
+  </div>
+</header>
+
+<section>
+  <h2>Everything the PS Store should already do</h2>
+  <p class="sub-h2">All core features work without sign-in. PSN integration is opt-in.</p>
+  <div class="grid">
+    <div class="feat"><span class="feat-icon">📊</span><div class="feat-title">Review scores at a glance</div><div class="feat-desc">OpenCritic / Metacritic badge injected right next to every game title. Color-coded green/yellow/red.</div></div>
+    <div class="feat"><span class="feat-icon">📉</span><div class="feat-title">Price history sparkline</div><div class="feat-desc">12-month price chart embedded on the product page, with lowest-ever price highlighted.</div></div>
+    <div class="feat"><span class="feat-icon">🔀</span><div class="feat-title">Cross-platform comparison</div><div class="feat-desc">See the same game's prices on Steam, Epic, GOG, Humble and more — converted to your currency.</div></div>
+    <div class="feat"><span class="feat-icon">🏆</span><div class="feat-title">Trophy info</div><div class="feat-desc">Platinum availability, difficulty (1-10), estimated hours, required playthroughs for 75+ popular titles.</div></div>
+    <div class="feat"><span class="feat-icon">⭐</span><div class="feat-title">Wishlist alerts</div><div class="feat-desc">Track games, set a target price, get a desktop notification when the cross-platform cheapest drops below it.</div></div>
+    <div class="feat"><span class="feat-icon">💱</span><div class="feat-title">18 currencies</div><div class="feat-desc">EUR, GBP, ILS, JPY, BRL, KRW, INR, and more — daily rates from the European Central Bank.</div></div>
+    <div class="feat"><span class="feat-icon">🧹</span><div class="feat-title">Smart filters</div><div class="feat-desc">Hide add-ons, currency packs, DLC, and games you already own — works with infinite scroll.</div></div>
+    <div class="feat"><span class="feat-icon">🎨</span><div class="feat-title">Light & Dark themes</div><div class="feat-desc">Auto-match your system, or pick manually. Theme applies to popup, options, and injected cards.</div></div>
+    <div class="feat"><span class="feat-icon">🔒</span><div class="feat-title">Privacy first</div><div class="feat-desc">No analytics. No tracking. No remote code. All your data lives in browser storage on your device.</div></div>
+  </div>
+</section>
+
+<section>
+  <h2>10 languages, ready out of the box</h2>
+  <div class="langs">
+    <p>English, עברית, العربية, Español, Français, Deutsch, Português (BR), Русский, 日本語, 한국어</p>
+    <div class="langs-grid">
+      <span class="lang-tag">🇬🇧 EN</span>
+      <span class="lang-tag">🇮🇱 עברית</span>
+      <span class="lang-tag">🇸🇦 العربية</span>
+      <span class="lang-tag">🇪🇸 ES</span>
+      <span class="lang-tag">🇫🇷 FR</span>
+      <span class="lang-tag">🇩🇪 DE</span>
+      <span class="lang-tag">🇧🇷 PT-BR</span>
+      <span class="lang-tag">🇷🇺 RU</span>
+      <span class="lang-tag">🇯🇵 JA</span>
+      <span class="lang-tag">🇰🇷 KO</span>
+    </div>
+  </div>
+</section>
+
+<section id="install">
+  <h2>Install</h2>
+  <p class="sub-h2">Chrome Web Store listing coming soon. Developer install in the meantime:</p>
+  <div class="grid">
+    <div class="feat">
+      <span class="feat-icon">⚡</span>
+      <div class="feat-title">Developer install</div>
+      <div class="feat-desc">
+        1. Download the latest <a href="https://github.com/DrummingBird1/gamedeals-plus/releases" target="_blank" rel="noopener" style="color:#4da6ff">release zip</a><br>
+        2. Unzip it<br>
+        3. Open <code>chrome://extensions</code><br>
+        4. Toggle <strong>Developer mode</strong> on<br>
+        5. Click <strong>Load unpacked</strong>, select the unzipped folder<br>
+        6. Visit <a href="https://store.playstation.com" target="_blank" rel="noopener" style="color:#4da6ff">store.playstation.com</a>
+      </div>
+    </div>
+    <div class="feat">
+      <span class="feat-icon">📦</span>
+      <div class="feat-title">Chrome Web Store</div>
+      <div class="feat-desc">Coming soon — listing in review. Star the GitHub repo to be notified.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>
+    <a href="https://github.com/DrummingBird1/gamedeals-plus">GitHub</a> ·
+    <a href="https://github.com/DrummingBird1/gamedeals-plus/blob/main/LICENSE">MIT License</a> ·
+    <a href="privacy-policy.html">Privacy Policy</a> ·
+    <a href="https://github.com/DrummingBird1/gamedeals-plus/issues">Report a bug</a>
+  </p>
+  <p>Data: <a href="https://www.cheapshark.com/" target="_blank" rel="noopener">CheapShark</a> · <a href="https://opencritic.com/" target="_blank" rel="noopener">OpenCritic</a> · <a href="https://psprices.com/" target="_blank" rel="noopener">PSPrices</a> · <a href="https://psnprofiles.com/" target="_blank" rel="noopener">PSNProfiles</a> · <a href="https://frankfurter.dev/" target="_blank" rel="noopener">Frankfurter</a></p>
+  <div class="disclaimer">This extension is not affiliated with, endorsed by, or connected to Sony Interactive Entertainment, PlayStation, or any of their subsidiaries. PlayStation is a registered trademark of Sony Interactive Entertainment.</div>
+</footer>
+
+</div>
+</body>
+</html>

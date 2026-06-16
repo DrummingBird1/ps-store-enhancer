@@ -393,6 +393,8 @@
   },
   "wishlistTitle": { "message": "רשימת משאלות" },
   "wishlistDesc": { "message": "עקוב אחר משחקים וקבל התראה כשהמחיר יורד מתחת ליעד שהגדרת." },
+  "wishlistPcOnlyNote": { "message": "הערה: ההתראות מבוססות על מחירי PC חוצי-פלטפורמה מ-CheapShark (Steam/Epic/GOG, בדולרים). מחירי PSN בלבד לא מנוטרים." },
+  "hltbLink": { "message": "זמני סיפור וסיום ב-HowLongToBeat ←" },
   "wishlistEmpty": { "message": "רשימת המשאלות שלך ריקה" },
   "wishlistAddBtn": { "message": "★ הוסף לרשימת משאלות" },
   "wishlistInBtn": { "message": "★ ברשימת המשאלות (לחץ להסיר)" },
@@ -401,9 +403,7 @@
   "wishlistRemoved": { "message": "הוסר מרשימת המשאלות" },
   "wishlistAlreadyAdded": { "message": "כבר ברשימת המשאלות" },
   "wishlistPriceDropTitle": { "message": "🎯 התראת ירידת מחיר!" },
-  "wishlistPriceDropBody": { "message": "$NAME$ עכשיו $NEW$ (היה $OLD$)", "placeholders": { "name": { "content": "
-  }" }, "new": { "content": "
-" }, "old": { "content": "$3" } } },
+  "wishlistPriceDropBody": { "message": "$NAME$ עכשיו $NEW$ (היה $OLD$)", "placeholders": { "name": { "content": "$1" }, "new": { "content": "$2" }, "old": { "content": "$3" } } },
   "wishlistLastChecked": { "message": "נבדק לאחרונה:" },
   "wishlistColTarget": { "message": "יעד" },
   "wishlistColLast": { "message": "מחיר נוכחי" },
@@ -421,8 +421,7 @@
   "exportBtn": { "message": "📤 ייצוא JSON" },
   "importBtn": { "message": "📥 ייבוא JSON" },
   "exportSuccess": { "message": "יוצא" },
-  "importSuccess": { "message": "יובאו $COUNT$ משחקים", "placeholders": { "count": { "content": "
-  }" } } },
+  "importSuccess": { "message": "יובאו $COUNT$ משחקים", "placeholders": { "count": { "content": "$1" } } },
   "importFailed": { "message": "הייבוא נכשל — הקובץ אינו ייצוא תקין של GameDeals+" },
   "changelogTitle": { "message": "מה חדש" },
   "viewChangelog": { "message": "הצג היסטוריית גרסאות →" },
@@ -431,7 +430,6 @@
   "linkSource": { "message": "קוד מקור ב-GitHub" },
   "linkCredits": { "message": "נתונים: CheapShark · OpenCritic · PSPrices · PSNProfiles" },
   "errorApiDown": { "message": "השירות אינו זמין כרגע. נסה שוב מאוחר יותר." },
-  "regionAutoDetected": { "message": "אזור זוהה אוטומטית: $REGION$", "placeholders": { "region": { "content": "
-  }" } } },
+  "regionAutoDetected": { "message": "אזור זוהה אוטומטית: $REGION$", "placeholders": { "region": { "content": "$1" } } },
   "libraryCapWarning": { "message": "ספריית ה-PSN שלך כוללת יותר מ-5000 כותרים — רק 5000 הראשונים סונכרנו." }
 }

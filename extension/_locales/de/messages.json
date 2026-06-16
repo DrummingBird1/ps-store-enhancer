@@ -393,6 +393,9 @@
   },
   "wishlistTitle": { "message": "Wunschliste" },
   "wishlistDesc": { "message": "Verfolge Spiele und werde benachrichtigt, wenn der Preis unter dein Ziel fällt." },
+  "wishlistPcOnlyNote": { "message": "Hinweis: Alarme nutzen plattformübergreifende PC-Preise von CheapShark (Steam/Epic/GOG, in USD). PSN-exklusive Preise werden nicht verfolgt." },
+  "hltbLink": { "message": "Spielzeiten auf HowLongToBeat →" },
+
   "wishlistEmpty": { "message": "Deine Wunschliste ist leer" },
   "wishlistAddBtn": { "message": "★ Zur Wunschliste" },
   "wishlistInBtn": { "message": "★ Auf Wunschliste (klick zum Entfernen)" },
@@ -401,9 +404,7 @@
   "wishlistRemoved": { "message": "Von der Wunschliste entfernt" },
   "wishlistAlreadyAdded": { "message": "Bereits auf deiner Wunschliste" },
   "wishlistPriceDropTitle": { "message": "🎯 Preissenkungs-Alarm!" },
-  "wishlistPriceDropBody": { "message": "$NAME$ kostet jetzt $NEW$ (war $OLD$)", "placeholders": { "name": { "content": "
-  }" }, "new": { "content": "
-" }, "old": { "content": "$3" } } },
+  "wishlistPriceDropBody": { "message": "$NAME$ kostet jetzt $NEW$ (war $OLD$)", "placeholders": { "name": { "content": "$1" }, "new": { "content": "$2" }, "old": { "content": "$3" } } },
   "wishlistLastChecked": { "message": "Zuletzt geprüft:" },
   "wishlistColTarget": { "message": "Ziel" },
   "wishlistColLast": { "message": "Aktueller Preis" },
@@ -421,8 +422,7 @@
   "exportBtn": { "message": "📤 JSON exportieren" },
   "importBtn": { "message": "📥 JSON importieren" },
   "exportSuccess": { "message": "Exportiert" },
-  "importSuccess": { "message": "$COUNT$ Spiele importiert", "placeholders": { "count": { "content": "
-  }" } } },
+  "importSuccess": { "message": "$COUNT$ Spiele importiert", "placeholders": { "count": { "content": "$1" } } },
   "importFailed": { "message": "Import fehlgeschlagen — ungültige Datei" },
   "changelogTitle": { "message": "Was ist neu" },
   "viewChangelog": { "message": "Änderungsprotokoll anzeigen →" },
@@ -431,7 +431,6 @@
   "linkSource": { "message": "Quellcode auf GitHub" },
   "linkCredits": { "message": "Daten: CheapShark · OpenCritic · PSPrices · PSNProfiles" },
   "errorApiDown": { "message": "Dienst vorübergehend nicht verfügbar. Versuche es später erneut." },
-  "regionAutoDetected": { "message": "Region automatisch erkannt: $REGION$", "placeholders": { "region": { "content": "
-  }" } } },
+  "regionAutoDetected": { "message": "Region automatisch erkannt: $REGION$", "placeholders": { "region": { "content": "$1" } } },
   "libraryCapWarning": { "message": "Deine PSN-Bibliothek hat mehr als 5000 Titel — nur die ersten 5000 wurden synchronisiert." }
 }

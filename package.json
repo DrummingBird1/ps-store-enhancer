@@ -1,0 +1,30 @@
+{
+  "name": "gamedeals-plus",
+  "version": "2.3.1",
+  "private": true,
+  "description": "Chrome extension that enhances the PlayStation Store with price history, cross-platform comparison, review scores, trophy info, wishlist alerts, and smart filters.",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint extension --ext .js",
+    "lint:fix": "eslint extension --ext .js --fix",
+    "format": "prettier --write \"extension/**/*.{js,html,css,json}\" \"docs/**/*.html\"",
+    "format:check": "prettier --check \"extension/**/*.{js,html,css,json}\" \"docs/**/*.html\"",
+    "validate-locales": "node -e \"const fs=require('fs'),p=require('path');const base='extension/_locales';const en=Object.keys(JSON.parse(fs.readFileSync(p.join(base,'en','messages.json'))));let ok=true;fs.readdirSync(base).forEach(l=>{const k=Object.keys(JSON.parse(fs.readFileSync(p.join(base,l,'messages.json'))));const missing=en.filter(x=>!k.includes(x));const extra=k.filter(x=>!en.includes(x));console.log(l+':',k.length,'keys, missing',missing.length,'extra',extra.length);if(missing.length||extra.length)ok=false;});process.exit(ok?0:1);\""
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "eslint": "^8.57.0",
+    "prettier": "^3.3.0"
+  },
+  "jest": {
+    "testMatch": [
+      "<rootDir>/tests/**/*.test.js"
+    ],
+    "testEnvironment": "node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DrummingBird1/gamedeals-plus.git"
+  },
+  "license": "MIT"
+}

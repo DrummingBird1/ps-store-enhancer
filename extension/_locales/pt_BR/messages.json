@@ -393,6 +393,9 @@
   },
   "wishlistTitle": { "message": "Lista de desejos" },
   "wishlistDesc": { "message": "Acompanhe jogos e receba notificação quando o preço cair abaixo do seu alvo." },
+  "wishlistPcOnlyNote": { "message": "Nota: os alertas usam preços PC multiplataforma do CheapShark (Steam/Epic/GOG, em USD). Preços só-PSN não são rastreados." },
+  "hltbLink": { "message": "Tempos de história / conclusão no HowLongToBeat →" },
+
   "wishlistEmpty": { "message": "Sua lista de desejos está vazia" },
   "wishlistAddBtn": { "message": "★ Adicionar à lista" },
   "wishlistInBtn": { "message": "★ Na lista (clique para remover)" },
@@ -401,9 +404,7 @@
   "wishlistRemoved": { "message": "Removido da lista de desejos" },
   "wishlistAlreadyAdded": { "message": "Já está na sua lista" },
   "wishlistPriceDropTitle": { "message": "🎯 Alerta de queda de preço!" },
-  "wishlistPriceDropBody": { "message": "$NAME$ está agora $NEW$ (era $OLD$)", "placeholders": { "name": { "content": "
-  }" }, "new": { "content": "
-" }, "old": { "content": "$3" } } },
+  "wishlistPriceDropBody": { "message": "$NAME$ está agora $NEW$ (era $OLD$)", "placeholders": { "name": { "content": "$1" }, "new": { "content": "$2" }, "old": { "content": "$3" } } },
   "wishlistLastChecked": { "message": "Última verificação:" },
   "wishlistColTarget": { "message": "Alvo" },
   "wishlistColLast": { "message": "Preço atual" },
@@ -421,8 +422,7 @@
   "exportBtn": { "message": "📤 Exportar JSON" },
   "importBtn": { "message": "📥 Importar JSON" },
   "exportSuccess": { "message": "Exportado" },
-  "importSuccess": { "message": "$COUNT$ jogos importados", "placeholders": { "count": { "content": "
-  }" } } },
+  "importSuccess": { "message": "$COUNT$ jogos importados", "placeholders": { "count": { "content": "$1" } } },
   "importFailed": { "message": "Falha na importação — arquivo inválido" },
   "changelogTitle": { "message": "Novidades" },
   "viewChangelog": { "message": "Ver histórico →" },
@@ -431,7 +431,6 @@
   "linkSource": { "message": "Código-fonte no GitHub" },
   "linkCredits": { "message": "Dados: CheapShark · OpenCritic · PSPrices · PSNProfiles" },
   "errorApiDown": { "message": "Serviço temporariamente indisponível. Tente mais tarde." },
-  "regionAutoDetected": { "message": "Região auto-detectada: $REGION$", "placeholders": { "region": { "content": "
-  }" } } },
+  "regionAutoDetected": { "message": "Região auto-detectada: $REGION$", "placeholders": { "region": { "content": "$1" } } },
   "libraryCapWarning": { "message": "Sua biblioteca PSN tem mais de 5000 títulos — apenas os primeiros 5000 foram sincronizados." }
 }

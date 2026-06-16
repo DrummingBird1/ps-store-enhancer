@@ -393,6 +393,8 @@
   },
   "wishlistTitle": { "message": "Wishlist" },
   "wishlistDesc": { "message": "Track games and get notified when their price drops below your target." },
+  "wishlistPcOnlyNote": { "message": "Note: alerts use cross-platform prices from CheapShark (Steam/Epic/GOG, in USD). PSN-only prices are not tracked." },
+  "hltbLink": { "message": "Story / completion times on HowLongToBeat →" },
   "wishlistEmpty": { "message": "Your wishlist is empty" },
   "wishlistAddBtn": { "message": "★ Add to Wishlist" },
   "wishlistInBtn": { "message": "★ On Wishlist (click to remove)" },
@@ -401,9 +403,7 @@
   "wishlistRemoved": { "message": "Removed from wishlist" },
   "wishlistAlreadyAdded": { "message": "Already on your wishlist" },
   "wishlistPriceDropTitle": { "message": "🎯 Price drop alert!" },
-  "wishlistPriceDropBody": { "message": "$NAME$ is now $NEW$ (was $OLD$)", "placeholders": { "name": { "content": "
-  }" }, "new": { "content": "
-" }, "old": { "content": "$3" } } },
+  "wishlistPriceDropBody": { "message": "$NAME$ is now $NEW$ (was $OLD$)", "placeholders": { "name": { "content": "$1" }, "new": { "content": "$2" }, "old": { "content": "$3" } } },
   "wishlistLastChecked": { "message": "Last checked:" },
   "wishlistColTarget": { "message": "Target" },
   "wishlistColLast": { "message": "Last seen" },
@@ -421,8 +421,7 @@
   "exportBtn": { "message": "📤 Export JSON" },
   "importBtn": { "message": "📥 Import JSON" },
   "exportSuccess": { "message": "Exported" },
-  "importSuccess": { "message": "Imported $COUNT$ games", "placeholders": { "count": { "content": "
-  }" } } },
+  "importSuccess": { "message": "Imported $COUNT$ games", "placeholders": { "count": { "content": "$1" } } },
   "importFailed": { "message": "Import failed — file is not a valid GameDeals+ export" },
   "changelogTitle": { "message": "What's New" },
   "viewChangelog": { "message": "View changelog →" },
@@ -431,7 +430,6 @@
   "linkSource": { "message": "Source code on GitHub" },
   "linkCredits": { "message": "Data: CheapShark · OpenCritic · PSPrices · PSNProfiles" },
   "errorApiDown": { "message": "Service temporarily unavailable. Try again later." },
-  "regionAutoDetected": { "message": "Region auto-detected: $REGION$", "placeholders": { "region": { "content": "
-  }" } } },
+  "regionAutoDetected": { "message": "Region auto-detected: $REGION$", "placeholders": { "region": { "content": "$1" } } },
   "libraryCapWarning": { "message": "Your PSN library has more than 5000 titles — only the first 5000 were synced." }
 }

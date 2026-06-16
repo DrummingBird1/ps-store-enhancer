@@ -154,7 +154,9 @@ const PSEi18n = (() => {
   return { init, getMessage, localizePage, applyDirection, getActiveLang, isReady, getCurrentLang, getSupportedLangs };
 })();
 
-// Global shortcuts for convenience
+// Global shortcuts for convenience (used by content.js, popup.js, options.js, welcome.html, changelog.html)
+/* eslint-disable no-unused-vars */
 async function initI18n() { return PSEi18n.init(); }
 function t(key, ...subs) { return PSEi18n.getMessage(key, ...subs); }
 function localizePage() { PSEi18n.localizePage(); }
+/* eslint-enable no-unused-vars */

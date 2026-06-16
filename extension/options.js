@@ -312,6 +312,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   el.importFile.addEventListener("change", async (ev) => {
     const file = ev.target.files?.[0];
     if (!file) return;
+    const origLabel = el.importBtn.innerHTML;
+    el.importBtn.disabled = true;
+    el.importBtn.innerHTML = `<span class="spinner"></span>`;
     try {
       const text = await file.text();
       const data = JSON.parse(text);
@@ -364,6 +367,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       toast(t("importFailed"));
     } finally {
       ev.target.value = ""; // allow re-import same file
+      el.importBtn.disabled = false;
+      el.importBtn.innerHTML = origLabel;
     }
   });
 

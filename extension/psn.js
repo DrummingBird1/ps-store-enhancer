@@ -274,14 +274,7 @@ const PSN = (() => {
     }
   }
 
-  function classifyTitle(title) {
-    const cat = (title.category || title.titleType || "").toLowerCase();
-    const name = (title.name || "").toLowerCase();
-    if (cat.includes("nongame") || cat.includes("addon") || cat.includes("dlc")) return "dlc";
-    if (/\b(dlc|expansion|season pass|add[\s-]?on)\b/i.test(name)) return "dlc";
-    if (cat.includes("app") || cat.includes("media")) return "app";
-    return "game";
-  }
+  // classifyTitle now lives in match.js — loaded before psn.js via importScripts.
 
   /* ════════════════════════════════════════════
    * Fix #12: TROPHY DATA from PSN API

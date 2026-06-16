@@ -393,6 +393,9 @@
   },
   "wishlistTitle": { "message": "위시리스트" },
   "wishlistDesc": { "message": "게임을 추적하고 가격이 목표 이하로 떨어지면 알림을 받으세요." },
+  "wishlistPcOnlyNote": { "message": "참고: 알림은 CheapShark의 크로스 플랫폼 PC 가격(Steam/Epic/GOG, USD)을 사용합니다. PSN 전용 가격은 추적되지 않습니다." },
+  "hltbLink": { "message": "HowLongToBeat에서 플레이 시간 보기 →" },
+
   "wishlistEmpty": { "message": "위시리스트가 비어있습니다" },
   "wishlistAddBtn": { "message": "★ 위시리스트에 추가" },
   "wishlistInBtn": { "message": "★ 위시리스트에 있음 (클릭하여 제거)" },
@@ -401,9 +404,7 @@
   "wishlistRemoved": { "message": "위시리스트에서 제거됨" },
   "wishlistAlreadyAdded": { "message": "이미 위시리스트에 있습니다" },
   "wishlistPriceDropTitle": { "message": "🎯 가격 인하 알림!" },
-  "wishlistPriceDropBody": { "message": "$NAME$ 이(가) 현재 $NEW$ (이전 $OLD$)", "placeholders": { "name": { "content": "
-  }" }, "new": { "content": "
-" }, "old": { "content": "$3" } } },
+  "wishlistPriceDropBody": { "message": "$NAME$ 이(가) 현재 $NEW$ (이전 $OLD$)", "placeholders": { "name": { "content": "$1" }, "new": { "content": "$2" }, "old": { "content": "$3" } } },
   "wishlistLastChecked": { "message": "마지막 확인:" },
   "wishlistColTarget": { "message": "목표" },
   "wishlistColLast": { "message": "현재 가격" },
@@ -421,8 +422,7 @@
   "exportBtn": { "message": "📤 JSON 내보내기" },
   "importBtn": { "message": "📥 JSON 가져오기" },
   "exportSuccess": { "message": "내보냄" },
-  "importSuccess": { "message": "$COUNT$ 게임 가져옴", "placeholders": { "count": { "content": "
-  }" } } },
+  "importSuccess": { "message": "$COUNT$ 게임 가져옴", "placeholders": { "count": { "content": "$1" } } },
   "importFailed": { "message": "가져오기 실패 — 잘못된 파일" },
   "changelogTitle": { "message": "새로운 기능" },
   "viewChangelog": { "message": "변경 로그 보기 →" },
@@ -431,7 +431,6 @@
   "linkSource": { "message": "GitHub 소스 코드" },
   "linkCredits": { "message": "데이터: CheapShark · OpenCritic · PSPrices · PSNProfiles" },
   "errorApiDown": { "message": "서비스를 일시적으로 사용할 수 없습니다. 나중에 다시 시도하세요." },
-  "regionAutoDetected": { "message": "지역 자동 감지됨: $REGION$", "placeholders": { "region": { "content": "
-  }" } } },
+  "regionAutoDetected": { "message": "지역 자동 감지됨: $REGION$", "placeholders": { "region": { "content": "$1" } } },
   "libraryCapWarning": { "message": "PSN 라이브러리에 5000개 이상의 타이틀이 있습니다 — 처음 5000개만 동기화되었습니다." }
 }

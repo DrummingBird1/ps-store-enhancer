@@ -393,6 +393,9 @@
   },
   "wishlistTitle": { "message": "Список желаний" },
   "wishlistDesc": { "message": "Отслеживайте игры и получайте уведомления, когда цена упадёт ниже вашего порога." },
+  "wishlistPcOnlyNote": { "message": "Примечание: уведомления используют кросс-платформенные PC-цены от CheapShark (Steam/Epic/GOG, в USD). Цены только для PSN не отслеживаются." },
+  "hltbLink": { "message": "Время прохождения на HowLongToBeat →" },
+
   "wishlistEmpty": { "message": "Ваш список желаний пуст" },
   "wishlistAddBtn": { "message": "★ В список желаний" },
   "wishlistInBtn": { "message": "★ В списке (нажмите чтобы убрать)" },
@@ -401,9 +404,7 @@
   "wishlistRemoved": { "message": "Удалено из списка желаний" },
   "wishlistAlreadyAdded": { "message": "Уже в вашем списке" },
   "wishlistPriceDropTitle": { "message": "🎯 Падение цены!" },
-  "wishlistPriceDropBody": { "message": "$NAME$ теперь $NEW$ (было $OLD$)", "placeholders": { "name": { "content": "
-  }" }, "new": { "content": "
-" }, "old": { "content": "$3" } } },
+  "wishlistPriceDropBody": { "message": "$NAME$ теперь $NEW$ (было $OLD$)", "placeholders": { "name": { "content": "$1" }, "new": { "content": "$2" }, "old": { "content": "$3" } } },
   "wishlistLastChecked": { "message": "Последняя проверка:" },
   "wishlistColTarget": { "message": "Цель" },
   "wishlistColLast": { "message": "Текущая цена" },
@@ -421,8 +422,7 @@
   "exportBtn": { "message": "📤 Экспорт JSON" },
   "importBtn": { "message": "📥 Импорт JSON" },
   "exportSuccess": { "message": "Экспортировано" },
-  "importSuccess": { "message": "Импортировано $COUNT$ игр", "placeholders": { "count": { "content": "
-  }" } } },
+  "importSuccess": { "message": "Импортировано $COUNT$ игр", "placeholders": { "count": { "content": "$1" } } },
   "importFailed": { "message": "Импорт не удался — недопустимый файл" },
   "changelogTitle": { "message": "Что нового" },
   "viewChangelog": { "message": "Журнал изменений →" },
@@ -431,7 +431,6 @@
   "linkSource": { "message": "Исходный код на GitHub" },
   "linkCredits": { "message": "Данные: CheapShark · OpenCritic · PSPrices · PSNProfiles" },
   "errorApiDown": { "message": "Сервис временно недоступен. Попробуйте позже." },
-  "regionAutoDetected": { "message": "Регион определён автоматически: $REGION$", "placeholders": { "region": { "content": "
-  }" } } },
+  "regionAutoDetected": { "message": "Регион определён автоматически: $REGION$", "placeholders": { "region": { "content": "$1" } } },
   "libraryCapWarning": { "message": "В вашей библиотеке PSN более 5000 игр — синхронизированы только первые 5000." }
 }

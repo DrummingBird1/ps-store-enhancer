@@ -1,0 +1,51 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "es2022": true,
+    "serviceworker": true,
+    "webextensions": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2022,
+    "sourceType": "script"
+  },
+  "globals": {
+    "chrome": "readonly",
+    "PSECache": "readonly",
+    "PSEMatch": "readonly",
+    "PSN": "readonly",
+    "PSEi18n": "readonly",
+    "initI18n": "readonly",
+    "t": "readonly",
+    "localizePage": "readonly",
+    "slugify": "readonly",
+    "fuzzyMatch": "readonly",
+    "computeBasePrice": "readonly",
+    "classifyTitle": "readonly",
+    "importScripts": "readonly"
+  },
+  "rules": {
+    "no-unused-vars": ["warn", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }],
+    "no-undef": "error",
+    "no-console": "off",
+    "prefer-const": "warn",
+    "no-var": "warn",
+    "eqeqeq": ["warn", "smart"],
+    "no-empty": ["warn", { "allowEmptyCatch": true }]
+  },
+  "overrides": [
+    {
+      "files": ["tests/**/*.js"],
+      "env": { "node": true, "jest": true }
+    },
+    {
+      "files": ["extension/match.js"],
+      "env": { "node": true, "browser": true, "serviceworker": true }
+    },
+    {
+      "files": ["*.config.js", "build-zips.py"],
+      "env": { "node": true }
+    }
+  ]
+}

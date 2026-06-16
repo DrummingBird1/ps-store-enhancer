@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    name: Lint, syntax-check, test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: 'package-lock.json'
+
+      - name: Install dev deps
+        run: npm ci || npm install
+
+      - name: Lint
+        run: npm run lint --if-present
+
+      - name: Syntax-check extension JS
+        run: |
+          for f in extension/background.js extension/content.js extension/psn.js extension/cache.js extension/i18n.js extension/options.js extension/popup.js; do
+            node --check "$f"
+            echo "$f OK"
+          done
+
+      - name: Validate locale JSON
+        run: |
+          python3 - <<'PY'
+          import json, sys, pathlib
+          base = pathlib.Path("extension/_locales")
+          en_keys = set(json.loads((base/"en"/"messages.json").read_text(encoding="utf-8")).keys())
+          ok = True
+          for lang_dir in sorted(base.iterdir()):
+              if not lang_dir.is_dir(): continue
+              data = json.loads((lang_dir/"messages.json").read_text(encoding="utf-8"))
+              keys = set(data.keys())
+              missing = en_keys - keys
+              extra = keys - en_keys
+              print(f"{lang_dir.name}: {len(keys)} keys; missing {len(missing)}; extra {len(extra)}")
+              if missing or extra: ok = False
+          sys.exit(0 if ok else 1)
+          PY
+
+      - name: Test
+        run: npm test --if-present

@@ -393,6 +393,9 @@
   },
   "wishlistTitle": { "message": "قائمة الأمنيات" },
   "wishlistDesc": { "message": "تتبع الألعاب واحصل على إشعار عند انخفاض السعر دون الهدف." },
+  "wishlistPcOnlyNote": { "message": "ملاحظة: تستخدم التنبيهات أسعار CheapShark عبر المنصات (Steam/Epic/GOG، بالدولار). أسعار PSN فقط لا يتم تتبعها." },
+  "hltbLink": { "message": "أوقات اللعب على HowLongToBeat ←" },
+
   "wishlistEmpty": { "message": "قائمة الأمنيات فارغة" },
   "wishlistAddBtn": { "message": "★ أضف إلى قائمة الأمنيات" },
   "wishlistInBtn": { "message": "★ في قائمة الأمنيات (انقر للإزالة)" },
@@ -401,9 +404,7 @@
   "wishlistRemoved": { "message": "تمت الإزالة من قائمة الأمنيات" },
   "wishlistAlreadyAdded": { "message": "موجود بالفعل في قائمة الأمنيات" },
   "wishlistPriceDropTitle": { "message": "🎯 تنبيه انخفاض السعر!" },
-  "wishlistPriceDropBody": { "message": "$NAME$ الآن $NEW$ (كان $OLD$)", "placeholders": { "name": { "content": "
-  }" }, "new": { "content": "
-" }, "old": { "content": "$3" } } },
+  "wishlistPriceDropBody": { "message": "$NAME$ الآن $NEW$ (كان $OLD$)", "placeholders": { "name": { "content": "$1" }, "new": { "content": "$2" }, "old": { "content": "$3" } } },
   "wishlistLastChecked": { "message": "آخر فحص:" },
   "wishlistColTarget": { "message": "الهدف" },
   "wishlistColLast": { "message": "السعر الحالي" },
@@ -421,8 +422,7 @@
   "exportBtn": { "message": "📤 تصدير JSON" },
   "importBtn": { "message": "📥 استيراد JSON" },
   "exportSuccess": { "message": "تم التصدير" },
-  "importSuccess": { "message": "تم استيراد $COUNT$ لعبة", "placeholders": { "count": { "content": "
-  }" } } },
+  "importSuccess": { "message": "تم استيراد $COUNT$ لعبة", "placeholders": { "count": { "content": "$1" } } },
   "importFailed": { "message": "فشل الاستيراد — الملف ليس تصدير GameDeals+ صالح" },
   "changelogTitle": { "message": "ما الجديد" },
   "viewChangelog": { "message": "عرض سجل التغييرات →" },
@@ -431,7 +431,6 @@
   "linkSource": { "message": "الكود المصدري على GitHub" },
   "linkCredits": { "message": "البيانات: CheapShark · OpenCritic · PSPrices · PSNProfiles" },
   "errorApiDown": { "message": "الخدمة غير متوفرة مؤقتاً. حاول لاحقاً." },
-  "regionAutoDetected": { "message": "تم اكتشاف المنطقة تلقائياً: $REGION$", "placeholders": { "region": { "content": "
-  }" } } },
+  "regionAutoDetected": { "message": "تم اكتشاف المنطقة تلقائياً: $REGION$", "placeholders": { "region": { "content": "$1" } } },
   "libraryCapWarning": { "message": "تحتوي مكتبة PSN على أكثر من 5000 عنوان — تم مزامنة أول 5000 فقط." }
 }
