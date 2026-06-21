@@ -383,5 +383,15 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   let toastTimer;
   function toast(msg) { el.toast.textContent = msg; el.toast.classList.add("show"); clearTimeout(toastTimer); toastTimer = setTimeout(() => el.toast.classList.remove("show"), 2200); }
-  function esc(s) { const d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
+  // Attribute-safe escaping: covers <, >, &, ", '. The textContent→innerHTML trick
+  // does NOT escape quotes, so output placed inside HTML attributes (data-name="…",
+  // value="…") could break out. We escape explicitly instead.
+  function esc(s) {
+    return String(s ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
 });

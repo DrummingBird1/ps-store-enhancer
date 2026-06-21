@@ -62,15 +62,6 @@ h1 span{background:linear-gradient(135deg,#4da6ff,#0070d1);-webkit-background-cl
 </div>
 
 <script src="i18n.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", async () => {
-    await initI18n();
-    localizePage();
-    document.getElementById("openSettings").addEventListener("click", e => {
-      e.preventDefault();
-      chrome.runtime.openOptionsPage();
-    });
-  });
-</script>
+<script src="welcome.js"></script>
 </body>
 </html>

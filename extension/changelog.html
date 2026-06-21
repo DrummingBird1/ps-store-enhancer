@@ -35,7 +35,18 @@ body.theme-light .release li code{background:rgba(0,0,0,.06)}
   <p class="subtitle">GameDeals+ for PS Store — what's changed in each version</p>
 
   <div class="release">
-    <h2>What's new <span class="ver">v2.3.1</span></h2>
+    <h2>What's new <span class="ver">v2.3.2</span></h2>
+    <p class="date">2026 · Security &amp; compliance</p>
+    <h3>Fixes</h3>
+    <ul>
+      <li><strong>MV3 CSP fix</strong> — moved the welcome page and changelog page scripts out of inline <code>&lt;script&gt;</code> blocks (which Manifest V3 blocks) into external <code>welcome.js</code> / <code>changelog.js</code>. The welcome "Open Settings" button and changelog theme now work.</li>
+      <li><strong>Attribute-safe escaping</strong> — <code>esc()</code> / <code>escapeHtml()</code> now escape quotes too, hardening against markup-breakout from unusual game titles.</li>
+      <li><strong>Privacy policy refreshed</strong> — now lists notifications, contextMenus, the Frankfurter endpoint, and the daily wishlist price checks; removed the stale <code>activeTab</code> entry.</li>
+    </ul>
+  </div>
+
+  <div class="release">
+    <h2><span class="ver">v2.3.1</span></h2>
     <p class="date">2026</p>
     <h3>UX honesty &amp; clarifications</h3>
     <ul>
@@ -116,16 +127,6 @@ body.theme-light .release li code{background:rgba(0,0,0,.06)}
 
   <p class="foot">GameDeals+ for PS Store · MIT License · Not affiliated with Sony Interactive Entertainment</p>
 </div>
-<script>
-  // Apply theme based on storage
-  (async () => {
-    try {
-      const r = await chrome.storage.sync.get(["theme"]);
-      const mode = r.theme || "auto";
-      const resolved = mode === "light" ? "light" : mode === "dark" ? "dark" : (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) ? "light" : "dark";
-      if (resolved === "light") document.body.classList.add("theme-light");
-    } catch {}
-  })();
-</script>
+<script src="changelog.js"></script>
 </body>
 </html>

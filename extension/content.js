@@ -338,10 +338,16 @@
     return "#";
   }
 
+  // Attribute-safe escaping (covers quotes too) — escapeHtml output is used in both
+  // text and attribute contexts (e.g. title="…"), and the textContent→innerHTML trick
+  // does not escape quotes.
   function escapeHtml(s) {
-    const d = document.createElement("div");
-    d.textContent = s;
-    return d.innerHTML;
+    return String(s ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
   }
 
   /* ═══════════════════════════════════════════════

@@ -2,7 +2,7 @@
 
 > Enhance your PlayStation™ Store experience with price history, cross-platform comparison, review scores, trophy info, wishlist alerts, currency conversion, and smart filters.
 
-![Version](https://img.shields.io/badge/version-2.3.1-blue)
+![Version](https://img.shields.io/badge/version-2.3.2-blue)
 ![Manifest](https://img.shields.io/badge/manifest-v3-green)
 ![Languages](https://img.shields.io/badge/languages-10-orange)
 ![License](https://img.shields.io/badge/license-MIT-brightgreen)
