@@ -391,46 +391,163 @@
   "psnErrFriendly": {
     "message": "PSN에 연결할 수 없습니다. NPSSO 토큰이 최신 상태인지 확인하세요 (약 60일 후 만료). 확장 프로그램의 다른 모든 기능은 정상적으로 작동합니다."
   },
-  "wishlistTitle": { "message": "위시리스트" },
-  "wishlistDesc": { "message": "게임을 추적하고 가격이 목표 이하로 떨어지면 알림을 받으세요." },
-  "wishlistPcOnlyNote": { "message": "참고: 알림은 CheapShark의 크로스 플랫폼 PC 가격(Steam/Epic/GOG, USD)을 사용합니다. PSN 전용 가격은 추적되지 않습니다." },
-  "hltbLink": { "message": "HowLongToBeat에서 플레이 시간 보기 →" },
-
-  "wishlistEmpty": { "message": "위시리스트가 비어있습니다" },
-  "wishlistAddBtn": { "message": "★ 위시리스트에 추가" },
-  "wishlistInBtn": { "message": "★ 위시리스트에 있음 (클릭하여 제거)" },
-  "wishlistTargetLabel": { "message": "목표 가격 (USD)" },
-  "wishlistAdded": { "message": "위시리스트에 추가됨" },
-  "wishlistRemoved": { "message": "위시리스트에서 제거됨" },
-  "wishlistAlreadyAdded": { "message": "이미 위시리스트에 있습니다" },
-  "wishlistPriceDropTitle": { "message": "🎯 가격 인하 알림!" },
-  "wishlistPriceDropBody": { "message": "$NAME$ 이(가) 현재 $NEW$ (이전 $OLD$)", "placeholders": { "name": { "content": "$1" }, "new": { "content": "$2" }, "old": { "content": "$3" } } },
-  "wishlistLastChecked": { "message": "마지막 확인:" },
-  "wishlistColTarget": { "message": "목표" },
-  "wishlistColLast": { "message": "현재 가격" },
-  "currencyTitle": { "message": "표시 통화" },
-  "currencyLabel": { "message": "통화" },
-  "currencyDesc": { "message": "크로스 플랫폼 가격은 CheapShark에서 USD로 제공됩니다. 통화를 선택하여 변환하세요 (Frankfurter의 일일 환율)." },
-  "themeTitle": { "message": "테마" },
-  "themeLabel": { "message": "색상 테마" },
-  "themeAuto": { "message": "자동 (시스템에 따름)" },
-  "themeDark": { "message": "다크" },
-  "themeLight": { "message": "라이트" },
-  "ctxMenuFind": { "message": "GameDeals+에서 가격 비교 찾기" },
-  "exportImportTitle": { "message": "백업 및 복원" },
-  "exportImportDesc": { "message": "수동으로 표시한 게임을 JSON으로 내보내거나 이전 백업에서 복원하세요." },
-  "exportBtn": { "message": "📤 JSON 내보내기" },
-  "importBtn": { "message": "📥 JSON 가져오기" },
-  "exportSuccess": { "message": "내보냄" },
-  "importSuccess": { "message": "$COUNT$ 게임 가져옴", "placeholders": { "count": { "content": "$1" } } },
-  "importFailed": { "message": "가져오기 실패 — 잘못된 파일" },
-  "changelogTitle": { "message": "새로운 기능" },
-  "viewChangelog": { "message": "변경 로그 보기 →" },
-  "infoTitle": { "message": "정보 및 리소스" },
-  "linkPrivacy": { "message": "개인정보 보호정책" },
-  "linkSource": { "message": "GitHub 소스 코드" },
-  "linkCredits": { "message": "데이터: CheapShark · OpenCritic · PSPrices · PSNProfiles" },
-  "errorApiDown": { "message": "서비스를 일시적으로 사용할 수 없습니다. 나중에 다시 시도하세요." },
-  "regionAutoDetected": { "message": "지역 자동 감지됨: $REGION$", "placeholders": { "region": { "content": "$1" } } },
-  "libraryCapWarning": { "message": "PSN 라이브러리에 5000개 이상의 타이틀이 있습니다 — 처음 5000개만 동기화되었습니다." }
+  "wishlistTitle": {
+    "message": "위시리스트"
+  },
+  "wishlistDesc": {
+    "message": "게임을 추적하고 가격이 목표 이하로 떨어지면 알림을 받으세요."
+  },
+  "wishlistPcOnlyNote": {
+    "message": "참고: 알림은 CheapShark의 크로스 플랫폼 PC 가격(Steam/Epic/GOG, USD)을 사용합니다. PSN 전용 가격은 추적되지 않습니다."
+  },
+  "hltbLink": {
+    "message": "HowLongToBeat에서 플레이 시간 보기 →"
+  },
+  "wishlistEmpty": {
+    "message": "위시리스트가 비어있습니다"
+  },
+  "wishlistAddBtn": {
+    "message": "★ 위시리스트에 추가"
+  },
+  "wishlistInBtn": {
+    "message": "★ 위시리스트에 있음 (클릭하여 제거)"
+  },
+  "wishlistTargetLabel": {
+    "message": "목표 가격 (USD)"
+  },
+  "wishlistAdded": {
+    "message": "위시리스트에 추가됨"
+  },
+  "wishlistRemoved": {
+    "message": "위시리스트에서 제거됨"
+  },
+  "wishlistAlreadyAdded": {
+    "message": "이미 위시리스트에 있습니다"
+  },
+  "wishlistPriceDropTitle": {
+    "message": "🎯 가격 인하 알림!"
+  },
+  "wishlistPriceDropBody": {
+    "message": "$NAME$ 이(가) 현재 $NEW$ (이전 $OLD$)",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      },
+      "new": {
+        "content": "$2"
+      },
+      "old": {
+        "content": "$3"
+      }
+    }
+  },
+  "wishlistLastChecked": {
+    "message": "마지막 확인:"
+  },
+  "wishlistColTarget": {
+    "message": "목표"
+  },
+  "wishlistColLast": {
+    "message": "현재 가격"
+  },
+  "wishlistCheckNow": {
+    "message": "🔄 지금 가격 확인"
+  },
+  "wishlistChecking": {
+    "message": "확인 중…"
+  },
+  "wishlistChecked": {
+    "message": "가격이 업데이트됨"
+  },
+  "supportDev": {
+    "message": "❤️ 개발 지원하기"
+  },
+  "supportDevDesc": {
+    "message": "GameDeals+가 마음에 드시나요? Patreon에서 개발을 지원해 주세요."
+  },
+  "currencyTitle": {
+    "message": "표시 통화"
+  },
+  "currencyLabel": {
+    "message": "통화"
+  },
+  "currencyDesc": {
+    "message": "크로스 플랫폼 가격은 CheapShark에서 USD로 제공됩니다. 통화를 선택하여 변환하세요 (Frankfurter의 일일 환율)."
+  },
+  "themeTitle": {
+    "message": "테마"
+  },
+  "themeLabel": {
+    "message": "색상 테마"
+  },
+  "themeAuto": {
+    "message": "자동 (시스템에 따름)"
+  },
+  "themeDark": {
+    "message": "다크"
+  },
+  "themeLight": {
+    "message": "라이트"
+  },
+  "ctxMenuFind": {
+    "message": "GameDeals+에서 가격 비교 찾기"
+  },
+  "exportImportTitle": {
+    "message": "백업 및 복원"
+  },
+  "exportImportDesc": {
+    "message": "수동으로 표시한 게임을 JSON으로 내보내거나 이전 백업에서 복원하세요."
+  },
+  "exportBtn": {
+    "message": "📤 JSON 내보내기"
+  },
+  "importBtn": {
+    "message": "📥 JSON 가져오기"
+  },
+  "exportSuccess": {
+    "message": "내보냄"
+  },
+  "importSuccess": {
+    "message": "$COUNT$ 게임 가져옴",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "importFailed": {
+    "message": "가져오기 실패 — 잘못된 파일"
+  },
+  "changelogTitle": {
+    "message": "새로운 기능"
+  },
+  "viewChangelog": {
+    "message": "변경 로그 보기 →"
+  },
+  "infoTitle": {
+    "message": "정보 및 리소스"
+  },
+  "linkPrivacy": {
+    "message": "개인정보 보호정책"
+  },
+  "linkSource": {
+    "message": "GitHub 소스 코드"
+  },
+  "linkCredits": {
+    "message": "데이터: CheapShark · OpenCritic · PSPrices · PSNProfiles"
+  },
+  "errorApiDown": {
+    "message": "서비스를 일시적으로 사용할 수 없습니다. 나중에 다시 시도하세요."
+  },
+  "regionAutoDetected": {
+    "message": "지역 자동 감지됨: $REGION$",
+    "placeholders": {
+      "region": {
+        "content": "$1"
+      }
+    }
+  },
+  "libraryCapWarning": {
+    "message": "PSN 라이브러리에 5000개 이상의 타이틀이 있습니다 — 처음 5000개만 동기화되었습니다."
+  }
 }

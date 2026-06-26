@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     importFile: document.getElementById("importFile"),
     wlList: document.getElementById("wlList"),
     wlCount: document.getElementById("wlCount"),
+    wlCheckBtn: document.getElementById("wlCheckBtn"),
     purgeBtn: document.getElementById("purgeBtn"),
     clearBtn: document.getElementById("clearBtn"),
     cActive: document.getElementById("cActive"),
@@ -285,6 +286,22 @@ document.addEventListener("DOMContentLoaded", async () => {
       el.wlList.innerHTML = `<div class="own-empty">${esc(t("errorApiDown"))}</div>`;
     }
   }
+
+  el.wlCheckBtn.addEventListener("click", async () => {
+    el.wlCheckBtn.disabled = true;
+    const orig = el.wlCheckBtn.innerHTML;
+    el.wlCheckBtn.innerHTML = `${t("wishlistChecking")} <span class="spinner"></span>`;
+    try {
+      await chrome.runtime.sendMessage({ type: "CHECK_WISHLIST_NOW" });
+      await renderWishlist();
+      toast(t("wishlistChecked"));
+    } catch {
+      toast(t("errorApiDown"));
+    } finally {
+      el.wlCheckBtn.disabled = false;
+      el.wlCheckBtn.innerHTML = orig;
+    }
+  });
 
   // ═══ Export / Import ═══
   el.exportBtn.addEventListener("click", async () => {

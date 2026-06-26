@@ -391,46 +391,163 @@
   "psnErrFriendly": {
     "message": "PSNに接続できませんでした。NPSSOトークンが新しいことを確認してください(約60日で期限切れ)。他のすべての機能は通常通り動作します。"
   },
-  "wishlistTitle": { "message": "ウィッシュリスト" },
-  "wishlistDesc": { "message": "ゲームを追跡し、価格が目標を下回ったら通知を受け取れます。" },
-  "wishlistPcOnlyNote": { "message": "注: アラートはCheapSharkのクロスプラットフォームPC価格(Steam/Epic/GOG、USD)を使用。PSN限定価格は追跡されません。" },
-  "hltbLink": { "message": "プレイ時間をHowLongToBeatで見る →" },
-
-  "wishlistEmpty": { "message": "ウィッシュリストは空です" },
-  "wishlistAddBtn": { "message": "★ ウィッシュリストに追加" },
-  "wishlistInBtn": { "message": "★ ウィッシュリスト中(クリックで削除)" },
-  "wishlistTargetLabel": { "message": "目標価格 (USD)" },
-  "wishlistAdded": { "message": "ウィッシュリストに追加しました" },
-  "wishlistRemoved": { "message": "ウィッシュリストから削除しました" },
-  "wishlistAlreadyAdded": { "message": "既にウィッシュリストにあります" },
-  "wishlistPriceDropTitle": { "message": "🎯 値下げアラート!" },
-  "wishlistPriceDropBody": { "message": "$NAME$ は現在 $NEW$ (以前は $OLD$)", "placeholders": { "name": { "content": "$1" }, "new": { "content": "$2" }, "old": { "content": "$3" } } },
-  "wishlistLastChecked": { "message": "最終チェック:" },
-  "wishlistColTarget": { "message": "目標" },
-  "wishlistColLast": { "message": "現在の価格" },
-  "currencyTitle": { "message": "表示通貨" },
-  "currencyLabel": { "message": "通貨" },
-  "currencyDesc": { "message": "クロスプラットフォーム価格はCheapSharkからUSDで提供されます。通貨を選択して変換できます(Frankfurterの日次レート)。" },
-  "themeTitle": { "message": "テーマ" },
-  "themeLabel": { "message": "カラーテーマ" },
-  "themeAuto": { "message": "自動(システムに従う)" },
-  "themeDark": { "message": "ダーク" },
-  "themeLight": { "message": "ライト" },
-  "ctxMenuFind": { "message": "GameDeals+で価格比較を検索" },
-  "exportImportTitle": { "message": "バックアップと復元" },
-  "exportImportDesc": { "message": "手動で所有マークしたゲームをJSONにエクスポート、または以前のバックアップから復元できます。" },
-  "exportBtn": { "message": "📤 JSONエクスポート" },
-  "importBtn": { "message": "📥 JSONインポート" },
-  "exportSuccess": { "message": "エクスポート済み" },
-  "importSuccess": { "message": "$COUNT$ 件のゲームをインポートしました", "placeholders": { "count": { "content": "$1" } } },
-  "importFailed": { "message": "インポート失敗 — 無効なファイル" },
-  "changelogTitle": { "message": "新着情報" },
-  "viewChangelog": { "message": "変更履歴を表示 →" },
-  "infoTitle": { "message": "情報とリソース" },
-  "linkPrivacy": { "message": "プライバシーポリシー" },
-  "linkSource": { "message": "GitHubのソースコード" },
-  "linkCredits": { "message": "データ: CheapShark · OpenCritic · PSPrices · PSNProfiles" },
-  "errorApiDown": { "message": "サービスは一時的に利用できません。後でやり直してください。" },
-  "regionAutoDetected": { "message": "リージョン自動検出: $REGION$", "placeholders": { "region": { "content": "$1" } } },
-  "libraryCapWarning": { "message": "PSNライブラリには5000以上のタイトルがあります — 最初の5000のみ同期されました。" }
+  "wishlistTitle": {
+    "message": "ウィッシュリスト"
+  },
+  "wishlistDesc": {
+    "message": "ゲームを追跡し、価格が目標を下回ったら通知を受け取れます。"
+  },
+  "wishlistPcOnlyNote": {
+    "message": "注: アラートはCheapSharkのクロスプラットフォームPC価格(Steam/Epic/GOG、USD)を使用。PSN限定価格は追跡されません。"
+  },
+  "hltbLink": {
+    "message": "プレイ時間をHowLongToBeatで見る →"
+  },
+  "wishlistEmpty": {
+    "message": "ウィッシュリストは空です"
+  },
+  "wishlistAddBtn": {
+    "message": "★ ウィッシュリストに追加"
+  },
+  "wishlistInBtn": {
+    "message": "★ ウィッシュリスト中(クリックで削除)"
+  },
+  "wishlistTargetLabel": {
+    "message": "目標価格 (USD)"
+  },
+  "wishlistAdded": {
+    "message": "ウィッシュリストに追加しました"
+  },
+  "wishlistRemoved": {
+    "message": "ウィッシュリストから削除しました"
+  },
+  "wishlistAlreadyAdded": {
+    "message": "既にウィッシュリストにあります"
+  },
+  "wishlistPriceDropTitle": {
+    "message": "🎯 値下げアラート!"
+  },
+  "wishlistPriceDropBody": {
+    "message": "$NAME$ は現在 $NEW$ (以前は $OLD$)",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      },
+      "new": {
+        "content": "$2"
+      },
+      "old": {
+        "content": "$3"
+      }
+    }
+  },
+  "wishlistLastChecked": {
+    "message": "最終チェック:"
+  },
+  "wishlistColTarget": {
+    "message": "目標"
+  },
+  "wishlistColLast": {
+    "message": "現在の価格"
+  },
+  "wishlistCheckNow": {
+    "message": "🔄 今すぐ価格を確認"
+  },
+  "wishlistChecking": {
+    "message": "確認中…"
+  },
+  "wishlistChecked": {
+    "message": "価格を更新しました"
+  },
+  "supportDev": {
+    "message": "❤️ 開発を支援"
+  },
+  "supportDevDesc": {
+    "message": "GameDeals+を気に入っていただけましたか？Patreonで開発を支援してください。"
+  },
+  "currencyTitle": {
+    "message": "表示通貨"
+  },
+  "currencyLabel": {
+    "message": "通貨"
+  },
+  "currencyDesc": {
+    "message": "クロスプラットフォーム価格はCheapSharkからUSDで提供されます。通貨を選択して変換できます(Frankfurterの日次レート)。"
+  },
+  "themeTitle": {
+    "message": "テーマ"
+  },
+  "themeLabel": {
+    "message": "カラーテーマ"
+  },
+  "themeAuto": {
+    "message": "自動(システムに従う)"
+  },
+  "themeDark": {
+    "message": "ダーク"
+  },
+  "themeLight": {
+    "message": "ライト"
+  },
+  "ctxMenuFind": {
+    "message": "GameDeals+で価格比較を検索"
+  },
+  "exportImportTitle": {
+    "message": "バックアップと復元"
+  },
+  "exportImportDesc": {
+    "message": "手動で所有マークしたゲームをJSONにエクスポート、または以前のバックアップから復元できます。"
+  },
+  "exportBtn": {
+    "message": "📤 JSONエクスポート"
+  },
+  "importBtn": {
+    "message": "📥 JSONインポート"
+  },
+  "exportSuccess": {
+    "message": "エクスポート済み"
+  },
+  "importSuccess": {
+    "message": "$COUNT$ 件のゲームをインポートしました",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "importFailed": {
+    "message": "インポート失敗 — 無効なファイル"
+  },
+  "changelogTitle": {
+    "message": "新着情報"
+  },
+  "viewChangelog": {
+    "message": "変更履歴を表示 →"
+  },
+  "infoTitle": {
+    "message": "情報とリソース"
+  },
+  "linkPrivacy": {
+    "message": "プライバシーポリシー"
+  },
+  "linkSource": {
+    "message": "GitHubのソースコード"
+  },
+  "linkCredits": {
+    "message": "データ: CheapShark · OpenCritic · PSPrices · PSNProfiles"
+  },
+  "errorApiDown": {
+    "message": "サービスは一時的に利用できません。後でやり直してください。"
+  },
+  "regionAutoDetected": {
+    "message": "リージョン自動検出: $REGION$",
+    "placeholders": {
+      "region": {
+        "content": "$1"
+      }
+    }
+  },
+  "libraryCapWarning": {
+    "message": "PSNライブラリには5000以上のタイトルがあります — 最初の5000のみ同期されました。"
+  }
 }

@@ -391,46 +391,163 @@
   "psnErrFriendly": {
     "message": "Impossible de se connecter à PSN. Assurez-vous que votre jeton NPSSO est récent (expire après ~60 jours). Les autres fonctionnalités de l'extension fonctionnent normalement."
   },
-  "wishlistTitle": { "message": "Liste de souhaits" },
-  "wishlistDesc": { "message": "Suivez les jeux et soyez notifié lorsque le prix passe sous votre objectif." },
-  "wishlistPcOnlyNote": { "message": "Note : les alertes utilisent les prix PC multiplateformes de CheapShark (Steam/Epic/GOG, en USD). Les prix exclusifs PSN ne sont pas suivis." },
-  "hltbLink": { "message": "Durées de jeu sur HowLongToBeat →" },
-
-  "wishlistEmpty": { "message": "Votre liste de souhaits est vide" },
-  "wishlistAddBtn": { "message": "★ Ajouter aux souhaits" },
-  "wishlistInBtn": { "message": "★ Dans les souhaits (clic pour retirer)" },
-  "wishlistTargetLabel": { "message": "Prix cible (USD)" },
-  "wishlistAdded": { "message": "Ajouté à la liste de souhaits" },
-  "wishlistRemoved": { "message": "Retiré de la liste de souhaits" },
-  "wishlistAlreadyAdded": { "message": "Déjà dans votre liste" },
-  "wishlistPriceDropTitle": { "message": "🎯 Alerte baisse de prix !" },
-  "wishlistPriceDropBody": { "message": "$NAME$ est maintenant à $NEW$ (était $OLD$)", "placeholders": { "name": { "content": "$1" }, "new": { "content": "$2" }, "old": { "content": "$3" } } },
-  "wishlistLastChecked": { "message": "Dernière vérification :" },
-  "wishlistColTarget": { "message": "Cible" },
-  "wishlistColLast": { "message": "Prix actuel" },
-  "currencyTitle": { "message": "Devise d'affichage" },
-  "currencyLabel": { "message": "Devise" },
-  "currencyDesc": { "message": "Les prix multiplateformes proviennent de CheapShark en USD. Choisissez votre devise pour la conversion (taux quotidiens de Frankfurter)." },
-  "themeTitle": { "message": "Thème" },
-  "themeLabel": { "message": "Thème de couleur" },
-  "themeAuto": { "message": "Auto (système)" },
-  "themeDark": { "message": "Sombre" },
-  "themeLight": { "message": "Clair" },
-  "ctxMenuFind": { "message": "Rechercher sur GameDeals+ comparateur" },
-  "exportImportTitle": { "message": "Sauvegarde et restauration" },
-  "exportImportDesc": { "message": "Exportez vos jeux marqués manuellement en JSON, ou restaurez depuis une sauvegarde précédente." },
-  "exportBtn": { "message": "📤 Exporter JSON" },
-  "importBtn": { "message": "📥 Importer JSON" },
-  "exportSuccess": { "message": "Exporté" },
-  "importSuccess": { "message": "$COUNT$ jeux importés", "placeholders": { "count": { "content": "$1" } } },
-  "importFailed": { "message": "Échec de l'importation — fichier invalide" },
-  "changelogTitle": { "message": "Quoi de neuf" },
-  "viewChangelog": { "message": "Voir le journal des modifications →" },
-  "infoTitle": { "message": "À propos" },
-  "linkPrivacy": { "message": "Politique de confidentialité" },
-  "linkSource": { "message": "Code source sur GitHub" },
-  "linkCredits": { "message": "Données : CheapShark · OpenCritic · PSPrices · PSNProfiles" },
-  "errorApiDown": { "message": "Service temporairement indisponible. Réessayez plus tard." },
-  "regionAutoDetected": { "message": "Région détectée automatiquement : $REGION$", "placeholders": { "region": { "content": "$1" } } },
-  "libraryCapWarning": { "message": "Votre bibliothèque PSN compte plus de 5000 titres — seuls les 5000 premiers ont été synchronisés." }
+  "wishlistTitle": {
+    "message": "Liste de souhaits"
+  },
+  "wishlistDesc": {
+    "message": "Suivez les jeux et soyez notifié lorsque le prix passe sous votre objectif."
+  },
+  "wishlistPcOnlyNote": {
+    "message": "Note : les alertes utilisent les prix PC multiplateformes de CheapShark (Steam/Epic/GOG, en USD). Les prix exclusifs PSN ne sont pas suivis."
+  },
+  "hltbLink": {
+    "message": "Durées de jeu sur HowLongToBeat →"
+  },
+  "wishlistEmpty": {
+    "message": "Votre liste de souhaits est vide"
+  },
+  "wishlistAddBtn": {
+    "message": "★ Ajouter aux souhaits"
+  },
+  "wishlistInBtn": {
+    "message": "★ Dans les souhaits (clic pour retirer)"
+  },
+  "wishlistTargetLabel": {
+    "message": "Prix cible (USD)"
+  },
+  "wishlistAdded": {
+    "message": "Ajouté à la liste de souhaits"
+  },
+  "wishlistRemoved": {
+    "message": "Retiré de la liste de souhaits"
+  },
+  "wishlistAlreadyAdded": {
+    "message": "Déjà dans votre liste"
+  },
+  "wishlistPriceDropTitle": {
+    "message": "🎯 Alerte baisse de prix !"
+  },
+  "wishlistPriceDropBody": {
+    "message": "$NAME$ est maintenant à $NEW$ (était $OLD$)",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      },
+      "new": {
+        "content": "$2"
+      },
+      "old": {
+        "content": "$3"
+      }
+    }
+  },
+  "wishlistLastChecked": {
+    "message": "Dernière vérification :"
+  },
+  "wishlistColTarget": {
+    "message": "Cible"
+  },
+  "wishlistColLast": {
+    "message": "Prix actuel"
+  },
+  "wishlistCheckNow": {
+    "message": "🔄 Vérifier les prix maintenant"
+  },
+  "wishlistChecking": {
+    "message": "Vérification…"
+  },
+  "wishlistChecked": {
+    "message": "Prix mis à jour"
+  },
+  "supportDev": {
+    "message": "❤️ Soutenir le développement"
+  },
+  "supportDevDesc": {
+    "message": "Vous aimez GameDeals+ ? Soutenez son développement sur Patreon."
+  },
+  "currencyTitle": {
+    "message": "Devise d'affichage"
+  },
+  "currencyLabel": {
+    "message": "Devise"
+  },
+  "currencyDesc": {
+    "message": "Les prix multiplateformes proviennent de CheapShark en USD. Choisissez votre devise pour la conversion (taux quotidiens de Frankfurter)."
+  },
+  "themeTitle": {
+    "message": "Thème"
+  },
+  "themeLabel": {
+    "message": "Thème de couleur"
+  },
+  "themeAuto": {
+    "message": "Auto (système)"
+  },
+  "themeDark": {
+    "message": "Sombre"
+  },
+  "themeLight": {
+    "message": "Clair"
+  },
+  "ctxMenuFind": {
+    "message": "Rechercher sur GameDeals+ comparateur"
+  },
+  "exportImportTitle": {
+    "message": "Sauvegarde et restauration"
+  },
+  "exportImportDesc": {
+    "message": "Exportez vos jeux marqués manuellement en JSON, ou restaurez depuis une sauvegarde précédente."
+  },
+  "exportBtn": {
+    "message": "📤 Exporter JSON"
+  },
+  "importBtn": {
+    "message": "📥 Importer JSON"
+  },
+  "exportSuccess": {
+    "message": "Exporté"
+  },
+  "importSuccess": {
+    "message": "$COUNT$ jeux importés",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "importFailed": {
+    "message": "Échec de l'importation — fichier invalide"
+  },
+  "changelogTitle": {
+    "message": "Quoi de neuf"
+  },
+  "viewChangelog": {
+    "message": "Voir le journal des modifications →"
+  },
+  "infoTitle": {
+    "message": "À propos"
+  },
+  "linkPrivacy": {
+    "message": "Politique de confidentialité"
+  },
+  "linkSource": {
+    "message": "Code source sur GitHub"
+  },
+  "linkCredits": {
+    "message": "Données : CheapShark · OpenCritic · PSPrices · PSNProfiles"
+  },
+  "errorApiDown": {
+    "message": "Service temporairement indisponible. Réessayez plus tard."
+  },
+  "regionAutoDetected": {
+    "message": "Région détectée automatiquement : $REGION$",
+    "placeholders": {
+      "region": {
+        "content": "$1"
+      }
+    }
+  },
+  "libraryCapWarning": {
+    "message": "Votre bibliothèque PSN compte plus de 5000 titres — seuls les 5000 premiers ont été synchronisés."
+  }
 }

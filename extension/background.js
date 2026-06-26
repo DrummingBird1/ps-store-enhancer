@@ -77,6 +77,41 @@ chrome.contextMenus.onClicked.addListener((info, _tab) => {
   }
 });
 
+/* ──── wishlist notification click → open the game's store page ──── */
+// notification-id → store URL map lives in storage.session (survives SW restarts,
+// cleared when the browser closes).
+async function rememberNotifTarget(notifId, url) {
+  if (!url) return;
+  try {
+    const d = await chrome.storage.session.get(["notif_targets"]);
+    const map = d.notif_targets || {};
+    map[notifId] = url;
+    await chrome.storage.session.set({ notif_targets: map });
+  } catch {}
+}
+
+function isSafeStoreUrl(url) {
+  try {
+    const u = new URL(url);
+    return u.protocol === "https:" && u.hostname === "store.playstation.com";
+  } catch { return false; }
+}
+
+chrome.notifications.onClicked.addListener(async (notifId) => {
+  if (!notifId.startsWith("pse-wl-")) return;
+  try {
+    const d = await chrome.storage.session.get(["notif_targets"]);
+    const map = d.notif_targets || {};
+    const url = map[notifId];
+    if (url && isSafeStoreUrl(url)) {
+      chrome.tabs.create({ url });
+    }
+    delete map[notifId];
+    await chrome.storage.session.set({ notif_targets: map });
+  } catch {}
+  chrome.notifications.clear(notifId);
+});
+
 /* ──── message router ──── */
 chrome.runtime.onMessage.addListener((msg, sender, respond) => {
   if (!msg?.type) return false;
@@ -216,12 +251,15 @@ async function checkWishlistPrices() {
       if (item.targetPrice != null && newPrice <= item.targetPrice && !item.notified) {
         const oldShow = (prevPrice != null && prevPrice > newPrice) ? prevPrice : item.targetPrice;
         try {
-          await chrome.notifications.create(`pse-wl-${slugify(item.name)}-${Date.now()}`, {
+          const notifId = `pse-wl-${slugify(item.name)}-${Date.now()}`;
+          await chrome.notifications.create(notifId, {
             type: "basic",
             iconUrl: chrome.runtime.getURL("icons/icon128.png"),
             title: chrome.i18n.getMessage("wishlistPriceDropTitle") || "Price drop alert!",
             message: (chrome.i18n.getMessage("wishlistPriceDropBody", [item.name, `$${newPrice.toFixed(2)}`, `$${oldShow.toFixed(2)}`]) || `${item.name} is now $${newPrice.toFixed(2)}`).substring(0, 200)
           });
+          // Remember where this notification should take the user when clicked.
+          await rememberNotifTarget(notifId, item.storeUrl);
           item.notified = true;
         } catch (e) { console.warn("[PSE] notification failed:", e); }
       } else if (item.targetPrice != null && newPrice > item.targetPrice) {
