@@ -20,6 +20,7 @@ Visit any product page, e.g. https://store.playstation.com/en-us/concept/1000009
 - [ ] OpenCritic / Metacritic **score badge** appears next to the game title
 - [ ] **Price history card** appears below the title with a sparkline + "Estimated history" tag
 - [ ] **Cross-platform comparison** table shows Steam/Epic/GOG prices
+- [ ] On a game with a distinct edition listing on CheapShark (e.g. search a base title that also has a "Deluxe"/"Ultimate" listing), rows for the differing edition show a 🎁 edition badge next to the store name; rows matching the page's own edition (or with no edition at all) show no badge (v2.5+)
 - [ ] **Trophy info card** shows platinum/difficulty/hours/playthroughs (use a known game like Elden Ring)
 - [ ] **"Mark as owned"** button appears
 - [ ] **"⭐ Add to Wishlist"** button appears (v2.3+)
@@ -38,6 +39,8 @@ Visit any product page, e.g. https://store.playstation.com/en-us/concept/1000009
 - [ ] Open options → Wishlist card → the game appears with target-price input
 - [ ] Set a target price below the current price → wait ~24h OR open DevTools console on the background service worker and run `chrome.runtime.sendMessage({type:"CHECK_WISHLIST_NOW"})` → a desktop notification fires
 - [ ] Click "★ On Wishlist" again on the product page → button reverts to "Add to Wishlist"
+- [ ] Open options → **Library & Wishlist Stats** card shows correct counts: games owned, wishlist size, wishlist value (sum of last-checked prices), deals ready (v2.5+)
+- [ ] Set a wishlist item's target price above its last-checked price → "Deals Ready" stat increments and the extension icon shows a green badge with the count; clear the target → badge disappears (or shows the changelog dot if unseen) (v2.5+)
 
 ### Right-click context menu (v2.3+)
 
