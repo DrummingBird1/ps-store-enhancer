@@ -1,8 +1,8 @@
-# 🎮 GameDeals+ for PS Store
+# 🎮 PS Store Insight
 
-> Enhance your PlayStation™ Store experience with price history, cross-platform comparison, review scores, trophy info, wishlist alerts, currency conversion, and smart filters.
+> Formerly GameDeals+. Enhance your PlayStation™ Store experience with price history, cross-platform comparison, review scores, trophy info, wishlist alerts, currency conversion, and smart filters.
 
-![Version](https://img.shields.io/badge/version-2.4.0-blue)
+![Version](https://img.shields.io/badge/version-2.5.0-blue)
 ![Manifest](https://img.shields.io/badge/manifest-v3-green)
 ![Languages](https://img.shields.io/badge/languages-10-orange)
 ![License](https://img.shields.io/badge/license-MIT-brightgreen)
@@ -16,6 +16,7 @@
 
 | Feature | Description |
 |---------|-------------|
+| 🔎 **Live Search Suggestions** | Enriched dropdown (thumbnail + PC price) as you type in the store search box |
 | 📉 **Price History** | Embedded sparkline chart with 12-month history + lowest-ever price |
 | 🔀 **Cross-Platform** | Price comparison table — Steam, Epic, GOG, Humble (CheapShark API) |
 | 📊 **Review Scores** | OpenCritic / Metacritic badge next to game title |

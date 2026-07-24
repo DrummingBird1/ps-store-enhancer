@@ -40,7 +40,7 @@
       "env": { "node": true, "jest": true }
     },
     {
-      "files": ["extension/match.js"],
+      "files": ["extension/match.js", "extension/changelog-data.js"],
       "env": { "node": true, "browser": true, "serviceworker": true }
     },
     {

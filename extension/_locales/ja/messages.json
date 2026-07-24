@@ -1,6 +1,6 @@
 {
   "extName": {
-    "message": "GameDeals+ for PS Store"
+    "message": "PS Store Insight for PS Store"
   },
   "extDesc": {
     "message": "PlayStation Store向けの価格履歴、クロスプラットフォーム比較、レビュースコア、トロフィー情報、スマートフィルター。PSN同期はオプション。"
@@ -314,7 +314,7 @@
     "message": "この拡張機能はSony Interactive EntertainmentまたはPlayStationとは一切関係ありません。"
   },
   "welcomeTitle": {
-    "message": "GameDeals+へようこそ！"
+    "message": "PS Store Insightへようこそ！"
   },
   "welcomeSubtitle": {
     "message": "PlayStation™ Storeがさらに便利になりました。"
@@ -463,7 +463,7 @@
     "message": "❤️ 開発を支援"
   },
   "supportDevDesc": {
-    "message": "GameDeals+を気に入っていただけましたか？Patreonで開発を支援してください。"
+    "message": "PS Store Insightを気に入っていただけましたか？Patreonで開発を支援してください。"
   },
   "currencyTitle": {
     "message": "表示通貨"
@@ -490,7 +490,7 @@
     "message": "ライト"
   },
   "ctxMenuFind": {
-    "message": "GameDeals+で価格比較を検索"
+    "message": "PS Store Insightで価格比較を検索"
   },
   "exportImportTitle": {
     "message": "バックアップと復元"
@@ -549,5 +549,36 @@
   },
   "libraryCapWarning": {
     "message": "PSNライブラリには5000以上のタイトルがあります — 最初の5000のみ同期されました。"
+  },
+  "searchAutocompleteToggle": {
+    "message": "ライブ検索候補"
+  },
+  "searchAutocompleteDesc": {
+    "message": "ストアの検索欄への入力中に価格とスコアをプレビュー"
+  },
+  "autocompleteBadge": {
+    "message": "PS Store Insight のライブ結果"
+  },
+  "autocompletePcFrom": {
+    "message": "PC版 最安"
+  },
+  "whatsNewTitle": {
+    "message": "🎉 v$VERSION$ の新機能",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
+  },
+  "whatsNewDismiss": {
+    "message": "了解"
+  },
+  "whatsNewBannerText": {
+    "message": "PS Store Insight が v$VERSION$ に更新されました — 新機能を見る",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
   }
 }

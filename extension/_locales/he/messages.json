@@ -1,6 +1,6 @@
 {
   "extName": {
-    "message": "GameDeals+ for PS Store"
+    "message": "PS Store Insight for PS Store"
   },
   "extDesc": {
     "message": "היסטוריית מחירים, השוואת מחירים, ציוני ביקורת, מידע על גביעים וסינון חכם לחנות PlayStation. סנכרון PSN אופציונלי."
@@ -314,7 +314,7 @@
     "message": "תוסף זה אינו מזוהה עם, ממומן על ידי, או קשור ל-Sony Interactive Entertainment, PlayStation או כל חברת בת שלהם."
   },
   "welcomeTitle": {
-    "message": "!ברוך הבא ל-GameDeals+"
+    "message": "!ברוך הבא ל-PS Store Insight"
   },
   "welcomeSubtitle": {
     "message": ".חנות ה-PlayStation™ שלך השתדרגה"
@@ -463,7 +463,7 @@
     "message": "❤️ תמכו בפיתוח"
   },
   "supportDevDesc": {
-    "message": "נהנים מ-GameDeals+? תמכו בפיתוח ב-Patreon."
+    "message": "נהנים מ-PS Store Insight? תמכו בפיתוח ב-Patreon."
   },
   "currencyTitle": {
     "message": "מטבע תצוגה"
@@ -490,7 +490,7 @@
     "message": "בהיר"
   },
   "ctxMenuFind": {
-    "message": "חפש ב-GameDeals+ השוואת מחירים"
+    "message": "חפש ב-PS Store Insight השוואת מחירים"
   },
   "exportImportTitle": {
     "message": "גיבוי ושחזור"
@@ -516,7 +516,7 @@
     }
   },
   "importFailed": {
-    "message": "הייבוא נכשל — הקובץ אינו ייצוא תקין של GameDeals+"
+    "message": "הייבוא נכשל — הקובץ אינו ייצוא תקין של PS Store Insight"
   },
   "changelogTitle": {
     "message": "מה חדש"
@@ -549,5 +549,36 @@
   },
   "libraryCapWarning": {
     "message": "ספריית ה-PSN שלך כוללת יותר מ-5000 כותרים — רק 5000 הראשונים סונכרנו."
+  },
+  "searchAutocompleteToggle": {
+    "message": "הצעות חיפוש חכמות"
+  },
+  "searchAutocompleteDesc": {
+    "message": "תצוגה מקדימה של מחיר וציון תוך כדי הקלדה בתיבת החיפוש"
+  },
+  "autocompleteBadge": {
+    "message": "תוצאות חיות מבית PS Store Insight"
+  },
+  "autocompletePcFrom": {
+    "message": "ב-PC החל מ-"
+  },
+  "whatsNewTitle": {
+    "message": "🎉 מה חדש בגרסה v$VERSION$",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
+  },
+  "whatsNewDismiss": {
+    "message": "הבנתי"
+  },
+  "whatsNewBannerText": {
+    "message": "PS Store Insight עודכן לגרסה v$VERSION$ — ראו מה חדש",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
   }
 }

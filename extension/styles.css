@@ -160,10 +160,48 @@
 /* ─── filter ─── */
 .pse-hidden-addon { display:none !important; }
 
+/* ─── v2.5: Live search autocomplete ─── */
+.pse-ac-dropdown {
+  font-family: var(--pse-font);
+  background: var(--pse-bg-card);
+  border: 1px solid var(--pse-border-accent);
+  border-radius: var(--pse-radius-sm);
+  box-shadow: var(--pse-shadow);
+  z-index: 2147483000;
+  overflow: hidden;
+  animation: pse-fadeIn 0.15s ease-out;
+}
+.pse-ac-header { font-size:10px; font-weight:600; letter-spacing:.4px; color:var(--pse-accent-light); padding:8px 12px; border-bottom:1px solid var(--pse-border); text-transform:uppercase; }
+.pse-ac-list { max-height:320px; overflow-y:auto; }
+.pse-ac-row { display:flex; align-items:center; gap:10px; padding:8px 12px; text-decoration:none; color:inherit; border-bottom:1px solid var(--pse-border); transition:background .12s; }
+.pse-ac-row:last-child { border-bottom:none; }
+.pse-ac-row:hover, .pse-ac-row.pse-ac-active { background:rgba(0,112,209,0.12); }
+.pse-ac-thumb { width:40px; height:40px; object-fit:cover; border-radius:6px; flex-shrink:0; background:rgba(255,255,255,0.05); }
+.pse-ac-info { display:flex; flex-direction:column; gap:2px; min-width:0; }
+.pse-ac-title { font-size:12px; font-weight:600; color:var(--pse-text-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.pse-ac-price { font-size:11px; color:var(--pse-success); direction:ltr; }
+
+/* ─── v2.5: "What's new" banner ─── */
+.pse-wn-banner {
+  font-family: var(--pse-font);
+  position: fixed; bottom:20px; inset-inline-end:20px; z-index:2147483000;
+  display:flex; align-items:center; gap:12px;
+  background: var(--pse-bg-card); border:1px solid var(--pse-border-accent);
+  border-radius: var(--pse-radius); box-shadow: var(--pse-shadow);
+  padding:12px 16px; max-width:340px; animation: pse-fadeIn 0.3s ease-out;
+}
+.pse-wn-text { font-size:12px; color:var(--pse-text-primary); flex:1; }
+.pse-wn-actions { display:flex; align-items:center; gap:10px; flex-shrink:0; }
+.pse-wn-link { font-size:11px; font-weight:600; color:var(--pse-accent-light); text-decoration:none; white-space:nowrap; }
+.pse-wn-link:hover { text-decoration:underline; }
+.pse-wn-close { background:none; border:none; color:var(--pse-text-muted); cursor:pointer; font-size:13px; padding:2px 4px; line-height:1; }
+.pse-wn-close:hover { color:var(--pse-text-primary); }
+
 /* ─── animations ─── */
 @keyframes pse-fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
 @keyframes pse-popIn { from{opacity:0;transform:scale(0.7)} to{opacity:1;transform:scale(1)} }
 
 @media(max-width:768px) {
   .pse-price-history,.pse-trophy-box,.pse-xplatform,.pse-owned-btn-wrap { max-width:100%; margin:12px 16px; }
+  .pse-wn-banner { inset-inline:12px; max-width:none; bottom:12px; }
 }

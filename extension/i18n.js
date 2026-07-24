@@ -1,5 +1,5 @@
 /**
- * GameDeals+ for PS Store — i18n Module
+ * PS Store Insight — i18n Module
  * ================================
  * Supports two modes:
  *   "auto" → uses chrome.i18n.getMessage() (browser language)

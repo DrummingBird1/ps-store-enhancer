@@ -1,5 +1,5 @@
 /**
- * GameDeals+ for PS Store — Content Script (v2.2)
+ * PS Store Insight — Content Script (v2.2)
  * All 13 fixes applied.
  */
 (() => {
@@ -129,6 +129,8 @@
     ensureRates();
     observePageChanges();
     processCurrentPage();
+    initSearchAutocomplete();
+    initChangelogBanner();
   }
 
   // Re-init i18n when language changes
@@ -146,7 +148,7 @@
       const result = await chrome.storage.sync.get([
         "hideAddons", "hideDlc", "hideOwned", "pspricesRegion", "displayCurrency", "theme",
         "enableMetacritic", "enablePriceHistory", "enableTrophies", "enableCrossPlatform",
-        "enableWishlist", "regionAutoSet"
+        "enableWishlist", "enableSearchAutocomplete", "regionAutoSet"
       ]);
       settings = {
         hideAddons: result.hideAddons ?? false,
@@ -160,6 +162,7 @@
         enableTrophies: result.enableTrophies ?? true,
         enableCrossPlatform: result.enableCrossPlatform ?? true,
         enableWishlist: result.enableWishlist ?? true,
+        enableSearchAutocomplete: result.enableSearchAutocomplete ?? true,
         regionAutoSet: result.regionAutoSet ?? false
       };
     } catch {
@@ -167,7 +170,8 @@
         hideAddons: false, hideDlc: false, hideOwned: false,
         pspricesRegion: "IL", displayCurrency: "USD", theme: "auto",
         enableMetacritic: true, enablePriceHistory: true, enableTrophies: true,
-        enableCrossPlatform: true, enableWishlist: true, regionAutoSet: false
+        enableCrossPlatform: true, enableWishlist: true, enableSearchAutocomplete: true,
+        regionAutoSet: false
       };
     }
   }
@@ -804,6 +808,202 @@
       gridFilterTimer = setTimeout(schedule, 500);
     });
     gridObserver.observe(grid, { childList: true, subtree: true });
+  }
+
+  /* ═══════════════════════════════════════════════
+   * FEATURE — Live Search Autocomplete
+   * Adds an enriched (price + thumbnail) dropdown under the PS Store search box,
+   * clearly labeled as PS Store Insight's own overlay — it does not touch or replace
+   * Sony's native search UI. Selecting a row jumps to PS Store's own search
+   * results for that exact title.
+   * ═══════════════════════════════════════════════ */
+  let acDebounce = null;
+  let acDropdown = null;
+  let acActiveInput = null;
+  let acSelectedIndex = -1;
+  let acLastQuery = "";
+  let acToken = 0;
+
+  function initSearchAutocomplete() {
+    document.addEventListener("input", onSearchInput, true);
+    document.addEventListener("keydown", onSearchKeydown, true);
+    document.addEventListener("click", (e) => {
+      if (acDropdown && e.target !== acActiveInput && !acDropdown.contains(e.target)) closeAutocomplete();
+    });
+    window.addEventListener("blur", closeAutocomplete);
+    window.addEventListener("scroll", closeAutocomplete, true);
+    window.addEventListener("resize", closeAutocomplete);
+  }
+
+  const UNSAFE_INPUT_TYPES = new Set(["password", "email", "tel", "number", "hidden", "cc-number"]);
+  function isSearchInput(el) {
+    if (!el || el.tagName !== "INPUT" || UNSAFE_INPUT_TYPES.has(el.type)) return false;
+    if (el.type === "search") return true;
+    const label = `${el.getAttribute("aria-label") || ""} ${el.placeholder || ""} ${el.getAttribute("data-qa") || ""}`.toLowerCase();
+    return /search|חיפוש|بحث/.test(label);
+  }
+
+  function onSearchInput(e) {
+    if (!settings.enableSearchAutocomplete || !isSearchInput(e.target)) return;
+    const el = e.target;
+    acActiveInput = el;
+    const query = el.value.trim();
+    clearTimeout(acDebounce);
+    if (query.length < 2) { closeAutocomplete(); return; }
+    acDebounce = setTimeout(() => runAutocomplete(el, query), 300);
+  }
+
+  function onSearchKeydown(e) {
+    if (!acDropdown) return;
+    const rows = Array.from(acDropdown.querySelectorAll(".pse-ac-row"));
+    if (!rows.length) return;
+    if (e.key === "ArrowDown") { e.preventDefault(); acSelectedIndex = Math.min(acSelectedIndex + 1, rows.length - 1); highlightAcRows(rows); }
+    else if (e.key === "ArrowUp") { e.preventDefault(); acSelectedIndex = Math.max(acSelectedIndex - 1, 0); highlightAcRows(rows); }
+    else if (e.key === "Enter" && acSelectedIndex >= 0) { rows[acSelectedIndex].click(); }
+    else if (e.key === "Escape") { closeAutocomplete(); }
+  }
+
+  function highlightAcRows(rows) {
+    rows.forEach((r, i) => r.classList.toggle("pse-ac-active", i === acSelectedIndex));
+    if (acSelectedIndex >= 0) rows[acSelectedIndex].scrollIntoView({ block: "nearest" });
+  }
+
+  async function runAutocomplete(inputEl, query) {
+    acLastQuery = query;
+    const token = ++acToken;
+    let results = [];
+    try {
+      const resp = await chrome.runtime.sendMessage({ type: "FETCH_SEARCH_SUGGESTIONS", query });
+      if (resp?.success) results = resp.data || [];
+    } catch {}
+    if (token !== acToken || acLastQuery !== query || !document.contains(inputEl)) return;
+    renderAutocomplete(inputEl, results);
+  }
+
+  function renderAutocomplete(inputEl, results) {
+    closeAutocomplete();
+    if (!results.length) return;
+    acSelectedIndex = -1;
+
+    const rect = inputEl.getBoundingClientRect();
+    const dd = document.createElement("div");
+    dd.className = "pse-injected pse-ac-dropdown";
+    dd.dir = activeDir();
+    dd.dataset.pseTheme = resolvedTheme();
+    dd.style.position = "fixed";
+    dd.style.top = `${rect.bottom + 4}px`;
+    dd.style.left = `${rect.left}px`;
+    dd.style.width = `${Math.max(rect.width, 300)}px`;
+
+    const header = document.createElement("div");
+    header.className = "pse-ac-header";
+    header.textContent = t("autocompleteBadge");
+    dd.appendChild(header);
+
+    const list = document.createElement("div");
+    list.className = "pse-ac-list";
+
+    for (const g of results) {
+      const row = document.createElement("a");
+      row.className = "pse-ac-row";
+      row.href = buildStoreSearchUrl(g.title);
+
+      if (g.thumb) {
+        const img = document.createElement("img");
+        img.className = "pse-ac-thumb";
+        img.src = sanitizeUrl(g.thumb);
+        img.alt = "";
+        img.loading = "lazy";
+        row.appendChild(img);
+      }
+
+      const info = document.createElement("div");
+      info.className = "pse-ac-info";
+      const titleEl = document.createElement("span");
+      titleEl.className = "pse-ac-title";
+      titleEl.textContent = g.title;
+      info.appendChild(titleEl);
+      if (g.cheapest != null) {
+        const priceEl = document.createElement("span");
+        priceEl.className = "pse-ac-price";
+        priceEl.textContent = `${t("autocompletePcFrom")} ${formatPrice(g.cheapest)}`;
+        info.appendChild(priceEl);
+      }
+      row.appendChild(info);
+      list.appendChild(row);
+    }
+    dd.appendChild(list);
+
+    document.body.appendChild(dd);
+    acDropdown = dd;
+  }
+
+  function closeAutocomplete() {
+    if (acDropdown) { acDropdown.remove(); acDropdown = null; }
+    acSelectedIndex = -1;
+  }
+
+  function buildStoreSearchUrl(title) {
+    const m = location.pathname.match(/^\/([a-z]{2}-[a-z]{2})\//i);
+    const locale = m ? m[1] : "en-us";
+    return `https://store.playstation.com/${locale}/search/${encodeURIComponent(title)}`;
+  }
+
+  /* ═══════════════════════════════════════════════
+   * FEATURE — "What's new" banner after an update
+   * Shown at most once per page load; dismissed permanently once the user closes it
+   * or opens the full changelog (mirrors the popup's "What's new" card).
+   * ═══════════════════════════════════════════════ */
+  let whatsNewShown = false;
+  async function initChangelogBanner() {
+    if (whatsNewShown) return;
+    try {
+      const d = await chrome.storage.local.get(["pse_changelog_unseen"]);
+      const version = d.pse_changelog_unseen;
+      if (!version) return;
+      whatsNewShown = true;
+      showChangelogBanner(version);
+    } catch {}
+  }
+
+  function showChangelogBanner(version) {
+    const banner = document.createElement("div");
+    banner.className = "pse-injected pse-wn-banner";
+    banner.dir = activeDir();
+    banner.dataset.pseTheme = resolvedTheme();
+
+    const text = document.createElement("span");
+    text.className = "pse-wn-text";
+    text.textContent = t("whatsNewBannerText", version);
+    banner.appendChild(text);
+
+    const actions = document.createElement("div");
+    actions.className = "pse-wn-actions";
+
+    const link = document.createElement("a");
+    link.href = chrome.runtime.getURL("changelog.html");
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.className = "pse-wn-link";
+    link.textContent = t("viewChangelog");
+    link.addEventListener("click", () => dismissChangelogBanner(banner));
+    actions.appendChild(link);
+
+    const close = document.createElement("button");
+    close.type = "button";
+    close.className = "pse-wn-close";
+    close.textContent = "✕";
+    close.setAttribute("aria-label", t("whatsNewDismiss"));
+    close.addEventListener("click", () => dismissChangelogBanner(banner));
+    actions.appendChild(close);
+
+    banner.appendChild(actions);
+    document.body.appendChild(banner);
+  }
+
+  function dismissChangelogBanner(banner) {
+    banner.remove();
+    chrome.runtime.sendMessage({ type: "CHANGELOG_SEEN" }).catch(() => {});
   }
 
   init();

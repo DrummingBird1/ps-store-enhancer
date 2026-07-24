@@ -1,6 +1,6 @@
 {
   "extName": {
-    "message": "GameDeals+ for PS Store"
+    "message": "PS Store Insight for PS Store"
   },
   "extDesc": {
     "message": "Historial de precios, comparación multiplataforma, puntuaciones, trofeos y filtros para PlayStation Store. Sync PSN opcional."
@@ -314,7 +314,7 @@
     "message": "Esta extensión no está afiliada ni respaldada por Sony Interactive Entertainment o PlayStation."
   },
   "welcomeTitle": {
-    "message": "¡Bienvenido a GameDeals+!"
+    "message": "¡Bienvenido a PS Store Insight!"
   },
   "welcomeSubtitle": {
     "message": "Tu PlayStation™ Store acaba de mejorar."
@@ -463,7 +463,7 @@
     "message": "❤️ Apoya el desarrollo"
   },
   "supportDevDesc": {
-    "message": "¿Te gusta GameDeals+? Apoya su desarrollo en Patreon."
+    "message": "¿Te gusta PS Store Insight? Apoya su desarrollo en Patreon."
   },
   "currencyTitle": {
     "message": "Moneda de visualización"
@@ -490,7 +490,7 @@
     "message": "Claro"
   },
   "ctxMenuFind": {
-    "message": "Buscar en GameDeals+ comparador de precios"
+    "message": "Buscar en PS Store Insight comparador de precios"
   },
   "exportImportTitle": {
     "message": "Copia de seguridad"
@@ -549,5 +549,36 @@
   },
   "libraryCapWarning": {
     "message": "Tu biblioteca PSN tiene más de 5000 títulos — solo se sincronizaron los primeros 5000."
+  },
+  "searchAutocompleteToggle": {
+    "message": "Sugerencias de búsqueda en vivo"
+  },
+  "searchAutocompleteDesc": {
+    "message": "Vista previa de precio y puntuación mientras escribes en el buscador de la tienda"
+  },
+  "autocompleteBadge": {
+    "message": "Resultados en vivo de PS Store Insight"
+  },
+  "autocompletePcFrom": {
+    "message": "En PC desde"
+  },
+  "whatsNewTitle": {
+    "message": "🎉 Novedades de la v$VERSION$",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
+  },
+  "whatsNewDismiss": {
+    "message": "Entendido"
+  },
+  "whatsNewBannerText": {
+    "message": "PS Store Insight se actualizó a la v$VERSION$ — mira las novedades",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
   }
 }

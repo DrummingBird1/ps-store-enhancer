@@ -22,6 +22,28 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   try {
+    const d = await chrome.storage.local.get(["pse_changelog_unseen"]);
+    const version = d.pse_changelog_unseen;
+    const entry = version && Array.isArray(window.PSE_CHANGELOG)
+      ? (window.PSE_CHANGELOG.find(e => e.version === version) || window.PSE_CHANGELOG[0])
+      : null;
+    if (version && entry) {
+      document.getElementById("whatsNewTitleText").textContent = t("whatsNewTitle", version);
+      const ul = document.getElementById("whatsNewList");
+      for (const h of entry.highlights) {
+        const li = document.createElement("li");
+        li.textContent = h;
+        ul.appendChild(li);
+      }
+      document.getElementById("whatsNewCard").style.display = "block";
+      document.getElementById("whatsNewClose").addEventListener("click", async () => {
+        document.getElementById("whatsNewCard").style.display = "none";
+        try { await chrome.runtime.sendMessage({ type: "CHANGELOG_SEEN" }); } catch {}
+      });
+    }
+  } catch {}
+
+  try {
     const s = await chrome.runtime.sendMessage({ type: "PSN_STATUS" });
     if (s?.connected) {
       document.getElementById("psnText").textContent = s.profile?.onlineId || "PSN User";

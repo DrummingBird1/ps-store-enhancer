@@ -1,5 +1,5 @@
 /**
- * GameDeals+ for PS Store — Background Service Worker (v2.3)
+ * PS Store Insight — Background Service Worker (v2.3)
  */
 // match.js must load first — it defines slugify/fuzzyMatch/computeBasePrice/classifyTitle
 // used by both background.js and psn.js.
@@ -11,7 +11,7 @@ const PSE_DEFAULTS_SYNC = {
   theme: "auto",
   enableMetacritic: true, enablePriceHistory: true,
   enableTrophies: true, enableCrossPlatform: true,
-  enableWishlist: true
+  enableWishlist: true, enableSearchAutocomplete: true
 };
 
 /* ──── lifecycle ──── */
@@ -31,9 +31,18 @@ chrome.runtime.onInstalled.addListener(async (details) => {
     // Ensure wishlist storage exists
     const loc = await chrome.storage.local.get(["wishlist"]);
     if (!loc.wishlist) await chrome.storage.local.set({ wishlist: [] });
-    // Show "What's New" — only for minor/major bumps (not patch), to avoid spamming on every fix release
+    // Mark the new version's changelog as unseen on EVERY update (patch included) so it
+    // surfaces quietly in the popup / on-store banner; only minor/major bumps also force-open
+    // the full changelog tab, to avoid spamming users on every small fix release.
     const prev = details.previousVersion || "";
     const next = chrome.runtime.getManifest().version;
+    if (prev && prev !== next) {
+      await chrome.storage.local.set({ pse_changelog_unseen: next });
+      try {
+        chrome.action.setBadgeText({ text: "●" });
+        chrome.action.setBadgeBackgroundColor({ color: "#ff4040" });
+      } catch {}
+    }
     const isMinorOrMajor = (() => {
       const a = prev.split(".").map(Number);
       const b = next.split(".").map(Number);
@@ -51,7 +60,7 @@ chrome.runtime.onInstalled.addListener(async (details) => {
     chrome.contextMenus.removeAll(() => {
       chrome.contextMenus.create({
         id: "pse-find-on-cheapshark",
-        title: chrome.i18n.getMessage("ctxMenuFind") || "Find on GameDeals+",
+        title: chrome.i18n.getMessage("ctxMenuFind") || "Find on PS Store Insight",
         contexts: ["selection"],
         documentUrlPatterns: ["https://store.playstation.com/*"]
       });
@@ -132,6 +141,12 @@ const HANDLERS = {
   FETCH_METACRITIC: (m) => handleMetacritic(m.gameName),
   FETCH_PRICE_HISTORY: (m) => handlePriceHistory(m.gameName),
   FETCH_PSN_TROPHY: (m) => handlePsnTrophy(m.gameName),
+  FETCH_SEARCH_SUGGESTIONS: (m) => handleSearchSuggestions(m.query),
+  CHANGELOG_SEEN: async () => {
+    await chrome.storage.local.remove("pse_changelog_unseen");
+    try { chrome.action.setBadgeText({ text: "" }); } catch {}
+    return { ok: true };
+  },
   GET_MERGED_OWNED: () => PSN.getMergedOwned().then(list => ({ list })),
   PURGE_CACHE: () => PSECache.purgeExpired().then(() => ({ ok: true })),
   CLEAR_CACHE: () => PSECache.clearAll().then(n => ({ ok: true, removed: n })),
@@ -345,6 +360,33 @@ async function handleCrossPlatform(gameName) {
     await PSECache.set(ck, results, PSECache.TTL.CROSS_PLATFORM);
     return { success: true, data: results, fromCache: false };
   } catch (err) { return { success: false, error: err.message }; }
+}
+
+/* ──── CheapShark: live search-box suggestions ──── */
+async function handleSearchSuggestions(query) {
+  const q = (query || "").trim();
+  if (q.length < 2) return { success: true, data: [] };
+  const ck = `search_suggest_${slugify(q)}`;
+  const cached = await PSECache.get(ck);
+  if (cached) return { success: true, data: cached, fromCache: true };
+
+  try {
+    const resp = await fetch(`https://www.cheapshark.com/api/1.0/games?title=${encodeURIComponent(q)}&limit=6`);
+    if (!resp.ok) throw new Error(`CheapShark ${resp.status}`);
+    const games = await resp.json();
+    const results = (games || [])
+      .filter(g => g.external)
+      .slice(0, 6)
+      .map(g => ({
+        title: g.external,
+        thumb: g.thumb || null,
+        cheapest: g.cheapest != null ? parseFloat(g.cheapest) : null
+      }));
+    await PSECache.set(ck, results, PSECache.TTL.SEARCH_SUGGEST);
+    return { success: true, data: results, fromCache: false };
+  } catch (err) {
+    return { success: false, error: err.message };
+  }
 }
 
 /* ──── OpenCritic ──── */

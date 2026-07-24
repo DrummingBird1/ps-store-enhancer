@@ -1,6 +1,6 @@
 {
   "extName": {
-    "message": "GameDeals+ for PS Store"
+    "message": "PS Store Insight for PS Store"
   },
   "extDesc": {
     "message": "История цен, сравнение цен, оценки, трофеи и фильтры для PlayStation Store. Синхронизация PSN опциональна."
@@ -314,7 +314,7 @@
     "message": "Это расширение не связано с Sony Interactive Entertainment или PlayStation."
   },
   "welcomeTitle": {
-    "message": "Добро пожаловать в GameDeals+!"
+    "message": "Добро пожаловать в PS Store Insight!"
   },
   "welcomeSubtitle": {
     "message": "Ваш PlayStation™ Store стал лучше."
@@ -463,7 +463,7 @@
     "message": "❤️ Поддержать разработку"
   },
   "supportDevDesc": {
-    "message": "Нравится GameDeals+? Поддержите разработку на Patreon."
+    "message": "Нравится PS Store Insight? Поддержите разработку на Patreon."
   },
   "currencyTitle": {
     "message": "Валюта отображения"
@@ -490,7 +490,7 @@
     "message": "Светлая"
   },
   "ctxMenuFind": {
-    "message": "Найти на GameDeals+ сравнение цен"
+    "message": "Найти на PS Store Insight сравнение цен"
   },
   "exportImportTitle": {
     "message": "Резервная копия"
@@ -549,5 +549,36 @@
   },
   "libraryCapWarning": {
     "message": "В вашей библиотеке PSN более 5000 игр — синхронизированы только первые 5000."
+  },
+  "searchAutocompleteToggle": {
+    "message": "Живые подсказки поиска"
+  },
+  "searchAutocompleteDesc": {
+    "message": "Предпросмотр цены и оценки во время ввода в поиске магазина"
+  },
+  "autocompleteBadge": {
+    "message": "Живые результаты PS Store Insight"
+  },
+  "autocompletePcFrom": {
+    "message": "На ПК от"
+  },
+  "whatsNewTitle": {
+    "message": "🎉 Что нового в v$VERSION$",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
+  },
+  "whatsNewDismiss": {
+    "message": "Понятно"
+  },
+  "whatsNewBannerText": {
+    "message": "PS Store Insight обновлён до v$VERSION$ — посмотрите, что нового",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
   }
 }

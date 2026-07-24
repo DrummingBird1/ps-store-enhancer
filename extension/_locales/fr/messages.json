@@ -1,6 +1,6 @@
 {
   "extName": {
-    "message": "GameDeals+ for PS Store"
+    "message": "PS Store Insight for PS Store"
   },
   "extDesc": {
     "message": "Historique des prix, comparaison multiplateforme, scores, trophées et filtres pour PlayStation Store. Sync PSN optionnelle."
@@ -314,7 +314,7 @@
     "message": "Cette extension n'est pas affiliée à Sony Interactive Entertainment ou PlayStation."
   },
   "welcomeTitle": {
-    "message": "Bienvenue sur GameDeals+ !"
+    "message": "Bienvenue sur PS Store Insight !"
   },
   "welcomeSubtitle": {
     "message": "Votre PlayStation™ Store vient de s'améliorer."
@@ -463,7 +463,7 @@
     "message": "❤️ Soutenir le développement"
   },
   "supportDevDesc": {
-    "message": "Vous aimez GameDeals+ ? Soutenez son développement sur Patreon."
+    "message": "Vous aimez PS Store Insight ? Soutenez son développement sur Patreon."
   },
   "currencyTitle": {
     "message": "Devise d'affichage"
@@ -490,7 +490,7 @@
     "message": "Clair"
   },
   "ctxMenuFind": {
-    "message": "Rechercher sur GameDeals+ comparateur"
+    "message": "Rechercher sur PS Store Insight comparateur"
   },
   "exportImportTitle": {
     "message": "Sauvegarde et restauration"
@@ -549,5 +549,36 @@
   },
   "libraryCapWarning": {
     "message": "Votre bibliothèque PSN compte plus de 5000 titres — seuls les 5000 premiers ont été synchronisés."
+  },
+  "searchAutocompleteToggle": {
+    "message": "Suggestions de recherche en direct"
+  },
+  "searchAutocompleteDesc": {
+    "message": "Aperçu du prix et de la note pendant la saisie dans la recherche du store"
+  },
+  "autocompleteBadge": {
+    "message": "Résultats en direct PS Store Insight"
+  },
+  "autocompletePcFrom": {
+    "message": "Sur PC à partir de"
+  },
+  "whatsNewTitle": {
+    "message": "🎉 Nouveautés de la v$VERSION$",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
+  },
+  "whatsNewDismiss": {
+    "message": "Compris"
+  },
+  "whatsNewBannerText": {
+    "message": "PS Store Insight a été mis à jour en v$VERSION$ — découvrez les nouveautés",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
   }
 }

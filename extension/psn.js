@@ -1,5 +1,5 @@
 /**
- * GameDeals+ for PS Store — PSN Integration Module (v2.2)
+ * PS Store Insight — PSN Integration Module (v2.2)
  * ===================================================
  * FIXES from v2.1:
  *  - Auth: uses chrome.cookies.set() instead of forbidden Cookie header

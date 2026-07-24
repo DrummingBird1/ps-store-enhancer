@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     enablePriceHistory: document.getElementById("enablePriceHistory"),
     enableCrossPlatform: document.getElementById("enableCrossPlatform"),
     enableTrophies: document.getElementById("enableTrophies"),
+    enableSearchAutocomplete: document.getElementById("enableSearchAutocomplete"),
     hideAddons: document.getElementById("hideAddons"),
     hideDlc: document.getElementById("hideDlc"),
     hideOwned: document.getElementById("hideOwned"),
@@ -47,11 +48,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   };
 
   // Load settings
-  const sync = await chrome.storage.sync.get(["enableMetacritic","enablePriceHistory","enableCrossPlatform","enableTrophies","hideAddons","hideDlc","hideOwned","pspricesRegion","userLanguage","displayCurrency","theme"]);
+  const sync = await chrome.storage.sync.get(["enableMetacritic","enablePriceHistory","enableCrossPlatform","enableTrophies","enableSearchAutocomplete","hideAddons","hideDlc","hideOwned","pspricesRegion","userLanguage","displayCurrency","theme"]);
   el.enableMetacritic.checked = sync.enableMetacritic ?? true;
   el.enablePriceHistory.checked = sync.enablePriceHistory ?? true;
   el.enableCrossPlatform.checked = sync.enableCrossPlatform ?? true;
   el.enableTrophies.checked = sync.enableTrophies ?? true;
+  el.enableSearchAutocomplete.checked = sync.enableSearchAutocomplete ?? true;
   el.hideAddons.checked = sync.hideAddons ?? false;
   el.hideDlc.checked = sync.hideDlc ?? false;
   el.hideOwned.checked = sync.hideOwned ?? false;
@@ -73,7 +75,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   let psnOwned = local.psn_owned || [];
 
   // Auto-save toggles
-  for (const k of ["enableMetacritic","enablePriceHistory","enableCrossPlatform","enableTrophies","hideAddons","hideDlc","hideOwned"])
+  for (const k of ["enableMetacritic","enablePriceHistory","enableCrossPlatform","enableTrophies","enableSearchAutocomplete","hideAddons","hideDlc","hideOwned"])
     el[k].addEventListener("change", () => { chrome.storage.sync.set({ [k]: el[k].checked }); toast(t("saved")); });
   el.region.addEventListener("change", () => { chrome.storage.sync.set({ pspricesRegion: el.region.value, regionAutoSet: true }); toast(t("saved")); });
   el.displayCurrency.addEventListener("change", () => { chrome.storage.sync.set({ displayCurrency: el.displayCurrency.value }); toast(t("saved")); });
@@ -307,7 +309,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   el.exportBtn.addEventListener("click", async () => {
     const local = await chrome.storage.local.get(["manual_owned","wishlist"]);
     const payload = {
-      app: "GameDeals+ for PS Store",
+      app: "PS Store Insight",
       version: chrome.runtime.getManifest().version,
       exportedAt: new Date().toISOString(),
       manual_owned: local.manual_owned || [],
@@ -317,7 +319,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `gamedeals-plus-backup-${new Date().toISOString().slice(0,10)}.json`;
+    a.download = `ps-store-insight-backup-${new Date().toISOString().slice(0,10)}.json`;
     document.body.appendChild(a);
     a.click();
     a.remove();
@@ -335,7 +337,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     try {
       const text = await file.text();
       const data = JSON.parse(text);
-      if (!data || typeof data !== "object" || data.app !== "GameDeals+ for PS Store") {
+      // Accept backups from both the old ("GameDeals+ for PS Store") and current app name
+      // so pre-rename backups still restore correctly.
+      const validApp = data?.app === "PS Store Insight" || data?.app === "GameDeals+ for PS Store";
+      if (!data || typeof data !== "object" || !validApp) {
         throw new Error("invalid format");
       }
       const local = await chrome.storage.local.get(["manual_owned","wishlist"]);

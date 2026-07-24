@@ -1,5 +1,5 @@
 /**
- * GameDeals+ for PS Store — Smart Cache Module
+ * PS Store Insight — Smart Cache Module
  * Wraps chrome.storage.local with TTL support.
  */
 const PSECache = (() => {
@@ -10,6 +10,7 @@ const PSECache = (() => {
     CROSS_PLATFORM: 4 * 3600000,
     METACRITIC: 24 * 3600000,
     TROPHY: 7 * 24 * 3600000,
+    SEARCH_SUGGEST: 20 * 60000,
     DEFAULT: 12 * 3600000
   };
 

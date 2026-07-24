@@ -1,6 +1,6 @@
 {
   "name": "gamedeals-plus",
-  "version": "2.3.1",
+  "version": "2.5.0",
   "private": true,
   "description": "Chrome extension that enhances the PlayStation Store with price history, cross-platform comparison, review scores, trophy info, wishlist alerts, and smart filters.",
   "scripts": {

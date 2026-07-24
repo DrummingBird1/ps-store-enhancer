@@ -1,6 +1,6 @@
 {
   "extName": {
-    "message": "GameDeals+ for PS Store"
+    "message": "PS Store Insight for PS Store"
   },
   "extDesc": {
     "message": "سجل الأسعار، مقارنة الأسعار، تقييمات اللعبة، معلومات الكؤوس وفلاتر ذكية لمتجر PlayStation. مزامنة PSN اختيارية."
@@ -314,7 +314,7 @@
     "message": "هذه الإضافة غير مرتبطة بـ Sony Interactive Entertainment أو PlayStation."
   },
   "welcomeTitle": {
-    "message": "!مرحباً بك في GameDeals+"
+    "message": "!مرحباً بك في PS Store Insight"
   },
   "welcomeSubtitle": {
     "message": ".متجر PlayStation™ الخاص بك أصبح أفضل"
@@ -463,7 +463,7 @@
     "message": "❤️ ادعم التطوير"
   },
   "supportDevDesc": {
-    "message": "هل تستمتع بـ GameDeals+؟ ادعم تطويره على Patreon."
+    "message": "هل تستمتع بـ PS Store Insight؟ ادعم تطويره على Patreon."
   },
   "currencyTitle": {
     "message": "عملة العرض"
@@ -490,7 +490,7 @@
     "message": "فاتح"
   },
   "ctxMenuFind": {
-    "message": "ابحث في GameDeals+ مقارنة الأسعار"
+    "message": "ابحث في PS Store Insight مقارنة الأسعار"
   },
   "exportImportTitle": {
     "message": "نسخ احتياطي واستعادة"
@@ -516,7 +516,7 @@
     }
   },
   "importFailed": {
-    "message": "فشل الاستيراد — الملف ليس تصدير GameDeals+ صالح"
+    "message": "فشل الاستيراد — الملف ليس تصدير PS Store Insight صالح"
   },
   "changelogTitle": {
     "message": "ما الجديد"
@@ -549,5 +549,36 @@
   },
   "libraryCapWarning": {
     "message": "تحتوي مكتبة PSN على أكثر من 5000 عنوان — تم مزامنة أول 5000 فقط."
+  },
+  "searchAutocompleteToggle": {
+    "message": "اقتراحات بحث فورية"
+  },
+  "searchAutocompleteDesc": {
+    "message": "معاينة السعر والتقييم أثناء الكتابة في مربع بحث المتجر"
+  },
+  "autocompleteBadge": {
+    "message": "نتائج مباشرة من PS Store Insight"
+  },
+  "autocompletePcFrom": {
+    "message": "على PC ابتداءً من"
+  },
+  "whatsNewTitle": {
+    "message": "🎉 ما الجديد في الإصدار v$VERSION$",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
+  },
+  "whatsNewDismiss": {
+    "message": "فهمت"
+  },
+  "whatsNewBannerText": {
+    "message": "تم تحديث PS Store Insight إلى v$VERSION$ — شاهد ما الجديد",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
   }
 }

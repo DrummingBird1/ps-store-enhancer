@@ -4,7 +4,7 @@ Copy/paste the block below into the **"Notes for reviewer"** field in the Chrome
 
 ---
 
-## How to fully test GameDeals+ for PS Store
+## How to fully test PS Store Insight (formerly GameDeals+)
 
 ### Quick test (no account needed — covers ~90% of functionality)
 
@@ -54,7 +54,7 @@ We use `chrome.cookies` solely to set the NPSSO token on `ca.account.sony.com` (
 ### Why we added `notifications` and `contextMenus` (new in v2.3)
 
 - **`notifications`** — used solely by the Wishlist feature: when a user adds a game to their wishlist with a target price, a once-daily background alarm checks the cross-platform cheapest price via CheapShark. If it has dropped below the target, a single local desktop notification is fired. No remote push, no analytics, no third-party services.
-- **`contextMenus`** — adds a single right-click menu item ("Find on GameDeals+ price compare") that only appears on `store.playstation.com` and only when text is selected. Selecting it opens CheapShark with the selected text as a search query.
+- **`contextMenus`** — adds a single right-click menu item ("Find on PS Store Insight price compare") that only appears on `store.playstation.com` and only when text is selected. Selecting it opens CheapShark with the selected text as a search query.
 
 ### Single purpose
 

@@ -1,6 +1,6 @@
 {
   "extName": {
-    "message": "GameDeals+ for PS Store"
+    "message": "PS Store Insight for PS Store"
   },
   "extDesc": {
     "message": "Price history, cross-platform comparison, review scores, trophy info & smart filters for the PlayStation Store. Optional PSN sync."
@@ -314,7 +314,7 @@
     "message": "This extension is not affiliated with, endorsed by, or connected to Sony Interactive Entertainment, PlayStation, or any of their subsidiaries."
   },
   "welcomeTitle": {
-    "message": "Welcome to GameDeals+!"
+    "message": "Welcome to PS Store Insight!"
   },
   "welcomeSubtitle": {
     "message": "Your PlayStation™ Store just got better."
@@ -463,7 +463,7 @@
     "message": "❤️ Support development"
   },
   "supportDevDesc": {
-    "message": "Enjoying GameDeals+? Support its development on Patreon."
+    "message": "Enjoying PS Store Insight? Support its development on Patreon."
   },
   "currencyTitle": {
     "message": "Display Currency"
@@ -490,7 +490,7 @@
     "message": "Light"
   },
   "ctxMenuFind": {
-    "message": "Find on GameDeals+ price compare"
+    "message": "Find on PS Store Insight price compare"
   },
   "exportImportTitle": {
     "message": "Backup & Restore"
@@ -516,7 +516,7 @@
     }
   },
   "importFailed": {
-    "message": "Import failed — file is not a valid GameDeals+ export"
+    "message": "Import failed — file is not a valid PS Store Insight export"
   },
   "changelogTitle": {
     "message": "What's New"
@@ -549,5 +549,36 @@
   },
   "libraryCapWarning": {
     "message": "Your PSN library has more than 5000 titles — only the first 5000 were synced."
+  },
+  "searchAutocompleteToggle": {
+    "message": "Live Search Suggestions"
+  },
+  "searchAutocompleteDesc": {
+    "message": "Price & score preview as you type in the store search box"
+  },
+  "autocompleteBadge": {
+    "message": "PS Store Insight live results"
+  },
+  "autocompletePcFrom": {
+    "message": "PC from"
+  },
+  "whatsNewTitle": {
+    "message": "🎉 What's new in v$VERSION$",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
+  },
+  "whatsNewDismiss": {
+    "message": "Got it"
+  },
+  "whatsNewBannerText": {
+    "message": "PS Store Insight updated to v$VERSION$ — see what's new",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
   }
 }

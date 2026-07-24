@@ -1,6 +1,6 @@
 {
   "extName": {
-    "message": "GameDeals+ for PS Store"
+    "message": "PS Store Insight for PS Store"
   },
   "extDesc": {
     "message": "Histórico de preços, comparação multiplataforma, avaliações, troféus e filtros para PlayStation Store. Sync PSN opcional."
@@ -314,7 +314,7 @@
     "message": "Esta extensão não é afiliada à Sony Interactive Entertainment ou PlayStation."
   },
   "welcomeTitle": {
-    "message": "Bem-vindo ao GameDeals+!"
+    "message": "Bem-vindo ao PS Store Insight!"
   },
   "welcomeSubtitle": {
     "message": "Sua PlayStation™ Store ficou ainda melhor."
@@ -463,7 +463,7 @@
     "message": "❤️ Apoie o desenvolvimento"
   },
   "supportDevDesc": {
-    "message": "Curtindo o GameDeals+? Apoie o desenvolvimento no Patreon."
+    "message": "Curtindo o PS Store Insight? Apoie o desenvolvimento no Patreon."
   },
   "currencyTitle": {
     "message": "Moeda de exibição"
@@ -490,7 +490,7 @@
     "message": "Claro"
   },
   "ctxMenuFind": {
-    "message": "Buscar no GameDeals+ comparador"
+    "message": "Buscar no PS Store Insight comparador"
   },
   "exportImportTitle": {
     "message": "Backup & Restauração"
@@ -549,5 +549,36 @@
   },
   "libraryCapWarning": {
     "message": "Sua biblioteca PSN tem mais de 5000 títulos — apenas os primeiros 5000 foram sincronizados."
+  },
+  "searchAutocompleteToggle": {
+    "message": "Sugestões de busca ao vivo"
+  },
+  "searchAutocompleteDesc": {
+    "message": "Prévia de preço e nota enquanto você digita na busca da loja"
+  },
+  "autocompleteBadge": {
+    "message": "Resultados ao vivo do PS Store Insight"
+  },
+  "autocompletePcFrom": {
+    "message": "No PC a partir de"
+  },
+  "whatsNewTitle": {
+    "message": "🎉 Novidades da v$VERSION$",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
+  },
+  "whatsNewDismiss": {
+    "message": "Entendi"
+  },
+  "whatsNewBannerText": {
+    "message": "O PS Store Insight foi atualizado para v$VERSION$ — veja as novidades",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
   }
 }

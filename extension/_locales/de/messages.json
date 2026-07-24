@@ -1,6 +1,6 @@
 {
   "extName": {
-    "message": "GameDeals+ for PS Store"
+    "message": "PS Store Insight for PS Store"
   },
   "extDesc": {
     "message": "Preisverlauf, plattformübergreifender Vergleich, Bewertungen, Trophäen und smarte Filter für PlayStation Store. PSN-Sync optional."
@@ -314,7 +314,7 @@
     "message": "Diese Erweiterung ist nicht mit Sony Interactive Entertainment oder PlayStation verbunden."
   },
   "welcomeTitle": {
-    "message": "Willkommen bei GameDeals+!"
+    "message": "Willkommen bei PS Store Insight!"
   },
   "welcomeSubtitle": {
     "message": "Dein PlayStation™ Store wurde gerade besser."
@@ -463,7 +463,7 @@
     "message": "❤️ Entwicklung unterstützen"
   },
   "supportDevDesc": {
-    "message": "Gefällt dir GameDeals+? Unterstütze die Entwicklung auf Patreon."
+    "message": "Gefällt dir PS Store Insight? Unterstütze die Entwicklung auf Patreon."
   },
   "currencyTitle": {
     "message": "Anzeigewährung"
@@ -490,7 +490,7 @@
     "message": "Hell"
   },
   "ctxMenuFind": {
-    "message": "Auf GameDeals+ Preisvergleich suchen"
+    "message": "Auf PS Store Insight Preisvergleich suchen"
   },
   "exportImportTitle": {
     "message": "Sicherung & Wiederherstellung"
@@ -549,5 +549,36 @@
   },
   "libraryCapWarning": {
     "message": "Deine PSN-Bibliothek hat mehr als 5000 Titel — nur die ersten 5000 wurden synchronisiert."
+  },
+  "searchAutocompleteToggle": {
+    "message": "Live-Suchvorschläge"
+  },
+  "searchAutocompleteDesc": {
+    "message": "Preis- und Wertungsvorschau während der Eingabe im Store-Suchfeld"
+  },
+  "autocompleteBadge": {
+    "message": "PS Store Insight Live-Ergebnisse"
+  },
+  "autocompletePcFrom": {
+    "message": "Am PC ab"
+  },
+  "whatsNewTitle": {
+    "message": "🎉 Neu in v$VERSION$",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
+  },
+  "whatsNewDismiss": {
+    "message": "Verstanden"
+  },
+  "whatsNewBannerText": {
+    "message": "PS Store Insight wurde auf v$VERSION$ aktualisiert — Neuigkeiten ansehen",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
   }
 }

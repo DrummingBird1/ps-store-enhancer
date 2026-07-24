@@ -1,6 +1,6 @@
 {
   "extName": {
-    "message": "GameDeals+ for PS Store"
+    "message": "PS Store Insight for PS Store"
   },
   "extDesc": {
     "message": "PlayStation Store용 가격 이력, 크로스 플랫폼 비교, 리뷰 점수, 트로피 정보, 스마트 필터. PSN 동기화는 선택 사항."
@@ -314,7 +314,7 @@
     "message": "이 확장 프로그램은 Sony Interactive Entertainment 또는 PlayStation과 관련이 없습니다."
   },
   "welcomeTitle": {
-    "message": "GameDeals+에 오신 것을 환영합니다!"
+    "message": "PS Store Insight에 오신 것을 환영합니다!"
   },
   "welcomeSubtitle": {
     "message": "PlayStation™ Store가 더 좋아졌습니다."
@@ -463,7 +463,7 @@
     "message": "❤️ 개발 지원하기"
   },
   "supportDevDesc": {
-    "message": "GameDeals+가 마음에 드시나요? Patreon에서 개발을 지원해 주세요."
+    "message": "PS Store Insight가 마음에 드시나요? Patreon에서 개발을 지원해 주세요."
   },
   "currencyTitle": {
     "message": "표시 통화"
@@ -490,7 +490,7 @@
     "message": "라이트"
   },
   "ctxMenuFind": {
-    "message": "GameDeals+에서 가격 비교 찾기"
+    "message": "PS Store Insight에서 가격 비교 찾기"
   },
   "exportImportTitle": {
     "message": "백업 및 복원"
@@ -549,5 +549,36 @@
   },
   "libraryCapWarning": {
     "message": "PSN 라이브러리에 5000개 이상의 타이틀이 있습니다 — 처음 5000개만 동기화되었습니다."
+  },
+  "searchAutocompleteToggle": {
+    "message": "실시간 검색 제안"
+  },
+  "searchAutocompleteDesc": {
+    "message": "스토어 검색창에 입력하는 동안 가격과 평점 미리보기"
+  },
+  "autocompleteBadge": {
+    "message": "PS Store Insight 실시간 결과"
+  },
+  "autocompletePcFrom": {
+    "message": "PC 최저"
+  },
+  "whatsNewTitle": {
+    "message": "🎉 v$VERSION$ 새 기능",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
+  },
+  "whatsNewDismiss": {
+    "message": "확인"
+  },
+  "whatsNewBannerText": {
+    "message": "PS Store Insight 가 v$VERSION$ (으)로 업데이트되었습니다 — 새 기능 보기",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
   }
 }
