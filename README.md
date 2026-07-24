@@ -6,9 +6,9 @@
 ![Manifest](https://img.shields.io/badge/manifest-v3-green)
 ![Languages](https://img.shields.io/badge/languages-10-orange)
 ![License](https://img.shields.io/badge/license-MIT-brightgreen)
-[![CI](https://github.com/DrummingBird1/gamedeals-plus/actions/workflows/ci.yml/badge.svg)](https://github.com/DrummingBird1/gamedeals-plus/actions/workflows/ci.yml)
+[![CI](https://github.com/DrummingBird1/ps-store-insight/actions/workflows/ci.yml/badge.svg)](https://github.com/DrummingBird1/ps-store-insight/actions/workflows/ci.yml)
 
-🌐 [**Landing page**](https://drummingbird1.github.io/gamedeals-plus/) · 📝 [Changelog](extension/changelog.html) · 🔒 [Privacy policy](https://drummingbird1.github.io/gamedeals-plus/privacy-policy.html) · 📖 [README בעברית](README.he.md) · ❤️ [Support on Patreon](https://www.patreon.com/cw/MrIdan)
+🌐 [**Landing page**](https://drummingbird1.github.io/ps-store-insight/) · 📝 [Changelog](extension/changelog.html) · 🔒 [Privacy policy](https://drummingbird1.github.io/ps-store-insight/privacy-policy.html) · 📖 [README בעברית](README.he.md) · ❤️ [Support on Patreon](https://www.patreon.com/cw/MrIdan)
 
 ---
 

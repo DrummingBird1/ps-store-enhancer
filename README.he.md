@@ -9,7 +9,7 @@
 ![Languages](https://img.shields.io/badge/languages-10-orange)
 ![License](https://img.shields.io/badge/license-MIT-brightgreen)
 
-[English README](README.md) · [🌐 Landing page](https://drummingbird1.github.io/gamedeals-plus/) · [❤️ תמכו ב-Patreon](https://www.patreon.com/cw/MrIdan)
+[English README](README.md) · [🌐 Landing page](https://drummingbird1.github.io/ps-store-insight/) · [❤️ תמכו ב-Patreon](https://www.patreon.com/cw/MrIdan)
 
 ---
 

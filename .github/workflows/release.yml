@@ -121,7 +121,7 @@ jobs:
 
             ### Changelog
 
-            See [extension/changelog.html](https://github.com/DrummingBird1/gamedeals-plus/blob/main/extension/changelog.html) for the human-readable changelog, or compare commits since the previous tag.
+            See [extension/changelog.html](https://github.com/DrummingBird1/ps-store-insight/blob/main/extension/changelog.html) for the human-readable changelog, or compare commits since the previous tag.
           files: |
             GameDeals-Plus-Extension.zip
             GameDeals-Plus-Full-Project.zip

@@ -1,11 +1,11 @@
 blank_issues_enabled: false
 contact_links:
   - name: 📚 Documentation
-    url: https://drummingbird1.github.io/gamedeals-plus/
+    url: https://drummingbird1.github.io/ps-store-insight/
     about: Read the landing page and feature overview.
   - name: 🔒 Privacy policy
-    url: https://drummingbird1.github.io/gamedeals-plus/privacy-policy.html
+    url: https://drummingbird1.github.io/ps-store-insight/privacy-policy.html
     about: What data the extension reads, stores, and never sends.
   - name: 📝 Changelog
-    url: https://github.com/DrummingBird1/gamedeals-plus/blob/main/extension/changelog.html
+    url: https://github.com/DrummingBird1/ps-store-insight/blob/main/extension/changelog.html
     about: What's new in each version.
