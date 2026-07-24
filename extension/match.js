@@ -60,7 +60,39 @@
     return "game";
   }
 
-  const api = { slugify, fuzzyMatch, computeBasePrice, classifyTitle };
+  // Detect a bundle/edition qualifier in a title (e.g. "Deluxe", "Ultimate", "GOTY").
+  // Returns null for a plain/standard title. Longer phrases are checked first so
+  // "game of the year edition" wins over a bare "edition" false-positive.
+  const EDITION_PHRASES = [
+    ["game of the year edition", "GOTY"],
+    ["goty edition", "GOTY"],
+    ["digital deluxe edition", "Deluxe"],
+    ["digital deluxe", "Deluxe"],
+    ["deluxe edition", "Deluxe"],
+    ["ultimate edition", "Ultimate"],
+    ["gold edition", "Gold"],
+    ["complete edition", "Complete"],
+    ["definitive edition", "Definitive"],
+    ["premium edition", "Premium"],
+    ["collector's edition", "Collector's"],
+    ["collectors edition", "Collector's"],
+    ["legendary edition", "Legendary"],
+    ["anniversary edition", "Anniversary"],
+    ["director's cut", "Director's Cut"],
+    ["directors cut", "Director's Cut"],
+    ["royal edition", "Royal"],
+    ["special edition", "Special"],
+    ["goty", "GOTY"]
+  ];
+  function detectEdition(title) {
+    const n = String(title || "").toLowerCase();
+    for (const [phrase, label] of EDITION_PHRASES) {
+      if (n.includes(phrase)) return label;
+    }
+    return null;
+  }
+
+  const api = { slugify, fuzzyMatch, computeBasePrice, classifyTitle, detectEdition };
 
   // CommonJS (Jest, plain Node)
   if (typeof module !== "undefined" && module.exports) {
@@ -74,5 +106,6 @@
     root.fuzzyMatch = fuzzyMatch;
     root.computeBasePrice = computeBasePrice;
     root.classifyTitle = classifyTitle;
+    root.detectEdition = detectEdition;
   }
 })(typeof self !== "undefined" ? self : typeof globalThis !== "undefined" ? globalThis : this);

@@ -21,6 +21,7 @@ PS Store Insight (formerly GameDeals+) enhances your PlayStation™ Store browsi
 • Lowest-ever price highlighted at a glance
 • Direct links to PSPrices for verified historical data
 • Cross-platform comparison table — see prices on Steam, Epic Games Store, GOG, Humble Store, and more (powered by CheapShark, USD)
+• Edition transparency — prices from a different bundle/edition (Deluxe, Ultimate, GOTY, etc.) than the page you're viewing are clearly flagged, never blended in silently
 • Live search suggestions — as you type in the store's search box, see an enriched dropdown with box art and the cheapest PC price
 
 📊 REVIEW SCORES
@@ -46,6 +47,8 @@ PS Store Insight (formerly GameDeals+) enhances your PlayStation™ Store browsi
 • Add games to a wishlist with one click on the product page
 • Set a target price; get a desktop notification when CheapShark sees the cross-platform price drop below it
 • Daily background checks (no constant polling)
+• Toolbar badge shows a live count of wishlist deals currently at/below your target
+• Library & Wishlist stats dashboard: games owned, wishlist size, total wishlist value, deals ready to buy — computed entirely from data already on your device
 
 💱 CURRENCY CONVERSION
 • Cross-platform prices auto-convert from USD to your local currency

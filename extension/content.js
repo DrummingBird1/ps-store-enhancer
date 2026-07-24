@@ -541,8 +541,13 @@
       const icon = icons[d.store] || "🏪";
       const savings = d.savings > 0 ? `<span class="pse-xp-savings">-${d.savings}%</span>` : "";
       const original = d.normalPrice > d.price ? `<span class="pse-xp-original">${escapeHtml(formatPrice(d.normalPrice))}</span>` : "";
+      // v2.5: transparently flag when this listing is for a different bundle/edition
+      // than the current PS Store page, instead of silently implying same-product pricing.
+      const editionTag = d.edition
+        ? `<span class="pse-xp-edition" title="${escapeHtml(t("crossPlatformEditionNote", d.edition))}">🎁 ${escapeHtml(d.edition)}</span>`
+        : "";
       return `<a href="${sanitizeUrl(d.dealLink)}" target="_blank" rel="noopener noreferrer" class="pse-xp-row">
-        <span class="pse-xp-store">${icon} ${escapeHtml(d.store)}</span>
+        <span class="pse-xp-store">${icon} ${escapeHtml(d.store)}${editionTag}</span>
         <span class="pse-xp-price-group">${savings}${original}<span class="pse-xp-current">${escapeHtml(formatPrice(d.price))}</span></span>
       </a>`;
     }).join("");
@@ -864,7 +869,11 @@
   }
 
   function highlightAcRows(rows) {
-    rows.forEach((r, i) => r.classList.toggle("pse-ac-active", i === acSelectedIndex));
+    rows.forEach((r, i) => {
+      const active = i === acSelectedIndex;
+      r.classList.toggle("pse-ac-active", active);
+      r.setAttribute("aria-selected", String(active));
+    });
     if (acSelectedIndex >= 0) rows[acSelectedIndex].scrollIntoView({ block: "nearest" });
   }
 
@@ -890,6 +899,8 @@
     dd.className = "pse-injected pse-ac-dropdown";
     dd.dir = activeDir();
     dd.dataset.pseTheme = resolvedTheme();
+    dd.setAttribute("role", "listbox");
+    dd.setAttribute("aria-label", t("autocompleteBadge"));
     dd.style.position = "fixed";
     dd.style.top = `${rect.bottom + 4}px`;
     dd.style.left = `${rect.left}px`;
@@ -906,6 +917,7 @@
     for (const g of results) {
       const row = document.createElement("a");
       row.className = "pse-ac-row";
+      row.setAttribute("role", "option");
       row.href = buildStoreSearchUrl(g.title);
 
       if (g.thumb) {

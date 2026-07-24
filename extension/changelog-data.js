@@ -9,7 +9,9 @@ const PSE_CHANGELOG = [
     highlights: [
       "✨ GameDeals+ is now PS Store Insight — same extension, new name. Nothing else changes.",
       "🔎 Live search suggestions — price & score preview as you type in the store search box",
-      "🎉 \"What's new\" now shows up right here and on the store page after every update"
+      "📊 New Library & Wishlist stats dashboard in settings",
+      "🔔 Toolbar badge shows wishlist deals ready to buy",
+      "🎁 Cross-platform prices now flag when a listing is for a different edition/bundle"
     ]
   }
 ];

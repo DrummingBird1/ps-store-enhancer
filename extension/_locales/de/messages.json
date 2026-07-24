@@ -580,5 +580,31 @@
         "content": "$1"
       }
     }
+  },
+  "statsTitle": {
+    "message": "Bibliotheks- & Wunschlisten-Statistik"
+  },
+  "statOwnedLabel": {
+    "message": "Besessene Spiele"
+  },
+  "statWishlistLabel": {
+    "message": "Auf der Wunschliste"
+  },
+  "statWishlistValueLabel": {
+    "message": "Wunschlisten-Wert"
+  },
+  "statReadyLabel": {
+    "message": "Angebote bereit"
+  },
+  "statsNote": {
+    "message": "Der Wunschlisten-Wert ist die Summe der zuletzt geprüften plattformübergreifenden Preise (USD). Täglich aktualisiert, oder über \"Preise jetzt prüfen\" unten."
+  },
+  "crossPlatformEditionNote": {
+    "message": "Dieser Eintrag gilt für die $EDITION$-Edition — der Preis kann vom Basisspiel abweichen",
+    "placeholders": {
+      "edition": {
+        "content": "$1"
+      }
+    }
   }
 }

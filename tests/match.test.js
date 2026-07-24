@@ -1,4 +1,4 @@
-const { slugify, fuzzyMatch, computeBasePrice, classifyTitle } = require("../extension/match.js");
+const { slugify, fuzzyMatch, computeBasePrice, classifyTitle, detectEdition } = require("../extension/match.js");
 
 describe("slugify", () => {
   test("lowercases and replaces spaces", () => {
@@ -89,5 +89,29 @@ describe("classifyTitle", () => {
   test("missing fields default to game", () => {
     expect(classifyTitle({})).toBe("game");
     expect(classifyTitle({ name: "Untitled" })).toBe("game");
+  });
+});
+
+describe("detectEdition", () => {
+  test("plain title has no edition", () => {
+    expect(detectEdition("Cyberpunk 2077")).toBeNull();
+    expect(detectEdition("Elden Ring")).toBeNull();
+  });
+  test("detects common edition qualifiers", () => {
+    expect(detectEdition("Cyberpunk 2077: Ultimate Edition")).toBe("Ultimate");
+    expect(detectEdition("Final Fantasy VII Rebirth Deluxe Edition")).toBe("Deluxe");
+    expect(detectEdition("The Witcher 3: Wild Hunt - Game of the Year Edition")).toBe("GOTY");
+    expect(detectEdition("Red Dead Redemption 2: Special Edition")).toBe("Special");
+  });
+  test("is case-insensitive", () => {
+    expect(detectEdition("cyberpunk 2077 ULTIMATE EDITION")).toBe("Ultimate");
+  });
+  test("longer phrase wins over a shorter false-positive", () => {
+    // Would also contain "edition" alone if we matched too greedily
+    expect(detectEdition("Some Game Game of the Year Edition")).toBe("GOTY");
+  });
+  test("handles null/undefined safely", () => {
+    expect(detectEdition(null)).toBeNull();
+    expect(detectEdition(undefined)).toBeNull();
   });
 });

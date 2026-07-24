@@ -43,9 +43,15 @@ body.theme-light .release li code{background:rgba(0,0,0,.06)}
     </ul>
     <h3>New</h3>
     <ul>
-      <li><strong>🔎 Live search suggestions</strong> — as you type in the PS Store search box, PS Store Insight shows an enriched dropdown with box art and the cheapest PC price for matching titles. Selecting one jumps straight to PS Store's own search results for that game.</li>
+      <li><strong>🔎 Live search suggestions</strong> — as you type in the PS Store search box, PS Store Insight shows an enriched dropdown with box art and the cheapest PC price for matching titles. Selecting one jumps straight to PS Store's own search results for that game. No new permissions required.</li>
       <li><strong>🎉 "What's new" surfaces automatically</strong> — after any update, a quick highlight card appears in the popup and a dismissible banner appears on the store page, so you never miss what changed. The full changelog is always one click away.</li>
+      <li><strong>📊 Library & Wishlist stats</strong> — a new dashboard on the settings page shows games owned, wishlist size, total wishlist value, and how many deals are ready to buy right now — all computed from data you already have, no extra API calls.</li>
+      <li><strong>🔔 Toolbar badge</strong> — the extension icon now shows a live count of wishlist deals at or below your target price (green), or a dot when there's an unread "what's new" (red).</li>
+      <li><strong>🎁 Edition transparency</strong> — cross-platform price rows are now tagged when a listing is for a different bundle/edition (Deluxe, Ultimate, GOTY, etc.) than the PS Store page you're viewing, so you're never comparing a base game's price to a special edition's without knowing it.</li>
+      <li><strong>♿ Accessibility</strong> — every settings toggle now has a proper screen-reader label, and the new search-suggestions dropdown uses listbox/option roles with keyboard selection state.</li>
     </ul>
+    <h3>Not included (and why)</h3>
+    <p>A few ideas from the community/roadmap list were deliberately left out of this release: importing your PSN wishlist automatically and per-trophy rarity percentages both need real testing against Sony's private API, which isn't something that can be verified without a live PSN account in the loop — shipping either blind risks the same kind of reviewer-facing breakage this project has hit before. A Firefox port is similarly parked until it can be tested in a real Firefox profile rather than assumed to work. Edge already works today since it's Chromium-based — no extra code needed, just a separate store listing.</p>
   </div>
 
   <div class="release">

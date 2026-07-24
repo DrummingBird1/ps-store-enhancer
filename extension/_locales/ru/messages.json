@@ -580,5 +580,31 @@
         "content": "$1"
       }
     }
+  },
+  "statsTitle": {
+    "message": "Статистика библиотеки и списка желаний"
+  },
+  "statOwnedLabel": {
+    "message": "Игр в наличии"
+  },
+  "statWishlistLabel": {
+    "message": "В списке желаний"
+  },
+  "statWishlistValueLabel": {
+    "message": "Стоимость списка"
+  },
+  "statReadyLabel": {
+    "message": "Готовые предложения"
+  },
+  "statsNote": {
+    "message": "Стоимость списка желаний — это сумма последних проверенных кросс-платформенных цен (USD). Обновляется ежедневно, либо через «Проверить цены сейчас» ниже."
+  },
+  "crossPlatformEditionNote": {
+    "message": "Это предложение для издания $EDITION$ — цена может отличаться от базовой игры",
+    "placeholders": {
+      "edition": {
+        "content": "$1"
+      }
+    }
   }
 }

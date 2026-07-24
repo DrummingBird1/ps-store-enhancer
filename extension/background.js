@@ -14,6 +14,30 @@ const PSE_DEFAULTS_SYNC = {
   enableWishlist: true, enableSearchAutocomplete: true
 };
 
+/* ──── Action icon badge ────
+ * Precedence: wishlist deals ready to buy (green count) > unseen changelog (red dot) > clear.
+ * Recomputed after anything that could change either signal. */
+async function updateBadge() {
+  try {
+    const d = await chrome.storage.local.get(["wishlist", "pse_changelog_unseen"]);
+    const list = d.wishlist || [];
+    const readyCount = list.filter(
+      (i) => i.targetPrice != null && i.lastCheckedPrice != null && i.lastCheckedPrice <= i.targetPrice
+    ).length;
+    if (readyCount > 0) {
+      chrome.action.setBadgeText({ text: readyCount > 99 ? "99+" : String(readyCount) });
+      chrome.action.setBadgeBackgroundColor({ color: "#6dc849" });
+    } else if (d.pse_changelog_unseen) {
+      chrome.action.setBadgeText({ text: "●" });
+      chrome.action.setBadgeBackgroundColor({ color: "#ff4040" });
+    } else {
+      chrome.action.setBadgeText({ text: "" });
+    }
+  } catch {}
+}
+
+chrome.runtime.onStartup.addListener(() => updateBadge());
+
 /* ──── lifecycle ──── */
 chrome.runtime.onInstalled.addListener(async (details) => {
   if (details.reason === "install") {
@@ -38,10 +62,6 @@ chrome.runtime.onInstalled.addListener(async (details) => {
     const next = chrome.runtime.getManifest().version;
     if (prev && prev !== next) {
       await chrome.storage.local.set({ pse_changelog_unseen: next });
-      try {
-        chrome.action.setBadgeText({ text: "●" });
-        chrome.action.setBadgeBackgroundColor({ color: "#ff4040" });
-      } catch {}
     }
     const isMinorOrMajor = (() => {
       const a = prev.split(".").map(Number);
@@ -52,6 +72,7 @@ chrome.runtime.onInstalled.addListener(async (details) => {
       chrome.tabs.create({ url: chrome.runtime.getURL("changelog.html") });
     }
   }
+  updateBadge();
   chrome.alarms.create("pse-cache-purge", { periodInMinutes: 360 });
   chrome.alarms.create("pse-psn-sync", { periodInMinutes: 120 });
   chrome.alarms.create("pse-wishlist-check", { periodInMinutes: 24 * 60 });
@@ -144,7 +165,7 @@ const HANDLERS = {
   FETCH_SEARCH_SUGGESTIONS: (m) => handleSearchSuggestions(m.query),
   CHANGELOG_SEEN: async () => {
     await chrome.storage.local.remove("pse_changelog_unseen");
-    try { chrome.action.setBadgeText({ text: "" }); } catch {}
+    updateBadge();
     return { ok: true };
   },
   GET_MERGED_OWNED: () => PSN.getMergedOwned().then(list => ({ list })),
@@ -208,12 +229,14 @@ const HANDLERS = {
       notified: false
     });
     await chrome.storage.local.set({ wishlist: list });
+    updateBadge();
     return { ok: true, list, currentPrice };
   },
   REMOVE_WISHLIST: async (m) => {
     const d = await chrome.storage.local.get(["wishlist"]);
     const list = (d.wishlist || []).filter(g => g.name.toLowerCase() !== (m.gameName || "").toLowerCase());
     await chrome.storage.local.set({ wishlist: list });
+    updateBadge();
     return { ok: true, list };
   },
   GET_WISHLIST: async () => {
@@ -228,6 +251,7 @@ const HANDLERS = {
     list[idx].targetPrice = m.targetPrice != null ? Number(m.targetPrice) : null;
     list[idx].notified = false;
     await chrome.storage.local.set({ wishlist: list });
+    updateBadge();
     return { ok: true, list };
   },
   IS_IN_WISHLIST: async (m) => {
@@ -288,6 +312,7 @@ async function checkWishlistPrices() {
     updated.push(item);
   }
   await chrome.storage.local.set({ wishlist: updated });
+  updateBadge();
 }
 
 /* ──── Currency conversion via Frankfurter ──── */
@@ -342,6 +367,11 @@ async function handleCrossPlatform(gameName) {
       "15":"Fanatical","21":"WinGameStore","25":"Epic Games Store"
     };
 
+    // v2.5: flag rows whose CheapShark listing is for a different bundle/edition than
+    // the PS Store page (e.g. base game page pulling a "Deluxe Edition" PC listing) so
+    // the UI can show it transparently instead of implying it's the same product.
+    const queryEdition = detectEdition(gameName);
+
     const storeMap = new Map();
     for (const deal of deals) {
       if (!fuzzyMatch(gameName, deal.title)) continue;
@@ -349,9 +379,11 @@ async function handleCrossPlatform(gameName) {
       const price = parseFloat(deal.salePrice);
       const normalPrice = parseFloat(deal.normalPrice);
       const savings = Math.round(parseFloat(deal.savings || 0));
+      const dealEdition = detectEdition(deal.title);
+      const edition = dealEdition && dealEdition !== queryEdition ? dealEdition : null;
       if (!storeMap.has(store) || storeMap.get(store).price > price) {
         storeMap.set(store, {
-          store, price, normalPrice, savings,
+          store, price, normalPrice, savings, edition,
           dealLink: `https://www.cheapshark.com/redirect?dealID=${deal.dealID}`
         });
       }

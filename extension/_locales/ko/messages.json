@@ -580,5 +580,31 @@
         "content": "$1"
       }
     }
+  },
+  "statsTitle": {
+    "message": "라이브러리 및 위시리스트 통계"
+  },
+  "statOwnedLabel": {
+    "message": "보유 게임"
+  },
+  "statWishlistLabel": {
+    "message": "위시리스트 항목"
+  },
+  "statWishlistValueLabel": {
+    "message": "위시리스트 가치"
+  },
+  "statReadyLabel": {
+    "message": "구매 가능한 할인"
+  },
+  "statsNote": {
+    "message": "위시리스트 가치는 마지막으로 확인된 크로스 플랫폼 가격(USD)의 합계입니다. 매일 업데이트되거나 아래의 \"지금 가격 확인\"을 통해 업데이트됩니다."
+  },
+  "crossPlatformEditionNote": {
+    "message": "이 항목은 $EDITION$ 에디션 가격입니다 — 기본판과 가격이 다를 수 있습니다",
+    "placeholders": {
+      "edition": {
+        "content": "$1"
+      }
+    }
   }
 }

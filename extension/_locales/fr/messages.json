@@ -580,5 +580,31 @@
         "content": "$1"
       }
     }
+  },
+  "statsTitle": {
+    "message": "Statistiques bibliothèque et liste de souhaits"
+  },
+  "statOwnedLabel": {
+    "message": "Jeux possédés"
+  },
+  "statWishlistLabel": {
+    "message": "Dans la liste"
+  },
+  "statWishlistValueLabel": {
+    "message": "Valeur de la liste"
+  },
+  "statReadyLabel": {
+    "message": "Offres prêtes"
+  },
+  "statsNote": {
+    "message": "La valeur de la liste est la somme des derniers prix multiplateformes vérifiés (USD). Mise à jour quotidienne, ou via « Vérifier les prix maintenant » ci-dessous."
+  },
+  "crossPlatformEditionNote": {
+    "message": "Cette offre concerne l'édition $EDITION$ — le prix peut différer du jeu de base",
+    "placeholders": {
+      "edition": {
+        "content": "$1"
+      }
+    }
   }
 }

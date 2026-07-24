@@ -23,6 +23,7 @@
     "fuzzyMatch": "readonly",
     "computeBasePrice": "readonly",
     "classifyTitle": "readonly",
+    "detectEdition": "readonly",
     "importScripts": "readonly"
   },
   "rules": {

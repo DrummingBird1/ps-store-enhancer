@@ -64,8 +64,11 @@ body.theme-light .toast{background:#fff;color:#48a014;border-color:rgba(72,160,2
 .own-empty{text-align:center;padding:20px;color:#4a5568;font-size:12px}
 .own-count{font-size:11px;color:#718096;margin-top:8px}
 .cache-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.cache-stats.cols-4{grid-template-columns:repeat(4,1fr)}
 .cache-box{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:10px;padding:14px;text-align:center}
 .cache-box .cv{font-size:22px;font-weight:800;color:#4da6ff}.cache-box .cl{font-size:10px;color:#718096;text-transform:uppercase;letter-spacing:.5px;margin-top:4px}
+.cache-box.ready .cv{color:#6dc849}
+@media(max-width:640px){.cache-stats.cols-4{grid-template-columns:repeat(2,1fr)}}
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:#1b2838;color:#6dc849;border:1px solid rgba(109,200,73,.3);padding:10px 24px;border-radius:10px;font-size:13px;font-weight:500;box-shadow:0 8px 30px rgba(0,0,0,.4);transition:transform .3s;z-index:9999}
 .toast.show{transform:translateX(-50%) translateY(0)}
 .spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.2);border-top-color:#4da6ff;border-radius:50%;animation:spin .6s linear infinite;vertical-align:middle;margin-inline-start:6px}
@@ -116,18 +119,18 @@ body.theme-light .toast{background:#fff;color:#48a014;border-color:rgba(72,160,2
 
   <div class="card">
     <div class="card-title">⚡ <span data-i18n="featuresTitle">Active Features</span></div>
-    <div class="tr"><div class="ti"><div class="lb" data-i18n="metacriticToggle">OpenCritic / Metacritic Score</div><div class="sub" data-i18n="metacriticDesc">Score badge next to game title</div></div><label class="sw"><input type="checkbox" id="enableMetacritic"><span class="sl"></span></label></div>
-    <div class="tr"><div class="ti"><div class="lb" data-i18n="priceHistoryToggle">Price History + Chart</div><div class="sub" data-i18n="priceHistoryDesc">Sparkline and link to PSPrices</div></div><label class="sw"><input type="checkbox" id="enablePriceHistory"><span class="sl"></span></label></div>
-    <div class="tr"><div class="ti"><div class="lb" data-i18n="crossPlatformToggle">Cross-Platform Price Comparison</div><div class="sub" data-i18n="crossPlatformDesc">Steam, Epic, GOG and more via CheapShark</div></div><label class="sw"><input type="checkbox" id="enableCrossPlatform"><span class="sl"></span></label></div>
-    <div class="tr"><div class="ti"><div class="lb" data-i18n="trophyToggle">Completionist Info (Trophies)</div><div class="sub" data-i18n="trophyDesc">Difficulty, time, playthroughs + PSN progress</div></div><label class="sw"><input type="checkbox" id="enableTrophies"><span class="sl"></span></label></div>
-    <div class="tr"><div class="ti"><div class="lb" data-i18n="searchAutocompleteToggle">Live Search Suggestions</div><div class="sub" data-i18n="searchAutocompleteDesc">Price & score preview as you type in the store search box</div></div><label class="sw"><input type="checkbox" id="enableSearchAutocomplete"><span class="sl"></span></label></div>
+    <div class="tr"><div class="ti"><div class="lb" data-i18n="metacriticToggle">OpenCritic / Metacritic Score</div><div class="sub" data-i18n="metacriticDesc">Score badge next to game title</div></div><label class="sw"><input type="checkbox" id="enableMetacritic" data-i18n-aria="metacriticToggle"><span class="sl"></span></label></div>
+    <div class="tr"><div class="ti"><div class="lb" data-i18n="priceHistoryToggle">Price History + Chart</div><div class="sub" data-i18n="priceHistoryDesc">Sparkline and link to PSPrices</div></div><label class="sw"><input type="checkbox" id="enablePriceHistory" data-i18n-aria="priceHistoryToggle"><span class="sl"></span></label></div>
+    <div class="tr"><div class="ti"><div class="lb" data-i18n="crossPlatformToggle">Cross-Platform Price Comparison</div><div class="sub" data-i18n="crossPlatformDesc">Steam, Epic, GOG and more via CheapShark</div></div><label class="sw"><input type="checkbox" id="enableCrossPlatform" data-i18n-aria="crossPlatformToggle"><span class="sl"></span></label></div>
+    <div class="tr"><div class="ti"><div class="lb" data-i18n="trophyToggle">Completionist Info (Trophies)</div><div class="sub" data-i18n="trophyDesc">Difficulty, time, playthroughs + PSN progress</div></div><label class="sw"><input type="checkbox" id="enableTrophies" data-i18n-aria="trophyToggle"><span class="sl"></span></label></div>
+    <div class="tr"><div class="ti"><div class="lb" data-i18n="searchAutocompleteToggle">Live Search Suggestions</div><div class="sub" data-i18n="searchAutocompleteDesc">Price & score preview as you type in the store search box</div></div><label class="sw"><input type="checkbox" id="enableSearchAutocomplete" data-i18n-aria="searchAutocompleteToggle"><span class="sl"></span></label></div>
   </div>
 
   <div class="card">
     <div class="card-title">🧹 <span data-i18n="filterTitle">Search Result Filters</span></div>
-    <div class="tr"><div class="ti"><div class="lb" data-i18n="hideAddons">Hide Add-ons & Currency</div></div><label class="sw"><input type="checkbox" id="hideAddons"><span class="sl"></span></label></div>
-    <div class="tr"><div class="ti"><div class="lb" data-i18n="hideDlc">Hide DLC & Expansions</div></div><label class="sw"><input type="checkbox" id="hideDlc"><span class="sl"></span></label></div>
-    <div class="tr"><div class="ti"><div class="lb" data-i18n="hideOwned">Hide games I already own</div><div class="sub" data-i18n="hideOwnedDesc">Auto from PSN + manual list</div></div><label class="sw"><input type="checkbox" id="hideOwned"><span class="sl"></span></label></div>
+    <div class="tr"><div class="ti"><div class="lb" data-i18n="hideAddons">Hide Add-ons & Currency</div></div><label class="sw"><input type="checkbox" id="hideAddons" data-i18n-aria="hideAddons"><span class="sl"></span></label></div>
+    <div class="tr"><div class="ti"><div class="lb" data-i18n="hideDlc">Hide DLC & Expansions</div></div><label class="sw"><input type="checkbox" id="hideDlc" data-i18n-aria="hideDlc"><span class="sl"></span></label></div>
+    <div class="tr"><div class="ti"><div class="lb" data-i18n="hideOwned">Hide games I already own</div><div class="sub" data-i18n="hideOwnedDesc">Auto from PSN + manual list</div></div><label class="sw"><input type="checkbox" id="hideOwned" data-i18n-aria="hideOwned"><span class="sl"></span></label></div>
   </div>
 
   <div class="card">
@@ -214,6 +217,17 @@ body.theme-light .toast{background:#fff;color:#48a014;border-color:rgba(72,160,2
         <input type="file" id="importFile" accept="application/json,.json" style="display:none">
       </div>
     </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📊 <span data-i18n="statsTitle">Library & Wishlist Stats</span></div>
+    <div class="cache-stats cols-4">
+      <div class="cache-box"><div class="cv" id="statOwned">—</div><div class="cl" data-i18n="statOwnedLabel">Games Owned</div></div>
+      <div class="cache-box"><div class="cv" id="statWishlist">—</div><div class="cl" data-i18n="statWishlistLabel">Wishlisted</div></div>
+      <div class="cache-box"><div class="cv" id="statWishlistValue">—</div><div class="cl" data-i18n="statWishlistValueLabel">Wishlist Value</div></div>
+      <div class="cache-box ready"><div class="cv" id="statReady">—</div><div class="cl" data-i18n="statReadyLabel">Deals Ready</div></div>
+    </div>
+    <p class="card-desc" data-i18n="statsNote">Wishlist value is the sum of the last-checked cross-platform prices (USD). Updated daily, or via "Check prices now" below.</p>
   </div>
 
   <div class="card">

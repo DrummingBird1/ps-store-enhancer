@@ -580,5 +580,31 @@
         "content": "$1"
       }
     }
+  },
+  "statsTitle": {
+    "message": "Library & Wishlist Stats"
+  },
+  "statOwnedLabel": {
+    "message": "Games Owned"
+  },
+  "statWishlistLabel": {
+    "message": "Wishlisted"
+  },
+  "statWishlistValueLabel": {
+    "message": "Wishlist Value"
+  },
+  "statReadyLabel": {
+    "message": "Deals Ready"
+  },
+  "statsNote": {
+    "message": "Wishlist value is the sum of the last-checked cross-platform prices (USD). Updated daily, or via \"Check prices now\" below."
+  },
+  "crossPlatformEditionNote": {
+    "message": "This listing is for the $EDITION$ Edition — price may differ from the base game",
+    "placeholders": {
+      "edition": {
+        "content": "$1"
+      }
+    }
   }
 }

@@ -25,6 +25,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     wlList: document.getElementById("wlList"),
     wlCount: document.getElementById("wlCount"),
     wlCheckBtn: document.getElementById("wlCheckBtn"),
+    statOwned: document.getElementById("statOwned"),
+    statWishlist: document.getElementById("statWishlist"),
+    statWishlistValue: document.getElementById("statWishlistValue"),
+    statReady: document.getElementById("statReady"),
     purgeBtn: document.getElementById("purgeBtn"),
     clearBtn: document.getElementById("clearBtn"),
     cActive: document.getElementById("cActive"),
@@ -73,6 +77,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
   let manualOwned = local.manual_owned || local.ownedGames || [];
   let psnOwned = local.psn_owned || [];
+  let ownedTotal = 0;
+  let wishlistCache = [];
 
   // Auto-save toggles
   for (const k of ["enableMetacritic","enablePriceHistory","enableCrossPlatform","enableTrophies","enableSearchAutocomplete","hideAddons","hideDlc","hideOwned"])
@@ -125,6 +131,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     for (const g of psnOwned) items.push({ name: g, source: "psn" });
     for (const g of manualOwned) { if (!psnSet.has(g.toLowerCase().trim())) items.push({ name: g, source: "manual" }); }
     items.sort((a, b) => a.name.localeCompare(b.name));
+    ownedTotal = items.length;
+    renderStats();
 
     if (!items.length) {
       el.ownList.innerHTML = `<div class="own-empty">${t("emptyList")}</div>`;
@@ -138,6 +146,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     }).join("");
     el.ownCount.textContent = `${items.length} total (${psnOwned.length} PSN, ${manualOwned.length} manual)`;
     el.ownList.querySelectorAll(".rm").forEach(b => b.addEventListener("click", () => removeManualGame(b.dataset.name)));
+  }
+
+  function renderStats() {
+    if (!el.statOwned) return;
+    const value = wishlistCache.reduce((sum, i) => sum + (i.lastCheckedPrice != null ? Number(i.lastCheckedPrice) : 0), 0);
+    const ready = wishlistCache.filter(i => i.targetPrice != null && i.lastCheckedPrice != null && i.lastCheckedPrice <= i.targetPrice).length;
+    el.statOwned.textContent = String(ownedTotal);
+    el.statWishlist.textContent = String(wishlistCache.length);
+    el.statWishlistValue.textContent = `$${value.toFixed(2)}`;
+    el.statReady.textContent = String(ready);
   }
 
   // ═══ PSN ═══
@@ -251,6 +269,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     try {
       const r = await chrome.runtime.sendMessage({ type: "GET_WISHLIST" });
       const list = r?.list || [];
+      wishlistCache = list;
+      renderStats();
       if (!list.length) {
         el.wlList.innerHTML = `<div class="own-empty">${esc(t("wishlistEmpty"))}</div>`;
         el.wlCount.textContent = "";
@@ -275,7 +295,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       el.wlList.querySelectorAll(".wl-target").forEach(input => {
         input.addEventListener("change", async () => {
           const val = input.value === "" ? null : Number(input.value);
-          await chrome.runtime.sendMessage({ type: "SET_WISHLIST_TARGET", gameName: input.dataset.name, targetPrice: val });
+          const resp = await chrome.runtime.sendMessage({ type: "SET_WISHLIST_TARGET", gameName: input.dataset.name, targetPrice: val });
+          if (resp?.list) { wishlistCache = resp.list; renderStats(); }
           toast(t("saved"));
         });
       });

@@ -580,5 +580,31 @@
         "content": "$1"
       }
     }
+  },
+  "statsTitle": {
+    "message": "إحصاءات المكتبة وقائمة الرغبات"
+  },
+  "statOwnedLabel": {
+    "message": "الألعاب المملوكة"
+  },
+  "statWishlistLabel": {
+    "message": "في قائمة الرغبات"
+  },
+  "statWishlistValueLabel": {
+    "message": "قيمة القائمة"
+  },
+  "statReadyLabel": {
+    "message": "عروض جاهزة"
+  },
+  "statsNote": {
+    "message": "قيمة قائمة الرغبات هي مجموع آخر الأسعار المفحوصة عبر المنصات (بالدولار). تُحدَّث يوميًا، أو عبر \"تحقق من الأسعار الآن\" أدناه."
+  },
+  "crossPlatformEditionNote": {
+    "message": "هذا العرض لإصدار $EDITION$ — قد يختلف السعر عن اللعبة الأساسية",
+    "placeholders": {
+      "edition": {
+        "content": "$1"
+      }
+    }
   }
 }

@@ -119,6 +119,12 @@ const PSEi18n = (() => {
       if (msg && msg !== key) el.title = msg;
     });
 
+    document.querySelectorAll("[data-i18n-aria]").forEach(el => {
+      const key = el.getAttribute("data-i18n-aria");
+      const msg = getMessage(key);
+      if (msg && msg !== key) el.setAttribute("aria-label", msg);
+    });
+
     // Set document direction
     applyDirection();
   }

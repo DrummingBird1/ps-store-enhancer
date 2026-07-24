@@ -19,10 +19,13 @@
 | 🔎 **Live Search Suggestions** | Enriched dropdown (thumbnail + PC price) as you type in the store search box |
 | 📉 **Price History** | Embedded sparkline chart with 12-month history + lowest-ever price |
 | 🔀 **Cross-Platform** | Price comparison table — Steam, Epic, GOG, Humble (CheapShark API) |
+| 🎁 **Edition Transparency** | Flags cross-platform prices that are for a different bundle/edition (Deluxe, GOTY, etc.) than the page you're on |
 | 📊 **Review Scores** | OpenCritic / Metacritic badge next to game title |
 | 🏆 **Trophy Info** | Platinum, difficulty, time estimate + live PSN progress bar |
 | 🔗 **PSN Sync** | Connect PSN account to auto-sync game library & DLCs |
 | ✓ **Mark as Owned** | One-click button on product pages |
+| 📈 **Library & Wishlist Stats** | Dashboard: games owned, wishlist size, total wishlist value, deals ready to buy |
+| 🔔 **Toolbar Badge** | Live count of wishlist deals at/below target price on the extension icon |
 | 🧹 **Smart Filters** | Hide add-ons, DLC, currency packs, and owned games |
 | 🗣️ **10 Languages** | EN, HE, AR, ES, FR, DE, PT-BR, RU, JA, KO + manual selector |
 | 💾 **Smart Cache** | TTL-based caching (4h–7d) with cache management UI |

@@ -580,5 +580,31 @@
         "content": "$1"
       }
     }
+  },
+  "statsTitle": {
+    "message": "סטטיסטיקת ספרייה ורשימת משאלות"
+  },
+  "statOwnedLabel": {
+    "message": "משחקים בבעלות"
+  },
+  "statWishlistLabel": {
+    "message": "ברשימת משאלות"
+  },
+  "statWishlistValueLabel": {
+    "message": "שווי הרשימה"
+  },
+  "statReadyLabel": {
+    "message": "עסקאות מוכנות"
+  },
+  "statsNote": {
+    "message": "שווי הרשימה הוא סכום המחירים החוצי-פלטפורמות שנבדקו לאחרונה (בדולר). מתעדכן יומית, או דרך \"בדוק מחירים עכשיו\" למטה."
+  },
+  "crossPlatformEditionNote": {
+    "message": "המחיר הזה מתייחס למהדורת $EDITION$ — המחיר עשוי להיות שונה מהמשחק הבסיסי",
+    "placeholders": {
+      "edition": {
+        "content": "$1"
+      }
+    }
   }
 }

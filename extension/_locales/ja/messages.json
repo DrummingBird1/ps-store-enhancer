@@ -580,5 +580,31 @@
         "content": "$1"
       }
     }
+  },
+  "statsTitle": {
+    "message": "ライブラリ & ウィッシュリスト統計"
+  },
+  "statOwnedLabel": {
+    "message": "所有ゲーム数"
+  },
+  "statWishlistLabel": {
+    "message": "ウィッシュリスト数"
+  },
+  "statWishlistValueLabel": {
+    "message": "ウィッシュリスト合計額"
+  },
+  "statReadyLabel": {
+    "message": "購入可能な特価"
+  },
+  "statsNote": {
+    "message": "ウィッシュリストの合計額は、最後に確認したクロスプラットフォーム価格(USD)の合計です。毎日更新されるか、下の「今すぐ価格を確認」で更新できます。"
+  },
+  "crossPlatformEditionNote": {
+    "message": "この価格は$EDITION$版のものです — 通常版とは価格が異なる場合があります",
+    "placeholders": {
+      "edition": {
+        "content": "$1"
+      }
+    }
   }
 }
