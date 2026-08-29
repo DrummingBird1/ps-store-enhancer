@@ -330,7 +330,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   el.exportBtn.addEventListener("click", async () => {
     const local = await chrome.storage.local.get(["manual_owned","wishlist"]);
     const payload = {
-      app: "PS Store Insight",
+      app: "PS Store Enhancer",
       version: chrome.runtime.getManifest().version,
       exportedAt: new Date().toISOString(),
       manual_owned: local.manual_owned || [],
@@ -340,7 +340,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `ps-store-insight-backup-${new Date().toISOString().slice(0,10)}.json`;
+    a.download = `ps-store-enhancer-backup-${new Date().toISOString().slice(0,10)}.json`;
     document.body.appendChild(a);
     a.click();
     a.remove();
@@ -358,9 +358,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     try {
       const text = await file.text();
       const data = JSON.parse(text);
-      // Accept backups from both the old ("GameDeals+ for PS Store") and current app name
-      // so pre-rename backups still restore correctly.
-      const validApp = data?.app === "PS Store Insight" || data?.app === "GameDeals+ for PS Store";
+      // Accept backups from every past app name (the project has been renamed twice) so
+      // old backups still restore correctly.
+      const validApp = ["PS Store Enhancer", "PS Store Insight", "GameDeals+ for PS Store"].includes(data?.app);
       if (!data || typeof data !== "object" || !validApp) {
         throw new Error("invalid format");
       }

@@ -1,6 +1,6 @@
 {
   "extName": {
-    "message": "PS Store Insight for PS Store"
+    "message": "PS Store Enhancer for PS Store"
   },
   "extDesc": {
     "message": "Histórico de preços, comparação multiplataforma, avaliações, troféus e filtros para PlayStation Store. Sync PSN opcional."
@@ -314,7 +314,7 @@
     "message": "Esta extensão não é afiliada à Sony Interactive Entertainment ou PlayStation."
   },
   "welcomeTitle": {
-    "message": "Bem-vindo ao PS Store Insight!"
+    "message": "Bem-vindo ao PS Store Enhancer!"
   },
   "welcomeSubtitle": {
     "message": "Sua PlayStation™ Store ficou ainda melhor."
@@ -463,7 +463,7 @@
     "message": "❤️ Apoie o desenvolvimento"
   },
   "supportDevDesc": {
-    "message": "Curtindo o PS Store Insight? Apoie o desenvolvimento no Patreon."
+    "message": "Curtindo o PS Store Enhancer? Apoie o desenvolvimento no Patreon."
   },
   "currencyTitle": {
     "message": "Moeda de exibição"
@@ -490,7 +490,7 @@
     "message": "Claro"
   },
   "ctxMenuFind": {
-    "message": "Buscar no PS Store Insight comparador"
+    "message": "Buscar no PS Store Enhancer comparador"
   },
   "exportImportTitle": {
     "message": "Backup & Restauração"
@@ -557,7 +557,7 @@
     "message": "Prévia de preço e nota enquanto você digita na busca da loja"
   },
   "autocompleteBadge": {
-    "message": "Resultados ao vivo do PS Store Insight"
+    "message": "Resultados ao vivo do PS Store Enhancer"
   },
   "autocompletePcFrom": {
     "message": "No PC a partir de"
@@ -574,7 +574,7 @@
     "message": "Entendi"
   },
   "whatsNewBannerText": {
-    "message": "O PS Store Insight foi atualizado para v$VERSION$ — veja as novidades",
+    "message": "O PS Store Enhancer foi atualizado para v$VERSION$ — veja as novidades",
     "placeholders": {
       "version": {
         "content": "$1"

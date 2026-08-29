@@ -2,7 +2,7 @@ CHROME WEB STORE LISTING — COPY-PASTE GUIDE
 ==============================================
 
 EXTENSION NAME:
-PS Store Insight
+PS Store Enhancer
 
 SHORT DESCRIPTION (132 chars max):
 Price history, cross-platform comparison, review scores, trophy info & smart filters for the PlayStation™ Store.
@@ -14,7 +14,7 @@ Shopping
 DETAILED DESCRIPTION:
 ──────────────────────────────────────
 
-PS Store Insight (formerly GameDeals+) enhances your PlayStation™ Store browsing experience with powerful tools to help you make smarter purchasing decisions. All core features work out of the box — no sign-in required.
+PS Store Enhancer (formerly GameDeals+) enhances your PlayStation™ Store browsing experience with powerful tools to help you make smarter purchasing decisions. All core features work out of the box — no sign-in required.
 
 🔍 PRICE INTELLIGENCE
 • Embedded sparkline chart visualizing approximate price history
@@ -57,7 +57,7 @@ PS Store Insight (formerly GameDeals+) enhances your PlayStation™ Store browsi
 
 🎨 THEME & UX
 • Light, Dark, and Auto themes — pick what matches your system
-• Right-click any text on PS Store: "Find on PS Store Insight" → instant CheapShark lookup
+• Right-click any text on PS Store: "Find on PS Store Enhancer" → instant CheapShark lookup
 • Auto-detects your PS Store region from the URL on first visit
 • Backup & restore your owned-games list and wishlist as JSON
 
@@ -98,7 +98,7 @@ cookies: Detects existing PSN session cookie (npsso) for optional PlayStation Ne
 
 notifications: Sends a desktop notification when a wishlisted game's cross-platform price drops below the user's target price. Notifications are local — no server, no push API.
 
-contextMenus: Adds a right-click "Find on PS Store Insight" entry on store.playstation.com so users can search highlighted text on CheapShark.
+contextMenus: Adds a right-click "Find on PS Store Enhancer" entry on store.playstation.com so users can search highlighted text on CheapShark.
 
 storage: Saves user preferences, cached API responses, owned-games list, and wishlist locally on device.
 

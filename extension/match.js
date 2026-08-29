@@ -1,5 +1,5 @@
 /**
- * PS Store Insight — Pure, side-effect-free helpers used in matching/sorting/classification.
+ * PS Store Enhancer — Pure, side-effect-free helpers used in matching/sorting/classification.
  *
  * Defined once here so they can be unit-tested in Node (via `require`) AND used in the
  * service worker (via `importScripts`). Keep this file free of `chrome.*` or DOM APIs.

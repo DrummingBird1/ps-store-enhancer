@@ -1,5 +1,5 @@
 /**
- * PS Store Insight — Background Service Worker (v2.3)
+ * PS Store Enhancer — Background Service Worker (v2.3)
  */
 // match.js must load first — it defines slugify/fuzzyMatch/computeBasePrice/classifyTitle
 // used by both background.js and psn.js.
@@ -81,7 +81,7 @@ chrome.runtime.onInstalled.addListener(async (details) => {
     chrome.contextMenus.removeAll(() => {
       chrome.contextMenus.create({
         id: "pse-find-on-cheapshark",
-        title: chrome.i18n.getMessage("ctxMenuFind") || "Find on PS Store Insight",
+        title: chrome.i18n.getMessage("ctxMenuFind") || "Find on PS Store Enhancer",
         contexts: ["selection"],
         documentUrlPatterns: ["https://store.playstation.com/*"]
       });

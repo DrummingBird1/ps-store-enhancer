@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "__MSG_extName__",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "description": "__MSG_extDesc__",
   "default_locale": "en",
   "author": "Idan",
@@ -53,7 +53,7 @@
         "default": "Alt+Shift+G",
         "mac": "Alt+Shift+G"
       },
-      "description": "Open PS Store Insight popup"
+      "description": "Open PS Store Enhancer popup"
     }
   },
   "web_accessible_resources": [

@@ -1,6 +1,6 @@
 {
   "extName": {
-    "message": "PS Store Insight for PS Store"
+    "message": "PS Store Enhancer for PS Store"
   },
   "extDesc": {
     "message": "История цен, сравнение цен, оценки, трофеи и фильтры для PlayStation Store. Синхронизация PSN опциональна."
@@ -314,7 +314,7 @@
     "message": "Это расширение не связано с Sony Interactive Entertainment или PlayStation."
   },
   "welcomeTitle": {
-    "message": "Добро пожаловать в PS Store Insight!"
+    "message": "Добро пожаловать в PS Store Enhancer!"
   },
   "welcomeSubtitle": {
     "message": "Ваш PlayStation™ Store стал лучше."
@@ -463,7 +463,7 @@
     "message": "❤️ Поддержать разработку"
   },
   "supportDevDesc": {
-    "message": "Нравится PS Store Insight? Поддержите разработку на Patreon."
+    "message": "Нравится PS Store Enhancer? Поддержите разработку на Patreon."
   },
   "currencyTitle": {
     "message": "Валюта отображения"
@@ -490,7 +490,7 @@
     "message": "Светлая"
   },
   "ctxMenuFind": {
-    "message": "Найти на PS Store Insight сравнение цен"
+    "message": "Найти на PS Store Enhancer сравнение цен"
   },
   "exportImportTitle": {
     "message": "Резервная копия"
@@ -557,7 +557,7 @@
     "message": "Предпросмотр цены и оценки во время ввода в поиске магазина"
   },
   "autocompleteBadge": {
-    "message": "Живые результаты PS Store Insight"
+    "message": "Живые результаты PS Store Enhancer"
   },
   "autocompletePcFrom": {
     "message": "На ПК от"
@@ -574,7 +574,7 @@
     "message": "Понятно"
   },
   "whatsNewBannerText": {
-    "message": "PS Store Insight обновлён до v$VERSION$ — посмотрите, что нового",
+    "message": "PS Store Enhancer обновлён до v$VERSION$ — посмотрите, что нового",
     "placeholders": {
       "version": {
         "content": "$1"

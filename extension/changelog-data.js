@@ -1,9 +1,17 @@
 /**
- * PS Store Insight — condensed "what's new" highlights, latest release first.
+ * PS Store Enhancer — condensed "what's new" highlights, latest release first.
  * Kept in sync with changelog.html by hand on every version bump — this file only
  * needs the short bullet list shown in the popup card, not the full release notes.
  */
 const PSE_CHANGELOG = [
+  {
+    version: "2.6.0",
+    highlights: [
+      "✨ PS Store Insight is now PS Store Enhancer — shorter name, same extension. Old backups still import fine.",
+      "🎨 New icon, updated screenshots and promotional images",
+      "🌐 Expanded website with a full feature tour"
+    ]
+  },
   {
     version: "2.5.0",
     highlights: [

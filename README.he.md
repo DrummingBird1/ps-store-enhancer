@@ -1,10 +1,10 @@
 <div dir="rtl">
 
-# 🎮 PS Store Insight
+# 🎮 PS Store Enhancer
 
-> לשעבר GameDeals+. שדרג את חוויית הקנייה שלך בחנות PlayStation™: היסטוריית מחירים, השוואה חוצת-פלטפורמות, סנכרון ספריית PSN, מידע על גביעים, ציוני Metacritic, ופילטרים חכמים.
+> לשעבר GameDeals+, ולאחר מכן PS Store Insight. שדרג את חוויית הקנייה שלך בחנות PlayStation™: היסטוריית מחירים, השוואה חוצת-פלטפורמות, סנכרון ספריית PSN, מידע על גביעים, ציוני Metacritic, ופילטרים חכמים.
 
-![Version](https://img.shields.io/badge/version-2.5.0-blue)
+![Version](https://img.shields.io/badge/version-2.6.0-blue)
 ![Manifest](https://img.shields.io/badge/manifest-v3-green)
 ![Languages](https://img.shields.io/badge/languages-10-orange)
 ![License](https://img.shields.io/badge/license-MIT-brightgreen)
@@ -30,7 +30,7 @@
 | 🔗 **סנכרון PSN** *(אופציונלי)* | חבר חשבון PSN כדי לסנכרן אוטומטית ספריית משחקים ו-DLCs |
 | ✓ **סמן כנרכש** | כפתור בלחיצה אחת בעמוד מוצר |
 | 🧹 **פילטרים חכמים** | הסתר add-ons, DLC, חבילות מטבעות ומשחקים שכבר יש לך |
-| 🖱️ **חיפוש בקליק ימני** | סמן טקסט → לחץ ימני → "חפש ב-PS Store Insight" |
+| 🖱️ **חיפוש בקליק ימני** | סמן טקסט → לחץ ימני → "חפש ב-PS Store Enhancer" |
 | 🎨 **תמה בהירה / כהה** | אוטומטי לפי המערכת או בחירה ידנית |
 | 📤 **גיבוי ושחזור** | ייצוא/ייבוא רשימת בעלות ו-wishlist כ-JSON |
 | 🗣️ **10 שפות** | EN, HE, AR, ES, FR, DE, PT-BR, RU, JA, KO |

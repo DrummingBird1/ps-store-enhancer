@@ -1,5 +1,5 @@
 /**
- * PS Store Insight — i18n Module
+ * PS Store Enhancer — i18n Module
  * ================================
  * Supports two modes:
  *   "auto" → uses chrome.i18n.getMessage() (browser language)

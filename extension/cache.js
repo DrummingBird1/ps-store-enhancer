@@ -1,5 +1,5 @@
 /**
- * PS Store Insight — Smart Cache Module
+ * PS Store Enhancer — Smart Cache Module
  * Wraps chrome.storage.local with TTL support.
  */
 const PSECache = (() => {

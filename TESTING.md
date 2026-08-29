@@ -1,4 +1,4 @@
-# PS Store Insight — Manual Test Plan
+# PS Store Enhancer — Manual Test Plan
 
 A pre-release checklist. Run through this before publishing each new version to the Chrome Web Store. Each box should be ticked in a clean Chrome profile with the unpacked extension loaded.
 
@@ -44,7 +44,7 @@ Visit any product page, e.g. https://store.playstation.com/en-us/concept/1000009
 
 ### Right-click context menu (v2.3+)
 
-- [ ] Highlight any text on a PS Store page → right-click → **"Find on PS Store Insight price compare"** appears
+- [ ] Highlight any text on a PS Store page → right-click → **"Find on PS Store Enhancer price compare"** appears
 - [ ] Click it → new tab opens to CheapShark with the highlighted text as query
 
 ### Auto-detect region (v2.3+)
@@ -63,8 +63,8 @@ Visit any product page, e.g. https://store.playstation.com/en-us/concept/1000009
 ### Export / import (v2.3+)
 
 - [ ] Mark a few games as owned (via product pages or options)
-- [ ] Options → **Export JSON** → file downloads named `ps-store-insight-backup-YYYY-MM-DD.json`
-- [ ] Importing a pre-rename backup (`app: "GameDeals+ for PS Store"`) still restores correctly
+- [ ] Options → **Export JSON** → file downloads named `ps-store-enhancer-backup-YYYY-MM-DD.json`
+- [ ] Importing a pre-rename backup (`app: "GameDeals+ for PS Store"` or `"PS Store Insight"`) still restores correctly
 - [ ] Clear list (delete all manual entries)
 - [ ] Options → **Import JSON** → select the just-downloaded file → games reappear in the list
 
@@ -77,7 +77,7 @@ Visit any product page, e.g. https://store.playstation.com/en-us/concept/1000009
 ### Live search suggestions (v2.5+)
 
 - [ ] Visit any PS Store page, click the store's own search icon/box, type 2+ characters of a well-known game (e.g. "hades")
-- [ ] An enriched dropdown appears below the search box labeled "PS Store Insight live results" with thumbnail + PC price per row
+- [ ] An enriched dropdown appears below the search box labeled "PS Store Enhancer live results" with thumbnail + PC price per row
 - [ ] Arrow keys move the selection, Enter navigates, Escape closes it
 - [ ] Clicking a row navigates to PS Store's own `/search/<title>` results for that title
 - [ ] Typing in a payment/checkout field or any non-search input never triggers the dropdown
@@ -86,7 +86,7 @@ Visit any product page, e.g. https://store.playstation.com/en-us/concept/1000009
 ### "What's new" surfacing (v2.5+)
 
 - [ ] After loading an update in `chrome://extensions` (bump the version and reload unpacked), open the popup → a dismissible "What's new in vX.X.X" card appears with the latest highlights
-- [ ] Visit a PS Store page → a dismissible banner appears in the corner ("PS Store Insight updated to vX.X.X")
+- [ ] Visit a PS Store page → a dismissible banner appears in the corner ("PS Store Enhancer updated to vX.X.X")
 - [ ] Dismissing either one (✕ or the changelog link) clears the extension icon's badge and the other surface no longer shows it on reload
 
 ---

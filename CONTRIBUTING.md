@@ -1,4 +1,4 @@
-# Contributing to PS Store Insight (formerly GameDeals+)
+# Contributing to PS Store Enhancer (formerly GameDeals+, then PS Store Insight)
 
 Thanks for your interest! This project is a Chrome extension (Manifest V3) that enhances the PlayStation Store. Contributions of any kind are welcome — bug reports, feature ideas, translations, code.
 

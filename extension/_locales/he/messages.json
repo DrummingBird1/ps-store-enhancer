@@ -1,6 +1,6 @@
 {
   "extName": {
-    "message": "PS Store Insight for PS Store"
+    "message": "PS Store Enhancer for PS Store"
   },
   "extDesc": {
     "message": "היסטוריית מחירים, השוואת מחירים, ציוני ביקורת, מידע על גביעים וסינון חכם לחנות PlayStation. סנכרון PSN אופציונלי."
@@ -314,7 +314,7 @@
     "message": "תוסף זה אינו מזוהה עם, ממומן על ידי, או קשור ל-Sony Interactive Entertainment, PlayStation או כל חברת בת שלהם."
   },
   "welcomeTitle": {
-    "message": "!ברוך הבא ל-PS Store Insight"
+    "message": "!ברוך הבא ל-PS Store Enhancer"
   },
   "welcomeSubtitle": {
     "message": ".חנות ה-PlayStation™ שלך השתדרגה"
@@ -463,7 +463,7 @@
     "message": "❤️ תמכו בפיתוח"
   },
   "supportDevDesc": {
-    "message": "נהנים מ-PS Store Insight? תמכו בפיתוח ב-Patreon."
+    "message": "נהנים מ-PS Store Enhancer? תמכו בפיתוח ב-Patreon."
   },
   "currencyTitle": {
     "message": "מטבע תצוגה"
@@ -490,7 +490,7 @@
     "message": "בהיר"
   },
   "ctxMenuFind": {
-    "message": "חפש ב-PS Store Insight השוואת מחירים"
+    "message": "חפש ב-PS Store Enhancer השוואת מחירים"
   },
   "exportImportTitle": {
     "message": "גיבוי ושחזור"
@@ -516,7 +516,7 @@
     }
   },
   "importFailed": {
-    "message": "הייבוא נכשל — הקובץ אינו ייצוא תקין של PS Store Insight"
+    "message": "הייבוא נכשל — הקובץ אינו ייצוא תקין של PS Store Enhancer"
   },
   "changelogTitle": {
     "message": "מה חדש"
@@ -557,7 +557,7 @@
     "message": "תצוגה מקדימה של מחיר וציון תוך כדי הקלדה בתיבת החיפוש"
   },
   "autocompleteBadge": {
-    "message": "תוצאות חיות מבית PS Store Insight"
+    "message": "תוצאות חיות מבית PS Store Enhancer"
   },
   "autocompletePcFrom": {
     "message": "ב-PC החל מ-"
@@ -574,7 +574,7 @@
     "message": "הבנתי"
   },
   "whatsNewBannerText": {
-    "message": "PS Store Insight עודכן לגרסה v$VERSION$ — ראו מה חדש",
+    "message": "PS Store Enhancer עודכן לגרסה v$VERSION$ — ראו מה חדש",
     "placeholders": {
       "version": {
         "content": "$1"

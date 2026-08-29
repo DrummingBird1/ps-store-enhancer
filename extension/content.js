@@ -1,5 +1,5 @@
 /**
- * PS Store Insight — Content Script (v2.2)
+ * PS Store Enhancer — Content Script (v2.2)
  * All 13 fixes applied.
  */
 (() => {
@@ -818,7 +818,7 @@
   /* ═══════════════════════════════════════════════
    * FEATURE — Live Search Autocomplete
    * Adds an enriched (price + thumbnail) dropdown under the PS Store search box,
-   * clearly labeled as PS Store Insight's own overlay — it does not touch or replace
+   * clearly labeled as PS Store Enhancer's own overlay — it does not touch or replace
    * Sony's native search UI. Selecting a row jumps to PS Store's own search
    * results for that exact title.
    * ═══════════════════════════════════════════════ */
