@@ -40,10 +40,11 @@ gamedeals-plus/
 │   ├── icons/              16/48/128 PNG icons
 │   └── _locales/           Per-language messages.json (10 languages)
 ├── assets/                 Chrome Web Store + social media materials (see assets/README.md)
+│   └── docs/               GitHub Pages site (landing + privacy policy) — deployed via
+│                           .github/workflows/pages.yml, self-contained (own assets/ inside)
 ├── dist/                   Latest build output — git-ignored, made by scripts/build.py
 ├── archive/                Superseded assets kept for reference, not deleted
 ├── scripts/build.py        Builds dist/ from extension/
-├── docs/                   GitHub Pages site (landing + privacy policy)
 ├── tests/                  Jest tests
 ├── .github/
 │   ├── workflows/          CI (lint+tests on PR) + Release (build + publish on tag)

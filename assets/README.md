@@ -22,6 +22,7 @@ screenshots/
   en/                           English screenshots (upload these as the default set)
   he/                           Hebrew screenshots (upload under the Hebrew locale in the
                                  dashboard: Store Listing → language dropdown → Hebrew)
+docs/                           The GitHub Pages website — self-contained, see below
 STORE-LISTING.txt               Full description + permission justifications, copy-paste ready
 REVIEWER-NOTES.md               Notes for the Chrome Web Store review team
 ```
@@ -36,12 +37,15 @@ Each screenshot language folder has the same four shots, same order:
 Chrome Web Store accepts 1280×800 or 640×400 for screenshots (don't mix ratios within one upload
 if it complains — these are grouped by size already: 1–3 are 1280×800, 4 is 640×400).
 
-## Why `docs/assets/` has its own copies
+## Why `docs/assets/` has its own copies of a few images
 
-`docs/` is the GitHub Pages site, and Pages can only serve files that physically live inside the
-`/docs` folder — a relative link out to `../assets/...` 404s on the live site. So the website's
-icon, og-image, and four feature screenshots are duplicated into `docs/assets/` on purpose. If
-you update one of those images here, copy the update into `docs/assets/` too.
+`docs/` (the website, deployed by `.github/workflows/pages.yml`) is kept self-contained — its
+icon, og-image, and four feature screenshots live in `docs/assets/` rather than reaching up into
+the folders above. That's a deliberate simplicity choice, not a hard constraint (the Pages deploy
+uploads `assets/docs/` as its own artifact, so it could reference sibling folders): keeping the
+site's asset set small and separate means a change to the store-listing screenshots doesn't
+silently change what the website shows, and vice versa. If you update one of those images here,
+copy the update into `docs/assets/` too.
 
 ## Regenerating
 

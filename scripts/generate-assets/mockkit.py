@@ -26,7 +26,7 @@ F_BOLD = FONT_DIR + "segoeuib.ttf"
 F_BLACK = FONT_DIR + "arialbd.ttf"
 F_MONO = FONT_DIR + "consola.ttf"
 
-# Palette — matches extension/styles.css + docs/index.html exactly
+# Palette — matches extension/styles.css + assets/docs/index.html exactly
 INK = (10, 15, 26)          # #0a0f1a page bg
 CARD = (19, 27, 46)         # #131b2e
 CARD2 = (27, 40, 56)        # #1b2838

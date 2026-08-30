@@ -65,14 +65,18 @@ gamedeals-plus/
 │   ├── icons/                  Extension icons (16, 48, 128)
 │   └── _locales/               10 language translations (185 keys each)
 │
-├── assets/                     ← Everything for the Chrome Web Store listing & social media
+├── assets/                     ← Everything for the Chrome Web Store listing, social media & website
 │   ├── README.md               What's here and why (incl. why docs/assets/ duplicates a few files)
 │   ├── STORE-LISTING.txt       Full description, privacy justifications
 │   ├── REVIEWER-NOTES.md       Notes for Chrome Web Store reviewers
 │   ├── icon.png, store-icon-128.png   Logo / store listing icon
 │   ├── badges/                 One graphic per released version, used in CHANGELOG.md
 │   ├── promo/                  Promotional tiles (440×280 small, 1400×560 marquee)
-│   └── screenshots/en, /he     Store screenshots, per language
+│   ├── screenshots/en, /he     Store screenshots, per language
+│   └── docs/                   GitHub Pages site — self-contained (own assets/ subfolder)
+│       ├── index.html          Landing page (feature tour + screenshots)
+│       ├── privacy-policy.html Privacy policy
+│       └── assets/             Website-only image copies (kept separate on purpose, see assets/README.md)
 │
 ├── dist/                       ← Latest build output (git-ignored, regenerate with scripts/build.py)
 │   ├── ps-store-enhancer-vX.Y.Z.zip   Ready to upload to the Chrome Web Store
@@ -82,11 +86,6 @@ gamedeals-plus/
 │
 ├── scripts/
 │   └── build.py                Builds dist/ from extension/
-│
-├── docs/                       ← GitHub Pages site (paths here are constrained to this folder)
-│   ├── index.html              Landing page (feature tour + screenshots)
-│   ├── privacy-policy.html     Privacy policy
-│   └── assets/                 Website-only image copies (GitHub Pages can't serve outside docs/)
 │
 ├── tests/                      Jest unit tests
 ├── .github/
@@ -168,7 +167,7 @@ Language can be set manually in Settings → Extension Language.
 ## 📦 Publishing to Chrome Web Store
 
 1. Register at [Chrome Developer Dashboard](https://chrome.google.com/webstore/devconsole) ($5 one-time)
-2. Host `docs/privacy-policy.html` (e.g., GitHub Pages)
+2. `assets/docs/privacy-policy.html` is already hosted via GitHub Pages
 3. Run `python scripts/build.py` → upload `dist/ps-store-enhancer-vX.Y.Z.zip`
 4. Fill listing using `assets/STORE-LISTING.txt`
 5. Upload screenshots from `assets/screenshots/`

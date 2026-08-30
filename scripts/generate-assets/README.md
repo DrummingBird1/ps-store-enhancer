@@ -23,8 +23,8 @@ Hebrew runs before drawing).
 
 Everything is written to `dist/asset-drafts/` (git-ignored, safe to regenerate anytime) — review
 the output, then copy whatever you're keeping into `assets/` (and `extension/icons/` for a new
-icon, and `docs/assets/` for anything the website embeds — see `assets/README.md` for why that's
-a separate copy). Move whatever you're replacing into `archive/` instead of deleting it.
+icon, and `assets/docs/assets/` for anything the website embeds — see `assets/README.md` for why
+that's a separate copy). Move whatever you're replacing into `archive/` instead of deleting it.
 
 To add a new screenshot language: copy the pattern in `gen_screenshots.py`'s `L = {...}` dict,
 add a translated entry, and drop the output into `assets/screenshots/<lang>/`.
