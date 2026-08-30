@@ -5,23 +5,12 @@
  */
 const PSE_CHANGELOG = [
   {
-    version: "2.6.2",
-    highlights: [
-      "📝 New CHANGELOG.md — the full version history, readable on GitHub",
-      "☕ Added Ko-fi and Buy Me a Coffee, and fixed the Patreon link"
-    ]
-  },
-  {
-    version: "2.6.1",
-    highlights: [
-      "🎨 New icon — cleaner and still crisp at 16px",
-      "🌐 The website now shows real screenshots of every major feature"
-    ]
-  },
-  {
     version: "2.6.0",
     highlights: [
-      "✨ PS Store Insight is now PS Store Enhancer — shorter name, same extension. Old backups still import fine."
+      "✨ PS Store Insight is now PS Store Enhancer — shorter name, same extension. Old backups still import fine.",
+      "🎨 New icon, real screenshots, and an expanded website",
+      "📝 New CHANGELOG.md — the full version history, readable on GitHub",
+      "☕ Added Ko-fi and Buy Me a Coffee, and fixed the Patreon link"
     ]
   },
   {

@@ -1,9 +1,10 @@
 {
   "name": "gamedeals-plus",
-  "version": "2.6.2",
+  "version": "2.6.0",
   "private": true,
   "description": "Chrome extension that enhances the PlayStation Store with price history, cross-platform comparison, review scores, trophy info, wishlist alerts, and smart filters.",
   "scripts": {
+    "build": "python scripts/build.py",
     "test": "jest",
     "lint": "eslint extension --ext .js",
     "lint:fix": "eslint extension --ext .js --fix",

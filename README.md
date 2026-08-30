@@ -1,11 +1,11 @@
-<p align="center"><img src="docs/assets/icon.png" width="96" height="96" alt="PS Store Enhancer icon"></p>
+<p align="center"><img src="assets/icon.png" width="96" height="96" alt="PS Store Enhancer icon"></p>
 
 <h1 align="center">🎮 PS Store Enhancer</h1>
 
 <p align="center">Formerly GameDeals+, then PS Store Insight. Enhance your PlayStation™ Store experience with price history, cross-platform comparison, review scores, trophy info, wishlist alerts, currency conversion, and smart filters.</p>
 
 <p align="center">
-<img src="https://img.shields.io/badge/version-2.6.2-blue" alt="Version">
+<img src="https://img.shields.io/badge/version-2.6.0-blue" alt="Version">
 <img src="https://img.shields.io/badge/manifest-v3-green" alt="Manifest V3">
 <img src="https://img.shields.io/badge/languages-10-orange" alt="10 languages">
 <img src="https://img.shields.io/badge/license-MIT-brightgreen" alt="MIT License">
@@ -49,7 +49,7 @@
 
 ```
 gamedeals-plus/
-├── extension/                  ← Chrome extension (load this in developer mode)
+├── extension/                  ← Chrome extension (load this in developer mode — the source of truth)
 │   ├── manifest.json           Manifest V3
 │   ├── background.js           Service worker — API proxy, PSN sync, wishlist, alarms
 │   ├── content.js              DOM injection — cards, badges, filters, live search
@@ -63,22 +63,33 @@ gamedeals-plus/
 │   ├── welcome.html            Onboarding page (shown on first install)
 │   ├── changelog.html / .js    In-extension "what's new" page
 │   ├── icons/                  Extension icons (16, 48, 128)
-│   └── _locales/               10 language translations (184 keys each)
+│   └── _locales/               10 language translations (185 keys each)
 │
-├── store-assets/               ← Chrome Web Store listing materials
+├── assets/                     ← Everything for the Chrome Web Store listing & social media
+│   ├── README.md               What's here and why (incl. why docs/assets/ duplicates a few files)
 │   ├── STORE-LISTING.txt       Full description, privacy justifications
 │   ├── REVIEWER-NOTES.md       Notes for Chrome Web Store reviewers
-│   ├── store-icon-128.png      Store listing icon
+│   ├── icon.png, store-icon-128.png   Logo / store listing icon
+│   ├── badges/                 One graphic per released version, used in CHANGELOG.md
 │   ├── promo/                  Promotional tiles (440×280 small, 1400×560 marquee)
 │   └── screenshots/en, /he     Store screenshots, per language
 │
-├── docs/                       ← GitHub Pages site
+├── dist/                       ← Latest build output (git-ignored, regenerate with scripts/build.py)
+│   ├── ps-store-enhancer-vX.Y.Z.zip   Ready to upload to the Chrome Web Store
+│   └── extension/              Same thing, unpacked (for quick "Load unpacked" testing)
+│
+├── archive/                    ← Superseded assets kept for reference (old icons, old docs, etc.)
+│
+├── scripts/
+│   └── build.py                Builds dist/ from extension/
+│
+├── docs/                       ← GitHub Pages site (paths here are constrained to this folder)
 │   ├── index.html              Landing page (feature tour + screenshots)
 │   ├── privacy-policy.html     Privacy policy
-│   └── assets/                 Website images + per-version release badges
+│   └── assets/                 Website-only image copies (GitHub Pages can't serve outside docs/)
 │
 ├── tests/                      Jest unit tests
-├── .github/workflows/          CI (lint+tests on PR) + Release (build zips on tag)
+├── .github/workflows/          CI (lint+tests on PR) + Release (build + publish on tag)
 ├── CHANGELOG.md                Full version history, human-readable
 ├── TESTING.md                  Manual browser test checklist
 ├── .gitignore
@@ -156,10 +167,10 @@ Language can be set manually in Settings → Extension Language.
 
 1. Register at [Chrome Developer Dashboard](https://chrome.google.com/webstore/devconsole) ($5 one-time)
 2. Host `docs/privacy-policy.html` (e.g., GitHub Pages)
-3. Create new item → upload `extension/` folder as ZIP
-4. Fill listing using `store-assets/STORE-LISTING.txt`
-5. Upload screenshots from `store-assets/screenshots/`
-6. Upload promo images from `store-assets/promo/`
+3. Run `python scripts/build.py` → upload `dist/ps-store-enhancer-vX.Y.Z.zip`
+4. Fill listing using `assets/STORE-LISTING.txt`
+5. Upload screenshots from `assets/screenshots/`
+6. Upload promo images from `assets/promo/`
 7. Set privacy policy URL → submit for review
 
 ---

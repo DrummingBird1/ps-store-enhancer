@@ -7,14 +7,27 @@ the popup/options pages.
 
 ---
 
-<a id="v2-6-2"></a>
-<img src="docs/assets/badges/v2-6-2.png" width="120" align="right" alt="v2.6.2 — Community">
+<a id="v2-6-0"></a>
+<img src="assets/badges/v2-6-0.png" width="120" align="right" alt="v2.6.0 — Renamed">
 
-## v2.6.2 — Repo, docs & support links
+## v2.6.0 — Renamed, again (hopefully for the last time)
 
-No functional changes to the extension's PS Store features in this release.
+- **PS Store Insight is now PS Store Enhancer** — same extension, same developer. Shorter, and
+  says exactly what it does: it enhances the PlayStation Store page you're already on. Nothing
+  about your settings, PSN connection, wishlist, or owned-games list changes. Backups exported
+  under any older name still import correctly.
+- **GitHub repo renamed** to match.
 
-- **GitHub repo renamed** to match the product name.
+**New look**
+- **New icon** — cleaner mark, still recognizable at 16px in the toolbar.
+- **Updated screenshots and promotional images** for the Chrome Web Store listing, including
+  Hebrew-localized versions, all built from the extension's real UI and colors rather than
+  generic mockups.
+- **Expanded website** — the landing page now shows real screenshots of every major feature
+  (product page cards, live search, the stats dashboard, the popup) instead of icon-only
+  feature tiles.
+
+**Docs & support links**
 - **This file** — the full version history in plain, readable Markdown, linked from the README,
   the website, and the in-extension changelog page.
 - **A unique badge per release** — every version here has its own small graphic (color +
@@ -24,45 +37,14 @@ No functional changes to the extension's PS Store features in this release.
 - **Support links updated** — added Ko-fi and Buy Me a Coffee alongside a corrected Patreon URL,
   replacing the old one everywhere it appeared.
 
-<br clear="right">
-
----
-
-<a id="v2-6-1"></a>
-<img src="docs/assets/badges/v2-6-1.png" width="120" align="right" alt="v2.6.1 — Design">
-
-## v2.6.1 — New look
-
-No functional changes to the extension itself — this release is entirely visual/branding polish.
-
-- **New icon** — cleaner mark, still recognizable at 16px in the toolbar.
-- **Updated screenshots and promotional images** for the Chrome Web Store listing, including
-  Hebrew-localized versions, all built from the extension's real UI and colors rather than
-  generic mockups.
-- **Expanded website** — the landing page now shows real screenshots of every major feature
-  (product page cards, live search, the stats dashboard, the popup) instead of icon-only
-  feature tiles.
-
-<br clear="right">
-
----
-
-<a id="v2-6-0"></a>
-<img src="docs/assets/badges/v2-6-0.png" width="120" align="right" alt="v2.6.0 — Renamed">
-
-## v2.6.0 — Renamed, again (hopefully for the last time)
-
-- **PS Store Insight is now PS Store Enhancer** — same extension, same developer. Shorter, and
-  says exactly what it does: it enhances the PlayStation Store page you're already on. Nothing
-  about your settings, PSN connection, wishlist, or owned-games list changes. Backups exported
-  under either older name still import correctly.
+No functional changes to the extension's PS Store features in this release.
 
 <br clear="right">
 
 ---
 
 <a id="v2-5-0"></a>
-<img src="docs/assets/badges/v2-5-0.png" width="120" align="right" alt="v2.5.0 — Renamed">
+<img src="assets/badges/v2-5-0.png" width="120" align="right" alt="v2.5.0 — Renamed">
 
 ## v2.5.0 — Renamed, and a real feature drop
 
@@ -97,7 +79,7 @@ A Firefox port is parked for the same reason. Edge already works today since it'
 ---
 
 <a id="v2-4-0"></a>
-<img src="docs/assets/badges/v2-4-0.png" width="120" align="right" alt="v2.4.0 — Feature">
+<img src="assets/badges/v2-4-0.png" width="120" align="right" alt="v2.4.0 — Feature">
 
 ## v2.4.0
 
@@ -113,7 +95,7 @@ A Firefox port is parked for the same reason. Edge already works today since it'
 ---
 
 <a id="v2-3-2"></a>
-<img src="docs/assets/badges/v2-3-2.png" width="120" align="right" alt="v2.3.2 — Security">
+<img src="assets/badges/v2-3-2.png" width="120" align="right" alt="v2.3.2 — Security">
 
 ## v2.3.2 — Security & compliance
 
@@ -130,7 +112,7 @@ A Firefox port is parked for the same reason. Edge already works today since it'
 ---
 
 <a id="v2-3-1"></a>
-<img src="docs/assets/badges/v2-3-1.png" width="120" align="right" alt="v2.3.1 — Polish">
+<img src="assets/badges/v2-3-1.png" width="120" align="right" alt="v2.3.1 — Polish">
 
 ## v2.3.1 — UX honesty & dev infrastructure
 
@@ -155,7 +137,7 @@ A Firefox port is parked for the same reason. Edge already works today since it'
 ---
 
 <a id="v2-3-0"></a>
-<img src="docs/assets/badges/v2-3-0.png" width="120" align="right" alt="v2.3.0 — Major">
+<img src="assets/badges/v2-3-0.png" width="120" align="right" alt="v2.3.0 — Major">
 
 ## v2.3.0
 
@@ -182,7 +164,7 @@ A Firefox port is parked for the same reason. Edge already works today since it'
 ---
 
 <a id="v2-2-3"></a>
-<img src="docs/assets/badges/v2-2-3.png" width="120" align="right" alt="v2.2.3 — Compliance">
+<img src="assets/badges/v2-2-3.png" width="120" align="right" alt="v2.2.3 — Compliance">
 
 ## v2.2.3 — Compliance & review-friction fixes
 
@@ -197,7 +179,7 @@ A Firefox port is parked for the same reason. Edge already works today since it'
 ---
 
 <a id="v2-2-2"></a>
-<img src="docs/assets/badges/v2-2-2.png" width="120" align="right" alt="v2.2.2 — Compliance">
+<img src="assets/badges/v2-2-2.png" width="120" align="right" alt="v2.2.2 — Compliance">
 
 ## v2.2.2
 
@@ -209,7 +191,7 @@ A Firefox port is parked for the same reason. Edge already works today since it'
 ---
 
 <a id="v2-2-1"></a>
-<img src="docs/assets/badges/v2-2-1.png" width="120" align="right" alt="v2.2.1 — Fixes">
+<img src="assets/badges/v2-2-1.png" width="120" align="right" alt="v2.2.1 — Fixes">
 
 ## v2.2.1
 

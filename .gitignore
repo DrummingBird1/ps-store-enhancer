@@ -10,9 +10,12 @@ desktop.ini
 *.swo
 
 # Build
+dist/
 *.zip
 *.crx
 *.pem
+__pycache__/
+*.pyc
 
 # Node (if adding build tools later)
 node_modules/

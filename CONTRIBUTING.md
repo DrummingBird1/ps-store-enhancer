@@ -24,7 +24,7 @@ To load the extension locally:
 
 ```
 gamedeals-plus/
-├── extension/              ← The Chrome extension (load this in dev mode)
+├── extension/              ← The Chrome extension (load this in dev mode — source of truth)
 │   ├── manifest.json       Manifest V3
 │   ├── background.js       Service worker — API proxy, PSN sync, wishlist, alarms
 │   ├── content.js          DOM injection on store.playstation.com
@@ -39,10 +39,14 @@ gamedeals-plus/
 │   ├── styles.css          Theme-aware styles for injected cards
 │   ├── icons/              16/48/128 PNG icons
 │   └── _locales/           Per-language messages.json (10 languages)
+├── assets/                 Chrome Web Store + social media materials (see assets/README.md)
+├── dist/                   Latest build output — git-ignored, made by scripts/build.py
+├── archive/                Superseded assets kept for reference, not deleted
+├── scripts/build.py        Builds dist/ from extension/
 ├── docs/                   GitHub Pages site (landing + privacy policy)
-├── store-assets/           Chrome Web Store listing materials
 ├── tests/                  Jest tests
-├── .github/workflows/      CI (lint+tests on PR) + Release (build zips on tag)
+├── .github/workflows/      CI (lint+tests on PR) + Release (build + publish on tag)
+├── CHANGELOG.md            Full version history
 └── TESTING.md              Manual browser test checklist
 ```
 
@@ -64,8 +68,8 @@ gamedeals-plus/
 ### Adding a new permission to manifest.json
 If you need a new Chrome permission (or `host_permissions`):
 - Add it to `manifest.json`
-- Add a justification in `store-assets/STORE-LISTING.txt`
-- Update `store-assets/REVIEWER-NOTES.md`
+- Add a justification in `assets/STORE-LISTING.txt`
+- Update `assets/REVIEWER-NOTES.md`
 - **Expect a fresh Chrome Web Store review** — new permissions invalidate the previous approval
 
 ### Translations
@@ -89,11 +93,28 @@ The extension supports 10 languages. To add a new key:
 GitHub Actions builds and publishes a release whenever a `v*` tag is pushed:
 
 ```bash
-git tag v2.3.2
-git push origin v2.3.2
+git tag v2.6.0
+git push origin v2.6.0
 ```
 
-The workflow runs `python build-zips.py` (logic embedded in `.github/workflows/release.yml`) and uploads both zips to the GitHub Release.
+The workflow (`.github/workflows/release.yml`) builds `dist/ps-store-enhancer-vX.Y.Z.zip` from
+`extension/` (same logic as `scripts/build.py`, run it locally to preview) and creates a GitHub
+Release with:
+- **Title** using the current product name (`PS Store Enhancer vX.Y.Z`) — pulled from
+  `extension/_locales/en/messages.json`'s `extName` key at build time, so it can't go stale on a
+  future rename the way earlier releases did (title kept saying "GameDeals+ for PS Store" for
+  three renames before anyone noticed, because it was hardcoded).
+- **Body** with that version's actual release badge image and its *full* changelog text (pulled
+  from `CHANGELOG.md`, not just a link to it) — a release page is often the first thing someone
+  sees, and "click through to read what changed" is worse than just showing it.
+- **One zip** — `ps-store-enhancer-vX.Y.Z.zip`, the extension only. There used to be a second
+  "full project" zip; nobody asked for it, cloning the repo already does that job, and it doubled
+  the release page's clutter for no benefit — removed.
+
+Before tagging: bump the version in `extension/manifest.json` **and** `package.json`, update both
+version strings in `extension/popup.html` (header *and* footer — easy to miss one), the version
+badges in `README.md`/`README.he.md`, and add the release's section to `CHANGELOG.md` +
+`extension/changelog.html` + `extension/changelog-data.js` (all three, kept in sync by hand).
 
 ## Reporting bugs
 

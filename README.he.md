@@ -1,12 +1,12 @@
 <div dir="rtl">
 
-<p align="center"><img src="docs/assets/icon.png" width="96" height="96" alt="לוגו PS Store Enhancer"></p>
+<p align="center"><img src="assets/icon.png" width="96" height="96" alt="לוגו PS Store Enhancer"></p>
 
 # 🎮 PS Store Enhancer
 
 > לשעבר GameDeals+, ולאחר מכן PS Store Insight. שדרג את חוויית הקנייה שלך בחנות PlayStation™: היסטוריית מחירים, השוואה חוצת-פלטפורמות, סנכרון ספריית PSN, מידע על גביעים, ציוני Metacritic, ופילטרים חכמים.
 
-![Version](https://img.shields.io/badge/version-2.6.2-blue)
+![Version](https://img.shields.io/badge/version-2.6.0-blue)
 ![Manifest](https://img.shields.io/badge/manifest-v3-green)
 ![Languages](https://img.shields.io/badge/languages-10-orange)
 ![License](https://img.shields.io/badge/license-MIT-brightgreen)
