@@ -121,17 +121,17 @@ npm run lint
 # פורמט
 npm run format
 
-# בניית zips
-python build-zips.py
+# בניית dist/
+python scripts/build.py
 ```
 
-ראה [TESTING.md](TESTING.md) לרשימת בדיקה ידנית לפני שחרור.
+ראה [.github/TESTING.md](.github/TESTING.md) לרשימת בדיקה ידנית לפני שחרור.
 
 ---
 
 ## 🤝 תרומה
 
-נשמח לתרומות! ראה [CONTRIBUTING.md](CONTRIBUTING.md).
+נשמח לתרומות! ראה [.github/CONTRIBUTING.md](.github/CONTRIBUTING.md).
 
 ---
 

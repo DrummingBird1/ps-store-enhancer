@@ -45,9 +45,11 @@ gamedeals-plus/
 ├── scripts/build.py        Builds dist/ from extension/
 ├── docs/                   GitHub Pages site (landing + privacy policy)
 ├── tests/                  Jest tests
-├── .github/workflows/      CI (lint+tests on PR) + Release (build + publish on tag)
-├── CHANGELOG.md            Full version history
-└── TESTING.md              Manual browser test checklist
+├── .github/
+│   ├── workflows/          CI (lint+tests on PR) + Release (build + publish on tag)
+│   ├── CONTRIBUTING.md     This file
+│   └── TESTING.md          Manual browser test checklist
+└── CHANGELOG.md            Full version history
 ```
 
 ## Development guidelines

@@ -118,9 +118,14 @@ After each version bump, re-test these "previously broken" paths:
 
 Once all the above passes:
 
-- [ ] Bump version in `manifest.json`, `popup.html`, `README.md`, `extension/README.md`
-- [ ] Run `python build-zips.py` (or push a `v2.x.y` tag if GitHub Actions release workflow is set up)
-- [ ] Verify `GameDeals-Plus-Extension.zip` loads cleanly in `chrome://extensions`
-- [ ] Update `STORE-LISTING.txt` short description + detailed description if features changed
-- [ ] Update `REVIEWER-NOTES.md` if permissions changed
+- [ ] Bump version in `extension/manifest.json` **and** `package.json`
+- [ ] Update both version strings in `extension/popup.html` (header *and* footer)
+- [ ] Update the version badges in `README.md` and `README.he.md`
+- [ ] Add the release's section to `CHANGELOG.md`, `extension/changelog.html`, and
+      `extension/changelog-data.js` (all three, kept in sync by hand)
+- [ ] Run `python scripts/build.py` and load `dist/extension/` unpacked to smoke-test
+- [ ] `git tag vX.Y.Z && git push origin vX.Y.Z` — the release workflow builds
+      `dist/ps-store-enhancer-vX.Y.Z.zip` and publishes the GitHub Release automatically
+- [ ] Update `assets/STORE-LISTING.txt` if the description or feature list changed
+- [ ] Update `assets/REVIEWER-NOTES.md` if permissions changed
 - [ ] Submit to Chrome Web Store

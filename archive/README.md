@@ -1,24 +1,33 @@
 # Archive
 
-Superseded assets and documents kept for reference instead of deleted outright: old logos, old
-screenshots, retired docs — anything that no longer belongs in `assets/` or the repo root, but
-that's still worth being able to look back at (e.g. "what did the icon look like in v2.5").
-
-**Not for release zips.** Every past release's zip is already permanently downloadable from its
-[GitHub Release](https://github.com/DrummingBird1/ps-store-enhancer/releases) — archiving them
-here too would just duplicate that (and bloat the repo with binaries git can't diff). If you need
-an old build, grab it from Releases.
-
-## Convention
-
-When something in `assets/` or elsewhere gets replaced (a redesigned icon, a rewritten doc), move
-the old version here instead of deleting it, under a dated or version-labeled subfolder, e.g.:
+Superseded assets and old release builds, kept for reference instead of deleted outright.
 
 ```
-archive/
-├── icons/v2.4-and-earlier/     the "PS+" icon used before the v2.6.0 redesign
-└── screenshots/v2.3.0/         the original mockup batch (different visual style)
+releases/                         Every past GitHub Release's extension zip
+  ps-store-v2.3.1-extension.zip     (still live at github.com/.../releases/tag/v2.3.1 too --
+  ps-store-v2.3.2-extension.zip      these are local copies for convenience/completeness)
+  ps-store-v2.4.0-extension.zip
+  ps-store-v2.5.0-extension.zip
+assets-pre-v2.6.0/                 What shipped from v2.3.0 through v2.5.0, before the
+  icons/                           v2.6.0 icon/screenshot redesign
+  screenshots/
+  promo/
 ```
 
-Nothing has been moved here yet as of v2.6.0 — this file exists so the folder does, and so the
-convention above is written down before the first thing needs archiving.
+v2.2.1, v2.2.2, v2.2.3, and v2.3.0 aren't archived as zips because they predate this repo's
+release automation (the CI/release workflow was added in v2.3.1) — those versions only ever
+existed as commits, before this repo had tags or GitHub Releases at all. Their changes are
+recorded in [`CHANGELOG.md`](../CHANGELOG.md), just without a downloadable build.
+
+## Convention going forward
+
+When something in `assets/` gets replaced (a redesigned icon, new screenshots), move the old
+version here under a `<what>-pre-vX.Y.Z/` folder instead of deleting it. When a release is
+superseded, its zip can be pulled from its GitHub Release page into `releases/` the same way
+`v2.3.1`–`v2.5.0` were here — see the commands below.
+
+```bash
+gh release download vX.Y.Z --repo DrummingBird1/ps-store-enhancer \
+  --pattern "ps-store-enhancer-vX.Y.Z.zip" \
+  --output "archive/releases/ps-store-vX.Y.Z-extension.zip"
+```

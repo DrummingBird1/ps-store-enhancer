@@ -89,9 +89,11 @@ gamedeals-plus/
 │   └── assets/                 Website-only image copies (GitHub Pages can't serve outside docs/)
 │
 ├── tests/                      Jest unit tests
-├── .github/workflows/          CI (lint+tests on PR) + Release (build + publish on tag)
+├── .github/
+│   ├── workflows/              CI (lint+tests on PR) + Release (build + publish on tag)
+│   ├── CONTRIBUTING.md         How to contribute
+│   └── TESTING.md              Manual browser test checklist
 ├── CHANGELOG.md                Full version history, human-readable
-├── TESTING.md                  Manual browser test checklist
 ├── .gitignore
 ├── LICENSE
 └── README.md                   This file
@@ -172,6 +174,35 @@ Language can be set manually in Settings → Extension Language.
 5. Upload screenshots from `assets/screenshots/`
 6. Upload promo images from `assets/promo/`
 7. Set privacy policy URL → submit for review
+
+---
+
+## 🛠 Development
+
+```bash
+# Install dependencies
+npm install
+
+# Unit tests (Jest)
+npm test
+
+# Lint
+npm run lint
+
+# Format
+npm run format
+
+# Build dist/
+python scripts/build.py
+```
+
+See [.github/TESTING.md](.github/TESTING.md) for the manual test checklist before a release.
+
+---
+
+## 🤝 Contributing
+
+Contributions welcome! See [.github/CONTRIBUTING.md](.github/CONTRIBUTING.md).
 
 ---
 

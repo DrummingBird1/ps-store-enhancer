@@ -12,6 +12,7 @@ desktop.ini
 # Build
 dist/
 *.zip
+!archive/**/*.zip
 *.crx
 *.pem
 __pycache__/
