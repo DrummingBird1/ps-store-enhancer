@@ -1,14 +1,27 @@
-# 🎮 PS Store Enhancer
+<p align="center"><img src="docs/assets/icon.png" width="96" height="96" alt="PS Store Enhancer icon"></p>
 
-> Formerly GameDeals+, then PS Store Insight. Enhance your PlayStation™ Store experience with price history, cross-platform comparison, review scores, trophy info, wishlist alerts, currency conversion, and smart filters.
+<h1 align="center">🎮 PS Store Enhancer</h1>
 
-![Version](https://img.shields.io/badge/version-2.6.1-blue)
-![Manifest](https://img.shields.io/badge/manifest-v3-green)
-![Languages](https://img.shields.io/badge/languages-10-orange)
-![License](https://img.shields.io/badge/license-MIT-brightgreen)
-[![CI](https://github.com/DrummingBird1/ps-store-insight/actions/workflows/ci.yml/badge.svg)](https://github.com/DrummingBird1/ps-store-insight/actions/workflows/ci.yml)
+<p align="center">Formerly GameDeals+, then PS Store Insight. Enhance your PlayStation™ Store experience with price history, cross-platform comparison, review scores, trophy info, wishlist alerts, currency conversion, and smart filters.</p>
 
-🌐 [**Landing page**](https://drummingbird1.github.io/ps-store-insight/) · 📝 [Changelog](extension/changelog.html) · 🔒 [Privacy policy](https://drummingbird1.github.io/ps-store-insight/privacy-policy.html) · 📖 [README בעברית](README.he.md) · ❤️ [Support on Patreon](https://www.patreon.com/cw/MrIdan)
+<p align="center">
+<img src="https://img.shields.io/badge/version-2.6.2-blue" alt="Version">
+<img src="https://img.shields.io/badge/manifest-v3-green" alt="Manifest V3">
+<img src="https://img.shields.io/badge/languages-10-orange" alt="10 languages">
+<img src="https://img.shields.io/badge/license-MIT-brightgreen" alt="MIT License">
+<a href="https://github.com/DrummingBird1/ps-store-enhancer/actions/workflows/ci.yml"><img src="https://github.com/DrummingBird1/ps-store-enhancer/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+</p>
+
+<p align="center">
+🌐 <a href="https://drummingbird1.github.io/ps-store-enhancer/"><b>Landing page</b></a> ·
+📝 <a href="CHANGELOG.md">Changelog</a> ·
+🔒 <a href="https://drummingbird1.github.io/ps-store-enhancer/privacy-policy.html">Privacy policy</a> ·
+📖 <a href="README.he.md">README בעברית</a>
+</p>
+
+<p align="center">
+❤️ Support this project — <a href="https://ko-fi.com/idanlights">Ko-fi</a> · <a href="https://buymeacoffee.com/MrIdan">Buy Me a Coffee</a> · <a href="https://www.patreon.com/c/IdanLights">Patreon</a>
+</p>
 
 ---
 
@@ -38,27 +51,36 @@
 gamedeals-plus/
 ├── extension/                  ← Chrome extension (load this in developer mode)
 │   ├── manifest.json           Manifest V3
-│   ├── background.js           Service worker — API proxy, PSN sync, cache
-│   ├── content.js              DOM injection — cards, badges, filters
+│   ├── background.js           Service worker — API proxy, PSN sync, wishlist, alarms
+│   ├── content.js              DOM injection — cards, badges, filters, live search
 │   ├── styles.css              PlayStation-themed styles
 │   ├── psn.js                  PSN authentication & library API
 │   ├── cache.js                Smart cache with TTL
+│   ├── match.js                Pure helpers (slugify/fuzzyMatch/detectEdition/…), unit-tested
 │   ├── i18n.js                 Multi-language support with manual override
 │   ├── popup.html / .js        Quick controls popup
-│   ├── options.html / .js      Full settings page
+│   ├── options.html / .js      Full settings page + Library & Wishlist stats
 │   ├── welcome.html            Onboarding page (shown on first install)
+│   ├── changelog.html / .js    In-extension "what's new" page
 │   ├── icons/                  Extension icons (16, 48, 128)
-│   └── _locales/               10 language translations (113 keys each)
+│   └── _locales/               10 language translations (184 keys each)
 │
 ├── store-assets/               ← Chrome Web Store listing materials
 │   ├── STORE-LISTING.txt       Full description, privacy justifications
+│   ├── REVIEWER-NOTES.md       Notes for Chrome Web Store reviewers
 │   ├── store-icon-128.png      Store listing icon
-│   ├── promo/                  Promotional tiles (440×280, 1280×800)
-│   └── screenshots/            4 store screenshots
+│   ├── promo/                  Promotional tiles (440×280 small, 1400×560 marquee)
+│   └── screenshots/en, /he     Store screenshots, per language
 │
-├── docs/                       ← Documentation
-│   └── privacy-policy.html     Privacy policy (host on GitHub Pages)
+├── docs/                       ← GitHub Pages site
+│   ├── index.html              Landing page (feature tour + screenshots)
+│   ├── privacy-policy.html     Privacy policy
+│   └── assets/                 Website images + per-version release badges
 │
+├── tests/                      Jest unit tests
+├── .github/workflows/          CI (lint+tests on PR) + Release (build zips on tag)
+├── CHANGELOG.md                Full version history, human-readable
+├── TESTING.md                  Manual browser test checklist
 ├── .gitignore
 ├── LICENSE
 └── README.md                   This file
@@ -120,11 +142,13 @@ Language can be set manually in Settings → Extension Language.
 
 | API | Purpose | Auth |
 |-----|---------|------|
-| [CheapShark](https://apidocs.cheapshark.com/) | Cross-platform prices + history | Free, no key |
+| [CheapShark](https://apidocs.cheapshark.com/) | Cross-platform prices + history, live search suggestions | Free, no key |
 | [OpenCritic](https://opencritic.com/) | Review scores | Public |
-| [PSN (Sony)](https://ca.account.sony.com/) | Library sync, trophies | NPSSO OAuth |
+| [Frankfurter](https://frankfurter.dev/) | Daily currency exchange rates | Free, no key |
+| [PSN (Sony)](https://ca.account.sony.com/) | Library sync, trophies (optional) | NPSSO OAuth |
 | [PSPrices](https://psprices.com/) | Price history link | Link only |
 | [PSNProfiles](https://psnprofiles.com/) | Trophy guide link | Link only |
+| [HowLongToBeat](https://howlongtobeat.com/) | Completion-time link | Link only |
 
 ---
 

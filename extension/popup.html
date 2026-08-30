@@ -31,9 +31,10 @@ body.theme-light .sl{background:#cbd5e0}
 .ft{padding:10px 18px;border-top:1px solid rgba(255,255,255,.05);display:flex;justify-content:space-between;align-items:center}
 .ft span{font-size:9px;color:#4a5568}
 .opt{font-size:10px;color:#4da6ff;text-decoration:none;cursor:pointer}.opt:hover{color:#fff}
-.support-row{display:block;margin:0 18px 10px;padding:8px 14px;text-align:center;font-size:11px;font-weight:600;color:#ff7eb6;background:rgba(255,126,182,.08);border:1px solid rgba(255,126,182,.25);border-radius:8px;text-decoration:none;transition:background .2s,border-color .2s}
-.support-row:hover{background:rgba(255,126,182,.16);border-color:rgba(255,126,182,.45)}
-body.theme-light .support-row{color:#d6336c;background:rgba(214,51,108,.06);border-color:rgba(214,51,108,.2)}
+.support-row{display:flex;gap:6px;margin:0 18px 10px}
+.support-link{flex:1;display:block;padding:8px 6px;text-align:center;font-size:10px;font-weight:600;color:#ff7eb6;background:rgba(255,126,182,.08);border:1px solid rgba(255,126,182,.25);border-radius:8px;text-decoration:none;transition:background .2s,border-color .2s;white-space:nowrap}
+.support-link:hover{background:rgba(255,126,182,.16);border-color:rgba(255,126,182,.45)}
+body.theme-light .support-link{color:#d6336c;background:rgba(214,51,108,.06);border-color:rgba(214,51,108,.2)}
 .wn-card{margin:12px 18px 0;padding:10px 14px;background:rgba(77,166,255,.08);border:1px solid rgba(77,166,255,.25);border-radius:8px}
 .wn-top{display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:700;color:#4da6ff}
 .wn-top button{background:none;border:none;color:#4da6ff;cursor:pointer;font-size:11px;padding:2px 4px}
@@ -45,7 +46,7 @@ body.theme-light .wn-card{background:rgba(0,112,209,.06);border-color:rgba(0,112
 <body>
 <div class="hdr">
   <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="6" fill="rgba(255,255,255,.15)"/><path d="M7 13l3 3 7-7" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  <div><h1>PS Store Enhancer</h1><p>v2.6.1</p></div>
+  <div><h1>PS Store Enhancer</h1><p>v2.6.2</p></div>
 </div>
 
 <div class="wn-card" id="whatsNewCard" style="display:none">
@@ -73,8 +74,12 @@ body.theme-light .wn-card{background:rgba(0,112,209,.06);border-color:rgba(0,112
   <span class="tag">🔀 Compare</span><span class="tag">🏆 Trophies</span><span class="tag">🧹 Filter</span>
 </div>
 <div class="status"><span class="dot"></span><span data-i18n="activeOnStore">Active on store.playstation.com</span></div>
-<a class="support-row" id="supportLink" href="https://www.patreon.com/cw/MrIdan" target="_blank" rel="noopener noreferrer"><span data-i18n="supportDev">❤️ Support development</span></a>
-<div class="ft"><span>PS Store Enhancer v2.6.1 · <a id="openChangelog" class="opt" data-i18n="viewChangelog" style="font-size:9px">What's new</a></span><a id="openOptions" class="opt" data-i18n="advancedSettings">⚙ Advanced settings</a></div>
+<div class="support-row">
+  <a class="support-link" href="https://ko-fi.com/idanlights" target="_blank" rel="noopener noreferrer">Ko-fi</a>
+  <a class="support-link" href="https://buymeacoffee.com/MrIdan" target="_blank" rel="noopener noreferrer">☕ <span data-i18n="supportCoffee">Coffee</span></a>
+  <a class="support-link" href="https://www.patreon.com/c/IdanLights" target="_blank" rel="noopener noreferrer">Patreon</a>
+</div>
+<div class="ft"><span>PS Store Enhancer v2.6.2 · <a id="openChangelog" class="opt" data-i18n="viewChangelog" style="font-size:9px">What's new</a></span><a id="openOptions" class="opt" data-i18n="advancedSettings">⚙ Advanced settings</a></div>
 
 <script src="i18n.js"></script>
 <script src="changelog-data.js"></script>

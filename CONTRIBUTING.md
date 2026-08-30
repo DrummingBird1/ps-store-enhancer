@@ -5,7 +5,7 @@ Thanks for your interest! This project is a Chrome extension (Manifest V3) that 
 ## Quick start
 
 ```bash
-git clone https://github.com/DrummingBird1/ps-store-insight.git
+git clone https://github.com/DrummingBird1/ps-store-enhancer.git
 cd gamedeals-plus
 npm install
 npm test          # Jest unit tests
@@ -97,7 +97,7 @@ The workflow runs `python build-zips.py` (logic embedded in `.github/workflows/r
 
 ## Reporting bugs
 
-Use the [issue template](https://github.com/DrummingBird1/ps-store-insight/issues/new/choose). Always include:
+Use the [issue template](https://github.com/DrummingBird1/ps-store-enhancer/issues/new/choose). Always include:
 
 - Chrome version
 - Extension version (from the popup footer)

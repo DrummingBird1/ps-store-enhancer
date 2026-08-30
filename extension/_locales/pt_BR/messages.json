@@ -463,7 +463,7 @@
     "message": "❤️ Apoie o desenvolvimento"
   },
   "supportDevDesc": {
-    "message": "Curtindo o PS Store Enhancer? Apoie o desenvolvimento no Patreon."
+    "message": "Curtindo o PS Store Enhancer? Apoie o desenvolvimento no Ko-fi, Buy Me a Coffee ou Patreon."
   },
   "currencyTitle": {
     "message": "Moeda de exibição"
@@ -606,5 +606,8 @@
         "content": "$1"
       }
     }
+  },
+  "supportCoffee": {
+    "message": "Café"
   }
 }

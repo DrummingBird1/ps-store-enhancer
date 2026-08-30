@@ -463,7 +463,7 @@
     "message": "❤️ 개발 지원하기"
   },
   "supportDevDesc": {
-    "message": "PS Store Enhancer가 마음에 드시나요? Patreon에서 개발을 지원해 주세요."
+    "message": "PS Store Enhancer가 마음에 드시나요? Ko-fi, Buy Me a Coffee, 또는 Patreon에서 개발을 지원해 주세요."
   },
   "currencyTitle": {
     "message": "표시 통화"
@@ -606,5 +606,8 @@
         "content": "$1"
       }
     }
+  },
+  "supportCoffee": {
+    "message": "커피"
   }
 }

@@ -5,6 +5,13 @@
  */
 const PSE_CHANGELOG = [
   {
+    version: "2.6.2",
+    highlights: [
+      "📝 New CHANGELOG.md — the full version history, readable on GitHub",
+      "☕ Added Ko-fi and Buy Me a Coffee, and fixed the Patreon link"
+    ]
+  },
+  {
     version: "2.6.1",
     highlights: [
       "🎨 New icon — cleaner and still crisp at 16px",

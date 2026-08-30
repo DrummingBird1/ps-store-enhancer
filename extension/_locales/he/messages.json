@@ -463,7 +463,7 @@
     "message": "❤️ תמכו בפיתוח"
   },
   "supportDevDesc": {
-    "message": "נהנים מ-PS Store Enhancer? תמכו בפיתוח ב-Patreon."
+    "message": "נהנים מ-PS Store Enhancer? תמכו בפיתוח ב-Ko-fi, Buy Me a Coffee, או Patreon."
   },
   "currencyTitle": {
     "message": "מטבע תצוגה"
@@ -606,5 +606,8 @@
         "content": "$1"
       }
     }
+  },
+  "supportCoffee": {
+    "message": "קפה"
   }
 }

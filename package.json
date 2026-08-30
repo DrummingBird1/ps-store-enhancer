@@ -1,6 +1,6 @@
 {
   "name": "gamedeals-plus",
-  "version": "2.6.1",
+  "version": "2.6.2",
   "private": true,
   "description": "Chrome extension that enhances the PlayStation Store with price history, cross-platform comparison, review scores, trophy info, wishlist alerts, and smart filters.",
   "scripts": {
@@ -24,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DrummingBird1/ps-store-insight.git"
+    "url": "git+https://github.com/DrummingBird1/ps-store-enhancer.git"
   },
   "license": "MIT"
 }
