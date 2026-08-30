@@ -5,11 +5,16 @@
  */
 const PSE_CHANGELOG = [
   {
+    version: "2.6.1",
+    highlights: [
+      "🎨 New icon — cleaner and still crisp at 16px",
+      "🌐 The website now shows real screenshots of every major feature"
+    ]
+  },
+  {
     version: "2.6.0",
     highlights: [
-      "✨ PS Store Insight is now PS Store Enhancer — shorter name, same extension. Old backups still import fine.",
-      "🎨 New icon, updated screenshots and promotional images",
-      "🌐 Expanded website with a full feature tour"
+      "✨ PS Store Insight is now PS Store Enhancer — shorter name, same extension. Old backups still import fine."
     ]
   },
   {

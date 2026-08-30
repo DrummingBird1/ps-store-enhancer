@@ -6,17 +6,16 @@
 <title>PS Store Enhancer (formerly GameDeals+, then PS Store Insight)</title>
 <meta name="description" content="Chrome extension that enhances the PlayStation Store with price history, cross-platform comparison, review scores, trophy info, wishlist alerts, and smart filters. 10 languages.">
 <meta property="og:title" content="PS Store Enhancer — smart shopping for the PlayStation Store">
-<meta property="og:description" content="Smart shopping for the PlayStation Store: price history, cross-platform comparison, scores, trophies, wishlist alerts.">
+<meta property="og:description" content="Smart shopping for the PlayStation Store: live search suggestions, price history, cross-platform comparison, scores, trophies, wishlist alerts.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://drummingbird1.github.io/ps-store-insight/og-image.png">
+<meta property="og:image" content="https://drummingbird1.github.io/ps-store-insight/assets/og-image.png">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#0a0f1a;color:#e2e8f0;line-height:1.6;min-height:100vh}
 .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
 header{padding:80px 0 60px;text-align:center}
-.logo{width:96px;height:96px;margin:0 auto 24px;border-radius:24px;background:linear-gradient(135deg,#003087,#0070d1);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 40px rgba(0,112,209,0.25)}
-.logo svg{width:56px;height:56px}
+.logo{width:96px;height:96px;margin:0 auto 24px;border-radius:24px;box-shadow:0 12px 40px rgba(0,112,209,0.25);display:block}
 h1{font-size:56px;font-weight:800;background:linear-gradient(135deg,#4da6ff,#0070d1,#003087);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px;letter-spacing:-1px}
 .tagline{font-size:20px;color:#a0aec0;max-width:640px;margin:0 auto 32px}
 .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
@@ -62,9 +61,7 @@ footer a:hover{text-decoration:underline}
 <div class="wrap">
 
 <header>
-  <div class="logo">
-    <svg viewBox="0 0 24 24" fill="none"><path d="M7 13l3 3 7-7" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  </div>
+  <img class="logo" src="assets/icon.png" alt="PS Store Enhancer icon" width="96" height="96">
   <h1>PS Store Enhancer</h1>
   <p class="tagline">Smart shopping for the PlayStation™ Store. Price history, cross-platform comparison, review scores, trophy info, wishlist alerts, and 10 languages — all in your browser.</p>
   <p style="color:#4a5568;font-size:13px;margin:-20px 0 24px">Formerly known as GameDeals+, then PS Store Insight — same extension, same developer, better name.</p>
@@ -73,7 +70,7 @@ footer a:hover{text-decoration:underline}
     <a class="btn btn-secondary" href="https://github.com/DrummingBird1/ps-store-insight" target="_blank" rel="noopener">⭐ Star on GitHub</a>
   </div>
   <div class="badges">
-    <span class="badge">v2.5.0</span>
+    <span class="badge">v2.6.1</span>
     <span class="badge">Manifest V3</span>
     <span class="badge">10 languages</span>
     <span class="badge">MIT License</span>
@@ -85,15 +82,56 @@ footer a:hover{text-decoration:underline}
   <h2>Everything the PS Store should already do</h2>
   <p class="sub-h2">All core features work without sign-in. PSN integration is opt-in.</p>
   <div class="grid">
+    <div class="feat"><span class="feat-icon">🔎</span><div class="feat-title">Live search suggestions</div><div class="feat-desc">Type in the store's own search box and see an enriched dropdown with box art and the cheapest PC price, before you even hit enter.</div></div>
     <div class="feat"><span class="feat-icon">📊</span><div class="feat-title">Review scores at a glance</div><div class="feat-desc">OpenCritic / Metacritic badge injected right next to every game title. Color-coded green/yellow/red.</div></div>
     <div class="feat"><span class="feat-icon">📉</span><div class="feat-title">Price history sparkline</div><div class="feat-desc">12-month price chart embedded on the product page, with lowest-ever price highlighted.</div></div>
     <div class="feat"><span class="feat-icon">🔀</span><div class="feat-title">Cross-platform comparison</div><div class="feat-desc">See the same game's prices on Steam, Epic, GOG, Humble and more — converted to your currency.</div></div>
+    <div class="feat"><span class="feat-icon">🎁</span><div class="feat-title">Edition transparency</div><div class="feat-desc">Cross-platform prices are flagged when they're for a different bundle/edition (Deluxe, GOTY, etc.) than the page you're viewing.</div></div>
     <div class="feat"><span class="feat-icon">🏆</span><div class="feat-title">Trophy info</div><div class="feat-desc">Platinum availability, difficulty (1-10), estimated hours, required playthroughs for 75+ popular titles.</div></div>
     <div class="feat"><span class="feat-icon">⭐</span><div class="feat-title">Wishlist alerts</div><div class="feat-desc">Track games, set a target price, get a desktop notification when the cross-platform cheapest drops below it.</div></div>
+    <div class="feat"><span class="feat-icon">📈</span><div class="feat-title">Library & wishlist stats</div><div class="feat-desc">Games owned, wishlist size, total wishlist value, and deals ready to buy — one dashboard, zero extra API calls.</div></div>
+    <div class="feat"><span class="feat-icon">🔔</span><div class="feat-title">Toolbar deal badge</div><div class="feat-desc">The extension icon shows a live count of wishlist items currently at or below your target price.</div></div>
     <div class="feat"><span class="feat-icon">💱</span><div class="feat-title">18 currencies</div><div class="feat-desc">EUR, GBP, ILS, JPY, BRL, KRW, INR, and more — daily rates from the European Central Bank.</div></div>
     <div class="feat"><span class="feat-icon">🧹</span><div class="feat-title">Smart filters</div><div class="feat-desc">Hide add-ons, currency packs, DLC, and games you already own — works with infinite scroll.</div></div>
     <div class="feat"><span class="feat-icon">🎨</span><div class="feat-title">Light & Dark themes</div><div class="feat-desc">Auto-match your system, or pick manually. Theme applies to popup, options, and injected cards.</div></div>
     <div class="feat"><span class="feat-icon">🔒</span><div class="feat-title">Privacy first</div><div class="feat-desc">No analytics. No tracking. No remote code. All your data lives in browser storage on your device.</div></div>
+  </div>
+</section>
+
+<section id="tour">
+  <h2>See it in action</h2>
+  <p class="sub-h2">Every screenshot below is the extension's real UI, its real colors, its real components.</p>
+
+  <div class="demo-row">
+    <div class="demo-text">
+      <h3>Everything, right on the product page</h3>
+      <p>Price history with a sparkline and the lowest-ever price, cross-platform prices from Steam/Epic/GOG, and full trophy info — all injected directly into the PlayStation Store page you're already looking at.</p>
+    </div>
+    <div class="demo-img"><img src="assets/screenshot-product.png" alt="Price history, cross-platform prices, and trophy info injected on a PS Store product page" loading="lazy"></div>
+  </div>
+
+  <div class="demo-row reverse">
+    <div class="demo-text">
+      <h3>Search suggestions that show the price first</h3>
+      <p>Start typing in the store's own search box and a dropdown appears with box art and the cheapest PC price for each match — before you've even opened a single product page.</p>
+    </div>
+    <div class="demo-img"><img src="assets/screenshot-search.png" alt="Live search suggestions dropdown showing game thumbnails and prices" loading="lazy"></div>
+  </div>
+
+  <div class="demo-row">
+    <div class="demo-text">
+      <h3>A dashboard for your whole library</h3>
+      <p>Games owned, wishlist size, total wishlist value, and how many deals are ready to buy right now — computed entirely from data already on your device.</p>
+    </div>
+    <div class="demo-img"><img src="assets/screenshot-stats.png" alt="Library and wishlist stats dashboard in the settings page" loading="lazy"></div>
+  </div>
+
+  <div class="demo-row reverse">
+    <div class="demo-text">
+      <h3>Quick controls, one click away</h3>
+      <p>PSN status, search filters, feature tags, and a link to support the project — all in a popup that opens instantly from the toolbar.</p>
+    </div>
+    <div class="demo-img"><img src="assets/screenshot-popup.png" alt="The extension's toolbar popup with filters and PSN status" loading="lazy"></div>
   </div>
 </section>
 
