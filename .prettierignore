@@ -4,3 +4,5 @@ node_modules
 *.pem
 extension/_locales
 docs/privacy-policy.html
+dist
+archive

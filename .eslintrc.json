@@ -45,7 +45,7 @@
       "env": { "node": true, "browser": true, "serviceworker": true }
     },
     {
-      "files": ["*.config.js", "build-zips.py"],
+      "files": ["*.config.js"],
       "env": { "node": true }
     }
   ]
