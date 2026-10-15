@@ -1,12 +1,18 @@
 #!/usr/bin/env python3
 """Build dist/ from extension/ — the same logic .github/workflows/release.yml runs on tag push.
 
-Produces:
-  dist/ps-store-enhancer-vX.Y.Z.zip   ready to upload to the Chrome Web Store
+Produces (default target: chrome):
+  dist/ps-store-enhancer-vX.Y.Z.zip   ready to upload to the Chrome Web Store (also fine for Edge)
   dist/extension/                     the same thing, unpacked, for quick "Load unpacked" testing
+
+EXPERIMENTAL second target:  python scripts/build.py --target firefox
+  dist/ps-store-enhancer-firefox-vX.Y.Z.zip and dist/firefox/ — the same code with a Firefox-style
+  manifest (event-page background, gecko id). It has NOT been tested in Firefox and is not published;
+  see .github/CONTRIBUTING.md before relying on it.
 
 Run from the repo root: python scripts/build.py
 """
+import argparse
 import json
 import shutil
 import sys
@@ -49,7 +55,55 @@ def zip_dir(src_dir: Path, dest_zip: Path, root_name: str) -> int:
     return count
 
 
+BACKGROUND_SCRIPTS = ["match.js", "helpers.js", "cache.js", "diag.js", "cheapshark.js", "psn.js", "background.js"]
+
+
+def firefox_manifest(manifest: dict) -> dict:
+    """Same extension, Firefox flavoured: event-page background + a gecko id. No code changes."""
+    m = json.loads(json.dumps(manifest))
+    m["background"] = {"scripts": BACKGROUND_SCRIPTS}
+    m["browser_specific_settings"] = {
+        "gecko": {"id": "ps-store-enhancer@drummingbird1.github.io", "strict_min_version": "128.0"}
+    }
+    return m
+
+
+def build_firefox() -> int:
+    version = read_version()
+    zip_name = f"ps-store-enhancer-firefox-v{version}.zip"
+    zip_path = DIST / zip_name
+    unpacked_path = DIST / "firefox"
+
+    DIST.mkdir(parents=True, exist_ok=True)
+    for old_zip in DIST.glob("ps-store-enhancer-firefox-v*.zip"):
+        old_zip.unlink()
+    if unpacked_path.exists():
+        shutil.rmtree(unpacked_path)
+    shutil.copytree(EXT_SRC, unpacked_path)
+    manifest = json.loads((EXT_SRC / "manifest.json").read_text(encoding="utf-8"))
+    (unpacked_path / "manifest.json").write_text(
+        json.dumps(firefox_manifest(manifest), indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+    )
+    (unpacked_path / "types.d.ts").unlink(missing_ok=True)
+
+    n = zip_dir(unpacked_path, zip_path, "ps-store-enhancer-firefox")
+    print(f"{zip_name}: {n} files, {zip_path.stat().st_size} bytes")
+    with zipfile.ZipFile(zip_path) as zf:
+        m = json.loads(zf.read("ps-store-enhancer-firefox/manifest.json"))
+        assert "service_worker" not in m["background"], "firefox manifest still has a service worker"
+        assert m["background"]["scripts"][-1] == "background.js"
+        assert m["version"] == version
+    print("EXPERIMENTAL: this build has not been tested in Firefox and is not published.")
+    return 0
+
+
 def main() -> int:
+    parser = argparse.ArgumentParser(description="Build dist/ from extension/")
+    parser.add_argument("--target", choices=["chrome", "firefox"], default="chrome")
+    args = parser.parse_args()
+    if args.target == "firefox":
+        return build_firefox()
+
     version = read_version()
     zip_name = f"ps-store-enhancer-v{version}.zip"
     zip_path = DIST / zip_name
@@ -66,6 +120,7 @@ def main() -> int:
     # Unpacked copy, with a standalone README dropped in.
     shutil.copytree(EXT_SRC, unpacked_path)
     (unpacked_path / "README.md").write_text(EXT_README.format(version=version), encoding="utf-8")
+    (unpacked_path / "types.d.ts").unlink(missing_ok=True)  # dev-only ambient types
 
     n = zip_dir(unpacked_path, zip_path, "ps-store-enhancer")
     print(f"{zip_name}: {n} files, {zip_path.stat().st_size} bytes")

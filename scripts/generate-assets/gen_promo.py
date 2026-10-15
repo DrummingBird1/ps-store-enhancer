@@ -34,11 +34,11 @@ def small_tile():
     text(d, (128, 34), "PS Store", font(F_BLACK, 32), WHITE)
     text(d, (128, 68), "Enhancer", font(F_BLACK, 32), ACCENT)
 
-    text(d, (28, 138), "Price history · deals · trophies", font(F_BOLD, 15), TEXT_DIM)
+    text(d, (28, 138), "Real lowest prices · deals · trophies", font(F_BOLD, 15), TEXT_DIM)
     text(d, (28, 160), "right on the PlayStation Store", font(F_BOLD, 15), TEXT_DIM)
 
     # feature chips
-    chips = ["Cross-platform prices", "Wishlist alerts", "10 languages"]
+    chips = ["Cross-platform prices", "Wishlist alerts", "16 languages"]
     cy = 198
     cx = 28
     for c in chips:
@@ -67,10 +67,10 @@ def marquee_tile():
     tx = 280
     text(d, (tx, 130), "PS Store Enhancer", font(F_BLACK, 56), WHITE)
     text(d, (tx, 200), "Smarter shopping for the PlayStation Store.", font(F_BOLD, 24), TEXT_DIM)
-    text(d, (tx, 234), "Price history, cross-platform comparison, review scores,", font(F_REG, 18), TEXT_FAINT)
+    text(d, (tx, 234), "Real lowest-ever prices, cross-platform comparison, scores,", font(F_REG, 18), TEXT_FAINT)
     text(d, (tx, 260), "trophy info, wishlist alerts and live search — free.", font(F_REG, 18), TEXT_FAINT)
 
-    chips = ["Price History", "Cross-Platform", "Review Scores", "Trophies", "Wishlist Alerts", "Live Search", "10 Languages"]
+    chips = ["Price Insight", "Cross-Platform", "Review Scores", "Trophies", "Wishlist Alerts", "Live Search", "16 Languages"]
     cx = tx
     cy = 320
     for c in chips:

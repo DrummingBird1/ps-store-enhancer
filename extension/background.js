@@ -5,7 +5,10 @@
  */
 // Load order matters: match/helpers/cache/diag first (pure or storage-only), then the modules
 // that use them.
-importScripts("match.js", "helpers.js", "cache.js", "diag.js", "cheapshark.js", "psn.js");
+// (Chrome service worker. A Firefox-style event page lists the same files in its manifest instead.)
+if (typeof importScripts === "function") {
+  importScripts("match.js", "helpers.js", "cache.js", "diag.js", "cheapshark.js", "psn.js");
+}
 
 const PSE_DEFAULTS_SYNC = {
   hideAddons: false, hideDlc: false, hideOwned: false,

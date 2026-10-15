@@ -4,11 +4,11 @@
 
 # 🎮 PS Store Enhancer
 
-> לשעבר GameDeals+, ולאחר מכן PS Store Insight. שדרג את חוויית הקנייה שלך בחנות PlayStation™: היסטוריית מחירים, השוואה חוצת-פלטפורמות, סנכרון ספריית PSN, מידע על גביעים, ציוני Metacritic, ופילטרים חכמים.
+> לשעבר GameDeals+, ולאחר מכן PS Store Insight. שדרג את חוויית הקנייה שלך בחנות PlayStation™: מחירים נמוכים אמיתיים אי-פעם, השוואה מדויקת חוצת-פלטפורמות, ציוני Metacritic ו-Steam, סנכרון ספריית PSN, מידע על גביעים, ופילטרים חכמים — בלי נתונים מומצאים.
 
 ![Version](https://img.shields.io/badge/version-2.7.0-blue)
 ![Manifest](https://img.shields.io/badge/manifest-v3-green)
-![Languages](https://img.shields.io/badge/languages-10-orange)
+![Languages](https://img.shields.io/badge/languages-16-orange)
 ![License](https://img.shields.io/badge/license-MIT-brightgreen)
 
 [English README](README.md) · [🌐 Landing page](https://drummingbird1.github.io/ps-store-enhancer/) · [📝 Changelog](CHANGELOG.md) · [🔒 מדיניות פרטיות](https://drummingbird1.github.io/ps-store-enhancer/privacy-policy.html)
@@ -22,13 +22,15 @@
 | פיצ׳ר | תיאור |
 |------|------|
 | 🔎 **הצעות חיפוש חכמות** | תפריט נגלל עם תמונה ומחיר PC בזמן ההקלדה בתיבת החיפוש של החנות |
-| 📉 **היסטוריית מחירים** | גרף sparkline משובץ עם היסטוריה של 12 חודשים + המחיר הזול ביותר אי-פעם |
-| 🔀 **השוואה חוצת-פלטפורמות** | טבלת השוואה — Steam, Epic, GOG, Humble (CheapShark API) |
+| 📉 **תובנות מחיר** | המחיר הנמוך האמיתי ביותר ב-PC (עם תאריך), הזול היום, סימון "קרוב לשפל" ומגמה לפי מחירים שהדפדפן שלך רשם — אף פעם לא גרף מומצא |
+| 🔀 **השוואה חוצת-פלטפורמות** | השוואה ל**משחק המדויק** — Steam, Epic, GOG, Humble (CheapShark) — אף פעם לא DLC, מפה או סרט המשך; ורמזים על מבצעים קרובים |
 | 🎁 **שקיפות מהדורות** | מסמן מחירים חוצי-פלטפורמות ששייכים למהדורה שונה (Deluxe, GOTY וכו') מזו שבעמוד |
 | 💱 **המרת מטבע** | 18 מטבעות (EUR, ILS, GBP, JPY, BRL ועוד) עם שערים יומיים מ-Frankfurter |
-| 📊 **ציוני ביקורת** | תג OpenCritic / Metacritic ליד שם המשחק |
-| 🏆 **מידע על גביעים** | פלטינום, קושי, זמן משוער + פס התקדמות PSN חי |
-| ⭐ **רשימת משאלות + התראות** | עקוב אחרי משחקים, קבל התראה כשהמחיר יורד מתחת ליעד |
+| 📊 **ציוני ביקורת** | תגי Metacritic (PC) ודירוג משתמשי Steam ליד שם המשחק, דרך CheapShark |
+| 🏆 **מידע על גביעים** | פלטינום, קושי, זמן, ציון מאמץ להשלמה, מחיר לשעה, משחקים "בקושי דומה" + התקדמות PSN חיה |
+| 🧩 **הדף שלכם, הכרטיסים שלכם** | כיווץ, סידור או הסתרה של הכרטיסים; שיתוף עסקה כתמונה; ערכת נושא בניגודיות גבוהה; סיור בהפעלה ראשונה |
+| ⭐ **רשימת משאלות + התראות** | יעד מחיר או "% הנחה", הערות, מיון וסינון, סיכום שבועי, קישור שיתוף לקריאה בלבד, ומחיר PS Store שנראה בעמוד |
+| 🛠 **אבחון ופרטיות** | יומן אבחון מקומי (בלי סודות) וכפתור "מחק את כל הנתונים שלי" |
 | 📈 **סטטיסטיקת ספרייה ורשימת משאלות** | לוח מחוונים: משחקים בבעלות, גודל הרשימה, שווי כולל, עסקאות מוכנות |
 | 🔔 **Badge בסרגל הכלים** | ספירה חיה של עסקאות ברשימת המשאלות שהגיעו ליעד, ישירות על אייקון התוסף |
 | 🔗 **סנכרון PSN** *(אופציונלי)* | חבר חשבון PSN כדי לסנכרן אוטומטית ספריית משחקים ו-DLCs |
@@ -37,7 +39,7 @@
 | 🖱️ **חיפוש בקליק ימני** | סמן טקסט → לחץ ימני → "חפש ב-PS Store Enhancer" |
 | 🎨 **תמה בהירה / כהה** | אוטומטי לפי המערכת או בחירה ידנית |
 | 📤 **גיבוי ושחזור** | ייצוא/ייבוא רשימת בעלות ו-wishlist כ-JSON |
-| 🗣️ **10 שפות** | EN, HE, AR, ES, FR, DE, PT-BR, RU, JA, KO |
+| 🗣️ **16 שפות** | EN, HE, AR, ES, FR, DE, IT, PT-BR, NL, PL, TR, RU, JA, KO, ZH-CN, ZH-TW |
 | 💾 **Cache חכם** | TTL מבוקר (4 שעות–7 ימים) + ממשק ניהול |
 
 ---
@@ -83,10 +85,16 @@
 | Español | `es` | לא |
 | Français | `fr` | לא |
 | Deutsch | `de` | לא |
+| Italiano | `it` | לא |
 | Português (BR) | `pt_BR` | לא |
+| Nederlands | `nl` | לא |
+| Polski | `pl` | לא |
+| Türkçe | `tr` | לא |
 | Русский | `ru` | לא |
 | 日本語 | `ja` | לא |
 | 한국어 | `ko` | לא |
+| 简体中文 | `zh_CN` | לא |
+| 繁體中文 | `zh_TW` | לא |
 
 שינוי שפה: Settings → Extension Language.
 
@@ -96,8 +104,7 @@
 
 | API | מטרה | אימות |
 |-----|------|------|
-| [CheapShark](https://apidocs.cheapshark.com/) | מחירים חוצי-פלטפורמה + היסטוריה | חינמי, ללא מפתח |
-| [OpenCritic](https://opencritic.com/) | ציוני ביקורת | ציבורי |
+| [CheapShark](https://apidocs.cheapshark.com/) | חיפוש משחק מדויק, מחירים חוצי-פלטפורמה, שפל אי-פעם, ציוני Metacritic ו-Steam | חינמי, ללא מפתח |
 | [Frankfurter](https://frankfurter.dev/) | שערי חליפין יומיים (ECB) | ציבורי |
 | [PSN (Sony)](https://ca.account.sony.com/) | סנכרון ספרייה, גביעים | NPSSO OAuth |
 | [PSPrices](https://psprices.com/) | קישור להיסטוריית מחיר | לינק בלבד |
@@ -110,22 +117,25 @@
 
 ```bash
 # התקנת תלויות
-npm install
+pnpm install
 
-# בדיקות יחידה (Jest)
-npm test
+# בדיקות יחידה (Jest) — התאמת שמות, helpers, service worker מול נתוני API אמיתיים, i18n
+pnpm test
 
-# Lint
-npm run lint
+# Lint + בדיקת טיפוסים (JSDoc) + בדיקת CSP של MV3
+pnpm run lint && pnpm run typecheck && pnpm run check:csp
 
-# פורמט
-npm run format
+# בדיקה חיה ש-CheapShark / Frankfurter עדיין עונים כמצופה
+pnpm run check:apis
 
-# בניית dist/
+# בניית dist/ (Chrome); ‎`pnpm run build:firefox` ניסיוני ולא נבדק
 python scripts/build.py
+
+# לראות את הממשק בלי להתקין: דפים אמיתיים + chrome.* מדומה בכל לשונית
+python tests/harness/server.py
 ```
 
-ראה [.github/TESTING.md](.github/TESTING.md) לרשימת בדיקה ידנית לפני שחרור.
+ראה [.github/TESTING.md](.github/TESTING.md) לתוכנית הבדיקות (אוטומטית + ידנית) לפני שחרור.
 
 ---
 

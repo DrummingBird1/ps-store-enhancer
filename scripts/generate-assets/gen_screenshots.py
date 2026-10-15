@@ -16,12 +16,14 @@ L = {
         "brand": "PS Store Enhancer",
         "active": "Active",
         "url": "store.playstation.com",
-        "title": "Horizon Forbidden West: Burning Shores",
-        "price": "$69.99",
+        "title": "Horizon Forbidden West",
+        "price": "$59.99",
         "cart": "Add to Cart",
-        "ph_title": "Price History",
-        "ph_cache": "estimated",
-        "ph_low": "Lowest ever:",
+        "ph_title": "Price Insight",
+        "ph_cache": "PC · CheapShark",
+        "ph_low": "Lowest PC price ever (Nov 2025)",
+        "ph_now": "Cheapest now · Steam",
+        "ph_chip": "Near the all-time low",
         "ph_link": "View full history on PSPrices →",
         "xp_title": "Cross-Platform Prices",
         "xp_note": "Prices from CheapShark · PC platforms",
@@ -45,15 +47,17 @@ L = {
         "brand": "PS Store Enhancer",
         "active": "פעיל",
         "url": "store.playstation.com",
-        "title": "הוריזון פורבידן ווסט: החופים הבוערים",
-        "price": "₪289.90",
+        "title": "הוריזון פורבידן ווסט",
+        "price": "₪249.90",
         "cart": "הוסף לעגלה",
-        "ph_title": "היסטוריית מחירים",
-        "ph_cache": "משוער",
-        "ph_low": "המחיר הזול ביותר:",
-        "ph_link": "צפו בהיסטוריה המלאה ב-PSPrices ←",
+        "ph_title": "תובנות מחיר",
+        "ph_cache": "PC · CheapShark",
+        "ph_low": "המחיר הנמוך ביותר אי פעם ב PC",
+        "ph_now": "הכי זול עכשיו",
+        "ph_chip": "קרוב למחיר הנמוך ביותר",
+        "ph_link": "צפו בהיסטוריה המלאה באתר PSPrices",
         "xp_title": "מחירים חוצי-פלטפורמות",
-        "xp_note": "מחירים מ-CheapShark · פלטפורמות PC",
+        "xp_note": "נתוני המחירים: CheapShark",
         "tr_title": "מידע לחובבי השלמות",
         "tr_psn": "PSN",
         "tr_plat": "פלטינום",
@@ -67,7 +71,7 @@ L = {
         "tr_progress": "38 / 51 (75%)",
         "wl_btn": "ברשימת המשאלות",
         "own_btn": "המשחק ברשותי",
-        "footer": "PS Store Enhancer — אינו קשור ל-Sony Interactive Entertainment",
+        "footer": "PS Store Enhancer — אינו קשור לחברת Sony Interactive Entertainment",
     },
 }
 
@@ -76,9 +80,9 @@ for _k, _v in L["he"].items():
         L["he"][_k] = rtl_fix(_v)
 
 STORES = [
-    ("Steam", -38, "$43.19", (0, 128, 255)),
-    ("Epic Games Store", -30, "$48.99", (168, 96, 255)),
-    ("GOG", -25, "$52.49", (128, 90, 213)),
+    ("Steam", -28, "$43.19", (0, 128, 255)),
+    ("Epic Games Store", -25, "$44.99", (168, 96, 255)),
+    ("Fanatical", -20, "$47.99", (230, 80, 80)),
 ]
 
 
@@ -123,13 +127,13 @@ def product_page(lang, out_name):
     # Game art panel (right for EN, left for HE to feel mirrored)
     art_w = 340
     if t["rtl"]:
-        art_box = (pad, 96, pad + art_w, 96 + 300)
+        art_box = (pad, 96, pad + art_w, 96 + 96)
         text_x = pad + art_w + 40
         text_align = "right"
         title_anchor = "ra"
         title_x = W - pad
     else:
-        art_box = (W - pad - art_w, 96, W - pad, 96 + 300)
+        art_box = (W - pad - art_w, 96, W - pad, 96 + 96)
         text_x = pad
         text_align = "left"
         title_anchor = "la"
@@ -143,14 +147,27 @@ def product_page(lang, out_name):
     title_font = font(F_BLACK, 30)
     text(d, (title_x, 96), t["title"], title_font, WHITE, anchor=title_anchor)
     score_y = 96
+
+    def score_badge(x0, logo, value, color):
+        lw = text_w(d, logo, font(F_BOLD, 11)) + 16
+        vw = text_w(d, value, font(F_BOLD, 14)) + 20
+        rrect(d, (x0, score_y, x0 + lw + vw, score_y + 34), 8, fill=(51, 51, 51), outline=(255, 255, 255, 20), width=1)
+        rrect(d, (x0 + lw, score_y + 1, x0 + lw + vw - 1, score_y + 33), 7, fill=color)
+        text(d, (x0 + lw / 2, score_y + 17), logo, font(F_BOLD, 11), WHITE, anchor="mm")
+        text(d, (x0 + lw + vw / 2, score_y + 17), value, font(F_BOLD, 14), WHITE, anchor="mm")
+        return lw + vw
+
+    # Metacritic (PC) + Steam user rating — the two real score sources (both via CheapShark)
     if t["rtl"]:
-        score_x = title_x - text_w(d, t["title"], title_font) - 20
-        rrect(d, (score_x - 46, score_y, score_x, score_y + 34), 8, fill=CARD2, outline=(255, 255, 255, 20), width=1)
-        text(d, (score_x - 23, score_y + 17), "92", font(F_BOLD, 15), GOOD, anchor="mm")
+        bx = title_x - text_w(d, t["title"], title_font) - 20
+        w1 = text_w(d, "MC", font(F_BOLD, 11)) + 16 + text_w(d, "89", font(F_BOLD, 14)) + 20
+        score_badge(bx - w1, "MC", "89", (109, 200, 73))
+        w2 = text_w(d, "Steam", font(F_BOLD, 11)) + 16 + text_w(d, "91%", font(F_BOLD, 14)) + 20
+        score_badge(bx - w1 - 10 - w2, "Steam", "91%", (109, 200, 73))
     else:
-        score_x = title_x + text_w(d, t["title"], title_font) + 20
-        rrect(d, (score_x, score_y, score_x + 46, score_y + 34), 8, fill=CARD2, outline=(255, 255, 255, 20), width=1)
-        text(d, (score_x + 23, score_y + 17), "92", font(F_BOLD, 15), GOOD, anchor="mm")
+        bx = title_x + text_w(d, t["title"], title_font) + 20
+        w1 = score_badge(bx, "MC", "89", (109, 200, 73))
+        score_badge(bx + w1 + 10, "Steam", "91%", (109, 200, 73))
 
     py = 148
     if t["rtl"]:
@@ -175,24 +192,19 @@ def product_page(lang, out_name):
         col_x0 = pad
     cy = 210
 
-    # Price history card
+    # Price insight card — real facts only: all-time low, cheapest now, near-low flag (no chart)
     ph_h = 178
     box = (col_x0, cy, col_x0 + col_w, cy + ph_h)
-    draw_card(d, box, t["ph_title"], icon_chart, t["ph_cache"], GOOD)
-    # sparkline
-    sp_x0, sp_x1 = col_x0 + 26, col_x0 + col_w - 26
-    sp_y0, sp_y1 = cy + 52, cy + 108
-    import math
-    pts = [0.75, 0.55, 0.85, 0.62, 0.40, 0.30, 0.50, 0.20]
-    n = len(pts)
-    poly = [(sp_x0 + (sp_x1 - sp_x0) * i / (n - 1), sp_y1 - (sp_y1 - sp_y0) * v) for i, v in enumerate(pts)]
-    fillpoly = poly + [(sp_x1, sp_y1), (sp_x0, sp_y1)]
-    d.polygon([(p[0] * SS, p[1] * SS) for p in fillpoly], fill=(77, 166, 255, 40))
-    d.line([(p[0] * SS, p[1] * SS) for p in poly], fill=ACCENT, width=3 * SS, joint="curve")
-    low_box = (col_x0 + 20, cy + 118, col_x0 + col_w - 20, cy + 148)
+    draw_card(d, box, t["ph_title"], icon_chart, t["ph_cache"], ACCENT)
+    low_box = (col_x0 + 20, cy + 50, col_x0 + col_w - 20, cy + 82)
     rrect(d, low_box, 8, fill=(109, 200, 73, 22), outline=GOOD, width=1)
-    text(d, (col_x0 + 34, cy + 133), t["ph_low"], font(F_REG, 12), TEXT_DIM, anchor="lm")
-    text(d, (col_x0 + col_w - 34, cy + 133), "$29.99", font(F_BOLD, 15), GOOD, anchor="rm")
+    text(d, (col_x0 + 34, cy + 66), t["ph_low"], font(F_REG, 12), TEXT_DIM, anchor="lm")
+    text(d, (col_x0 + col_w - 34, cy + 66), "$41.99", font(F_BOLD, 15), GOOD, anchor="rm")
+    text(d, (col_x0 + 26, cy + 100), t["ph_now"], font(F_REG, 12), TEXT_DIM, anchor="lm")
+    text(d, (col_x0 + col_w - 26, cy + 100), "$43.19", font(F_BOLD, 15), TEXT, anchor="rm")
+    chip_w = text_w(d, t["ph_chip"], font(F_BOLD, 11)) + 24
+    rrect(d, (col_x0 + 20, cy + 114, col_x0 + 20 + chip_w, cy + 136), 11, fill=(245, 197, 24, 38))
+    text(d, (col_x0 + 20 + chip_w / 2, cy + 125), t["ph_chip"], font(F_BOLD, 11), WARN, anchor="mm")
     text(d, (col_x0 + col_w / 2, cy + ph_h - 16), t["ph_link"], font(F_REG, 12), ACCENT, anchor="mm")
 
     # Cross-platform card

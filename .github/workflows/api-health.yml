@@ -1,0 +1,43 @@
+name: API health
+
+# The extension depends on a few free third-party APIs. When one changes shape or starts requiring
+# a key (OpenCritic did), the extension used to degrade silently. This nightly check fails loudly
+# and opens an issue instead.
+
+on:
+  schedule:
+    - cron: '17 5 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    name: External APIs still answer as expected
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check CheapShark and Frankfurter
+        id: check
+        run: python3 scripts/check-apis.py | tee api-health.txt
+
+      - name: Open (or update) an issue when something is broken
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create api-health --color D93F0B --description "An external API the extension uses is broken" --force
+          body="The nightly API check failed. Run: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}
+
+          \`\`\`
+          $(cat api-health.txt 2>/dev/null || echo 'no output captured')
+          \`\`\`"
+          existing=$(gh issue list --label api-health --state open --json number --jq '.[0].number')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body "$body"
+          else
+            gh issue create --label api-health --title "External API check failing" --body "$body"
+          fi

@@ -12,9 +12,9 @@ Copy/paste the block below into the **"Notes for reviewer"** field in the Chrome
 2. Open https://store.playstation.com (any region).
 3. Navigate to any game page, e.g. https://store.playstation.com/en-us/concept/10000091 (God of War Ragnarök).
 4. Verify on the product page:
-   - **Metacritic/OpenCritic score badge** appears next to the game title (colored: green/yellow/red).
-   - **Price history card** is injected below the title, with a sparkline chart and "Estimated history" tag.
-   - **Cross-platform comparison** table appears showing Steam/Epic/GOG prices (USD, fetched from CheapShark API).
+   - **Metacritic (PC) and Steam rating badges** appear next to the game title (colored: green/yellow/red) when CheapShark has scores for the game.
+   - **Price Insight card** is injected below the title: the lowest PC price ever (with its date) and today's cheapest, both from CheapShark. It contains no estimated or generated data.
+   - **Cross-platform comparison** table appears showing Steam/Epic/GOG prices for the exact game (USD, fetched from the CheapShark API, converted to the chosen currency).
    - **Trophy / completionist info** card appears for known titles (difficulty, hours, playthroughs).
    - **"Mark as owned" button** is visible.
 5. Open the extension popup → toggle "Hide DLC & Expansions" → reload the page → DLC items in search are hidden.
@@ -47,9 +47,14 @@ We use `chrome.cookies` solely to set the NPSSO token on `ca.account.sony.com` (
 | `store.playstation.com` | Content-script injection (UI enhancements on product pages) |
 | `ca.account.sony.com` | Optional PSN OAuth authorization (only when user opts in) |
 | `m.np.playstation.com` | Optional PSN library/trophy API (only when user opts in) |
-| `cheapshark.com` | Public REST API for cross-platform game prices (no auth) |
-| `api.opencritic.com` | Public REST API for review scores (no auth) |
+| `cheapshark.com` | Public REST API for cross-platform game prices, the all-time low and Metacritic/Steam ratings (no auth) |
 | `api.frankfurter.dev` | Daily currency exchange rates (no auth, public ECB-backed API) |
+
+### Optional permission: `webRequest` (new in v2.7)
+
+Declared under `optional_permissions`, so it is **not granted at install and triggers no install warning**. It is requested at runtime, from a button click, only if a user connects PSN and Chrome hides Sony's sign-in redirect from extensions (`fetch(..., {redirect: "manual"})` returns an opaque response). When granted, a non-blocking `onBeforeRedirect` listener restricted to `https://ca.account.sony.com/*` reads the authorization code from that one redirect, and is removed again right after. Reviewers do not need to exercise it.
+
+Also new in v2.7: the PSN sign-in now **restores the user's previous `npsso` cookie** after every attempt (it used to leave the pasted token behind).
 
 ### Why we added `notifications` and `contextMenus` (new in v2.3)
 
@@ -58,7 +63,7 @@ We use `chrome.cookies` solely to set the NPSSO token on `ca.account.sony.com` (
 
 ### Single purpose
 
-The extension's single purpose is enhancing the PlayStation Store website with price intelligence, review scores, trophy information, and search filters to help users make informed purchasing decisions.
+The extension's single purpose is enhancing the PlayStation Store website with price intelligence, review scores, trophy information, and search filters to help users make informed purchasing decisions. (Wishlist alerts, the share link, collapsible cards and the diagnostics log all serve that same purpose; none sends user data anywhere.)
 
 ### Compliance summary
 

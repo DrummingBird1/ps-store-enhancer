@@ -5,7 +5,7 @@ EXTENSION NAME:
 PS Store Enhancer
 
 SHORT DESCRIPTION (132 chars max):
-Price history, cross-platform comparison, review scores, trophy info & smart filters for the PlayStation™ Store.
+Lowest-ever prices, cross-platform comparison, review scores, trophies & smart filters for the PlayStation™ Store.
 
 CATEGORY:
 Shopping
@@ -17,24 +17,26 @@ DETAILED DESCRIPTION:
 PS Store Enhancer (formerly GameDeals+) enhances your PlayStation™ Store browsing experience with powerful tools to help you make smarter purchasing decisions. All core features work out of the box — no sign-in required.
 
 🔍 PRICE INTELLIGENCE
-• Embedded sparkline chart visualizing approximate price history
-• Lowest-ever price highlighted at a glance
-• Direct links to PSPrices for verified historical data
-• Cross-platform comparison table — see prices on Steam, Epic Games Store, GOG, Humble Store, and more (powered by CheapShark, USD)
+• Real lowest-ever PC price (with its date), today's cheapest, and a "near the all-time low" flag — real data only, no estimated charts
+• A price trend drawn from prices your own browser recorded
+• Direct links to PSPrices for the full historical chart
+• Cross-platform comparison table for the exact game (never a DLC, map or sequel) — Steam, Epic Games Store, GOG, Humble Store, and more (powered by CheapShark, converted to your currency)
+• Hints about when the big sales usually start
 • Edition transparency — prices from a different bundle/edition (Deluxe, Ultimate, GOTY, etc.) than the page you're viewing are clearly flagged, never blended in silently
 • Live search suggestions — as you type in the store's search box, see an enriched dropdown with box art and the cheapest PC price
 
 📊 REVIEW SCORES
-• OpenCritic / Metacritic score badge injected directly next to the game title
-• Color-coded: green (75+), yellow (50-74), red (below 50)
-• Click to view full review details
+• Metacritic (PC) and Steam user-rating badges next to the game title (via CheapShark)
+• Color-coded: green, yellow, red — shown only when a real score exists
+• Click to view the full reviews
 
 🏆 COMPLETIONIST INFO
 • Platinum trophy availability
 • Difficulty rating (1-10 scale)
 • Estimated completion time
-• Required playthroughs
-• Optional: live PSN trophy progress bar (when account is connected)
+• Required playthroughs, a one-glance completionist effort score and price per hour
+• "Similar difficulty" picks from your own library
+• Optional: live PSN trophy progress bar and your rarest remaining trophy (when connected)
 
 🧹 SMART SEARCH FILTERS
 • Hide add-ons, currency packs, and starter packs
@@ -45,7 +47,9 @@ PS Store Enhancer (formerly GameDeals+) enhances your PlayStation™ Store brows
 
 ⭐ WISHLIST WITH PRICE ALERTS
 • Add games to a wishlist with one click on the product page
-• Set a target price; get a desktop notification when CheapShark sees the cross-platform price drop below it
+• Set a price or "% off" target, add notes, sort and filter; get a desktop notification (or one weekly digest) when the cheapest PC price drops below it
+• Records the PS Store price you see on each game's page
+• Share the list as a read-only link — the list lives in the link, nothing is uploaded
 • Daily background checks (no constant polling)
 • Toolbar badge shows a live count of wishlist deals currently at/below your target
 • Library & Wishlist stats dashboard: games owned, wishlist size, total wishlist value, deals ready to buy — computed entirely from data already on your device
@@ -56,7 +60,9 @@ PS Store Enhancer (formerly GameDeals+) enhances your PlayStation™ Store brows
 • Daily exchange rates via Frankfurter (European Central Bank)
 
 🎨 THEME & UX
-• Light, Dark, and Auto themes — pick what matches your system
+• Light, Dark, High-contrast and Auto themes — pick what matches your system
+• Collapse, reorder or hide the product-page cards; share a deal as an image
+• "/" focuses the store's search box; ✓ / ★ marks in suggestions for games you own or wishlisted
 • Right-click any text on PS Store: "Find on PS Store Enhancer" → instant CheapShark lookup
 • Auto-detects your PS Store region from the URL on first visit
 • Backup & restore your owned-games list and wishlist as JSON
@@ -74,8 +80,8 @@ PS Store Enhancer (formerly GameDeals+) enhances your PlayStation™ Store brows
 • Skeleton loading animations while data loads
 • Lightweight: no external libraries, pure vanilla JavaScript
 
-🌍 10 LANGUAGES
-English, עברית (Hebrew), العربية (Arabic), Español, Français, Deutsch, Português (BR), Русский, 日本語, 한국어
+🌍 16 LANGUAGES
+English, עברית (Hebrew), العربية (Arabic), Español, Français, Deutsch, Italiano, Português (BR), Nederlands, Polski, Türkçe, Русский, 日本語, 한국어, 简体中文, 繁體中文
 Built-in language selector — override browser language from settings.
 
 🔒 PRIVACY FIRST
@@ -83,6 +89,8 @@ Built-in language selector — override browser language from settings.
 • No analytics, no tracking, no data sharing
 • No remote servers — everything runs in your browser
 • PSN connection is optional and can be removed anytime
+• "Erase all my data" button in the popup and settings
+• Local diagnostics log that never records tokens or passwords
 • Full privacy policy available
 
 ⚠️ DISCLAIMER
@@ -100,15 +108,16 @@ notifications: Sends a desktop notification when a wishlisted game's cross-platf
 
 contextMenus: Adds a right-click "Find on PS Store Enhancer" entry on store.playstation.com so users can search highlighted text on CheapShark.
 
-storage: Saves user preferences, cached API responses, owned-games list, and wishlist locally on device.
+storage: Saves user preferences, cached API responses, owned-games list, wishlist, locally recorded prices and a small diagnostics log on the device.
+
+webRequest (OPTIONAL permission, requested at runtime only if needed): Used only when a user chooses to connect PSN and Chrome hides Sony's sign-in redirect from extensions; lets the extension observe that single redirect to read the authorization code. Never requested at install; nothing else uses it.
 
 Host permissions:
 - store.playstation.com — content script injection
 - ca.account.sony.com, m.np.playstation.com — optional PSN authentication & library sync
-- cheapshark.com — cross-platform price comparison API
-- api.opencritic.com — review scores
+- cheapshark.com — cross-platform prices, all-time low, Metacritic and Steam ratings
 - api.frankfurter.dev — daily currency exchange rates for display
 
 Remote code: This extension does not use any remotely hosted code.
 
-Single purpose: Enhances the PlayStation Store website with price history, cross-platform comparison, review scores, trophy information, and search filters to help users make informed purchasing decisions.
+Single purpose: Enhances the PlayStation Store website with real price insight, cross-platform comparison, review scores, trophy information, and search filters to help users make informed purchasing decisions.

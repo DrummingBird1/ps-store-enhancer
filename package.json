@@ -2,7 +2,7 @@
   "name": "gamedeals-plus",
   "version": "2.7.0",
   "private": true,
-  "description": "Chrome extension that enhances the PlayStation Store with price history, cross-platform comparison, review scores, trophy info, wishlist alerts, and smart filters.",
+  "description": "Chrome extension that enhances the PlayStation Store with real lowest-ever prices, cross-platform comparison, review scores, trophy info, wishlist alerts, and smart filters.",
   "scripts": {
     "build": "python scripts/build.py",
     "test": "jest",
@@ -10,12 +10,18 @@
     "lint:fix": "eslint extension --ext .js --fix",
     "format": "prettier --write \"extension/**/*.{js,html,css,json}\" \"assets/docs/**/*.html\"",
     "format:check": "prettier --check \"extension/**/*.{js,html,css,json}\" \"assets/docs/**/*.html\"",
-    "validate-locales": "node -e \"const fs=require('fs'),p=require('path');const base='extension/_locales';const en=Object.keys(JSON.parse(fs.readFileSync(p.join(base,'en','messages.json'))));let ok=true;fs.readdirSync(base).forEach(l=>{const k=Object.keys(JSON.parse(fs.readFileSync(p.join(base,l,'messages.json'))));const missing=en.filter(x=>!k.includes(x));const extra=k.filter(x=>!en.includes(x));console.log(l+':',k.length,'keys, missing',missing.length,'extra',extra.length);if(missing.length||extra.length)ok=false;});process.exit(ok?0:1);\""
+    "validate-locales": "node -e \"const fs=require('fs'),p=require('path');const base='extension/_locales';const en=Object.keys(JSON.parse(fs.readFileSync(p.join(base,'en','messages.json'))));let ok=true;fs.readdirSync(base).forEach(l=>{const k=Object.keys(JSON.parse(fs.readFileSync(p.join(base,l,'messages.json'))));const missing=en.filter(x=>!k.includes(x));const extra=k.filter(x=>!en.includes(x));console.log(l+':',k.length,'keys, missing',missing.length,'extra',extra.length);if(missing.length||extra.length)ok=false;});process.exit(ok?0:1);\"",
+    "typecheck": "tsc -p tsconfig.json",
+    "check:csp": "python scripts/check-csp.py",
+    "check:apis": "python scripts/check-apis.py",
+    "build:firefox": "python scripts/build.py --target firefox",
+    "hooks:install": "git config core.hooksPath .githooks"
   },
   "devDependencies": {
-    "jest": "^29.7.0",
     "eslint": "^8.57.0",
-    "prettier": "^3.3.0"
+    "jest": "^29.7.0",
+    "prettier": "^3.3.0",
+    "typescript": "^7.0.2"
   },
   "jest": {
     "testMatch": [

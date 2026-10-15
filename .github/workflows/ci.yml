@@ -8,7 +8,7 @@ on:
 
 jobs:
   validate:
-    name: Lint, syntax-check, test
+    name: Lint, type-check, syntax-check, test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -23,12 +23,18 @@ jobs:
       - name: Lint
         run: npm run lint --if-present
 
-      - name: Syntax-check extension JS
+      - name: Type-check (JSDoc) the pure helper files
+        run: npm run typecheck --if-present
+
+      - name: Syntax-check every extension script
         run: |
-          for f in extension/background.js extension/content.js extension/psn.js extension/cache.js extension/i18n.js extension/options.js extension/popup.js; do
+          for f in extension/*.js; do
             node --check "$f"
             echo "$f OK"
           done
+
+      - name: CSP guard (no inline scripts, handlers or eval in extension pages)
+        run: python3 scripts/check-csp.py
 
       - name: Validate locale JSON
         run: |
@@ -50,3 +56,8 @@ jobs:
 
       - name: Test
         run: npm test --if-present
+
+      - name: Build both targets (smoke)
+        run: |
+          python3 scripts/build.py
+          python3 scripts/build.py --target firefox

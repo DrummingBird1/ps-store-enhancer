@@ -1,0 +1,8 @@
+#!/bin/sh
+# Mirrors the fast CI checks so a broken commit is caught before it is pushed.
+# Enable once per clone:  git config core.hooksPath .githooks   (or: pnpm run hooks:install)
+set -e
+echo "pre-commit: lint"        && pnpm run --silent lint
+echo "pre-commit: typecheck"   && pnpm run --silent typecheck
+echo "pre-commit: CSP guard"   && python scripts/check-csp.py
+echo "pre-commit: tests"       && pnpm run --silent test
