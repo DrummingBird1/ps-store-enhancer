@@ -5,6 +5,18 @@
  */
 const PSE_CHANGELOG = [
   {
+    version: "2.7.0",
+    keys: ["chl_2_7_0_1", "chl_2_7_0_2", "chl_2_7_0_3", "chl_2_7_0_4", "chl_2_7_0_5", "chl_2_7_0_6"],
+    highlights: [
+      "🎯 Accurate cross-platform prices — exactly the right game, never a DLC, map or sequel",
+      "📊 Metacritic and Steam scores from CheapShark (OpenCritic now needs an API key and had stopped working)",
+      "📉 Price Insight uses real data only: lowest PC price ever, today's cheapest, and your own recorded trend",
+      "🛠 Diagnostics log, safer PSN sign-in, wishlist % targets, notes, sorting, weekly digest and an 'Erase all my data' button",
+      "🧩 Reorder, hide or collapse the product-page cards; new high-contrast theme",
+      "🌍 Six new languages: Italiano, Polski, Türkçe, Nederlands, 简体中文 and 繁體中文"
+    ]
+  },
+  {
     version: "2.6.0",
     highlights: [
       "✨ PS Store Insight is now PS Store Enhancer — shorter name, same extension. Old backups still import fine.",

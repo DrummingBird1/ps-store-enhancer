@@ -7,6 +7,67 @@ the popup/options pages.
 
 ---
 
+<a id="v2-7-0"></a>
+<img src="assets/badges/v2-7-0.png" width="120" align="right" alt="v2.7.0 — Accuracy">
+
+## v2.7.0 — Accuracy & trust
+
+**Fixed — data you can trust**
+- **Cross-platform prices now show the exact game.** The table could list a DLC, a map or a
+  spin-off instead (Elden Ring showed the $15 *Nightreign* add-on; Cyberpunk 2077 showed a $4.99
+  map). The extension now resolves the exact CheapShark game first and reads that game's own deals.
+- **Review scores work again.** OpenCritic's API now requires a key and had stopped returning
+  anything; the badge silently fell back to a short built-in list that could even show the wrong
+  game's score. Scores now come from CheapShark — Metacritic (PC) and the Steam user rating — with
+  no API key, and the OpenCritic permission is gone from the manifest.
+- **No more made-up price history.** The 12-month chart was synthesized from a single price.
+  *Price Insight* now shows only real facts: the lowest PC price ever (with its date), today's
+  cheapest, a "near the all-time low" flag and the trend of prices your own browser recorded.
+- **"Owned" detection** ignores curly vs straight apostrophes, ™/®, punctuation and edition
+  suffixes, so *hide owned* and the owned button work across typography differences.
+- **Trophy matching** no longer mixes a game up with its sequel or spin-off.
+- **Wishlist price checks** can no longer overwrite changes you make while they run, and go easier
+  on CheapShark.
+
+**Safer PSN**
+- Your real Sony cookie is never overwritten any more — it is restored after every attempt.
+- One automatic refresh-and-retry when Sony answers 401, and an optional `webRequest` permission
+  fallback if Chrome hides Sony's sign-in redirect (asked for only when needed).
+- New local **Diagnostics** log in Settings: the last API and PSN events, kept on your device;
+  tokens and passwords are never recorded.
+- **Erase all my data** in Settings and in the popup.
+
+**New**
+- **Wishlist:** "% off" targets, notes, sorting and filtering, a weekly-digest option, a
+  read-only share link (names and last PC prices only — nothing is uploaded) and the PS Store
+  price you saw on each game's page.
+- **Product page:** collapsible, reorderable and hideable cards, a completionist effort score,
+  price per hour, "similar difficulty" picks from your library, a share-this-deal image, hints
+  about usual sale dates, a first-run tour and a one-time review prompt.
+- **Search:** ✓ / ★ markers for games you own or wishlisted, junk (soundtracks, maps) filtered
+  out, and `/` to focus the search box.
+- **Settings:** high-contrast theme, experimental trophy rarity, country and currency names in
+  your language, display currency auto-set from your store region.
+- **6 new languages** — Italiano, Polski, Türkçe, Nederlands, 简体中文, 繁體中文 (16 in total).
+- **Accessibility:** reduced-motion respected, screen-reader announcements when cards load,
+  visible keyboard focus everywhere.
+
+**Under the hood**
+- Trophy data moved to a community-editable `extension/data/trophies.json`.
+- The message API is documented in [`.github/MESSAGING.md`](.github/MESSAGING.md) and kept in
+  sync by a test; 100+ unit tests now cover matching, the CheapShark layer, wishlist, PSN and i18n.
+- CI gained an inline-script guard, a type check and a nightly external-API health check; the
+  mock-Chrome browser harness lives in `tests/harness/`; an **experimental, untested** Firefox
+  build target exists in `scripts/build.py`.
+
+**Not included (and why):** importing your PSN wishlist and a PS Plus catalog badge need Sony data
+with no public, verifiable source; "similar games" needs a genre data source; bundle detection
+needs a bundle feed. They stay on the roadmap rather than shipping unverified.
+
+<br clear="right">
+
+---
+
 <a id="v2-6-0"></a>
 <img src="assets/badges/v2-6-0.png" width="120" align="right" alt="v2.6.0 — Renamed">
 

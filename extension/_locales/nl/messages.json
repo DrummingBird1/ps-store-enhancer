@@ -1,0 +1,1005 @@
+{
+  "extName": {
+    "message": "PS Store Enhancer"
+  },
+  "extDesc": {
+    "message": "Laagste prijzen ooit, platformvergelijking, beoordelingen, trofeeën en slimme filters voor de PlayStation Store. Optionele PSN-sync."
+  },
+  "psnAccount": {
+    "message": "PSN-account"
+  },
+  "psnNotConnected": {
+    "message": "Niet verbonden"
+  },
+  "psnClickToConnect": {
+    "message": "Klik om je PSN-account te koppelen"
+  },
+  "psnGames": {
+    "message": "games"
+  },
+  "psnDlcs": {
+    "message": "DLC's"
+  },
+  "psnConnectTitle": {
+    "message": "PSN-account koppelen"
+  },
+  "psnConnectDesc": {
+    "message": "Koppel je PlayStation-account om je gamebibliotheek en DLC's automatisch te synchroniseren."
+  },
+  "psnAutoDetect": {
+    "message": "Automatisch detecteren (als je bent ingelogd bij PSN)"
+  },
+  "psnSearching": {
+    "message": "Zoeken..."
+  },
+  "psnOrManual": {
+    "message": "Of voer je NPSSO-token handmatig in:"
+  },
+  "psnPasteToken": {
+    "message": "Plak hier het NPSSO-token..."
+  },
+  "psnConnect": {
+    "message": "Koppelen"
+  },
+  "psnSyncNow": {
+    "message": "Nu synchroniseren"
+  },
+  "psnSyncing": {
+    "message": "Synchroniseren..."
+  },
+  "psnDisconnect": {
+    "message": "Ontkoppelen"
+  },
+  "psnDisconnectConfirm": {
+    "message": "PSN-account ontkoppelen?\nHandmatig toegevoegde games (✏️) blijven behouden."
+  },
+  "psnLastSync": {
+    "message": "Laatste sync:"
+  },
+  "psnNotSynced": {
+    "message": "Nog niet gesynchroniseerd"
+  },
+  "psnGuideTitle": {
+    "message": "Zo krijg je je NPSSO-token:"
+  },
+  "psnGuide1": {
+    "message": "Log in op"
+  },
+  "psnGuide2": {
+    "message": "Open een nieuw tabblad en ga naar:"
+  },
+  "psnGuide3": {
+    "message": "Kopieer de waarde van"
+  },
+  "psnGuide3b": {
+    "message": "(zonder aanhalingstekens)"
+  },
+  "psnGuide4": {
+    "message": "Plak het hier en klik op \"Koppelen\""
+  },
+  "psnTokenFound": {
+    "message": "NPSSO-token gevonden! Verbinden..."
+  },
+  "psnTokenNotFound": {
+    "message": "Geen token gevonden. Log in bij de PlayStation Store in een ander tabblad en probeer het opnieuw, of voer de NPSSO handmatig in."
+  },
+  "psnConnectedSync": {
+    "message": "Gekoppeld! Bibliotheek synchroniseren..."
+  },
+  "psnSynced": {
+    "message": "PSN gekoppeld en bibliotheek gesynchroniseerd"
+  },
+  "psnDisconnected": {
+    "message": "PSN-account ontkoppeld"
+  },
+  "psnSyncedItems": {
+    "message": "$COUNT$ items gesynchroniseerd",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "psnWait30": {
+    "message": "Wacht 30 seconden tussen synchronisaties"
+  },
+  "filterTitle": {
+    "message": "Filters voor zoekresultaten"
+  },
+  "hideAddons": {
+    "message": "Add-ons en valuta verbergen"
+  },
+  "hideAddonsDesc": {
+    "message": "Valutapakketten, Starter Packs"
+  },
+  "hideDlc": {
+    "message": "DLC en uitbreidingen verbergen"
+  },
+  "hideDlcDesc": {
+    "message": "Uitbreidingen, Season Pass, DLC"
+  },
+  "hideOwned": {
+    "message": "Games die ik al heb verbergen"
+  },
+  "hideOwnedDesc": {
+    "message": "Automatisch uit PSN + handmatige lijst"
+  },
+  "featuresTitle": {
+    "message": "Actieve functies"
+  },
+  "metacriticToggle": {
+    "message": "Beoordelingen (Metacritic / Steam)"
+  },
+  "metacriticDesc": {
+    "message": "Scorebadges naast de gametitel"
+  },
+  "priceHistoryToggle": {
+    "message": "Prijsinzicht"
+  },
+  "priceHistoryDesc": {
+    "message": "Echte laagste pc-prijs ooit, markering bij bijna-laagste prijs en je eigen vastgelegde trend"
+  },
+  "crossPlatformToggle": {
+    "message": "Prijsvergelijking tussen platformen"
+  },
+  "crossPlatformDesc": {
+    "message": "Steam, Epic, GOG en meer via CheapShark"
+  },
+  "trophyToggle": {
+    "message": "Completionist-info (trofeeën)"
+  },
+  "trophyDesc": {
+    "message": "Moeilijkheid, tijd, speelrondes + PSN-voortgang"
+  },
+  "regionTitle": {
+    "message": "PSPrices-regio"
+  },
+  "regionLabel": {
+    "message": "Winkelregio"
+  },
+  "myGamesTitle": {
+    "message": "Mijn games"
+  },
+  "myGamesDesc": {
+    "message": "PSN-games worden getoond als 🔗, handmatig toegevoegde als ✏️. Bij het ontkoppelen van PSN verdwijnen alleen de 🔗, niet de ✏️."
+  },
+  "addGamePlaceholder": {
+    "message": "Typ een gamenaam..."
+  },
+  "addGame": {
+    "message": "Toevoegen"
+  },
+  "emptyList": {
+    "message": "De lijst is leeg — koppel PSN of voeg handmatig toe"
+  },
+  "gameAdded": {
+    "message": "\"$NAME$\" toegevoegd",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "gameRemoved": {
+    "message": "\"$NAME$\" verwijderd",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "gameAlreadyInList": {
+    "message": "Game staat al in de lijst"
+  },
+  "srcPsn": {
+    "message": "🔗 PSN"
+  },
+  "srcManual": {
+    "message": "✏️ Handmatig"
+  },
+  "cacheTitle": {
+    "message": "Cachebeheer"
+  },
+  "cacheActive": {
+    "message": "Actief"
+  },
+  "cacheExpired": {
+    "message": "Verlopen"
+  },
+  "cacheSize": {
+    "message": "Grootte (KB)"
+  },
+  "cachePurge": {
+    "message": "Verlopen opschonen"
+  },
+  "cachePurged": {
+    "message": "Verlopen items opgeschoond"
+  },
+  "cacheClear": {
+    "message": "Alles wissen"
+  },
+  "cacheCleared": {
+    "message": "Cache gewist ($COUNT$ items)",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "priceHistory": {
+    "message": "Prijsinzicht"
+  },
+  "cheapestEver": {
+    "message": "Laagste pc-prijs ooit:"
+  },
+  "viewFullHistory": {
+    "message": "Bekijk de volledige geschiedenis op PSPrices →"
+  },
+  "crossPlatformTitle": {
+    "message": "Prijsvergelijking tussen platformen"
+  },
+  "crossPlatformSource": {
+    "message": "Prijzen van CheapShark · pc-platformen"
+  },
+  "completionistInfo": {
+    "message": "Completionist-info"
+  },
+  "platinum": {
+    "message": "Platina"
+  },
+  "yes": {
+    "message": "Ja"
+  },
+  "no": {
+    "message": "Nee"
+  },
+  "difficulty": {
+    "message": "Moeilijkheid"
+  },
+  "estimatedTime": {
+    "message": "Geschatte tijd"
+  },
+  "hours": {
+    "message": "uur"
+  },
+  "playthroughs": {
+    "message": "Speelrondes"
+  },
+  "psnProgress": {
+    "message": "Voortgang (PSN)"
+  },
+  "trophyGuide": {
+    "message": "Trofeeëngids op PSNProfiles →"
+  },
+  "markOwned": {
+    "message": "Markeren als in bezit"
+  },
+  "iOwnThis": {
+    "message": "Ik heb deze game"
+  },
+  "settingsSubtitle": {
+    "message": "Geavanceerde instellingen · PSN-account · Gamebeheer"
+  },
+  "activeOnStore": {
+    "message": "Actief op store.playstation.com"
+  },
+  "advancedSettings": {
+    "message": "Geavanceerde instellingen"
+  },
+  "saved": {
+    "message": "Opgeslagen ✓"
+  },
+  "languageTitle": {
+    "message": "Taal van de extensie"
+  },
+  "languageDesc": {
+    "message": "Kies de weergavetaal van de extensie. \"Automatisch\" gebruikt de taal van je browser."
+  },
+  "languageLabel": {
+    "message": "Taal"
+  },
+  "languageAuto": {
+    "message": "Automatisch (browsertaal)"
+  },
+  "disclaimer": {
+    "message": "Deze extensie is niet gelieerd aan, goedgekeurd door of verbonden met Sony Interactive Entertainment, PlayStation of een van hun dochterondernemingen."
+  },
+  "welcomeTitle": {
+    "message": "Welkom bij PS Store Enhancer!"
+  },
+  "welcomeSubtitle": {
+    "message": "Je PlayStation™ Store is zojuist beter geworden."
+  },
+  "welcomeFeature1Title": {
+    "message": "Echte prijzen en vergelijking"
+  },
+  "welcomeFeature1Desc": {
+    "message": "Zie de laagste prijs ooit en vergelijk dezelfde game bij Steam, Epic, GOG en meer."
+  },
+  "welcomeFeature2Title": {
+    "message": "PSN-bibliotheeksync (optioneel)"
+  },
+  "welcomeFeature2Desc": {
+    "message": "Voor gevorderden: koppel optioneel je PSN-account om games die je al hebt automatisch te verbergen. Werkt ook volledig zonder."
+  },
+  "welcomeFeature3Title": {
+    "message": "Scores en trofeeën"
+  },
+  "welcomeFeature3Desc": {
+    "message": "Metacritic- en Steam-scores plus completionist-info direct op de productpagina."
+  },
+  "welcomeFeature4Title": {
+    "message": "Slimme filters"
+  },
+  "welcomeFeature4Desc": {
+    "message": "Verberg add-ons, DLC en valutapakketten in zoekresultaten."
+  },
+  "welcomeCta": {
+    "message": "Instellingen openen"
+  },
+  "welcomeNote": {
+    "message": "Tip: klik op het extensiepictogram in je werkbalk voor snelle filterschakelaars."
+  },
+  "psnErrTokenShort": {
+    "message": "NPSSO-token ontbreekt of is te kort"
+  },
+  "psnErrAuthCode": {
+    "message": "Kon geen autorisatiecode van Sony krijgen. De NPSSO is mogelijk verlopen."
+  },
+  "psnErrAccessToken": {
+    "message": "Kon geen toegangstoken van Sony krijgen."
+  },
+  "psnErrNotConnected": {
+    "message": "Niet verbonden. Koppel eerst je PSN-account."
+  },
+  "psnErrAuthExpired": {
+    "message": "Authenticatie verlopen. Koppel opnieuw."
+  },
+  "genericError": {
+    "message": "Er is een fout opgetreden"
+  },
+  "crossPlatformUSD": {
+    "message": "Prijzen in USD"
+  },
+  "psnOptionalBanner": {
+    "message": "Optionele geavanceerde functie — vereist je eigen PSN-account. De extensie werkt ook volledig zonder."
+  },
+  "psnErrInvalidFormat": {
+    "message": "Dit lijkt geen NPSSO-token. Verwacht worden ~64 alfanumerieke tekens. Zie de gids hieronder."
+  },
+  "psnErrFriendly": {
+    "message": "Kon niet verbinden met PSN. Controleer of je NPSSO-token nog vers is (ze verlopen na ~60 dagen). Alle andere functies van de extensie werken gewoon door."
+  },
+  "wishlistTitle": {
+    "message": "Verlanglijst"
+  },
+  "wishlistDesc": {
+    "message": "Volg games en ontvang een melding als de prijs onder je doel zakt."
+  },
+  "wishlistPcOnlyNote": {
+    "message": "Let op: meldingen gebruiken de laagste pc-prijs van CheapShark (Steam/Epic/GOG, in USD). PS Store-prijzen worden alleen getoond als je de pagina van een game bezoekt."
+  },
+  "hltbLink": {
+    "message": "Verhaal- / uitspeeltijden op HowLongToBeat →"
+  },
+  "wishlistEmpty": {
+    "message": "Je verlanglijst is leeg"
+  },
+  "wishlistAddBtn": {
+    "message": "★ Toevoegen aan verlanglijst"
+  },
+  "wishlistInBtn": {
+    "message": "★ Op verlanglijst (klik om te verwijderen)"
+  },
+  "wishlistRemoved": {
+    "message": "Verwijderd van verlanglijst"
+  },
+  "wishlistPriceDropTitle": {
+    "message": "🎯 Prijsdaling!"
+  },
+  "wishlistPriceDropBody": {
+    "message": "$NAME$ kost nu $NEW$ op pc (was $OLD$)",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      },
+      "new": {
+        "content": "$2"
+      },
+      "old": {
+        "content": "$3"
+      }
+    }
+  },
+  "wishlistLastChecked": {
+    "message": "Laatst gecontroleerd:"
+  },
+  "wishlistColTarget": {
+    "message": "Doel"
+  },
+  "wishlistColLast": {
+    "message": "Laatst gezien"
+  },
+  "wishlistCheckNow": {
+    "message": "🔄 Prijzen nu controleren"
+  },
+  "wishlistChecking": {
+    "message": "Controleren…"
+  },
+  "wishlistChecked": {
+    "message": "Prijzen bijgewerkt"
+  },
+  "supportDev": {
+    "message": "❤️ Steun de ontwikkeling"
+  },
+  "supportDevDesc": {
+    "message": "Bevalt PS Store Enhancer? Steun de ontwikkeling via Ko-fi, Buy Me a Coffee of Patreon."
+  },
+  "currencyTitle": {
+    "message": "Weergavevaluta"
+  },
+  "currencyLabel": {
+    "message": "Valuta"
+  },
+  "currencyDesc": {
+    "message": "Prijzen tussen platformen komen van CheapShark in USD. Kies je valuta om om te rekenen (dagkoersen van Frankfurter)."
+  },
+  "themeTitle": {
+    "message": "Thema"
+  },
+  "themeLabel": {
+    "message": "Kleurthema"
+  },
+  "themeAuto": {
+    "message": "Automatisch (volgt systeem)"
+  },
+  "themeDark": {
+    "message": "Donker"
+  },
+  "themeLight": {
+    "message": "Licht"
+  },
+  "ctxMenuFind": {
+    "message": "Zoek in PS Store Enhancer-prijsvergelijking"
+  },
+  "exportImportTitle": {
+    "message": "Back-up en herstel"
+  },
+  "exportImportDesc": {
+    "message": "Exporteer je handmatig gemarkeerde games naar een JSON-bestand of herstel vanaf een eerdere back-up."
+  },
+  "exportBtn": {
+    "message": "📤 JSON exporteren"
+  },
+  "importBtn": {
+    "message": "📥 JSON importeren"
+  },
+  "exportSuccess": {
+    "message": "Geëxporteerd"
+  },
+  "importSuccess": {
+    "message": "$COUNT$ items geïmporteerd",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "importFailed": {
+    "message": "Importeren mislukt — het bestand is geen geldige PS Store Enhancer-export"
+  },
+  "viewChangelog": {
+    "message": "Bekijk changelog →"
+  },
+  "infoTitle": {
+    "message": "Over en bronnen"
+  },
+  "linkPrivacy": {
+    "message": "Privacybeleid"
+  },
+  "linkSource": {
+    "message": "Broncode op GitHub"
+  },
+  "linkCredits": {
+    "message": "Gegevens: CheapShark (prijzen, Metacritic- en Steam-scores) · Frankfurter · PSPrices · PSNProfiles"
+  },
+  "errorApiDown": {
+    "message": "Service tijdelijk niet beschikbaar. Probeer het later opnieuw."
+  },
+  "searchAutocompleteToggle": {
+    "message": "Live zoeksuggesties"
+  },
+  "searchAutocompleteDesc": {
+    "message": "Prijsvoorbeeld terwijl je typt in het zoekvak van de store"
+  },
+  "autocompleteBadge": {
+    "message": "PS Store Enhancer live resultaten"
+  },
+  "autocompletePcFrom": {
+    "message": "Pc vanaf"
+  },
+  "whatsNewTitle": {
+    "message": "🎉 Nieuw in v$VERSION$",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
+  },
+  "whatsNewDismiss": {
+    "message": "Begrepen"
+  },
+  "whatsNewBannerText": {
+    "message": "PS Store Enhancer is bijgewerkt naar v$VERSION$ — bekijk wat er nieuw is",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
+  },
+  "statsTitle": {
+    "message": "Bibliotheek- en verlanglijststatistieken"
+  },
+  "statOwnedLabel": {
+    "message": "Games in bezit"
+  },
+  "statWishlistLabel": {
+    "message": "Op verlanglijst"
+  },
+  "statWishlistValueLabel": {
+    "message": "Waarde verlanglijst"
+  },
+  "statReadyLabel": {
+    "message": "Deals klaar"
+  },
+  "statsNote": {
+    "message": "De waarde van de verlanglijst is de som van de laatst gecontroleerde laagste pc-prijzen (USD) — niet van PS Store-prijzen. Dagelijks bijgewerkt, of via \"Prijzen nu controleren\" hieronder."
+  },
+  "crossPlatformEditionNote": {
+    "message": "Deze aanbieding is voor de $EDITION$ Edition — de prijs kan afwijken van de basisgame",
+    "placeholders": {
+      "edition": {
+        "content": "$1"
+      }
+    }
+  },
+  "supportCoffee": {
+    "message": "Koffie"
+  },
+  "noPcData": {
+    "message": "Geen pc-prijzen gevonden voor deze titel — mogelijk een PlayStation-exclusive."
+  },
+  "insightPcLabel": {
+    "message": "Pc · CheapShark"
+  },
+  "insightCheapestNow": {
+    "message": "Nu het goedkoopst"
+  },
+  "insightAtLow": {
+    "message": "Op de laagste prijs ooit"
+  },
+  "insightNearLow": {
+    "message": "Dicht bij de laagste prijs ooit"
+  },
+  "insightTrendDown": {
+    "message": "▼ $PCT$% t.o.v. $DAYS$ dagen geleden",
+    "placeholders": {
+      "pct": {
+        "content": "$1"
+      },
+      "days": {
+        "content": "$2"
+      }
+    }
+  },
+  "insightTrendUp": {
+    "message": "▲ $PCT$% t.o.v. $DAYS$ dagen geleden",
+    "placeholders": {
+      "pct": {
+        "content": "$1"
+      },
+      "days": {
+        "content": "$2"
+      }
+    }
+  },
+  "insightTrendFlat": {
+    "message": "≈ ongewijzigd t.o.v. $DAYS$ dagen geleden",
+    "placeholders": {
+      "days": {
+        "content": "$1"
+      }
+    }
+  },
+  "insightRecordedSince": {
+    "message": "Door je browser vastgelegde prijzen sinds $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "metacriticTitle": {
+    "message": "Metacritic (pc): $SCORE$/100",
+    "placeholders": {
+      "score": {
+        "content": "$1"
+      }
+    }
+  },
+  "steamRatingTitle": {
+    "message": "Steam: $PCT$% positief ($COUNT$ reviews)",
+    "placeholders": {
+      "pct": {
+        "content": "$1"
+      },
+      "count": {
+        "content": "$2"
+      }
+    }
+  },
+  "completionistScoreLabel": {
+    "message": "Moeite voor 100%"
+  },
+  "tier_quick": {
+    "message": "Snel klaar"
+  },
+  "tier_moderate": {
+    "message": "Gemiddeld"
+  },
+  "tier_demanding": {
+    "message": "Veeleisend"
+  },
+  "tier_grind": {
+    "message": "Flinke grind"
+  },
+  "pricePerHourLine": {
+    "message": "≈ $PRICE$ per uur (laagste pc-prijs)",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "similarOwnedLine": {
+    "message": "Vergelijkbare moeilijkheid in je bibliotheek: $GAMES$",
+    "placeholders": {
+      "games": {
+        "content": "$1"
+      }
+    }
+  },
+  "rarestRemainingLine": {
+    "message": "Zeldzaamste resterende trofee: $TROPHY$",
+    "placeholders": {
+      "trophy": {
+        "content": "$1"
+      }
+    }
+  },
+  "saleNow": {
+    "message": "$SALE$ vindt meestal rond deze tijd plaats",
+    "placeholders": {
+      "sale": {
+        "content": "$1"
+      }
+    }
+  },
+  "saleSoon": {
+    "message": "$SALE$ begint meestal rond $DATE$ (over $DAYS$ dagen)",
+    "placeholders": {
+      "sale": {
+        "content": "$1"
+      },
+      "date": {
+        "content": "$2"
+      },
+      "days": {
+        "content": "$3"
+      }
+    }
+  },
+  "shareDealBtn": {
+    "message": "Deel deze deal als afbeelding"
+  },
+  "shareDealFooter": {
+    "message": "PS Store Enhancer · pc-prijzen van CheapShark"
+  },
+  "acOwnedBadge": {
+    "message": "Heb je al"
+  },
+  "acWishlistBadge": {
+    "message": "Op je verlanglijst"
+  },
+  "wishlistPercentDropBody": {
+    "message": "$NAME$ heeft nu $PCT$% korting op pc ($PRICE$)",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      },
+      "pct": {
+        "content": "$2"
+      },
+      "price": {
+        "content": "$3"
+      }
+    }
+  },
+  "wishlistDigestTitle": {
+    "message": "Wekelijks verlanglijstoverzicht"
+  },
+  "wishlistDigestBody": {
+    "message": "$COUNT$ deals klaar op je verlanglijst: $NAMES$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      },
+      "names": {
+        "content": "$2"
+      }
+    }
+  },
+  "cardsTitle": {
+    "message": "Kaarten op de productpagina"
+  },
+  "cardsDesc": {
+    "message": "Kies welke kaarten op een gamepagina verschijnen en in welke volgorde."
+  },
+  "cardsCollapsedLabel": {
+    "message": "Ingeklapt beginnen"
+  },
+  "cardsCollapsedDesc": {
+    "message": "Toont een samenvatting van één regel; klik op een kaart om uit te klappen"
+  },
+  "cardPriceInsight": {
+    "message": "Prijsinzicht"
+  },
+  "cardCrossPlatform": {
+    "message": "Prijzen tussen platformen"
+  },
+  "cardTrophies": {
+    "message": "Completionist-info"
+  },
+  "cardMoveUp": {
+    "message": "Omhoog"
+  },
+  "cardMoveDown": {
+    "message": "Omlaag"
+  },
+  "trophyRarityToggle": {
+    "message": "Trofeezeldzaamheid (experimenteel)"
+  },
+  "trophyRarityDesc": {
+    "message": "Toont je zeldzaamste resterende trofee. Vereist een gekoppeld PSN-account en is nog niet op alle accounts geverifieerd."
+  },
+  "searchShortcutToggle": {
+    "message": "\"/\" focust zoeken"
+  },
+  "searchShortcutDesc": {
+    "message": "Druk overal in de store op / om naar het zoekvak te springen"
+  },
+  "themeContrast": {
+    "message": "Hoog contrast"
+  },
+  "diagTitle": {
+    "message": "Diagnostiek"
+  },
+  "diagDesc": {
+    "message": "De laatste gebeurtenissen van API-aanroepen en de PSN-verbinding, alleen op dit apparaat bewaard. Tokens en wachtwoorden worden nooit vastgelegd. Kopieer dit als je een probleem meldt."
+  },
+  "diagRefresh": {
+    "message": "🔄 Vernieuwen"
+  },
+  "diagCopy": {
+    "message": "📋 Kopiëren"
+  },
+  "diagClear": {
+    "message": "🗑 Log wissen"
+  },
+  "diagEmpty": {
+    "message": "Nog geen gebeurtenissen vastgelegd."
+  },
+  "diagCopied": {
+    "message": "Diagnostiek gekopieerd"
+  },
+  "privacyTitle": {
+    "message": "Jouw gegevens"
+  },
+  "wipeDesc": {
+    "message": "Ontkoppelt PSN en wist alles wat deze extensie op dit apparaat heeft opgeslagen: verlanglijst, games in bezit, caches, vastgelegde prijzen en het diagnostieklog. Je instellingen blijven behouden."
+  },
+  "wipeBtn": {
+    "message": "Al mijn gegevens wissen"
+  },
+  "popupWipe": {
+    "message": "Al mijn gegevens wissen"
+  },
+  "wipeConfirm": {
+    "message": "PSN ontkoppelen en alles wissen wat deze extensie op dit apparaat heeft opgeslagen (verlanglijst, games in bezit, caches, vastgelegde prijzen, diagnostiek)? Je instellingen blijven behouden. Dit kan niet ongedaan worden gemaakt."
+  },
+  "wipeDone": {
+    "message": "Alle gegevens gewist"
+  },
+  "wishlistFilterPlaceholder": {
+    "message": "Verlanglijst filteren…"
+  },
+  "wishlistSortLabel": {
+    "message": "Verlanglijst sorteren"
+  },
+  "sortAdded": {
+    "message": "Nieuwste eerst"
+  },
+  "sortName": {
+    "message": "Naam"
+  },
+  "sortPrice": {
+    "message": "Laagste prijs"
+  },
+  "sortDiscount": {
+    "message": "Grootste korting"
+  },
+  "wishlistNotePlaceholder": {
+    "message": "Notitie (bijv. cadeau voor…)"
+  },
+  "targetModePrice": {
+    "message": "Prijs ($)"
+  },
+  "targetModePercent": {
+    "message": "% korting"
+  },
+  "psPriceSeen": {
+    "message": "Geziene PS Store-prijs: $PRICE$ ($DATE$)",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      },
+      "date": {
+        "content": "$2"
+      }
+    }
+  },
+  "wlCountFmt": {
+    "message": "$COUNT$ games",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "ownCountFmt": {
+    "message": "$TOTAL$ in totaal ($PSN$ PSN, $MANUAL$ handmatig)",
+    "placeholders": {
+      "total": {
+        "content": "$1"
+      },
+      "psn": {
+        "content": "$2"
+      },
+      "manual": {
+        "content": "$3"
+      }
+    }
+  },
+  "removeTitle": {
+    "message": "Verwijderen"
+  },
+  "psnTotal": {
+    "message": "Totaal"
+  },
+  "digestTitle": {
+    "message": "Meldingen ontvangen"
+  },
+  "digestDesc": {
+    "message": "Eén melding per deal, of één wekelijks overzicht"
+  },
+  "digestInstant": {
+    "message": "Direct"
+  },
+  "digestWeekly": {
+    "message": "Wekelijks overzicht"
+  },
+  "shareWishlistBtn": {
+    "message": "🔗 Deellink kopiëren"
+  },
+  "shareWishlistDesc": {
+    "message": "De link bevat alleen gamenamen en laatst geziene pc-prijzen (geen doelen of notities) en is alleen-lezen. Iedereen met de link kan de lijst zien."
+  },
+  "shareWishlistCopied": {
+    "message": "Deellink gekopieerd"
+  },
+  "psnEmptyToken": {
+    "message": "Plak eerst je NPSSO-token."
+  },
+  "psnGrantAccessBtn": {
+    "message": "Toegang tot doorverwijzing toestaan en opnieuw proberen"
+  },
+  "psnAccessGranted": {
+    "message": "Toestemming verleend — verbinding wordt opnieuw geprobeerd…"
+  },
+  "psnAccessDenied": {
+    "message": "Toestemming niet verleend. Zonder deze kan de verbinding niet worden voltooid."
+  },
+  "psnErrNeedsRedirectAccess": {
+    "message": "Chrome verbergt de inlogdoorverwijzing van Sony voor extensies. Sta de optionele machtiging \"webRequest\" toe om deze te lezen en probeer het opnieuw."
+  },
+  "popupRefresh": {
+    "message": "PSN-bibliotheek vernieuwen"
+  },
+  "popupSyncedAgo": {
+    "message": "Gesynchroniseerd $WHEN$",
+    "placeholders": {
+      "when": {
+        "content": "$1"
+      }
+    }
+  },
+  "chipPsn": {
+    "message": "PSN"
+  },
+  "chipScores": {
+    "message": "Scores"
+  },
+  "chipPrices": {
+    "message": "Prijzen"
+  },
+  "chipCompare": {
+    "message": "Vergelijken"
+  },
+  "chipTrophies": {
+    "message": "Trofeeën"
+  },
+  "chipFilter": {
+    "message": "Filter"
+  },
+  "tourTitle": {
+    "message": "Korte rondleiding"
+  },
+  "tourStepInsight": {
+    "message": "De echte laagste prijs ooit en de goedkoopste pc-prijs van vandaag voor deze game, plus je eigen vastgelegde trend."
+  },
+  "tourStepCompare": {
+    "message": "De prijs van dezelfde game bij Steam, Epic, GOG en meer — tik op een rij om de store te openen."
+  },
+  "tourStepTrophies": {
+    "message": "Hoe moeilijk en hoe lang de platina is, en je PSN-voortgang als je bent gekoppeld."
+  },
+  "tourStepWishlist": {
+    "message": "Voeg de game toe aan je verlanglijst voor een melding als de prijs daalt."
+  },
+  "tourNext": {
+    "message": "Volgende"
+  },
+  "tourSkip": {
+    "message": "Overslaan"
+  },
+  "tourDone": {
+    "message": "Begrepen"
+  },
+  "rateNudgeText": {
+    "message": "Bevalt PS Store Enhancer? Een korte review helpt andere spelers het te vinden."
+  },
+  "rateNudgeBtn": {
+    "message": "Review schrijven"
+  },
+  "rateNudgeDismiss": {
+    "message": "Nee, bedankt"
+  },
+  "chl_2_7_0_1": {
+    "message": "🎯 Nauwkeurige prijzen tussen platformen — precies de juiste game, nooit een DLC, kaart of vervolg"
+  },
+  "chl_2_7_0_2": {
+    "message": "📊 Metacritic- en Steam-scores van CheapShark (OpenCritic vereist nu een API-sleutel en werkte niet meer)"
+  },
+  "chl_2_7_0_3": {
+    "message": "📉 Prijsinzicht gebruikt alleen echte data: laagste pc-prijs ooit, goedkoopste van vandaag en je eigen vastgelegde trend"
+  },
+  "chl_2_7_0_4": {
+    "message": "🛠 Diagnostieklog, veiliger PSN-inloggen, %-doelen, notities, sorteren, wekelijks overzicht en een knop \"Al mijn gegevens wissen\""
+  },
+  "chl_2_7_0_5": {
+    "message": "🧩 Kaarten op de productpagina herordenen, verbergen of inklappen; nieuw thema met hoog contrast"
+  },
+  "chl_2_7_0_6": {
+    "message": "🌍 Zes nieuwe talen: Italiano, Polski, Türkçe, Nederlands, 简体中文 en 繁體中文"
+  }
+}

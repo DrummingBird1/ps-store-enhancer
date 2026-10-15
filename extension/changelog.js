@@ -6,13 +6,12 @@
     const r = await chrome.storage.sync.get(["theme"]);
     const mode = r.theme || "auto";
     const resolved =
-      mode === "light"
-        ? "light"
-        : mode === "dark"
-          ? "dark"
-          : window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches
-            ? "light"
-            : "dark";
+      mode === "light" || mode === "dark" || mode === "contrast"
+        ? mode
+        : window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches
+          ? "light"
+          : "dark";
     if (resolved === "light") document.body.classList.add("theme-light");
+    if (resolved === "contrast") document.body.classList.add("theme-contrast");
   } catch {}
 })();

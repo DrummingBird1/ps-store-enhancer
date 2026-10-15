@@ -1,0 +1,1005 @@
+{
+  "extName": {
+    "message": "PS Store Enhancer"
+  },
+  "extDesc": {
+    "message": "為 PlayStation Store 提供歷史最低價、跨平台比價、評分、獎盃與智慧篩選。可選用 PSN 同步。"
+  },
+  "psnAccount": {
+    "message": "PSN 帳號"
+  },
+  "psnNotConnected": {
+    "message": "未連線"
+  },
+  "psnClickToConnect": {
+    "message": "點擊以連結您的 PSN 帳號"
+  },
+  "psnGames": {
+    "message": "款遊戲"
+  },
+  "psnDlcs": {
+    "message": "個 DLC"
+  },
+  "psnConnectTitle": {
+    "message": "連結 PSN 帳號"
+  },
+  "psnConnectDesc": {
+    "message": "連結您的 PlayStation 帳號，自動同步遊戲庫與 DLC。"
+  },
+  "psnAutoDetect": {
+    "message": "自動偵測（已登入 PSN 時）"
+  },
+  "psnSearching": {
+    "message": "搜尋中..."
+  },
+  "psnOrManual": {
+    "message": "或手動輸入 NPSSO 權杖："
+  },
+  "psnPasteToken": {
+    "message": "在此貼上 NPSSO 權杖..."
+  },
+  "psnConnect": {
+    "message": "連結"
+  },
+  "psnSyncNow": {
+    "message": "立即同步"
+  },
+  "psnSyncing": {
+    "message": "同步中..."
+  },
+  "psnDisconnect": {
+    "message": "中斷連結"
+  },
+  "psnDisconnectConfirm": {
+    "message": "要中斷 PSN 帳號連結嗎？\n手動新增的遊戲（✏️）將會保留。"
+  },
+  "psnLastSync": {
+    "message": "上次同步："
+  },
+  "psnNotSynced": {
+    "message": "尚未同步"
+  },
+  "psnGuideTitle": {
+    "message": "如何取得 NPSSO 權杖："
+  },
+  "psnGuide1": {
+    "message": "登入"
+  },
+  "psnGuide2": {
+    "message": "開啟新分頁並前往："
+  },
+  "psnGuide3": {
+    "message": "複製"
+  },
+  "psnGuide3b": {
+    "message": "的值（不含引號）"
+  },
+  "psnGuide4": {
+    "message": "貼到此處並點擊「連結」"
+  },
+  "psnTokenFound": {
+    "message": "已找到 NPSSO 權杖！連線中..."
+  },
+  "psnTokenNotFound": {
+    "message": "找不到權杖。請在其他分頁登入 PlayStation Store 後重試，或手動輸入 NPSSO。"
+  },
+  "psnConnectedSync": {
+    "message": "已連結！正在同步遊戲庫..."
+  },
+  "psnSynced": {
+    "message": "PSN 已連結，遊戲庫已同步"
+  },
+  "psnDisconnected": {
+    "message": "已中斷 PSN 帳號連結"
+  },
+  "psnSyncedItems": {
+    "message": "已同步 $COUNT$ 項",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "psnWait30": {
+    "message": "兩次同步之間請等待 30 秒"
+  },
+  "filterTitle": {
+    "message": "搜尋結果篩選"
+  },
+  "hideAddons": {
+    "message": "隱藏附加內容與虛擬貨幣"
+  },
+  "hideAddonsDesc": {
+    "message": "貨幣包、入門包"
+  },
+  "hideDlc": {
+    "message": "隱藏 DLC 與擴充包"
+  },
+  "hideDlcDesc": {
+    "message": "擴充包、季票、DLC"
+  },
+  "hideOwned": {
+    "message": "隱藏我已擁有的遊戲"
+  },
+  "hideOwnedDesc": {
+    "message": "來自 PSN 自動辨識 + 手動清單"
+  },
+  "featuresTitle": {
+    "message": "已啟用功能"
+  },
+  "metacriticToggle": {
+    "message": "評分（Metacritic / Steam）"
+  },
+  "metacriticDesc": {
+    "message": "在遊戲標題旁顯示評分徽章"
+  },
+  "priceHistoryToggle": {
+    "message": "價格洞察"
+  },
+  "priceHistoryDesc": {
+    "message": "真實的 PC 歷史最低價、接近最低價提示，以及您自己記錄的價格走勢"
+  },
+  "crossPlatformToggle": {
+    "message": "跨平台價格比較"
+  },
+  "crossPlatformDesc": {
+    "message": "透過 CheapShark 查看 Steam、Epic、GOG 等平台"
+  },
+  "trophyToggle": {
+    "message": "白金攻略資訊（獎盃）"
+  },
+  "trophyDesc": {
+    "message": "難度、耗時、周目數 + PSN 進度"
+  },
+  "regionTitle": {
+    "message": "PSPrices 地區"
+  },
+  "regionLabel": {
+    "message": "商店地區"
+  },
+  "myGamesTitle": {
+    "message": "我的遊戲"
+  },
+  "myGamesDesc": {
+    "message": "PSN 遊戲顯示為 🔗，手動新增的顯示為 ✏️。中斷 PSN 連結只會移除 🔗，不會移除 ✏️。"
+  },
+  "addGamePlaceholder": {
+    "message": "輸入遊戲名稱..."
+  },
+  "addGame": {
+    "message": "新增"
+  },
+  "emptyList": {
+    "message": "清單是空的 — 請連結 PSN 或手動新增"
+  },
+  "gameAdded": {
+    "message": "已新增「$NAME$」",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "gameRemoved": {
+    "message": "已移除「$NAME$」",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "gameAlreadyInList": {
+    "message": "此遊戲已在清單中"
+  },
+  "srcPsn": {
+    "message": "🔗 PSN"
+  },
+  "srcManual": {
+    "message": "✏️ 手動"
+  },
+  "cacheTitle": {
+    "message": "快取管理"
+  },
+  "cacheActive": {
+    "message": "有效"
+  },
+  "cacheExpired": {
+    "message": "已過期"
+  },
+  "cacheSize": {
+    "message": "大小 (KB)"
+  },
+  "cachePurge": {
+    "message": "清除過期項目"
+  },
+  "cachePurged": {
+    "message": "已清除過期項目"
+  },
+  "cacheClear": {
+    "message": "全部清除"
+  },
+  "cacheCleared": {
+    "message": "快取已清除（$COUNT$ 筆）",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "priceHistory": {
+    "message": "價格洞察"
+  },
+  "cheapestEver": {
+    "message": "PC 歷史最低價："
+  },
+  "viewFullHistory": {
+    "message": "在 PSPrices 查看完整歷史 →"
+  },
+  "crossPlatformTitle": {
+    "message": "跨平台價格比較"
+  },
+  "crossPlatformSource": {
+    "message": "價格來自 CheapShark · PC 平台"
+  },
+  "completionistInfo": {
+    "message": "白金攻略資訊"
+  },
+  "platinum": {
+    "message": "白金"
+  },
+  "yes": {
+    "message": "是"
+  },
+  "no": {
+    "message": "否"
+  },
+  "difficulty": {
+    "message": "難度"
+  },
+  "estimatedTime": {
+    "message": "預估耗時"
+  },
+  "hours": {
+    "message": "小時"
+  },
+  "playthroughs": {
+    "message": "周目數"
+  },
+  "psnProgress": {
+    "message": "進度 (PSN)"
+  },
+  "trophyGuide": {
+    "message": "在 PSNProfiles 查看獎盃攻略 →"
+  },
+  "markOwned": {
+    "message": "標記為已擁有"
+  },
+  "iOwnThis": {
+    "message": "我已擁有此遊戲"
+  },
+  "settingsSubtitle": {
+    "message": "進階設定 · PSN 帳號 · 遊戲管理"
+  },
+  "activeOnStore": {
+    "message": "已在 store.playstation.com 啟用"
+  },
+  "advancedSettings": {
+    "message": "進階設定"
+  },
+  "saved": {
+    "message": "已儲存 ✓"
+  },
+  "languageTitle": {
+    "message": "擴充功能語言"
+  },
+  "languageDesc": {
+    "message": "選擇擴充功能的顯示語言。「自動」會使用瀏覽器語言。"
+  },
+  "languageLabel": {
+    "message": "語言"
+  },
+  "languageAuto": {
+    "message": "自動（瀏覽器語言）"
+  },
+  "disclaimer": {
+    "message": "本擴充功能與 Sony Interactive Entertainment、PlayStation 及其任何子公司無關聯，亦未獲其認可或與其有任何關係。"
+  },
+  "welcomeTitle": {
+    "message": "歡迎使用 PS Store Enhancer！"
+  },
+  "welcomeSubtitle": {
+    "message": "您的 PlayStation™ Store 變得更好用了。"
+  },
+  "welcomeFeature1Title": {
+    "message": "真實價格與比價"
+  },
+  "welcomeFeature1Desc": {
+    "message": "查看歷史最低價，並在 Steam、Epic、GOG 等平台比較同一款遊戲。"
+  },
+  "welcomeFeature2Title": {
+    "message": "PSN 遊戲庫同步（選用）"
+  },
+  "welcomeFeature2Desc": {
+    "message": "進階功能：可選擇連結 PSN 帳號，自動隱藏已擁有的遊戲。不連結也能完整使用。"
+  },
+  "welcomeFeature3Title": {
+    "message": "評分與獎盃"
+  },
+  "welcomeFeature3Desc": {
+    "message": "在商品頁直接查看 Metacritic 與 Steam 評分，以及白金攻略資訊。"
+  },
+  "welcomeFeature4Title": {
+    "message": "智慧篩選"
+  },
+  "welcomeFeature4Desc": {
+    "message": "在搜尋結果中隱藏附加內容、DLC 與貨幣包。"
+  },
+  "welcomeCta": {
+    "message": "開啟設定"
+  },
+  "welcomeNote": {
+    "message": "提示：點擊工具列中的擴充功能圖示，可快速切換篩選。"
+  },
+  "psnErrTokenShort": {
+    "message": "NPSSO 權杖缺少或過短"
+  },
+  "psnErrAuthCode": {
+    "message": "無法從 Sony 取得授權碼。NPSSO 可能已過期。"
+  },
+  "psnErrAccessToken": {
+    "message": "無法從 Sony 取得存取權杖。"
+  },
+  "psnErrNotConnected": {
+    "message": "未連線。請先連結 PSN 帳號。"
+  },
+  "psnErrAuthExpired": {
+    "message": "驗證已過期，請重新連結。"
+  },
+  "genericError": {
+    "message": "發生錯誤"
+  },
+  "crossPlatformUSD": {
+    "message": "價格以美元計"
+  },
+  "psnOptionalBanner": {
+    "message": "選用的進階功能 — 需要您自己的 PSN 帳號。不使用也能完整使用本擴充功能。"
+  },
+  "psnErrInvalidFormat": {
+    "message": "這看起來不像 NPSSO 權杖。應為約 64 個英數字元。請參閱下方指南。"
+  },
+  "psnErrFriendly": {
+    "message": "無法連線至 PSN。請確認 NPSSO 權杖是最新的（約 60 天後過期）。擴充功能的其他功能不受影響。"
+  },
+  "wishlistTitle": {
+    "message": "願望清單"
+  },
+  "wishlistDesc": {
+    "message": "追蹤遊戲，價格低於目標時收到通知。"
+  },
+  "wishlistPcOnlyNote": {
+    "message": "注意：提醒使用 CheapShark 的最低 PC 價格（Steam/Epic/GOG，美元）。只有瀏覽遊戲頁面時才會顯示 PS Store 價格。"
+  },
+  "hltbLink": {
+    "message": "在 HowLongToBeat 查看劇情 / 通關時間 →"
+  },
+  "wishlistEmpty": {
+    "message": "您的願望清單是空的"
+  },
+  "wishlistAddBtn": {
+    "message": "★ 加入願望清單"
+  },
+  "wishlistInBtn": {
+    "message": "★ 已在願望清單（點擊移除）"
+  },
+  "wishlistRemoved": {
+    "message": "已從願望清單移除"
+  },
+  "wishlistPriceDropTitle": {
+    "message": "🎯 降價提醒！"
+  },
+  "wishlistPriceDropBody": {
+    "message": "$NAME$ 現在 PC 售價 $NEW$（原價 $OLD$）",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      },
+      "new": {
+        "content": "$2"
+      },
+      "old": {
+        "content": "$3"
+      }
+    }
+  },
+  "wishlistLastChecked": {
+    "message": "上次檢查："
+  },
+  "wishlistColTarget": {
+    "message": "目標"
+  },
+  "wishlistColLast": {
+    "message": "最近看到"
+  },
+  "wishlistCheckNow": {
+    "message": "🔄 立即檢查價格"
+  },
+  "wishlistChecking": {
+    "message": "檢查中…"
+  },
+  "wishlistChecked": {
+    "message": "價格已更新"
+  },
+  "supportDev": {
+    "message": "❤️ 支持開發"
+  },
+  "supportDevDesc": {
+    "message": "喜歡 PS Store Enhancer 嗎？歡迎透過 Ko-fi、Buy Me a Coffee 或 Patreon 支持開發。"
+  },
+  "currencyTitle": {
+    "message": "顯示貨幣"
+  },
+  "currencyLabel": {
+    "message": "貨幣"
+  },
+  "currencyDesc": {
+    "message": "跨平台價格來自 CheapShark（美元）。選擇您的貨幣進行換算（每日匯率來自 Frankfurter）。"
+  },
+  "themeTitle": {
+    "message": "主題"
+  },
+  "themeLabel": {
+    "message": "色彩主題"
+  },
+  "themeAuto": {
+    "message": "自動（跟隨系統）"
+  },
+  "themeDark": {
+    "message": "深色"
+  },
+  "themeLight": {
+    "message": "淺色"
+  },
+  "ctxMenuFind": {
+    "message": "在 PS Store Enhancer 比價中尋找"
+  },
+  "exportImportTitle": {
+    "message": "備份與還原"
+  },
+  "exportImportDesc": {
+    "message": "將手動標記的已擁有遊戲匯出為 JSON 檔，或從先前的備份還原。"
+  },
+  "exportBtn": {
+    "message": "📤 匯出 JSON"
+  },
+  "importBtn": {
+    "message": "📥 匯入 JSON"
+  },
+  "exportSuccess": {
+    "message": "已匯出"
+  },
+  "importSuccess": {
+    "message": "已匯入 $COUNT$ 項",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "importFailed": {
+    "message": "匯入失敗 — 檔案不是有效的 PS Store Enhancer 匯出檔"
+  },
+  "viewChangelog": {
+    "message": "查看更新日誌 →"
+  },
+  "infoTitle": {
+    "message": "關於與資源"
+  },
+  "linkPrivacy": {
+    "message": "隱私權政策"
+  },
+  "linkSource": {
+    "message": "GitHub 原始碼"
+  },
+  "linkCredits": {
+    "message": "資料來源：CheapShark（價格、Metacritic 與 Steam 評分）· Frankfurter · PSPrices · PSNProfiles"
+  },
+  "errorApiDown": {
+    "message": "服務暫時無法使用，請稍後再試。"
+  },
+  "searchAutocompleteToggle": {
+    "message": "即時搜尋建議"
+  },
+  "searchAutocompleteDesc": {
+    "message": "在商店搜尋框輸入時預覽價格"
+  },
+  "autocompleteBadge": {
+    "message": "PS Store Enhancer 即時結果"
+  },
+  "autocompletePcFrom": {
+    "message": "PC 起價"
+  },
+  "whatsNewTitle": {
+    "message": "🎉 v$VERSION$ 新功能",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
+  },
+  "whatsNewDismiss": {
+    "message": "知道了"
+  },
+  "whatsNewBannerText": {
+    "message": "PS Store Enhancer 已更新至 v$VERSION$ — 查看新功能",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
+  },
+  "statsTitle": {
+    "message": "遊戲庫與願望清單統計"
+  },
+  "statOwnedLabel": {
+    "message": "已擁有遊戲"
+  },
+  "statWishlistLabel": {
+    "message": "願望清單"
+  },
+  "statWishlistValueLabel": {
+    "message": "願望清單價值"
+  },
+  "statReadyLabel": {
+    "message": "可入手優惠"
+  },
+  "statsNote": {
+    "message": "願望清單價值是最近檢查到的 PC 最低價（美元）總和，並非 PS Store 價格。每日更新，也可透過下方「立即檢查價格」更新。"
+  },
+  "crossPlatformEditionNote": {
+    "message": "此項目為 $EDITION$ 版 — 價格可能與標準版不同",
+    "placeholders": {
+      "edition": {
+        "content": "$1"
+      }
+    }
+  },
+  "supportCoffee": {
+    "message": "咖啡"
+  },
+  "noPcData": {
+    "message": "找不到此遊戲的 PC 價格 — 它可能是 PlayStation 獨佔。"
+  },
+  "insightPcLabel": {
+    "message": "PC · CheapShark"
+  },
+  "insightCheapestNow": {
+    "message": "目前最低價"
+  },
+  "insightAtLow": {
+    "message": "處於歷史最低價"
+  },
+  "insightNearLow": {
+    "message": "接近歷史最低價"
+  },
+  "insightTrendDown": {
+    "message": "▼ 較 $DAYS$ 天前下降 $PCT$%",
+    "placeholders": {
+      "pct": {
+        "content": "$1"
+      },
+      "days": {
+        "content": "$2"
+      }
+    }
+  },
+  "insightTrendUp": {
+    "message": "▲ 較 $DAYS$ 天前上漲 $PCT$%",
+    "placeholders": {
+      "pct": {
+        "content": "$1"
+      },
+      "days": {
+        "content": "$2"
+      }
+    }
+  },
+  "insightTrendFlat": {
+    "message": "≈ 與 $DAYS$ 天前持平",
+    "placeholders": {
+      "days": {
+        "content": "$1"
+      }
+    }
+  },
+  "insightRecordedSince": {
+    "message": "您的瀏覽器自 $DATE$ 起記錄的價格",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "metacriticTitle": {
+    "message": "Metacritic (PC)：$SCORE$/100",
+    "placeholders": {
+      "score": {
+        "content": "$1"
+      }
+    }
+  },
+  "steamRatingTitle": {
+    "message": "Steam：$PCT$% 好評（$COUNT$ 則評論）",
+    "placeholders": {
+      "pct": {
+        "content": "$1"
+      },
+      "count": {
+        "content": "$2"
+      }
+    }
+  },
+  "completionistScoreLabel": {
+    "message": "白金耗時難度"
+  },
+  "tier_quick": {
+    "message": "輕鬆白金"
+  },
+  "tier_moderate": {
+    "message": "中等"
+  },
+  "tier_demanding": {
+    "message": "有挑戰"
+  },
+  "tier_grind": {
+    "message": "肝度很高"
+  },
+  "pricePerHourLine": {
+    "message": "≈ 每小時 $PRICE$（以 PC 最低價計）",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "similarOwnedLine": {
+    "message": "您遊戲庫中難度相近的遊戲：$GAMES$",
+    "placeholders": {
+      "games": {
+        "content": "$1"
+      }
+    }
+  },
+  "rarestRemainingLine": {
+    "message": "剩餘最稀有的獎盃：$TROPHY$",
+    "placeholders": {
+      "trophy": {
+        "content": "$1"
+      }
+    }
+  },
+  "saleNow": {
+    "message": "$SALE$ 通常在這段時間舉行",
+    "placeholders": {
+      "sale": {
+        "content": "$1"
+      }
+    }
+  },
+  "saleSoon": {
+    "message": "$SALE$ 通常在 $DATE$ 前後開始（$DAYS$ 天後）",
+    "placeholders": {
+      "sale": {
+        "content": "$1"
+      },
+      "date": {
+        "content": "$2"
+      },
+      "days": {
+        "content": "$3"
+      }
+    }
+  },
+  "shareDealBtn": {
+    "message": "將此優惠分享為圖片"
+  },
+  "shareDealFooter": {
+    "message": "PS Store Enhancer · PC 價格來自 CheapShark"
+  },
+  "acOwnedBadge": {
+    "message": "您已擁有"
+  },
+  "acWishlistBadge": {
+    "message": "在您的願望清單中"
+  },
+  "wishlistPercentDropBody": {
+    "message": "$NAME$ 現在 PC 優惠 $PCT$%（$PRICE$）",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      },
+      "pct": {
+        "content": "$2"
+      },
+      "price": {
+        "content": "$3"
+      }
+    }
+  },
+  "wishlistDigestTitle": {
+    "message": "每週願望清單摘要"
+  },
+  "wishlistDigestBody": {
+    "message": "願望清單中有 $COUNT$ 個優惠：$NAMES$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      },
+      "names": {
+        "content": "$2"
+      }
+    }
+  },
+  "cardsTitle": {
+    "message": "商品頁卡片"
+  },
+  "cardsDesc": {
+    "message": "選擇在遊戲頁面顯示哪些卡片以及順序。"
+  },
+  "cardsCollapsedLabel": {
+    "message": "預設收合"
+  },
+  "cardsCollapsedDesc": {
+    "message": "顯示一行摘要；點擊卡片即可展開"
+  },
+  "cardPriceInsight": {
+    "message": "價格洞察"
+  },
+  "cardCrossPlatform": {
+    "message": "跨平台價格"
+  },
+  "cardTrophies": {
+    "message": "白金攻略資訊"
+  },
+  "cardMoveUp": {
+    "message": "上移"
+  },
+  "cardMoveDown": {
+    "message": "下移"
+  },
+  "trophyRarityToggle": {
+    "message": "獎盃稀有度（實驗性）"
+  },
+  "trophyRarityDesc": {
+    "message": "顯示您剩餘最稀有的獎盃。需要連結 PSN 帳號，尚未在所有帳號上驗證。"
+  },
+  "searchShortcutToggle": {
+    "message": "按「/」聚焦搜尋"
+  },
+  "searchShortcutDesc": {
+    "message": "在商店任意位置按 / 即可跳到搜尋框"
+  },
+  "themeContrast": {
+    "message": "高對比"
+  },
+  "diagTitle": {
+    "message": "診斷"
+  },
+  "diagDesc": {
+    "message": "最近的 API 呼叫與 PSN 連線事件，僅儲存在此裝置上。絕不會記錄權杖與密碼。回報問題時請複製此內容。"
+  },
+  "diagRefresh": {
+    "message": "🔄 重新整理"
+  },
+  "diagCopy": {
+    "message": "📋 複製"
+  },
+  "diagClear": {
+    "message": "🗑 清除記錄"
+  },
+  "diagEmpty": {
+    "message": "尚無記錄的事件。"
+  },
+  "diagCopied": {
+    "message": "診斷資訊已複製"
+  },
+  "privacyTitle": {
+    "message": "您的資料"
+  },
+  "wipeDesc": {
+    "message": "中斷 PSN 連結並清除本擴充功能在此裝置上儲存的所有內容：願望清單、已擁有遊戲、快取、記錄的價格與診斷記錄。您的設定將保留。"
+  },
+  "wipeBtn": {
+    "message": "清除我的所有資料"
+  },
+  "popupWipe": {
+    "message": "清除我的所有資料"
+  },
+  "wipeConfirm": {
+    "message": "要中斷 PSN 連結並清除本擴充功能在此裝置上儲存的所有內容（願望清單、已擁有遊戲、快取、記錄的價格、診斷）嗎？您的設定將保留。此操作無法復原。"
+  },
+  "wipeDone": {
+    "message": "所有資料已清除"
+  },
+  "wishlistFilterPlaceholder": {
+    "message": "篩選願望清單…"
+  },
+  "wishlistSortLabel": {
+    "message": "願望清單排序"
+  },
+  "sortAdded": {
+    "message": "最新優先"
+  },
+  "sortName": {
+    "message": "名稱"
+  },
+  "sortPrice": {
+    "message": "價格最低"
+  },
+  "sortDiscount": {
+    "message": "折扣最大"
+  },
+  "wishlistNotePlaceholder": {
+    "message": "備註（例如：送給…的禮物）"
+  },
+  "targetModePrice": {
+    "message": "價格 ($)"
+  },
+  "targetModePercent": {
+    "message": "折扣 %"
+  },
+  "psPriceSeen": {
+    "message": "看到的 PS Store 價格：$PRICE$（$DATE$）",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      },
+      "date": {
+        "content": "$2"
+      }
+    }
+  },
+  "wlCountFmt": {
+    "message": "$COUNT$ 款遊戲",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "ownCountFmt": {
+    "message": "共 $TOTAL$ 款（PSN $PSN$，手動 $MANUAL$）",
+    "placeholders": {
+      "total": {
+        "content": "$1"
+      },
+      "psn": {
+        "content": "$2"
+      },
+      "manual": {
+        "content": "$3"
+      }
+    }
+  },
+  "removeTitle": {
+    "message": "移除"
+  },
+  "psnTotal": {
+    "message": "總計"
+  },
+  "digestTitle": {
+    "message": "提醒方式"
+  },
+  "digestDesc": {
+    "message": "每個優惠單獨通知，或每週一則彙整"
+  },
+  "digestInstant": {
+    "message": "即時"
+  },
+  "digestWeekly": {
+    "message": "每週摘要"
+  },
+  "shareWishlistBtn": {
+    "message": "🔗 複製分享連結"
+  },
+  "shareWishlistDesc": {
+    "message": "連結只包含遊戲名稱與最近看到的 PC 價格（不含目標價與備註），且為唯讀。任何拿到連結的人都能查看此清單。"
+  },
+  "shareWishlistCopied": {
+    "message": "分享連結已複製"
+  },
+  "psnEmptyToken": {
+    "message": "請先貼上 NPSSO 權杖。"
+  },
+  "psnGrantAccessBtn": {
+    "message": "允許存取重新導向並重試"
+  },
+  "psnAccessGranted": {
+    "message": "已授予權限 — 正在重試連線…"
+  },
+  "psnAccessDenied": {
+    "message": "未授予權限。沒有該權限無法完成連線。"
+  },
+  "psnErrNeedsRedirectAccess": {
+    "message": "Chrome 會對擴充功能隱藏 Sony 登入的重新導向。請允許選用權限「webRequest」以讀取它，然後重試。"
+  },
+  "popupRefresh": {
+    "message": "重新整理 PSN 遊戲庫"
+  },
+  "popupSyncedAgo": {
+    "message": "已同步：$WHEN$",
+    "placeholders": {
+      "when": {
+        "content": "$1"
+      }
+    }
+  },
+  "chipPsn": {
+    "message": "PSN"
+  },
+  "chipScores": {
+    "message": "評分"
+  },
+  "chipPrices": {
+    "message": "價格"
+  },
+  "chipCompare": {
+    "message": "比價"
+  },
+  "chipTrophies": {
+    "message": "獎盃"
+  },
+  "chipFilter": {
+    "message": "篩選"
+  },
+  "tourTitle": {
+    "message": "快速導覽"
+  },
+  "tourStepInsight": {
+    "message": "此遊戲真實的 PC 歷史最低價與今日最低價，以及您自己記錄的走勢。"
+  },
+  "tourStepCompare": {
+    "message": "同一款遊戲在 Steam、Epic、GOG 等平台的價格 — 點擊一列即可開啟商店。"
+  },
+  "tourStepTrophies": {
+    "message": "白金獎盃的難度與耗時；若已連結 PSN，還會顯示您的進度。"
+  },
+  "tourStepWishlist": {
+    "message": "將遊戲加入願望清單，降價時會收到提醒。"
+  },
+  "tourNext": {
+    "message": "下一步"
+  },
+  "tourSkip": {
+    "message": "略過"
+  },
+  "tourDone": {
+    "message": "知道了"
+  },
+  "rateNudgeText": {
+    "message": "喜歡 PS Store Enhancer 嗎？一則簡短的評論能幫助更多玩家發現它。"
+  },
+  "rateNudgeBtn": {
+    "message": "前往評論"
+  },
+  "rateNudgeDismiss": {
+    "message": "不用了"
+  },
+  "chl_2_7_0_1": {
+    "message": "🎯 跨平台價格更準確 — 就是對應的那款遊戲，不會再混入 DLC、地圖或續作"
+  },
+  "chl_2_7_0_2": {
+    "message": "📊 評分改用 CheapShark 提供的 Metacritic 與 Steam 評分（OpenCritic 現在需要 API 金鑰，已無法使用）"
+  },
+  "chl_2_7_0_3": {
+    "message": "📉 價格洞察只使用真實資料：PC 歷史最低價、今日最低價與您自己記錄的走勢"
+  },
+  "chl_2_7_0_4": {
+    "message": "🛠 診斷記錄、更安全的 PSN 登入、以折扣百分比設定目標、備註、排序、每週摘要與「清除我的所有資料」按鈕"
+  },
+  "chl_2_7_0_5": {
+    "message": "🧩 可重新排序、隱藏或收合商品頁卡片；新增高對比主題"
+  },
+  "chl_2_7_0_6": {
+    "message": "🌍 新增六種語言：Italiano、Polski、Türkçe、Nederlands、简体中文與繁體中文"
+  }
+}

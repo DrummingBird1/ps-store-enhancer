@@ -18,7 +18,7 @@ const PSEi18n = (() => {
   let _currentLang = "auto";
   let _ready = false;
 
-  const SUPPORTED = ["en","he","ar","es","fr","de","pt_BR","ru","ja","ko"];
+  const SUPPORTED = ["en","he","ar","es","fr","de","it","pt_BR","nl","pl","tr","ru","ja","ko","zh_CN","zh_TW"];
   const RTL_LANGS = ["he","ar"];
 
   /**
@@ -136,7 +136,7 @@ const PSEi18n = (() => {
     const lang = getActiveLang();
     const isRtl = RTL_LANGS.some(rl => lang.startsWith(rl));
     document.documentElement.dir = isRtl ? "rtl" : "ltr";
-    document.documentElement.lang = lang;
+    document.documentElement.lang = lang.replace("_", "-");
   }
 
   /**

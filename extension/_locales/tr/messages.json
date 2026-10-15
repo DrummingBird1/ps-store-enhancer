@@ -1,0 +1,1005 @@
+{
+  "extName": {
+    "message": "PS Store Enhancer"
+  },
+  "extDesc": {
+    "message": "PlayStation Store için en düşük fiyatlar, platform karşılaştırması, puanlar, kupalar ve filtreler. İsteğe bağlı PSN eşitleme."
+  },
+  "psnAccount": {
+    "message": "PSN Hesabı"
+  },
+  "psnNotConnected": {
+    "message": "Bağlı değil"
+  },
+  "psnClickToConnect": {
+    "message": "PSN hesabınızı bağlamak için tıklayın"
+  },
+  "psnGames": {
+    "message": "oyun"
+  },
+  "psnDlcs": {
+    "message": "DLC"
+  },
+  "psnConnectTitle": {
+    "message": "PSN Hesabını Bağla"
+  },
+  "psnConnectDesc": {
+    "message": "Oyun kütüphanenizi ve DLC'lerinizi otomatik eşitlemek için PlayStation hesabınızı bağlayın."
+  },
+  "psnAutoDetect": {
+    "message": "Otomatik algıla (PSN'de oturum açıksa)"
+  },
+  "psnSearching": {
+    "message": "Aranıyor..."
+  },
+  "psnOrManual": {
+    "message": "Veya NPSSO belirtecini elle girin:"
+  },
+  "psnPasteToken": {
+    "message": "NPSSO belirtecini buraya yapıştırın..."
+  },
+  "psnConnect": {
+    "message": "Bağlan"
+  },
+  "psnSyncNow": {
+    "message": "Şimdi eşitle"
+  },
+  "psnSyncing": {
+    "message": "Eşitleniyor..."
+  },
+  "psnDisconnect": {
+    "message": "Bağlantıyı kes"
+  },
+  "psnDisconnectConfirm": {
+    "message": "PSN hesabının bağlantısı kesilsin mi?\nElle eklenen oyunlar (✏️) korunur."
+  },
+  "psnLastSync": {
+    "message": "Son eşitleme:"
+  },
+  "psnNotSynced": {
+    "message": "Henüz eşitlenmedi"
+  },
+  "psnGuideTitle": {
+    "message": "NPSSO belirteci nasıl alınır:"
+  },
+  "psnGuide1": {
+    "message": "Şu adrese giriş yapın:"
+  },
+  "psnGuide2": {
+    "message": "Yeni bir sekme açın ve şuraya gidin:"
+  },
+  "psnGuide3": {
+    "message": "Şunun değerini kopyalayın:"
+  },
+  "psnGuide3b": {
+    "message": "(tırnak işaretleri olmadan)"
+  },
+  "psnGuide4": {
+    "message": "Buraya yapıştırın ve \"Bağlan\"a tıklayın"
+  },
+  "psnTokenFound": {
+    "message": "NPSSO belirteci bulundu! Bağlanılıyor..."
+  },
+  "psnTokenNotFound": {
+    "message": "Belirteç bulunamadı. Başka bir sekmede PlayStation Store'a giriş yapıp tekrar deneyin veya NPSSO'yu elle girin."
+  },
+  "psnConnectedSync": {
+    "message": "Bağlandı! Kütüphane eşitleniyor..."
+  },
+  "psnSynced": {
+    "message": "PSN bağlandı ve kütüphane eşitlendi"
+  },
+  "psnDisconnected": {
+    "message": "PSN hesabının bağlantısı kesildi"
+  },
+  "psnSyncedItems": {
+    "message": "$COUNT$ öğe eşitlendi",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "psnWait30": {
+    "message": "Eşitlemeler arasında lütfen 30 saniye bekleyin"
+  },
+  "filterTitle": {
+    "message": "Arama Sonucu Filtreleri"
+  },
+  "hideAddons": {
+    "message": "Eklentileri ve para birimlerini gizle"
+  },
+  "hideAddonsDesc": {
+    "message": "Para paketleri, Başlangıç Paketleri"
+  },
+  "hideDlc": {
+    "message": "DLC ve genişletmeleri gizle"
+  },
+  "hideDlcDesc": {
+    "message": "Genişletme, Season Pass, DLC"
+  },
+  "hideOwned": {
+    "message": "Sahip olduğum oyunları gizle"
+  },
+  "hideOwnedDesc": {
+    "message": "PSN'den otomatik + elle liste"
+  },
+  "featuresTitle": {
+    "message": "Etkin Özellikler"
+  },
+  "metacriticToggle": {
+    "message": "İnceleme puanları (Metacritic / Steam)"
+  },
+  "metacriticDesc": {
+    "message": "Oyun adının yanında puan rozetleri"
+  },
+  "priceHistoryToggle": {
+    "message": "Fiyat analizi"
+  },
+  "priceHistoryDesc": {
+    "message": "PC'deki gerçek en düşük fiyat, dip fiyata yakınlık işareti ve kendi kaydettiğiniz eğilim"
+  },
+  "crossPlatformToggle": {
+    "message": "Platformlar Arası Fiyat Karşılaştırması"
+  },
+  "crossPlatformDesc": {
+    "message": "CheapShark ile Steam, Epic, GOG ve daha fazlası"
+  },
+  "trophyToggle": {
+    "message": "Completionist Bilgisi (Kupalar)"
+  },
+  "trophyDesc": {
+    "message": "Zorluk, süre, oynanış sayısı + PSN ilerlemesi"
+  },
+  "regionTitle": {
+    "message": "PSPrices Bölgesi"
+  },
+  "regionLabel": {
+    "message": "Mağaza bölgesi"
+  },
+  "myGamesTitle": {
+    "message": "Oyunlarım"
+  },
+  "myGamesDesc": {
+    "message": "PSN oyunları 🔗, elle eklenenler ✏️ ile gösterilir. PSN bağlantısını kesmek yalnızca 🔗 olanları kaldırır, ✏️ olanları değil."
+  },
+  "addGamePlaceholder": {
+    "message": "Bir oyun adı yazın..."
+  },
+  "addGame": {
+    "message": "Ekle"
+  },
+  "emptyList": {
+    "message": "Liste boş — PSN'i bağlayın veya elle ekleyin"
+  },
+  "gameAdded": {
+    "message": "\"$NAME$\" eklendi",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "gameRemoved": {
+    "message": "\"$NAME$\" kaldırıldı",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "gameAlreadyInList": {
+    "message": "Oyun zaten listede"
+  },
+  "srcPsn": {
+    "message": "🔗 PSN"
+  },
+  "srcManual": {
+    "message": "✏️ Elle"
+  },
+  "cacheTitle": {
+    "message": "Önbellek Yönetimi"
+  },
+  "cacheActive": {
+    "message": "Etkin"
+  },
+  "cacheExpired": {
+    "message": "Süresi dolmuş"
+  },
+  "cacheSize": {
+    "message": "Boyut (KB)"
+  },
+  "cachePurge": {
+    "message": "Süresi dolanları temizle"
+  },
+  "cachePurged": {
+    "message": "Süresi dolan kayıtlar temizlendi"
+  },
+  "cacheClear": {
+    "message": "Tümünü temizle"
+  },
+  "cacheCleared": {
+    "message": "Önbellek temizlendi ($COUNT$ kayıt)",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "priceHistory": {
+    "message": "Fiyat Analizi"
+  },
+  "cheapestEver": {
+    "message": "PC'deki en düşük fiyat:"
+  },
+  "viewFullHistory": {
+    "message": "PSPrices'ta tüm geçmişi gör →"
+  },
+  "crossPlatformTitle": {
+    "message": "Platformlar Arası Fiyat Karşılaştırması"
+  },
+  "crossPlatformSource": {
+    "message": "Fiyatlar CheapShark'tan · PC platformları"
+  },
+  "completionistInfo": {
+    "message": "Completionist Bilgisi"
+  },
+  "platinum": {
+    "message": "Platin"
+  },
+  "yes": {
+    "message": "Evet"
+  },
+  "no": {
+    "message": "Hayır"
+  },
+  "difficulty": {
+    "message": "Zorluk"
+  },
+  "estimatedTime": {
+    "message": "Tahmini Süre"
+  },
+  "hours": {
+    "message": "saat"
+  },
+  "playthroughs": {
+    "message": "Oynanış Sayısı"
+  },
+  "psnProgress": {
+    "message": "İlerleme (PSN)"
+  },
+  "trophyGuide": {
+    "message": "PSNProfiles'ta kupa rehberi →"
+  },
+  "markOwned": {
+    "message": "Sahibim olarak işaretle"
+  },
+  "iOwnThis": {
+    "message": "Bu oyuna sahibim"
+  },
+  "settingsSubtitle": {
+    "message": "Gelişmiş ayarlar · PSN hesabı · Oyun yönetimi"
+  },
+  "activeOnStore": {
+    "message": "store.playstation.com üzerinde etkin"
+  },
+  "advancedSettings": {
+    "message": "Gelişmiş ayarlar"
+  },
+  "saved": {
+    "message": "Kaydedildi ✓"
+  },
+  "languageTitle": {
+    "message": "Eklenti Dili"
+  },
+  "languageDesc": {
+    "message": "Eklentinin görüntüleneceği dili seçin. \"Otomatik\" tarayıcı dilinizi kullanır."
+  },
+  "languageLabel": {
+    "message": "Dil"
+  },
+  "languageAuto": {
+    "message": "Otomatik (tarayıcı dili)"
+  },
+  "disclaimer": {
+    "message": "Bu eklenti Sony Interactive Entertainment, PlayStation veya bağlı kuruluşlarıyla ilişkili değildir, onlar tarafından onaylanmamıştır ve onlarla bağlantılı değildir."
+  },
+  "welcomeTitle": {
+    "message": "PS Store Enhancer'a hoş geldiniz!"
+  },
+  "welcomeSubtitle": {
+    "message": "PlayStation™ Store'unuz daha da iyi oldu."
+  },
+  "welcomeFeature1Title": {
+    "message": "Gerçek fiyatlar ve karşılaştırma"
+  },
+  "welcomeFeature1Desc": {
+    "message": "Tüm zamanların en düşük fiyatını görün ve aynı oyunu Steam, Epic, GOG ve daha fazlasında karşılaştırın."
+  },
+  "welcomeFeature2Title": {
+    "message": "PSN Kütüphane Eşitleme (İsteğe bağlı)"
+  },
+  "welcomeFeature2Desc": {
+    "message": "İleri düzey özellik: sahip olduğunuz oyunları otomatik gizlemek için isteğe bağlı olarak PSN hesabınızı bağlayın. Bu olmadan da tam çalışır."
+  },
+  "welcomeFeature3Title": {
+    "message": "Puanlar ve Kupalar"
+  },
+  "welcomeFeature3Desc": {
+    "message": "Metacritic ve Steam puanları ile completionist bilgileri doğrudan ürün sayfasında."
+  },
+  "welcomeFeature4Title": {
+    "message": "Akıllı Filtreler"
+  },
+  "welcomeFeature4Desc": {
+    "message": "Arama sonuçlarından eklentileri, DLC'leri ve para paketlerini gizleyin."
+  },
+  "welcomeCta": {
+    "message": "Ayarları Aç"
+  },
+  "welcomeNote": {
+    "message": "İpucu: Hızlı filtre geçişleri için araç çubuğundaki eklenti simgesine tıklayın."
+  },
+  "psnErrTokenShort": {
+    "message": "NPSSO belirteci eksik veya çok kısa"
+  },
+  "psnErrAuthCode": {
+    "message": "Sony'den yetkilendirme kodu alınamadı. NPSSO'nun süresi dolmuş olabilir."
+  },
+  "psnErrAccessToken": {
+    "message": "Sony'den erişim belirteci alınamadı."
+  },
+  "psnErrNotConnected": {
+    "message": "Bağlı değil. Önce PSN hesabınızı bağlayın."
+  },
+  "psnErrAuthExpired": {
+    "message": "Kimlik doğrulamanın süresi doldu. Lütfen yeniden bağlanın."
+  },
+  "genericError": {
+    "message": "Bir hata oluştu"
+  },
+  "crossPlatformUSD": {
+    "message": "Fiyatlar USD cinsinden"
+  },
+  "psnOptionalBanner": {
+    "message": "İsteğe bağlı gelişmiş özellik — kendi PSN hesabınızı gerektirir. Eklenti bu olmadan da tam çalışır."
+  },
+  "psnErrInvalidFormat": {
+    "message": "Bu bir NPSSO belirtecine benzemiyor. Yaklaşık 64 alfanümerik karakter bekleniyor. Aşağıdaki rehbere bakın."
+  },
+  "psnErrFriendly": {
+    "message": "PSN'e bağlanılamadı. NPSSO belirtecinizin güncel olduğundan emin olun (yaklaşık 60 gün sonra süresi dolar). Eklentinin diğer tüm özellikleri normal çalışmaya devam eder."
+  },
+  "wishlistTitle": {
+    "message": "İstek Listesi"
+  },
+  "wishlistDesc": {
+    "message": "Oyunları takip edin ve fiyatı hedefinizin altına düştüğünde bildirim alın."
+  },
+  "wishlistPcOnlyNote": {
+    "message": "Not: Uyarılar, CheapShark'taki en düşük PC fiyatını (Steam/Epic/GOG, USD) kullanır. PS Store fiyatları yalnızca oyun sayfasını ziyaret ettiğinizde gösterilir."
+  },
+  "hltbLink": {
+    "message": "HowLongToBeat'te hikâye / tamamlama süreleri →"
+  },
+  "wishlistEmpty": {
+    "message": "İstek listeniz boş"
+  },
+  "wishlistAddBtn": {
+    "message": "★ İstek Listesine Ekle"
+  },
+  "wishlistInBtn": {
+    "message": "★ İstek Listesinde (kaldırmak için tıklayın)"
+  },
+  "wishlistRemoved": {
+    "message": "İstek listesinden kaldırıldı"
+  },
+  "wishlistPriceDropTitle": {
+    "message": "🎯 Fiyat düştü!"
+  },
+  "wishlistPriceDropBody": {
+    "message": "$NAME$ artık PC'de $NEW$ (önceden $OLD$)",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      },
+      "new": {
+        "content": "$2"
+      },
+      "old": {
+        "content": "$3"
+      }
+    }
+  },
+  "wishlistLastChecked": {
+    "message": "Son kontrol:"
+  },
+  "wishlistColTarget": {
+    "message": "Hedef"
+  },
+  "wishlistColLast": {
+    "message": "Son görülen"
+  },
+  "wishlistCheckNow": {
+    "message": "🔄 Fiyatları şimdi kontrol et"
+  },
+  "wishlistChecking": {
+    "message": "Kontrol ediliyor…"
+  },
+  "wishlistChecked": {
+    "message": "Fiyatlar güncellendi"
+  },
+  "supportDev": {
+    "message": "❤️ Geliştirmeyi destekle"
+  },
+  "supportDevDesc": {
+    "message": "PS Store Enhancer'ı beğendiniz mi? Geliştirilmesine Ko-fi, Buy Me a Coffee veya Patreon üzerinden destek olun."
+  },
+  "currencyTitle": {
+    "message": "Görüntüleme Para Birimi"
+  },
+  "currencyLabel": {
+    "message": "Para birimi"
+  },
+  "currencyDesc": {
+    "message": "Platformlar arası fiyatlar CheapShark'tan USD olarak gelir. Dönüştürmek için para biriminizi seçin (Frankfurter'dan günlük kurlar)."
+  },
+  "themeTitle": {
+    "message": "Tema"
+  },
+  "themeLabel": {
+    "message": "Renk teması"
+  },
+  "themeAuto": {
+    "message": "Otomatik (sistemi izle)"
+  },
+  "themeDark": {
+    "message": "Koyu"
+  },
+  "themeLight": {
+    "message": "Açık"
+  },
+  "ctxMenuFind": {
+    "message": "PS Store Enhancer fiyat karşılaştırmasında bul"
+  },
+  "exportImportTitle": {
+    "message": "Yedekleme ve Geri Yükleme"
+  },
+  "exportImportDesc": {
+    "message": "Elle işaretlediğiniz sahip olunan oyunları bir JSON dosyasına aktarın veya önceki bir yedekten geri yükleyin."
+  },
+  "exportBtn": {
+    "message": "📤 JSON olarak dışa aktar"
+  },
+  "importBtn": {
+    "message": "📥 JSON içe aktar"
+  },
+  "exportSuccess": {
+    "message": "Dışa aktarıldı"
+  },
+  "importSuccess": {
+    "message": "$COUNT$ öğe içe aktarıldı",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "importFailed": {
+    "message": "İçe aktarma başarısız — dosya geçerli bir PS Store Enhancer dışa aktarımı değil"
+  },
+  "viewChangelog": {
+    "message": "Değişiklik günlüğünü gör →"
+  },
+  "infoTitle": {
+    "message": "Hakkında ve Kaynaklar"
+  },
+  "linkPrivacy": {
+    "message": "Gizlilik politikası"
+  },
+  "linkSource": {
+    "message": "GitHub'daki kaynak kodu"
+  },
+  "linkCredits": {
+    "message": "Veriler: CheapShark (fiyatlar, Metacritic ve Steam puanları) · Frankfurter · PSPrices · PSNProfiles"
+  },
+  "errorApiDown": {
+    "message": "Hizmet geçici olarak kullanılamıyor. Daha sonra tekrar deneyin."
+  },
+  "searchAutocompleteToggle": {
+    "message": "Canlı Arama Önerileri"
+  },
+  "searchAutocompleteDesc": {
+    "message": "Mağaza arama kutusuna yazarken fiyat önizlemesi"
+  },
+  "autocompleteBadge": {
+    "message": "PS Store Enhancer canlı sonuçlar"
+  },
+  "autocompletePcFrom": {
+    "message": "PC'de başlangıç"
+  },
+  "whatsNewTitle": {
+    "message": "🎉 v$VERSION$ sürümündeki yenilikler",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
+  },
+  "whatsNewDismiss": {
+    "message": "Anladım"
+  },
+  "whatsNewBannerText": {
+    "message": "PS Store Enhancer v$VERSION$ sürümüne güncellendi — yenilikleri görün",
+    "placeholders": {
+      "version": {
+        "content": "$1"
+      }
+    }
+  },
+  "statsTitle": {
+    "message": "Kütüphane ve İstek Listesi İstatistikleri"
+  },
+  "statOwnedLabel": {
+    "message": "Sahip Olunan Oyunlar"
+  },
+  "statWishlistLabel": {
+    "message": "İstek Listesinde"
+  },
+  "statWishlistValueLabel": {
+    "message": "Liste Değeri"
+  },
+  "statReadyLabel": {
+    "message": "Hazır Fırsatlar"
+  },
+  "statsNote": {
+    "message": "Liste değeri, en son kontrol edilen en düşük PC fiyatlarının (USD) toplamıdır — PS Store fiyatları değildir. Günlük veya aşağıdaki \"Fiyatları şimdi kontrol et\" ile güncellenir."
+  },
+  "crossPlatformEditionNote": {
+    "message": "Bu liste $EDITION$ sürümü içindir — fiyat temel oyundan farklı olabilir",
+    "placeholders": {
+      "edition": {
+        "content": "$1"
+      }
+    }
+  },
+  "supportCoffee": {
+    "message": "Kahve"
+  },
+  "noPcData": {
+    "message": "Bu oyun için PC fiyatı bulunamadı — PlayStation'a özel olabilir."
+  },
+  "insightPcLabel": {
+    "message": "PC · CheapShark"
+  },
+  "insightCheapestNow": {
+    "message": "Şu an en ucuz"
+  },
+  "insightAtLow": {
+    "message": "Tüm zamanların en düşük fiyatında"
+  },
+  "insightNearLow": {
+    "message": "Tüm zamanların en düşük fiyatına yakın"
+  },
+  "insightTrendDown": {
+    "message": "▼ $DAYS$ gün öncesine göre %$PCT$",
+    "placeholders": {
+      "pct": {
+        "content": "$1"
+      },
+      "days": {
+        "content": "$2"
+      }
+    }
+  },
+  "insightTrendUp": {
+    "message": "▲ $DAYS$ gün öncesine göre %$PCT$",
+    "placeholders": {
+      "pct": {
+        "content": "$1"
+      },
+      "days": {
+        "content": "$2"
+      }
+    }
+  },
+  "insightTrendFlat": {
+    "message": "≈ $DAYS$ gün öncesine göre değişmedi",
+    "placeholders": {
+      "days": {
+        "content": "$1"
+      }
+    }
+  },
+  "insightRecordedSince": {
+    "message": "Tarayıcınızın $DATE$ tarihinden beri kaydettiği fiyatlar",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "metacriticTitle": {
+    "message": "Metacritic (PC): $SCORE$/100",
+    "placeholders": {
+      "score": {
+        "content": "$1"
+      }
+    }
+  },
+  "steamRatingTitle": {
+    "message": "Steam: %$PCT$ olumlu ($COUNT$ inceleme)",
+    "placeholders": {
+      "pct": {
+        "content": "$1"
+      },
+      "count": {
+        "content": "$2"
+      }
+    }
+  },
+  "completionistScoreLabel": {
+    "message": "Tamamlama çabası"
+  },
+  "tier_quick": {
+    "message": "Hızlı"
+  },
+  "tier_moderate": {
+    "message": "Orta"
+  },
+  "tier_demanding": {
+    "message": "Zorlu"
+  },
+  "tier_grind": {
+    "message": "Uzun grind"
+  },
+  "pricePerHourLine": {
+    "message": "≈ saat başına $PRICE$ (en düşük PC fiyatı)",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "similarOwnedLine": {
+    "message": "Kütüphanenizde benzer zorlukta: $GAMES$",
+    "placeholders": {
+      "games": {
+        "content": "$1"
+      }
+    }
+  },
+  "rarestRemainingLine": {
+    "message": "Kalan en nadir kupa: $TROPHY$",
+    "placeholders": {
+      "trophy": {
+        "content": "$1"
+      }
+    }
+  },
+  "saleNow": {
+    "message": "$SALE$ genellikle bu sıralarda yapılır",
+    "placeholders": {
+      "sale": {
+        "content": "$1"
+      }
+    }
+  },
+  "saleSoon": {
+    "message": "$SALE$ genellikle $DATE$ civarında başlar ($DAYS$ gün sonra)",
+    "placeholders": {
+      "sale": {
+        "content": "$1"
+      },
+      "date": {
+        "content": "$2"
+      },
+      "days": {
+        "content": "$3"
+      }
+    }
+  },
+  "shareDealBtn": {
+    "message": "Bu fırsatı görsel olarak paylaş"
+  },
+  "shareDealFooter": {
+    "message": "PS Store Enhancer · PC fiyatları CheapShark'tan"
+  },
+  "acOwnedBadge": {
+    "message": "Bu oyuna sahipsiniz"
+  },
+  "acWishlistBadge": {
+    "message": "İstek listenizde"
+  },
+  "wishlistPercentDropBody": {
+    "message": "$NAME$ artık PC'de %$PCT$ indirimli ($PRICE$)",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      },
+      "pct": {
+        "content": "$2"
+      },
+      "price": {
+        "content": "$3"
+      }
+    }
+  },
+  "wishlistDigestTitle": {
+    "message": "Haftalık istek listesi özeti"
+  },
+  "wishlistDigestBody": {
+    "message": "İstek listenizde $COUNT$ fırsat hazır: $NAMES$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      },
+      "names": {
+        "content": "$2"
+      }
+    }
+  },
+  "cardsTitle": {
+    "message": "Ürün sayfası kartları"
+  },
+  "cardsDesc": {
+    "message": "Bir oyun sayfasında hangi kartların hangi sırayla görüneceğini seçin."
+  },
+  "cardsCollapsedLabel": {
+    "message": "Daraltılmış başla"
+  },
+  "cardsCollapsedDesc": {
+    "message": "Tek satırlık özet gösterir; genişletmek için karta tıklayın"
+  },
+  "cardPriceInsight": {
+    "message": "Fiyat analizi"
+  },
+  "cardCrossPlatform": {
+    "message": "Platformlar arası fiyatlar"
+  },
+  "cardTrophies": {
+    "message": "Completionist bilgisi"
+  },
+  "cardMoveUp": {
+    "message": "Yukarı taşı"
+  },
+  "cardMoveDown": {
+    "message": "Aşağı taşı"
+  },
+  "trophyRarityToggle": {
+    "message": "Kupa nadirliği (deneysel)"
+  },
+  "trophyRarityDesc": {
+    "message": "Kalan en nadir kupanızı gösterir. Bağlı bir PSN hesabı gerektirir ve henüz her hesapta doğrulanmadı."
+  },
+  "searchShortcutToggle": {
+    "message": "\"/\" aramaya odaklanır"
+  },
+  "searchShortcutDesc": {
+    "message": "Arama kutusuna geçmek için mağazanın herhangi bir yerinde / tuşuna basın"
+  },
+  "themeContrast": {
+    "message": "Yüksek kontrast"
+  },
+  "diagTitle": {
+    "message": "Tanılama"
+  },
+  "diagDesc": {
+    "message": "API çağrıları ve PSN bağlantısından son olaylar, yalnızca bu cihazda tutulur. Belirteçler ve parolalar asla kaydedilmez. Sorun bildirirken bunu kopyalayın."
+  },
+  "diagRefresh": {
+    "message": "🔄 Yenile"
+  },
+  "diagCopy": {
+    "message": "📋 Kopyala"
+  },
+  "diagClear": {
+    "message": "🗑 Günlüğü temizle"
+  },
+  "diagEmpty": {
+    "message": "Henüz kayıtlı olay yok."
+  },
+  "diagCopied": {
+    "message": "Tanılama kopyalandı"
+  },
+  "privacyTitle": {
+    "message": "Verileriniz"
+  },
+  "wipeDesc": {
+    "message": "PSN bağlantısını keser ve eklentinin bu cihazda sakladığı her şeyi siler: istek listesi, sahip olunan oyunlar, önbellekler, kaydedilen fiyatlar ve tanılama günlüğü. Ayarlarınız korunur."
+  },
+  "wipeBtn": {
+    "message": "Tüm verilerimi sil"
+  },
+  "popupWipe": {
+    "message": "Tüm verilerimi sil"
+  },
+  "wipeConfirm": {
+    "message": "PSN bağlantısı kesilsin ve eklentinin bu cihazda sakladığı her şey (istek listesi, sahip olunan oyunlar, önbellekler, kaydedilen fiyatlar, tanılama) silinsin mi? Ayarlarınız korunur. Bu işlem geri alınamaz."
+  },
+  "wipeDone": {
+    "message": "Tüm veriler silindi"
+  },
+  "wishlistFilterPlaceholder": {
+    "message": "İstek listesini filtrele…"
+  },
+  "wishlistSortLabel": {
+    "message": "İstek listesini sırala"
+  },
+  "sortAdded": {
+    "message": "Önce en yeni"
+  },
+  "sortName": {
+    "message": "Ad"
+  },
+  "sortPrice": {
+    "message": "En düşük fiyat"
+  },
+  "sortDiscount": {
+    "message": "En büyük indirim"
+  },
+  "wishlistNotePlaceholder": {
+    "message": "Not (ör. şu kişiye hediye…)"
+  },
+  "targetModePrice": {
+    "message": "Fiyat ($)"
+  },
+  "targetModePercent": {
+    "message": "% indirim"
+  },
+  "psPriceSeen": {
+    "message": "Görülen PS Store fiyatı: $PRICE$ ($DATE$)",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      },
+      "date": {
+        "content": "$2"
+      }
+    }
+  },
+  "wlCountFmt": {
+    "message": "$COUNT$ oyun",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "ownCountFmt": {
+    "message": "Toplam $TOTAL$ ($PSN$ PSN, $MANUAL$ elle)",
+    "placeholders": {
+      "total": {
+        "content": "$1"
+      },
+      "psn": {
+        "content": "$2"
+      },
+      "manual": {
+        "content": "$3"
+      }
+    }
+  },
+  "removeTitle": {
+    "message": "Kaldır"
+  },
+  "psnTotal": {
+    "message": "Toplam"
+  },
+  "digestTitle": {
+    "message": "Uyarı teslimi"
+  },
+  "digestDesc": {
+    "message": "Fırsat başına bir bildirim veya tek bir haftalık özet"
+  },
+  "digestInstant": {
+    "message": "Anında"
+  },
+  "digestWeekly": {
+    "message": "Haftalık özet"
+  },
+  "shareWishlistBtn": {
+    "message": "🔗 Paylaşım bağlantısını kopyala"
+  },
+  "shareWishlistDesc": {
+    "message": "Bağlantı yalnızca oyun adlarını ve son görülen PC fiyatlarını içerir (hedef veya not yok) ve salt okunurdur. Bağlantıya sahip herkes listeyi görebilir."
+  },
+  "shareWishlistCopied": {
+    "message": "Paylaşım bağlantısı kopyalandı"
+  },
+  "psnEmptyToken": {
+    "message": "Önce NPSSO belirtecinizi yapıştırın."
+  },
+  "psnGrantAccessBtn": {
+    "message": "Yönlendirme erişimine izin ver ve tekrar dene"
+  },
+  "psnAccessGranted": {
+    "message": "İzin verildi — bağlantı yeniden deneniyor…"
+  },
+  "psnAccessDenied": {
+    "message": "İzin verilmedi. Bu izin olmadan bağlantı tamamlanamaz."
+  },
+  "psnErrNeedsRedirectAccess": {
+    "message": "Chrome, Sony'nin oturum açma yönlendirmesini eklentilerden gizler. Okuyabilmek için isteğe bağlı \"webRequest\" iznine izin verin ve tekrar deneyin."
+  },
+  "popupRefresh": {
+    "message": "PSN kütüphanesini yenile"
+  },
+  "popupSyncedAgo": {
+    "message": "Eşitlendi: $WHEN$",
+    "placeholders": {
+      "when": {
+        "content": "$1"
+      }
+    }
+  },
+  "chipPsn": {
+    "message": "PSN"
+  },
+  "chipScores": {
+    "message": "Puanlar"
+  },
+  "chipPrices": {
+    "message": "Fiyatlar"
+  },
+  "chipCompare": {
+    "message": "Karşılaştır"
+  },
+  "chipTrophies": {
+    "message": "Kupalar"
+  },
+  "chipFilter": {
+    "message": "Filtre"
+  },
+  "tourTitle": {
+    "message": "Kısa tur"
+  },
+  "tourStepInsight": {
+    "message": "Bu oyun için PC'deki gerçek en düşük fiyat ve bugünün en ucuz fiyatı, ayrıca kaydettiğiniz eğilim."
+  },
+  "tourStepCompare": {
+    "message": "Aynı oyunun Steam, Epic, GOG ve diğerlerindeki fiyatı — mağazayı açmak için bir satıra dokunun."
+  },
+  "tourStepTrophies": {
+    "message": "Platinin ne kadar zor ve uzun olduğu ve bağlıysanız PSN ilerlemeniz."
+  },
+  "tourStepWishlist": {
+    "message": "Fiyatı düştüğünde uyarı almak için oyunu istek listenize ekleyin."
+  },
+  "tourNext": {
+    "message": "İleri"
+  },
+  "tourSkip": {
+    "message": "Atla"
+  },
+  "tourDone": {
+    "message": "Anladım"
+  },
+  "rateNudgeText": {
+    "message": "PS Store Enhancer'ı beğendiniz mi? Kısa bir yorum diğer oyuncuların onu bulmasına yardımcı olur."
+  },
+  "rateNudgeBtn": {
+    "message": "Yorum yaz"
+  },
+  "rateNudgeDismiss": {
+    "message": "Hayır, teşekkürler"
+  },
+  "chl_2_7_0_1": {
+    "message": "🎯 Doğru platformlar arası fiyatlar — tam olarak doğru oyun; asla DLC, harita veya devam oyunu değil"
+  },
+  "chl_2_7_0_2": {
+    "message": "📊 CheapShark'tan Metacritic ve Steam puanları (OpenCritic artık API anahtarı gerektiriyor ve çalışmıyordu)"
+  },
+  "chl_2_7_0_3": {
+    "message": "📉 Fiyat analizi yalnızca gerçek veri kullanır: PC'deki en düşük fiyat, bugünün en ucuzu ve kaydettiğiniz eğilim"
+  },
+  "chl_2_7_0_4": {
+    "message": "🛠 Tanılama günlüğü, daha güvenli PSN girişi, % hedefleri, notlar, sıralama, haftalık özet ve \"Tüm verilerimi sil\" düğmesi"
+  },
+  "chl_2_7_0_5": {
+    "message": "🧩 Ürün sayfası kartlarını yeniden sıralayın, gizleyin veya daraltın; yeni yüksek kontrast tema"
+  },
+  "chl_2_7_0_6": {
+    "message": "🌍 Altı yeni dil: Italiano, Polski, Türkçe, Nederlands, 简体中文 ve 繁體中文"
+  }
+}

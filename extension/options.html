@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>PS Store Enhancer</title>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -10,10 +11,24 @@ body.theme-light{background:#f5f7fb;color:#1a202c}
 body.theme-light .card{background:#fff;border-color:rgba(0,0,0,.06)}
 body.theme-light .card:hover{border-color:rgba(0,112,209,.35)}
 body.theme-light .card-desc,body.theme-light .sub,body.theme-light .cl,body.theme-light .sl2,body.theme-light .psn-meta,body.theme-light .own-empty,body.theme-light .own-count,body.theme-light .hero p{color:#4a5568}
-body.theme-light .tr,body.theme-light .sel-row,body.theme-light .own-item,body.theme-light .psn-status,body.theme-light .psn-stat,body.theme-light .cache-box{background:#f5f7fb;border-color:rgba(0,0,0,.06)}
-body.theme-light .npsso-row input,body.theme-light .own-input input,body.theme-light .sel-row select,body.theme-light .wl-target{background:#f5f7fb !important;border-color:rgba(0,0,0,.1) !important;color:#1a202c !important}
+body.theme-light .tr,body.theme-light .sel-row,body.theme-light .own-item,body.theme-light .psn-status,body.theme-light .psn-stat,body.theme-light .cache-box,body.theme-light .diag-box{background:#f5f7fb;border-color:rgba(0,0,0,.06)}
+body.theme-light .npsso-row input,body.theme-light .own-input input,body.theme-light .sel-row select,body.theme-light .wl-target,body.theme-light .wl-note,body.theme-light .wl-tools input,body.theme-light .wl-tools select{background:#f5f7fb !important;border-color:rgba(0,0,0,.1) !important;color:#1a202c !important}
 body.theme-light .sl{background:#cbd5e0}
 body.theme-light .toast{background:#fff;color:#48a014;border-color:rgba(72,160,20,.35)}
+/* High-contrast theme */
+body.theme-contrast{background:#000;color:#fff}
+body.theme-contrast .card,body.theme-contrast .tr,body.theme-contrast .sel-row,body.theme-contrast .own-item,body.theme-contrast .psn-status,body.theme-contrast .psn-stat,body.theme-contrast .cache-box,body.theme-contrast .diag-box,body.theme-contrast .guide{background:#000;border:2px solid #fff}
+body.theme-contrast .card-desc,body.theme-contrast .sub,body.theme-contrast .cl,body.theme-contrast .sl2,body.theme-contrast .psn-meta,body.theme-contrast .own-empty,body.theme-contrast .own-count,body.theme-contrast .hero p,body.theme-contrast .guide{color:#fff}
+body.theme-contrast .npsso-row input,body.theme-contrast .own-input input,body.theme-contrast .sel-row select,body.theme-contrast .wl-target,body.theme-contrast .wl-note,body.theme-contrast .wl-tools input,body.theme-contrast .wl-tools select{background:#000 !important;border:2px solid #fff !important;color:#fff !important}
+body.theme-contrast a{color:#ffd400;text-decoration:underline}
+body.theme-contrast .sl{background:#555;outline:2px solid #fff}
+body.theme-contrast .sw input:checked+.sl{background:#ffd400}
+body.theme-contrast .btn-p{background:#ffd400;color:#000}
+body.theme-contrast .btn-g,body.theme-contrast .btn-d{background:#000;color:#fff;border:2px solid #fff}
+body.theme-contrast .hero h1{background:none;-webkit-text-fill-color:#ffd400;color:#ffd400}
+/* Keyboard focus is always visible */
+a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #4da6ff;outline-offset:2px}
+.sw input:focus-visible+.sl{outline:3px solid #4da6ff;outline-offset:2px}
 .container{max-width:720px;margin:0 auto;padding:40px 24px 60px}
 .hero{text-align:center;padding:32px 0 40px}
 .hero h1{font-size:28px;font-weight:800;background:linear-gradient(135deg,#4da6ff,#0070d1,#003087);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px}
@@ -30,7 +45,7 @@ body.theme-light .toast{background:#fff;color:#48a014;border-color:rgba(72,160,2
 .sw input:checked+.sl{background:#0070d1}.sw input:checked+.sl::before{transform:translateX(-20px)}
 [dir="ltr"] .sl::before{right:auto;left:3px}
 [dir="ltr"] .sw input:checked+.sl::before{transform:translateX(20px)}
-.sel-row{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);border-radius:10px;margin-bottom:8px}
+.sel-row{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);border-radius:10px;margin-bottom:8px;gap:12px}
 .sel-row select{background:#1b2838;color:#e2e8f0;border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:6px 12px;font-size:13px;font-family:inherit;cursor:pointer}
 .psn-status{display:flex;align-items:center;gap:14px;padding:16px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:10px;margin-bottom:12px}
 .psn-avatar{width:48px;height:48px;border-radius:50%;background:#2d3748;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;overflow:hidden}
@@ -63,16 +78,34 @@ body.theme-light .toast{background:#fff;color:#48a014;border-color:rgba(72,160,2
 .own-item .rm:hover{background:rgba(255,64,64,.15)}
 .own-empty{text-align:center;padding:20px;color:#4a5568;font-size:12px}
 .own-count{font-size:11px;color:#718096;margin-top:8px}
+.wl-tools{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.wl-tools input,.wl-tools select{background:#1b2838;color:#e2e8f0;border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:6px 10px;font-size:12px;font-family:inherit}
+.wl-tools input{flex:1;min-width:140px}
+.wl-item{flex-direction:column;align-items:stretch;gap:8px}
+.wl-row{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.wl-main{flex:1;min-width:160px}
+.wl-name{font-weight:600}
+.wl-meta{font-size:10px;color:#718096;margin-top:2px}
+.wl-target-wrap{display:flex;align-items:center;gap:6px}
+.wl-target-wrap select,.wl-target{background:#1b2838;border:1px solid rgba(255,255,255,.1);border-radius:6px;color:#e2e8f0;padding:4px 8px;font-size:12px;font-family:inherit}
+.wl-target{width:80px}
+.wl-note{width:100%;background:#1b2838;border:1px solid rgba(255,255,255,.1);border-radius:6px;color:#e2e8f0;padding:5px 8px;font-size:11px;font-family:inherit}
+.card-order{display:flex;flex-direction:column;gap:6px;margin-bottom:10px}
+.card-order .tr{margin-bottom:0}
+.card-order .ord-btns{display:flex;gap:4px}
+.card-order .ord-btns button{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:inherit;border-radius:6px;padding:2px 8px;cursor:pointer;font-size:12px}
 .cache-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
 .cache-stats.cols-4{grid-template-columns:repeat(4,1fr)}
 .cache-box{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:10px;padding:14px;text-align:center}
 .cache-box .cv{font-size:22px;font-weight:800;color:#4da6ff}.cache-box .cl{font-size:10px;color:#718096;text-transform:uppercase;letter-spacing:.5px;margin-top:4px}
 .cache-box.ready .cv{color:#6dc849}
+.diag-box{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:10px 12px;font-family:monospace;font-size:10.5px;line-height:1.5;max-height:220px;overflow:auto;white-space:pre-wrap;word-break:break-all;margin-bottom:12px}
 @media(max-width:640px){.cache-stats.cols-4{grid-template-columns:repeat(2,1fr)}}
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:#1b2838;color:#6dc849;border:1px solid rgba(109,200,73,.3);padding:10px 24px;border-radius:10px;font-size:13px;font-weight:500;box-shadow:0 8px 30px rgba(0,0,0,.4);transition:transform .3s;z-index:9999}
 .toast.show{transform:translateX(-50%) translateY(0)}
 .spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.2);border-top-color:#4da6ff;border-radius:50%;animation:spin .6s linear infinite;vertical-align:middle;margin-inline-start:6px}
 @keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none !important;transition:none !important}}
 ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:#2d3748;border-radius:3px}
 </style>
 </head>
@@ -92,7 +125,7 @@ body.theme-light .toast{background:#fff;color:#48a014;border-color:rgba(72,160,2
       <div class="psn-stats">
         <div class="psn-stat"><div class="sv" id="psGames">—</div><div class="sl2" data-i18n="psnGames">games</div></div>
         <div class="psn-stat"><div class="sv" id="psDlcs">—</div><div class="sl2" data-i18n="psnDlcs">DLCs</div></div>
-        <div class="psn-stat"><div class="sv" id="psTotal">—</div><div class="sl2">Total</div></div>
+        <div class="psn-stat"><div class="sv" id="psTotal">—</div><div class="sl2" data-i18n="psnTotal">Total</div></div>
       </div>
       <div class="btn-row">
         <button class="btn btn-p" id="syncBtn">🔄 <span data-i18n="psnSyncNow">Sync now</span></button>
@@ -103,27 +136,37 @@ body.theme-light .toast{background:#fff;color:#48a014;border-color:rgba(72,160,2
       <button class="btn btn-p" id="autoBtn" style="width:100%;margin-bottom:10px">🔍 <span data-i18n="psnAutoDetect">Auto-detect (if signed in to PSN)</span></button>
       <p class="card-desc" style="margin:12px 0 6px;font-size:11px;color:#a0aec0" data-i18n="psnOrManual">Or enter NPSSO Token manually:</p>
       <div class="npsso-row">
-        <input type="text" id="npssoIn" data-i18n-placeholder="psnPasteToken" placeholder="Paste NPSSO token here..." autocomplete="off">
+        <input type="text" id="npssoIn" data-i18n-placeholder="psnPasteToken" placeholder="Paste NPSSO token here..." autocomplete="off" spellcheck="false">
         <button class="btn btn-p" id="connBtn" data-i18n="psnConnect">Connect</button>
       </div>
       <div class="guide">
         <strong data-i18n="psnGuideTitle">How to get NPSSO Token:</strong><br>
-        1. <span data-i18n="psnGuide1">Sign in to</span> <a href="https://store.playstation.com" target="_blank">store.playstation.com</a><br>
+        1. <span data-i18n="psnGuide1">Sign in to</span> <a href="https://store.playstation.com" target="_blank" rel="noopener noreferrer">store.playstation.com</a><br>
         2. <span data-i18n="psnGuide2">Open a new tab and go to:</span> <code>https://ca.account.sony.com/api/v1/ssocookie</code><br>
         3. <span data-i18n="psnGuide3">Copy the value of</span> <code>npsso</code> <span data-i18n="psnGuide3b">(without quotes)</span><br>
         4. <span data-i18n="psnGuide4">Paste here and click "Connect"</span>
       </div>
     </div>
-    <div id="psnMsg" style="display:none;margin-top:10px;padding:10px 14px;border-radius:8px;font-size:12px"></div>
+    <div id="psnMsg" role="status" style="display:none;margin-top:10px;padding:10px 14px;border-radius:8px;font-size:12px"></div>
+    <button class="btn btn-g" id="grantBtn" style="display:none;margin-top:8px" data-i18n="psnGrantAccessBtn">Allow redirect access and retry</button>
   </div>
 
   <div class="card">
     <div class="card-title">⚡ <span data-i18n="featuresTitle">Active Features</span></div>
-    <div class="tr"><div class="ti"><div class="lb" data-i18n="metacriticToggle">OpenCritic / Metacritic Score</div><div class="sub" data-i18n="metacriticDesc">Score badge next to game title</div></div><label class="sw"><input type="checkbox" id="enableMetacritic" data-i18n-aria="metacriticToggle"><span class="sl"></span></label></div>
-    <div class="tr"><div class="ti"><div class="lb" data-i18n="priceHistoryToggle">Price History + Chart</div><div class="sub" data-i18n="priceHistoryDesc">Sparkline and link to PSPrices</div></div><label class="sw"><input type="checkbox" id="enablePriceHistory" data-i18n-aria="priceHistoryToggle"><span class="sl"></span></label></div>
+    <div class="tr"><div class="ti"><div class="lb" data-i18n="metacriticToggle">Review scores (Metacritic / Steam)</div><div class="sub" data-i18n="metacriticDesc">Score badges next to the game title</div></div><label class="sw"><input type="checkbox" id="enableMetacritic" data-i18n-aria="metacriticToggle"><span class="sl"></span></label></div>
+    <div class="tr"><div class="ti"><div class="lb" data-i18n="priceHistoryToggle">Price insight</div><div class="sub" data-i18n="priceHistoryDesc">Real lowest-ever PC price, near-low flag and your own recorded trend</div></div><label class="sw"><input type="checkbox" id="enablePriceHistory" data-i18n-aria="priceHistoryToggle"><span class="sl"></span></label></div>
     <div class="tr"><div class="ti"><div class="lb" data-i18n="crossPlatformToggle">Cross-Platform Price Comparison</div><div class="sub" data-i18n="crossPlatformDesc">Steam, Epic, GOG and more via CheapShark</div></div><label class="sw"><input type="checkbox" id="enableCrossPlatform" data-i18n-aria="crossPlatformToggle"><span class="sl"></span></label></div>
     <div class="tr"><div class="ti"><div class="lb" data-i18n="trophyToggle">Completionist Info (Trophies)</div><div class="sub" data-i18n="trophyDesc">Difficulty, time, playthroughs + PSN progress</div></div><label class="sw"><input type="checkbox" id="enableTrophies" data-i18n-aria="trophyToggle"><span class="sl"></span></label></div>
-    <div class="tr"><div class="ti"><div class="lb" data-i18n="searchAutocompleteToggle">Live Search Suggestions</div><div class="sub" data-i18n="searchAutocompleteDesc">Price & score preview as you type in the store search box</div></div><label class="sw"><input type="checkbox" id="enableSearchAutocomplete" data-i18n-aria="searchAutocompleteToggle"><span class="sl"></span></label></div>
+    <div class="tr"><div class="ti"><div class="lb" data-i18n="trophyRarityToggle">Trophy rarity (experimental)</div><div class="sub" data-i18n="trophyRarityDesc">Shows your rarest remaining trophy. Needs a connected PSN account and has not been verified on every account yet.</div></div><label class="sw"><input type="checkbox" id="enableTrophyRarity" data-i18n-aria="trophyRarityToggle"><span class="sl"></span></label></div>
+    <div class="tr"><div class="ti"><div class="lb" data-i18n="searchAutocompleteToggle">Live Search Suggestions</div><div class="sub" data-i18n="searchAutocompleteDesc">Price preview as you type in the store search box</div></div><label class="sw"><input type="checkbox" id="enableSearchAutocomplete" data-i18n-aria="searchAutocompleteToggle"><span class="sl"></span></label></div>
+    <div class="tr"><div class="ti"><div class="lb" data-i18n="searchShortcutToggle">"/" focuses search</div><div class="sub" data-i18n="searchShortcutDesc">Press / anywhere on the store to jump to the search box</div></div><label class="sw"><input type="checkbox" id="enableSearchShortcut" data-i18n-aria="searchShortcutToggle"><span class="sl"></span></label></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🧩 <span data-i18n="cardsTitle">Product page cards</span></div>
+    <p class="card-desc" data-i18n="cardsDesc">Choose which cards appear on a game page and in what order.</p>
+    <div class="card-order" id="cardOrder"></div>
+    <div class="tr"><div class="ti"><div class="lb" data-i18n="cardsCollapsedLabel">Start collapsed</div><div class="sub" data-i18n="cardsCollapsedDesc">Show a one-line summary; click a card to expand it</div></div><label class="sw"><input type="checkbox" id="cardsCollapsed" data-i18n-aria="cardsCollapsedLabel"><span class="sl"></span></label></div>
   </div>
 
   <div class="card">
@@ -136,7 +179,7 @@ body.theme-light .toast{background:#fff;color:#48a014;border-color:rgba(72,160,2
   <div class="card">
     <div class="card-title">🌍 <span data-i18n="regionTitle">PSPrices Region</span></div>
     <div class="sel-row"><div class="ti"><div class="lb" data-i18n="regionLabel">Store region</div></div>
-      <select id="region"><option value="IL">Israel</option><option value="US">United States</option><option value="GB">United Kingdom</option><option value="DE">Germany</option><option value="FR">France</option><option value="JP">Japan</option><option value="AU">Australia</option><option value="CA">Canada</option><option value="BR">Brazil</option><option value="TR">Turkey</option><option value="SA">Saudi Arabia</option><option value="AE">UAE</option></select>
+      <select id="region" data-i18n-aria="regionLabel"><option value="IL">Israel</option><option value="US">United States</option><option value="GB">United Kingdom</option><option value="DE">Germany</option><option value="FR">France</option><option value="JP">Japan</option><option value="AU">Australia</option><option value="CA">Canada</option><option value="BR">Brazil</option><option value="TR">Turkey</option><option value="SA">Saudi Arabia</option><option value="AE">UAE</option></select>
     </div>
   </div>
 
@@ -144,7 +187,7 @@ body.theme-light .toast{background:#fff;color:#48a014;border-color:rgba(72,160,2
     <div class="card-title">💱 <span data-i18n="currencyTitle">Display Currency</span></div>
     <p class="card-desc" data-i18n="currencyDesc">Cross-platform prices come from CheapShark in USD. Choose your currency to convert (daily rates from Frankfurter).</p>
     <div class="sel-row"><div class="ti"><div class="lb" data-i18n="currencyLabel">Currency</div></div>
-      <select id="displayCurrency">
+      <select id="displayCurrency" data-i18n-aria="currencyLabel">
         <option value="USD">USD — US Dollar</option>
         <option value="EUR">EUR — Euro</option>
         <option value="GBP">GBP — British Pound</option>
@@ -170,10 +213,11 @@ body.theme-light .toast{background:#fff;color:#48a014;border-color:rgba(72,160,2
   <div class="card">
     <div class="card-title">🎨 <span data-i18n="themeTitle">Theme</span></div>
     <div class="sel-row"><div class="ti"><div class="lb" data-i18n="themeLabel">Color theme</div></div>
-      <select id="themeSel">
+      <select id="themeSel" data-i18n-aria="themeLabel">
         <option value="auto" data-i18n="themeAuto">Auto (match system)</option>
         <option value="dark" data-i18n="themeDark">Dark</option>
         <option value="light" data-i18n="themeLight">Light</option>
+        <option value="contrast" data-i18n="themeContrast">High contrast</option>
       </select>
     </div>
   </div>
@@ -183,7 +227,7 @@ body.theme-light .toast{background:#fff;color:#48a014;border-color:rgba(72,160,2
     <p class="card-desc" data-i18n="languageDesc">Choose the display language for the extension. "Auto" uses your browser language.</p>
     <div class="sel-row">
       <div class="ti"><div class="lb" data-i18n="languageLabel">Language</div></div>
-      <select id="userLanguage">
+      <select id="userLanguage" data-i18n-aria="languageLabel">
         <option value="auto" data-i18n="languageAuto">Auto (browser language)</option>
         <option value="en">English</option>
         <option value="he">עברית</option>
@@ -191,10 +235,16 @@ body.theme-light .toast{background:#fff;color:#48a014;border-color:rgba(72,160,2
         <option value="es">Español</option>
         <option value="fr">Français</option>
         <option value="de">Deutsch</option>
+        <option value="it">Italiano</option>
         <option value="pt_BR">Português (BR)</option>
+        <option value="nl">Nederlands</option>
+        <option value="pl">Polski</option>
+        <option value="tr">Türkçe</option>
         <option value="ru">Русский</option>
         <option value="ja">日本語</option>
         <option value="ko">한국어</option>
+        <option value="zh_CN">简体中文</option>
+        <option value="zh_TW">繁體中文</option>
       </select>
     </div>
   </div>
@@ -203,7 +253,7 @@ body.theme-light .toast{background:#fff;color:#48a014;border-color:rgba(72,160,2
     <div class="card-title">🎮 <span data-i18n="myGamesTitle">My Games</span></div>
     <p class="card-desc" data-i18n="myGamesDesc">PSN games show as 🔗, manually added as ✏️. Disconnecting PSN removes only 🔗, not ✏️.</p>
     <div class="own-input">
-      <input type="text" id="newGame" data-i18n-placeholder="addGamePlaceholder" placeholder="Type a game name..." autocomplete="off">
+      <input type="text" id="newGame" data-i18n-placeholder="addGamePlaceholder" data-i18n-aria="addGamePlaceholder" placeholder="Type a game name..." autocomplete="off">
       <button class="btn btn-p" id="addGameBtn" data-i18n="addGame">Add</button>
     </div>
     <div class="own-list" id="ownList"><div class="own-empty" data-i18n="emptyList">List is empty</div></div>
@@ -227,7 +277,7 @@ body.theme-light .toast{background:#fff;color:#48a014;border-color:rgba(72,160,2
       <div class="cache-box"><div class="cv" id="statWishlistValue">—</div><div class="cl" data-i18n="statWishlistValueLabel">Wishlist Value</div></div>
       <div class="cache-box ready"><div class="cv" id="statReady">—</div><div class="cl" data-i18n="statReadyLabel">Deals Ready</div></div>
     </div>
-    <p class="card-desc" data-i18n="statsNote">Wishlist value is the sum of the last-checked cross-platform prices (USD). Updated daily, or via "Check prices now" below.</p>
+    <p class="card-desc" data-i18n="statsNote">Wishlist value is the sum of the last-checked cheapest PC prices (USD) — not PS Store prices. Updated daily, or via "Check prices now" below.</p>
   </div>
 
   <div class="card">
@@ -235,13 +285,31 @@ body.theme-light .toast{background:#fff;color:#48a014;border-color:rgba(72,160,2
     <p class="card-desc" data-i18n="wishlistDesc">Track games and get notified when their price drops below your target.</p>
     <div style="margin:8px 0 12px;padding:10px 14px;background:rgba(245,197,24,0.08);border:1px solid rgba(245,197,24,0.25);border-radius:8px;font-size:11px;color:#f5c518;display:flex;gap:8px;align-items:flex-start">
       <span style="font-size:14px;flex-shrink:0">ℹ️</span>
-      <span data-i18n="wishlistPcOnlyNote">Note: alerts use cross-platform prices from CheapShark (Steam/Epic/GOG, in USD). PSN-only prices are not tracked.</span>
+      <span data-i18n="wishlistPcOnlyNote">Note: alerts use the cheapest PC price from CheapShark (Steam/Epic/GOG, in USD). PS Store prices are only shown when you visit a game's page.</span>
+    </div>
+    <div class="wl-tools">
+      <input type="search" id="wlFilter" data-i18n-placeholder="wishlistFilterPlaceholder" data-i18n-aria="wishlistFilterPlaceholder" placeholder="Filter…" autocomplete="off">
+      <select id="wlSort" data-i18n-aria="wishlistSortLabel">
+        <option value="added" data-i18n="sortAdded">Newest first</option>
+        <option value="name" data-i18n="sortName">Name</option>
+        <option value="price" data-i18n="sortPrice">Lowest price</option>
+        <option value="discount" data-i18n="sortDiscount">Biggest discount</option>
+      </select>
     </div>
     <div class="own-list" id="wlList"><div class="own-empty" data-i18n="wishlistEmpty">Your wishlist is empty</div></div>
     <div class="own-count" id="wlCount"></div>
+    <div class="sel-row" style="margin-top:12px">
+      <div class="ti"><div class="lb" data-i18n="digestTitle">Alert delivery</div><div class="sub" data-i18n="digestDesc">One notification per deal, or a single weekly summary</div></div>
+      <select id="digestMode" data-i18n-aria="digestTitle">
+        <option value="instant" data-i18n="digestInstant">Instantly</option>
+        <option value="weekly" data-i18n="digestWeekly">Weekly digest</option>
+      </select>
+    </div>
     <div class="btn-row" style="margin-top:12px">
       <button class="btn btn-g" id="wlCheckBtn" data-i18n="wishlistCheckNow">🔄 Check prices now</button>
+      <button class="btn btn-g" id="wlShareBtn" data-i18n="shareWishlistBtn">🔗 Copy share link</button>
     </div>
+    <p class="card-desc" style="margin:10px 0 0;font-size:11px" data-i18n="shareWishlistDesc">The link contains only game names and last-seen PC prices (no targets or notes) and is read-only. Anyone with the link can see the list.</p>
   </div>
 
   <div class="card">
@@ -255,6 +323,23 @@ body.theme-light .toast{background:#fff;color:#48a014;border-color:rgba(72,160,2
       <button class="btn btn-g" id="purgeBtn">🧹 <span data-i18n="cachePurge">Clean expired</span></button>
       <button class="btn btn-d" id="clearBtn">🗑 <span data-i18n="cacheClear">Clear all</span></button>
     </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🛠 <span data-i18n="diagTitle">Diagnostics</span></div>
+    <p class="card-desc" data-i18n="diagDesc">The last events from API calls and the PSN connection, kept on this device only. Tokens and passwords are never recorded. Copy this when reporting a problem.</p>
+    <pre class="diag-box" id="diagBox" tabindex="0" data-i18n-aria="diagTitle"></pre>
+    <div class="btn-row">
+      <button class="btn btn-g" id="diagRefresh" data-i18n="diagRefresh">🔄 Refresh</button>
+      <button class="btn btn-g" id="diagCopy" data-i18n="diagCopy">📋 Copy</button>
+      <button class="btn btn-d" id="diagClear" data-i18n="diagClear">🗑 Clear log</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🔒 <span data-i18n="privacyTitle">Your data</span></div>
+    <p class="card-desc" data-i18n="wipeDesc">Disconnects PSN and erases everything this extension stored on this device: wishlist, owned games, caches, recorded prices and the diagnostics log. Your settings are kept.</p>
+    <div class="btn-row"><button class="btn btn-d" id="wipeBtn" data-i18n="wipeBtn">Erase all my data</button></div>
   </div>
 
   <div class="card">
@@ -273,12 +358,15 @@ body.theme-light .toast{background:#fff;color:#48a014;border-color:rgba(72,160,2
       <a href="changelog.html" target="_blank" style="color:#4da6ff;text-decoration:none"><span data-i18n="viewChangelog">View changelog →</span></a>
       <a href="https://github.com/DrummingBird1/ps-store-enhancer" target="_blank" rel="noopener noreferrer" style="color:#4da6ff;text-decoration:none">🔗 <span data-i18n="linkSource">Source code on GitHub</span></a>
       <a href="https://drummingbird1.github.io/ps-store-enhancer/privacy-policy.html" target="_blank" rel="noopener noreferrer" style="color:#4da6ff;text-decoration:none">🔒 <span data-i18n="linkPrivacy">Privacy policy</span></a>
-      <p class="card-desc" style="margin-top:8px;font-size:11px" data-i18n="linkCredits">Data: CheapShark · OpenCritic · PSPrices · PSNProfiles</p>
+      <p class="card-desc" style="margin-top:8px;font-size:11px" data-i18n="linkCredits">Data: CheapShark (prices, Metacritic & Steam ratings) · Frankfurter · PSPrices · PSNProfiles</p>
     </div>
   </div>
 </div>
-<div class="toast" id="toast"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script src="i18n.js"></script>
+<script src="match.js"></script>
+<script src="helpers.js"></script>
+<script src="diag.js"></script>
 <script src="options.js"></script>
 </body>
 </html>

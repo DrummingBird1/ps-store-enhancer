@@ -19,11 +19,10 @@
     "initI18n": "readonly",
     "t": "readonly",
     "localizePage": "readonly",
-    "slugify": "readonly",
-    "fuzzyMatch": "readonly",
-    "computeBasePrice": "readonly",
-    "classifyTitle": "readonly",
-    "detectEdition": "readonly",
+    "PSEHelpers": "readonly",
+    "PSEDiag": "readonly",
+    "PSEExtras": "readonly",
+    "CheapShark": "readonly",
     "importScripts": "readonly"
   },
   "rules": {
@@ -41,7 +40,7 @@
       "env": { "node": true, "jest": true }
     },
     {
-      "files": ["extension/match.js", "extension/changelog-data.js"],
+      "files": ["extension/match.js", "extension/helpers.js", "extension/changelog-data.js"],
       "env": { "node": true, "browser": true, "serviceworker": true }
     },
     {

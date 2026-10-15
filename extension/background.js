@@ -1,9 +1,11 @@
 /**
- * PS Store Enhancer — Background Service Worker (v2.3)
+ * PS Store Enhancer — Background Service Worker
+ *
+ * Message API reference: .github/MESSAGING.md (a unit test keeps it in sync with HANDLERS below).
  */
-// match.js must load first — it defines slugify/fuzzyMatch/computeBasePrice/classifyTitle
-// used by both background.js and psn.js.
-importScripts("match.js", "cache.js", "psn.js");
+// Load order matters: match/helpers/cache/diag first (pure or storage-only), then the modules
+// that use them.
+importScripts("match.js", "helpers.js", "cache.js", "diag.js", "cheapshark.js", "psn.js");
 
 const PSE_DEFAULTS_SYNC = {
   hideAddons: false, hideDlc: false, hideOwned: false,
@@ -11,8 +13,25 @@ const PSE_DEFAULTS_SYNC = {
   theme: "auto",
   enableMetacritic: true, enablePriceHistory: true,
   enableTrophies: true, enableCrossPlatform: true,
-  enableWishlist: true, enableSearchAutocomplete: true
+  enableWishlist: true, enableSearchAutocomplete: true,
+  enableSearchShortcut: true, enableTrophyRarity: false,
+  digestMode: "instant", cardsCollapsed: false,
+  cardOrder: ["priceInsight", "crossPlatform", "trophies"], cardsHidden: []
 };
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/* ──── Serialized storage writers (read-modify-write must not interleave) ──── */
+function makeLock() {
+  let tail = Promise.resolve();
+  return (fn) => {
+    const run = tail.then(fn, fn);
+    tail = run.catch(() => {});
+    return run;
+  };
+}
+const withWishlistLock = makeLock();
+const withSnapshotLock = makeLock();
 
 /* ──── Action icon badge ────
  * Precedence: wishlist deals ready to buy (green count) > unseen changelog (red dot) > clear.
@@ -20,10 +39,7 @@ const PSE_DEFAULTS_SYNC = {
 async function updateBadge() {
   try {
     const d = await chrome.storage.local.get(["wishlist", "pse_changelog_unseen"]);
-    const list = d.wishlist || [];
-    const readyCount = list.filter(
-      (i) => i.targetPrice != null && i.lastCheckedPrice != null && i.lastCheckedPrice <= i.targetPrice
-    ).length;
+    const readyCount = (d.wishlist || []).filter((i) => PSEHelpers.isDealReady(i)).length;
     if (readyCount > 0) {
       chrome.action.setBadgeText({ text: readyCount > 99 ? "99+" : String(readyCount) });
       chrome.action.setBadgeBackgroundColor({ color: "#6dc849" });
@@ -42,7 +58,7 @@ chrome.runtime.onStartup.addListener(() => updateBadge());
 chrome.runtime.onInstalled.addListener(async (details) => {
   if (details.reason === "install") {
     await chrome.storage.sync.set(PSE_DEFAULTS_SYNC);
-    await chrome.storage.local.set({ manual_owned: [], psn_owned: [], wishlist: [] });
+    await chrome.storage.local.set({ manual_owned: [], psn_owned: [], wishlist: [], pse_tour_pending: true });
     chrome.tabs.create({ url: chrome.runtime.getURL("welcome.html") });
   } else if (details.reason === "update") {
     // Backfill any missing defaults without overwriting existing values
@@ -76,6 +92,7 @@ chrome.runtime.onInstalled.addListener(async (details) => {
   chrome.alarms.create("pse-cache-purge", { periodInMinutes: 360 });
   chrome.alarms.create("pse-psn-sync", { periodInMinutes: 120 });
   chrome.alarms.create("pse-wishlist-check", { periodInMinutes: 24 * 60 });
+  chrome.alarms.create("pse-wishlist-digest", { periodInMinutes: 7 * 24 * 60 });
   // Register right-click context menu (idempotent)
   try {
     chrome.contextMenus.removeAll(() => {
@@ -90,12 +107,13 @@ chrome.runtime.onInstalled.addListener(async (details) => {
 });
 
 chrome.alarms.onAlarm.addListener(async (alarm) => {
-  if (alarm.name === "pse-cache-purge") PSECache.purgeExpired();
+  if (alarm.name === "pse-cache-purge") await PSECache.purgeExpired();
   if (alarm.name === "pse-psn-sync") {
     const s = await PSN.getStatus();
     if (s.connected && s.needsSync) await PSN.fetchLibrary();
   }
-  if (alarm.name === "pse-wishlist-check") checkWishlistPrices();
+  if (alarm.name === "pse-wishlist-check") await checkWishlistPrices();
+  if (alarm.name === "pse-wishlist-digest") await sendWishlistDigest();
 });
 
 /* ──── context menu click ──── */
@@ -152,38 +170,101 @@ chrome.runtime.onMessage.addListener((msg, sender, respond) => {
     .then(respond)
     .catch((err) => {
       console.error(`[PSE/bg] handler "${msg.type}" failed:`, err);
+      PSEDiag.log("router", "handler-failed", { type: msg.type, message: err?.message });
       respond({ success: false, error: err?.message || String(err) });
     });
   return true;
 });
 
+/** Look a game up on CheapShark and record today's real price for the local price trend. */
+async function bundleFor(gameName) {
+  const b = await CheapShark.lookup(gameName);
+  if (b.found && b.cheapest != null) {
+    recordSnapshot(`pc_${PSEMatch.titleKey(gameName)}`, b.cheapest).catch(() => {});
+  }
+  return b;
+}
+
+function recordSnapshot(key, price) {
+  return withSnapshotLock(async () => {
+    const d = await chrome.storage.local.get(["pse_snapshots"]);
+    const next = PSEHelpers.addSnapshot(d.pse_snapshots || {}, key, price, Date.now());
+    await chrome.storage.local.set({ pse_snapshots: next });
+  });
+}
+
+async function readSnapshots(key) {
+  const d = await chrome.storage.local.get(["pse_snapshots"]);
+  return (d.pse_snapshots && d.pse_snapshots[key] && d.pse_snapshots[key].p) || [];
+}
+
+/** A PS Store price reported by the page, or undefined when it isn't a sane { amount, currency }. */
+function validPsPrice(p) {
+  const amount = Number(p && p.amount);
+  const currency = String((p && p.currency) || "").toUpperCase();
+  if (!(amount > 0) || !/^[A-Z]{3}$/.test(currency)) return undefined;
+  return { amount, currency, seenAt: Date.now() };
+}
+
 const HANDLERS = {
-  FETCH_CROSS_PLATFORM: (m) => handleCrossPlatform(m.gameName),
-  FETCH_METACRITIC: (m) => handleMetacritic(m.gameName),
-  FETCH_PRICE_HISTORY: (m) => handlePriceHistory(m.gameName),
+  FETCH_CROSS_PLATFORM: async (m) => {
+    if (!m.gameName) return { success: false, error: "No game name" };
+    const b = await bundleFor(m.gameName);
+    if (!b.found) return { success: true, data: { found: false } };
+    return { success: true, fromCache: !!b.fromCache, data: { found: true, title: b.title, edition: b.edition, deals: b.deals } };
+  },
+  FETCH_REVIEW_SCORES: async (m) => {
+    if (!m.gameName) return { success: false };
+    const b = await bundleFor(m.gameName);
+    if (!b.found) return { success: true, data: { found: false } };
+    return { success: true, fromCache: !!b.fromCache, data: { found: true, title: b.title, ...b.ratings } };
+  },
+  FETCH_PRICE_INSIGHT: async (m) => {
+    if (!m.gameName) return { success: false };
+    const b = await bundleFor(m.gameName);
+    if (!b.found) return { success: true, data: { found: false } };
+    const key = `pc_${PSEMatch.titleKey(m.gameName)}`;
+    await withSnapshotLock(async () => {}); // let the snapshot write from bundleFor land first
+    const points = await readSnapshots(key);
+    return {
+      success: true,
+      fromCache: !!b.fromCache,
+      data: {
+        found: true,
+        title: b.title,
+        edition: b.edition,
+        cheapest: b.cheapest,
+        cheapestStore: b.cheapestStore,
+        cheapestEver: b.cheapestEver,
+        low: PSEHelpers.lowStatus(b.cheapest, b.cheapestEver && b.cheapestEver.price),
+        trend: PSEHelpers.trendFromSnapshots(points, Date.now(), 30),
+        points
+      }
+    };
+  },
   FETCH_PSN_TROPHY: (m) => handlePsnTrophy(m.gameName),
+  FETCH_TROPHY_RARITY: (m) => handleTrophyRarity(m.gameName),
   FETCH_SEARCH_SUGGESTIONS: (m) => handleSearchSuggestions(m.query),
   CHANGELOG_SEEN: async () => {
     await chrome.storage.local.remove("pse_changelog_unseen");
     updateBadge();
     return { ok: true };
   },
-  GET_MERGED_OWNED: () => PSN.getMergedOwned().then(list => ({ list })),
+  GET_MERGED_OWNED: () => PSN.getMergedOwned().then((list) => ({ list })),
   PURGE_CACHE: () => PSECache.purgeExpired().then(() => ({ ok: true })),
-  CLEAR_CACHE: () => PSECache.clearAll().then(n => ({ ok: true, removed: n })),
+  CLEAR_CACHE: () => PSECache.clearAll().then((n) => ({ ok: true, removed: n })),
   CACHE_STATS: () => PSECache.getStats(),
   PSN_AUTHENTICATE: (m) => PSN.authenticate(m.npsso),
   PSN_AUTO_DETECT: () => PSN.tryAutoDetectNpsso(),
   PSN_FETCH_LIBRARY: () => PSN.fetchLibrary(),
   PSN_STATUS: () => PSN.getStatus(),
   PSN_DISCONNECT: () => PSN.disconnect(),
-  // Fix #9: add/remove manual owned games
   ADD_MANUAL_OWNED: async (m) => {
     const d = await chrome.storage.local.get(["manual_owned"]);
     const list = d.manual_owned || [];
     const name = (m.gameName || "").trim();
     if (!name) return { ok: false };
-    if (!list.some(g => g.toLowerCase() === name.toLowerCase())) {
+    if (!list.some((g) => PSEMatch.sameGame(g, name))) {
       list.push(name);
       list.sort((a, b) => a.localeCompare(b));
       await chrome.storage.local.set({ manual_owned: list });
@@ -192,127 +273,214 @@ const HANDLERS = {
   },
   REMOVE_MANUAL_OWNED: async (m) => {
     const d = await chrome.storage.local.get(["manual_owned"]);
-    const list = (d.manual_owned || []).filter(g => g.toLowerCase() !== (m.gameName || "").toLowerCase());
+    const list = (d.manual_owned || []).filter((g) => !PSEMatch.sameGame(g, m.gameName || ""));
     await chrome.storage.local.set({ manual_owned: list });
     return { ok: true, list };
   },
   IS_GAME_OWNED: async (m) => {
     const merged = await PSN.getMergedOwned();
-    const name = (m.gameName || "").toLowerCase().trim();
-    return { owned: merged.some(g => g.toLowerCase().trim() === name) };
+    return { owned: merged.some((g) => PSEMatch.sameGame(g, m.gameName || "")) };
   },
 
   /* ──── Wishlist ──── */
-  ADD_WISHLIST: async (m) => {
-    const d = await chrome.storage.local.get(["wishlist"]);
-    const list = d.wishlist || [];
-    const name = (m.gameName || "").trim();
-    if (!name) return { ok: false };
-    if (list.some(g => g.name.toLowerCase() === name.toLowerCase())) {
-      return { ok: false, error: "wishlistAlreadyAdded", list };
-    }
-    let currentPrice = null;
-    try {
-      const r = await fetch(`https://www.cheapshark.com/api/1.0/games?title=${encodeURIComponent(name)}&limit=1`);
-      if (r.ok) {
-        const g = await r.json();
-        if (g?.length && fuzzyMatch(name, g[0].external)) currentPrice = parseFloat(g[0].cheapest) || null;
+  ADD_WISHLIST: (m) =>
+    withWishlistLock(async () => {
+      const name = (m.gameName || "").trim();
+      if (!name) return { ok: false };
+      const d = await chrome.storage.local.get(["wishlist"]);
+      const list = d.wishlist || [];
+      if (list.some((g) => PSEMatch.sameGame(g.name, name))) {
+        return { ok: false, error: "wishlistAlreadyAdded", list };
       }
-    } catch {}
-    list.push({
-      name,
-      storeUrl: m.storeUrl || null,
-      addedAt: Date.now(),
-      targetPrice: m.targetPrice != null ? Number(m.targetPrice) : null,
-      lastCheckedPrice: currentPrice,
-      lastCheckedAt: Date.now(),
-      notified: false
-    });
-    await chrome.storage.local.set({ wishlist: list });
-    updateBadge();
-    return { ok: true, list, currentPrice };
-  },
-  REMOVE_WISHLIST: async (m) => {
-    const d = await chrome.storage.local.get(["wishlist"]);
-    const list = (d.wishlist || []).filter(g => g.name.toLowerCase() !== (m.gameName || "").toLowerCase());
-    await chrome.storage.local.set({ wishlist: list });
-    updateBadge();
-    return { ok: true, list };
-  },
+      let current = null;
+      try {
+        const b = await bundleFor(name);
+        if (b.found) current = { price: b.cheapest, savings: b.deals[0] ? b.deals[0].savings : null, store: b.cheapestStore };
+      } catch {}
+      list.push({
+        name,
+        storeUrl: m.storeUrl || null,
+        addedAt: Date.now(),
+        targetPrice: m.targetPrice != null ? Number(m.targetPrice) : null,
+        targetPercent: m.targetPercent != null ? Number(m.targetPercent) : null,
+        note: "",
+        psPrice: validPsPrice(m.psPrice),
+        lastCheckedPrice: current ? current.price : null,
+        lastSavings: current ? current.savings : null,
+        lastCheapestStore: current ? current.store : null,
+        lastCheckedAt: Date.now(),
+        notified: false
+      });
+      await chrome.storage.local.set({ wishlist: list });
+      updateBadge();
+      return { ok: true, list, currentPrice: current ? current.price : null };
+    }),
+  REMOVE_WISHLIST: (m) =>
+    withWishlistLock(async () => {
+      const d = await chrome.storage.local.get(["wishlist"]);
+      const list = (d.wishlist || []).filter((g) => !PSEMatch.sameGame(g.name, m.gameName || ""));
+      await chrome.storage.local.set({ wishlist: list });
+      updateBadge();
+      return { ok: true, list };
+    }),
   GET_WISHLIST: async () => {
     const d = await chrome.storage.local.get(["wishlist"]);
     return { list: d.wishlist || [] };
   },
-  SET_WISHLIST_TARGET: async (m) => {
-    const d = await chrome.storage.local.get(["wishlist"]);
-    const list = d.wishlist || [];
-    const idx = list.findIndex(g => g.name.toLowerCase() === (m.gameName || "").toLowerCase());
-    if (idx === -1) return { ok: false };
-    list[idx].targetPrice = m.targetPrice != null ? Number(m.targetPrice) : null;
-    list[idx].notified = false;
-    await chrome.storage.local.set({ wishlist: list });
-    updateBadge();
-    return { ok: true, list };
-  },
+  SET_WISHLIST_TARGET: (m) =>
+    withWishlistLock(async () => {
+      const d = await chrome.storage.local.get(["wishlist"]);
+      const list = d.wishlist || [];
+      const item = list.find((g) => PSEMatch.sameGame(g.name, m.gameName || ""));
+      if (!item) return { ok: false };
+      if ("targetPrice" in m) item.targetPrice = m.targetPrice != null ? Number(m.targetPrice) : null;
+      if ("targetPercent" in m) item.targetPercent = m.targetPercent != null ? Number(m.targetPercent) : null;
+      if ("note" in m) item.note = String(m.note || "").slice(0, 200);
+      item.notified = false;
+      item.digestPending = false;
+      await chrome.storage.local.set({ wishlist: list });
+      updateBadge();
+      return { ok: true, list };
+    }),
   IS_IN_WISHLIST: async (m) => {
     const d = await chrome.storage.local.get(["wishlist"]);
-    const name = (m.gameName || "").toLowerCase().trim();
-    return { inWishlist: (d.wishlist || []).some(g => g.name.toLowerCase().trim() === name) };
+    return { inWishlist: (d.wishlist || []).some((g) => PSEMatch.sameGame(g.name, m.gameName || "")) };
   },
   CHECK_WISHLIST_NOW: async () => { await checkWishlistPrices(); return { ok: true }; },
+  RECORD_PS_PRICE: (m) => handleRecordPsPrice(m),
 
   /* ──── Currency conversion (Frankfurter) ──── */
   GET_RATES: async (m) => {
     const target = (m.target || "USD").toUpperCase();
     if (target === "USD") return { ok: true, base: "USD", rates: { USD: 1 }, fromCache: false };
     return getExchangeRates(target);
+  },
+
+  /* ──── Diagnostics & privacy ──── */
+  DIAG_GET: async () => ({ entries: await PSEDiag.get() }),
+  DIAG_CLEAR: async () => { await PSEDiag.clear(); return { ok: true }; },
+  WIPE_ALL_DATA: async () => {
+    await PSN.disconnect();
+    await PSEDiag.flush(); // pending log writes must not resurrect data after the clear
+    await chrome.storage.local.clear();
+    try { await chrome.storage.session.clear(); } catch {}
+    await chrome.storage.local.set({ manual_owned: [], psn_owned: [], wishlist: [] });
+    updateBadge();
+    return { ok: true };
   }
 };
 
 /* ──── Wishlist price checker ──── */
-async function checkWishlistPrices() {
-  const d = await chrome.storage.local.get(["wishlist"]);
-  const list = d.wishlist || [];
-  if (!list.length) return;
-
-  const updated = [];
-  for (const item of list) {
-    try {
-      const r = await fetch(`https://www.cheapshark.com/api/1.0/games?title=${encodeURIComponent(item.name)}&limit=1`);
-      if (!r.ok) { updated.push(item); continue; }
-      const games = await r.json();
-      const newPrice = (games?.length && fuzzyMatch(item.name, games[0].external))
-        ? (parseFloat(games[0].cheapest) || null)
-        : null;
-      if (newPrice == null) { updated.push(item); continue; }
-
-      const prevPrice = item.lastCheckedPrice;
-      if (item.targetPrice != null && newPrice <= item.targetPrice && !item.notified) {
-        const oldShow = (prevPrice != null && prevPrice > newPrice) ? prevPrice : item.targetPrice;
-        try {
-          const notifId = `pse-wl-${slugify(item.name)}-${Date.now()}`;
-          await chrome.notifications.create(notifId, {
-            type: "basic",
-            iconUrl: chrome.runtime.getURL("icons/icon128.png"),
-            title: chrome.i18n.getMessage("wishlistPriceDropTitle") || "Price drop alert!",
-            message: (chrome.i18n.getMessage("wishlistPriceDropBody", [item.name, `$${newPrice.toFixed(2)}`, `$${oldShow.toFixed(2)}`]) || `${item.name} is now $${newPrice.toFixed(2)}`).substring(0, 200)
-          });
-          // Remember where this notification should take the user when clicked.
-          await rememberNotifTarget(notifId, item.storeUrl);
-          item.notified = true;
-        } catch (e) { console.warn("[PSE] notification failed:", e); }
-      } else if (item.targetPrice != null && newPrice > item.targetPrice) {
-        item.notified = false; // re-arm
-      }
-      item.lastCheckedPrice = newPrice;
-      item.lastCheckedAt = Date.now();
-    } catch (e) {
-      console.warn(`[PSE] wishlist check failed for ${item.name}:`, e);
-    }
-    updated.push(item);
+async function notifyDeal(item, prevPrice) {
+  try {
+    const notifId = `pse-wl-${PSEMatch.slugify(item.name)}-${Date.now()}`;
+    const price = item.lastCheckedPrice;
+    const usedPercent = item.targetPercent != null && item.lastSavings != null && item.lastSavings >= item.targetPercent;
+    const oldShow = prevPrice != null && prevPrice > price ? prevPrice : item.targetPrice != null ? item.targetPrice : price;
+    const message = usedPercent
+      ? chrome.i18n.getMessage("wishlistPercentDropBody", [item.name, String(Math.round(item.lastSavings)), `$${price.toFixed(2)}`])
+      : chrome.i18n.getMessage("wishlistPriceDropBody", [item.name, `$${price.toFixed(2)}`, `$${oldShow.toFixed(2)}`]);
+    await chrome.notifications.create(notifId, {
+      type: "basic",
+      iconUrl: chrome.runtime.getURL("icons/icon128.png"),
+      title: chrome.i18n.getMessage("wishlistPriceDropTitle") || "Price drop alert!",
+      message: (message || `${item.name} is now $${price.toFixed(2)}`).substring(0, 200)
+    });
+    await rememberNotifTarget(notifId, item.storeUrl);
+    return true;
+  } catch (e) {
+    console.warn("[PSE] notification failed:", e);
+    return false;
   }
-  await chrome.storage.local.set({ wishlist: updated });
+}
+
+async function checkWishlistPrices() {
+  const snapshot = (await chrome.storage.local.get(["wishlist"])).wishlist || [];
+  if (!snapshot.length) return;
+
+  // 1) Network phase — no storage writes, so edits made meanwhile are never overwritten.
+  const found = new Map();
+  for (const item of snapshot) {
+    try {
+      const b = await bundleFor(item.name);
+      if (b.found && b.cheapest != null) {
+        found.set(PSEMatch.titleKey(item.name), {
+          price: b.cheapest,
+          savings: b.deals[0] ? b.deals[0].savings : null,
+          store: b.cheapestStore
+        });
+      }
+    } catch (e) {
+      PSEDiag.log("wishlist", "check-failed", { message: e && e.message });
+    }
+    await sleep(150);
+  }
+
+  // 2) Merge phase — re-read the CURRENT list and apply results by name.
+  await withWishlistLock(async () => {
+    const list = (await chrome.storage.local.get(["wishlist"])).wishlist || [];
+    const mode = (await chrome.storage.sync.get(["digestMode"])).digestMode || "instant";
+    for (const item of list) {
+      const r = found.get(PSEMatch.titleKey(item.name));
+      if (!r) continue;
+      const prevPrice = item.lastCheckedPrice;
+      item.lastCheckedPrice = r.price;
+      item.lastSavings = r.savings;
+      item.lastCheapestStore = r.store;
+      item.lastCheckedAt = Date.now();
+      const ready = PSEHelpers.isDealReady(item);
+      if (ready && !item.notified) {
+        if (mode === "weekly") {
+          item.digestPending = true;
+          item.notified = true;
+        } else if (await notifyDeal(item, prevPrice)) {
+          item.notified = true;
+        }
+      } else if (!ready) {
+        item.notified = false; // re-arm
+        item.digestPending = false;
+      }
+    }
+    await chrome.storage.local.set({ wishlist: list });
+  });
   updateBadge();
+}
+
+async function sendWishlistDigest() {
+  await withWishlistLock(async () => {
+    const list = (await chrome.storage.local.get(["wishlist"])).wishlist || [];
+    const ready = list.filter((i) => i.digestPending && PSEHelpers.isDealReady(i));
+    if (!ready.length) return;
+    try {
+      const names = ready.slice(0, 3).map((i) => i.name).join(", ");
+      await chrome.notifications.create(`pse-wl-digest-${Date.now()}`, {
+        type: "basic",
+        iconUrl: chrome.runtime.getURL("icons/icon128.png"),
+        title: chrome.i18n.getMessage("wishlistDigestTitle") || "Weekly wishlist digest",
+        message: (chrome.i18n.getMessage("wishlistDigestBody", [String(ready.length), names]) || `${ready.length}: ${names}`).substring(0, 200)
+      });
+    } catch (e) { console.warn("[PSE] digest notification failed:", e); }
+    for (const i of ready) i.digestPending = false;
+    await chrome.storage.local.set({ wishlist: list });
+  });
+}
+
+/* ──── PS Store price seen on the page (recorded by the content script) ──── */
+async function handleRecordPsPrice(m) {
+  const amount = Number(m.amount);
+  const currency = String(m.currency || "").toUpperCase();
+  if (!(amount > 0) || !/^[A-Z]{3}$/.test(currency) || !m.gameName) return { ok: false };
+  const key = `ps_${currency}_${PSEMatch.titleKey(m.gameName)}`;
+  await recordSnapshot(key, amount);
+  await withWishlistLock(async () => {
+    const d = await chrome.storage.local.get(["wishlist"]);
+    const list = d.wishlist || [];
+    const item = list.find((g) => PSEMatch.sameGame(g.name, m.gameName));
+    if (!item) return;
+    item.psPrice = { amount, currency, seenAt: Date.now() };
+    await chrome.storage.local.set({ wishlist: list });
+  });
+  return { ok: true };
 }
 
 /* ──── Currency conversion via Frankfurter ──── */
@@ -329,14 +497,15 @@ async function getExchangeRates(target) {
     await PSECache.set(ck, rates, 24 * 3600000); // 24h TTL
     return { ok: true, base: "USD", rates, fromCache: false };
   } catch (err) {
+    PSEDiag.log("frankfurter", "failed", { message: err && err.message });
     return { ok: false, error: err.message };
   }
 }
 
-/* ──── Fix #12: PSN Trophy data ──── */
+/* ──── PSN trophy data ──── */
 async function handlePsnTrophy(gameName) {
   if (!gameName) return { success: false };
-  const ck = `psn_trophy_${slugify(gameName)}`;
+  const ck = `psn_trophy_${PSEMatch.titleKey(gameName)}`;
   const cached = await PSECache.get(ck);
   if (cached) return { success: true, data: cached, fromCache: true };
 
@@ -348,161 +517,33 @@ async function handlePsnTrophy(gameName) {
   return { success: false };
 }
 
-/* ──── CheapShark: cross-platform prices ──── */
-async function handleCrossPlatform(gameName) {
-  if (!gameName) return { success: false, error: "No game name" };
-  const ck = `xplatform_${slugify(gameName)}`;
+/* Experimental (setting enableTrophyRarity, off by default). */
+async function handleTrophyRarity(gameName) {
+  const s = await chrome.storage.sync.get(["enableTrophyRarity"]);
+  if (!s.enableTrophyRarity) return { success: false, error: "disabled" };
+  const trophy = await handlePsnTrophy(gameName);
+  if (!trophy.success || !trophy.data.npCommunicationId) return { success: false };
+  const ck = `psn_rarity_${trophy.data.npCommunicationId}`;
   const cached = await PSECache.get(ck);
   if (cached) return { success: true, data: cached, fromCache: true };
-
-  try {
-    const url = `https://www.cheapshark.com/api/1.0/deals?title=${encodeURIComponent(gameName)}&limit=10&sortBy=Price`;
-    const resp = await fetch(url);
-    if (!resp.ok) throw new Error(`CheapShark ${resp.status}`);
-    const deals = await resp.json();
-
-    const storeNames = {
-      "1":"Steam","2":"GamersGate","3":"GreenManGaming","7":"GOG",
-      "8":"Origin / EA App","11":"Humble Store","13":"Ubisoft Store",
-      "15":"Fanatical","21":"WinGameStore","25":"Epic Games Store"
-    };
-
-    // v2.5: flag rows whose CheapShark listing is for a different bundle/edition than
-    // the PS Store page (e.g. base game page pulling a "Deluxe Edition" PC listing) so
-    // the UI can show it transparently instead of implying it's the same product.
-    const queryEdition = detectEdition(gameName);
-
-    const storeMap = new Map();
-    for (const deal of deals) {
-      if (!fuzzyMatch(gameName, deal.title)) continue;
-      const store = storeNames[deal.storeID] || `Store #${deal.storeID}`;
-      const price = parseFloat(deal.salePrice);
-      const normalPrice = parseFloat(deal.normalPrice);
-      const savings = Math.round(parseFloat(deal.savings || 0));
-      const dealEdition = detectEdition(deal.title);
-      const edition = dealEdition && dealEdition !== queryEdition ? dealEdition : null;
-      if (!storeMap.has(store) || storeMap.get(store).price > price) {
-        storeMap.set(store, {
-          store, price, normalPrice, savings, edition,
-          dealLink: `https://www.cheapshark.com/redirect?dealID=${deal.dealID}`
-        });
-      }
-    }
-    const results = Array.from(storeMap.values()).sort((a,b) => a.price - b.price).slice(0, 5);
-    await PSECache.set(ck, results, PSECache.TTL.CROSS_PLATFORM);
-    return { success: true, data: results, fromCache: false };
-  } catch (err) { return { success: false, error: err.message }; }
+  const data = await PSN.fetchTrophyRarity(trophy.data.npCommunicationId, trophy.data.npServiceName);
+  if (!data) return { success: false };
+  await PSECache.set(ck, data, 24 * 3600000);
+  return { success: true, data };
 }
 
-/* ──── CheapShark: live search-box suggestions ──── */
+/* ──── Live search-box suggestions ──── */
 async function handleSearchSuggestions(query) {
   const q = (query || "").trim();
   if (q.length < 2) return { success: true, data: [] };
-  const ck = `search_suggest_${slugify(q)}`;
+  const ck = `search_suggest_${PSEMatch.titleKey(q)}`;
   const cached = await PSECache.get(ck);
   if (cached) return { success: true, data: cached, fromCache: true };
-
   try {
-    const resp = await fetch(`https://www.cheapshark.com/api/1.0/games?title=${encodeURIComponent(q)}&limit=6`);
-    if (!resp.ok) throw new Error(`CheapShark ${resp.status}`);
-    const games = await resp.json();
-    const results = (games || [])
-      .filter(g => g.external)
-      .slice(0, 6)
-      .map(g => ({
-        title: g.external,
-        thumb: g.thumb || null,
-        cheapest: g.cheapest != null ? parseFloat(g.cheapest) : null
-      }));
+    const results = await CheapShark.suggestions(q);
     await PSECache.set(ck, results, PSECache.TTL.SEARCH_SUGGEST);
     return { success: true, data: results, fromCache: false };
   } catch (err) {
     return { success: false, error: err.message };
   }
 }
-
-/* ──── OpenCritic ──── */
-async function handleMetacritic(gameName) {
-  if (!gameName) return { success: false };
-  const ck = `metacritic_${slugify(gameName)}`;
-  const cached = await PSECache.get(ck);
-  if (cached) return { success: true, data: cached, fromCache: true };
-
-  try {
-    const sr = await fetch(`https://api.opencritic.com/api/game/search?criteria=${encodeURIComponent(gameName)}`, { headers: { Accept: "application/json" } });
-    if (!sr.ok) throw new Error(`OC search ${sr.status}`);
-    const results = await sr.json();
-    if (!results?.length) return { success: false, error: "Not found" };
-
-    const best = results.find(r => fuzzyMatch(gameName, r.name)) || results[0];
-    const gr = await fetch(`https://api.opencritic.com/api/game/${best.id}`, { headers: { Accept: "application/json" } });
-    if (!gr.ok) throw new Error(`OC game ${gr.status}`);
-    const g = await gr.json();
-
-    const result = {
-      score: Math.round(g.topCriticScore || g.averageScore || 0),
-      percentRecommended: Math.round(g.percentRecommended || 0),
-      name: g.name, tier: g.tier || "Unknown",
-      numReviews: g.numReviews || 0, source: "OpenCritic",
-      url: `https://opencritic.com/game/${best.id}/${slugify(best.name)}`
-    };
-    await PSECache.set(ck, result, PSECache.TTL.METACRITIC);
-    return { success: true, data: result, fromCache: false };
-  } catch (err) { return { success: false, error: err.message }; }
-}
-
-/* ──── Price history ──── */
-async function handlePriceHistory(gameName) {
-  if (!gameName) return { success: false };
-  const ck = `pricehistory_${slugify(gameName)}`;
-  const cached = await PSECache.get(ck);
-  if (cached) return { success: true, data: cached, fromCache: true };
-
-  try {
-    const sr = await fetch(`https://www.cheapshark.com/api/1.0/games?title=${encodeURIComponent(gameName)}&limit=1`);
-    let priceData;
-    if (sr.ok) {
-      const games = await sr.json();
-      if (games?.length && fuzzyMatch(gameName, games[0].external)) {
-        const cheapest = parseFloat(games[0].cheapest) || 0;
-        const base = computeBasePrice(cheapest);
-        priceData = generatePricePoints(cheapest, base, gameName);
-        priceData.cheapestEver = cheapest;
-        // The chart is always synthesized from a single data point — be honest about it
-        priceData.source = "estimated";
-      }
-    }
-    if (!priceData) {
-      priceData = generatePricePoints(29.99, 59.99, gameName);
-      priceData.cheapestEver = priceData.points.reduce((m, p) => Math.min(m, p.price), Infinity);
-      priceData.source = "estimated";
-    }
-    await PSECache.set(ck, priceData, PSECache.TTL.PRICE_HISTORY);
-    return { success: true, data: priceData, fromCache: false };
-  } catch (err) { return { success: false, error: err.message }; }
-}
-
-// computeBasePrice now lives in match.js (shared with Jest tests).
-
-function generatePricePoints(cheapest, basePrice, gameName = "") {
-  const points = [];
-  const now = Date.now();
-  const mo = 30 * 86400000;
-  let seed = 0;
-  for (let c = 0; c < gameName.length; c++) seed = ((seed << 5) - seed + gameName.charCodeAt(c)) | 0;
-  seed = Math.abs(seed) || 42;
-  if (basePrice <= cheapest) basePrice = cheapest * 1.5 || 59.99;
-
-  // Use a neutral month locale; UI consumers can reformat if needed.
-  const monthLocale = (typeof navigator !== "undefined" && navigator.language) || "en-US";
-
-  for (let i = 11; i >= 0; i--) {
-    const r = Math.abs(Math.sin(seed + i * 3.7));
-    const price = Math.max(cheapest, Math.round((basePrice - r * (basePrice - cheapest)) * 100) / 100);
-    const date = new Date(now - i * mo);
-    points.push({ month: date.toLocaleString(monthLocale, { month: "short", year: "2-digit" }), price, timestamp: date.getTime() });
-  }
-  return { points, basePrice, cheapestEver: cheapest };
-}
-
-/* slugify and fuzzyMatch now live in match.js (shared with Jest tests). */

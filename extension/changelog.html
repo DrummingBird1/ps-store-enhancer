@@ -13,6 +13,10 @@ h1{font-size:28px;font-weight:800;background:linear-gradient(135deg,#4da6ff,#007
 .subtitle{color:#718096;font-size:14px;margin-bottom:32px}
 .release{background:#131b2e;border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:24px;margin-bottom:20px;transition:background .25s,border-color .25s}
 body.theme-light .release{background:#fff;border-color:rgba(0,0,0,.06)}
+body.theme-contrast{background:#000;color:#fff}
+body.theme-contrast .release{background:#000;border:2px solid #fff}
+body.theme-contrast .release p,body.theme-contrast .subtitle,body.theme-contrast .release h3{color:#fff}
+body.theme-contrast a,body.theme-contrast .release h2,body.theme-contrast .release h2 .ver{color:#ffd400}
 .release h2{font-size:18px;color:#4da6ff;margin-bottom:4px;display:flex;align-items:center;gap:10px}
 .release h2 .ver{background:rgba(0,112,209,.15);color:#4da6ff;padding:2px 10px;border-radius:6px;font-size:13px}
 .release .date{font-size:12px;color:#718096;margin-bottom:14px}
@@ -33,6 +37,38 @@ body.theme-light .release li code{background:rgba(0,0,0,.06)}
   <a class="back" href="options.html">← Back to settings</a>
   <h1>📝 Changelog</h1>
   <p class="subtitle">PS Store Enhancer (formerly GameDeals+, then PS Store Insight) — what's changed in each version</p>
+
+  <div class="release">
+    <h2>What's new <span class="ver">v2.7.0</span></h2>
+    <p class="date">2026 · "Accuracy &amp; trust"</p>
+    <h3>Fixed — data you can trust</h3>
+    <ul>
+      <li><strong>Cross-platform prices now show the exact game.</strong> The table could list a DLC, a map or a spin-off instead (Elden Ring showed the $15 Nightreign add-on; Cyberpunk 2077 showed a $4.99 map). The extension now resolves the exact CheapShark game first and reads that game's own deals.</li>
+      <li><strong>Review scores work again.</strong> OpenCritic's API now requires a key and had stopped returning anything; the badge silently fell back to a short built-in list that could even show the wrong game's score. Scores now come from CheapShark — Metacritic (PC) and the Steam user rating — with no API key, and the OpenCritic permission is gone.</li>
+      <li><strong>No more made-up price history.</strong> The 12-month chart was synthesized from a single price. <em>Price Insight</em> now shows only real facts: the lowest PC price ever (with its date), today's cheapest, a "near the all-time low" flag and the trend of prices your own browser recorded.</li>
+      <li><strong>"Owned" detection</strong> ignores curly vs straight apostrophes, ™/®, punctuation and edition suffixes, so hide-owned and the owned button work across typography differences.</li>
+      <li><strong>Trophy matching</strong> no longer mixes a game up with its sequel or spin-off.</li>
+      <li><strong>Wishlist price checks</strong> can no longer overwrite changes you make while they run, and go easier on CheapShark.</li>
+    </ul>
+    <h3>Safer PSN</h3>
+    <ul>
+      <li>Your real Sony cookie is never overwritten any more — it is restored after every connection attempt.</li>
+      <li>One automatic refresh-and-retry when Sony answers 401, and an optional <code>webRequest</code> permission fallback if Chrome hides Sony's sign-in redirect (asked for only when needed).</li>
+      <li>New local <strong>Diagnostics</strong> log in Settings: the last API and PSN events, kept on your device, tokens and passwords never recorded.</li>
+      <li><strong>Erase all my data</strong> in Settings and in the popup.</li>
+    </ul>
+    <h3>New</h3>
+    <ul>
+      <li><strong>Wishlist:</strong> "% off" targets, notes, sorting and filtering, a weekly-digest option, a read-only share link (names and last PC prices only — nothing is uploaded) and the PS Store price you saw on each game's page.</li>
+      <li><strong>Product page:</strong> collapsible, reorderable and hideable cards, a completionist effort score, price per hour, "similar difficulty" picks from your library, a share-this-deal image, hints about usual sale dates, a first-run tour and a one-time review prompt.</li>
+      <li><strong>Search:</strong> ✓ / ★ markers for games you own or wishlisted, junk (soundtracks, maps) filtered out, and "/" to focus the search box.</li>
+      <li><strong>Settings:</strong> high-contrast theme, experimental trophy rarity, country and currency names in your language, display currency auto-set from your store region.</li>
+      <li><strong>6 new languages</strong> — Italiano, Polski, Türkçe, Nederlands, 简体中文, 繁體中文 (16 in total).</li>
+      <li><strong>Accessibility:</strong> reduced-motion respected, screen-reader announcements when cards load, visible keyboard focus everywhere.</li>
+    </ul>
+    <h3>Not included (and why)</h3>
+    <p>Importing your PSN wishlist and the PS Plus catalog badge need Sony data that has no public, verifiable source. "Similar games" needs a genre data source. Bundle detection needs a bundle feed. A Firefox build exists in the repository but is untested and not published. These stay on the roadmap rather than shipping unverified.</p>
+  </div>
 
   <div class="release">
     <h2>What's new <span class="ver">v2.6.0</span></h2>

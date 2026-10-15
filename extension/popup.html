@@ -35,6 +35,19 @@ body.theme-light .sl{background:#cbd5e0}
 .support-link{flex:1;display:block;padding:8px 6px;text-align:center;font-size:10px;font-weight:600;color:#ff7eb6;background:rgba(255,126,182,.08);border:1px solid rgba(255,126,182,.25);border-radius:8px;text-decoration:none;transition:background .2s,border-color .2s;white-space:nowrap}
 .support-link:hover{background:rgba(255,126,182,.16);border-color:rgba(255,126,182,.45)}
 body.theme-light .support-link{color:#d6336c;background:rgba(214,51,108,.06);border-color:rgba(214,51,108,.2)}
+body.theme-contrast{background:#000;color:#fff}
+body.theme-contrast .tr,body.theme-contrast .wn-card{background:#000;border:2px solid #fff}
+body.theme-contrast .tl span:last-child,body.theme-contrast .sec-t,body.theme-contrast .ft span,body.theme-contrast .wn-card ul{color:#fff}
+body.theme-contrast .tag,body.theme-contrast .support-link{background:#000;border:2px solid #fff;color:#fff}
+body.theme-contrast .opt,body.theme-contrast .wn-top,body.theme-contrast .wn-top button{color:#ffd400;text-decoration:underline}
+body.theme-contrast .sl{background:#555;outline:2px solid #fff}
+body.theme-contrast .sw input:checked+.sl{background:#ffd400}
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible,.sw input:focus-visible+.sl{outline:3px solid #4da6ff;outline-offset:2px}
+.psn-actions{display:flex;align-items:center;gap:8px}
+.icon-btn{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:inherit;border-radius:6px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1}
+body.theme-light .icon-btn{background:#fff;border-color:rgba(0,0,0,.15)}
+.wipe{background:none;border:0;color:#ff6b6b;font-size:9px;cursor:pointer;padding:0;text-decoration:underline}
+@media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}}
 .wn-card{margin:12px 18px 0;padding:10px 14px;background:rgba(77,166,255,.08);border:1px solid rgba(77,166,255,.25);border-radius:8px}
 .wn-top{display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:700;color:#4da6ff}
 .wn-top button{background:none;border:none;color:#4da6ff;cursor:pointer;font-size:11px;padding:2px 4px}
@@ -46,19 +59,19 @@ body.theme-light .wn-card{background:rgba(0,112,209,.06);border-color:rgba(0,112
 <body>
 <div class="hdr">
   <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="6" fill="rgba(255,255,255,.15)"/><path d="M7 13l3 3 7-7" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  <div><h1>PS Store Enhancer</h1><p>v2.6.0</p></div>
+  <div><h1>PS Store Enhancer</h1><p>v2.7.0</p></div>
 </div>
 
 <div class="wn-card" id="whatsNewCard" style="display:none">
-  <div class="wn-top"><span id="whatsNewTitleText"></span><button type="button" id="whatsNewClose">✕</button></div>
+  <div class="wn-top"><span id="whatsNewTitleText"></span><button type="button" id="whatsNewClose" data-i18n-aria="whatsNewDismiss" aria-label="Dismiss">✕</button></div>
   <ul id="whatsNewList"></ul>
 </div>
 
 <div class="sec">
   <div class="sec-t" data-i18n="psnAccount">PSN Account</div>
-  <div class="tr psn-row" id="psnStatus">
-    <div class="tl"><span id="psnText">...</span><span id="psnSub"></span></div>
-    <span class="psn-icon" id="psnIcon">⏳</span>
+  <div class="tr psn-row" id="psnStatus" role="button" tabindex="0">
+    <div class="tl"><span id="psnText">...</span><span id="psnSub"></span><span id="psnSynced"></span></div>
+    <span class="psn-actions"><button type="button" class="icon-btn" id="psnRefresh" style="display:none" data-i18n-title="popupRefresh" data-i18n-aria="popupRefresh">↻</button><span class="psn-icon" id="psnIcon">⏳</span></span>
   </div>
 </div>
 
@@ -70,8 +83,8 @@ body.theme-light .wn-card{background:rgba(0,112,209,.06);border-color:rgba(0,112
 </div>
 
 <div class="tags">
-  <span class="tag">🔗 PSN</span><span class="tag">📊 Metacritic</span><span class="tag">📉 Prices</span>
-  <span class="tag">🔀 Compare</span><span class="tag">🏆 Trophies</span><span class="tag">🧹 Filter</span>
+  <span class="tag">🔗 <span data-i18n="chipPsn">PSN</span></span><span class="tag">📊 <span data-i18n="chipScores">Scores</span></span><span class="tag">📉 <span data-i18n="chipPrices">Prices</span></span>
+  <span class="tag">🔀 <span data-i18n="chipCompare">Compare</span></span><span class="tag">🏆 <span data-i18n="chipTrophies">Trophies</span></span><span class="tag">🧹 <span data-i18n="chipFilter">Filter</span></span>
 </div>
 <div class="status"><span class="dot"></span><span data-i18n="activeOnStore">Active on store.playstation.com</span></div>
 <div class="support-row">
@@ -79,7 +92,8 @@ body.theme-light .wn-card{background:rgba(0,112,209,.06);border-color:rgba(0,112
   <a class="support-link" href="https://buymeacoffee.com/MrIdan" target="_blank" rel="noopener noreferrer">☕ <span data-i18n="supportCoffee">Coffee</span></a>
   <a class="support-link" href="https://www.patreon.com/c/IdanLights" target="_blank" rel="noopener noreferrer">Patreon</a>
 </div>
-<div class="ft"><span>PS Store Enhancer v2.6.0 · <a id="openChangelog" class="opt" data-i18n="viewChangelog" style="font-size:9px">What's new</a></span><a id="openOptions" class="opt" data-i18n="advancedSettings">⚙ Advanced settings</a></div>
+<div class="ft" style="border-top:0;padding-top:0"><button type="button" class="wipe" id="wipeBtn" data-i18n="popupWipe">Erase all my data</button></div>
+<div class="ft"><span>PS Store Enhancer v2.7.0 · <a id="openChangelog" class="opt" data-i18n="viewChangelog" style="font-size:9px">What's new</a></span><a id="openOptions" class="opt" data-i18n="advancedSettings">⚙ Advanced settings</a></div>
 
 <script src="i18n.js"></script>
 <script src="changelog-data.js"></script>

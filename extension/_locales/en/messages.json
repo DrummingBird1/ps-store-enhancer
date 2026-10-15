@@ -3,13 +3,10 @@
     "message": "PS Store Enhancer"
   },
   "extDesc": {
-    "message": "Price history, cross-platform comparison, review scores, trophy info & smart filters for the PlayStation Store. Optional PSN sync."
+    "message": "Lowest-ever prices, cross-platform comparison, review scores, trophies & smart filters for the PlayStation Store. Optional PSN sync."
   },
   "psnAccount": {
     "message": "PSN Account"
-  },
-  "psnConnected": {
-    "message": "Connected"
   },
   "psnNotConnected": {
     "message": "Not connected"
@@ -43,9 +40,6 @@
   },
   "psnConnect": {
     "message": "Connect"
-  },
-  "psnConnecting": {
-    "message": "Connecting..."
   },
   "psnSyncNow": {
     "message": "Sync now"
@@ -134,16 +128,16 @@
     "message": "Active Features"
   },
   "metacriticToggle": {
-    "message": "OpenCritic / Metacritic Score"
+    "message": "Review scores (Metacritic / Steam)"
   },
   "metacriticDesc": {
-    "message": "Score badge next to game title"
+    "message": "Score badges next to the game title"
   },
   "priceHistoryToggle": {
-    "message": "Price History + Chart"
+    "message": "Price insight"
   },
   "priceHistoryDesc": {
-    "message": "Sparkline and link to PSPrices"
+    "message": "Real lowest-ever PC price, near-low flag and your own recorded trend"
   },
   "crossPlatformToggle": {
     "message": "Cross-Platform Price Comparison"
@@ -233,10 +227,10 @@
     }
   },
   "priceHistory": {
-    "message": "Price History"
+    "message": "Price Insight"
   },
   "cheapestEver": {
-    "message": "Lowest price ever:"
+    "message": "Lowest PC price ever:"
   },
   "viewFullHistory": {
     "message": "View full history on PSPrices →"
@@ -283,9 +277,6 @@
   "iOwnThis": {
     "message": "I own this game"
   },
-  "settingsTitle": {
-    "message": "Advanced Settings"
-  },
   "settingsSubtitle": {
     "message": "Advanced settings · PSN account · Game management"
   },
@@ -320,10 +311,10 @@
     "message": "Your PlayStation™ Store just got better."
   },
   "welcomeFeature1Title": {
-    "message": "Price History & Comparison"
+    "message": "Real prices & comparison"
   },
   "welcomeFeature1Desc": {
-    "message": "See price charts and compare prices across Steam, Epic, GOG and more."
+    "message": "See the lowest price ever and compare the same game across Steam, Epic, GOG and more."
   },
   "welcomeFeature2Title": {
     "message": "PSN Library Sync (Optional)"
@@ -335,7 +326,7 @@
     "message": "Scores & Trophies"
   },
   "welcomeFeature3Desc": {
-    "message": "Metacritic scores and completionist info right on the product page."
+    "message": "Metacritic and Steam scores plus completionist info right on the product page."
   },
   "welcomeFeature4Title": {
     "message": "Smart Filters"
@@ -348,15 +339,6 @@
   },
   "welcomeNote": {
     "message": "Tip: Click the extension icon in your toolbar for quick filter toggles."
-  },
-  "errorApiUnavailable": {
-    "message": "Could not load data. Try again later."
-  },
-  "errorPriceUnavailable": {
-    "message": "Price data unavailable"
-  },
-  "errorScoreUnavailable": {
-    "message": "Score unavailable"
   },
   "psnErrTokenShort": {
     "message": "NPSSO token is missing or too short"
@@ -375,9 +357,6 @@
   },
   "genericError": {
     "message": "An error occurred"
-  },
-  "priceHistoryEstimated": {
-    "message": "Estimated history"
   },
   "crossPlatformUSD": {
     "message": "Prices in USD"
@@ -398,7 +377,7 @@
     "message": "Track games and get notified when their price drops below your target."
   },
   "wishlistPcOnlyNote": {
-    "message": "Note: alerts use cross-platform prices from CheapShark (Steam/Epic/GOG, in USD). PSN-only prices are not tracked."
+    "message": "Note: alerts use the cheapest PC price from CheapShark (Steam/Epic/GOG, in USD). PS Store prices are only shown when you visit a game's page."
   },
   "hltbLink": {
     "message": "Story / completion times on HowLongToBeat →"
@@ -412,23 +391,14 @@
   "wishlistInBtn": {
     "message": "★ On Wishlist (click to remove)"
   },
-  "wishlistTargetLabel": {
-    "message": "Target price (USD)"
-  },
-  "wishlistAdded": {
-    "message": "Added to wishlist"
-  },
   "wishlistRemoved": {
     "message": "Removed from wishlist"
-  },
-  "wishlistAlreadyAdded": {
-    "message": "Already on your wishlist"
   },
   "wishlistPriceDropTitle": {
     "message": "🎯 Price drop alert!"
   },
   "wishlistPriceDropBody": {
-    "message": "$NAME$ is now $NEW$ (was $OLD$)",
+    "message": "$NAME$ is now $NEW$ on PC (was $OLD$)",
     "placeholders": {
       "name": {
         "content": "$1"
@@ -508,7 +478,7 @@
     "message": "Exported"
   },
   "importSuccess": {
-    "message": "Imported $COUNT$ games",
+    "message": "Imported $COUNT$ items",
     "placeholders": {
       "count": {
         "content": "$1"
@@ -517,9 +487,6 @@
   },
   "importFailed": {
     "message": "Import failed — file is not a valid PS Store Enhancer export"
-  },
-  "changelogTitle": {
-    "message": "What's New"
   },
   "viewChangelog": {
     "message": "View changelog →"
@@ -534,27 +501,16 @@
     "message": "Source code on GitHub"
   },
   "linkCredits": {
-    "message": "Data: CheapShark · OpenCritic · PSPrices · PSNProfiles"
+    "message": "Data: CheapShark (prices, Metacritic & Steam ratings) · Frankfurter · PSPrices · PSNProfiles"
   },
   "errorApiDown": {
     "message": "Service temporarily unavailable. Try again later."
-  },
-  "regionAutoDetected": {
-    "message": "Region auto-detected: $REGION$",
-    "placeholders": {
-      "region": {
-        "content": "$1"
-      }
-    }
-  },
-  "libraryCapWarning": {
-    "message": "Your PSN library has more than 5000 titles — only the first 5000 were synced."
   },
   "searchAutocompleteToggle": {
     "message": "Live Search Suggestions"
   },
   "searchAutocompleteDesc": {
-    "message": "Price & score preview as you type in the store search box"
+    "message": "Price preview as you type in the store search box"
   },
   "autocompleteBadge": {
     "message": "PS Store Enhancer live results"
@@ -597,7 +553,7 @@
     "message": "Deals Ready"
   },
   "statsNote": {
-    "message": "Wishlist value is the sum of the last-checked cross-platform prices (USD). Updated daily, or via \"Check prices now\" below."
+    "message": "Wishlist value is the sum of the last-checked cheapest PC prices (USD) — not PS Store prices. Updated daily, or via \"Check prices now\" below."
   },
   "crossPlatformEditionNote": {
     "message": "This listing is for the $EDITION$ Edition — price may differ from the base game",
@@ -609,5 +565,441 @@
   },
   "supportCoffee": {
     "message": "Coffee"
+  },
+  "noPcData": {
+    "message": "No PC price data found for this title — it may be a PlayStation exclusive."
+  },
+  "insightPcLabel": {
+    "message": "PC · CheapShark"
+  },
+  "insightCheapestNow": {
+    "message": "Cheapest now"
+  },
+  "insightAtLow": {
+    "message": "At the all-time low"
+  },
+  "insightNearLow": {
+    "message": "Near the all-time low"
+  },
+  "insightTrendDown": {
+    "message": "▼ $PCT$% vs $DAYS$ days ago",
+    "placeholders": {
+      "pct": {
+        "content": "$1"
+      },
+      "days": {
+        "content": "$2"
+      }
+    }
+  },
+  "insightTrendUp": {
+    "message": "▲ $PCT$% vs $DAYS$ days ago",
+    "placeholders": {
+      "pct": {
+        "content": "$1"
+      },
+      "days": {
+        "content": "$2"
+      }
+    }
+  },
+  "insightTrendFlat": {
+    "message": "≈ unchanged vs $DAYS$ days ago",
+    "placeholders": {
+      "days": {
+        "content": "$1"
+      }
+    }
+  },
+  "insightRecordedSince": {
+    "message": "Prices recorded by your browser since $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "metacriticTitle": {
+    "message": "Metacritic (PC): $SCORE$/100",
+    "placeholders": {
+      "score": {
+        "content": "$1"
+      }
+    }
+  },
+  "steamRatingTitle": {
+    "message": "Steam: $PCT$% positive ($COUNT$ reviews)",
+    "placeholders": {
+      "pct": {
+        "content": "$1"
+      },
+      "count": {
+        "content": "$2"
+      }
+    }
+  },
+  "completionistScoreLabel": {
+    "message": "Completionist effort"
+  },
+  "tier_quick": {
+    "message": "Quick win"
+  },
+  "tier_moderate": {
+    "message": "Moderate"
+  },
+  "tier_demanding": {
+    "message": "Demanding"
+  },
+  "tier_grind": {
+    "message": "Big grind"
+  },
+  "pricePerHourLine": {
+    "message": "≈ $PRICE$ per hour (cheapest PC price)",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "similarOwnedLine": {
+    "message": "Similar difficulty in your library: $GAMES$",
+    "placeholders": {
+      "games": {
+        "content": "$1"
+      }
+    }
+  },
+  "rarestRemainingLine": {
+    "message": "Rarest trophy left: $TROPHY$",
+    "placeholders": {
+      "trophy": {
+        "content": "$1"
+      }
+    }
+  },
+  "saleNow": {
+    "message": "$SALE$ is usually on around now",
+    "placeholders": {
+      "sale": {
+        "content": "$1"
+      }
+    }
+  },
+  "saleSoon": {
+    "message": "$SALE$ usually starts around $DATE$ (in $DAYS$ days)",
+    "placeholders": {
+      "sale": {
+        "content": "$1"
+      },
+      "date": {
+        "content": "$2"
+      },
+      "days": {
+        "content": "$3"
+      }
+    }
+  },
+  "shareDealBtn": {
+    "message": "Share this deal as an image"
+  },
+  "shareDealFooter": {
+    "message": "PS Store Enhancer · PC prices from CheapShark"
+  },
+  "acOwnedBadge": {
+    "message": "You own this"
+  },
+  "acWishlistBadge": {
+    "message": "On your wishlist"
+  },
+  "wishlistPercentDropBody": {
+    "message": "$NAME$ is now $PCT$% off on PC ($PRICE$)",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      },
+      "pct": {
+        "content": "$2"
+      },
+      "price": {
+        "content": "$3"
+      }
+    }
+  },
+  "wishlistDigestTitle": {
+    "message": "Weekly wishlist digest"
+  },
+  "wishlistDigestBody": {
+    "message": "$COUNT$ wishlist deals ready: $NAMES$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      },
+      "names": {
+        "content": "$2"
+      }
+    }
+  },
+  "cardsTitle": {
+    "message": "Product page cards"
+  },
+  "cardsDesc": {
+    "message": "Choose which cards appear on a game page and in what order."
+  },
+  "cardsCollapsedLabel": {
+    "message": "Start collapsed"
+  },
+  "cardsCollapsedDesc": {
+    "message": "Show a one-line summary; click a card to expand it"
+  },
+  "cardPriceInsight": {
+    "message": "Price insight"
+  },
+  "cardCrossPlatform": {
+    "message": "Cross-platform prices"
+  },
+  "cardTrophies": {
+    "message": "Completionist info"
+  },
+  "cardMoveUp": {
+    "message": "Move up"
+  },
+  "cardMoveDown": {
+    "message": "Move down"
+  },
+  "trophyRarityToggle": {
+    "message": "Trophy rarity (experimental)"
+  },
+  "trophyRarityDesc": {
+    "message": "Shows your rarest remaining trophy. Needs a connected PSN account and has not been verified on every account yet."
+  },
+  "searchShortcutToggle": {
+    "message": "“/” focuses search"
+  },
+  "searchShortcutDesc": {
+    "message": "Press / anywhere on the store to jump to the search box"
+  },
+  "themeContrast": {
+    "message": "High contrast"
+  },
+  "diagTitle": {
+    "message": "Diagnostics"
+  },
+  "diagDesc": {
+    "message": "The last events from API calls and the PSN connection, kept on this device only. Tokens and passwords are never recorded. Copy this when reporting a problem."
+  },
+  "diagRefresh": {
+    "message": "🔄 Refresh"
+  },
+  "diagCopy": {
+    "message": "📋 Copy"
+  },
+  "diagClear": {
+    "message": "🗑 Clear log"
+  },
+  "diagEmpty": {
+    "message": "No events recorded yet."
+  },
+  "diagCopied": {
+    "message": "Diagnostics copied"
+  },
+  "privacyTitle": {
+    "message": "Your data"
+  },
+  "wipeDesc": {
+    "message": "Disconnects PSN and erases everything this extension stored on this device: wishlist, owned games, caches, recorded prices and the diagnostics log. Your settings are kept."
+  },
+  "wipeBtn": {
+    "message": "Erase all my data"
+  },
+  "popupWipe": {
+    "message": "Erase all my data"
+  },
+  "wipeConfirm": {
+    "message": "Disconnect PSN and erase everything this extension stored on this device (wishlist, owned games, caches, recorded prices, diagnostics)? Your settings are kept. This can't be undone."
+  },
+  "wipeDone": {
+    "message": "All data erased"
+  },
+  "wishlistFilterPlaceholder": {
+    "message": "Filter wishlist…"
+  },
+  "wishlistSortLabel": {
+    "message": "Sort wishlist"
+  },
+  "sortAdded": {
+    "message": "Newest first"
+  },
+  "sortName": {
+    "message": "Name"
+  },
+  "sortPrice": {
+    "message": "Lowest price"
+  },
+  "sortDiscount": {
+    "message": "Biggest discount"
+  },
+  "wishlistNotePlaceholder": {
+    "message": "Note (e.g. gift for…)"
+  },
+  "targetModePrice": {
+    "message": "Price ($)"
+  },
+  "targetModePercent": {
+    "message": "% off"
+  },
+  "psPriceSeen": {
+    "message": "PS Store price seen: $PRICE$ ($DATE$)",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      },
+      "date": {
+        "content": "$2"
+      }
+    }
+  },
+  "wlCountFmt": {
+    "message": "$COUNT$ games",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "ownCountFmt": {
+    "message": "$TOTAL$ total ($PSN$ PSN, $MANUAL$ manual)",
+    "placeholders": {
+      "total": {
+        "content": "$1"
+      },
+      "psn": {
+        "content": "$2"
+      },
+      "manual": {
+        "content": "$3"
+      }
+    }
+  },
+  "removeTitle": {
+    "message": "Remove"
+  },
+  "psnTotal": {
+    "message": "Total"
+  },
+  "digestTitle": {
+    "message": "Alert delivery"
+  },
+  "digestDesc": {
+    "message": "One notification per deal, or a single weekly summary"
+  },
+  "digestInstant": {
+    "message": "Instantly"
+  },
+  "digestWeekly": {
+    "message": "Weekly digest"
+  },
+  "shareWishlistBtn": {
+    "message": "🔗 Copy share link"
+  },
+  "shareWishlistDesc": {
+    "message": "The link contains only game names and last-seen PC prices (no targets or notes) and is read-only. Anyone with the link can see the list."
+  },
+  "shareWishlistCopied": {
+    "message": "Share link copied"
+  },
+  "psnEmptyToken": {
+    "message": "Paste your NPSSO token first."
+  },
+  "psnGrantAccessBtn": {
+    "message": "Allow redirect access and retry"
+  },
+  "psnAccessGranted": {
+    "message": "Permission granted — retrying the connection…"
+  },
+  "psnAccessDenied": {
+    "message": "Permission not granted. The connection can't be completed without it."
+  },
+  "psnErrNeedsRedirectAccess": {
+    "message": "Chrome hides Sony's sign-in redirect from extensions. Allow the optional “webRequest” permission to read it, then try again."
+  },
+  "popupRefresh": {
+    "message": "Refresh PSN library"
+  },
+  "popupSyncedAgo": {
+    "message": "Synced $WHEN$",
+    "placeholders": {
+      "when": {
+        "content": "$1"
+      }
+    }
+  },
+  "chipPsn": {
+    "message": "PSN"
+  },
+  "chipScores": {
+    "message": "Scores"
+  },
+  "chipPrices": {
+    "message": "Prices"
+  },
+  "chipCompare": {
+    "message": "Compare"
+  },
+  "chipTrophies": {
+    "message": "Trophies"
+  },
+  "chipFilter": {
+    "message": "Filter"
+  },
+  "tourTitle": {
+    "message": "Quick tour"
+  },
+  "tourStepInsight": {
+    "message": "Real lowest-ever and today's cheapest PC price for this game, plus your own recorded trend."
+  },
+  "tourStepCompare": {
+    "message": "The same game's price on Steam, Epic, GOG and more — tap a row to open the store."
+  },
+  "tourStepTrophies": {
+    "message": "How hard and how long the platinum is, and your PSN progress if you're connected."
+  },
+  "tourStepWishlist": {
+    "message": "Add the game to your wishlist to get an alert when its price drops."
+  },
+  "tourNext": {
+    "message": "Next"
+  },
+  "tourSkip": {
+    "message": "Skip"
+  },
+  "tourDone": {
+    "message": "Got it"
+  },
+  "rateNudgeText": {
+    "message": "Enjoying PS Store Enhancer? A quick review helps other players find it."
+  },
+  "rateNudgeBtn": {
+    "message": "Leave a review"
+  },
+  "rateNudgeDismiss": {
+    "message": "No thanks"
+  },
+  "chl_2_7_0_1": {
+    "message": "🎯 Accurate cross-platform prices — exactly the right game, never a DLC, map or sequel"
+  },
+  "chl_2_7_0_2": {
+    "message": "📊 Metacritic and Steam scores from CheapShark (OpenCritic now needs an API key and had stopped working)"
+  },
+  "chl_2_7_0_3": {
+    "message": "📉 Price Insight uses real data only: lowest PC price ever, today's cheapest, and your own recorded trend"
+  },
+  "chl_2_7_0_4": {
+    "message": "🛠 Diagnostics log, safer PSN sign-in, wishlist % targets, notes, sorting, weekly digest and an 'Erase all my data' button"
+  },
+  "chl_2_7_0_5": {
+    "message": "🧩 Reorder, hide or collapse the product-page cards; new high-contrast theme"
+  },
+  "chl_2_7_0_6": {
+    "message": "🌍 Six new languages: Italiano, Polski, Türkçe, Nederlands, 简体中文 and 繁體中文"
   }
 }

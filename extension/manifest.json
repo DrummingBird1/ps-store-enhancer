@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "__MSG_extName__",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "description": "__MSG_extDesc__",
   "default_locale": "en",
   "author": "Idan",
@@ -22,7 +22,6 @@
     "https://ca.account.sony.com/*",
     "https://m.np.playstation.com/*",
     "https://www.cheapshark.com/*",
-    "https://api.opencritic.com/*",
     "https://api.frankfurter.dev/*"
   ],
   "action": {
@@ -38,9 +37,20 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://store.playstation.com/*"],
-      "js": ["i18n.js", "cache.js", "content.js"],
-      "css": ["styles.css"],
+      "matches": [
+        "https://store.playstation.com/*"
+      ],
+      "js": [
+        "i18n.js",
+        "cache.js",
+        "match.js",
+        "helpers.js",
+        "content-extras.js",
+        "content.js"
+      ],
+      "css": [
+        "styles.css"
+      ],
       "run_at": "document_idle"
     }
   ],
@@ -60,9 +70,15 @@
     {
       "resources": [
         "styles.css",
+        "data/trophies.json",
         "_locales/*/messages.json"
       ],
-      "matches": ["https://store.playstation.com/*"]
+      "matches": [
+        "https://store.playstation.com/*"
+      ]
     }
+  ],
+  "optional_permissions": [
+    "webRequest"
   ]
 }

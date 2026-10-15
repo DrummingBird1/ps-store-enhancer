@@ -3,13 +3,10 @@
     "message": "PS Store Enhancer"
   },
   "extDesc": {
-    "message": "היסטוריית מחירים, השוואת מחירים, ציוני ביקורת, מידע על גביעים וסינון חכם לחנות PlayStation. סנכרון PSN אופציונלי."
+    "message": "מחירים נמוכים אי פעם, השוואת מחירים, ציוני ביקורת, גביעים וסינון חכם לחנות PlayStation. סנכרון PSN אופציונלי."
   },
   "psnAccount": {
     "message": "חשבון PSN"
-  },
-  "psnConnected": {
-    "message": "מחובר"
   },
   "psnNotConnected": {
     "message": "לא מחובר"
@@ -43,9 +40,6 @@
   },
   "psnConnect": {
     "message": "חבר"
-  },
-  "psnConnecting": {
-    "message": "מתחבר..."
   },
   "psnSyncNow": {
     "message": "סנכרן עכשיו"
@@ -134,16 +128,16 @@
     "message": "תכונות פעילות"
   },
   "metacriticToggle": {
-    "message": "ציון OpenCritic / Metacritic"
+    "message": "ציוני ביקורת (Metacritic / Steam)"
   },
   "metacriticDesc": {
-    "message": "תג ציון ליד כותרת המשחק"
+    "message": "תגי ציון ליד שם המשחק"
   },
   "priceHistoryToggle": {
-    "message": "היסטוריית מחירים + גרף"
+    "message": "תובנות מחיר"
   },
   "priceHistoryDesc": {
-    "message": "Sparkline וקישור ל-PSPrices"
+    "message": "המחיר הנמוך האמיתי ביותר ב-PC, סימון קרבה לשפל והמגמה שנרשמה בדפדפן שלך"
   },
   "crossPlatformToggle": {
     "message": "השוואת מחירים Cross-Platform"
@@ -233,10 +227,10 @@
     }
   },
   "priceHistory": {
-    "message": "היסטוריית מחירים"
+    "message": "תובנות מחיר"
   },
   "cheapestEver": {
-    "message": "המחיר הנמוך ביותר אי פעם:"
+    "message": "המחיר הנמוך ביותר ב-PC אי פעם:"
   },
   "viewFullHistory": {
     "message": "צפה בהיסטוריה מלאה ב-PSPrices ←"
@@ -283,9 +277,6 @@
   "iOwnThis": {
     "message": "יש לי את המשחק"
   },
-  "settingsTitle": {
-    "message": "הגדרות מתקדמות"
-  },
   "settingsSubtitle": {
     "message": "הגדרות מתקדמות · חשבון PSN · ניהול משחקים"
   },
@@ -320,10 +311,10 @@
     "message": ".חנות ה-PlayStation™ שלך השתדרגה"
   },
   "welcomeFeature1Title": {
-    "message": "היסטוריית מחירים והשוואה"
+    "message": "מחירים אמיתיים והשוואה"
   },
   "welcomeFeature1Desc": {
-    "message": "גרפי מחירים והשוואה בין Steam, Epic, GOG ועוד."
+    "message": "ראו את המחיר הנמוך ביותר אי פעם והשוו את אותו משחק ב-Steam, Epic, GOG ועוד."
   },
   "welcomeFeature2Title": {
     "message": "סנכרון ספריית PSN (אופציונלי)"
@@ -335,7 +326,7 @@
     "message": "ציונים וגביעים"
   },
   "welcomeFeature3Desc": {
-    "message": "ציוני Metacritic ומידע ל-Completionist ישירות בעמוד המוצר."
+    "message": "ציוני Metacritic ו-Steam ומידע ל-Completionist ישירות בדף המוצר."
   },
   "welcomeFeature4Title": {
     "message": "סינון חכם"
@@ -348,15 +339,6 @@
   },
   "welcomeNote": {
     "message": "טיפ: לחץ על אייקון התוסף בסרגל הכלים לשליטה מהירה בסינון."
-  },
-  "errorApiUnavailable": {
-    "message": "לא הצלחנו לטעון נתונים. נסה שוב מאוחר יותר."
-  },
-  "errorPriceUnavailable": {
-    "message": "נתוני מחיר לא זמינים"
-  },
-  "errorScoreUnavailable": {
-    "message": "ציון לא זמין"
   },
   "psnErrTokenShort": {
     "message": "NPSSO token חסר או קצר מדי"
@@ -375,9 +357,6 @@
   },
   "genericError": {
     "message": "אירעה שגיאה"
-  },
-  "priceHistoryEstimated": {
-    "message": "היסטוריה משוערת"
   },
   "crossPlatformUSD": {
     "message": "מחירים בדולר ארה״ב"
@@ -398,7 +377,7 @@
     "message": "עקוב אחר משחקים וקבל התראה כשהמחיר יורד מתחת ליעד שהגדרת."
   },
   "wishlistPcOnlyNote": {
-    "message": "הערה: ההתראות מבוססות על מחירי PC חוצי-פלטפורמה מ-CheapShark (Steam/Epic/GOG, בדולרים). מחירי PSN בלבד לא מנוטרים."
+    "message": "שימו לב: ההתראות מבוססות על המחיר הזול ביותר ב-PC מ-CheapShark (Steam/Epic/GOG, ב-USD). מחירי PS Store מוצגים רק כשנכנסים לדף המשחק."
   },
   "hltbLink": {
     "message": "זמני סיפור וסיום ב-HowLongToBeat ←"
@@ -412,23 +391,14 @@
   "wishlistInBtn": {
     "message": "★ ברשימת המשאלות (לחץ להסיר)"
   },
-  "wishlistTargetLabel": {
-    "message": "מחיר יעד (USD)"
-  },
-  "wishlistAdded": {
-    "message": "נוסף לרשימת המשאלות"
-  },
   "wishlistRemoved": {
     "message": "הוסר מרשימת המשאלות"
-  },
-  "wishlistAlreadyAdded": {
-    "message": "כבר ברשימת המשאלות"
   },
   "wishlistPriceDropTitle": {
     "message": "🎯 התראת ירידת מחיר!"
   },
   "wishlistPriceDropBody": {
-    "message": "$NAME$ עכשיו $NEW$ (היה $OLD$)",
+    "message": "$NAME$ עכשיו ב-$NEW$ ב-PC (היה $OLD$)",
     "placeholders": {
       "name": {
         "content": "$1"
@@ -508,7 +478,7 @@
     "message": "יוצא"
   },
   "importSuccess": {
-    "message": "יובאו $COUNT$ משחקים",
+    "message": "יובאו $COUNT$ פריטים",
     "placeholders": {
       "count": {
         "content": "$1"
@@ -517,9 +487,6 @@
   },
   "importFailed": {
     "message": "הייבוא נכשל — הקובץ אינו ייצוא תקין של PS Store Enhancer"
-  },
-  "changelogTitle": {
-    "message": "מה חדש"
   },
   "viewChangelog": {
     "message": "הצג היסטוריית גרסאות →"
@@ -534,27 +501,16 @@
     "message": "קוד מקור ב-GitHub"
   },
   "linkCredits": {
-    "message": "נתונים: CheapShark · OpenCritic · PSPrices · PSNProfiles"
+    "message": "נתונים: CheapShark (מחירים, ציוני Metacritic ו-Steam) · Frankfurter · PSPrices · PSNProfiles"
   },
   "errorApiDown": {
     "message": "השירות אינו זמין כרגע. נסה שוב מאוחר יותר."
-  },
-  "regionAutoDetected": {
-    "message": "אזור זוהה אוטומטית: $REGION$",
-    "placeholders": {
-      "region": {
-        "content": "$1"
-      }
-    }
-  },
-  "libraryCapWarning": {
-    "message": "ספריית ה-PSN שלך כוללת יותר מ-5000 כותרים — רק 5000 הראשונים סונכרנו."
   },
   "searchAutocompleteToggle": {
     "message": "הצעות חיפוש חכמות"
   },
   "searchAutocompleteDesc": {
-    "message": "תצוגה מקדימה של מחיר וציון תוך כדי הקלדה בתיבת החיפוש"
+    "message": "תצוגה מקדימה של מחיר בזמן ההקלדה בתיבת החיפוש של החנות"
   },
   "autocompleteBadge": {
     "message": "תוצאות חיות מבית PS Store Enhancer"
@@ -597,7 +553,7 @@
     "message": "עסקאות מוכנות"
   },
   "statsNote": {
-    "message": "שווי הרשימה הוא סכום המחירים החוצי-פלטפורמות שנבדקו לאחרונה (בדולר). מתעדכן יומית, או דרך \"בדוק מחירים עכשיו\" למטה."
+    "message": "ערך רשימת המשאלות הוא סכום המחירים הזולים ביותר ב-PC שנבדקו לאחרונה (USD) — לא מחירי PS Store. מתעדכן מדי יום, או באמצעות \"בדוק מחירים עכשיו\" למטה."
   },
   "crossPlatformEditionNote": {
     "message": "המחיר הזה מתייחס למהדורת $EDITION$ — המחיר עשוי להיות שונה מהמשחק הבסיסי",
@@ -609,5 +565,441 @@
   },
   "supportCoffee": {
     "message": "קפה"
+  },
+  "noPcData": {
+    "message": "לא נמצאו נתוני מחיר ל-PC עבור המשחק הזה — ייתכן שהוא בלעדי ל-PlayStation."
+  },
+  "insightPcLabel": {
+    "message": "PC · CheapShark"
+  },
+  "insightCheapestNow": {
+    "message": "הכי זול עכשיו"
+  },
+  "insightAtLow": {
+    "message": "בשפל של כל הזמנים"
+  },
+  "insightNearLow": {
+    "message": "קרוב לשפל של כל הזמנים"
+  },
+  "insightTrendDown": {
+    "message": "▼ $PCT$% לעומת לפני $DAYS$ ימים",
+    "placeholders": {
+      "pct": {
+        "content": "$1"
+      },
+      "days": {
+        "content": "$2"
+      }
+    }
+  },
+  "insightTrendUp": {
+    "message": "▲ $PCT$% לעומת לפני $DAYS$ ימים",
+    "placeholders": {
+      "pct": {
+        "content": "$1"
+      },
+      "days": {
+        "content": "$2"
+      }
+    }
+  },
+  "insightTrendFlat": {
+    "message": "≈ ללא שינוי לעומת לפני $DAYS$ ימים",
+    "placeholders": {
+      "days": {
+        "content": "$1"
+      }
+    }
+  },
+  "insightRecordedSince": {
+    "message": "מחירים שהדפדפן שלך רשם מאז $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "metacriticTitle": {
+    "message": "Metacritic (PC): $SCORE$/100",
+    "placeholders": {
+      "score": {
+        "content": "$1"
+      }
+    }
+  },
+  "steamRatingTitle": {
+    "message": "Steam: $PCT$% חיוביות ($COUNT$ ביקורות)",
+    "placeholders": {
+      "pct": {
+        "content": "$1"
+      },
+      "count": {
+        "content": "$2"
+      }
+    }
+  },
+  "completionistScoreLabel": {
+    "message": "מאמץ להשלמה"
+  },
+  "tier_quick": {
+    "message": "קל וזריז"
+  },
+  "tier_moderate": {
+    "message": "בינוני"
+  },
+  "tier_demanding": {
+    "message": "תובעני"
+  },
+  "tier_grind": {
+    "message": "גרינד ארוך"
+  },
+  "pricePerHourLine": {
+    "message": "≈ $PRICE$ לשעה (המחיר הזול ב-PC)",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "similarOwnedLine": {
+    "message": "בקושי דומה בספרייה שלך: $GAMES$",
+    "placeholders": {
+      "games": {
+        "content": "$1"
+      }
+    }
+  },
+  "rarestRemainingLine": {
+    "message": "הגביע הנדיר ביותר שנותר: $TROPHY$",
+    "placeholders": {
+      "trophy": {
+        "content": "$1"
+      }
+    }
+  },
+  "saleNow": {
+    "message": "$SALE$ בדרך כלל מתקיים בערך בתקופה הזו",
+    "placeholders": {
+      "sale": {
+        "content": "$1"
+      }
+    }
+  },
+  "saleSoon": {
+    "message": "$SALE$ מתחיל בדרך כלל בסביבות $DATE$ (בעוד $DAYS$ ימים)",
+    "placeholders": {
+      "sale": {
+        "content": "$1"
+      },
+      "date": {
+        "content": "$2"
+      },
+      "days": {
+        "content": "$3"
+      }
+    }
+  },
+  "shareDealBtn": {
+    "message": "שתפו את העסקה כתמונה"
+  },
+  "shareDealFooter": {
+    "message": "PS Store Enhancer · מחירי PC מ-CheapShark"
+  },
+  "acOwnedBadge": {
+    "message": "המשחק בבעלותך"
+  },
+  "acWishlistBadge": {
+    "message": "ברשימת המשאלות שלך"
+  },
+  "wishlistPercentDropBody": {
+    "message": "$NAME$ ב-$PCT$% הנחה ב-PC ($PRICE$)",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      },
+      "pct": {
+        "content": "$2"
+      },
+      "price": {
+        "content": "$3"
+      }
+    }
+  },
+  "wishlistDigestTitle": {
+    "message": "סיכום שבועי של רשימת המשאלות"
+  },
+  "wishlistDigestBody": {
+    "message": "$COUNT$ עסקאות מוכנות ברשימת המשאלות: $NAMES$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      },
+      "names": {
+        "content": "$2"
+      }
+    }
+  },
+  "cardsTitle": {
+    "message": "כרטיסים בדף המוצר"
+  },
+  "cardsDesc": {
+    "message": "בחרו אילו כרטיסים יופיעו בדף משחק ובאיזה סדר."
+  },
+  "cardsCollapsedLabel": {
+    "message": "התחל במצב מכווץ"
+  },
+  "cardsCollapsedDesc": {
+    "message": "הצגת סיכום בשורה אחת; לחצו על כרטיס כדי להרחיב"
+  },
+  "cardPriceInsight": {
+    "message": "תובנות מחיר"
+  },
+  "cardCrossPlatform": {
+    "message": "מחירים בין פלטפורמות"
+  },
+  "cardTrophies": {
+    "message": "מידע ל-Completionist"
+  },
+  "cardMoveUp": {
+    "message": "הזז למעלה"
+  },
+  "cardMoveDown": {
+    "message": "הזז למטה"
+  },
+  "trophyRarityToggle": {
+    "message": "נדירות גביעים (ניסיוני)"
+  },
+  "trophyRarityDesc": {
+    "message": "מציג את הגביע הנדיר ביותר שנותר לכם. דורש חשבון PSN מחובר ועדיין לא נבדק בכל החשבונות."
+  },
+  "searchShortcutToggle": {
+    "message": "המקש „/” ממקד את החיפוש"
+  },
+  "searchShortcutDesc": {
+    "message": "לחצו / בכל מקום בחנות כדי לקפוץ לתיבת החיפוש"
+  },
+  "themeContrast": {
+    "message": "ניגודיות גבוהה"
+  },
+  "diagTitle": {
+    "message": "אבחון"
+  },
+  "diagDesc": {
+    "message": "האירועים האחרונים מקריאות API ומחיבור PSN, נשמרים במכשיר זה בלבד. אסימונים וסיסמאות לעולם לא נרשמים. העתיקו את זה כשמדווחים על בעיה."
+  },
+  "diagRefresh": {
+    "message": "🔄 רענן"
+  },
+  "diagCopy": {
+    "message": "📋 העתק"
+  },
+  "diagClear": {
+    "message": "🗑 נקה יומן"
+  },
+  "diagEmpty": {
+    "message": "עדיין לא נרשמו אירועים."
+  },
+  "diagCopied": {
+    "message": "האבחון הועתק"
+  },
+  "privacyTitle": {
+    "message": "הנתונים שלך"
+  },
+  "wipeDesc": {
+    "message": "מנתק את PSN ומוחק כל מה שהתוסף שמר במכשיר: רשימת משאלות, משחקים בבעלותך, מטמון, מחירים שנרשמו ויומן האבחון. ההגדרות שלכם נשמרות."
+  },
+  "wipeBtn": {
+    "message": "מחק את כל הנתונים שלי"
+  },
+  "popupWipe": {
+    "message": "מחק את כל הנתונים שלי"
+  },
+  "wipeConfirm": {
+    "message": "לנתק את PSN ולמחוק את כל מה שהתוסף שמר במכשיר (רשימת משאלות, משחקים, מטמון, מחירים שנרשמו, אבחון)? ההגדרות נשמרות. אי אפשר לבטל."
+  },
+  "wipeDone": {
+    "message": "כל הנתונים נמחקו"
+  },
+  "wishlistFilterPlaceholder": {
+    "message": "סינון רשימת המשאלות…"
+  },
+  "wishlistSortLabel": {
+    "message": "מיון רשימת המשאלות"
+  },
+  "sortAdded": {
+    "message": "החדשים ראשונים"
+  },
+  "sortName": {
+    "message": "שם"
+  },
+  "sortPrice": {
+    "message": "המחיר הנמוך ביותר"
+  },
+  "sortDiscount": {
+    "message": "ההנחה הגדולה ביותר"
+  },
+  "wishlistNotePlaceholder": {
+    "message": "הערה (למשל מתנה ל…)"
+  },
+  "targetModePrice": {
+    "message": "מחיר ($)"
+  },
+  "targetModePercent": {
+    "message": "% הנחה"
+  },
+  "psPriceSeen": {
+    "message": "מחיר PS Store שנראה: $PRICE$ ($DATE$)",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      },
+      "date": {
+        "content": "$2"
+      }
+    }
+  },
+  "wlCountFmt": {
+    "message": "$COUNT$ משחקים",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "ownCountFmt": {
+    "message": "$TOTAL$ בסך הכל ($PSN$ מ-PSN, $MANUAL$ ידני)",
+    "placeholders": {
+      "total": {
+        "content": "$1"
+      },
+      "psn": {
+        "content": "$2"
+      },
+      "manual": {
+        "content": "$3"
+      }
+    }
+  },
+  "removeTitle": {
+    "message": "הסר"
+  },
+  "psnTotal": {
+    "message": "סה״כ"
+  },
+  "digestTitle": {
+    "message": "אופן קבלת התראות"
+  },
+  "digestDesc": {
+    "message": "התראה לכל עסקה, או סיכום שבועי אחד"
+  },
+  "digestInstant": {
+    "message": "מיידית"
+  },
+  "digestWeekly": {
+    "message": "סיכום שבועי"
+  },
+  "shareWishlistBtn": {
+    "message": "🔗 העתק קישור לשיתוף"
+  },
+  "shareWishlistDesc": {
+    "message": "הקישור מכיל רק שמות משחקים ומחירי PC אחרונים (ללא יעדים או הערות) והוא לקריאה בלבד. כל מי שיש לו את הקישור יכול לראות את הרשימה."
+  },
+  "shareWishlistCopied": {
+    "message": "קישור השיתוף הועתק"
+  },
+  "psnEmptyToken": {
+    "message": "הדביקו קודם את אסימון ה-NPSSO."
+  },
+  "psnGrantAccessBtn": {
+    "message": "אפשרו גישה להפניה ונסו שוב"
+  },
+  "psnAccessGranted": {
+    "message": "ההרשאה ניתנה — מנסה להתחבר שוב…"
+  },
+  "psnAccessDenied": {
+    "message": "ההרשאה לא ניתנה. אי אפשר להשלים את החיבור בלעדיה."
+  },
+  "psnErrNeedsRedirectAccess": {
+    "message": "Chrome מסתיר מתוספים את ההפניה של Sony בעת ההתחברות. אפשרו את ההרשאה האופציונלית „webRequest” כדי לקרוא אותה, ונסו שוב."
+  },
+  "popupRefresh": {
+    "message": "רענון ספריית PSN"
+  },
+  "popupSyncedAgo": {
+    "message": "סונכרן $WHEN$",
+    "placeholders": {
+      "when": {
+        "content": "$1"
+      }
+    }
+  },
+  "chipPsn": {
+    "message": "PSN"
+  },
+  "chipScores": {
+    "message": "ציונים"
+  },
+  "chipPrices": {
+    "message": "מחירים"
+  },
+  "chipCompare": {
+    "message": "השוואה"
+  },
+  "chipTrophies": {
+    "message": "גביעים"
+  },
+  "chipFilter": {
+    "message": "סינון"
+  },
+  "tourTitle": {
+    "message": "סיור קצר"
+  },
+  "tourStepInsight": {
+    "message": "המחיר האמיתי הנמוך אי פעם והמחיר הזול ביותר היום ב-PC למשחק הזה, ובנוסף המגמה שנרשמה אצלכם."
+  },
+  "tourStepCompare": {
+    "message": "מחיר אותו משחק ב-Steam, Epic, GOG ועוד — לחצו על שורה כדי לפתוח את החנות."
+  },
+  "tourStepTrophies": {
+    "message": "כמה קשה וכמה ארוך הפלטינום, והתקדמות ה-PSN שלכם אם אתם מחוברים."
+  },
+  "tourStepWishlist": {
+    "message": "הוסיפו את המשחק לרשימת המשאלות כדי לקבל התראה כשהמחיר יורד."
+  },
+  "tourNext": {
+    "message": "הבא"
+  },
+  "tourSkip": {
+    "message": "דלג"
+  },
+  "tourDone": {
+    "message": "הבנתי"
+  },
+  "rateNudgeText": {
+    "message": "נהנים מ-PS Store Enhancer? ביקורת קצרה עוזרת לשחקנים אחרים למצוא אותו."
+  },
+  "rateNudgeBtn": {
+    "message": "השאירו ביקורת"
+  },
+  "rateNudgeDismiss": {
+    "message": "לא תודה"
+  },
+  "chl_2_7_0_1": {
+    "message": "🎯 מחירים מדויקים בין פלטפורמות — בדיוק המשחק הנכון, אף פעם לא DLC, מפה או סרט המשך"
+  },
+  "chl_2_7_0_2": {
+    "message": "📊 ציוני Metacritic ו-Steam מ-CheapShark (OpenCritic דורש כעת מפתח API והפסיק לעבוד)"
+  },
+  "chl_2_7_0_3": {
+    "message": "📉 תובנות המחיר מבוססות על נתונים אמיתיים בלבד: המחיר הנמוך ביותר ב-PC, הזול היום והמגמה שנרשמה אצלכם"
+  },
+  "chl_2_7_0_4": {
+    "message": "🛠 יומן אבחון, התחברות PSN בטוחה יותר, יעדי הנחה באחוזים, הערות, מיון, סיכום שבועי וכפתור „מחק את כל הנתונים שלי”"
+  },
+  "chl_2_7_0_5": {
+    "message": "🧩 סידור, הסתרה או כיווץ של כרטיסי דף המוצר; ערכת נושא חדשה בניגודיות גבוהה"
+  },
+  "chl_2_7_0_6": {
+    "message": "🌍 שש שפות חדשות: Italiano, Polski, Türkçe, Nederlands, 简体中文 ו-繁體中文"
   }
 }

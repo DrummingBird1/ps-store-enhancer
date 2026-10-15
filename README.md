@@ -5,7 +5,7 @@
 <p align="center">Formerly GameDeals+, then PS Store Insight. Enhance your PlayStation™ Store experience with price history, cross-platform comparison, review scores, trophy info, wishlist alerts, currency conversion, and smart filters.</p>
 
 <p align="center">
-<img src="https://img.shields.io/badge/version-2.6.0-blue" alt="Version">
+<img src="https://img.shields.io/badge/version-2.7.0-blue" alt="Version">
 <img src="https://img.shields.io/badge/manifest-v3-green" alt="Manifest V3">
 <img src="https://img.shields.io/badge/languages-10-orange" alt="10 languages">
 <img src="https://img.shields.io/badge/license-MIT-brightgreen" alt="MIT License">

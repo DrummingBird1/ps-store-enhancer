@@ -3,7 +3,7 @@
     "message": "PS Store Enhancer"
   },
   "extDesc": {
-    "message": "PlayStation Store向けの価格履歴、クロスプラットフォーム比較、レビュースコア、トロフィー情報、スマートフィルター。PSN同期はオプション。"
+    "message": "PlayStation Store向け：過去最安値、プラットフォーム比較、レビュー、トロフィー情報、スマートフィルター。PSN同期は任意。"
   },
   "psnAccount": {
     "message": "PSNアカウント"
@@ -40,9 +40,6 @@
   },
   "psnConnect": {
     "message": "接続"
-  },
-  "psnConnecting": {
-    "message": "接続中..."
   },
   "psnSyncNow": {
     "message": "今すぐ同期"
@@ -128,16 +125,16 @@
     "message": "有効な機能"
   },
   "metacriticToggle": {
-    "message": "OpenCritic / Metacriticスコア"
+    "message": "レビュースコア (Metacritic / Steam)"
   },
   "metacriticDesc": {
-    "message": "ゲームタイトル横にスコアバッジ"
+    "message": "ゲームタイトルの横にスコアバッジを表示"
   },
   "priceHistoryToggle": {
-    "message": "価格履歴 + チャート"
+    "message": "価格インサイト"
   },
   "priceHistoryDesc": {
-    "message": "SparklineとPSPricesリンク"
+    "message": "PCの実際の過去最安値、最安値に近い印、ブラウザが記録した推移"
   },
   "crossPlatformToggle": {
     "message": "クロスプラットフォーム価格比較"
@@ -227,10 +224,10 @@
     }
   },
   "priceHistory": {
-    "message": "価格履歴"
+    "message": "価格インサイト"
   },
   "cheapestEver": {
-    "message": "過去最安値:"
+    "message": "PC過去最安値:"
   },
   "viewFullHistory": {
     "message": "PSPricesで全履歴を見る →"
@@ -277,9 +274,6 @@
   "iOwnThis": {
     "message": "このゲームを持っています"
   },
-  "settingsTitle": {
-    "message": "詳細設定"
-  },
   "settingsSubtitle": {
     "message": "詳細設定 · PSNアカウント · ゲーム管理"
   },
@@ -291,9 +285,6 @@
   },
   "saved": {
     "message": "保存完了 ✓"
-  },
-  "psnConnected": {
-    "message": "接続済み"
   },
   "psnWait30": {
     "message": "同期の間隔は30秒以上あけてください"
@@ -320,10 +311,10 @@
     "message": "PlayStation™ Storeがさらに便利になりました。"
   },
   "welcomeFeature1Title": {
-    "message": "価格履歴と比較"
+    "message": "実際の価格と比較"
   },
   "welcomeFeature1Desc": {
-    "message": "価格チャートとSteam、Epic、GOGなどとの価格比較。"
+    "message": "過去最安値を確認し、Steam・Epic・GOGなどで同じゲームの価格を比較できます。"
   },
   "welcomeFeature2Title": {
     "message": "PSNライブラリ同期(オプション)"
@@ -335,7 +326,7 @@
     "message": "スコアとトロフィー"
   },
   "welcomeFeature3Desc": {
-    "message": "Metacriticスコアとコンプリート情報を製品ページに直接表示。"
+    "message": "Metacritic・Steamのスコアとコンプリート情報を商品ページに直接表示します。"
   },
   "welcomeFeature4Title": {
     "message": "スマートフィルター"
@@ -348,15 +339,6 @@
   },
   "welcomeNote": {
     "message": "ヒント：ツールバーの拡張機能アイコンでフィルターをすばやく操作できます。"
-  },
-  "errorApiUnavailable": {
-    "message": "データを読み込めませんでした。後でもう一度お試しください。"
-  },
-  "errorPriceUnavailable": {
-    "message": "価格データ利用不可"
-  },
-  "errorScoreUnavailable": {
-    "message": "スコア利用不可"
   },
   "psnErrTokenShort": {
     "message": "NPSSOトークンがないか短すぎます"
@@ -375,9 +357,6 @@
   },
   "genericError": {
     "message": "エラーが発生しました"
-  },
-  "priceHistoryEstimated": {
-    "message": "推定履歴"
   },
   "crossPlatformUSD": {
     "message": "価格はUSD表示"
@@ -398,7 +377,7 @@
     "message": "ゲームを追跡し、価格が目標を下回ったら通知を受け取れます。"
   },
   "wishlistPcOnlyNote": {
-    "message": "注: アラートはCheapSharkのクロスプラットフォームPC価格(Steam/Epic/GOG、USD)を使用。PSN限定価格は追跡されません。"
+    "message": "注: 通知にはCheapSharkのPC最安値(Steam/Epic/GOG、USD)を使用します。PS Storeの価格はゲームのページを開いたときのみ表示されます。"
   },
   "hltbLink": {
     "message": "プレイ時間をHowLongToBeatで見る →"
@@ -412,23 +391,14 @@
   "wishlistInBtn": {
     "message": "★ ウィッシュリスト中(クリックで削除)"
   },
-  "wishlistTargetLabel": {
-    "message": "目標価格 (USD)"
-  },
-  "wishlistAdded": {
-    "message": "ウィッシュリストに追加しました"
-  },
   "wishlistRemoved": {
     "message": "ウィッシュリストから削除しました"
-  },
-  "wishlistAlreadyAdded": {
-    "message": "既にウィッシュリストにあります"
   },
   "wishlistPriceDropTitle": {
     "message": "🎯 値下げアラート!"
   },
   "wishlistPriceDropBody": {
-    "message": "$NAME$ は現在 $NEW$ (以前は $OLD$)",
+    "message": "$NAME$ がPCで $NEW$ になりました (以前は $OLD$)",
     "placeholders": {
       "name": {
         "content": "$1"
@@ -508,7 +478,7 @@
     "message": "エクスポート済み"
   },
   "importSuccess": {
-    "message": "$COUNT$ 件のゲームをインポートしました",
+    "message": "$COUNT$ 件をインポートしました",
     "placeholders": {
       "count": {
         "content": "$1"
@@ -517,9 +487,6 @@
   },
   "importFailed": {
     "message": "インポート失敗 — 無効なファイル"
-  },
-  "changelogTitle": {
-    "message": "新着情報"
   },
   "viewChangelog": {
     "message": "変更履歴を表示 →"
@@ -534,27 +501,16 @@
     "message": "GitHubのソースコード"
   },
   "linkCredits": {
-    "message": "データ: CheapShark · OpenCritic · PSPrices · PSNProfiles"
+    "message": "データ提供: CheapShark (価格、Metacritic・Steam評価) · Frankfurter · PSPrices · PSNProfiles"
   },
   "errorApiDown": {
     "message": "サービスは一時的に利用できません。後でやり直してください。"
-  },
-  "regionAutoDetected": {
-    "message": "リージョン自動検出: $REGION$",
-    "placeholders": {
-      "region": {
-        "content": "$1"
-      }
-    }
-  },
-  "libraryCapWarning": {
-    "message": "PSNライブラリには5000以上のタイトルがあります — 最初の5000のみ同期されました。"
   },
   "searchAutocompleteToggle": {
     "message": "ライブ検索候補"
   },
   "searchAutocompleteDesc": {
-    "message": "ストアの検索欄への入力中に価格とスコアをプレビュー"
+    "message": "ストアの検索ボックスに入力すると価格をプレビュー表示"
   },
   "autocompleteBadge": {
     "message": "PS Store Enhancer のライブ結果"
@@ -597,7 +553,7 @@
     "message": "購入可能な特価"
   },
   "statsNote": {
-    "message": "ウィッシュリストの合計額は、最後に確認したクロスプラットフォーム価格(USD)の合計です。毎日更新されるか、下の「今すぐ価格を確認」で更新できます。"
+    "message": "ウィッシュリストの合計額は、最後に確認したPC最安値の合計(USD)で、PS Storeの価格ではありません。毎日、または下の「今すぐ価格を確認」で更新されます。"
   },
   "crossPlatformEditionNote": {
     "message": "この価格は$EDITION$版のものです — 通常版とは価格が異なる場合があります",
@@ -609,5 +565,441 @@
   },
   "supportCoffee": {
     "message": "コーヒー"
+  },
+  "noPcData": {
+    "message": "このタイトルのPC価格データは見つかりません。PlayStation独占タイトルかもしれません。"
+  },
+  "insightPcLabel": {
+    "message": "PC · CheapShark"
+  },
+  "insightCheapestNow": {
+    "message": "現在の最安値"
+  },
+  "insightAtLow": {
+    "message": "過去最安値と同額"
+  },
+  "insightNearLow": {
+    "message": "過去最安値に近い価格"
+  },
+  "insightTrendDown": {
+    "message": "▼ $DAYS$日前より $PCT$% 下落",
+    "placeholders": {
+      "pct": {
+        "content": "$1"
+      },
+      "days": {
+        "content": "$2"
+      }
+    }
+  },
+  "insightTrendUp": {
+    "message": "▲ $DAYS$日前より $PCT$% 上昇",
+    "placeholders": {
+      "pct": {
+        "content": "$1"
+      },
+      "days": {
+        "content": "$2"
+      }
+    }
+  },
+  "insightTrendFlat": {
+    "message": "≈ $DAYS$日前から変化なし",
+    "placeholders": {
+      "days": {
+        "content": "$1"
+      }
+    }
+  },
+  "insightRecordedSince": {
+    "message": "$DATE$ からブラウザが記録した価格",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "metacriticTitle": {
+    "message": "Metacritic (PC): $SCORE$/100",
+    "placeholders": {
+      "score": {
+        "content": "$1"
+      }
+    }
+  },
+  "steamRatingTitle": {
+    "message": "Steam: 好評 $PCT$% (レビュー$COUNT$件)",
+    "placeholders": {
+      "pct": {
+        "content": "$1"
+      },
+      "count": {
+        "content": "$2"
+      }
+    }
+  },
+  "completionistScoreLabel": {
+    "message": "コンプ難易度"
+  },
+  "tier_quick": {
+    "message": "サクッと"
+  },
+  "tier_moderate": {
+    "message": "標準"
+  },
+  "tier_demanding": {
+    "message": "やりごたえ大"
+  },
+  "tier_grind": {
+    "message": "超長丁場"
+  },
+  "pricePerHourLine": {
+    "message": "≈ 1時間あたり $PRICE$ (PC最安値で計算)",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "similarOwnedLine": {
+    "message": "ライブラリ内の似た難易度: $GAMES$",
+    "placeholders": {
+      "games": {
+        "content": "$1"
+      }
+    }
+  },
+  "rarestRemainingLine": {
+    "message": "未取得で最もレアなトロフィー: $TROPHY$",
+    "placeholders": {
+      "trophy": {
+        "content": "$1"
+      }
+    }
+  },
+  "saleNow": {
+    "message": "$SALE$ は例年このころ開催されます",
+    "placeholders": {
+      "sale": {
+        "content": "$1"
+      }
+    }
+  },
+  "saleSoon": {
+    "message": "$SALE$ は例年 $DATE$ ごろ開始 ($DAYS$日後)",
+    "placeholders": {
+      "sale": {
+        "content": "$1"
+      },
+      "date": {
+        "content": "$2"
+      },
+      "days": {
+        "content": "$3"
+      }
+    }
+  },
+  "shareDealBtn": {
+    "message": "このお得情報を画像で共有"
+  },
+  "shareDealFooter": {
+    "message": "PS Store Enhancer · PC価格: CheapShark"
+  },
+  "acOwnedBadge": {
+    "message": "所持済み"
+  },
+  "acWishlistBadge": {
+    "message": "ウィッシュリスト登録済み"
+  },
+  "wishlistPercentDropBody": {
+    "message": "$NAME$ がPCで $PCT$% オフ ($PRICE$)",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      },
+      "pct": {
+        "content": "$2"
+      },
+      "price": {
+        "content": "$3"
+      }
+    }
+  },
+  "wishlistDigestTitle": {
+    "message": "ウィッシュリスト週間まとめ"
+  },
+  "wishlistDigestBody": {
+    "message": "ウィッシュリストのお得情報 $COUNT$ 件: $NAMES$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      },
+      "names": {
+        "content": "$2"
+      }
+    }
+  },
+  "cardsTitle": {
+    "message": "商品ページのカード"
+  },
+  "cardsDesc": {
+    "message": "ゲームページに表示するカードとその順番を選びます。"
+  },
+  "cardsCollapsedLabel": {
+    "message": "最初は折りたたむ"
+  },
+  "cardsCollapsedDesc": {
+    "message": "1行の要約を表示し、クリックで展開します"
+  },
+  "cardPriceInsight": {
+    "message": "価格インサイト"
+  },
+  "cardCrossPlatform": {
+    "message": "クロスプラットフォーム価格"
+  },
+  "cardTrophies": {
+    "message": "コンプリート情報"
+  },
+  "cardMoveUp": {
+    "message": "上へ移動"
+  },
+  "cardMoveDown": {
+    "message": "下へ移動"
+  },
+  "trophyRarityToggle": {
+    "message": "トロフィーのレア度 (実験的)"
+  },
+  "trophyRarityDesc": {
+    "message": "未取得で最もレアなトロフィーを表示します。PSNアカウントの接続が必要で、すべてのアカウントでの動作確認はまだです。"
+  },
+  "searchShortcutToggle": {
+    "message": "「/」で検索にフォーカス"
+  },
+  "searchShortcutDesc": {
+    "message": "ストア内のどこでも / を押すと検索ボックスに移動します"
+  },
+  "themeContrast": {
+    "message": "ハイコントラスト"
+  },
+  "diagTitle": {
+    "message": "診断"
+  },
+  "diagDesc": {
+    "message": "API呼び出しとPSN接続の直近のイベントを、この端末内にのみ保存します。トークンやパスワードは記録されません。不具合報告の際にコピーしてください。"
+  },
+  "diagRefresh": {
+    "message": "🔄 更新"
+  },
+  "diagCopy": {
+    "message": "📋 コピー"
+  },
+  "diagClear": {
+    "message": "🗑 ログを消去"
+  },
+  "diagEmpty": {
+    "message": "まだイベントは記録されていません。"
+  },
+  "diagCopied": {
+    "message": "診断をコピーしました"
+  },
+  "privacyTitle": {
+    "message": "あなたのデータ"
+  },
+  "wipeDesc": {
+    "message": "PSNを切断し、この端末に保存された全データ(ウィッシュリスト、所持ゲーム、キャッシュ、記録した価格、診断ログ)を消去します。設定は保持されます。"
+  },
+  "wipeBtn": {
+    "message": "すべてのデータを消去"
+  },
+  "popupWipe": {
+    "message": "すべてのデータを消去"
+  },
+  "wipeConfirm": {
+    "message": "PSNを切断し、この端末に保存された全データ(ウィッシュリスト、所持ゲーム、キャッシュ、価格、診断)を消去しますか? 設定は保持されます。元に戻せません。"
+  },
+  "wipeDone": {
+    "message": "すべてのデータを消去しました"
+  },
+  "wishlistFilterPlaceholder": {
+    "message": "ウィッシュリストを絞り込み…"
+  },
+  "wishlistSortLabel": {
+    "message": "ウィッシュリストを並べ替え"
+  },
+  "sortAdded": {
+    "message": "新しい順"
+  },
+  "sortName": {
+    "message": "名前"
+  },
+  "sortPrice": {
+    "message": "価格が安い順"
+  },
+  "sortDiscount": {
+    "message": "割引率が高い順"
+  },
+  "wishlistNotePlaceholder": {
+    "message": "メモ (例: 〜へのプレゼント)"
+  },
+  "targetModePrice": {
+    "message": "価格 ($)"
+  },
+  "targetModePercent": {
+    "message": "% オフ"
+  },
+  "psPriceSeen": {
+    "message": "確認したPS Store価格: $PRICE$ ($DATE$)",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      },
+      "date": {
+        "content": "$2"
+      }
+    }
+  },
+  "wlCountFmt": {
+    "message": "$COUNT$ 本",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "ownCountFmt": {
+    "message": "合計 $TOTAL$ 本 (PSN $PSN$、手動 $MANUAL$)",
+    "placeholders": {
+      "total": {
+        "content": "$1"
+      },
+      "psn": {
+        "content": "$2"
+      },
+      "manual": {
+        "content": "$3"
+      }
+    }
+  },
+  "removeTitle": {
+    "message": "削除"
+  },
+  "psnTotal": {
+    "message": "合計"
+  },
+  "digestTitle": {
+    "message": "通知の方法"
+  },
+  "digestDesc": {
+    "message": "お得情報ごとに通知、または週1回のまとめ通知"
+  },
+  "digestInstant": {
+    "message": "すぐに"
+  },
+  "digestWeekly": {
+    "message": "週間まとめ"
+  },
+  "shareWishlistBtn": {
+    "message": "🔗 共有リンクをコピー"
+  },
+  "shareWishlistDesc": {
+    "message": "リンクにはゲーム名と最後に確認したPC価格のみが含まれ(目標価格やメモは含まれません)、閲覧専用です。リンクを知っている人は誰でも一覧を見られます。"
+  },
+  "shareWishlistCopied": {
+    "message": "共有リンクをコピーしました"
+  },
+  "psnEmptyToken": {
+    "message": "先にNPSSOトークンを貼り付けてください。"
+  },
+  "psnGrantAccessBtn": {
+    "message": "リダイレクトへのアクセスを許可して再試行"
+  },
+  "psnAccessGranted": {
+    "message": "許可されました。接続を再試行しています…"
+  },
+  "psnAccessDenied": {
+    "message": "許可されませんでした。許可がないと接続を完了できません。"
+  },
+  "psnErrNeedsRedirectAccess": {
+    "message": "ChromeはSonyのサインイン時のリダイレクトを拡張機能から隠します。読み取るためにオプションの「webRequest」権限を許可して、もう一度お試しください。"
+  },
+  "popupRefresh": {
+    "message": "PSNライブラリを更新"
+  },
+  "popupSyncedAgo": {
+    "message": "同期: $WHEN$",
+    "placeholders": {
+      "when": {
+        "content": "$1"
+      }
+    }
+  },
+  "chipPsn": {
+    "message": "PSN"
+  },
+  "chipScores": {
+    "message": "スコア"
+  },
+  "chipPrices": {
+    "message": "価格"
+  },
+  "chipCompare": {
+    "message": "比較"
+  },
+  "chipTrophies": {
+    "message": "トロフィー"
+  },
+  "chipFilter": {
+    "message": "フィルター"
+  },
+  "tourTitle": {
+    "message": "クイックツアー"
+  },
+  "tourStepInsight": {
+    "message": "このゲームのPC実際の過去最安値と本日の最安値、そしてあなたが記録した推移です。"
+  },
+  "tourStepCompare": {
+    "message": "同じゲームのSteam・Epic・GOGなどでの価格です。行をクリックするとストアが開きます。"
+  },
+  "tourStepTrophies": {
+    "message": "プラチナの難しさと所要時間、PSNに接続していれば進捗も表示されます。"
+  },
+  "tourStepWishlist": {
+    "message": "ウィッシュリストに追加すると、値下がり時に通知されます。"
+  },
+  "tourNext": {
+    "message": "次へ"
+  },
+  "tourSkip": {
+    "message": "スキップ"
+  },
+  "tourDone": {
+    "message": "わかった"
+  },
+  "rateNudgeText": {
+    "message": "PS Store Enhancerを気に入っていただけましたか? 短いレビューが他のプレイヤーの目に留まる助けになります。"
+  },
+  "rateNudgeBtn": {
+    "message": "レビューを書く"
+  },
+  "rateNudgeDismiss": {
+    "message": "結構です"
+  },
+  "chl_2_7_0_1": {
+    "message": "🎯 クロスプラットフォーム価格が正確に — DLCやマップ、続編ではなく、正しいゲームだけ"
+  },
+  "chl_2_7_0_2": {
+    "message": "📊 Metacritic・SteamのスコアをCheapSharkから取得 (OpenCriticはAPIキーが必須になり動作しなくなっていました)"
+  },
+  "chl_2_7_0_3": {
+    "message": "📉 価格インサイトは実データのみ使用: PC過去最安値、本日の最安値、記録した推移"
+  },
+  "chl_2_7_0_4": {
+    "message": "🛠 診断ログ、より安全なPSNサインイン、割引率での目標設定、メモ、並べ替え、週間まとめ、「すべてのデータを消去」ボタン"
+  },
+  "chl_2_7_0_5": {
+    "message": "🧩 商品ページのカードを並べ替え・非表示・折りたたみ可能に。新しいハイコントラストテーマ"
+  },
+  "chl_2_7_0_6": {
+    "message": "🌍 新たに6言語に対応: Italiano、Polski、Türkçe、Nederlands、简体中文、繁體中文"
   }
 }

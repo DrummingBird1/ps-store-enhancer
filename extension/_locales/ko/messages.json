@@ -3,7 +3,7 @@
     "message": "PS Store Enhancer"
   },
   "extDesc": {
-    "message": "PlayStation Store용 가격 이력, 크로스 플랫폼 비교, 리뷰 점수, 트로피 정보, 스마트 필터. PSN 동기화는 선택 사항."
+    "message": "PlayStation Store용 역대 최저가, 플랫폼 가격 비교, 리뷰 점수, 트로피 정보, 스마트 필터. PSN 동기화는 선택 사항."
   },
   "psnAccount": {
     "message": "PSN 계정"
@@ -40,9 +40,6 @@
   },
   "psnConnect": {
     "message": "연결"
-  },
-  "psnConnecting": {
-    "message": "연결 중..."
   },
   "psnSyncNow": {
     "message": "지금 동기화"
@@ -128,16 +125,16 @@
     "message": "활성 기능"
   },
   "metacriticToggle": {
-    "message": "OpenCritic / Metacritic 점수"
+    "message": "리뷰 점수 (Metacritic / Steam)"
   },
   "metacriticDesc": {
-    "message": "게임 제목 옆 점수 배지"
+    "message": "게임 제목 옆에 점수 배지 표시"
   },
   "priceHistoryToggle": {
-    "message": "가격 이력 + 차트"
+    "message": "가격 인사이트"
   },
   "priceHistoryDesc": {
-    "message": "Sparkline 및 PSPrices 링크"
+    "message": "PC 실제 역대 최저가, 최저가 근접 표시, 브라우저가 기록한 가격 추이"
   },
   "crossPlatformToggle": {
     "message": "크로스 플랫폼 가격 비교"
@@ -227,10 +224,10 @@
     }
   },
   "priceHistory": {
-    "message": "가격 이력"
+    "message": "가격 인사이트"
   },
   "cheapestEver": {
-    "message": "역대 최저가:"
+    "message": "PC 역대 최저가:"
   },
   "viewFullHistory": {
     "message": "PSPrices에서 전체 이력 보기 →"
@@ -277,9 +274,6 @@
   "iOwnThis": {
     "message": "이 게임을 소유하고 있습니다"
   },
-  "settingsTitle": {
-    "message": "고급 설정"
-  },
   "settingsSubtitle": {
     "message": "고급 설정 · PSN 계정 · 게임 관리"
   },
@@ -291,9 +285,6 @@
   },
   "saved": {
     "message": "저장됨 ✓"
-  },
-  "psnConnected": {
-    "message": "연결됨"
   },
   "psnWait30": {
     "message": "동기화 사이에 30초를 기다려주세요"
@@ -320,10 +311,10 @@
     "message": "PlayStation™ Store가 더 좋아졌습니다."
   },
   "welcomeFeature1Title": {
-    "message": "가격 이력 및 비교"
+    "message": "실제 가격과 비교"
   },
   "welcomeFeature1Desc": {
-    "message": "가격 차트와 Steam, Epic, GOG 등과의 가격 비교."
+    "message": "역대 최저가를 확인하고 Steam, Epic, GOG 등에서 같은 게임 가격을 비교하세요."
   },
   "welcomeFeature2Title": {
     "message": "PSN 라이브러리 동기화 (선택 사항)"
@@ -335,7 +326,7 @@
     "message": "점수 및 트로피"
   },
   "welcomeFeature3Desc": {
-    "message": "제품 페이지에서 직접 Metacritic 점수와 컴플리티스트 정보 확인."
+    "message": "Metacritic·Steam 점수와 컴플리티스트 정보를 상품 페이지에 바로 표시합니다."
   },
   "welcomeFeature4Title": {
     "message": "스마트 필터"
@@ -348,15 +339,6 @@
   },
   "welcomeNote": {
     "message": "팁: 도구 모음의 확장 프로그램 아이콘을 클릭하여 필터를 빠르게 제어하세요."
-  },
-  "errorApiUnavailable": {
-    "message": "데이터를 로드할 수 없습니다. 나중에 다시 시도하세요."
-  },
-  "errorPriceUnavailable": {
-    "message": "가격 데이터 이용 불가"
-  },
-  "errorScoreUnavailable": {
-    "message": "점수 이용 불가"
   },
   "psnErrTokenShort": {
     "message": "NPSSO 토큰이 없거나 너무 짧습니다"
@@ -375,9 +357,6 @@
   },
   "genericError": {
     "message": "오류가 발생했습니다"
-  },
-  "priceHistoryEstimated": {
-    "message": "추정 기록"
   },
   "crossPlatformUSD": {
     "message": "가격은 USD"
@@ -398,7 +377,7 @@
     "message": "게임을 추적하고 가격이 목표 이하로 떨어지면 알림을 받으세요."
   },
   "wishlistPcOnlyNote": {
-    "message": "참고: 알림은 CheapShark의 크로스 플랫폼 PC 가격(Steam/Epic/GOG, USD)을 사용합니다. PSN 전용 가격은 추적되지 않습니다."
+    "message": "참고: 알림은 CheapShark의 PC 최저가(Steam/Epic/GOG, USD)를 기준으로 합니다. PS Store 가격은 게임 페이지를 방문할 때만 표시됩니다."
   },
   "hltbLink": {
     "message": "HowLongToBeat에서 플레이 시간 보기 →"
@@ -412,23 +391,14 @@
   "wishlistInBtn": {
     "message": "★ 위시리스트에 있음 (클릭하여 제거)"
   },
-  "wishlistTargetLabel": {
-    "message": "목표 가격 (USD)"
-  },
-  "wishlistAdded": {
-    "message": "위시리스트에 추가됨"
-  },
   "wishlistRemoved": {
     "message": "위시리스트에서 제거됨"
-  },
-  "wishlistAlreadyAdded": {
-    "message": "이미 위시리스트에 있습니다"
   },
   "wishlistPriceDropTitle": {
     "message": "🎯 가격 인하 알림!"
   },
   "wishlistPriceDropBody": {
-    "message": "$NAME$ 이(가) 현재 $NEW$ (이전 $OLD$)",
+    "message": "$NAME$ PC 가격이 $NEW$(으)로 내려갔습니다 (이전 $OLD$)",
     "placeholders": {
       "name": {
         "content": "$1"
@@ -508,7 +478,7 @@
     "message": "내보냄"
   },
   "importSuccess": {
-    "message": "$COUNT$ 게임 가져옴",
+    "message": "$COUNT$개 항목을 가져왔습니다",
     "placeholders": {
       "count": {
         "content": "$1"
@@ -517,9 +487,6 @@
   },
   "importFailed": {
     "message": "가져오기 실패 — 잘못된 파일"
-  },
-  "changelogTitle": {
-    "message": "새로운 기능"
   },
   "viewChangelog": {
     "message": "변경 로그 보기 →"
@@ -534,27 +501,16 @@
     "message": "GitHub 소스 코드"
   },
   "linkCredits": {
-    "message": "데이터: CheapShark · OpenCritic · PSPrices · PSNProfiles"
+    "message": "데이터: CheapShark (가격, Metacritic·Steam 평가) · Frankfurter · PSPrices · PSNProfiles"
   },
   "errorApiDown": {
     "message": "서비스를 일시적으로 사용할 수 없습니다. 나중에 다시 시도하세요."
-  },
-  "regionAutoDetected": {
-    "message": "지역 자동 감지됨: $REGION$",
-    "placeholders": {
-      "region": {
-        "content": "$1"
-      }
-    }
-  },
-  "libraryCapWarning": {
-    "message": "PSN 라이브러리에 5000개 이상의 타이틀이 있습니다 — 처음 5000개만 동기화되었습니다."
   },
   "searchAutocompleteToggle": {
     "message": "실시간 검색 제안"
   },
   "searchAutocompleteDesc": {
-    "message": "스토어 검색창에 입력하는 동안 가격과 평점 미리보기"
+    "message": "스토어 검색창에 입력하면 가격 미리보기 표시"
   },
   "autocompleteBadge": {
     "message": "PS Store Enhancer 실시간 결과"
@@ -597,7 +553,7 @@
     "message": "구매 가능한 할인"
   },
   "statsNote": {
-    "message": "위시리스트 가치는 마지막으로 확인된 크로스 플랫폼 가격(USD)의 합계입니다. 매일 업데이트되거나 아래의 \"지금 가격 확인\"을 통해 업데이트됩니다."
+    "message": "위시리스트 가치는 마지막으로 확인한 PC 최저가(USD)의 합계이며 PS Store 가격이 아닙니다. 매일 또는 아래 '지금 가격 확인'으로 갱신됩니다."
   },
   "crossPlatformEditionNote": {
     "message": "이 항목은 $EDITION$ 에디션 가격입니다 — 기본판과 가격이 다를 수 있습니다",
@@ -609,5 +565,441 @@
   },
   "supportCoffee": {
     "message": "커피"
+  },
+  "noPcData": {
+    "message": "이 타이틀의 PC 가격 정보를 찾지 못했습니다. PlayStation 독점작일 수 있습니다."
+  },
+  "insightPcLabel": {
+    "message": "PC · CheapShark"
+  },
+  "insightCheapestNow": {
+    "message": "현재 최저가"
+  },
+  "insightAtLow": {
+    "message": "역대 최저가와 동일"
+  },
+  "insightNearLow": {
+    "message": "역대 최저가에 근접"
+  },
+  "insightTrendDown": {
+    "message": "▼ $DAYS$일 전 대비 $PCT$% 하락",
+    "placeholders": {
+      "pct": {
+        "content": "$1"
+      },
+      "days": {
+        "content": "$2"
+      }
+    }
+  },
+  "insightTrendUp": {
+    "message": "▲ $DAYS$일 전 대비 $PCT$% 상승",
+    "placeholders": {
+      "pct": {
+        "content": "$1"
+      },
+      "days": {
+        "content": "$2"
+      }
+    }
+  },
+  "insightTrendFlat": {
+    "message": "≈ $DAYS$일 전과 동일",
+    "placeholders": {
+      "days": {
+        "content": "$1"
+      }
+    }
+  },
+  "insightRecordedSince": {
+    "message": "$DATE$부터 브라우저가 기록한 가격",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "metacriticTitle": {
+    "message": "Metacritic (PC): $SCORE$/100",
+    "placeholders": {
+      "score": {
+        "content": "$1"
+      }
+    }
+  },
+  "steamRatingTitle": {
+    "message": "Steam: 긍정 $PCT$% (리뷰 $COUNT$개)",
+    "placeholders": {
+      "pct": {
+        "content": "$1"
+      },
+      "count": {
+        "content": "$2"
+      }
+    }
+  },
+  "completionistScoreLabel": {
+    "message": "컴플리트 난이도"
+  },
+  "tier_quick": {
+    "message": "빠른 달성"
+  },
+  "tier_moderate": {
+    "message": "보통"
+  },
+  "tier_demanding": {
+    "message": "까다로움"
+  },
+  "tier_grind": {
+    "message": "엄청난 노가다"
+  },
+  "pricePerHourLine": {
+    "message": "≈ 시간당 $PRICE$ (PC 최저가 기준)",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "similarOwnedLine": {
+    "message": "라이브러리의 비슷한 난이도: $GAMES$",
+    "placeholders": {
+      "games": {
+        "content": "$1"
+      }
+    }
+  },
+  "rarestRemainingLine": {
+    "message": "남은 트로피 중 가장 희귀: $TROPHY$",
+    "placeholders": {
+      "trophy": {
+        "content": "$1"
+      }
+    }
+  },
+  "saleNow": {
+    "message": "$SALE$ 은(는) 보통 이 시기에 열립니다",
+    "placeholders": {
+      "sale": {
+        "content": "$1"
+      }
+    }
+  },
+  "saleSoon": {
+    "message": "$SALE$ 은(는) 보통 $DATE$ 무렵 시작 ($DAYS$일 후)",
+    "placeholders": {
+      "sale": {
+        "content": "$1"
+      },
+      "date": {
+        "content": "$2"
+      },
+      "days": {
+        "content": "$3"
+      }
+    }
+  },
+  "shareDealBtn": {
+    "message": "이 할인 정보를 이미지로 공유"
+  },
+  "shareDealFooter": {
+    "message": "PS Store Enhancer · PC 가격 출처: CheapShark"
+  },
+  "acOwnedBadge": {
+    "message": "보유 중"
+  },
+  "acWishlistBadge": {
+    "message": "위시리스트에 있음"
+  },
+  "wishlistPercentDropBody": {
+    "message": "$NAME$ PC 가격 $PCT$% 할인 ($PRICE$)",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      },
+      "pct": {
+        "content": "$2"
+      },
+      "price": {
+        "content": "$3"
+      }
+    }
+  },
+  "wishlistDigestTitle": {
+    "message": "주간 위시리스트 요약"
+  },
+  "wishlistDigestBody": {
+    "message": "위시리스트 할인 $COUNT$건: $NAMES$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      },
+      "names": {
+        "content": "$2"
+      }
+    }
+  },
+  "cardsTitle": {
+    "message": "상품 페이지 카드"
+  },
+  "cardsDesc": {
+    "message": "게임 페이지에 표시할 카드와 순서를 선택하세요."
+  },
+  "cardsCollapsedLabel": {
+    "message": "접힌 상태로 시작"
+  },
+  "cardsCollapsedDesc": {
+    "message": "한 줄 요약만 표시하고 클릭하면 펼칩니다"
+  },
+  "cardPriceInsight": {
+    "message": "가격 인사이트"
+  },
+  "cardCrossPlatform": {
+    "message": "플랫폼별 가격"
+  },
+  "cardTrophies": {
+    "message": "컴플리티스트 정보"
+  },
+  "cardMoveUp": {
+    "message": "위로 이동"
+  },
+  "cardMoveDown": {
+    "message": "아래로 이동"
+  },
+  "trophyRarityToggle": {
+    "message": "트로피 희귀도 (실험적)"
+  },
+  "trophyRarityDesc": {
+    "message": "남은 트로피 중 가장 희귀한 것을 표시합니다. PSN 계정 연결이 필요하며 모든 계정에서 검증되지는 않았습니다."
+  },
+  "searchShortcutToggle": {
+    "message": "'/' 키로 검색창 이동"
+  },
+  "searchShortcutDesc": {
+    "message": "스토어 어디서나 / 키를 누르면 검색창으로 이동합니다"
+  },
+  "themeContrast": {
+    "message": "고대비"
+  },
+  "diagTitle": {
+    "message": "진단"
+  },
+  "diagDesc": {
+    "message": "API 호출과 PSN 연결의 최근 이벤트이며 이 기기에만 저장됩니다. 토큰과 비밀번호는 기록되지 않습니다. 문제를 신고할 때 복사해 주세요."
+  },
+  "diagRefresh": {
+    "message": "🔄 새로고침"
+  },
+  "diagCopy": {
+    "message": "📋 복사"
+  },
+  "diagClear": {
+    "message": "🗑 로그 지우기"
+  },
+  "diagEmpty": {
+    "message": "아직 기록된 이벤트가 없습니다."
+  },
+  "diagCopied": {
+    "message": "진단 정보를 복사했습니다"
+  },
+  "privacyTitle": {
+    "message": "내 데이터"
+  },
+  "wipeDesc": {
+    "message": "PSN 연결을 해제하고 이 기기에 저장된 모든 데이터(위시리스트, 보유 게임, 캐시, 기록된 가격, 진단 로그)를 지웁니다. 설정은 유지됩니다."
+  },
+  "wipeBtn": {
+    "message": "내 데이터 모두 삭제"
+  },
+  "popupWipe": {
+    "message": "내 데이터 모두 삭제"
+  },
+  "wipeConfirm": {
+    "message": "PSN 연결을 해제하고 이 기기에 저장된 모든 데이터(위시리스트, 보유 게임, 캐시, 가격, 진단)를 지울까요? 설정은 유지됩니다. 되돌릴 수 없습니다."
+  },
+  "wipeDone": {
+    "message": "모든 데이터를 삭제했습니다"
+  },
+  "wishlistFilterPlaceholder": {
+    "message": "위시리스트 필터…"
+  },
+  "wishlistSortLabel": {
+    "message": "위시리스트 정렬"
+  },
+  "sortAdded": {
+    "message": "최신순"
+  },
+  "sortName": {
+    "message": "이름"
+  },
+  "sortPrice": {
+    "message": "낮은 가격순"
+  },
+  "sortDiscount": {
+    "message": "할인율 높은순"
+  },
+  "wishlistNotePlaceholder": {
+    "message": "메모 (예: ~에게 선물)"
+  },
+  "targetModePrice": {
+    "message": "가격 ($)"
+  },
+  "targetModePercent": {
+    "message": "% 할인"
+  },
+  "psPriceSeen": {
+    "message": "확인한 PS Store 가격: $PRICE$ ($DATE$)",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      },
+      "date": {
+        "content": "$2"
+      }
+    }
+  },
+  "wlCountFmt": {
+    "message": "게임 $COUNT$개",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "ownCountFmt": {
+    "message": "총 $TOTAL$개 (PSN $PSN$, 수동 $MANUAL$)",
+    "placeholders": {
+      "total": {
+        "content": "$1"
+      },
+      "psn": {
+        "content": "$2"
+      },
+      "manual": {
+        "content": "$3"
+      }
+    }
+  },
+  "removeTitle": {
+    "message": "삭제"
+  },
+  "psnTotal": {
+    "message": "전체"
+  },
+  "digestTitle": {
+    "message": "알림 방식"
+  },
+  "digestDesc": {
+    "message": "할인마다 알림 또는 주 1회 요약"
+  },
+  "digestInstant": {
+    "message": "즉시"
+  },
+  "digestWeekly": {
+    "message": "주간 요약"
+  },
+  "shareWishlistBtn": {
+    "message": "🔗 공유 링크 복사"
+  },
+  "shareWishlistDesc": {
+    "message": "링크에는 게임 이름과 마지막으로 확인한 PC 가격만 포함되며(목표가·메모 제외) 읽기 전용입니다. 링크가 있는 사람은 누구나 목록을 볼 수 있습니다."
+  },
+  "shareWishlistCopied": {
+    "message": "공유 링크를 복사했습니다"
+  },
+  "psnEmptyToken": {
+    "message": "먼저 NPSSO 토큰을 붙여넣으세요."
+  },
+  "psnGrantAccessBtn": {
+    "message": "리디렉션 접근을 허용하고 다시 시도"
+  },
+  "psnAccessGranted": {
+    "message": "권한이 허용되었습니다 — 연결을 다시 시도합니다…"
+  },
+  "psnAccessDenied": {
+    "message": "권한이 허용되지 않았습니다. 권한 없이는 연결을 완료할 수 없습니다."
+  },
+  "psnErrNeedsRedirectAccess": {
+    "message": "Chrome은 Sony 로그인 리디렉션을 확장 프로그램에서 숨깁니다. 이를 읽을 수 있도록 선택 권한 'webRequest'를 허용한 뒤 다시 시도하세요."
+  },
+  "popupRefresh": {
+    "message": "PSN 라이브러리 새로고침"
+  },
+  "popupSyncedAgo": {
+    "message": "동기화: $WHEN$",
+    "placeholders": {
+      "when": {
+        "content": "$1"
+      }
+    }
+  },
+  "chipPsn": {
+    "message": "PSN"
+  },
+  "chipScores": {
+    "message": "점수"
+  },
+  "chipPrices": {
+    "message": "가격"
+  },
+  "chipCompare": {
+    "message": "비교"
+  },
+  "chipTrophies": {
+    "message": "트로피"
+  },
+  "chipFilter": {
+    "message": "필터"
+  },
+  "tourTitle": {
+    "message": "빠른 둘러보기"
+  },
+  "tourStepInsight": {
+    "message": "이 게임의 PC 실제 역대 최저가와 오늘의 최저가, 그리고 내가 기록한 추이입니다."
+  },
+  "tourStepCompare": {
+    "message": "Steam, Epic, GOG 등에서의 같은 게임 가격입니다. 줄을 클릭하면 스토어가 열립니다."
+  },
+  "tourStepTrophies": {
+    "message": "플래티넘 난이도와 소요 시간, PSN에 연결했다면 진행률도 표시됩니다."
+  },
+  "tourStepWishlist": {
+    "message": "위시리스트에 추가하면 가격이 내려갈 때 알림을 받습니다."
+  },
+  "tourNext": {
+    "message": "다음"
+  },
+  "tourSkip": {
+    "message": "건너뛰기"
+  },
+  "tourDone": {
+    "message": "확인"
+  },
+  "rateNudgeText": {
+    "message": "PS Store Enhancer가 마음에 드시나요? 짧은 리뷰가 다른 플레이어가 찾는 데 도움이 됩니다."
+  },
+  "rateNudgeBtn": {
+    "message": "리뷰 남기기"
+  },
+  "rateNudgeDismiss": {
+    "message": "괜찮아요"
+  },
+  "chl_2_7_0_1": {
+    "message": "🎯 정확한 플랫폼별 가격 — DLC나 맵, 속편이 아닌 바로 그 게임"
+  },
+  "chl_2_7_0_2": {
+    "message": "📊 CheapShark에서 Metacritic·Steam 점수 제공 (OpenCritic은 API 키가 필요해져 작동하지 않았습니다)"
+  },
+  "chl_2_7_0_3": {
+    "message": "📉 가격 인사이트는 실제 데이터만 사용: PC 역대 최저가, 오늘의 최저가, 내가 기록한 추이"
+  },
+  "chl_2_7_0_4": {
+    "message": "🛠 진단 로그, 더 안전한 PSN 로그인, % 목표, 메모, 정렬, 주간 요약, '내 데이터 모두 삭제' 버튼"
+  },
+  "chl_2_7_0_5": {
+    "message": "🧩 상품 페이지 카드를 순서 변경·숨김·접기 가능, 새로운 고대비 테마"
+  },
+  "chl_2_7_0_6": {
+    "message": "🌍 새 언어 6개: Italiano, Polski, Türkçe, Nederlands, 简体中文, 繁體中文"
   }
 }
