@@ -7,6 +7,8 @@
  * - Redirect handling: reads Sony's redirect Location directly; if Chrome hides it (opaque
  *   redirect) and the optional `webRequest` permission was granted, falls back to observing the
  *   redirect. Every step is written to the local diagnostics log (never any token value).
+ * - Token requests: made as Sony's PlayStation app (its client id + Basic client auth, JWT tokens),
+ *   exactly like the open-source psn-api project.
  * - Requests: one 401 → refresh-token → retry before giving up.
  * - Owned games: separate psn_owned vs manual_owned, merged on read.
  * - Disconnect: only removes PSN-sourced data, keeps manual data.
@@ -17,7 +19,10 @@ const PSN = (() => {
 
   const SONY_URL = "https://ca.account.sony.com";
   const AUTH_BASE = `${SONY_URL}/api/authz/v3/oauth`;
-  const CLIENT_ID = "09515159-7ef5-4e3d-8ddb-8385f52e599d";
+  const CLIENT_ID = "09515159-7237-4370-9b40-3806e67c0891";
+  // HTTP Basic credentials of that same client ("<client id>:<client secret>", base64) for the token
+  // endpoint. They identify Sony's PlayStation app, not the user, and are published by psn-api.
+  const CLIENT_AUTH = "Basic MDk1MTUxNTktNzIzNy00MzcwLTliNDAtMzgwNmU2N2MwODkxOnVjUGprYTV0bnRCMktxc1A=";
   const REDIRECT_URI = "com.scee.psxandroid.scecompcall://redirect";
   const SCOPE = "psn:mobile.v2.core psn:clientapp";
   const CODE_RE = /code=(v3\.[A-Za-z0-9_-]+)/;
@@ -253,16 +258,20 @@ const PSN = (() => {
     }
   }
 
-  async function exchangeCodeForTokens(code) {
-    const resp = await fetch(`${AUTH_BASE}/token`, {
+  /** POST to Sony's token endpoint as the PlayStation app (Basic client auth, JWT tokens). */
+  function tokenRequest(params) {
+    return fetch(`${AUTH_BASE}/token`, {
       method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({
-        code,
-        grant_type: "authorization_code",
-        redirect_uri: REDIRECT_URI,
-        client_id: CLIENT_ID
-      }).toString()
+      headers: { "Content-Type": "application/x-www-form-urlencoded", Authorization: CLIENT_AUTH },
+      body: new URLSearchParams({ ...params, token_format: "jwt" }).toString()
+    });
+  }
+
+  async function exchangeCodeForTokens(code) {
+    const resp = await tokenRequest({
+      code,
+      grant_type: "authorization_code",
+      redirect_uri: REDIRECT_URI
     });
     if (!resp.ok) {
       const errorCode = await sonyErrorCode(resp);
@@ -299,15 +308,10 @@ const PSN = (() => {
 
   async function refreshAccessToken(refreshToken) {
     try {
-      const resp = await fetch(`${AUTH_BASE}/token`, {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({
-          refresh_token: refreshToken,
-          grant_type: "refresh_token",
-          scope: SCOPE,
-          client_id: CLIENT_ID
-        }).toString()
+      const resp = await tokenRequest({
+        refresh_token: refreshToken,
+        grant_type: "refresh_token",
+        scope: SCOPE
       });
       if (!resp.ok) {
         log("refresh-failed", { status: resp.status });

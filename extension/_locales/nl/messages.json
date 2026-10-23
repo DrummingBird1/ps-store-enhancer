@@ -1001,5 +1001,11 @@
   },
   "chl_2_7_0_6": {
     "message": "🌍 Zes nieuwe talen: Italiano, Polski, Türkçe, Nederlands, 简体中文 en 繁體中文"
+  },
+  "chl_2_7_1_1": {
+    "message": "🔌 PSN-verbinding gerepareerd: de extensie gebruikte de verkeerde app-identiteit, waardoor Sony altijd weigerde"
+  },
+  "chl_2_7_1_2": {
+    "message": "🛠 Duidelijkere PSN-fouten die de mislukte stap noemen, en toegang met één klik als Chrome de omleiding van Sony verbergt"
   }
 }

@@ -110,7 +110,7 @@ contextMenus: Adds a right-click "Find on PS Store Enhancer" entry on store.play
 
 storage: Saves user preferences, cached API responses, owned-games list, wishlist, locally recorded prices and a small diagnostics log on the device.
 
-webRequest (OPTIONAL permission, requested at runtime only if needed): Used only when a user chooses to connect PSN and Chrome hides Sony's sign-in redirect from extensions; lets the extension observe that single redirect to read the authorization code. Never requested at install; nothing else uses it.
+webRequest (OPTIONAL permission, requested at runtime when a user clicks Connect for PSN): Used only to observe Sony's single sign-in redirect (restricted to ca.account.sony.com) and read the authorization code, because Chrome hides that redirect from extensions. Never requested at install; nothing else uses it.
 
 Host permissions:
 - store.playstation.com — content script injection

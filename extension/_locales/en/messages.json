@@ -1001,5 +1001,11 @@
   },
   "chl_2_7_0_6": {
     "message": "🌍 Six new languages: Italiano, Polski, Türkçe, Nederlands, 简体中文 and 繁體中文"
+  },
+  "chl_2_7_1_1": {
+    "message": "🔌 PSN connection fixed — the extension was using the wrong app identity, so Sony always refused it"
+  },
+  "chl_2_7_1_2": {
+    "message": "🛠 Clearer PSN errors that name the failing step, and one-click access when Chrome hides Sony's redirect"
   }
 }

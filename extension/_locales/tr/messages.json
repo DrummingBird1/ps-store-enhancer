@@ -1001,5 +1001,11 @@
   },
   "chl_2_7_0_6": {
     "message": "🌍 Altı yeni dil: Italiano, Polski, Türkçe, Nederlands, 简体中文 ve 繁體中文"
+  },
+  "chl_2_7_1_1": {
+    "message": "🔌 PSN bağlantısı düzeltildi — eklenti yanlış uygulama kimliği kullandığı için Sony her seferinde reddediyordu"
+  },
+  "chl_2_7_1_2": {
+    "message": "🛠 Başarısız adımı gösteren daha anlaşılır PSN hataları ve Chrome Sony yönlendirmesini gizlediğinde tek tıkla izin"
   }
 }

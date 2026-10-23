@@ -5,7 +5,7 @@
 <p align="center">Formerly GameDeals+, then PS Store Insight. Enhance your PlayStation™ Store experience with real lowest-ever prices, exact cross-platform comparison, Metacritic and Steam scores, trophy info, wishlist alerts, currency conversion, and smart filters — no invented data.</p>
 
 <p align="center">
-<img src="https://img.shields.io/badge/version-2.7.0-blue" alt="Version">
+<img src="https://img.shields.io/badge/version-2.7.1-blue" alt="Version">
 <img src="https://img.shields.io/badge/manifest-v3-green" alt="Manifest V3">
 <img src="https://img.shields.io/badge/languages-16-orange" alt="16 languages">
 <img src="https://img.shields.io/badge/license-MIT-brightgreen" alt="MIT License">
@@ -132,7 +132,7 @@ gamedeals-plus/
 
 Connecting your PSN account is **optional**. When connected:
 - Your game library syncs automatically every 2 hours
-- Owned games and DLCs are hidden from search results
+- Games from your PSN played-games list are treated as owned and hidden from search results (Sony does not list DLC there)
 - Trophy progress is shown on product pages
 
 **How to connect:**

@@ -1001,5 +1001,11 @@
   },
   "chl_2_7_0_6": {
     "message": "🌍 新增六种语言：Italiano、Polski、Türkçe、Nederlands、简体中文和繁體中文"
+  },
+  "chl_2_7_1_1": {
+    "message": "🔌 修复 PSN 连接 — 扩展使用了错误的应用身份，因此 Sony 一直拒绝连接"
+  },
+  "chl_2_7_1_2": {
+    "message": "🛠 更清晰的 PSN 错误提示（会指出失败的步骤），Chrome 隐藏 Sony 重定向时可一键授权"
   }
 }

@@ -1001,5 +1001,11 @@
   },
   "chl_2_7_0_6": {
     "message": "🌍 Sechs neue Sprachen: Italiano, Polski, Türkçe, Nederlands, 简体中文 und 繁體中文"
+  },
+  "chl_2_7_1_1": {
+    "message": "🔌 PSN-Verbindung repariert – die Erweiterung nutzte die falsche App-Identität, daher lehnte Sony sie immer ab"
+  },
+  "chl_2_7_1_2": {
+    "message": "🛠 Klarere PSN-Fehler, die den fehlgeschlagenen Schritt nennen, und Freigabe mit einem Klick, wenn Chrome Sonys Weiterleitung verbirgt"
   }
 }

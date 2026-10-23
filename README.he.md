@@ -6,7 +6,7 @@
 
 > לשעבר GameDeals+, ולאחר מכן PS Store Insight. שדרג את חוויית הקנייה שלך בחנות PlayStation™: מחירים נמוכים אמיתיים אי-פעם, השוואה מדויקת חוצת-פלטפורמות, ציוני Metacritic ו-Steam, סנכרון ספריית PSN, מידע על גביעים, ופילטרים חכמים — בלי נתונים מומצאים.
 
-![Version](https://img.shields.io/badge/version-2.7.0-blue)
+![Version](https://img.shields.io/badge/version-2.7.1-blue)
 ![Manifest](https://img.shields.io/badge/manifest-v3-green)
 ![Languages](https://img.shields.io/badge/languages-16-orange)
 ![License](https://img.shields.io/badge/license-MIT-brightgreen)

@@ -15,6 +15,8 @@ assets-pre-v2.6.0/                 What shipped from v2.3.0 through v2.5.0, befo
 assets-pre-v2.7.0/                 The v2.6.0 store screenshots, promo tiles and website
   screenshots/<lang>/              images — they pictured an estimated price chart, an
   promo/  docs/assets/             OpenCritic badge and "10 languages" (see its README)
+assets-pre-v2.7.1/                 The v2.7.0 popup screenshots (EN + HE), identical to the
+  screenshots/<lang>/              current ones apart from the "v2.7.0" in the popup header
 ```
 
 v2.2.1, v2.2.2, v2.2.3, and v2.3.0 aren't archived as zips because they predate this repo's

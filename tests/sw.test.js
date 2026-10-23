@@ -3,8 +3,18 @@ const path = require("path");
 const { createEnv, fixture, jsonResponse } = require("./support/sw-env");
 
 const SONY = "https://ca.account.sony.com";
+// What Sony's own PlayStation app sends (reference: the open-source psn-api project). The fake Sony
+// below rejects anything else the way the real one does, so a wrong client id or missing client
+// authentication can no longer pass the tests (v2.7.0 shipped exactly that bug).
+const REF_CLIENT_ID = "09515159-7237-4370-9b40-3806e67c0891";
+const REF_REDIRECT = "com.scee.psxandroid.scecompcall://redirect";
+const REF_BASIC = "Basic MDk1MTUxNTktNzIzNy00MzcwLTliNDAtMzgwNmU2N2MwODkxOnVjUGprYTV0bnRCMktxc1A=";
 const GOOD = "GOOD" + "x".repeat(56); // test-only token, accepted by the fake Sony below
 const BAD = "BAD" + "y".repeat(57);
+
+// The wishlist check really sleeps 150 ms between games; on a loaded CI runner or a cold jest cache
+// the default 5 s limit was occasionally exceeded.
+jest.setTimeout(20000);
 
 afterEach(() => jest.restoreAllMocks());
 
@@ -26,6 +36,12 @@ function fakeSony(env, opts = {}) {
     const u = new URL(url);
     if (u.hostname === "ca.account.sony.com") {
       if (u.pathname.endsWith("/authorize")) {
+        const q = u.searchParams;
+        if (q.get("client_id") !== REF_CLIENT_ID || q.get("redirect_uri") !== REF_REDIRECT || q.get("response_type") !== "code" ||
+            q.get("scope") !== "psn:mobile.v2.core psn:clientapp") {
+          state.rejectedAuthorize = (state.rejectedAuthorize || 0) + 1;
+          return jsonResponse({ error: "invalid_client" }, 400);
+        }
         if (opts.opaque) {
           return { ok: false, status: 0, type: "opaqueredirect", url: "", headers: { get: () => null }, json: async () => ({}), clone() { return this; }, text: async () => "" };
         }
@@ -36,6 +52,11 @@ function fakeSony(env, opts = {}) {
       if (u.pathname.endsWith("/token")) {
         state.tokenCalls++;
         const body = String(init.body || "");
+        const headers = init.headers || {};
+        if (headers.Authorization !== REF_BASIC) return jsonResponse({ error: "invalid_client" }, 401);
+        if (headers["Content-Type"] !== "application/x-www-form-urlencoded" || !body.includes("token_format=jwt")) {
+          return jsonResponse({ error: "invalid_request" }, 400);
+        }
         if (body.includes("grant_type=authorization_code") && body.includes("v3.TESTCODE")) {
           return jsonResponse({ access_token: "acc-1", refresh_token: "ref-1", expires_in: 3600 });
         }
@@ -318,6 +339,34 @@ describe("PSN", () => {
     expect(r.profile.onlineId).toBe("Tester");
     expect(env.getCookie(SONY, "npsso").value).toBe("REAL-USER-COOKIE"); // user's own cookie survived
     expect(env.stores.local.psn_access_token).toBe("acc-1");
+  });
+
+  test("identifies as Sony's PlayStation app at every step (client id, Basic auth, JWT tokens)", async () => {
+    const env = createEnv().loadServiceWorker();
+    const sony = fakeSony(env);
+    const init = {};
+    env.route((url, i) => { if (url.includes("/oauth/token")) init[new URLSearchParams(i.body).get("grant_type")] = i; return undefined; });
+    expect((await env.send({ type: "PSN_AUTHENTICATE", npsso: GOOD })).success).toBe(true);
+    expect(sony.rejectedAuthorize).toBeUndefined();
+    const authorize = new URL(env.fetchLog.find((u) => u.includes("/oauth/authorize")));
+    expect(authorize.searchParams.get("client_id")).toBe(REF_CLIENT_ID);
+    // authorization_code exchange
+    expect(init.authorization_code.headers.Authorization).toBe(REF_BASIC);
+    const body = new URLSearchParams(init.authorization_code.body);
+    expect(body.get("token_format")).toBe("jwt");
+    expect(body.get("redirect_uri")).toBe(REF_REDIRECT);
+    expect(body.get("code")).toBe("v3.TESTCODE");
+    // refresh exchange (expire the token so the next call refreshes)
+    await env.chrome.storage.local.set({ psn_token_expiry: 0 });
+    await self.PSN.getAccessToken();
+    expect(init.refresh_token.headers.Authorization).toBe(REF_BASIC);
+    expect(new URLSearchParams(init.refresh_token.body).get("token_format")).toBe("jwt");
+  });
+
+  test("the Basic credential is '<client id>:<secret>' for the same client the authorize step uses", () => {
+    const [id, secret] = Buffer.from(REF_BASIC.replace("Basic ", ""), "base64").toString().split(":");
+    expect(id).toBe(REF_CLIENT_ID);
+    expect(secret.length).toBeGreaterThanOrEqual(8);
   });
 
   test("a rejected token never leaves the bad cookie behind (and keeps the real one)", async () => {
