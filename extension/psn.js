@@ -23,6 +23,9 @@ const PSN = (() => {
   const CODE_RE = /code=(v3\.[A-Za-z0-9_-]+)/;
 
   const GAMELIST_URL = "https://m.np.playstation.com/api/gamelist/v2/users/me/titles";
+  // Only the category values Sony documents for this endpoint (as used by the psn-api project).
+  // It lists games the account has played; DLC and add-ons never appear in it.
+  const GAME_CATEGORIES = "ps4_game,ps5_native_game,pspc_game";
   const PROFILE_URL = "https://m.np.playstation.com/api/userProfile/v1/internal/users/me/profiles";
   const TROPHY_BASE = "https://m.np.playstation.com/api/trophy/v1";
   const TROPHY_URL = `${TROPHY_BASE}/users/me/trophyTitles`;
@@ -33,6 +36,17 @@ const PSN = (() => {
 
   let lastSyncTime = 0;
   const log = (event, details) => PSEDiag.log("psn", event, details);
+
+  /** Sony's short JSON error code (e.g. "invalid_client") — never a token — or null. */
+  async function sonyErrorCode(resp) {
+    try {
+      const body = await resp.clone().json();
+      const code = body && (body.error || body.error_code || body.code);
+      return code == null ? null : String(code).replace(/[^\w.-]/g, "").slice(0, 40) || null;
+    } catch {
+      return null;
+    }
+  }
 
   /* ════════════════════════════════════════════
    * COOKIE HYGIENE — never clobber the user's real Sony cookie
@@ -105,15 +119,18 @@ const PSN = (() => {
         log("auth-failed", { step: "authorize", reason: step.reason });
         return {
           success: false,
-          error: step.reason === "opaque-redirect" ? "psnErrNeedsRedirectAccess" : "psnErrAuthCode"
+          error: step.reason === "opaque-redirect" ? "psnErrNeedsRedirectAccess" : "psnErrAuthCode",
+          detail: `authorize/${step.reason}`
         };
       }
 
       // Step B — code → tokens
-      const tokens = await exchangeCodeForTokens(step.code);
+      const exchange = await exchangeCodeForTokens(step.code);
+      const tokens = exchange.tokens || {};
       if (!tokens.access_token) {
-        log("auth-failed", { step: "token", reason: "no-access-token" });
-        return { success: false, error: "psnErrAccessToken" };
+        const reason = `${exchange.status}${exchange.errorCode ? "-" + exchange.errorCode : ""}`;
+        log("auth-failed", { step: "token", reason });
+        return { success: false, error: "psnErrAccessToken", detail: `token/${reason}` };
       }
 
       await chrome.storage.local.set({
@@ -130,7 +147,7 @@ const PSN = (() => {
       return { success: true, profile };
     } catch (err) {
       log("auth-error", { message: err && err.message });
-      return { success: false, error: err.message };
+      return { success: false, error: err.message, detail: "network" };
     } finally {
       await restoreSonyCookie(previous);
     }
@@ -150,16 +167,30 @@ const PSN = (() => {
     });
     const url = `${AUTH_BASE}/authorize?${params}`;
 
-    // Optional fallback: observe the redirect (needs the optional `webRequest` permission).
+    // Optional fallback: observe the redirect (needs the optional `webRequest` permission). Both the
+    // 302 response headers and the redirect event are watched; whichever carries the code wins.
     let observed = null;
-    const wr = chrome.webRequest && chrome.webRequest.onBeforeRedirect;
-    const onRedirect = (d) => {
-      const m = String((d && d.redirectUrl) || "").match(CODE_RE);
+    const webRequest = chrome.webRequest;
+    const wr = webRequest && webRequest.onBeforeRedirect;
+    const grab = (value) => {
+      const m = String(value || "").match(CODE_RE);
       if (m) observed = m[1];
     };
+    const onRedirect = (d) => grab(d && d.redirectUrl);
+    const onHeaders = (d) => {
+      const h = ((d && d.responseHeaders) || []).find((x) => String(x && x.name).toLowerCase() === "location");
+      if (h) grab(h.value);
+    };
+    const filter = { urls: [`${SONY_URL}/*`] };
+    const attached = [];
     if (wr) {
       try {
-        wr.addListener(onRedirect, { urls: [`${SONY_URL}/*`] });
+        wr.addListener(onRedirect, filter);
+        attached.push(() => wr.removeListener(onRedirect));
+        if (webRequest.onHeadersReceived) {
+          webRequest.onHeadersReceived.addListener(onHeaders, filter, ["responseHeaders"]);
+          attached.push(() => webRequest.onHeadersReceived.removeListener(onHeaders));
+        }
         log("webrequest-listener", { attached: true });
       } catch (e) {
         log("webrequest-listener", { attached: false, message: e && e.message });
@@ -167,12 +198,14 @@ const PSN = (() => {
     }
 
     let opaque = false;
+    let reason = null; // why no code was found, for the Diagnostics log and the error detail
     try {
       // Attempt 1: redirect:"manual" — read the Location header directly when Chrome exposes it
       try {
         const resp = await fetch(url, { redirect: "manual", credentials: "include" });
         const loc = resp.headers.get("location") || "";
         opaque = resp.type === "opaqueredirect" || resp.status === 0;
+        const errorCode = resp.status >= 400 ? await sonyErrorCode(resp) : null;
         log("authorize-response", {
           type: resp.type,
           status: resp.status,
@@ -181,6 +214,8 @@ const PSN = (() => {
         });
         const m = loc.match(CODE_RE) || String(resp.url || "").match(CODE_RE);
         if (m) return { code: m[1] };
+        if (loc) reason = "login-redirect"; // Sony sent us to its sign-in page: the NPSSO is not valid
+        else if (resp.status >= 400) reason = `http-${resp.status}${errorCode ? "-" + errorCode : ""}`;
       } catch (e) {
         log("authorize-error", { mode: "manual", message: e && e.message });
       }
@@ -205,11 +240,12 @@ const PSN = (() => {
       }
       if (observed) return { code: observed };
 
-      return { code: null, reason: opaque && !wr ? "opaque-redirect" : "no-code" };
+      if (opaque) return { code: null, reason: wr ? "redirect-not-observed" : "opaque-redirect" };
+      return { code: null, reason: reason || "no-code" };
     } finally {
-      if (wr) {
+      for (const detach of attached) {
         try {
-          wr.removeListener(onRedirect);
+          detach();
         } catch {
           /* already gone */
         }
@@ -229,11 +265,11 @@ const PSN = (() => {
       }).toString()
     });
     if (!resp.ok) {
-      const t = await resp.text();
+      const errorCode = await sonyErrorCode(resp);
       log("token-exchange-failed", { status: resp.status });
-      throw new Error(`Token exchange failed (${resp.status}): ${t.substring(0, 200)}`);
+      return { tokens: null, status: resp.status, errorCode };
     }
-    return resp.json();
+    return { tokens: await resp.json(), status: resp.status, errorCode: null };
   }
 
   /* ════════════════════════════════════════════
@@ -328,7 +364,7 @@ const PSN = (() => {
       let pages = 0;
 
       while (hasMore) {
-        const url = `${GAMELIST_URL}?limit=${limit}&offset=${offset}&categories=ps4_game,ps5_native_game,ps4_nongame,ps5_native_nongame`;
+        const url = `${GAMELIST_URL}?limit=${limit}&offset=${offset}&categories=${GAME_CATEGORIES}`;
         const resp = await authedFetch(url);
         if (!resp) return { success: false, error: "psnErrNotConnected" };
         if (!resp.ok) {

@@ -325,7 +325,7 @@ describe("PSN", () => {
     fakeSony(env);
     env.setCookie(SONY, "npsso", "REAL-USER-COOKIE");
     const r = await env.send({ type: "PSN_AUTHENTICATE", npsso: BAD });
-    expect(r).toEqual({ success: false, error: "psnErrAuthCode" });
+    expect(r).toEqual({ success: false, error: "psnErrAuthCode", detail: "authorize/login-redirect" });
     expect(env.getCookie(SONY, "npsso").value).toBe("REAL-USER-COOKIE");
   });
 
@@ -348,7 +348,9 @@ describe("PSN", () => {
   test("opaque redirect without webRequest → asks for the optional permission", async () => {
     const env = createEnv().loadServiceWorker();
     fakeSony(env, { opaque: true });
-    expect(await env.send({ type: "PSN_AUTHENTICATE", npsso: GOOD })).toEqual({ success: false, error: "psnErrNeedsRedirectAccess" });
+    expect(await env.send({ type: "PSN_AUTHENTICATE", npsso: GOOD })).toEqual({
+      success: false, error: "psnErrNeedsRedirectAccess", detail: "authorize/opaque-redirect"
+    });
     const entries = await self.PSEDiag.get();
     expect(entries.some((e) => e.e === "authorize-response" && e.d.type === "opaqueredirect")).toBe(true);
   });
@@ -360,13 +362,63 @@ describe("PSN", () => {
     fakeSony(env, { opaque: true });
     env.route(async (url) => {
       if (url.includes("/authorize")) {
-        env.webRequestListeners.forEach((l) => l({ redirectUrl: "com.scee.psxandroid.scecompcall://redirect?code=v3.TESTCODE" }));
+        env.fireWebRequest("onBeforeRedirect", { redirectUrl: "com.scee.psxandroid.scecompcall://redirect?code=v3.TESTCODE" });
       }
       return undefined;
     });
     const r = await env.send({ type: "PSN_AUTHENTICATE", npsso: GOOD });
     expect(r.success).toBe(true);
-    expect(env.webRequestListeners.length).toBe(0); // listener removed again
+    expect(env.webRequestListeners.length).toBe(0); // listeners removed again
+  });
+
+  test("opaque redirect + webRequest permission → code read from the 302 response headers", async () => {
+    const env = createEnv();
+    env.enableWebRequest();
+    env.loadServiceWorker();
+    fakeSony(env, { opaque: true });
+    env.route(async (url) => {
+      if (url.includes("/authorize")) {
+        env.fireWebRequest("onHeadersReceived", {
+          responseHeaders: [{ name: "Content-Type", value: "text/html" }, { name: "Location", value: "com.scee.psxandroid.scecompcall://redirect/?code=v3.TESTCODE&cid=1" }]
+        });
+      }
+      return undefined;
+    });
+    expect((await env.send({ type: "PSN_AUTHENTICATE", npsso: GOOD })).success).toBe(true);
+    expect(env.webRequestListeners.length).toBe(0);
+  });
+
+  test("permission granted but Chrome still hides the redirect → says so instead of a vague failure", async () => {
+    const env = createEnv();
+    env.enableWebRequest();
+    env.loadServiceWorker();
+    fakeSony(env, { opaque: true });
+    expect(await env.send({ type: "PSN_AUTHENTICATE", npsso: GOOD })).toEqual({
+      success: false, error: "psnErrAuthCode", detail: "authorize/redirect-not-observed"
+    });
+    expect(env.webRequestListeners.length).toBe(0);
+  });
+
+  test("Sony rejecting the request at the authorize step reports its error code (never a token)", async () => {
+    const env = createEnv().loadServiceWorker();
+    fakeSony(env);
+    env.route((url) => (url.includes("/authorize") ? jsonResponse({ error: "invalid_client" }, 400) : undefined));
+    expect(await env.send({ type: "PSN_AUTHENTICATE", npsso: GOOD })).toEqual({
+      success: false, error: "psnErrAuthCode", detail: "authorize/http-400-invalid_client"
+    });
+    const log = await self.PSEDiag.get();
+    expect(log.find((e) => e.e === "authorize-response").d).toMatchObject({ status: 400 });
+    expect(log.find((e) => e.e === "auth-failed").d).toMatchObject({ step: "authorize", reason: "http-400-invalid_client" });
+  });
+
+  test("a failed token exchange reports the HTTP status and Sony's error code", async () => {
+    const env = createEnv().loadServiceWorker();
+    fakeSony(env);
+    env.route((url) => (url.includes("/oauth/token") ? jsonResponse({ error: "invalid_client", error_description: "Bad client credentials" }, 401) : undefined));
+    expect(await env.send({ type: "PSN_AUTHENTICATE", npsso: GOOD })).toEqual({
+      success: false, error: "psnErrAccessToken", detail: "token/401-invalid_client"
+    });
+    expect(env.getCookie(SONY, "npsso")).toBeNull(); // still cleaned up
   });
 
   test("library sync paginates, classifies and reports status; manual list survives disconnect", async () => {
@@ -377,6 +429,10 @@ describe("PSN", () => {
     const lib = await env.send({ type: "PSN_FETCH_LIBRARY" });
     expect(lib.success).toBe(true);
     expect(sony.gamelistCalls).toBe(2);
+    // Only the category values Sony documents for this endpoint — never the undocumented "*_nongame" ones
+    const listUrls = env.fetchLog.filter((u) => u.includes("/gamelist/"));
+    expect(listUrls.length).toBe(2);
+    for (const u of listUrls) expect(new URL(u).searchParams.get("categories")).toBe("ps4_game,ps5_native_game,pspc_game");
     const st = await env.send({ type: "PSN_STATUS" });
     expect(st).toMatchObject({ connected: true, gameCount: 130, libraryCount: 131 });
     expect((await env.send({ type: "GET_MERGED_OWNED" })).list).toContain("Hades");

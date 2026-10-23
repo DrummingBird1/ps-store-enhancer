@@ -120,12 +120,15 @@ function createEnv() {
     /** Register a fetch route: fn(url, init) → response | undefined (first match wins). */
     route(fn) { env.routes.unshift(fn); },
     enableWebRequest() {
-      chrome.webRequest = {
-        onBeforeRedirect: {
-          addListener: (fn) => webRequestListeners.push(fn),
-          removeListener: (fn) => { const i = webRequestListeners.indexOf(fn); if (i >= 0) webRequestListeners.splice(i, 1); }
-        }
-      };
+      const event = (name) => ({
+        addListener: (fn) => { fn.__event = name; webRequestListeners.push(fn); },
+        removeListener: (fn) => { const i = webRequestListeners.indexOf(fn); if (i >= 0) webRequestListeners.splice(i, 1); }
+      });
+      chrome.webRequest = { onBeforeRedirect: event("onBeforeRedirect"), onHeadersReceived: event("onHeadersReceived") };
+    },
+    /** Deliver a webRequest event to the listeners registered for it. */
+    fireWebRequest(name, details) {
+      webRequestListeners.filter((l) => l.__event === name).forEach((l) => l(details));
     },
     setCookie(url, name, value) { cookies.set(`${url}|${name}`, { name, value, path: "/", secure: true, httpOnly: true, hostOnly: true }); },
     getCookie(url, name) { return cookies.get(`${url}|${name}`) || null; },

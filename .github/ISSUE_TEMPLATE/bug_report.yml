@@ -63,6 +63,17 @@ body:
       required: false
 
   - type: textarea
+    id: diagnostics
+    attributes:
+      label: Diagnostics log
+      description: |
+        For PSN connection or price-data problems: open the extension's Settings → Diagnostics, click **Copy**, and paste it here.
+        It lists which step failed and why. It never contains tokens or passwords, and it stays on your device until you paste it.
+      render: text
+    validations:
+      required: false
+
+  - type: textarea
     id: console
     attributes:
       label: DevTools console output
