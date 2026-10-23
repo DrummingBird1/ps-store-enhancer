@@ -7,6 +7,50 @@ the popup/options pages.
 
 ---
 
+<a id="v2-7-1"></a>
+<img src="assets/badges/v2-7-1.png" width="120" align="right" alt="v2.7.1 — PSN fix">
+
+## v2.7.1 — PSN connection fix
+
+v2.7.1 is the first published build of the 2.7 series: it also contains everything from v2.7.0
+(summarized at the end of this section, in full below), which was never released on its own.
+
+**Fixed**
+- **Connecting to PSN could never succeed**
+  ([#1](https://github.com/DrummingBird1/ps-store-enhancer/issues/1)). The extension identified
+  itself to Sony with the wrong app identity and sent its token requests without the client
+  authentication Sony requires, so every attempt ended in "Could not connect to PSN" — even with a
+  valid NPSSO. Sign-in and token refresh now follow the same documented flow as the open-source
+  [psn-api](https://github.com/achievements-app/psn-api) project. The automated tests now use a fake
+  Sony that rejects anything else, so this cannot silently regress.
+- **The library list asks Sony only for documented categories.** It lists games your account has
+  played; add-ons are not part of it, so the DLC counter stays at 0.
+
+**Better when something still goes wrong**
+- Connection errors now name the failing step in brackets, e.g. `[authorize/login-redirect]` (the
+  NPSSO is expired or wrong) or `[token/401-invalid_client]`, and the Diagnostics log records Sony's
+  short error name. The bug-report form has a Diagnostics field.
+- When Chrome hides Sony's sign-in redirect, the optional `webRequest` permission is now requested
+  in the same click as **Connect** (one step instead of two), and the redirect is read from both the
+  response headers and the redirect event.
+
+**Please note:** this release was checked against the reference implementation and a strict fake of
+Sony's servers, not yet against a live Sony account. If connecting still fails, copy Settings →
+Diagnostics into a [bug report](https://github.com/DrummingBird1/ps-store-enhancer/issues/new/choose).
+
+**Also in this release — everything new since v2.6.0 (v2.7.0)**
+- Accurate cross-platform prices: exactly the right game, never a DLC, map or sequel.
+- Metacritic and Steam scores from CheapShark (OpenCritic now needs an API key).
+- Price Insight uses real data only: lowest PC price ever, today's cheapest, your own recorded trend.
+- Diagnostics log, safer PSN sign-in, wishlist % targets, notes, sorting, weekly digest and an
+  "Erase all my data" button.
+- Reorder, hide or collapse the product-page cards; new high-contrast theme.
+- Six new languages (16 in total): Italiano, Polski, Türkçe, Nederlands, 简体中文, 繁體中文.
+
+<br clear="right">
+
+---
+
 <a id="v2-7-0"></a>
 <img src="assets/badges/v2-7-0.png" width="120" align="right" alt="v2.7.0 — Accuracy">
 

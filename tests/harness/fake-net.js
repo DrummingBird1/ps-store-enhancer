@@ -8,6 +8,8 @@
   const json = (o, status = 200) => new Response(JSON.stringify(o), { status, headers: { "content-type": "application/json" } });
   const fixture = async (name) => (await realFetch(`/__f/${name}`)).json();
   const GOOD_PREFIX = "HARNESSTEST";
+  const PS_APP_CLIENT_ID = "09515159-7237-4370-9b40-3806e67c0891";
+  const PS_APP_BASIC = "Basic MDk1MTUxNTktNzIzNy00MzcwLTliNDAtMzgwNmU2N2MwODkxOnVjUGprYTV0bnRCMktxc1A=";
 
   const titles = [];
   const named = [
@@ -46,6 +48,8 @@
 
     if (u.hostname === "ca.account.sony.com") {
       if (u.pathname.endsWith("/authorize")) {
+        // Like Sony: only the PlayStation app's client id gets a code (reference: psn-api).
+        if (u.searchParams.get("client_id") !== PS_APP_CLIENT_ID) return json({ error: "invalid_client" }, 400);
         const c = window.__log.cookies["https://ca.account.sony.com|npsso"];
         if (c && c.value.startsWith(GOOD_PREFIX)) {
           return new Response(null, { status: 302, headers: { location: "com.scee.psxandroid.scecompcall://redirect?code=v3.HARNESSCODE" } });
@@ -54,6 +58,8 @@
       }
       if (u.pathname.endsWith("/token")) {
         const body = String(init.body || "");
+        const auth = (init.headers && (init.headers.Authorization || init.headers.authorization)) || "";
+        if (auth !== PS_APP_BASIC || !body.includes("token_format=jwt")) return json({ error: "invalid_client" }, 401);
         if (body.includes("grant_type=authorization_code") && body.includes("code=v3.HARNESSCODE")) {
           return json({ access_token: "harness-access", refresh_token: "harness-refresh", expires_in: 3600 });
         }

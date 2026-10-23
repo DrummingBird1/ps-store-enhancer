@@ -110,9 +110,12 @@ real-account pass is the most valuable manual check. **Never paste a real token 
 or commit** — the Diagnostics log is safe to share, the token is not.
 
 - [ ] Settings → PSN → **Auto-detect** while signed in to PSN in another tab (or paste the NPSSO)
-- [ ] If it fails with *"Chrome hides Sony's sign-in redirect"*, press **Allow redirect access and
-      retry** (optional `webRequest` permission) — note which path worked in Diagnostics
-      (`authorize-response` shows `opaqueredirect` when Chrome hides the redirect)
+- [ ] **Connect** asks for the optional `webRequest` permission in the same click (accept it); if the
+      connection still fails, the message ends in a step code such as `[authorize/redirect-not-observed]`
+      or `[token/401-invalid_client]` — copy Settings → Diagnostics and send it. Note which path worked
+      (`authorize-response` shows `opaqueredirect` when Chrome hides the redirect; `webrequest-listener`
+      shows the permission was active). *v2.7.1 corrected the app identity and token authentication,
+      which had made every earlier attempt fail; this is its first real-account check.*
 - [ ] Your own Sony session in Chrome is unaffected afterwards (still signed in at account.sony.com)
 - [ ] Library syncs; games you own are hidden by *Hide owned*; the popup shows "synced … ago"
 - [ ] Trophy progress shows on a game from your library; with *Trophy rarity (experimental)* on, the

@@ -1001,5 +1001,11 @@
   },
   "chl_2_7_0_6": {
     "message": "🌍 Sei nuove lingue: Italiano, Polski, Türkçe, Nederlands, 简体中文 e 繁體中文"
+  },
+  "chl_2_7_1_1": {
+    "message": "🔌 Connessione PSN corretta: l’estensione usava un’identità di app sbagliata e Sony la rifiutava sempre"
+  },
+  "chl_2_7_1_2": {
+    "message": "🛠 Errori PSN più chiari che indicano il passaggio non riuscito e consenso con un clic quando Chrome nasconde il reindirizzamento di Sony"
   }
 }

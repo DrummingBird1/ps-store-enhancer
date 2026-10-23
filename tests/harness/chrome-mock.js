@@ -89,7 +89,10 @@
       set: async (d) => { log.cookies[d.url + "|" + d.name] = { name: d.name, value: d.value, domain: d.domain }; return d; },
       remove: async ({ url, name }) => { delete log.cookies[url + "|" + name]; }
     },
-    permissions: { request: async ({ permissions }) => { permissions.forEach((p) => perms.add(p)); return true; } },
+    permissions: {
+      contains: async ({ permissions }) => permissions.every((p) => perms.has(p)),
+      request: async ({ permissions }) => { permissions.forEach((p) => perms.add(p)); return true; }
+    },
     alarms: { create: (n) => { log.alarms.push(n); }, onAlarm: L(listeners.alarm) },
     contextMenus: { removeAll: (cb) => cb && cb(), create: (o) => { log.ctx.push(o.id); }, onClicked: L(listeners.ctxClick) },
     notifications: {

@@ -40,6 +40,8 @@ This error is **expected behavior** when no valid PSN session exists — it is N
 
 We use `chrome.cookies` solely to set the NPSSO token on `ca.account.sony.com` (Sony's own auth endpoint) so that Sony's OAuth code-exchange API can read it. This is the standard authentication method used by Sony's official PlayStation App, because Sony does not expose a public OAuth client for third-party apps. The token never leaves the user's device except to Sony's own endpoints. We do not read or transmit any other cookies.
 
+**App identity (v2.7.1):** Sony offers no client registration for third-party extensions, so the sign-in and token requests are made with the same public OAuth client identifiers that Sony's own PlayStation mobile app uses — the identifiers published by the open-source [psn-api](https://github.com/achievements-app/psn-api) project (MIT). They identify the app, not the user, and no user credential is embedded in the extension. Versions up to 2.7.0 used a wrong client id and could never complete the sign-in; v2.7.1 fixes that.
+
 ### Why we use these host permissions
 
 | Host | Use |
@@ -52,7 +54,7 @@ We use `chrome.cookies` solely to set the NPSSO token on `ca.account.sony.com` (
 
 ### Optional permission: `webRequest` (new in v2.7)
 
-Declared under `optional_permissions`, so it is **not granted at install and triggers no install warning**. It is requested at runtime, from a button click, only if a user connects PSN and Chrome hides Sony's sign-in redirect from extensions (`fetch(..., {redirect: "manual"})` returns an opaque response). When granted, a non-blocking `onBeforeRedirect` listener restricted to `https://ca.account.sony.com/*` reads the authorization code from that one redirect, and is removed again right after. Reviewers do not need to exercise it.
+Declared under `optional_permissions`, so it is **not granted at install and triggers no install warning**. It is requested at runtime, from the **Connect** button click, when a user connects PSN, because Chrome hides Sony's sign-in redirect from extensions (`fetch(..., {redirect: "manual"})` returns an opaque response). When granted, non-blocking `onHeadersReceived` and `onBeforeRedirect` listeners restricted to `https://ca.account.sony.com/*` read the authorization code from that one redirect (the `Location` header of Sony's response), and are removed again right after. Reviewers do not need to exercise it.
 
 Also new in v2.7: the PSN sign-in now **restores the user's previous `npsso` cookie** after every attempt (it used to leave the pasted token behind).
 

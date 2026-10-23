@@ -1001,5 +1001,11 @@
   },
   "chl_2_7_0_6": {
     "message": "🌍 새 언어 6개: Italiano, Polski, Türkçe, Nederlands, 简体中文, 繁體中文"
+  },
+  "chl_2_7_1_1": {
+    "message": "🔌 PSN 연결 수정 — 확장 프로그램이 잘못된 앱 ID를 사용해 Sony가 항상 거부했습니다"
+  },
+  "chl_2_7_1_2": {
+    "message": "🛠 실패한 단계를 알려 주는 더 명확한 PSN 오류, Chrome이 Sony 리디렉션을 숨길 때 한 번의 클릭으로 허용"
   }
 }

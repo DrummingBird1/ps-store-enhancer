@@ -1,6 +1,6 @@
 {
   "name": "gamedeals-plus",
-  "version": "2.7.0",
+  "version": "2.7.1",
   "private": true,
   "description": "Chrome extension that enhances the PlayStation Store with real lowest-ever prices, cross-platform comparison, review scores, trophy info, wishlist alerts, and smart filters.",
   "scripts": {

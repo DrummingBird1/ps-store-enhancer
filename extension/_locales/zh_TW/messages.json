@@ -1001,5 +1001,11 @@
   },
   "chl_2_7_0_6": {
     "message": "🌍 新增六種語言：Italiano、Polski、Türkçe、Nederlands、简体中文與繁體中文"
+  },
+  "chl_2_7_1_1": {
+    "message": "🔌 修正 PSN 連線 — 擴充功能使用了錯誤的應用程式身分，因此 Sony 一律拒絕連線"
+  },
+  "chl_2_7_1_2": {
+    "message": "🛠 更清楚的 PSN 錯誤訊息（會指出失敗的步驟），Chrome 隱藏 Sony 重新導向時可一鍵授權"
   }
 }
