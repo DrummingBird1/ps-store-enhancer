@@ -281,8 +281,20 @@ document.addEventListener("DOMContentLoaded", async () => {
     } else {
       el.grantBtn.style.display = "none";
     }
-    psnMsg(errMsg(r?.error), "error");
+    // The short technical code (e.g. "authorize/login-redirect") tells a bug report which step failed.
+    psnMsg(errMsg(r?.error) + (r?.detail ? ` [${r.detail}]` : ""), "error");
     return false;
+  }
+
+  // Chrome hides Sony's sign-in redirect from extensions unless the optional "webRequest" permission
+  // is granted, so it is requested up front, inside the click, and connecting stays one step.
+  async function ensureRedirectAccess() {
+    try {
+      if (await chrome.permissions.contains({ permissions: ["webRequest"] })) return;
+      await chrome.permissions.request({ permissions: ["webRequest"] });
+    } catch {
+      /* the connect attempt reports what is still missing */
+    }
   }
 
   el.autoBtn.addEventListener("click", async () => {
@@ -291,6 +303,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const r = await send({ type: "PSN_AUTO_DETECT" });
       if (r?.found) {
         psnMsg(t("psnTokenFound"), "info");
+        await ensureRedirectAccess();
         await connectWith(r.npsso);
       } else psnMsg(t("psnTokenNotFound"), "error");
     } catch (e) { psnMsg(errMsg(e.message), "error"); }
@@ -301,7 +314,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const npsso = el.npssoIn.value.trim();
     if (!npsso) { psnMsg(t("psnEmptyToken"), "error"); return; }
     el.connBtn.disabled = true; el.connBtn.innerHTML = `<span class="spinner"></span>`;
-    try { await connectWith(npsso); } catch (e) { psnMsg(errMsg(e.message), "error"); }
+    try { await ensureRedirectAccess(); await connectWith(npsso); } catch (e) { psnMsg(errMsg(e.message), "error"); }
     el.connBtn.disabled = false; el.connBtn.textContent = t("psnConnect");
   });
 

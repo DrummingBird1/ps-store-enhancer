@@ -22,7 +22,7 @@ A unit test (`tests/sw.test.js`) fails if a handler is added without being liste
 |------|---------|----------|
 | `FETCH_PSN_TROPHY` | `gameName` | `{ success, data: { hasPlatinum, earnedPlatinum, totalTrophies, earnedTrophies, progress, npCommunicationId, npServiceName } }` — only when connected and the game is in the user's trophy list |
 | `FETCH_TROPHY_RARITY` | `gameName` | **Experimental** (setting `enableTrophyRarity`, off by default). `{ success, data: { rarestEarned, rarestRemaining, total } }` or `{ success: false, error: "disabled" }` |
-| `PSN_AUTHENTICATE` | `npsso` | `{ success, profile }` or `{ success: false, error: <i18n key> }` (e.g. `psnErrAuthCode`, `psnErrNeedsRedirectAccess`) |
+| `PSN_AUTHENTICATE` | `npsso` | `{ success, profile }` or `{ success: false, error: <i18n key>, detail? }` (e.g. `psnErrAuthCode`, `psnErrNeedsRedirectAccess`); `detail` is a short technical code such as `authorize/login-redirect` or `token/401-invalid_client`, shown in the UI so a bug report says which step failed |
 | `PSN_AUTO_DETECT` | – | `{ found, npsso? }` — reads an existing `npsso` cookie |
 | `PSN_FETCH_LIBRARY` | – | `{ success, games, totalCount }` or `{ success: false, error }` (30 s cooldown → `psnWait30`) |
 | `PSN_STATUS` | – | `{ connected, tokenValid, profile, libraryCount, gameCount, dlcCount, lastSync, needsSync }` |
