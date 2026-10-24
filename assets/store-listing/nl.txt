@@ -1,0 +1,84 @@
+PS Store Enhancer (voorheen GameDeals+) voegt echte prijsinzichten, beoordelingen en slimme filters toe aan de PlayStation™ Store, zodat je op basis van feiten bepaalt wat je koopt. Alle kernfuncties werken meteen: zonder inloggen, zonder account.
+
+🔍 PRIJSINZICHT
+• Echte laagste pc-prijs ooit (met datum), de goedkoopste prijs van vandaag en een label “dicht bij het laagste punt ooit” — alleen echte data, geen geschatte grafieken
+• Een prijstrend op basis van prijzen die je eigen browser heeft vastgelegd
+• Platformvergelijking voor precies dit spel (nooit een dlc, map of vervolg): Steam, Epic Games Store, GOG, Humble Store en meer — met data van CheapShark en omgerekend naar jouw valuta
+• Transparantie over edities: een prijs van een andere editie of bundel (Deluxe, Ultimate, GOTY…) wordt duidelijk aangegeven en nooit stilletjes gemengd
+• Hints over wanneer de grote uitverkopen meestal beginnen
+• Live zoeksuggesties: terwijl je typt in het zoekvak van de store zie je de box art en de laagste pc-prijs
+• Met één klik naar PSPrices voor de volledige PlayStation-prijsgeschiedenis
+
+📊 BEOORDELINGEN
+• Metacritic- (pc) en Steam-gebruikersbeoordelingsbadges naast de speltitel (via CheapShark)
+• Kleurcodes groen, geel of rood — alleen zichtbaar als er een echte score is
+• Klik op een badge om alle reviews te openen
+
+🏆 COMPLETIONIST-INFO
+• Platina-beschikbaarheid, moeilijkheid (1–10), geschatte speeltijd en benodigde playthroughs voor 75 populaire games — een database die de community op GitHub kan bewerken
+• Een completionist-inspanningsscore in één oogopslag en de prijs per uur
+• Suggesties met “vergelijkbare moeilijkheid” uit je eigen bibliotheek
+• Optioneel, met PSN gekoppeld: je live trofeevoortgang en, experimenteel, je zeldzaamste nog ontbrekende trofee
+
+🧹 SLIMME ZOEKFILTERS
+• Verberg add-ons, valutapakketten en starterspakketten
+• Verberg dlc, uitbreidingen en seizoenspassen
+• Verberg games die je al hebt (je handmatige lijst + optionele PSN-sync)
+• Knop “Markeren als in bezit” op elke productpagina
+• ✓ / ★-markeringen in zoeksuggesties voor games die je bezit of op je verlanglijst hebt staan
+• Werkt met oneindig scrollen; druk op “/” om naar het zoekvak van de store te gaan
+
+⭐ VERLANGLIJST MET PRIJSMELDINGEN
+• Voeg een game met één klik toe vanaf de productpagina
+• Stel een streefprijs of “% korting” in, voeg notities toe, sorteer en filter
+• Ontvang een bureaubladmelding — of één wekelijks overzicht — zodra de laagste pc-prijs je doel bereikt
+• Legt de PS Store-prijs vast die je op de pagina van elke game ziet
+• Deel je lijst als link met alleen-lezentoegang: de lijst zit in de link, er wordt niets geüpload
+• Dagelijkse controles op de achtergrond, geen constante polling
+• De badge in de werkbalk telt de verlanglijstdeals die je doel hebben bereikt of eronder zitten
+• Dashboard voor bibliotheek en verlanglijst: games in bezit, grootte van de lijst, totale waarde en deals die klaar zijn om te kopen — alles berekend uit gegevens op je eigen apparaat
+
+💱 VALUTAOMREKENING
+• Prijzen tussen platforms worden automatisch van USD naar je eigen valuta omgerekend
+• 18 valuta (EUR, GBP, ILS, JPY, BRL, KRW, MXN, INR en meer), ingesteld op basis van je store-regio
+• Dagelijkse wisselkoersen van Frankfurter (gegevens van de Europese Centrale Bank)
+
+🎨 THEMA'S EN EXTRA'S
+• Thema's: licht, donker, hoog contrast en automatisch
+• Kaarten op de productpagina inklappen, herordenen of verbergen; een deal als afbeelding delen
+• Klik met de rechtermuisknop op een willekeurige tekst in de PS Store en kies “Zoek in PS Store Enhancer-prijsvergelijking” voor een directe CheapShark-zoekopdracht
+• Herkent je PS Store-regio bij het eerste bezoek aan de hand van de URL
+• Back-up en herstel van je lijst met games in bezit en je verlanglijst als JSON
+
+♿ TOEGANKELIJKHEID
+• Houdt rekening met je instelling voor minder beweging
+• Aankondigingen voor schermlezers wanneer kaarten laden
+• Overal zichtbare toetsenbordfocus, plus het thema met hoog contrast
+
+🔗 OPTIONEEL: PSN-BIBLIOTHEEKSYNCHRONISATIE (geavanceerd)
+• Standaard uit — je hebt een eigen PSN-account nodig, en al het andere werkt ook zonder
+• Klik op “Koppelen” en plak je NPSSO-token (stapsgewijze handleiding in de extensie), of laat de extensie het herkennen als je in deze browser bent ingelogd bij PlayStation
+• Games uit je PSN-lijst “gespeelde games” tellen als in bezit: ze worden verborgen in zoekresultaten en elke 2 uur opnieuw gesynchroniseerd
+• Chrome kan om één optionele toestemming vragen, alleen wanneer je op “Koppelen” klikt — die wordt uitsluitend gebruikt om de omleiding van Sony tijdens het inloggen te lezen
+• Je eigen Sony-cookie wordt daarna hersteld en het token blijft op je apparaat
+• Ontkoppel wanneer je wilt; je handmatige invoer blijft bewaard
+
+⚡ PRESTATIES
+• Slim cachen houdt het aantal API-aanroepen minimaal
+• Skeleton-laadanimaties terwijl gegevens laden
+• Licht: geen externe bibliotheken, gewoon JavaScript
+
+🌍 16 TALEN
+English, עברית, العربية, Español, Français, Deutsch, Italiano, Português (BR), Nederlands, Polski, Türkçe, Русский, 日本語, 한국어, 简体中文, 繁體中文
+Ingebouwde taalkeuze — overschrijf de browsertaal in de instellingen.
+
+🔒 PRIVACY EERST
+• Al je gegevens blijven op je apparaat
+• Geen analyse, geen tracking, geen gegevens delen
+• Geen eigen servers: de enige verzoeken gaan naar CheapShark (prijzen, scores), Frankfurter (wisselkoersen) en — alleen als je koppelt — Sony
+• Knop “Al mijn gegevens wissen” in de popup en in de instellingen
+• Een lokaal diagnoselogboek dat nooit tokens of wachtwoorden vastlegt
+• Open source (MIT) op GitHub; volledig privacybeleid beschikbaar
+
+⚠️ DISCLAIMER
+Deze extensie is niet verbonden met, goedgekeurd door of gelieerd aan Sony Interactive Entertainment, PlayStation of hun dochterondernemingen. PlayStation is een gedeponeerd handelsmerk van Sony Interactive Entertainment. Alle productnamen, logo's en merken zijn eigendom van hun respectieve eigenaren.

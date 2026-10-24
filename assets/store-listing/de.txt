@@ -1,0 +1,84 @@
+PS Store Enhancer (früher GameDeals+) ergänzt den PlayStation™ Store um echte Preisinformationen, Bewertungen und smarte Filter – damit du beim Kauf auf Fakten bauen kannst. Alle Kernfunktionen laufen sofort: ohne Anmeldung, ohne Konto.
+
+🔍 PREISINFORMATIONEN
+• Echter PC-Tiefstpreis aller Zeiten (mit Datum), der heute günstigste Preis und ein Hinweis „nahe am Allzeittief“ – nur echte Daten, keine geschätzten Diagramme
+• Ein Preisverlauf aus den Preisen, die dein eigener Browser aufgezeichnet hat
+• Plattformvergleich für genau dieses Spiel (nie ein DLC, eine Karte oder ein Nachfolger): Steam, Epic Games Store, GOG, Humble Store und mehr – mit Daten von CheapShark, umgerechnet in deine Währung
+• Transparenz bei Editionen: Ein Preis aus einer anderen Edition oder einem anderen Bundle (Deluxe, Ultimate, GOTY …) wird klar gekennzeichnet und nie stillschweigend vermischt
+• Hinweise, wann die großen Sales üblicherweise beginnen
+• Live-Suchvorschläge: Beim Tippen in das Suchfeld des Stores siehst du Cover und den günstigsten PC-Preis
+• Ein Klick zu PSPrices für den vollständigen PlayStation-Preisverlauf
+
+📊 BEWERTUNGEN
+• Metacritic- (PC) und Steam-Nutzerwertungs-Badges neben dem Spieltitel (über CheapShark)
+• Farbcodiert in Grün, Gelb oder Rot – nur sichtbar, wenn es eine echte Wertung gibt
+• Ein Klick auf das Badge öffnet die vollständigen Bewertungen
+
+🏆 COMPLETIONIST-INFOS
+• Platin-Verfügbarkeit, Schwierigkeit (1–10), geschätzte Spielzeit und nötige Durchgänge für 75 beliebte Spiele – eine Datenbank, die die Community auf GitHub bearbeiten kann
+• Ein Completionist-Aufwandswert auf einen Blick und der Preis pro Stunde
+• Vorschläge mit „ähnlicher Schwierigkeit“ aus deiner eigenen Bibliothek
+• Optional bei verbundenem PSN: dein Live-Trophäenfortschritt und – experimentell – deine seltenste noch fehlende Trophäe
+
+🧹 SMARTE SUCHFILTER
+• Add-ons, Währungspakete und Starterpakete ausblenden
+• DLC, Erweiterungen und Season Passes ausblenden
+• Bereits besessene Spiele ausblenden (deine manuelle Liste + optionale PSN-Synchronisierung)
+• Schaltfläche „Als besessen markieren“ auf jeder Produktseite
+• ✓ / ★-Markierungen in den Suchvorschlägen für Spiele, die du besitzt oder auf deiner Wunschliste hast
+• Funktioniert mit endlosem Scrollen; mit „/“ springst du ins Suchfeld des Stores
+
+⭐ WUNSCHLISTE MIT PREISALARM
+• Spiel mit einem Klick auf der Produktseite hinzufügen
+• Zielpreis oder „% Rabatt“ festlegen, Notizen hinzufügen, sortieren und filtern
+• Desktop-Benachrichtigung – oder eine wöchentliche Zusammenfassung –, sobald der günstigste PC-Preis dein Ziel erreicht
+• Speichert den PS-Store-Preis, den du auf der Seite jedes Spiels siehst
+• Liste als schreibgeschützten Link teilen: Die Liste steckt im Link, nichts wird hochgeladen
+• Tägliche Hintergrundprüfungen, keine Dauerabfragen
+• Das Symbol in der Symbolleiste zählt die Wunschlisten-Angebote, die dein Ziel erreicht oder unterschritten haben
+• Dashboard für Bibliothek und Wunschliste: besessene Spiele, Größe der Wunschliste, Gesamtwert, kaufbereite Angebote – alles aus Daten auf deinem Gerät berechnet
+
+💱 WÄHRUNGSUMRECHNUNG
+• Plattformpreise werden automatisch von USD in deine Landeswährung umgerechnet
+• 18 Währungen (EUR, GBP, ILS, JPY, BRL, KRW, MXN, INR und mehr), eingestellt nach deiner Store-Region
+• Tägliche Wechselkurse von Frankfurter (Daten der Europäischen Zentralbank)
+
+🎨 DESIGNS & EXTRAS
+• Designs: Hell, Dunkel, Hoher Kontrast und Auto
+• Karten der Produktseite einklappen, umsortieren oder ausblenden; Angebote als Bild teilen
+• Rechtsklick auf beliebigen Text im PS Store und „Auf PS Store Enhancer Preisvergleich suchen“ für eine sofortige CheapShark-Suche
+• Erkennt deine PS-Store-Region beim ersten Besuch anhand der URL
+• Sicherung und Wiederherstellung deiner Besitzliste und Wunschliste als JSON
+
+♿ BARRIEREFREIHEIT
+• Berücksichtigt die Einstellung „Bewegung reduzieren“
+• Screenreader-Ansagen, wenn Karten geladen werden
+• Überall sichtbarer Tastaturfokus, dazu das Design mit hohem Kontrast
+
+🔗 OPTIONAL: PSN-BIBLIOTHEKSSYNCHRONISIERUNG (für Fortgeschrittene)
+• Standardmäßig aus – du brauchst ein eigenes PSN-Konto, alles andere funktioniert auch ohne
+• Klicke auf „Verbinden“ und füge dein NPSSO-Token ein (Schritt-für-Schritt-Anleitung in der Erweiterung) oder lass es erkennen, wenn du in diesem Browser bei PlayStation angemeldet bist
+• Spiele aus deiner PSN-Liste „Gespielte Spiele“ zählen als besessen: Sie werden in den Suchergebnissen ausgeblendet und alle 2 Stunden neu synchronisiert
+• Chrome fragt eventuell nach einer optionalen Berechtigung, nur wenn du auf „Verbinden“ klickst – sie dient ausschließlich dazu, die Weiterleitung von Sony bei der Anmeldung zu lesen
+• Dein eigenes Sony-Cookie wird danach wiederhergestellt, und das Token bleibt auf deinem Gerät
+• Jederzeit trennbar; deine manuellen Einträge bleiben erhalten
+
+⚡ LEISTUNG
+• Intelligentes Caching hält die API-Aufrufe auf ein Minimum
+• Skeleton-Ladeanimationen, während Daten geladen werden
+• Schlank: keine externen Bibliotheken, reines JavaScript
+
+🌍 16 SPRACHEN
+English, עברית, العربية, Español, Français, Deutsch, Italiano, Português (BR), Nederlands, Polski, Türkçe, Русский, 日本語, 한국어, 简体中文, 繁體中文
+Integrierte Sprachauswahl – überschreibe die Browsersprache in den Einstellungen.
+
+🔒 DATENSCHUTZ ZUERST
+• Alle Daten bleiben auf deinem Gerät
+• Keine Analyse, kein Tracking, keine Datenweitergabe
+• Keine eigenen Server: Anfragen gehen nur an CheapShark (Preise, Bewertungen), Frankfurter (Wechselkurse) und – nur wenn du dich verbindest – an Sony
+• Schaltfläche „Alle meine Daten löschen“ im Popup und in den Einstellungen
+• Lokales Diagnoseprotokoll, das nie Token oder Passwörter aufzeichnet
+• Open Source (MIT) auf GitHub; vollständige Datenschutzerklärung verfügbar
+
+⚠️ HAFTUNGSAUSSCHLUSS
+Diese Erweiterung steht in keiner Verbindung zu Sony Interactive Entertainment, PlayStation oder deren Tochterunternehmen und wird von diesen weder unterstützt noch gebilligt. PlayStation ist eine eingetragene Marke von Sony Interactive Entertainment. Alle Produktnamen, Logos und Marken sind Eigentum ihrer jeweiligen Inhaber.

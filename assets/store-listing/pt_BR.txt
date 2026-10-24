@@ -1,0 +1,84 @@
+O PS Store Enhancer (antigo GameDeals+) traz para a PlayStation™ Store informações reais de preço, notas e filtros inteligentes, para você decidir o que comprar com base em fatos. Todos os recursos principais funcionam logo de cara: sem login e sem conta.
+
+🔍 INTELIGÊNCIA DE PREÇOS
+• Menor preço real de todos os tempos no PC (com a data), o preço mais baixo de hoje e um aviso de “perto do menor preço histórico” — só dados reais, sem gráficos estimados
+• Uma tendência de preços desenhada com os preços que o seu próprio navegador registrou
+• Comparação multiplataforma do jogo exato (nunca uma DLC, um mapa ou uma sequência): Steam, Epic Games Store, GOG, Humble Store e mais — com dados do CheapShark e convertida para a sua moeda
+• Transparência de edições: um preço de outra edição ou pacote (Deluxe, Ultimate, GOTY…) é claramente sinalizado e nunca misturado em silêncio
+• Dicas sobre quando as grandes promoções costumam começar
+• Sugestões de busca em tempo real: ao digitar na caixa de busca da loja, você vê a capa e o menor preço no PC
+• Link com um clique para o PSPrices, com o histórico completo de preços da PlayStation
+
+📊 NOTAS
+• Selos do Metacritic (PC) e da avaliação dos usuários do Steam ao lado do título do jogo (via CheapShark)
+• Cores verde, amarelo ou vermelho — exibidos só quando existe uma nota real
+• Clique em um selo para abrir todas as análises
+
+🏆 INFO PARA COMPLETISTAS
+• Disponibilidade de Platina, dificuldade (1–10), tempo estimado e partidas necessárias para 75 jogos populares — um banco de dados que a comunidade pode editar no GitHub
+• Uma pontuação de esforço para completistas num piscar de olhos e o preço por hora
+• Sugestões de “dificuldade parecida” da sua própria biblioteca
+• Opcional, com a PSN conectada: seu progresso de troféus em tempo real e, de forma experimental, o troféu mais raro que ainda falta
+
+🧹 FILTROS DE BUSCA INTELIGENTES
+• Oculte complementos, pacotes de moeda e pacotes iniciais
+• Oculte DLCs, expansões e passes de temporada
+• Oculte os jogos que você já possui (sua lista manual + sincronização PSN opcional)
+• Botão “Marcar como possuído” em cada página de produto
+• Marcas ✓ / ★ nas sugestões de busca para jogos que você possui ou que estão na sua lista de desejos
+• Funciona com rolagem infinita; pressione “/” para ir à caixa de busca da loja
+
+⭐ LISTA DE DESEJOS COM ALERTAS DE PREÇO
+• Adicione um jogo com um clique na página do produto
+• Defina um preço-alvo ou um “% de desconto”, adicione notas, ordene e filtre
+• Receba uma notificação na área de trabalho — ou um único resumo semanal — quando o menor preço no PC atingir a sua meta
+• Registra o preço da PS Store que você vê na página de cada jogo
+• Compartilhe sua lista como um link somente leitura: a lista fica dentro do link e nada é enviado
+• Verificações diárias em segundo plano, sem consultas constantes
+• O selo na barra de ferramentas conta as ofertas da lista que atingiram a sua meta ou ficaram abaixo dela
+• Painel da biblioteca e da lista de desejos: jogos que você possui, tamanho da lista, valor total e ofertas prontas para comprar — tudo calculado com dados do seu dispositivo
+
+💱 CONVERSÃO DE MOEDA
+• Os preços entre plataformas são convertidos automaticamente de USD para a sua moeda local
+• 18 moedas (EUR, GBP, ILS, JPY, BRL, KRW, MXN, INR e mais), definidas pela região da sua loja
+• Taxas de câmbio diárias do Frankfurter (dados do Banco Central Europeu)
+
+🎨 TEMAS E EXTRAS
+• Temas: claro, escuro, alto contraste e automático
+• Recolha, reordene ou oculte os cartões da página de produto; compartilhe uma oferta como imagem
+• Clique com o botão direito em qualquer texto na PS Store e escolha “Buscar no PS Store Enhancer comparador” para uma busca instantânea no CheapShark
+• Detecta a região da sua PS Store pela URL na primeira visita
+• Backup e restauração da sua lista de jogos e da lista de desejos em JSON
+
+♿ ACESSIBILIDADE
+• Respeita a sua configuração de “reduzir movimento”
+• Anúncios para leitores de tela quando os cartões carregam
+• Foco do teclado visível em todo lugar, além do tema de alto contraste
+
+🔗 OPCIONAL: SINCRONIZAÇÃO DA BIBLIOTECA PSN (avançado)
+• Desativada por padrão — exige a sua própria conta PSN, e todo o resto funciona sem ela
+• Clique em “Conectar” e cole o seu token NPSSO (guia passo a passo dentro da extensão), ou deixe a extensão detectá-lo se você estiver logado na PlayStation neste navegador
+• Os jogos da sua lista de “jogos jogados” na PSN contam como possuídos: ficam ocultos nos resultados de busca e são ressincronizados a cada 2 horas
+• O Chrome pode pedir uma permissão opcional, somente quando você clicar em “Conectar” — ela serve apenas para ler o redirecionamento da Sony durante o login
+• O seu próprio cookie da Sony é restaurado depois, e o token permanece no seu dispositivo
+• Desconecte quando quiser; suas entradas manuais são mantidas
+
+⚡ DESEMPENHO
+• Cache inteligente mantém as chamadas de API no mínimo
+• Animações de carregamento em esqueleto enquanto os dados carregam
+• Leve: sem bibliotecas externas, JavaScript puro
+
+🌍 16 IDIOMAS
+English, עברית, العربية, Español, Français, Deutsch, Italiano, Português (BR), Nederlands, Polski, Türkçe, Русский, 日本語, 한국어, 简体中文, 繁體中文
+Seletor de idioma integrado — troque o idioma do navegador nas Configurações.
+
+🔒 PRIVACIDADE EM PRIMEIRO LUGAR
+• Todos os seus dados ficam no seu dispositivo
+• Sem análises, sem rastreamento, sem compartilhamento de dados
+• Sem servidores próprios: as únicas solicitações vão para o CheapShark (preços, notas), o Frankfurter (taxas de câmbio) e — somente se você conectar — a Sony
+• Botão “Apagar todos os meus dados” no popup e nas Configurações
+• Registro de diagnóstico local que nunca grava tokens ou senhas
+• Código aberto (MIT) no GitHub; política de privacidade completa disponível
+
+⚠️ AVISO LEGAL
+Esta extensão não é afiliada à Sony Interactive Entertainment, à PlayStation nem a nenhuma de suas subsidiárias, e não é endossada por elas nem conectada a elas. PlayStation é uma marca registrada da Sony Interactive Entertainment. Todos os nomes de produtos, logotipos e marcas pertencem aos respectivos proprietários.

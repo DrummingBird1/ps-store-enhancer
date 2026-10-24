@@ -1,0 +1,84 @@
+PS Store Enhancer (formerly GameDeals+) adds real price insight, review scores and smart filters to the PlayStation™ Store, so you can decide what to buy based on facts. Every core feature works out of the box — no sign-in, no account.
+
+🔍 PRICE INTELLIGENCE
+• Real lowest-ever PC price (with its date), today's cheapest price and a “near the all-time low” flag — real data only, no estimated charts
+• A price trend drawn from the prices your own browser recorded
+• Cross-platform comparison for the exact game (never a DLC, map or sequel): Steam, Epic Games Store, GOG, Humble Store and more — powered by CheapShark and converted to your currency
+• Edition transparency: a price from a different edition or bundle (Deluxe, Ultimate, GOTY…) is clearly flagged, never blended in silently
+• Hints about when the big sales usually start
+• Live search suggestions: as you type in the store's search box, see box art and the cheapest PC price
+• One-click link to PSPrices for the full PlayStation price history
+
+📊 REVIEW SCORES
+• Metacritic (PC) and Steam user-rating badges next to the game title (via CheapShark)
+• Color-coded green, yellow or red — shown only when a real score exists
+• Click a badge to open the full reviews
+
+🏆 COMPLETIONIST INFO
+• Platinum availability, difficulty (1–10), estimated time and playthroughs for 75 popular games — a community-editable database on GitHub
+• A one-glance completionist effort score and price per hour
+• “Similar difficulty” picks from your own library
+• Optional, with PSN connected: your live trophy progress and, experimentally, your rarest remaining trophy
+
+🧹 SMART SEARCH FILTERS
+• Hide add-ons, currency packs and starter packs
+• Hide DLC, expansions and season passes
+• Hide games you already own (your manual list + optional PSN sync)
+• “Mark as owned” button on every product page
+• ✓ / ★ marks in search suggestions for games you own or have wishlisted
+• Works with infinite scroll; press “/” to jump to the store's search box
+
+⭐ WISHLIST WITH PRICE ALERTS
+• Add a game with one click on its product page
+• Set a price or “% off” target, add notes, sort and filter
+• Get a desktop notification — or one weekly digest — when the cheapest PC price reaches your target
+• Records the PS Store price you see on each game's page
+• Share your list as a read-only link: the list lives inside the link, nothing is uploaded
+• Daily background checks, no constant polling
+• Toolbar badge counts the wishlist deals at or below your target
+• Library & Wishlist dashboard: games owned, wishlist size, total value, deals ready to buy — all computed from data on your device
+
+💱 CURRENCY CONVERSION
+• Cross-platform prices convert from USD to your local currency automatically
+• 18 currencies (EUR, GBP, ILS, JPY, BRL, KRW, MXN, INR and more), set from your store region
+• Daily exchange rates from Frankfurter (European Central Bank data)
+
+🎨 THEMES & EXTRAS
+• Light, Dark, High-contrast and Auto themes
+• Collapse, reorder or hide the product-page cards; share a deal as an image
+• Right-click any text on the PS Store and choose “Find on PS Store Enhancer price compare” for an instant CheapShark lookup
+• Detects your PS Store region from the URL on first visit
+• Back up and restore your owned-games list and wishlist as JSON
+
+♿ ACCESSIBILITY
+• Respects your reduced-motion setting
+• Screen-reader announcements when cards load
+• Visible keyboard focus everywhere, plus the high-contrast theme
+
+🔗 OPTIONAL: PSN LIBRARY SYNC (advanced)
+• Off by default — it needs your own PSN account, and everything else works without it
+• Click Connect and paste your NPSSO token (step-by-step guide inside the extension), or let the extension detect it if you are signed in to PlayStation in this browser
+• Games from your PSN played-games list count as owned: they are hidden from search results and re-synced every 2 hours
+• Chrome may ask for one optional permission, only when you click Connect — it is used solely to read Sony's sign-in redirect
+• Your own Sony cookie is restored afterwards and the token stays on your device
+• Disconnect anytime; your manual entries are kept
+
+⚡ PERFORMANCE
+• Smart caching keeps API calls to a minimum
+• Skeleton loading animations while data loads
+• Lightweight: no external libraries, plain JavaScript
+
+🌍 16 LANGUAGES
+English, עברית, العربية, Español, Français, Deutsch, Italiano, Português (BR), Nederlands, Polski, Türkçe, Русский, 日本語, 한국어, 简体中文, 繁體中文
+Built-in language selector — override your browser language in Settings.
+
+🔒 PRIVACY FIRST
+• All your data stays on your device
+• No analytics, no tracking, no data sharing
+• No servers of our own: the only requests go to CheapShark (prices, scores), Frankfurter (exchange rates) and — only if you connect — Sony
+• “Erase all my data” button in the popup and in Settings
+• A local diagnostics log that never records tokens or passwords
+• Open source (MIT) on GitHub; full privacy policy available
+
+⚠️ DISCLAIMER
+This extension is not affiliated with, endorsed by, or connected to Sony Interactive Entertainment, PlayStation, or any of their subsidiaries. PlayStation is a registered trademark of Sony Interactive Entertainment. All product names, logos, and brands are property of their respective owners.
