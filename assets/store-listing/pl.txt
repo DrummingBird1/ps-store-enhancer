@@ -1,0 +1,84 @@
+PS Store Enhancer (dawniej GameDeals+) dodaje do PlayStation™ Store prawdziwe informacje o cenach, oceny i inteligentne filtry, dzięki czemu decydujesz, co kupić, na podstawie faktów. Wszystkie podstawowe funkcje działają od razu — bez logowania i bez konta.
+
+🔍 INFORMACJE O CENACH
+• Prawdziwa najniższa cena na PC w historii (z datą), dzisiejsza najniższa cena i oznaczenie „blisko historycznego minimum” — tylko prawdziwe dane, bez szacowanych wykresów
+• Trend cen oparty na cenach zapisanych przez Twoją własną przeglądarkę
+• Porównanie platform dla dokładnie tej gry (nigdy DLC, mapa ani sequel): Steam, Epic Games Store, GOG, Humble Store i inne — dane z CheapShark, przeliczone na Twoją walutę
+• Przejrzystość wydań: cena z innego wydania lub pakietu (Deluxe, Ultimate, GOTY…) jest wyraźnie oznaczona i nigdy po cichu nie miesza się z pozostałymi
+• Wskazówki, kiedy zwykle zaczynają się duże wyprzedaże
+• Podpowiedzi wyszukiwania na żywo: gdy wpisujesz tekst w wyszukiwarce sklepu, widzisz okładkę i najniższą cenę na PC
+• Jedno kliknięcie do PSPrices, aby zobaczyć pełną historię cen PlayStation
+
+📊 OCENY
+• Plakietki Metacritic (PC) i ocen użytkowników Steam obok tytułu gry (przez CheapShark)
+• Kolory: zielony, żółty lub czerwony — widoczne tylko wtedy, gdy istnieje prawdziwa ocena
+• Kliknij plakietkę, aby otworzyć pełne recenzje
+
+🏆 INFORMACJE DLA COMPLETISTÓW
+• Dostępność platyny, poziom trudności (1–10), szacowany czas i wymagana liczba przejść dla 75 popularnych gier — baza danych, którą społeczność może edytować na GitHubie
+• Wskaźnik wysiłku completisty na pierwszy rzut oka i cena za godzinę
+• Propozycje gier o „podobnym poziomie trudności” z Twojej własnej biblioteki
+• Opcjonalnie, po połączeniu z PSN: Twój postęp w trofeach na żywo i — eksperymentalnie — najrzadsze trofeum, którego jeszcze nie masz
+
+🧹 INTELIGENTNE FILTRY WYSZUKIWANIA
+• Ukrywaj dodatki, pakiety waluty i pakiety startowe
+• Ukrywaj DLC, rozszerzenia i karnety sezonowe
+• Ukrywaj gry, które już masz (Twoja ręczna lista + opcjonalna synchronizacja PSN)
+• Przycisk „Oznacz jako posiadaną” na każdej stronie produktu
+• Znaczniki ✓ / ★ w podpowiedziach wyszukiwania dla gier, które masz lub które są na Twojej liście życzeń
+• Działa z nieskończonym przewijaniem; naciśnij „/”, aby przejść do wyszukiwarki sklepu
+
+⭐ LISTA ŻYCZEŃ Z ALERTAMI CENOWYMI
+• Dodaj grę jednym kliknięciem na stronie produktu
+• Ustaw docelową cenę lub „% zniżki”, dodawaj notatki, sortuj i filtruj
+• Otrzymaj powiadomienie na pulpicie — albo jedno tygodniowe podsumowanie — gdy najniższa cena na PC osiągnie Twój cel
+• Zapisuje cenę z PS Store, którą widzisz na stronie każdej gry
+• Udostępnij listę jako link tylko do odczytu: lista jest zapisana w linku, nic nie jest wysyłane na serwer
+• Codzienne sprawdzanie w tle, bez ciągłego odpytywania
+• Plakietka na pasku narzędzi pokazuje liczbę ofert z listy życzeń, które osiągnęły Twój cel lub są poniżej niego
+• Panel biblioteki i listy życzeń: posiadane gry, rozmiar listy, łączna wartość i oferty gotowe do zakupu — wszystko liczone z danych na Twoim urządzeniu
+
+💱 PRZELICZANIE WALUT
+• Ceny z różnych platform są automatycznie przeliczane z USD na Twoją walutę
+• 18 walut (EUR, GBP, ILS, JPY, BRL, KRW, MXN, INR i inne), ustawianych według regionu sklepu
+• Codzienne kursy walut z Frankfurter (dane Europejskiego Banku Centralnego)
+
+🎨 MOTYWY I DODATKI
+• Motywy: jasny, ciemny, wysoki kontrast i automatyczny
+• Zwijaj, zmieniaj kolejność lub ukrywaj karty na stronie produktu; udostępniaj ofertę jako obraz
+• Kliknij prawym przyciskiem dowolny tekst w PS Store i wybierz „Znajdź w porównaniu cen PS Store Enhancer”, aby od razu wyszukać w CheapShark
+• Rozpoznaje region PS Store z adresu URL przy pierwszej wizycie
+• Kopia zapasowa i przywracanie listy posiadanych gier oraz listy życzeń w formacie JSON
+
+♿ DOSTĘPNOŚĆ
+• Uwzględnia ustawienie „ogranicz ruch”
+• Komunikaty dla czytników ekranu przy ładowaniu kart
+• Widoczny fokus klawiatury w każdym miejscu oraz motyw o wysokim kontraście
+
+🔗 OPCJONALNIE: SYNCHRONIZACJA BIBLIOTEKI PSN (zaawansowane)
+• Domyślnie wyłączona — potrzebne jest własne konto PSN, a cała reszta działa bez niego
+• Kliknij „Połącz” i wklej swój token NPSSO (instrukcja krok po kroku w rozszerzeniu) albo pozwól rozszerzeniu go wykryć, jeśli jesteś zalogowany do PlayStation w tej przeglądarce
+• Gry z Twojej listy „zagrane gry” w PSN są traktowane jako posiadane: są ukrywane w wynikach wyszukiwania i synchronizowane ponownie co 2 godziny
+• Chrome może poprosić o jedno opcjonalne uprawnienie, tylko po kliknięciu „Połącz” — służy ono wyłącznie do odczytania przekierowania Sony podczas logowania
+• Twoje własne ciasteczko Sony jest po wszystkim przywracane, a token zostaje na Twoim urządzeniu
+• Możesz się rozłączyć w dowolnym momencie; ręcznie dodane wpisy zostają
+
+⚡ WYDAJNOŚĆ
+• Inteligentne buforowanie ogranicza liczbę wywołań API do minimum
+• Animacje szkieletowe podczas ładowania danych
+• Lekkie: bez zewnętrznych bibliotek, czysty JavaScript
+
+🌍 16 JĘZYKÓW
+English, עברית, العربية, Español, Français, Deutsch, Italiano, Português (BR), Nederlands, Polski, Türkçe, Русский, 日本語, 한국어, 简体中文, 繁體中文
+Wbudowany wybór języka — zmień język przeglądarki w ustawieniach.
+
+🔒 PRYWATNOŚĆ NA PIERWSZYM MIEJSCU
+• Wszystkie dane zostają na Twoim urządzeniu
+• Bez analityki, bez śledzenia, bez udostępniania danych
+• Bez własnych serwerów: jedyne żądania trafiają do CheapShark (ceny, oceny), Frankfurter (kursy walut) i — tylko jeśli się połączysz — do Sony
+• Przycisk „Usuń wszystkie moje dane” w oknie podręcznym i w ustawieniach
+• Lokalny dziennik diagnostyczny, który nigdy nie zapisuje tokenów ani haseł
+• Otwarte oprogramowanie (MIT) na GitHubie; dostępna pełna polityka prywatności
+
+⚠️ ZASTRZEŻENIE
+To rozszerzenie nie jest powiązane z firmą Sony Interactive Entertainment, marką PlayStation ani ich spółkami zależnymi, nie jest przez nie zatwierdzone ani z nimi połączone. PlayStation jest zastrzeżonym znakiem towarowym Sony Interactive Entertainment. Wszystkie nazwy produktów, logo i marki są własnością ich odpowiednich właścicieli.

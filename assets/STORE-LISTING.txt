@@ -1,11 +1,17 @@
 CHROME WEB STORE LISTING — COPY-PASTE GUIDE
 ==============================================
 
+Updated for v2.7.1. The detailed description exists in 16 languages: one plain-text file per
+language in assets/store-listing/ (named like the folders in extension/_locales), each meant to be
+pasted as is. The English text below is identical to assets/store-listing/en.txt.
+
 EXTENSION NAME:
 PS Store Enhancer
 
 SHORT DESCRIPTION (132 chars max):
-Lowest-ever prices, cross-platform comparison, review scores, trophies & smart filters for the PlayStation™ Store.
+Lowest-ever prices, cross-platform comparison, review scores, trophies & smart filters for the PlayStation Store. Optional PSN sync.
+(Name and short description in every other language: "extName" / "extDesc" in
+extension/_locales/<lang>/messages.json — the store reads them from the extension.)
 
 CATEGORY:
 Shopping
@@ -14,84 +20,87 @@ Shopping
 DETAILED DESCRIPTION:
 ──────────────────────────────────────
 
-PS Store Enhancer (formerly GameDeals+) enhances your PlayStation™ Store browsing experience with powerful tools to help you make smarter purchasing decisions. All core features work out of the box — no sign-in required.
+PS Store Enhancer (formerly GameDeals+) adds real price insight, review scores and smart filters to the PlayStation™ Store, so you can decide what to buy based on facts. Every core feature works out of the box — no sign-in, no account.
 
 🔍 PRICE INTELLIGENCE
-• Real lowest-ever PC price (with its date), today's cheapest, and a "near the all-time low" flag — real data only, no estimated charts
-• A price trend drawn from prices your own browser recorded
-• Direct links to PSPrices for the full historical chart
-• Cross-platform comparison table for the exact game (never a DLC, map or sequel) — Steam, Epic Games Store, GOG, Humble Store, and more (powered by CheapShark, converted to your currency)
+• Real lowest-ever PC price (with its date), today's cheapest price and a “near the all-time low” flag — real data only, no estimated charts
+• A price trend drawn from the prices your own browser recorded
+• Cross-platform comparison for the exact game (never a DLC, map or sequel): Steam, Epic Games Store, GOG, Humble Store and more — powered by CheapShark and converted to your currency
+• Edition transparency: a price from a different edition or bundle (Deluxe, Ultimate, GOTY…) is clearly flagged, never blended in silently
 • Hints about when the big sales usually start
-• Edition transparency — prices from a different bundle/edition (Deluxe, Ultimate, GOTY, etc.) than the page you're viewing are clearly flagged, never blended in silently
-• Live search suggestions — as you type in the store's search box, see an enriched dropdown with box art and the cheapest PC price
+• Live search suggestions: as you type in the store's search box, see box art and the cheapest PC price
+• One-click link to PSPrices for the full PlayStation price history
 
 📊 REVIEW SCORES
 • Metacritic (PC) and Steam user-rating badges next to the game title (via CheapShark)
-• Color-coded: green, yellow, red — shown only when a real score exists
-• Click to view the full reviews
+• Color-coded green, yellow or red — shown only when a real score exists
+• Click a badge to open the full reviews
 
 🏆 COMPLETIONIST INFO
-• Platinum trophy availability
-• Difficulty rating (1-10 scale)
-• Estimated completion time
-• Required playthroughs, a one-glance completionist effort score and price per hour
-• "Similar difficulty" picks from your own library
-• Optional: live PSN trophy progress bar and your rarest remaining trophy (when connected)
+• Platinum availability, difficulty (1–10), estimated time and playthroughs for 75 popular games — a community-editable database on GitHub
+• A one-glance completionist effort score and price per hour
+• “Similar difficulty” picks from your own library
+• Optional, with PSN connected: your live trophy progress and, experimentally, your rarest remaining trophy
 
 🧹 SMART SEARCH FILTERS
-• Hide add-ons, currency packs, and starter packs
-• Hide DLC, expansions, and season passes
-• Hide games you already own (manual list + optional PSN sync)
-• "Mark as owned" button on every product page
-• Filters work with infinite scroll
+• Hide add-ons, currency packs and starter packs
+• Hide DLC, expansions and season passes
+• Hide games you already own (your manual list + optional PSN sync)
+• “Mark as owned” button on every product page
+• ✓ / ★ marks in search suggestions for games you own or have wishlisted
+• Works with infinite scroll; press “/” to jump to the store's search box
 
 ⭐ WISHLIST WITH PRICE ALERTS
-• Add games to a wishlist with one click on the product page
-• Set a price or "% off" target, add notes, sort and filter; get a desktop notification (or one weekly digest) when the cheapest PC price drops below it
+• Add a game with one click on its product page
+• Set a price or “% off” target, add notes, sort and filter
+• Get a desktop notification — or one weekly digest — when the cheapest PC price reaches your target
 • Records the PS Store price you see on each game's page
-• Share the list as a read-only link — the list lives in the link, nothing is uploaded
-• Daily background checks (no constant polling)
-• Toolbar badge shows a live count of wishlist deals currently at/below your target
-• Library & Wishlist stats dashboard: games owned, wishlist size, total wishlist value, deals ready to buy — computed entirely from data already on your device
+• Share your list as a read-only link: the list lives inside the link, nothing is uploaded
+• Daily background checks, no constant polling
+• Toolbar badge counts the wishlist deals at or below your target
+• Library & Wishlist dashboard: games owned, wishlist size, total value, deals ready to buy — all computed from data on your device
 
 💱 CURRENCY CONVERSION
-• Cross-platform prices auto-convert from USD to your local currency
-• 18 currencies supported (EUR, GBP, ILS, JPY, BRL, KRW, MXN, INR, and more)
-• Daily exchange rates via Frankfurter (European Central Bank)
+• Cross-platform prices convert from USD to your local currency automatically
+• 18 currencies (EUR, GBP, ILS, JPY, BRL, KRW, MXN, INR and more), set from your store region
+• Daily exchange rates from Frankfurter (European Central Bank data)
 
-🎨 THEME & UX
-• Light, Dark, High-contrast and Auto themes — pick what matches your system
+🎨 THEMES & EXTRAS
+• Light, Dark, High-contrast and Auto themes
 • Collapse, reorder or hide the product-page cards; share a deal as an image
-• "/" focuses the store's search box; ✓ / ★ marks in suggestions for games you own or wishlisted
-• Right-click any text on PS Store: "Find on PS Store Enhancer" → instant CheapShark lookup
-• Auto-detects your PS Store region from the URL on first visit
-• Backup & restore your owned-games list and wishlist as JSON
+• Right-click any text on the PS Store and choose “Find on PS Store Enhancer price compare” for an instant CheapShark lookup
+• Detects your PS Store region from the URL on first visit
+• Back up and restore your owned-games list and wishlist as JSON
 
-🔗 OPTIONAL: PSN LIBRARY SYNC (Advanced)
-• Power-user feature — disabled by default, requires your own PSN account
-• If you choose to connect, your game library auto-syncs every 2 hours
-• Owned games hidden from search results automatically
-• Requires manually copying the NPSSO token from your Sony account page (full instructions inside the extension)
-• You can use 100% of the extension without ever connecting — PSN integration is opt-in only
-• Disconnect anytime; your manual entries are preserved
+♿ ACCESSIBILITY
+• Respects your reduced-motion setting
+• Screen-reader announcements when cards load
+• Visible keyboard focus everywhere, plus the high-contrast theme
+
+🔗 OPTIONAL: PSN LIBRARY SYNC (advanced)
+• Off by default — it needs your own PSN account, and everything else works without it
+• Click Connect and paste your NPSSO token (step-by-step guide inside the extension), or let the extension detect it if you are signed in to PlayStation in this browser
+• Games from your PSN played-games list count as owned: they are hidden from search results and re-synced every 2 hours
+• Chrome may ask for one optional permission, only when you click Connect — it is used solely to read Sony's sign-in redirect
+• Your own Sony cookie is restored afterwards and the token stays on your device
+• Disconnect anytime; your manual entries are kept
 
 ⚡ PERFORMANCE
-• Smart caching reduces API calls (4-24 hour TTL per data type)
+• Smart caching keeps API calls to a minimum
 • Skeleton loading animations while data loads
-• Lightweight: no external libraries, pure vanilla JavaScript
+• Lightweight: no external libraries, plain JavaScript
 
 🌍 16 LANGUAGES
-English, עברית (Hebrew), العربية (Arabic), Español, Français, Deutsch, Italiano, Português (BR), Nederlands, Polski, Türkçe, Русский, 日本語, 한국어, 简体中文, 繁體中文
-Built-in language selector — override browser language from settings.
+English, עברית, العربية, Español, Français, Deutsch, Italiano, Português (BR), Nederlands, Polski, Türkçe, Русский, 日本語, 한국어, 简体中文, 繁體中文
+Built-in language selector — override your browser language in Settings.
 
 🔒 PRIVACY FIRST
-• All data stored locally on your device
+• All your data stays on your device
 • No analytics, no tracking, no data sharing
-• No remote servers — everything runs in your browser
-• PSN connection is optional and can be removed anytime
-• "Erase all my data" button in the popup and settings
-• Local diagnostics log that never records tokens or passwords
-• Full privacy policy available
+• No servers of our own: the only requests go to CheapShark (prices, scores), Frankfurter (exchange rates) and — only if you connect — Sony
+• “Erase all my data” button in the popup and in Settings
+• A local diagnostics log that never records tokens or passwords
+• Open source (MIT) on GitHub; full privacy policy available
 
 ⚠️ DISCLAIMER
 This extension is not affiliated with, endorsed by, or connected to Sony Interactive Entertainment, PlayStation, or any of their subsidiaries. PlayStation is a registered trademark of Sony Interactive Entertainment. All product names, logos, and brands are property of their respective owners.

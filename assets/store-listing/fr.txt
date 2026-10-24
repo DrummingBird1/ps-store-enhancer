@@ -1,0 +1,84 @@
+PS Store Enhancer (anciennement GameDeals+) ajoute au PlayStation™ Store de vrais repères de prix, des notes et des filtres intelligents, pour décider de vos achats à partir de faits. Toutes les fonctions de base marchent dès l’installation : sans connexion, sans compte.
+
+🔍 INTELLIGENCE DES PRIX
+• Vrai prix le plus bas de tous les temps sur PC (avec sa date), meilleur prix du jour et alerte « proche du plus bas historique » — uniquement des données réelles, aucun graphique estimé
+• Une tendance de prix tracée à partir des prix enregistrés par votre propre navigateur
+• Comparaison multiplateforme pour le jeu exact (jamais un DLC, une carte ou une suite) : Steam, Epic Games Store, GOG, Humble Store et plus — via CheapShark, convertie dans votre devise
+• Transparence sur les éditions : un prix issu d’une autre édition ou d’un autre bundle (Deluxe, Ultimate, GOTY…) est clairement signalé et jamais mélangé en silence
+• Indications sur le moment où les grandes soldes démarrent d’habitude
+• Suggestions de recherche en direct : en tapant dans la barre de recherche du store, vous voyez la jaquette et le meilleur prix PC
+• Lien en un clic vers PSPrices pour l’historique complet des prix PlayStation
+
+📊 NOTES
+• Badges Metacritic (PC) et note des joueurs Steam à côté du titre du jeu (via CheapShark)
+• Code couleur vert, jaune ou rouge — affichés uniquement quand une vraie note existe
+• Un clic sur un badge ouvre les avis complets
+
+🏆 INFOS COMPLETIONISTE
+• Disponibilité du Platine, difficulté (1–10), durée estimée et nombre de parties nécessaires pour 75 jeux populaires — une base de données modifiable par la communauté sur GitHub
+• Un score d’effort completioniste en un coup d’œil et le prix à l’heure
+• Suggestions de « difficulté similaire » tirées de votre propre bibliothèque
+• En option, avec PSN connecté : votre progression de trophées en direct et, à titre expérimental, votre trophée le plus rare restant
+
+🧹 FILTRES DE RECHERCHE INTELLIGENTS
+• Masquer les extensions, packs de monnaie et packs de démarrage
+• Masquer les DLC, extensions et passes de saison
+• Masquer les jeux que vous possédez déjà (votre liste manuelle + synchro PSN facultative)
+• Bouton « Marquer comme possédé » sur chaque page produit
+• Repères ✓ / ★ dans les suggestions de recherche pour les jeux que vous possédez ou avez dans votre liste de souhaits
+• Compatible avec le défilement infini ; appuyez sur « / » pour aller à la barre de recherche du store
+
+⭐ LISTE DE SOUHAITS AVEC ALERTES DE PRIX
+• Ajoutez un jeu en un clic depuis sa page produit
+• Fixez un prix cible ou un « % de remise », ajoutez des notes, triez et filtrez
+• Recevez une notification de bureau — ou un récapitulatif hebdomadaire — quand le meilleur prix PC atteint votre cible
+• Enregistre le prix du PS Store que vous voyez sur la page de chaque jeu
+• Partagez votre liste via un lien en lecture seule : la liste est contenue dans le lien, rien n’est envoyé
+• Vérifications quotidiennes en arrière-plan, sans interrogation permanente
+• Le badge de la barre d’outils compte les offres de votre liste qui ont atteint ou dépassé votre cible
+• Tableau de bord bibliothèque et liste de souhaits : jeux possédés, taille de la liste, valeur totale, offres prêtes à acheter — tout est calculé à partir de données présentes sur votre appareil
+
+💱 CONVERSION DE DEVISES
+• Les prix multiplateformes sont convertis automatiquement des USD vers votre devise locale
+• 18 devises (EUR, GBP, ILS, JPY, BRL, KRW, MXN, INR et plus), choisies selon la région de votre store
+• Taux de change quotidiens de Frankfurter (données de la Banque centrale européenne)
+
+🎨 THÈMES ET EXTRAS
+• Thèmes : clair, sombre, contraste élevé et automatique
+• Réduisez, réorganisez ou masquez les cartes de la page produit ; partagez une offre sous forme d’image
+• Clic droit sur n’importe quel texte du PS Store puis « Rechercher sur PS Store Enhancer comparateur » pour une recherche instantanée sur CheapShark
+• Détecte votre région PS Store à partir de l’URL dès la première visite
+• Sauvegarde et restauration de votre liste de jeux et de votre liste de souhaits au format JSON
+
+♿ ACCESSIBILITÉ
+• Respecte votre réglage « réduire les animations »
+• Annonces pour lecteurs d’écran quand les cartes se chargent
+• Focus clavier visible partout, plus le thème à contraste élevé
+
+🔗 EN OPTION : SYNCHRONISATION DE LA BIBLIOTHÈQUE PSN (avancé)
+• Désactivée par défaut — il faut votre propre compte PSN, et tout le reste fonctionne sans
+• Cliquez sur « Connecter » et collez votre jeton NPSSO (guide pas à pas dans l’extension), ou laissez l’extension le détecter si vous êtes connecté à PlayStation dans ce navigateur
+• Les jeux de votre liste « jeux joués » PSN comptent comme possédés : ils sont masqués dans les résultats de recherche et resynchronisés toutes les 2 heures
+• Chrome peut demander une autorisation facultative, uniquement quand vous cliquez sur « Connecter » — elle sert exclusivement à lire la redirection de Sony pendant la connexion
+• Votre propre cookie Sony est restauré ensuite et le jeton reste sur votre appareil
+• Déconnexion possible à tout moment ; vos saisies manuelles sont conservées
+
+⚡ PERFORMANCES
+• Un cache intelligent réduit les appels d’API au strict minimum
+• Animations de chargement « squelette » pendant le chargement des données
+• Léger : aucune bibliothèque externe, JavaScript pur
+
+🌍 16 LANGUES
+English, עברית, العربية, Español, Français, Deutsch, Italiano, Português (BR), Nederlands, Polski, Türkçe, Русский, 日本語, 한국어, 简体中文, 繁體中文
+Sélecteur de langue intégré — remplacez la langue du navigateur dans les Réglages.
+
+🔒 CONFIDENTIALITÉ D’ABORD
+• Toutes vos données restent sur votre appareil
+• Aucune analyse, aucun suivi, aucun partage de données
+• Aucun serveur à nous : les seules requêtes vont à CheapShark (prix, notes), Frankfurter (taux de change) et — uniquement si vous vous connectez — à Sony
+• Bouton « Effacer toutes mes données » dans la fenêtre contextuelle et dans les Réglages
+• Journal de diagnostic local qui n’enregistre jamais de jetons ni de mots de passe
+• Open source (MIT) sur GitHub ; politique de confidentialité complète disponible
+
+⚠️ AVERTISSEMENT
+Cette extension n’est ni affiliée à Sony Interactive Entertainment, PlayStation ou leurs filiales, ni approuvée ou liée par celles-ci. PlayStation est une marque déposée de Sony Interactive Entertainment. Tous les noms de produits, logos et marques appartiennent à leurs propriétaires respectifs.

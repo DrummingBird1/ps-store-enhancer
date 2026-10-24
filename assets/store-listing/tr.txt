@@ -1,0 +1,84 @@
+PS Store Enhancer (eski adıyla GameDeals+), PlayStation™ Store'a gerçek fiyat bilgileri, puanlar ve akıllı filtreler ekler; böylece ne satın alacağınıza gerçeklere bakarak karar verirsiniz. Tüm temel özellikler hemen çalışır: oturum açmadan, hesap gerekmeden.
+
+🔍 FİYAT ZEKÂSI
+• PC'de gerçek tüm zamanların en düşük fiyatı (tarihiyle), bugünün en ucuz fiyatı ve "tüm zamanların en düşüğüne yakın" işareti — yalnızca gerçek veriler, tahmini grafik yok
+• Kendi tarayıcınızın kaydettiği fiyatlardan çizilen fiyat eğilimi
+• Tam olarak o oyun için platformlar arası karşılaştırma (asla DLC, harita veya devam oyunu değil): Steam, Epic Games Store, GOG, Humble Store ve daha fazlası — CheapShark verileriyle, para biriminize çevrilmiş olarak
+• Sürüm şeffaflığı: farklı bir sürüm veya paketin (Deluxe, Ultimate, GOTY…) fiyatı açıkça işaretlenir, sessizce karıştırılmaz
+• Büyük indirimlerin genellikle ne zaman başladığına dair ipuçları
+• Canlı arama önerileri: mağazanın arama kutusuna yazarken kapak görselini ve en düşük PC fiyatını görürsünüz
+• Tüm PlayStation fiyat geçmişi için tek tıkla PSPrices bağlantısı
+
+📊 PUANLAR
+• Oyun adının yanında Metacritic (PC) ve Steam kullanıcı puanı rozetleri (CheapShark üzerinden)
+• Yeşil, sarı veya kırmızı renk kodlu — yalnızca gerçek bir puan varsa gösterilir
+• Tüm incelemeleri açmak için rozete tıklayın
+
+🏆 COMPLETIONIST BİLGİSİ
+• 75 popüler oyun için Platin durumu, zorluk (1–10), tahmini süre ve gereken oynanış sayısı — topluluğun GitHub'da düzenleyebildiği bir veritabanı
+• Tek bakışta completionist çaba puanı ve saat başına fiyat
+• Kendi kitaplığınızdan "benzer zorlukta" öneriler
+• İsteğe bağlı, PSN bağlıyken: canlı kupa ilerlemeniz ve deneysel olarak elinizde olmayan en nadir kupa
+
+🧹 AKILLI ARAMA FİLTRELERİ
+• Eklentileri, para paketlerini ve başlangıç paketlerini gizleyin
+• DLC'leri, genişleme paketlerini ve sezon geçişlerini gizleyin
+• Zaten sahip olduğunuz oyunları gizleyin (elle oluşturduğunuz liste + isteğe bağlı PSN eşitleme)
+• Her ürün sayfasında "Sahibim olarak işaretle" düğmesi
+• Arama önerilerinde sahip olduğunuz veya istek listenizdeki oyunlar için ✓ / ★ işaretleri
+• Sonsuz kaydırmayla çalışır; mağazanın arama kutusuna gitmek için "/" tuşuna basın
+
+⭐ FİYAT UYARILI İSTEK LİSTESİ
+• Ürün sayfasında tek tıkla oyun ekleyin
+• Hedef fiyat veya "% indirim" belirleyin, not ekleyin, sıralayın ve filtreleyin
+• En düşük PC fiyatı hedefinize ulaştığında masaüstü bildirimi — ya da haftalık tek bir özet — alın
+• Her oyunun sayfasında gördüğünüz PS Store fiyatını kaydeder
+• Listenizi salt okunur bağlantı olarak paylaşın: liste bağlantının içindedir, hiçbir şey yüklenmez
+• Arka planda günlük kontroller, sürekli sorgulama yok
+• Araç çubuğundaki rozet, hedefinize ulaşan veya altına düşen istek listesi fırsatlarını sayar
+• Kitaplık ve istek listesi panosu: sahip olunan oyunlar, liste boyutu, toplam değer ve satın almaya hazır fırsatlar — hepsi cihazınızdaki verilerden hesaplanır
+
+💱 PARA BİRİMİ DÖNÜŞTÜRME
+• Platformlar arası fiyatlar USD'den yerel para biriminize otomatik çevrilir
+• 18 para birimi (EUR, GBP, ILS, JPY, BRL, KRW, MXN, INR ve daha fazlası), mağaza bölgenize göre ayarlanır
+• Frankfurter'dan günlük döviz kurları (Avrupa Merkez Bankası verileri)
+
+🎨 TEMALAR VE EKSTRALAR
+• Temalar: açık, koyu, yüksek kontrast ve otomatik
+• Ürün sayfası kartlarını daraltın, yeniden sıralayın veya gizleyin; bir fırsatı görsel olarak paylaşın
+• PS Store'da herhangi bir metne sağ tıklayıp "PS Store Enhancer fiyat karşılaştırmasında bul" seçeneğini seçerek CheapShark'ta anında arama yapın
+• İlk ziyarette PS Store bölgenizi URL'den algılar
+• Sahip olunan oyun listenizi ve istek listenizi JSON olarak yedekleyin ve geri yükleyin
+
+♿ ERİŞİLEBİLİRLİK
+• Sistemdeki "hareketi azalt" ayarına uyar
+• Kartlar yüklenirken ekran okuyucu duyuruları
+• Her yerde görünür klavye odağı ve yüksek kontrast teması
+
+🔗 İSTEĞE BAĞLI: PSN KİTAPLIK EŞİTLEME (gelişmiş)
+• Varsayılan olarak kapalı — kendi PSN hesabınız gerekir, geri kalan her şey onsuz da çalışır
+• "Bağlan"a tıklayıp NPSSO belirtecinizi yapıştırın (adım adım kılavuz eklentinin içinde) ya da bu tarayıcıda PlayStation'a giriş yaptıysanız eklentinin bulmasına izin verin
+• PSN "oynanan oyunlar" listenizdeki oyunlar sahip olunmuş sayılır: arama sonuçlarında gizlenir ve her 2 saatte bir yeniden eşitlenir
+• Chrome, yalnızca "Bağlan"a tıkladığınızda isteğe bağlı bir izin isteyebilir — bu izin yalnızca oturum açma sırasında Sony'nin yönlendirmesini okumak için kullanılır
+• Kendi Sony çereziniz işlem sonunda eski haline getirilir ve belirteç cihazınızda kalır
+• İstediğiniz zaman bağlantıyı kesebilirsiniz; elle eklediğiniz kayıtlar korunur
+
+⚡ PERFORMANS
+• Akıllı önbellek API çağrılarını en aza indirir
+• Veriler yüklenirken iskelet yükleme animasyonları
+• Hafif: harici kitaplık yok, saf JavaScript
+
+🌍 16 DİL
+English, עברית, العربية, Español, Français, Deutsch, Italiano, Português (BR), Nederlands, Polski, Türkçe, Русский, 日本語, 한국어, 简体中文, 繁體中文
+Yerleşik dil seçici — tarayıcı dilini Ayarlar'dan değiştirebilirsiniz.
+
+🔒 ÖNCE GİZLİLİK
+• Tüm verileriniz cihazınızda kalır
+• Analiz yok, izleme yok, veri paylaşımı yok
+• Kendi sunucumuz yok: tek istekler CheapShark (fiyatlar, puanlar), Frankfurter (döviz kurları) ve — yalnızca bağlanırsanız — Sony'ye gider
+• Açılır pencerede ve Ayarlar'da "Tüm verilerimi sil" düğmesi
+• Belirteçleri veya parolaları asla kaydetmeyen yerel tanılama günlüğü
+• GitHub'da açık kaynak (MIT); tam gizlilik politikası mevcut
+
+⚠️ SORUMLULUK REDDİ
+Bu eklenti Sony Interactive Entertainment, PlayStation veya bağlı kuruluşlarıyla ilişkili değildir, onlar tarafından onaylanmamıştır ve onlarla bağlı değildir. PlayStation, Sony Interactive Entertainment'ın tescilli ticari markasıdır. Tüm ürün adları, logolar ve markalar ilgili sahiplerine aittir.

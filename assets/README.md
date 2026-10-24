@@ -23,7 +23,8 @@ screenshots/
   he/                           Hebrew screenshots (upload under the Hebrew locale in the
                                  dashboard: Store Listing → language dropdown → Hebrew)
 docs/                           The GitHub Pages website — self-contained, see below
-STORE-LISTING.txt               Full description + permission justifications, copy-paste ready
+STORE-LISTING.txt               English description + permission justifications, copy-paste ready
+store-listing/                  The detailed description in all 16 languages, one .txt per language
 REVIEWER-NOTES.md               Notes for the Chrome Web Store review team
 ```
 

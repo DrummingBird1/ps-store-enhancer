@@ -1,0 +1,84 @@
+PS Store Enhancer (in precedenza GameDeals+) porta nel PlayStation™ Store informazioni sui prezzi reali, voti e filtri intelligenti, così scegli cosa comprare in base ai fatti. Tutte le funzioni principali funzionano subito: nessun accesso, nessun account.
+
+🔍 INTELLIGENZA SUI PREZZI
+• Vero prezzo minimo storico su PC (con la data), prezzo più basso di oggi e segnalazione «vicino al minimo storico»: solo dati reali, nessun grafico stimato
+• Un andamento dei prezzi costruito con i prezzi registrati dal tuo browser
+• Confronto tra piattaforme per il gioco esatto (mai un DLC, una mappa o un seguito): Steam, Epic Games Store, GOG, Humble Store e altri, con dati di CheapShark convertiti nella tua valuta
+• Trasparenza sulle edizioni: un prezzo di un'altra edizione o bundle (Deluxe, Ultimate, GOTY…) è segnalato chiaramente e mai mescolato di nascosto
+• Indicazioni su quando di solito iniziano i grandi saldi
+• Suggerimenti di ricerca in tempo reale: mentre scrivi nella barra di ricerca dello store vedi la copertina e il prezzo PC più basso
+• Link con un clic a PSPrices per lo storico completo dei prezzi PlayStation
+
+📊 VOTI
+• Badge Metacritic (PC) e voto degli utenti Steam accanto al titolo del gioco (tramite CheapShark)
+• Colori verde, giallo o rosso: compaiono solo se esiste un voto reale
+• Clicca su un badge per aprire tutte le recensioni
+
+🏆 INFO PER COMPLETISTI
+• Disponibilità del Platino, difficoltà (1–10), tempo stimato e partite necessarie per 75 giochi popolari: un database che la community può modificare su GitHub
+• Un punteggio di impegno da completista a colpo d'occhio e il prezzo per ora
+• Suggerimenti di «difficoltà simile» dalla tua libreria
+• Facoltativo, con PSN collegato: i progressi dei trofei in tempo reale e, in via sperimentale, il trofeo più raro che ti manca
+
+🧹 FILTRI DI RICERCA INTELLIGENTI
+• Nascondi componenti aggiuntivi, pacchetti di valuta e pacchetti iniziali
+• Nascondi DLC, espansioni e season pass
+• Nascondi i giochi che possiedi già (la tua lista manuale + sincronizzazione PSN facoltativa)
+• Pulsante «Segna come posseduto» in ogni pagina prodotto
+• Segni ✓ / ★ nei suggerimenti di ricerca per i giochi che possiedi o che hai nella lista dei desideri
+• Funziona con lo scorrimento infinito; premi «/» per andare alla barra di ricerca dello store
+
+⭐ LISTA DEI DESIDERI CON AVVISI DI PREZZO
+• Aggiungi un gioco con un clic dalla pagina prodotto
+• Imposta un prezzo obiettivo o una soglia di «% di sconto», aggiungi note, ordina e filtra
+• Ricevi una notifica sul desktop — o un solo riepilogo settimanale — quando il prezzo PC più basso raggiunge il tuo obiettivo
+• Registra il prezzo del PS Store che vedi nella pagina di ogni gioco
+• Condividi la lista come link di sola lettura: la lista è contenuta nel link, non viene caricato nulla
+• Controlli giornalieri in background, senza interrogazioni continue
+• Il badge sulla barra degli strumenti conta le offerte della lista che hanno raggiunto o superato il tuo obiettivo
+• Pannello libreria e lista dei desideri: giochi posseduti, dimensione della lista, valore totale e offerte pronte all'acquisto, tutto calcolato con dati presenti sul tuo dispositivo
+
+💱 CONVERSIONE DI VALUTA
+• I prezzi tra piattaforme vengono convertiti automaticamente da USD alla tua valuta locale
+• 18 valute (EUR, GBP, ILS, JPY, BRL, KRW, MXN, INR e altre), scelte in base alla regione del tuo store
+• Tassi di cambio giornalieri da Frankfurter (dati della Banca centrale europea)
+
+🎨 TEMI ED EXTRA
+• Temi: chiaro, scuro, alto contrasto e automatico
+• Comprimi, riordina o nascondi le schede della pagina prodotto; condividi un'offerta come immagine
+• Clic destro su qualsiasi testo nel PS Store e scegli «Cerca nel confronto prezzi di PS Store Enhancer» per una ricerca immediata su CheapShark
+• Rileva la regione del PS Store dall'URL alla prima visita
+• Backup e ripristino della lista dei giochi posseduti e della lista dei desideri in JSON
+
+♿ ACCESSIBILITÀ
+• Rispetta l'impostazione «riduci movimento»
+• Annunci per gli screen reader quando le schede si caricano
+• Focus da tastiera visibile ovunque, più il tema ad alto contrasto
+
+🔗 FACOLTATIVO: SINCRONIZZAZIONE DELLA LIBRERIA PSN (avanzato)
+• Disattivata per impostazione predefinita: serve un tuo account PSN, e tutto il resto funziona anche senza
+• Clicca su «Collega» e incolla il tuo token NPSSO (guida passo passo nell'estensione), oppure lascia che l'estensione lo rilevi se hai effettuato l'accesso a PlayStation in questo browser
+• I giochi della tua lista «giochi giocati» su PSN contano come posseduti: vengono nascosti nei risultati di ricerca e risincronizzati ogni 2 ore
+• Chrome può chiedere un'autorizzazione facoltativa, solo quando clicchi su «Collega»: serve esclusivamente a leggere il reindirizzamento di Sony durante l'accesso
+• Il tuo cookie Sony viene ripristinato al termine e il token resta sul tuo dispositivo
+• Scollegati quando vuoi; le voci inserite a mano vengono conservate
+
+⚡ PRESTAZIONI
+• Una cache intelligente riduce al minimo le chiamate alle API
+• Animazioni di caricamento a scheletro mentre i dati si caricano
+• Leggera: nessuna libreria esterna, JavaScript puro
+
+🌍 16 LINGUE
+English, עברית, العربية, Español, Français, Deutsch, Italiano, Português (BR), Nederlands, Polski, Türkçe, Русский, 日本語, 한국어, 简体中文, 繁體中文
+Selettore di lingua integrato: cambia la lingua del browser dalle Impostazioni.
+
+🔒 PRIVACY PRIMA DI TUTTO
+• Tutti i tuoi dati restano sul tuo dispositivo
+• Nessuna analisi, nessun tracciamento, nessuna condivisione dei dati
+• Nessun server nostro: le uniche richieste vanno a CheapShark (prezzi, voti), Frankfurter (tassi di cambio) e — solo se ti colleghi — a Sony
+• Pulsante «Cancella tutti i miei dati» nel popup e nelle Impostazioni
+• Registro diagnostico locale che non memorizza mai token o password
+• Open source (MIT) su GitHub; informativa sulla privacy completa disponibile
+
+⚠️ DISCLAIMER
+Questa estensione non è affiliata a Sony Interactive Entertainment, PlayStation o alle loro società controllate, né da esse approvata o collegata. PlayStation è un marchio registrato di Sony Interactive Entertainment. Tutti i nomi di prodotti, loghi e marchi appartengono ai rispettivi proprietari.
