@@ -19,6 +19,8 @@
 📖 <a href="README.he.md">README בעברית</a>
 </p>
 
+<p align="center">🗺️ <a href="ROADMAP.md">Roadmap</a> — what shipped and what is planned</p>
+
 <p align="center">
 ❤️ Support this project — <a href="https://ko-fi.com/idanlights">Ko-fi</a> · <a href="https://buymeacoffee.com/MrIdan">Buy Me a Coffee</a> · <a href="https://www.patreon.com/c/IdanLights">Patreon</a>
 </p>

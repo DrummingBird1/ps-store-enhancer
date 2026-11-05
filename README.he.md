@@ -11,7 +11,7 @@
 ![Languages](https://img.shields.io/badge/languages-16-orange)
 ![License](https://img.shields.io/badge/license-MIT-brightgreen)
 
-[English README](README.md) · [🌐 Landing page](https://drummingbird1.github.io/ps-store-enhancer/) · [📝 Changelog](CHANGELOG.md) · [🔒 מדיניות פרטיות](https://drummingbird1.github.io/ps-store-enhancer/privacy-policy.html)
+[English README](README.md) · [🌐 Landing page](https://drummingbird1.github.io/ps-store-enhancer/) · [📝 Changelog](CHANGELOG.md) · [🗺️ מפת דרכים](ROADMAP.md) · [🔒 מדיניות פרטיות](https://drummingbird1.github.io/ps-store-enhancer/privacy-policy.html)
 
 ❤️ תמכו בפרויקט — [Ko-fi](https://ko-fi.com/idanlights) · [Buy Me a Coffee](https://buymeacoffee.com/MrIdan) · [Patreon](https://www.patreon.com/c/IdanLights)
 
