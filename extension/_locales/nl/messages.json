@@ -433,7 +433,7 @@
     "message": "Steun de ontwikkeling"
   },
   "supportDevDesc": {
-    "message": "Bevalt PS Store Enhancer? Steun de ontwikkeling via Ko-fi, Buy Me a Coffee of Patreon."
+    "message": "Bevalt PS Store Enhancer? Steun de ontwikkeling via Ko-fi."
   },
   "currencyTitle": {
     "message": "Weergavevaluta"
@@ -562,9 +562,6 @@
         "content": "$1"
       }
     }
-  },
-  "supportCoffee": {
-    "message": "Koffie"
   },
   "noPcData": {
     "message": "Geen pc-prijzen gevonden voor deze titel — mogelijk een PlayStation-exclusive."

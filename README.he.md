@@ -13,7 +13,7 @@
 
 [English README](README.md) · [🌐 Landing page](https://drummingbird1.github.io/ps-store-enhancer/) · [📝 Changelog](CHANGELOG.md) · [🗺️ מפת דרכים](ROADMAP.md) · [🔒 מדיניות פרטיות](https://drummingbird1.github.io/ps-store-enhancer/privacy-policy.html)
 
-❤️ תמכו בפרויקט — [Ko-fi](https://ko-fi.com/idanlights) · [Buy Me a Coffee](https://buymeacoffee.com/MrIdan) · [Patreon](https://www.patreon.com/c/IdanLights)
+❤️ תמכו בפרויקט — [Ko-fi](https://ko-fi.com/idanlights)
 
 ---
 

@@ -433,7 +433,7 @@
     "message": "Geliştirmeyi destekle"
   },
   "supportDevDesc": {
-    "message": "PS Store Enhancer'ı beğendiniz mi? Geliştirilmesine Ko-fi, Buy Me a Coffee veya Patreon üzerinden destek olun."
+    "message": "PS Store Enhancer'ı beğendiniz mi? Geliştirmeyi Ko-fi üzerinden destekleyin."
   },
   "currencyTitle": {
     "message": "Görüntüleme Para Birimi"
@@ -562,9 +562,6 @@
         "content": "$1"
       }
     }
-  },
-  "supportCoffee": {
-    "message": "Kahve"
   },
   "noPcData": {
     "message": "Bu oyun için PC fiyatı bulunamadı — PlayStation'a özel olabilir."
