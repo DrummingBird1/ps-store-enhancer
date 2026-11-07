@@ -433,7 +433,7 @@
     "message": "תמכו בפיתוח"
   },
   "supportDevDesc": {
-    "message": "נהנים מ-PS Store Enhancer? תמכו בפיתוח ב-Ko-fi."
+    "message": "נהנים מ-PS Store Enhancer? תמכו בפיתוח ב-Ko-fi, Buy Me a Coffee, או Patreon."
   },
   "currencyTitle": {
     "message": "מטבע תצוגה"
@@ -562,6 +562,9 @@
         "content": "$1"
       }
     }
+  },
+  "supportCoffee": {
+    "message": "קפה"
   },
   "noPcData": {
     "message": "לא נמצאו נתוני מחיר ל-PC עבור המשחק הזה — ייתכן שהוא בלעדי ל-PlayStation."
