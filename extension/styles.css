@@ -7,16 +7,16 @@
   --pse-panel: rgba(255,255,255,0.05);
   --pse-panel-hi: rgba(255,255,255,0.09);
   --pse-accent: #1769e0;
-  --pse-accent-light: #5aa3ff;
+  --pse-accent-light: #74b2ff;
   --pse-accent-soft: rgba(90,163,255,0.16);
   --pse-accent-ink: #ffffff;
   --pse-hero: linear-gradient(135deg, #8ec0ff, #5aa3ff 45%, #8fe4ff);
   --pse-text-primary: #eef2fb;
   --pse-text-secondary: #a3aec6;
-  --pse-text-muted: #8590a8;
+  --pse-text-muted: #97a2b9;
   --pse-border: rgba(255,255,255,0.10);
   --pse-border-accent: rgba(90,163,255,0.38);
-  --pse-success: #5fd6a2;
+  --pse-success: #6fdcae;
   --pse-success-soft: rgba(95,214,162,0.14);
   --pse-warning: #f3c65a;
   --pse-warning-soft: rgba(243,198,90,0.14);
@@ -26,27 +26,29 @@
   --pse-shadow: 0 10px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.06);
   --pse-shadow-sm: 0 2px 8px rgba(0,0,0,0.25);
   --pse-blur: blur(18px) saturate(140%);
+  --pse-solid: rgba(0,0,0,0);              /* what lies under standalone buttons: nothing in dark */
 }
 
 /* Light theme — applied per injected element via data-pse-theme="light" */
 .pse-injected[data-pse-theme="light"] {
   --pse-bg-card: #f4f7fd;
-  --pse-glass: radial-gradient(70% 90% at 12% 0%, rgba(61,125,255,0.14), transparent 70%), rgba(255,255,255,0.82);
+  --pse-glass: radial-gradient(70% 90% at 12% 0%, rgba(61,125,255,0.14), transparent 70%), rgba(255,255,255,0.96);
   --pse-panel: rgba(15,30,70,0.05);
   --pse-panel-hi: rgba(15,30,70,0.09);
-  --pse-accent-light: #1769e0;
+  --pse-accent-light: #1257c8;
   --pse-accent-soft: rgba(23,105,224,0.12);
-  --pse-hero: linear-gradient(135deg, #1769e0, #4a8dff);
+  --pse-hero: linear-gradient(135deg, #0f55c2, #2f7bf0);
   --pse-text-primary: #0d1630;
   --pse-text-secondary: #4b5878;
-  --pse-text-muted: #66728f;
+  --pse-text-muted: #5b6784;
   --pse-border: rgba(15,30,70,0.12);
   --pse-border-accent: rgba(23,105,224,0.45);
-  --pse-success: #0f7f55;
+  --pse-success: #096843;
   --pse-success-soft: rgba(15,127,85,0.12);
-  --pse-warning: #8f5f00;
-  --pse-warning-soft: rgba(143,95,0,0.12);
-  --pse-danger: #c62828;
+  --pse-warning: #7a5000;
+  --pse-warning-soft: rgba(122,80,0,0.12);
+  --pse-danger: #b3201f;
+  --pse-solid: #ffffff;
   --pse-shadow: 0 10px 34px rgba(30,50,110,0.14), inset 0 1px 0 rgba(255,255,255,0.7);
   --pse-shadow-sm: 0 2px 8px rgba(30,50,110,0.10);
   color: var(--pse-text-primary);
@@ -76,6 +78,7 @@
   --pse-shadow: none;
   --pse-shadow-sm: none;
   --pse-blur: none;
+  --pse-solid: #000;
   color: #fff;
 }
 .pse-injected[data-pse-theme="contrast"] a { text-decoration: underline; }
@@ -122,8 +125,7 @@
 .pse-price-insight:hover,.pse-trophy-box:hover,.pse-xplatform:hover { border-color: var(--pse-border-accent); }
 
 /* The store styles every <button> with background: inherit, which would paint the card's own glass a second time over the header. */
-.pse-card .pse-card-head,
-.pse-card-head {
+.pse-card .pse-card-head {
   display: flex; align-items: center; gap: 10px; width: 100%;
   background: none !important; border: 0; padding: 0; margin: 0 0 14px;
   font: inherit; font-size: 15px; font-weight: 600; color: var(--pse-text-primary);
@@ -140,8 +142,8 @@
   border-inline-end: 2px solid var(--pse-text-muted); border-bottom: 2px solid var(--pse-text-muted);
   transform: rotate(45deg); transition: transform 0.2s;
 }
-.pse-card-head[aria-expanded="false"] .pse-card-chevron { transform: rotate(-45deg); }
-.pse-card-head[aria-expanded="false"] { margin-bottom: 4px; }
+.pse-card .pse-card-head[aria-expanded="false"] .pse-card-chevron { transform: rotate(-45deg); }
+.pse-card .pse-card-head[aria-expanded="false"] { margin-bottom: 4px; }
 .pse-card-summary { font-size: 12px; color: var(--pse-text-secondary); }
 .pse-card-note { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--pse-text-muted); margin: 8px 0 0; }
 .pse-card-note.pse-sale-note { justify-content: center; text-align: center; }
@@ -173,7 +175,7 @@
 .pse-mc-link:hover { transform:scale(1.08); }
 .pse-metacritic-badge { display:inline-flex; align-items:center; border-radius:8px; overflow:hidden; box-shadow:var(--pse-shadow-sm); border:1px solid var(--pse-border); line-height:1; animation:pse-popIn 0.3s cubic-bezier(0.34,1.56,0.64,1); }
 .pse-mc-logo { background:#333; color:#fff; font-size:11px; font-weight:700; letter-spacing:0.5px; padding:6px 7px; }
-.pse-mc-score { color:#fff; font-size:14px; font-weight:800; padding:5px 9px; min-width:24px; text-align:center; }
+.pse-mc-score { color:#0b1020; font-size:14px; font-weight:800; padding:5px 9px; min-width:24px; text-align:center; }
 
 /* ─── tags, chips, notes ─── */
 .pse-cache-tag { font-size:11px; font-weight:600; padding:3px 9px; background:var(--pse-success-soft); color:var(--pse-success); border-radius:999px; margin-inline-start:auto; direction:ltr; letter-spacing:0.03em; }
@@ -220,13 +222,13 @@
 .pse-xp-edition { font-size:10px; font-weight:700; padding:2px 7px; background:var(--pse-warning-soft); color:var(--pse-warning); border-radius:6px; }
 .pse-xp-price-group { display:flex; align-items:center; gap:6px; flex:none; }
 .pse-xp-savings { font-size:11px; font-weight:700; color:var(--pse-success); background:var(--pse-success-soft); padding:2px 7px; border-radius:6px; }
-.pse-xp-original { font-size:11px; color:var(--pse-text-muted); text-decoration:line-through; }
+.pse-xp-original { font-size:11px; color:var(--pse-text-secondary); text-decoration:line-through; }
 .pse-xp-current { font-size:15px; font-weight:600; color:var(--pse-text-primary); font-variant-numeric:tabular-nums; }
 .pse-xp-note { font-size:11px; color:var(--pse-text-muted); text-align:center; margin:0; direction:ltr; }
 .pse-sale-note { text-align:center; }
-.pse-share-btn { display:flex; align-items:center; justify-content:center; gap:8px; width:100%; margin-top:12px; padding:10px 14px; font:inherit; font-size:13px; font-weight:600; color:var(--pse-text-secondary); background:var(--pse-panel); border:1px solid var(--pse-border); border-radius:999px; cursor:pointer; transition:color 0.2s, border-color 0.2s; }
-.pse-share-btn:hover { color:var(--pse-accent-light); border-color:var(--pse-border-accent); }
-.pse-share-btn:disabled { opacity:0.5; cursor:wait; }
+.pse-injected .pse-share-btn { display:flex; align-items:center; justify-content:center; gap:8px; width:100%; margin-top:12px; padding:10px 14px; font:inherit; font-size:13px; font-weight:600; color:var(--pse-text-secondary); background:var(--pse-panel); border:1px solid var(--pse-border); border-radius:999px; cursor:pointer; transition:color 0.2s, border-color 0.2s; }
+.pse-injected .pse-share-btn:hover { color:var(--pse-accent-light); border-color:var(--pse-border-accent); }
+.pse-injected .pse-share-btn:disabled { opacity:0.5; cursor:wait; }
 
 /* ─── trophy ─── */
 .pse-trophy-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px; }
@@ -251,36 +253,38 @@
 .pse-trophy-progress-fill { height:100%; background:linear-gradient(90deg,#1769e0,#5aa3ff); border-radius:10px; transition:width 0.5s ease; }
 .pse-trophy-progress-text { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:600; color:var(--pse-text-primary); text-shadow:0 1px 2px rgba(0,0,0,0.35); }
 
-/* ─── "Mark as owned" button ─── */
+/* ─── "Mark as owned" button ───
+   Buttons are written as ".pse-injected .pse-x": the store resets padding, border, colour and font on every <button>
+   with a rule that ties a single class selector and comes later, so a plain ".pse-x" lost (squashed pills, white text). */
 .pse-owned-btn-wrap { margin:10px 0; max-width:380px; }
-.pse-owned-btn {
+.pse-injected .pse-owned-btn {
   display:flex; align-items:center; justify-content:center; gap:8px;
   width:100%; padding:11px 16px; border:1px solid var(--pse-border); border-radius:999px;
-  background:var(--pse-panel); color:var(--pse-text-secondary); font-family:var(--pse-font);
+  background:linear-gradient(var(--pse-panel), var(--pse-panel)), var(--pse-solid); color:var(--pse-text-secondary); font-family:var(--pse-font);
   font-size:13px; font-weight:600; cursor:pointer; transition:all 0.2s;
 }
-.pse-owned-btn:hover { border-color:var(--pse-border-accent); background:var(--pse-accent-soft); color:var(--pse-accent-light); }
-.pse-owned-btn.pse-owned-active { background:var(--pse-success-soft); border-color:color-mix(in srgb, var(--pse-success) 40%, transparent); color:var(--pse-success); }
-.pse-owned-btn.pse-owned-active:hover { background:rgba(255,64,64,0.1); border-color:rgba(255,64,64,0.3); color:var(--pse-danger); }
-.pse-owned-btn:disabled { opacity:0.5; cursor:wait; }
+.pse-injected .pse-owned-btn:hover { border-color:var(--pse-border-accent); background:linear-gradient(var(--pse-accent-soft), var(--pse-accent-soft)), var(--pse-solid); color:var(--pse-accent-light); }
+.pse-injected .pse-owned-btn.pse-owned-active { background:linear-gradient(var(--pse-success-soft), var(--pse-success-soft)), var(--pse-solid); border-color:color-mix(in srgb, var(--pse-success) 40%, transparent); color:var(--pse-success); }
+.pse-injected .pse-owned-btn.pse-owned-active:hover { background:rgba(255,64,64,0.1); border-color:rgba(255,64,64,0.3); color:var(--pse-danger); }
+.pse-injected .pse-owned-btn:disabled { opacity:0.5; cursor:wait; }
 
 /* ─── Wishlist button ─── */
 .pse-wishlist-btn-wrap { margin:10px 0; max-width:380px; }
-.pse-wishlist-btn {
+.pse-injected .pse-wishlist-btn {
   display:flex; align-items:center; justify-content:center; gap:8px;
   width:100%; padding:11px 16px; border:1px solid color-mix(in srgb, var(--pse-warning) 40%, transparent); border-radius:999px;
-  background:var(--pse-warning-soft); color:var(--pse-warning); font-family:var(--pse-font);
+  background:linear-gradient(var(--pse-warning-soft), var(--pse-warning-soft)), var(--pse-solid); color:var(--pse-warning); font-family:var(--pse-font);
   font-size:13px; font-weight:600; cursor:pointer; transition:all 0.2s;
 }
-.pse-wishlist-btn:hover { background:var(--pse-panel-hi); border-color:var(--pse-warning); }
-.pse-wishlist-btn.pse-wishlist-active { background:var(--pse-success-soft); border-color:color-mix(in srgb, var(--pse-success) 40%, transparent); color:var(--pse-success); }
-.pse-wishlist-btn.pse-wishlist-active:hover { background:rgba(255,64,64,0.08); border-color:rgba(255,64,64,0.3); color:var(--pse-danger); }
-.pse-wishlist-btn:disabled { opacity:0.5; cursor:wait; }
+.pse-injected .pse-wishlist-btn:hover { background:linear-gradient(var(--pse-panel-hi), var(--pse-panel-hi)), var(--pse-solid); border-color:var(--pse-warning); }
+.pse-injected .pse-wishlist-btn.pse-wishlist-active { background:linear-gradient(var(--pse-success-soft), var(--pse-success-soft)), var(--pse-solid); border-color:color-mix(in srgb, var(--pse-success) 40%, transparent); color:var(--pse-success); }
+.pse-injected .pse-wishlist-btn.pse-wishlist-active:hover { background:rgba(255,64,64,0.08); border-color:rgba(255,64,64,0.3); color:var(--pse-danger); }
+.pse-injected .pse-wishlist-btn:disabled { opacity:0.5; cursor:wait; }
 
 /* ─── Inline notice (API down etc.) ─── */
 .pse-inline-notice {
   font-family: var(--pse-font);
-  background: var(--pse-warning-soft);
+  background: linear-gradient(var(--pse-warning-soft), var(--pse-warning-soft)), var(--pse-solid);
   border: 1px dashed color-mix(in srgb, var(--pse-warning) 45%, transparent);
   color: var(--pse-warning);
   border-radius: var(--pse-radius-sm);
@@ -337,8 +341,8 @@
 .pse-wn-actions { display:flex; align-items:center; gap:10px; flex-shrink:0; }
 .pse-wn-link { font-size:11px; font-weight:600; color:var(--pse-accent-light); text-decoration:none; white-space:nowrap; }
 .pse-wn-link:hover { text-decoration:underline; }
-.pse-wn-close { background:none; border:none; color:var(--pse-text-muted); cursor:pointer; font-size:12px; padding:2px 4px; line-height:1; }
-.pse-wn-close:hover { color:var(--pse-text-primary); }
+.pse-injected .pse-wn-close { background:none; border:none; color:var(--pse-text-muted); cursor:pointer; font-size:12px; padding:2px 4px; line-height:1; }
+.pse-injected .pse-wn-close:hover { color:var(--pse-text-primary); }
 
 /* ─── first-run tour ─── */
 .pse-tour {
@@ -353,9 +357,9 @@
 .pse-tour-title { font-size:11px; font-weight:700; letter-spacing:.4px; text-transform:uppercase; color:var(--pse-accent-light); margin-bottom:6px; }
 .pse-tour-text { font-size:13px; line-height:1.5; margin-bottom:12px; }
 .pse-tour-row { display:flex; justify-content:space-between; gap:10px; }
-.pse-tour-skip, .pse-tour-next { font:inherit; font-size:12px; font-weight:600; padding:8px 16px; border-radius:999px; cursor:pointer; }
-.pse-tour-skip { background:none; border:1px solid var(--pse-border); color:var(--pse-text-secondary); }
-.pse-tour-next { background:var(--pse-accent); border:1px solid var(--pse-accent); color:var(--pse-accent-ink); }
+.pse-tour .pse-tour-skip, .pse-tour .pse-tour-next { font:inherit; font-size:12px; font-weight:600; padding:8px 16px; border-radius:999px; cursor:pointer; }
+.pse-tour .pse-tour-skip { background:none; border:1px solid var(--pse-border); color:var(--pse-text-secondary); }
+.pse-tour .pse-tour-next { background:var(--pse-accent); border:1px solid var(--pse-accent); color:var(--pse-accent-ink); }
 .pse-tour-highlight { outline:3px solid var(--pse-accent-light); outline-offset:4px; border-radius:var(--pse-radius); }
 
 /* ─── animations ─── */
