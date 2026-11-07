@@ -1007,5 +1007,152 @@
   },
   "chl_2_7_1_2": {
     "message": "🛠 Klarere PSN-Fehler, die den fehlgeschlagenen Schritt nennen, und Freigabe mit einem Klick, wenn Chrome Sonys Weiterleitung verbirgt"
+  },
+  "psHistLabel": {
+    "message": "PlayStation Store · von deinem Browser aufgezeichnet"
+  },
+  "psLowest": {
+    "message": "Niedrigster PS-Preis, den du gesehen hast:"
+  },
+  "psNow": {
+    "message": "Aktuell im Store"
+  },
+  "psAtLow": {
+    "message": "Zum niedrigsten Preis, den du gesehen hast"
+  },
+  "psSaleLine": {
+    "message": "Vorher $ORIGINAL$ · $PCT$ % Rabatt",
+    "placeholders": {
+      "original": {
+        "content": "$1"
+      },
+      "pct": {
+        "content": "$2"
+      }
+    }
+  },
+  "psSaleEnds": {
+    "message": "Angebot endet am $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "psPlusPrice": {
+    "message": "Preis mit PlayStation Plus: $PRICE$",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "psStoreLow30": {
+    "message": "Niedrigster Preis der letzten 30 Tage laut Store: $PRICE$",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "psGapAbove": {
+    "message": "$AMOUNT$ mehr als der günstigste PC-Preis heute",
+    "placeholders": {
+      "amount": {
+        "content": "$1"
+      }
+    }
+  },
+  "psGapBelow": {
+    "message": "$AMOUNT$ weniger als der günstigste PC-Preis heute",
+    "placeholders": {
+      "amount": {
+        "content": "$1"
+      }
+    }
+  },
+  "psNotEnough": {
+    "message": "Noch nicht genug PlayStation-Preisverlauf. Er wächst mit jedem Tag, an dem du die Seite dieses Spiels besuchst."
+  },
+  "checkPageBtn": {
+    "message": "🔍 Seite prüfen"
+  },
+  "checkPageNoStore": {
+    "message": "Öffne zuerst eine Seite im PlayStation Store und versuche es dann erneut."
+  },
+  "checkPageNotReady": {
+    "message": "Die Seite hat nicht geantwortet. Lade den Store-Tab neu und versuche es erneut."
+  },
+  "checkPageOther": {
+    "message": "Auf dieser Seite gibt es nichts zu prüfen. Öffne eine Spielseite oder eine Suchseite."
+  },
+  "checkPageSummary": {
+    "message": "$OK$ von $TOTAL$ Abfragen funktionieren",
+    "placeholders": {
+      "ok": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
+    }
+  },
+  "checkOk": {
+    "message": "funktioniert"
+  },
+  "checkWarn": {
+    "message": "funktioniert über einen Ersatzweg"
+  },
+  "checkFail": {
+    "message": "nicht gefunden"
+  },
+  "chk_title": {
+    "message": "Spieltitel"
+  },
+  "chk_price": {
+    "message": "Preis"
+  },
+  "chk_anchor": {
+    "message": "Wo die Karten erscheinen"
+  },
+  "chk_tiles": {
+    "message": "Spielkacheln"
+  },
+  "chk_names": {
+    "message": "Kacheltitel"
+  },
+  "chk_prices": {
+    "message": "Kachelpreise"
+  },
+  "checkFeatureFailed": {
+    "message": "Auf dieser Seite nach einem Fehler deaktiviert: $FEATURE$",
+    "placeholders": {
+      "feature": {
+        "content": "$1"
+      }
+    }
+  },
+  "netLogTitle": {
+    "message": "Netzwerkprotokoll"
+  },
+  "netLogDesc": {
+    "message": "Jede Anfrage der Erweiterung, nur auf diesem Gerät gespeichert: Host, Pfad, Status und Zeit. Niemals die Abfrage, Header oder sonstige Daten. Die Erweiterung darf nur diese Hosts kontaktieren: $HOSTS$.",
+    "placeholders": {
+      "hosts": {
+        "content": "$1"
+      }
+    }
+  },
+  "netLogEmpty": {
+    "message": "Noch keine Anfragen aufgezeichnet."
+  },
+  "chl_3_0_1": {
+    "message": "🛡️ Am echten PlayStation Store geprüft: falsch aufgezeichneten Preis, die Filter für Add-ons, DLC und besessene Spiele sowie leere Lücken in den Suchergebnissen behoben"
+  },
+  "chl_3_0_2": {
+    "message": "📈 PlayStation-Preisverlauf: der niedrigste Preis, den du gesehen hast, Angebotsdetails und Trend, erstellt aus den Preisen, die dein Browser aufzeichnet (auch aus Suchergebnissen und deiner Wunschliste)"
+  },
+  "chl_3_0_3": {
+    "message": "🔍 Neu: „Seite prüfen“ im Popup und ein lokales Netzwerkprotokoll in den Einstellungen: sieh nach, was funktioniert und was die Erweiterung angefragt hat"
   }
 }

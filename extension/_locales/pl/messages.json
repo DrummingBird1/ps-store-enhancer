@@ -1007,5 +1007,152 @@
   },
   "chl_2_7_1_2": {
     "message": "🛠 Czytelniejsze błędy PSN wskazujące nieudany krok oraz zgoda jednym kliknięciem, gdy Chrome ukrywa przekierowanie Sony"
+  },
+  "psHistLabel": {
+    "message": "PlayStation Store · zapisane przez Twoją przeglądarkę"
+  },
+  "psLowest": {
+    "message": "Najniższa widziana cena PS:"
+  },
+  "psNow": {
+    "message": "Teraz w sklepie"
+  },
+  "psAtLow": {
+    "message": "Cena równa najniższej widzianej"
+  },
+  "psSaleLine": {
+    "message": "Było $ORIGINAL$ · taniej o $PCT$%",
+    "placeholders": {
+      "original": {
+        "content": "$1"
+      },
+      "pct": {
+        "content": "$2"
+      }
+    }
+  },
+  "psSaleEnds": {
+    "message": "Oferta kończy się $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "psPlusPrice": {
+    "message": "Cena z PlayStation Plus: $PRICE$",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "psStoreLow30": {
+    "message": "Najniższa cena z ostatnich 30 dni wg sklepu: $PRICE$",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "psGapAbove": {
+    "message": "O $AMOUNT$ drożej niż najtańsza dziś cena na PC",
+    "placeholders": {
+      "amount": {
+        "content": "$1"
+      }
+    }
+  },
+  "psGapBelow": {
+    "message": "O $AMOUNT$ taniej niż najtańsza dziś cena na PC",
+    "placeholders": {
+      "amount": {
+        "content": "$1"
+      }
+    }
+  },
+  "psNotEnough": {
+    "message": "Za mało historii cen PlayStation. Buduje się z każdym dniem, w którym odwiedzasz stronę tej gry."
+  },
+  "checkPageBtn": {
+    "message": "🔍 Sprawdź tę stronę"
+  },
+  "checkPageNoStore": {
+    "message": "Najpierw otwórz stronę PlayStation Store i spróbuj ponownie."
+  },
+  "checkPageNotReady": {
+    "message": "Strona nie odpowiedziała. Odśwież kartę sklepu i spróbuj ponownie."
+  },
+  "checkPageOther": {
+    "message": "Ta strona nie ma nic do sprawdzenia. Otwórz stronę gry lub wyników wyszukiwania."
+  },
+  "checkPageSummary": {
+    "message": "Działa $OK$ z $TOTAL$ sprawdzeń",
+    "placeholders": {
+      "ok": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
+    }
+  },
+  "checkOk": {
+    "message": "działa"
+  },
+  "checkWarn": {
+    "message": "działa przez rozwiązanie zastępcze"
+  },
+  "checkFail": {
+    "message": "nie znaleziono"
+  },
+  "chk_title": {
+    "message": "Tytuł gry"
+  },
+  "chk_price": {
+    "message": "Cena"
+  },
+  "chk_anchor": {
+    "message": "Gdzie trafiają karty"
+  },
+  "chk_tiles": {
+    "message": "Kafelki gier"
+  },
+  "chk_names": {
+    "message": "Tytuły kafelków"
+  },
+  "chk_prices": {
+    "message": "Ceny kafelków"
+  },
+  "checkFeatureFailed": {
+    "message": "Wyłączono na tej stronie po błędzie: $FEATURE$",
+    "placeholders": {
+      "feature": {
+        "content": "$1"
+      }
+    }
+  },
+  "netLogTitle": {
+    "message": "Dziennik sieci"
+  },
+  "netLogDesc": {
+    "message": "Każde żądanie wysłane przez rozszerzenie, zapisane tylko na tym urządzeniu: host, ścieżka, status i czas. Nigdy zapytanie, nagłówki ani żadne dane. Rozszerzenie może łączyć się tylko z: $HOSTS$.",
+    "placeholders": {
+      "hosts": {
+        "content": "$1"
+      }
+    }
+  },
+  "netLogEmpty": {
+    "message": "Nie zapisano jeszcze żadnych żądań."
+  },
+  "chl_3_0_1": {
+    "message": "🛡️ Sprawdzone na prawdziwym PlayStation Store: naprawiono błędnie zapisaną cenę, filtry dodatków, DLC i posiadanych gier oraz puste luki w wynikach wyszukiwania"
+  },
+  "chl_3_0_2": {
+    "message": "📈 Historia cen PlayStation: najniższa widziana cena, szczegóły promocji i trend, zbudowane z cen zapisywanych przez Twoją przeglądarkę (także z wyników wyszukiwania i Twojej listy życzeń)"
+  },
+  "chl_3_0_3": {
+    "message": "🔍 Nowy przycisk „Sprawdź tę stronę” w oknie rozszerzenia i lokalny dziennik sieci w Ustawieniach: zobacz, co działa i o co prosiło rozszerzenie"
   }
 }

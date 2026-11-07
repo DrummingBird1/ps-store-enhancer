@@ -7,6 +7,61 @@ the popup/options pages.
 
 ---
 
+<a id="v3-0-0"></a>
+<img src="assets/badges/v3-0-0.png" width="120" align="right" alt="v3.0.0 — checked against the real store">
+
+## v3.0.0 — Checked against the real store
+
+This release was built by opening real PlayStation Store pages and testing the extension's code
+against them (the pages are saved, trimmed, in `tests/fixtures/ps-store/`). That found four bugs in
+v2.7.1 that the old test pages could not show, and they are fixed here.
+
+**Fixed**
+- **A wrong PlayStation price could be recorded.** On pages with an edition list (for example a game
+  with Standard and Ultimate editions) the extension could pick another edition's price, and a
+  price printed right before more text ("$79.99" followed by "1-month…") could be read as 79,991. It
+  now reads the page's own price from the buy box (with the page's JSON-LD as a backup), skips
+  PlayStation Plus trial offers, and refuses implausible numbers.
+- **The cards sat below the editions list** instead of below the buy button on those pages.
+- **"Hide add-ons" and "Hide DLC" missed almost everything** on the live search page. They now use the
+  store's own label on each tile (Add-on, Add-On Pack, Level, Episode…) and the clean title. A
+  full game sold as a "Game Bundle" is no longer treated as DLC.
+- **"Hide games I already own" hid the wrong games.** Owning "God of War" hid its sequels and kept
+  the game itself. It now compares exact titles (a Deluxe Edition counts as the same game).
+- **Hidden search results left blank gaps** in the grid. The whole grid cell is hidden now, so the
+  next games move up.
+
+**New**
+- **PlayStation price history** in the Price Insight card: the lowest PlayStation price you have seen,
+  today's price, the sale (was, % off, when it ends), the PlayStation Plus price when the page shows
+  one, the store's own "lowest price in the last 30 days", a trend, and how far the price is from the
+  cheapest PC price. It is built only from prices your browser recorded and says "not enough history
+  yet" until there are two different days. History keeps the latest 400 days with a recorded price (it was
+  120) and is included in the JSON backup.
+- **Prices are recorded from more places.** Search results update the history of games you have
+  already looked at or wishlisted, and once a day the saved page of each wishlisted game is read in
+  the background (at most 20 pages, no cookies, `store.playstation.com` only, with longer lists taking
+  turns). Turning off **Price insight** in Settings stops the search-result recording and the daily
+  read.
+- **Check this page** (toolbar popup): runs every lookup the extension depends on in the current store
+  tab and shows which ones work, which work through a fallback and which are not found. If a store
+  redesign breaks one lookup, only that card is switched off on that page and the Diagnostics log says
+  why, instead of the whole page failing.
+- **Network log** (Settings): every request the extension makes — host, path, status and time, never
+  the query, headers or data — kept on your device. The extension can only reach its five documented
+  hosts, and a test fails if that list and the privacy texts ever disagree.
+
+**Under the hood**
+- One store adapter (`store-adapter.js`) replaces the scattered selectors.
+- The automated tests now run the real content script against saved real store pages (product pages in
+  two regions, a search grid) with `jsdom`.
+
+**Please note:** like v2.7.1, a live PSN sign-in has not been checked against a real account. The
+injected cards were checked by tests against the real page structure, not by eye in a browser with the
+extension loaded.
+
+---
+
 <a id="v2-7-1"></a>
 <img src="assets/badges/v2-7-1.png" width="120" align="right" alt="v2.7.1 — PSN fix">
 

@@ -1007,5 +1007,152 @@
   },
   "chl_2_7_1_2": {
     "message": "🛠 更清楚的 PSN 錯誤訊息（會指出失敗的步驟），Chrome 隱藏 Sony 重新導向時可一鍵授權"
+  },
+  "psHistLabel": {
+    "message": "PlayStation Store · 由您的瀏覽器記錄"
+  },
+  "psLowest": {
+    "message": "您見過的 PS 最低價："
+  },
+  "psNow": {
+    "message": "商店現價"
+  },
+  "psAtLow": {
+    "message": "處於您見過的最低價"
+  },
+  "psSaleLine": {
+    "message": "原價 $ORIGINAL$ · 優惠 $PCT$%",
+    "placeholders": {
+      "original": {
+        "content": "$1"
+      },
+      "pct": {
+        "content": "$2"
+      }
+    }
+  },
+  "psSaleEnds": {
+    "message": "優惠截止 $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "psPlusPrice": {
+    "message": "PlayStation Plus 價格：$PRICE$",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "psStoreLow30": {
+    "message": "商店顯示的近 30 天最低價：$PRICE$",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "psGapAbove": {
+    "message": "比今天 PC 最低價高 $AMOUNT$",
+    "placeholders": {
+      "amount": {
+        "content": "$1"
+      }
+    }
+  },
+  "psGapBelow": {
+    "message": "比今天 PC 最低價低 $AMOUNT$",
+    "placeholders": {
+      "amount": {
+        "content": "$1"
+      }
+    }
+  },
+  "psNotEnough": {
+    "message": "PlayStation 價格歷史還不夠多。您每天瀏覽該遊戲頁面都會累積一點。"
+  },
+  "checkPageBtn": {
+    "message": "🔍 檢查此頁面"
+  },
+  "checkPageNoStore": {
+    "message": "請先開啟 PlayStation Store 頁面，然後再試一次。"
+  },
+  "checkPageNotReady": {
+    "message": "頁面沒有回應。請重新整理商店分頁後再試一次。"
+  },
+  "checkPageOther": {
+    "message": "此類頁面沒有可檢查的內容。請開啟遊戲頁面或搜尋頁面。"
+  },
+  "checkPageSummary": {
+    "message": "$TOTAL$ 項檢查中有 $OK$ 項正常",
+    "placeholders": {
+      "ok": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
+    }
+  },
+  "checkOk": {
+    "message": "正常"
+  },
+  "checkWarn": {
+    "message": "透過備援方式正常運作"
+  },
+  "checkFail": {
+    "message": "找不到"
+  },
+  "chk_title": {
+    "message": "遊戲標題"
+  },
+  "chk_price": {
+    "message": "價格"
+  },
+  "chk_anchor": {
+    "message": "卡片顯示位置"
+  },
+  "chk_tiles": {
+    "message": "遊戲磁貼"
+  },
+  "chk_names": {
+    "message": "磁貼標題"
+  },
+  "chk_prices": {
+    "message": "磁貼價格"
+  },
+  "checkFeatureFailed": {
+    "message": "發生錯誤後已在此頁面關閉：$FEATURE$",
+    "placeholders": {
+      "feature": {
+        "content": "$1"
+      }
+    }
+  },
+  "netLogTitle": {
+    "message": "網路記錄"
+  },
+  "netLogDesc": {
+    "message": "擴充功能發出的每個請求，只儲存在此裝置上：主機、路徑、狀態與時間。絕不儲存查詢參數、標頭或任何資料。擴充功能只會連線至：$HOSTS$。",
+    "placeholders": {
+      "hosts": {
+        "content": "$1"
+      }
+    }
+  },
+  "netLogEmpty": {
+    "message": "尚未記錄任何請求。"
+  },
+  "chl_3_0_1": {
+    "message": "🛡️ 已在真實的 PlayStation Store 上驗證：修正了記錄錯誤的價格、附加內容、DLC 與已擁有遊戲的篩選，以及搜尋結果中的空白"
+  },
+  "chl_3_0_2": {
+    "message": "📈 PlayStation 價格歷史：您見過的最低價、優惠詳情與走勢，依據瀏覽器記錄的價格產生（也包括搜尋結果與您的願望清單）"
+  },
+  "chl_3_0_3": {
+    "message": "🔍 彈出視窗新增「檢查此頁面」，設定中新增本機網路記錄：查看哪些功能正常，以及擴充功能發出了哪些請求"
   }
 }

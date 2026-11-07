@@ -337,6 +337,17 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,te
   </div>
 
   <div class="card">
+    <div class="card-title">🌐 <span data-i18n="netLogTitle">Network log</span></div>
+    <p class="card-desc" id="netLogDesc"></p>
+    <pre class="diag-box" id="netLogBox" tabindex="0" data-i18n-aria="netLogTitle"></pre>
+    <div class="btn-row">
+      <button class="btn btn-g" id="netLogRefresh" data-i18n="diagRefresh">🔄 Refresh</button>
+      <button class="btn btn-g" id="netLogCopy" data-i18n="diagCopy">📋 Copy</button>
+      <button class="btn btn-d" id="netLogClear" data-i18n="diagClear">🗑 Clear log</button>
+    </div>
+  </div>
+
+  <div class="card">
     <div class="card-title">🔒 <span data-i18n="privacyTitle">Your data</span></div>
     <p class="card-desc" data-i18n="wipeDesc">Disconnects PSN and erases everything this extension stored on this device: wishlist, owned games, caches, recorded prices and the diagnostics log. Your settings are kept.</p>
     <div class="btn-row"><button class="btn btn-d" id="wipeBtn" data-i18n="wipeBtn">Erase all my data</button></div>
@@ -367,6 +378,7 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,te
 <script src="match.js"></script>
 <script src="helpers.js"></script>
 <script src="diag.js"></script>
+<script src="net.js"></script>
 <script src="options.js"></script>
 </body>
 </html>

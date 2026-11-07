@@ -1,7 +1,7 @@
 CHROME WEB STORE LISTING — COPY-PASTE GUIDE
 ==============================================
 
-Updated for v2.7.1. The detailed description exists in 16 languages: one plain-text file per
+Updated for v3.0.0. The detailed description exists in 16 languages: one plain-text file per
 language in assets/store-listing/ (named like the folders in extension/_locales), each meant to be
 pasted as is. The English text below is identical to assets/store-listing/en.txt.
 
@@ -24,7 +24,7 @@ PS Store Enhancer (formerly GameDeals+) adds real price insight, review scores a
 
 🔍 PRICE INTELLIGENCE
 • Real lowest-ever PC price (with its date), today's cheapest price and a “near the all-time low” flag — real data only, no estimated charts
-• A price trend drawn from the prices your own browser recorded
+• A PC and PlayStation price trend (lowest price you've seen, sale details) drawn from the prices your own browser recorded
 • Cross-platform comparison for the exact game (never a DLC, map or sequel): Steam, Epic Games Store, GOG, Humble Store and more — powered by CheapShark and converted to your currency
 • Edition transparency: a price from a different edition or bundle (Deluxe, Ultimate, GOTY…) is clearly flagged, never blended in silently
 • Hints about when the big sales usually start
@@ -54,7 +54,7 @@ PS Store Enhancer (formerly GameDeals+) adds real price insight, review scores a
 • Add a game with one click on its product page
 • Set a price or “% off” target, add notes, sort and filter
 • Get a desktop notification — or one weekly digest — when the cheapest PC price reaches your target
-• Records the PS Store price you see on each game's page
+• Records the PS Store price you see on each game's page, and keeps its history on your device
 • Share your list as a read-only link: the list lives inside the link, nothing is uploaded
 • Daily background checks, no constant polling
 • Toolbar badge counts the wishlist deals at or below your target
@@ -97,9 +97,9 @@ Built-in language selector — override your browser language in Settings.
 🔒 PRIVACY FIRST
 • All your data stays on your device
 • No analytics, no tracking, no data sharing
-• No servers of our own: the only requests go to CheapShark (prices, scores), Frankfurter (exchange rates) and — only if you connect — Sony
+• No servers of our own: the only requests go to CheapShark (prices, scores), Frankfurter (exchange rates), the PlayStation Store itself (the saved page of each wishlisted game, once a day) and — only if you connect — Sony
 • “Erase all my data” button in the popup and in Settings
-• A local diagnostics log that never records tokens or passwords
+• A local diagnostics log and network log (host and path only) that never record tokens or passwords
 • Open source (MIT) on GitHub; full privacy policy available
 
 ⚠️ DISCLAIMER
@@ -117,12 +117,12 @@ notifications: Sends a desktop notification when a wishlisted game's cross-platf
 
 contextMenus: Adds a right-click "Find on PS Store Enhancer" entry on store.playstation.com so users can search highlighted text on CheapShark.
 
-storage: Saves user preferences, cached API responses, owned-games list, wishlist, locally recorded prices and a small diagnostics log on the device.
+storage: Saves user preferences, cached API responses, owned-games list, wishlist, locally recorded prices (the latest 400 days per game), a small diagnostics log and a network log (host and path only) on the device.
 
 webRequest (OPTIONAL permission, requested at runtime when a user clicks Connect for PSN): Used only to observe Sony's single sign-in redirect (restricted to ca.account.sony.com) and read the authorization code, because Chrome hides that redirect from extensions. Never requested at install; nothing else uses it.
 
 Host permissions:
-- store.playstation.com — content script injection
+- store.playstation.com — content script injection; once a day the service worker also reads the saved page (no cookies) of each wishlisted game to record its price
 - ca.account.sony.com, m.np.playstation.com — optional PSN authentication & library sync
 - cheapshark.com — cross-platform prices, all-time low, Metacritic and Steam ratings
 - api.frankfurter.dev — daily currency exchange rates for display

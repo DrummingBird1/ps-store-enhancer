@@ -7,7 +7,7 @@
 // that use them.
 // (Chrome service worker. A Firefox-style event page lists the same files in its manifest instead.)
 if (typeof importScripts === "function") {
-  importScripts("match.js", "helpers.js", "cache.js", "diag.js", "cheapshark.js", "psn.js");
+  importScripts("match.js", "helpers.js", "store-adapter.js", "cache.js", "diag.js", "net.js", "cheapshark.js", "psn.js");
 }
 
 const PSE_DEFAULTS_SYNC = {
@@ -188,10 +188,10 @@ async function bundleFor(gameName) {
   return b;
 }
 
-function recordSnapshot(key, price) {
+function recordSnapshot(key, price, extra) {
   return withSnapshotLock(async () => {
     const d = await chrome.storage.local.get(["pse_snapshots"]);
-    const next = PSEHelpers.addSnapshot(d.pse_snapshots || {}, key, price, Date.now());
+    const next = PSEHelpers.addSnapshot(d.pse_snapshots || {}, key, price, Date.now(), undefined, extra);
     await chrome.storage.local.set({ pse_snapshots: next });
   });
 }
@@ -205,8 +205,19 @@ async function readSnapshots(key) {
 function validPsPrice(p) {
   const amount = Number(p && p.amount);
   const currency = String((p && p.currency) || "").toUpperCase();
-  if (!(amount > 0) || !/^[A-Z]{3}$/.test(currency)) return undefined;
+  if (!(amount > 0) || !/^[A-Z]{3}$/.test(currency) || !PSEHelpers.isPlausiblePrice(amount, currency)) return undefined;
   return { amount, currency, seenAt: Date.now() };
+}
+
+/** A game's store page address without query string or fragment, or null when it is not a store.playstation.com page. */
+function cleanStoreUrl(url) {
+  try {
+    const u = new URL(url);
+    if (u.protocol !== "https:" || u.hostname !== "store.playstation.com") return null;
+    return `https://store.playstation.com${u.pathname}`;
+  } catch {
+    return null;
+  }
 }
 
 const HANDLERS = {
@@ -302,7 +313,7 @@ const HANDLERS = {
       } catch {}
       list.push({
         name,
-        storeUrl: m.storeUrl || null,
+        storeUrl: cleanStoreUrl(m.storeUrl),
         addedAt: Date.now(),
         targetPrice: m.targetPrice != null ? Number(m.targetPrice) : null,
         targetPercent: m.targetPercent != null ? Number(m.targetPercent) : null,
@@ -351,6 +362,25 @@ const HANDLERS = {
   },
   CHECK_WISHLIST_NOW: async () => { await checkWishlistPrices(); return { ok: true }; },
   RECORD_PS_PRICE: (m) => handleRecordPsPrice(m),
+  RECORD_PS_PRICES: (m) => handleRecordPsPrices(m),
+  MERGE_SNAPSHOTS: async (m) => {
+    // A backup's recorded prices, validated and merged without ever pushing local games out
+    let games = 0;
+    await withSnapshotLock(async () => {
+      const d = await chrome.storage.local.get(["pse_snapshots"]);
+      const next = PSEHelpers.mergeSnapshots(d.pse_snapshots || {}, m.snapshots);
+      games = Object.keys(next).length;
+      await chrome.storage.local.set({ pse_snapshots: next });
+    });
+    return { ok: true, games };
+  },
+  PS_PRICE_HISTORY: async (m) => {
+    const currency = String(m.currency || "").toUpperCase();
+    if (!m.gameName || !/^[A-Z]{3}$/.test(currency)) return { ok: false };
+    await withSnapshotLock(async () => {}); // let a price recorded just now land first
+    const points = await readSnapshots(`ps_${currency}_${PSEMatch.titleKey(m.gameName)}`);
+    return { ok: true, currency, points, stats: PSEHelpers.psHistoryStats(points, Date.now()) };
+  },
 
   /* ──── Currency conversion (Frankfurter) ──── */
   GET_RATES: async (m) => {
@@ -360,11 +390,19 @@ const HANDLERS = {
   },
 
   /* ──── Diagnostics & privacy ──── */
+  DIAG_LOG: async (m) => {
+    // From the content script: feature failures and "lookup not found" events. Rate-limited so a
+    // broken page cannot flood the log; PSEDiag redacts anything secret-looking.
+    if (!allowContentDiag()) return { ok: false };
+    await PSEDiag.log("content", String(m.event || "event").slice(0, 40), m.details);
+    return { ok: true };
+  },
   DIAG_GET: async () => ({ entries: await PSEDiag.get() }),
   DIAG_CLEAR: async () => { await PSEDiag.clear(); return { ok: true }; },
   WIPE_ALL_DATA: async () => {
     await PSN.disconnect();
     await PSEDiag.flush(); // pending log writes must not resurrect data after the clear
+    await PSENet.flush();
     await chrome.storage.local.clear();
     try { await chrome.storage.session.clear(); } catch {}
     await chrome.storage.local.set({ manual_owned: [], psn_owned: [], wishlist: [] });
@@ -419,6 +457,9 @@ async function checkWishlistPrices() {
     await sleep(150);
   }
 
+  // 1b) Once a day, read the saved store page of each wishlisted game and record its PS price.
+  await refreshWishlistPsPrices(snapshot);
+
   // 2) Merge phase — re-read the CURRENT list and apply results by name.
   await withWishlistLock(async () => {
     const list = (await chrome.storage.local.get(["wishlist"])).wishlist || [];
@@ -449,6 +490,52 @@ async function checkWishlistPrices() {
   updateBadge();
 }
 
+/**
+ * The wishlist already stores each game's store URL. Fetch that page (no cookies, the region is in the
+ * URL) and read the JSON-LD price, at most 20 pages per daily run, 400 ms apart. A page that names a
+ * different game (redirect, wrong region) is ignored.
+ */
+async function refreshWishlistPsPrices(items) {
+  try {
+    const s = await chrome.storage.sync.get(["enablePriceHistory"]);
+    if (s.enablePriceHistory === false) return;
+  } catch {
+    return;
+  }
+  // Once a day however often the check runs ("Check now" included); a cursor makes long lists take turns.
+  const state = (await chrome.storage.local.get(["pse_ps_refresh"])).pse_ps_refresh || {};
+  if (Date.now() - (Number(state.at) || 0) < 20 * 3600000) return;
+  const candidates = items.filter((i) => i.storeUrl && isSafeStoreUrl(i.storeUrl));
+  if (!candidates.length) return;
+  const start = (Number(state.cursor) || 0) % candidates.length;
+  const batch = Array.from({ length: Math.min(20, candidates.length) }, (_, k) => candidates[(start + k) % candidates.length]);
+  await chrome.storage.local.set({ pse_ps_refresh: { at: Date.now(), cursor: (start + batch.length) % candidates.length } });
+  let failures = 0;
+  for (const item of batch) {
+    await sleep(400); // every request is spaced, whatever happens to the previous one
+    if (failures >= 3) break; // the store is refusing us: stop instead of hammering it
+    try {
+      const resp = await PSENet.fetch(item.storeUrl, { credentials: "omit", redirect: "follow" });
+      if (!resp.ok) {
+        failures++;
+        PSEDiag.log("wishlist", "ps-page-http-error", { status: resp.status });
+        continue;
+      }
+      let host = "";
+      try { host = new URL(resp.url || item.storeUrl).hostname; } catch {}
+      if (host !== "store.playstation.com") continue;
+      failures = 0;
+      const ld = PSEStore.readJsonLdFromHtml(await resp.text());
+      if (!ld || ld.amount == null) continue;
+      if (ld.name && PSEStore.normalizeName(ld.name) !== PSEStore.normalizeName(item.name)) continue;
+      await handleRecordPsPrice({ gameName: item.name, amount: ld.amount, currency: ld.currency });
+    } catch (e) {
+      failures++;
+      PSEDiag.log("wishlist", "ps-page-failed", { message: e && e.message });
+    }
+  }
+}
+
 async function sendWishlistDigest() {
   await withWishlistLock(async () => {
     const list = (await chrome.storage.local.get(["wishlist"])).wishlist || [];
@@ -469,12 +556,67 @@ async function sendWishlistDigest() {
 }
 
 /* ──── PS Store price seen on the page (recorded by the content script) ──── */
+const diagBudget = { windowStart: 0, used: 0 };
+function allowContentDiag() {
+  const now = Date.now();
+  if (now - diagBudget.windowStart > 60000) {
+    diagBudget.windowStart = now;
+    diagBudget.used = 0;
+  }
+  return ++diagBudget.used <= 20;
+}
+
+/** The optional sale details of a recorded price, each kept only when it is sane. */
+function psExtras(m, amount, currency) {
+  const today = PSEHelpers.dayNumber(Date.now());
+  const orig = Number(m.orig);
+  const pct = Number(m.pct);
+  const ends = Number(m.ends);
+  const plus = Number(m.plus);
+  return {
+    orig: orig > amount && PSEHelpers.isPlausiblePrice(orig, currency) ? orig : null,
+    pct: pct >= 1 && pct <= 100 ? Math.round(pct) : null,
+    ends: Number.isInteger(ends) && ends >= today - 1 && ends <= today + 3 * 365 ? ends : null,
+    plus: plus > 0 && PSEHelpers.isPlausiblePrice(plus, currency) ? plus : null
+  };
+}
+
+/**
+ * Prices read from a listing page (search, category). Only games whose history already exists or that
+ * are on the wishlist get a point, so browsing search results never pushes the games you track out of
+ * the capped store.
+ */
+async function handleRecordPsPrices(m) {
+  const items = Array.isArray(m.items) ? m.items.slice(0, 60) : [];
+  if (!items.length) return { ok: true, recorded: 0 };
+  const wishlist = (await chrome.storage.local.get(["wishlist"])).wishlist || [];
+  const wished = new Set(wishlist.map((g) => PSEMatch.titleKey(g.name)));
+  let recorded = 0;
+  await withSnapshotLock(async () => {
+    const d = await chrome.storage.local.get(["pse_snapshots"]);
+    let snaps = d.pse_snapshots || {};
+    const ts = Date.now();
+    for (const it of items) {
+      const amount = Number(it && it.amount);
+      const currency = String((it && it.currency) || "").toUpperCase();
+      if (!it || !it.gameName || !/^[A-Z]{3}$/.test(currency) || !PSEHelpers.isPlausiblePrice(amount, currency)) continue;
+      const tk = PSEMatch.titleKey(it.gameName);
+      const key = `ps_${currency}_${tk}`;
+      if (!snaps[key] && !wished.has(tk)) continue;
+      snaps = PSEHelpers.addSnapshot(snaps, key, amount, ts, undefined, psExtras(it, amount, currency));
+      recorded++;
+    }
+    if (recorded) await chrome.storage.local.set({ pse_snapshots: snaps });
+  });
+  return { ok: true, recorded };
+}
+
 async function handleRecordPsPrice(m) {
   const amount = Number(m.amount);
   const currency = String(m.currency || "").toUpperCase();
-  if (!(amount > 0) || !/^[A-Z]{3}$/.test(currency) || !m.gameName) return { ok: false };
+  if (!/^[A-Z]{3}$/.test(currency) || !PSEHelpers.isPlausiblePrice(amount, currency) || !m.gameName) return { ok: false };
   const key = `ps_${currency}_${PSEMatch.titleKey(m.gameName)}`;
-  await recordSnapshot(key, amount);
+  await recordSnapshot(key, amount, psExtras(m, amount, currency));
   await withWishlistLock(async () => {
     const d = await chrome.storage.local.get(["wishlist"]);
     const list = d.wishlist || [];
@@ -492,7 +634,7 @@ async function getExchangeRates(target) {
   const cached = await PSECache.get(ck);
   if (cached) return { ok: true, base: "USD", rates: cached, fromCache: true };
   try {
-    const resp = await fetch(`https://api.frankfurter.dev/v1/latest?base=USD&symbols=${target}`);
+    const resp = await PSENet.fetch(`https://api.frankfurter.dev/v1/latest?base=USD&symbols=${target}`);
     if (!resp.ok) throw new Error(`Frankfurter ${resp.status}`);
     const data = await resp.json();
     if (!data.rates || data.rates[target] == null) throw new Error("Missing rate");

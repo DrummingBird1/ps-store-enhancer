@@ -17,6 +17,18 @@ ROOT = os.path.dirname(os.path.dirname(HARNESS))
 EXT = os.path.join(ROOT, "extension")
 FIXTURES = os.path.join(ROOT, "tests", "fixtures")
 PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8765
+PS_STORE_FIXTURES = os.path.join(FIXTURES, "ps-store")
+REAL_PAGES = [
+    ("/en-us/concept/", "gta6-concept-en-us.html"),
+    ("/en-us/product/", "valheim-product-en-us.html"),
+    ("/en-il/product/", "valheim-product-en-il.html"),
+    ("/en-us/search/", "search-god-of-war-en-us.html"),
+]
+# The content-script files, in manifest order, appended to the saved real pages.
+CONTENT_SCRIPTS = "".join(
+    f'<script src="{s}"></script>'
+    for s in ["/i18n.js", "/cache.js", "/match.js", "/helpers.js", "/store-adapter.js", "/content-extras.js", "/content.js"]
+)
 
 # Everything background.js importScripts(), then background.js itself — in the same order.
 INJECT = "".join(
@@ -26,8 +38,10 @@ INJECT = "".join(
         "/__h/fake-net.js",
         "/match.js",
         "/helpers.js",
+        "/store-adapter.js",
         "/cache.js",
         "/diag.js",
+        "/net.js",
         "/cheapshark.js",
         "/psn.js",
         "/__h/pre-bg.js",
@@ -52,10 +66,10 @@ class Handler(http.server.BaseHTTPRequestHandler):
         p = self.path.split("?", 1)[0]
         if p == "/":
             p = "/options.html"
-        if p.startswith("/en-us/concept/"):
-            return os.path.join(HARNESS, "fixture-product.html")
-        if p.startswith("/en-us/search/"):
-            return os.path.join(HARNESS, "fixture-search.html")
+        # Real minimized captures of store.playstation.com pages (see tests/fixtures/ps-store/)
+        for prefix, name in REAL_PAGES:
+            if p.startswith(prefix):
+                return os.path.join(PS_STORE_FIXTURES, name)
         if p.startswith("/__h/"):
             base, rel = HARNESS, p[len("/__h/"):]
         elif p.startswith("/__f/"):
@@ -88,6 +102,9 @@ class Handler(http.server.BaseHTTPRequestHandler):
         if ext == ".html":
             html = data.decode("utf-8")
             html = re.sub(r"(<head[^>]*>)", lambda m: m.group(1) + INJECT, html, count=1, flags=re.I)
+            if fp.startswith(os.path.normpath(PS_STORE_FIXTURES)):
+                html = html.replace("</head>", '<link rel="stylesheet" href="/styles.css"></head>', 1)
+                html = html.replace("</body>", CONTENT_SCRIPTS + "</body>", 1)
             data = html.encode("utf-8")
         self._send(200, b"" if head else data, TYPES.get(ext, "application/octet-stream"))
 

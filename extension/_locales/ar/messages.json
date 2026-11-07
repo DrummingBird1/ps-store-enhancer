@@ -1007,5 +1007,152 @@
   },
   "chl_2_7_1_2": {
     "message": "🛠 أخطاء PSN أوضح تذكر الخطوة التي فشلت، وإذن بنقرة واحدة عندما يخفي Chrome إعادة التوجيه من Sony"
+  },
+  "psHistLabel": {
+    "message": "PlayStation Store · مسجّل بواسطة متصفحك"
+  },
+  "psLowest": {
+    "message": "أقل سعر على PS شاهدته:"
+  },
+  "psNow": {
+    "message": "في المتجر الآن"
+  },
+  "psAtLow": {
+    "message": "بأقل سعر شاهدته"
+  },
+  "psSaleLine": {
+    "message": "كان $ORIGINAL$ · خصم $PCT$%",
+    "placeholders": {
+      "original": {
+        "content": "$1"
+      },
+      "pct": {
+        "content": "$2"
+      }
+    }
+  },
+  "psSaleEnds": {
+    "message": "ينتهي العرض في $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "psPlusPrice": {
+    "message": "سعر PlayStation Plus: $PRICE$",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "psStoreLow30": {
+    "message": "أقل سعر خلال آخر 30 يومًا، بحسب المتجر: $PRICE$",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "psGapAbove": {
+    "message": "أعلى بمقدار $AMOUNT$ من أرخص سعر على PC اليوم",
+    "placeholders": {
+      "amount": {
+        "content": "$1"
+      }
+    }
+  },
+  "psGapBelow": {
+    "message": "أقل بمقدار $AMOUNT$ من أرخص سعر على PC اليوم",
+    "placeholders": {
+      "amount": {
+        "content": "$1"
+      }
+    }
+  },
+  "psNotEnough": {
+    "message": "لا يوجد بعد سجل أسعار كافٍ لـ PlayStation. يتكوّن مع كل يوم تزور فيه صفحة هذه اللعبة."
+  },
+  "checkPageBtn": {
+    "message": "🔍 افحص هذه الصفحة"
+  },
+  "checkPageNoStore": {
+    "message": "افتح صفحة من PlayStation Store أولًا ثم حاول مرة أخرى."
+  },
+  "checkPageNotReady": {
+    "message": "لم تستجب الصفحة. أعد تحميل تبويب المتجر وحاول مرة أخرى."
+  },
+  "checkPageOther": {
+    "message": "هذا النوع من الصفحات لا يحتوي على شيء للفحص. افتح صفحة لعبة أو صفحة بحث."
+  },
+  "checkPageSummary": {
+    "message": "$OK$ من $TOTAL$ فحوصات تعمل",
+    "placeholders": {
+      "ok": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
+    }
+  },
+  "checkOk": {
+    "message": "يعمل"
+  },
+  "checkWarn": {
+    "message": "يعمل عبر بديل احتياطي"
+  },
+  "checkFail": {
+    "message": "غير موجود"
+  },
+  "chk_title": {
+    "message": "عنوان اللعبة"
+  },
+  "chk_price": {
+    "message": "السعر"
+  },
+  "chk_anchor": {
+    "message": "مكان البطاقات"
+  },
+  "chk_tiles": {
+    "message": "مربعات الألعاب"
+  },
+  "chk_names": {
+    "message": "عناوين المربعات"
+  },
+  "chk_prices": {
+    "message": "أسعار المربعات"
+  },
+  "checkFeatureFailed": {
+    "message": "تم إيقافها في هذه الصفحة بعد حدوث خطأ: $FEATURE$",
+    "placeholders": {
+      "feature": {
+        "content": "$1"
+      }
+    }
+  },
+  "netLogTitle": {
+    "message": "سجل الشبكة"
+  },
+  "netLogDesc": {
+    "message": "كل طلب أجرته الإضافة، يُحفظ على هذا الجهاز فقط: المضيف والمسار والحالة والوقت. لا يُحفظ أبدًا الاستعلام أو الترويسات أو أي بيانات. يمكن للإضافة الاتصال بما يلي فقط: $HOSTS$.",
+    "placeholders": {
+      "hosts": {
+        "content": "$1"
+      }
+    }
+  },
+  "netLogEmpty": {
+    "message": "لم يتم تسجيل أي طلبات بعد."
+  },
+  "chl_3_0_1": {
+    "message": "🛡️ تم التحقق مقابل PlayStation Store الحقيقي: إصلاح سعر مسجّل بشكل خاطئ، وفلاتر الإضافات وDLC والألعاب المملوكة، والفراغات في نتائج البحث"
+  },
+  "chl_3_0_2": {
+    "message": "📈 سجل أسعار PlayStation: أقل سعر شاهدته وتفاصيل العروض والاتجاه، مبنيًا على الأسعار التي يسجّلها متصفحك (ومن نتائج البحث وقائمة أمنياتك أيضًا)"
+  },
+  "chl_3_0_3": {
+    "message": "🔍 جديد: «افحص هذه الصفحة» في النافذة المنبثقة وسجل شبكة محلي في الإعدادات: اطّلع على ما يعمل وعلى ما طلبته الإضافة"
   }
 }

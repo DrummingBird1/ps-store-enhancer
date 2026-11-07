@@ -2,7 +2,7 @@ PS Store Enhancer (anciennement GameDeals+) ajoute au PlayStation™ Store de vr
 
 🔍 INTELLIGENCE DES PRIX
 • Vrai prix le plus bas de tous les temps sur PC (avec sa date), meilleur prix du jour et alerte « proche du plus bas historique » — uniquement des données réelles, aucun graphique estimé
-• Une tendance de prix tracée à partir des prix enregistrés par votre propre navigateur
+• Une tendance de prix PC et PlayStation (le prix le plus bas que vous avez vu, détails des promotions) tracée à partir des prix enregistrés par votre propre navigateur
 • Comparaison multiplateforme pour le jeu exact (jamais un DLC, une carte ou une suite) : Steam, Epic Games Store, GOG, Humble Store et plus — via CheapShark, convertie dans votre devise
 • Transparence sur les éditions : un prix issu d’une autre édition ou d’un autre bundle (Deluxe, Ultimate, GOTY…) est clairement signalé et jamais mélangé en silence
 • Indications sur le moment où les grandes soldes démarrent d’habitude
@@ -32,7 +32,7 @@ PS Store Enhancer (anciennement GameDeals+) ajoute au PlayStation™ Store de vr
 • Ajoutez un jeu en un clic depuis sa page produit
 • Fixez un prix cible ou un « % de remise », ajoutez des notes, triez et filtrez
 • Recevez une notification de bureau — ou un récapitulatif hebdomadaire — quand le meilleur prix PC atteint votre cible
-• Enregistre le prix du PS Store que vous voyez sur la page de chaque jeu
+• Enregistre le prix du PS Store que vous voyez sur la page de chaque jeu et en conserve l’historique sur votre appareil
 • Partagez votre liste via un lien en lecture seule : la liste est contenue dans le lien, rien n’est envoyé
 • Vérifications quotidiennes en arrière-plan, sans interrogation permanente
 • Le badge de la barre d’outils compte les offres de votre liste qui ont atteint ou dépassé votre cible
@@ -75,9 +75,9 @@ Sélecteur de langue intégré — remplacez la langue du navigateur dans les R�
 🔒 CONFIDENTIALITÉ D’ABORD
 • Toutes vos données restent sur votre appareil
 • Aucune analyse, aucun suivi, aucun partage de données
-• Aucun serveur à nous : les seules requêtes vont à CheapShark (prix, notes), Frankfurter (taux de change) et — uniquement si vous vous connectez — à Sony
+• Aucun serveur à nous : les seules requêtes vont à CheapShark (prix, notes), Frankfurter (taux de change), au PlayStation Store lui-même (la page enregistrée de chaque jeu de la liste de souhaits, une fois par jour) et — uniquement si vous vous connectez — à Sony
 • Bouton « Effacer toutes mes données » dans la fenêtre contextuelle et dans les Réglages
-• Journal de diagnostic local qui n’enregistre jamais de jetons ni de mots de passe
+• Journaux de diagnostic et de réseau locaux (hôte et chemin uniquement) qui n’enregistrent jamais de jetons ni de mots de passe
 • Open source (MIT) sur GitHub ; politique de confidentialité complète disponible
 
 ⚠️ AVERTISSEMENT

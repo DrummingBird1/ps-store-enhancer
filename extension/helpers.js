@@ -57,20 +57,48 @@
     return Math.floor(ts / DAY);
   }
 
+  /** Days of price history kept per game (one point per day). */
+  const MAX_HISTORY_POINTS = 400;
+
+  /**
+   * A point is [day, price] (v2.x data) or [day, price, original, percentOff, saleEndsDay, plusPrice]
+   * (3.0). Trailing empty fields are dropped, so old points stay valid and small. Readers only
+   * need indexes 0 and 1.
+   */
+  function buildPoint(day, price, extra) {
+    const num = (v, min) => (Number.isFinite(Number(v)) && v != null && Number(v) > min ? Number(v) : null);
+    const e = extra || {};
+    const pt = [day, price, num(e.orig, 0), num(e.pct, 0), num(e.ends, 0), num(e.plus, 0)];
+    while (pt.length > 2 && pt[pt.length - 1] === null) pt.pop();
+    return pt;
+  }
+
   /**
    * Record one price per day per game. Returns a NEW store object.
-   * store shape: { [key]: { p: [[dayNumber, price], …], u: lastUpdatedDay } }
+   * store shape: { [key]: { p: [[dayNumber, price, …], …], u: lastUpdatedDay } }
+   * `extra` (optional): { orig, pct, ends, plus } = struck-through price, % off, sale end day number,
+   * PlayStation Plus member price.
    */
-  function addSnapshot(store, key, price, ts, limits) {
-    const { maxPoints = 120, maxGames = 300 } = limits || {};
+  function addSnapshot(store, key, price, ts, limits, extra) {
+    const { maxPoints = MAX_HISTORY_POINTS, maxGames = 300 } = limits || {};
     const p = Number(price);
     if (!key || !Number.isFinite(p) || p <= 0) return store || {};
     const next = { ...(store || {}) };
     const day = dayNumber(ts);
-    const entry = next[key] ? { p: next[key].p.slice(), u: next[key].u } : { p: [], u: day };
+    const entry = next[key] ? { p: next[key].p.map((pt) => pt.slice()), u: next[key].u } : { p: [], u: day };
     const last = entry.p[entry.p.length - 1];
-    if (last && last[0] === day) last[1] = p;
-    else entry.p.push([day, p]);
+    let point = buildPoint(day, p, extra);
+    if (last && last[0] === day) {
+      // A later write the same day (search grid, background refresh) carries fewer details; when it is the
+      // same price keep the sale details an earlier, richer write stored.
+      if (last[1] === p) {
+        const full = point.concat(Array(Math.max(0, 6 - point.length)).fill(null));
+        for (let i = 2; i < 6; i++) if (full[i] == null && last[i] != null) full[i] = last[i];
+        while (full.length > 2 && full[full.length - 1] === null) full.pop();
+        point = full;
+      }
+      entry.p[entry.p.length - 1] = point;
+    } else entry.p.push(point);
     entry.p = entry.p.slice(-maxPoints);
     entry.u = day;
     next[key] = entry;
@@ -82,6 +110,49 @@
         .forEach((k) => delete next[k]);
     }
     return next;
+  }
+
+  function sanitizePoint(pt, ceilDay) {
+    if (!Array.isArray(pt)) return null;
+    const day = Number(pt[0]);
+    const price = Number(pt[1]);
+    if (!Number.isInteger(day) || day < 18000 || day > ceilDay || !Number.isFinite(price) || price <= 0) return null;
+    return buildPoint(day, price, { orig: pt[2], pct: pt[3], ends: pt[4], plus: pt[5] });
+  }
+
+  /**
+   * Merge a backup's recorded prices into the local store: per game, the union of days (the local
+   * point wins when both have the same day). Keys and points are validated and nothing from the future
+   * is accepted. Games already stored are always merged; games that are only in the backup fill the free
+   * slots (most recently updated first), so a restore can never push the local history out.
+   * `limits.now` is for tests.
+   */
+  function mergeSnapshots(local, incoming, limits) {
+    const { maxPoints = MAX_HISTORY_POINTS, maxGames = 300, now = Date.now() } = limits || {};
+    const ceil = dayNumber(now) + 1;
+    const out = { ...(local || {}) };
+    if (!incoming || typeof incoming !== "object") return out;
+    const entries = Object.entries(incoming)
+      .slice(0, 2000)
+      .filter(([key, e]) => key.length <= 200 && /^(pc_|ps_[A-Z]{3}_)\S/.test(key) && e && Array.isArray(e.p))
+      .sort((a, b) => (Number(b[1].u) || 0) - (Number(a[1].u) || 0));
+    let free = Math.max(0, maxGames - Object.keys(out).length);
+    for (const [key, entry] of entries) {
+      const isNew = !out[key];
+      if (isNew && free <= 0) continue;
+      const byDay = new Map();
+      for (const pt of (out[key] && out[key].p) || []) byDay.set(pt[0], pt);
+      for (const raw of entry.p.slice(-maxPoints * 2)) {
+        const pt = sanitizePoint(raw, ceil);
+        if (pt && !byDay.has(pt[0])) byDay.set(pt[0], pt);
+      }
+      const p = [...byDay.values()].sort((a, b) => a[0] - b[0]).slice(-maxPoints);
+      if (!p.length) continue;
+      const u = Math.min(ceil, Math.max(Number(out[key] && out[key].u) || 0, Number(entry.u) || 0, p[p.length - 1][0]));
+      out[key] = { p, u };
+      if (isNew) free--;
+    }
+    return out;
   }
 
   /**
@@ -104,6 +175,36 @@
     const pct = ((latest[1] - ref[1]) / ref[1]) * 100;
     const direction = Math.abs(pct) < 1 ? "flat" : pct > 0 ? "up" : "down";
     return { direction, pct: Math.round(pct * 10) / 10, from: ref[1], to: latest[1], spanDays: latest[0] - ref[0] };
+  }
+
+  /**
+   * Summary of the PlayStation Store prices this browser recorded for one game and currency.
+   * `enough` is false until there are points on at least two different days, so callers can say
+   * "not enough history yet" instead of drawing a trend from one dot.
+   */
+  function psHistoryStats(points, nowTs) {
+    if (!Array.isArray(points) || !points.length) return null;
+    const days = new Set(points.map((pt) => pt[0]));
+    let low = points[0];
+    for (const pt of points) if (pt[1] < low[1]) low = pt;
+    const last = points[points.length - 1];
+    return {
+      count: points.length,
+      enough: days.size >= 2,
+      firstDay: points[0][0],
+      spanDays: last[0] - points[0][0],
+      low: { price: low[1], day: low[0] },
+      last: {
+        day: last[0],
+        price: last[1],
+        orig: last[2] ?? null,
+        pct: last[3] ?? null,
+        ends: last[4] ?? null,
+        plus: last[5] ?? null
+      },
+      atLow: last[1] <= low[1] * 1.005,
+      trend: trendFromSnapshots(points, nowTs, 30)
+    };
   }
 
   /** "At the all-time low" / "Near the all-time low" classification (within 10%). */
@@ -264,7 +365,9 @@
     PT: "EUR", AT: "EUR", BE: "EUR", FI: "EUR", GR: "EUR", IL: "ILS", JP: "JPY", KR: "KRW",
     BR: "BRL", CA: "CAD", AU: "AUD", NZ: "NZD", TR: "TRY", AE: "AED", SA: "SAR", RU: "RUB",
     PL: "PLN", SE: "SEK", NO: "NOK", DK: "DKK", CZ: "CZK", CH: "CHF", IN: "INR", MX: "MXN",
-    ZA: "ZAR", HK: "HKD", TW: "TWD"
+    ZA: "ZAR", HK: "HKD", TW: "TWD", SG: "SGD", MY: "MYR", TH: "THB", HU: "HUF", RO: "RON",
+    CL: "CLP", CO: "COP", PE: "PEN", SK: "EUR", SI: "EUR", EE: "EUR", LV: "EUR", LT: "EUR",
+    LU: "EUR", MT: "EUR", CY: "EUR", HR: "EUR"
   };
   const SYMBOL_CURRENCY = { "€": "EUR", "£": "GBP", "₪": "ILS", "¥": "JPY", "₩": "KRW", "₺": "TRY", "₹": "INR", "zł": "PLN", "kr": "SEK" };
 
@@ -297,7 +400,7 @@
     const amount = parseFloat(num);
     if (!Number.isFinite(amount) || amount <= 0) return null;
     let currency = null;
-    const iso = raw.match(/\b(USD|EUR|GBP|ILS|JPY|KRW|BRL|CAD|AUD|NZD|TRY|AED|SAR|RUB|PLN|SEK|NOK|DKK|CZK|CHF|INR|MXN|ZAR|HKD|TWD)\b/);
+    const iso = raw.match(/\b(USD|EUR|GBP|ILS|JPY|KRW|BRL|CAD|AUD|NZD|TRY|AED|SAR|RUB|PLN|SEK|NOK|DKK|CZK|CHF|INR|MXN|ZAR|HKD|TWD|SGD|MYR|THB|HUF|RON|CLP|COP|PEN)\b/);
     if (iso) currency = iso[1];
     else if (/R\$/.test(raw)) currency = "BRL";
     else if (/CA\$|C\$/.test(raw)) currency = "CAD";
@@ -313,6 +416,21 @@
     return currency ? { amount, currency } : null;
   }
 
+  const HIGH_UNIT_CURRENCIES = new Set(["JPY", "KRW", "HUF", "CLP", "COP", "IDR", "VND", "TWD"]);
+  const MID_UNIT_CURRENCIES = new Set(["INR", "TRY", "MXN", "CZK", "ZAR", "THB", "PHP"]);
+
+  /**
+   * Backstop against mis-parsed prices: no store item costs more than 5,000 in a normal currency, 25,000
+   * in INR/TRY/MXN-like ones or 5,000,000 in a high-unit one such as JPY/KRW. "$79.99" glued to the next
+   * text node as "79.991" used to be read as 79,991.
+   */
+  function isPlausiblePrice(amount, currency) {
+    const a = Number(amount);
+    if (!(a > 0) || !Number.isFinite(a)) return false;
+    const cur = String(currency || "").toUpperCase();
+    return a <= (HIGH_UNIT_CURRENCIES.has(cur) ? 5000000 : MID_UNIT_CURRENCIES.has(cur) ? 25000 : 5000);
+  }
+
   const api = {
     escapeHtml,
     sanitizeUrl,
@@ -320,6 +438,10 @@
     formatMoney,
     dayNumber,
     addSnapshot,
+    MAX_HISTORY_POINTS,
+    mergeSnapshots,
+    psHistoryStats,
+    isPlausiblePrice,
     trendFromSnapshots,
     lowStatus,
     isDealReady,

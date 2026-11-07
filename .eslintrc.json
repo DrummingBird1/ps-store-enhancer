@@ -22,6 +22,8 @@
     "PSEHelpers": "readonly",
     "PSEDiag": "readonly",
     "PSEExtras": "readonly",
+    "PSEStore": "readonly",
+    "PSENet": "readonly",
     "CheapShark": "readonly",
     "importScripts": "readonly"
   },
@@ -40,7 +42,7 @@
       "env": { "node": true, "jest": true }
     },
     {
-      "files": ["extension/match.js", "extension/helpers.js", "extension/changelog-data.js"],
+      "files": ["extension/match.js", "extension/helpers.js", "extension/store-adapter.js", "extension/changelog-data.js"],
       "env": { "node": true, "browser": true, "serviceworker": true }
     },
     {

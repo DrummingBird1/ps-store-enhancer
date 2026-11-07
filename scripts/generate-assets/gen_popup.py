@@ -13,7 +13,7 @@ PAGE_BG = (13, 27, 42)  # #0d1b2a — real popup body bg
 T = {
     "en": {
         "rtl": False,
-        "title": "PS Store Enhancer", "ver": "v2.7.1",
+        "title": "PS Store Enhancer", "ver": "v3.0.0",
         "psn_sec": "PSN ACCOUNT", "psn_name": "Not connected", "psn_sub": "Click to connect your PSN account",
         "filter_sec": "SEARCH RESULT FILTERS",
         "filters": ["Hide Add-ons & Currency", "Hide DLC & Expansions", "Hide games I already own"],

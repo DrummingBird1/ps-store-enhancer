@@ -156,7 +156,7 @@ function createEnv() {
         if (cs) return cs;
         return jsonResponse({ error: `unrouted ${url}` }, 599);
       });
-      for (const f of ["match.js", "helpers.js", "cache.js", "diag.js", "cheapshark.js", "psn.js", "background.js"]) {
+      for (const f of ["match.js", "helpers.js", "store-adapter.js", "cache.js", "diag.js", "net.js", "cheapshark.js", "psn.js", "background.js"]) {
         require(path.join(EXT, f));
       }
       return env;

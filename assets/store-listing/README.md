@@ -6,26 +6,26 @@ language in the store dashboard. The files are named like the folders in `extens
 
 | File | Store language | Characters |
 |------|----------------|-----------:|
-| `en.txt` | English | 5,237 |
-| `he.txt` | Hebrew | 4,583 |
-| `ar.txt` | Arabic | 4,873 |
-| `de.txt` | German | 6,119 |
-| `es.txt` | Spanish | 6,190 |
-| `fr.txt` | French | 6,454 |
-| `it.txt` | Italian | 6,197 |
-| `ja.txt` | Japanese | 2,993 |
-| `ko.txt` | Korean | 3,078 |
-| `nl.txt` | Dutch | 5,939 |
-| `pl.txt` | Polish | 6,083 |
-| `pt_BR.txt` | Portuguese (Brazil) | 6,123 |
-| `ru.txt` | Russian | 6,102 |
-| `tr.txt` | Turkish | 5,783 |
-| `zh_CN.txt` | Chinese (Simplified) | 2,319 |
-| `zh_TW.txt` | Chinese (Traditional) | 2,343 |
+| `en.txt` | English | 5,454 |
+| `he.txt` | Hebrew | 4,786 |
+| `ar.txt` | Arabic | 5,069 |
+| `de.txt` | German | 6,381 |
+| `es.txt` | Spanish | 6,447 |
+| `fr.txt` | French | 6,737 |
+| `it.txt` | Italian | 6,474 |
+| `ja.txt` | Japanese | 3,116 |
+| `ko.txt` | Korean | 3,211 |
+| `nl.txt` | Dutch | 6,208 |
+| `pl.txt` | Polish | 6,329 |
+| `pt_BR.txt` | Portuguese (Brazil) | 6,378 |
+| `ru.txt` | Russian | 6,339 |
+| `tr.txt` | Turkish | 6,022 |
+| `zh_CN.txt` | Chinese (Simplified) | 2,420 |
+| `zh_TW.txt` | Chinese (Traditional) | 2,445 |
 
 Characters are counted the way the dashboards count them (an emoji is two). Chrome Web Store allows
 up to 16,000 characters and Microsoft Edge Add-ons up to 10,000; the longest file here is
-6,454. Check the dashboards if those limits change.
+6,737. Check the dashboards if those limits change.
 
 ## Where the other listing fields come from
 

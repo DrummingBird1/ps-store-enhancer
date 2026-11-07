@@ -1007,5 +1007,152 @@
   },
   "chl_2_7_1_2": {
     "message": "🛠 Clearer PSN errors that name the failing step, and one-click access when Chrome hides Sony's redirect"
+  },
+  "psHistLabel": {
+    "message": "PlayStation Store · recorded by your browser"
+  },
+  "psLowest": {
+    "message": "Lowest PS price you've seen:"
+  },
+  "psNow": {
+    "message": "On the store now"
+  },
+  "psAtLow": {
+    "message": "At the lowest price you've seen"
+  },
+  "psSaleLine": {
+    "message": "Was $ORIGINAL$ · $PCT$% off",
+    "placeholders": {
+      "original": {
+        "content": "$1"
+      },
+      "pct": {
+        "content": "$2"
+      }
+    }
+  },
+  "psSaleEnds": {
+    "message": "Offer ends $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "psPlusPrice": {
+    "message": "PlayStation Plus price: $PRICE$",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "psStoreLow30": {
+    "message": "Lowest price in the last 30 days, per the store: $PRICE$",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "psGapAbove": {
+    "message": "$AMOUNT$ more than the cheapest PC price today",
+    "placeholders": {
+      "amount": {
+        "content": "$1"
+      }
+    }
+  },
+  "psGapBelow": {
+    "message": "$AMOUNT$ less than the cheapest PC price today",
+    "placeholders": {
+      "amount": {
+        "content": "$1"
+      }
+    }
+  },
+  "psNotEnough": {
+    "message": "Not enough PlayStation price history yet. It builds each day you visit this game's page."
+  },
+  "checkPageBtn": {
+    "message": "🔍 Check this page"
+  },
+  "checkPageNoStore": {
+    "message": "Open a PlayStation Store page first, then try again."
+  },
+  "checkPageNotReady": {
+    "message": "The page did not answer. Reload the store tab and try again."
+  },
+  "checkPageOther": {
+    "message": "This kind of page has nothing to check. Open a game page or a search page."
+  },
+  "checkPageSummary": {
+    "message": "$OK$ of $TOTAL$ lookups work",
+    "placeholders": {
+      "ok": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
+    }
+  },
+  "checkOk": {
+    "message": "works"
+  },
+  "checkWarn": {
+    "message": "works through a fallback"
+  },
+  "checkFail": {
+    "message": "not found"
+  },
+  "chk_title": {
+    "message": "Game title"
+  },
+  "chk_price": {
+    "message": "Price"
+  },
+  "chk_anchor": {
+    "message": "Where the cards go"
+  },
+  "chk_tiles": {
+    "message": "Game tiles"
+  },
+  "chk_names": {
+    "message": "Tile titles"
+  },
+  "chk_prices": {
+    "message": "Tile prices"
+  },
+  "checkFeatureFailed": {
+    "message": "Turned off on this page after an error: $FEATURE$",
+    "placeholders": {
+      "feature": {
+        "content": "$1"
+      }
+    }
+  },
+  "netLogTitle": {
+    "message": "Network log"
+  },
+  "netLogDesc": {
+    "message": "Every request the extension made, kept on this device only: host, path, status and time. Never the query, headers or any data. The extension may contact only: $HOSTS$.",
+    "placeholders": {
+      "hosts": {
+        "content": "$1"
+      }
+    }
+  },
+  "netLogEmpty": {
+    "message": "No requests recorded yet."
+  },
+  "chl_3_0_1": {
+    "message": "🛡️ Checked against the real PlayStation Store: fixed a wrongly recorded price, the add-on, DLC and owned-games filters, and blank gaps in search results"
+  },
+  "chl_3_0_2": {
+    "message": "📈 PlayStation price history: the lowest price you've seen, sale details and trend, built from prices your browser records (also from search results and your wishlist)"
+  },
+  "chl_3_0_3": {
+    "message": "🔍 New \"Check this page\" in the popup and a local network log in Settings: see what works and what the extension requested"
   }
 }

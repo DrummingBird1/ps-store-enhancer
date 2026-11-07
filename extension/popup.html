@@ -51,6 +51,16 @@ body.theme-light .icon-btn{background:#fff;border-color:rgba(0,0,0,.15)}
 .wn-card{margin:12px 18px 0;padding:10px 14px;background:rgba(77,166,255,.08);border:1px solid rgba(77,166,255,.25);border-radius:8px}
 .wn-top{display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:700;color:#4da6ff}
 .wn-top button{background:none;border:none;color:#4da6ff;cursor:pointer;font-size:11px;padding:2px 4px}
+.check-btn{width:100%;padding:9px 10px;background:rgba(0,112,209,.12);border:1px solid rgba(0,112,209,.3);color:#4da6ff;border-radius:8px;cursor:pointer;font-size:11px;font-weight:600}
+.check-btn:hover{background:rgba(0,112,209,.2)}
+.check-list{list-style:none;margin:8px 0 0;font-size:10.5px}
+.check-list li{display:flex;align-items:baseline;gap:6px;padding:3px 0}
+.check-list .ck-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;align-self:center}
+.check-list .ck-ok{background:#6dc849}.check-list .ck-warn{background:#f5c518}.check-list .ck-fail{background:#ff4040}
+.check-list small{color:#a0aec0;font-size:9px}
+.check-msg{margin-top:6px;font-size:10px;color:#a0aec0}
+body.theme-light .check-btn{color:#0070d1}body.theme-light .check-list small,body.theme-light .check-msg{color:#4a5568}
+body.theme-contrast .check-btn{background:#000;border:2px solid #fff;color:#fff}body.theme-contrast .check-list small,body.theme-contrast .check-msg{color:#fff}
 .wn-card ul{margin:6px 0 0;padding-inline-start:16px;font-size:10px;color:#a0aec0;line-height:1.5}
 body.theme-light .wn-top,body.theme-light .wn-top button{color:#0070d1}
 body.theme-light .wn-card{background:rgba(0,112,209,.06);border-color:rgba(0,112,209,.2)}
@@ -59,7 +69,7 @@ body.theme-light .wn-card{background:rgba(0,112,209,.06);border-color:rgba(0,112
 <body>
 <div class="hdr">
   <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="6" fill="rgba(255,255,255,.15)"/><path d="M7 13l3 3 7-7" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  <div><h1>PS Store Enhancer</h1><p>v2.7.1</p></div>
+  <div><h1>PS Store Enhancer</h1><p>v3.0.0</p></div>
 </div>
 
 <div class="wn-card" id="whatsNewCard" style="display:none">
@@ -82,6 +92,12 @@ body.theme-light .wn-card{background:rgba(0,112,209,.06);border-color:rgba(0,112
   <div class="tr"><div class="tl"><span data-i18n="hideOwned">Hide games I already own</span><span data-i18n="hideOwnedDesc">Auto from PSN + manual list</span></div><label class="sw"><input type="checkbox" id="hideOwned" data-i18n-aria="hideOwned"><span class="sl"></span></label></div>
 </div>
 
+<div class="sec">
+  <button type="button" class="check-btn" id="checkPageBtn" data-i18n="checkPageBtn">🔍 Check this page</button>
+  <ul class="check-list" id="checkList" hidden></ul>
+  <div class="check-msg" id="checkMsg" role="status" aria-live="polite"></div>
+</div>
+
 <div class="tags">
   <span class="tag">🔗 <span data-i18n="chipPsn">PSN</span></span><span class="tag">📊 <span data-i18n="chipScores">Scores</span></span><span class="tag">📉 <span data-i18n="chipPrices">Prices</span></span>
   <span class="tag">🔀 <span data-i18n="chipCompare">Compare</span></span><span class="tag">🏆 <span data-i18n="chipTrophies">Trophies</span></span><span class="tag">🧹 <span data-i18n="chipFilter">Filter</span></span>
@@ -93,7 +109,7 @@ body.theme-light .wn-card{background:rgba(0,112,209,.06);border-color:rgba(0,112
   <a class="support-link" href="https://www.patreon.com/c/IdanLights" target="_blank" rel="noopener noreferrer">Patreon</a>
 </div>
 <div class="ft" style="border-top:0;padding-top:0"><button type="button" class="wipe" id="wipeBtn" data-i18n="popupWipe">Erase all my data</button></div>
-<div class="ft"><span>PS Store Enhancer v2.7.1 · <a id="openChangelog" class="opt" data-i18n="viewChangelog" style="font-size:9px">What's new</a></span><a id="openOptions" class="opt" data-i18n="advancedSettings">⚙ Advanced settings</a></div>
+<div class="ft"><span>PS Store Enhancer v3.0.0 · <a id="openChangelog" class="opt" data-i18n="viewChangelog" style="font-size:9px">What's new</a></span><a id="openOptions" class="opt" data-i18n="advancedSettings">⚙ Advanced settings</a></div>
 
 <script src="i18n.js"></script>
 <script src="changelog-data.js"></script>

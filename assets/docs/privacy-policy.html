@@ -42,7 +42,8 @@
   <tr><td>Game library</td><td>Showing owned games, hiding them from search</td><td>Local (chrome.storage.local)</td></tr>
   <tr><td>Manually added games</td><td>User's custom owned games list</td><td>Local (chrome.storage.local)</td></tr>
   <tr><td>Wishlist</td><td>Game titles, your price or % targets, optional notes, and the last prices seen (cheapest PC price, and the PS Store price shown on the game's page)</td><td>Local (chrome.storage.local)</td></tr>
-  <tr><td>Recorded prices</td><td>One price per game per day (price + date) for games you view or wishlist, used to draw your own price trend. Never uploaded.</td><td>Local (chrome.storage.local)</td></tr>
+  <tr><td>Recorded prices</td><td>One price per game per day (price, and for PlayStation prices the sale details shown on the page: original price, percent off, end date, PlayStation Plus price) for games you view or wishlist, the latest 400 days with a recorded price are kept and used to draw your own price trend. Included in the JSON backup you can export. Never uploaded.</td><td>Local (chrome.storage.local)</td></tr>
+  <tr><td>Network log</td><td>The last 200 requests the extension made: host, path, status and duration. Never the query string, headers, tokens or any data sent or received. You can view, copy or clear it in Settings.</td><td>Local (chrome.storage.local)</td></tr>
   <tr><td>Diagnostics log</td><td>The last 120 events of API calls and the PSN connection (host, path, status — never tokens, passwords or full URLs with parameters), to help you troubleshoot. You can copy or clear it in Settings.</td><td>Local (chrome.storage.local)</td></tr>
   <tr><td>Small UI state</td><td>Which cards are collapsed, whether the first-run tour or the one-time review prompt was shown</td><td>Local (chrome.storage.local)</td></tr>
   <tr><td>API response cache</td><td>Reduce API calls, improve performance</td><td>Local (chrome.storage.local)</td></tr>
@@ -65,6 +66,7 @@
   <tr><td>Sony / PSN API</td><td>Authentication token (user-initiated)</td><td>Fetch game library and trophy data</td></tr>
   <tr><td>CheapShark API</td><td>Game title, a CheapShark game ID or Steam app ID, or search text as you type (text only)</td><td>Exact-game lookup, cross-platform prices, the all-time low, Metacritic and Steam ratings; live search suggestions; daily wishlist price checks</td></tr>
   <tr><td>Frankfurter API</td><td>None (currency codes only, e.g. USD→EUR)</td><td>Daily exchange rates for price display</td></tr>
+  <tr><td>PlayStation Store (store.playstation.com)</td><td>None beyond the page address you already saved with a wishlisted game (no cookies, no account)</td><td>Once a day, in the background, the saved page of each wishlisted game (at most 20) is read to record its PlayStation price on this device. Turned off with the <em>Price insight</em> setting.</td></tr>
   <tr><td>PSPrices / PSNProfiles / HowLongToBeat</td><td>None (link only)</td><td>External reference links</td></tr>
 </table>
 </div>
@@ -92,7 +94,7 @@
   <tr><td><span class="badge">webRequest</span> <em>(optional)</em></td><td>Only if you choose to connect PSN <em>and</em> Chrome hides Sony's sign-in redirect from extensions: lets the extension read that redirect, observation only. It is requested at that moment, never at install, and nothing else uses it.</td></tr>
 </table>
 </div>
-<p style="font-size:13px;color:#718096">Host access is limited to: <code>store.playstation.com</code> (UI injection), <code>ca.account.sony.com</code> &amp; <code>m.np.playstation.com</code> (optional PSN), <code>cheapshark.com</code> (prices, Metacritic and Steam ratings), and <code>api.frankfurter.dev</code> (currency rates). The extension requests no other site access.</p>
+<p style="font-size:13px;color:#718096">Host access is limited to: <code>store.playstation.com</code> (UI injection, and the once-a-day read of wishlisted games' own pages), <code>ca.account.sony.com</code> &amp; <code>m.np.playstation.com</code> (optional PSN), <code>cheapshark.com</code> (prices, Metacritic and Steam ratings), and <code>api.frankfurter.dev</code> (currency rates). The extension requests no other site access.</p>
 
 <h2>Sharing a wishlist</h2>
 <p>"Copy share link" (settings page, your action only) builds a link to a static page on this website with your wishlist <em>encoded in the part of the URL after the <code>#</code></em> — game names and last-seen PC prices only, no targets or notes. Browsers never send that part of a URL to a server, so nothing is uploaded or stored; anyone you give the link to can read the list.</p>
@@ -103,7 +105,7 @@
   <li>Cached API responses expire automatically (4-24 hours depending on type).</li>
   <li>Uninstalling the extension removes all stored data.</li>
   <li>You can manually clear all cached data from the extension's settings page.</li>
-  <li><strong>Erase all my data</strong> (settings page and popup) disconnects PSN and deletes everything the extension stored locally — wishlist, owned games, caches, recorded prices and the diagnostics log. Your preference settings are kept.</li>
+  <li><strong>Erase all my data</strong> (settings page and popup) disconnects PSN and deletes everything the extension stored locally — wishlist, owned games, caches, recorded prices and the diagnostics and network logs. Your preference settings are kept.</li>
 </ul>
 
 <h2>Children's Privacy</h2>

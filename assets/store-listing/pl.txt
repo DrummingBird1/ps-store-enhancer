@@ -2,7 +2,7 @@ PS Store Enhancer (dawniej GameDeals+) dodaje do PlayStation™ Store prawdziwe 
 
 🔍 INFORMACJE O CENACH
 • Prawdziwa najniższa cena na PC w historii (z datą), dzisiejsza najniższa cena i oznaczenie „blisko historycznego minimum” — tylko prawdziwe dane, bez szacowanych wykresów
-• Trend cen oparty na cenach zapisanych przez Twoją własną przeglądarkę
+• Trend cen na PC i PlayStation (najniższa widziana przez Ciebie cena, szczegóły promocji) oparty na cenach zapisanych przez Twoją własną przeglądarkę
 • Porównanie platform dla dokładnie tej gry (nigdy DLC, mapa ani sequel): Steam, Epic Games Store, GOG, Humble Store i inne — dane z CheapShark, przeliczone na Twoją walutę
 • Przejrzystość wydań: cena z innego wydania lub pakietu (Deluxe, Ultimate, GOTY…) jest wyraźnie oznaczona i nigdy po cichu nie miesza się z pozostałymi
 • Wskazówki, kiedy zwykle zaczynają się duże wyprzedaże
@@ -32,7 +32,7 @@ PS Store Enhancer (dawniej GameDeals+) dodaje do PlayStation™ Store prawdziwe 
 • Dodaj grę jednym kliknięciem na stronie produktu
 • Ustaw docelową cenę lub „% zniżki”, dodawaj notatki, sortuj i filtruj
 • Otrzymaj powiadomienie na pulpicie — albo jedno tygodniowe podsumowanie — gdy najniższa cena na PC osiągnie Twój cel
-• Zapisuje cenę z PS Store, którą widzisz na stronie każdej gry
+• Zapisuje cenę z PS Store, którą widzisz na stronie każdej gry, i przechowuje jej historię na Twoim urządzeniu
 • Udostępnij listę jako link tylko do odczytu: lista jest zapisana w linku, nic nie jest wysyłane na serwer
 • Codzienne sprawdzanie w tle, bez ciągłego odpytywania
 • Plakietka na pasku narzędzi pokazuje liczbę ofert z listy życzeń, które osiągnęły Twój cel lub są poniżej niego
@@ -75,9 +75,9 @@ Wbudowany wybór języka — zmień język przeglądarki w ustawieniach.
 🔒 PRYWATNOŚĆ NA PIERWSZYM MIEJSCU
 • Wszystkie dane zostają na Twoim urządzeniu
 • Bez analityki, bez śledzenia, bez udostępniania danych
-• Bez własnych serwerów: jedyne żądania trafiają do CheapShark (ceny, oceny), Frankfurter (kursy walut) i — tylko jeśli się połączysz — do Sony
+• Bez własnych serwerów: jedyne żądania trafiają do CheapShark (ceny, oceny), Frankfurter (kursy walut), samego PlayStation Store (zapisana strona każdej gry z listy życzeń, raz dziennie) i — tylko jeśli się połączysz — do Sony
 • Przycisk „Usuń wszystkie moje dane” w oknie podręcznym i w ustawieniach
-• Lokalny dziennik diagnostyczny, który nigdy nie zapisuje tokenów ani haseł
+• Lokalne dzienniki diagnostyczne i sieciowe (tylko host i ścieżka), które nigdy nie zapisują tokenów ani haseł
 • Otwarte oprogramowanie (MIT) na GitHubie; dostępna pełna polityka prywatności
 
 ⚠️ ZASTRZEŻENIE

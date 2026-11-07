@@ -1007,5 +1007,152 @@
   },
   "chl_2_7_1_2": {
     "message": "🛠 失敗した手順がわかるPSNエラー表示と、ChromeがSonyのリダイレクトを隠す場合のワンクリック許可"
+  },
+  "psHistLabel": {
+    "message": "PlayStation Store · ブラウザが記録"
+  },
+  "psLowest": {
+    "message": "これまでに見たPS価格の最安値:"
+  },
+  "psNow": {
+    "message": "現在のストア価格"
+  },
+  "psAtLow": {
+    "message": "これまでに見た最安値と同額"
+  },
+  "psSaleLine": {
+    "message": "以前は $ORIGINAL$ · $PCT$% オフ",
+    "placeholders": {
+      "original": {
+        "content": "$1"
+      },
+      "pct": {
+        "content": "$2"
+      }
+    }
+  },
+  "psSaleEnds": {
+    "message": "セールは $DATE$ に終了",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "psPlusPrice": {
+    "message": "PlayStation Plus価格: $PRICE$",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "psStoreLow30": {
+    "message": "ストアによる過去30日間の最安値: $PRICE$",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "psGapAbove": {
+    "message": "今日のPC最安値より $AMOUNT$ 高い",
+    "placeholders": {
+      "amount": {
+        "content": "$1"
+      }
+    }
+  },
+  "psGapBelow": {
+    "message": "今日のPC最安値より $AMOUNT$ 安い",
+    "placeholders": {
+      "amount": {
+        "content": "$1"
+      }
+    }
+  },
+  "psNotEnough": {
+    "message": "PlayStationの価格履歴がまだ十分ではありません。このゲームのページを開くたびに蓄積されます。"
+  },
+  "checkPageBtn": {
+    "message": "🔍 このページを確認"
+  },
+  "checkPageNoStore": {
+    "message": "先にPlayStation Storeのページを開いてから、もう一度お試しください。"
+  },
+  "checkPageNotReady": {
+    "message": "ページから応答がありませんでした。ストアのタブを再読み込みして、もう一度お試しください。"
+  },
+  "checkPageOther": {
+    "message": "このページには確認する項目がありません。ゲームページか検索ページを開いてください。"
+  },
+  "checkPageSummary": {
+    "message": "$TOTAL$ 項目中 $OK$ 項目が動作",
+    "placeholders": {
+      "ok": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
+    }
+  },
+  "checkOk": {
+    "message": "動作中"
+  },
+  "checkWarn": {
+    "message": "代替方法で動作中"
+  },
+  "checkFail": {
+    "message": "見つかりません"
+  },
+  "chk_title": {
+    "message": "ゲームタイトル"
+  },
+  "chk_price": {
+    "message": "価格"
+  },
+  "chk_anchor": {
+    "message": "カードの表示位置"
+  },
+  "chk_tiles": {
+    "message": "ゲームタイル"
+  },
+  "chk_names": {
+    "message": "タイルのタイトル"
+  },
+  "chk_prices": {
+    "message": "タイルの価格"
+  },
+  "checkFeatureFailed": {
+    "message": "エラーのため、このページでは無効にしました: $FEATURE$",
+    "placeholders": {
+      "feature": {
+        "content": "$1"
+      }
+    }
+  },
+  "netLogTitle": {
+    "message": "ネットワークログ"
+  },
+  "netLogDesc": {
+    "message": "拡張機能が行ったすべてのリクエストを、この端末内にのみ保存します(ホスト、パス、ステータス、時刻)。クエリ、ヘッダー、その他のデータは保存しません。拡張機能が通信するのは次のみです: $HOSTS$。",
+    "placeholders": {
+      "hosts": {
+        "content": "$1"
+      }
+    }
+  },
+  "netLogEmpty": {
+    "message": "記録されたリクエストはまだありません。"
+  },
+  "chl_3_0_1": {
+    "message": "🛡️ 実際のPlayStation Storeで検証: 誤って記録される価格、アドオン・DLC・所持ゲームのフィルター、検索結果の空白を修正"
+  },
+  "chl_3_0_2": {
+    "message": "📈 PlayStationの価格履歴: これまでに見た最安値、セール詳細、推移を、ブラウザが記録した価格から表示(検索結果とウィッシュリストからも記録)"
+  },
+  "chl_3_0_3": {
+    "message": "🔍 ポップアップに新しい「このページを確認」、設定にローカルのネットワークログを追加: 動作状況と拡張機能のリクエスト内容を確認できます"
   }
 }
