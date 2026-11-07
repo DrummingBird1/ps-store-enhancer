@@ -20,7 +20,8 @@ assets-pre-v2.7.1/                 The v2.7.0 popup screenshots (EN + HE), ident
 assets-pre-v3.0.0/                 The v2.7.1 popup screenshots (EN + HE) and the website's
   screenshots/<lang>/  docs/assets/  popup image, from before "Check this page"
 assets-pre-v3.0.0-redesign/        The mockup screenshots of the older look (4 per language and the
-  screenshots/<lang>/  docs/assets/  website's 4), replaced by real captures of the new design
+  screenshots/<lang>/  docs/assets/  website's 4), the promo tiles and og-image, replaced by real
+  promo/                             captures of the new design
 ```
 
 v2.2.1, v2.2.2, v2.2.3, and v2.3.0 aren't archived as zips because they predate this repo's

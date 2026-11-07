@@ -13,7 +13,7 @@ python scripts/generate-assets/gen_screenshots.py  # product page (EN + HE)
 python scripts/generate-assets/gen_screenshots2.py # live search suggestions (EN + HE)
 python scripts/generate-assets/gen_screenshots3.py # library & wishlist stats (EN + HE)
 python scripts/generate-assets/gen_popup.py        # toolbar popup (EN + HE)
-python scripts/generate-assets/gen_promo.py        # small tile + marquee tile
+python scripts/generate-assets/gen_promo.py        # small tile + marquee tile + og-image (needs assets/promo/src/*.png: two real captures)
 python scripts/generate-assets/gen_badges.py        # one badge per released version
 ```
 
