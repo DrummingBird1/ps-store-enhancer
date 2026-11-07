@@ -121,9 +121,11 @@
 }
 .pse-price-insight:hover,.pse-trophy-box:hover,.pse-xplatform:hover { border-color: var(--pse-border-accent); }
 
+/* The store styles every <button> with background: inherit, which would paint the card's own glass a second time over the header. */
+.pse-card .pse-card-head,
 .pse-card-head {
   display: flex; align-items: center; gap: 10px; width: 100%;
-  background: none; border: 0; padding: 0; margin: 0 0 14px;
+  background: none !important; border: 0; padding: 0; margin: 0 0 14px;
   font: inherit; font-size: 15px; font-weight: 600; color: var(--pse-text-primary);
   text-align: start; cursor: pointer;
 }
