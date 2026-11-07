@@ -18,17 +18,18 @@
 @media (prefers-color-scheme: light){
   :root{ --bg:#eef2fa; --glow:radial-gradient(60% 45% at 50% 0%,rgba(61,125,255,.20),transparent 70%);
     --panel:rgba(255,255,255,.8); --line:rgba(15,30,70,.12); --text:#0d1630; --dim:#4b5878; --faint:#5b6784;
-    --accent:#1257c8; --accent-soft:rgba(23,105,224,.10); --pink:#c2185b; color-scheme:light; }
+    --accent:#1257c8; --accent-soft:rgba(23,105,224,.10); --pink:#a8124f; color-scheme:light; }
 }
 body{font-family:"Rubik","SST","Segoe UI Variable Text","Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,Roboto,"Noto Sans Hebrew","Arial Hebrew",sans-serif;background:var(--bg);background-image:var(--glow);color:var(--text);min-height:100vh;display:flex;align-items:center;justify-content:center}
 svg.i{width:1.2em;height:1.2em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
-a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 .wrap{max-width:700px;padding:56px 28px;text-align:center}
 .logo{width:76px;height:76px;margin:0 auto 24px;border-radius:22px;overflow:hidden;box-shadow:0 14px 40px rgba(23,105,224,.4)}
 .logo img{width:100%;height:100%;display:block}
-h1{font-size:34px;line-height:1.15;font-weight:600;letter-spacing:-.01em;margin-bottom:10px}
-h1 span{background:linear-gradient(135deg,#8ec0ff,#5aa3ff 45%,#8fe4ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-@media (prefers-color-scheme: light){h1 span{background:linear-gradient(135deg,#1769e0,#4a8dff);-webkit-background-clip:text;background-clip:text}}
+/* The whole headline carries the gradient: localizePage() writes the translated sentence (brand name included) as plain text, so a <span> around the brand would be removed in every language. */
+/* padding-block gives the gradient clip room for ink outside the line box (Arabic dots below the baseline, tanwin above); the negative margin keeps the layout */
+h1{width:fit-content;max-width:100%;font-size:34px;line-height:1.15;font-weight:600;letter-spacing:-.01em;padding-block:.25em;margin:-.25em auto calc(10px - .25em);background:linear-gradient(135deg,#8ec0ff,#5aa3ff 45%,#8fe4ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+@media (prefers-color-scheme: light){h1{background:linear-gradient(135deg,#1769e0,#3f86f2);-webkit-background-clip:text;background-clip:text}}
 .sub{color:var(--dim);font-size:16px;margin-bottom:44px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:40px;text-align:start}
 .feat{background:var(--panel);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border:1px solid var(--line);border-radius:20px;padding:20px;transition:border-color .2s}
@@ -36,7 +37,7 @@ h1 span{background:linear-gradient(135deg,#8ec0ff,#5aa3ff 45%,#8fe4ff);-webkit-b
 .feat-icon{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:var(--accent-soft);color:var(--accent);font-size:20px;margin-bottom:12px}
 .feat-title{font-size:15px;font-weight:600;margin-bottom:4px}
 .feat-desc{font-size:13px;color:var(--dim);line-height:1.55}
-.cta{display:inline-block;padding:14px 38px;background:var(--accent-deep);color:#fff;border:none;border-radius:999px;font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;box-shadow:0 8px 28px rgba(23,105,224,.4);transition:transform .2s,box-shadow .2s}
+.cta{display:inline-block;padding:14px 38px;background:var(--accent-deep);color:#fff;border:none;border-radius:999px;font-family:inherit;font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;box-shadow:0 8px 28px rgba(23,105,224,.4);transition:transform .2s,box-shadow .2s}
 .cta:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(23,105,224,.55)}
 .note{margin-top:20px;font-size:13px;color:var(--faint)}
 .support-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
@@ -45,12 +46,14 @@ h1 span{background:linear-gradient(135deg,#8ec0ff,#5aa3ff 45%,#8fe4ff);-webkit-b
 .disclaimer{margin-top:32px;font-size:11px;color:var(--faint);padding:12px;border:1px solid var(--line);border-radius:12px}
 @media(max-width:600px){.grid{grid-template-columns:1fr}}
 @media (prefers-reduced-motion: reduce){*{transition:none !important}.cta:hover{transform:none}}
+/* Windows contrast themes drop the fill: keep the button recognisable with a border */
+@media (forced-colors: active){.cta{border:2px solid ButtonText}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="logo"><img src="icons/icon128.png" alt="PS Store Enhancer"></div>
-  <h1 data-i18n="welcomeTitle">Welcome to <span>PS Store Enhancer</span>!</h1>
+  <h1 data-i18n="welcomeTitle">Welcome to PS Store Enhancer!</h1>
   <p class="sub" data-i18n="welcomeSubtitle">Your PlayStation™ Store just got better.</p>
 
   <div class="grid">
@@ -76,7 +79,7 @@ h1 span{background:linear-gradient(135deg,#8ec0ff,#5aa3ff 45%,#8fe4ff);-webkit-b
     </div>
   </div>
 
-  <a class="cta" id="openSettings" data-i18n="welcomeCta">Open Settings</a>
+  <button type="button" class="cta" id="openSettings" data-i18n="welcomeCta">Open Settings</button>
   <p class="note" data-i18n="welcomeNote">Tip: Click the extension icon in your toolbar for quick filter toggles.</p>
 
   <div class="support-row">

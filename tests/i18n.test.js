@@ -38,6 +38,19 @@ describe("locale files", () => {
     expect(bad).toEqual([]);
   });
 
+  test.each(LOCALES)("%s points every placeholder at the same argument as English", (l) => {
+    // $PRICE$ -> content "$1": a translator swapping two of these would put the price where the percentage belongs
+    const d = load(l);
+    const bad = [];
+    for (const [k, v] of Object.entries(en)) {
+      for (const [name, def] of Object.entries(v.placeholders || {})) {
+        const mine = d[k].placeholders && d[k].placeholders[name];
+        if (!mine || mine.content !== def.content) bad.push(`${k}.${name}: ${mine && mine.content} (English ${def.content})`);
+      }
+    }
+    expect(bad).toEqual([]);
+  });
+
   test.each(LOCALES)("%s: extName and extDesc fit the Chrome Web Store limits", (l) => {
     const d = load(l);
     expect(d.extName.message).toBe("PS Store Enhancer");
@@ -128,13 +141,48 @@ describe("i18n.js in a manually chosen language", () => {
     expect(t("pricePerHourLine")).toBe("≈ $PRICE$ per hour (cheapest PC price)");
   });
 
-  test("every language fills every message with its own placeholders, in order", async () => {
+  test("psSaleLine in every language: a price that looks like $1 / $2 is not rewritten, and each value lands on its own token", async () => {
     for (const l of LOCALES) {
       const t = await start(l);
       const out = t("psSaleLine", "A$2B", "C$1D");
       expect(out).toContain("A$2B");
       expect(out).toContain("C$1D");
       expect(out).not.toMatch(/\$(ORIGINAL|PCT)\$/);
+      expect(out).toBe(expectedMessage(load(l).psSaleLine, ["A$2B", "C$1D"]));
     }
+  });
+
+  /**
+   * What a message must read as: its text with every $NAME$ (Chrome placeholder) or $1-$9 swapped for the argument it
+   * points at, and nothing else touched. Written with split/join so it shares no code with the replacer under test.
+   */
+  function expectedMessage(def, args) {
+    const byName = new Map(Object.entries(def.placeholders || {}).map(([name, p]) => [name.toUpperCase(), Number(String(p.content).slice(1)) - 1]));
+    return def.message
+      .split(/(\$[A-Za-z_][A-Za-z0-9_]*\$|\$[1-9])/)
+      .map((part) => {
+        const named = /^\$([A-Za-z_][A-Za-z0-9_]*)\$$/.exec(part);
+        const idx = named ? byName.get(named[1].toUpperCase()) : /^\$[1-9]$/.test(part) ? Number(part[1]) - 1 : undefined;
+        return idx !== undefined && idx < args.length ? args[idx] : part;
+      })
+      .join("");
+  }
+
+  test.each(LOCALES)("%s: every message with placeholders gets each value verbatim, at the position of its own token", async (l) => {
+    const t = await start(l);
+    const messages = load(l);
+    const wrong = [];
+    let checked = 0;
+    for (const [key, def] of Object.entries(messages)) {
+      if (!def.placeholders) continue;
+      const wanted = Math.max(...Object.values(def.placeholders).map((p) => Number(String(p.content).slice(1))));
+      // values that reveal their number, and that a second pass or a replacement pattern would corrupt ("$2" inside "$29.99", "$&")
+      const args = Array.from({ length: wanted }, (_, i) => "<" + (i + 1) + ">$" + ((i % 9) + 1) + "$&");
+      const got = t(key, ...args);
+      if (got !== expectedMessage(def, args)) wrong.push(`${key}: ${got}`);
+      checked++;
+    }
+    expect(checked).toBe(Object.values(en).filter((m) => m.placeholders).length); // every message of the English set, none skipped
+    expect(wrong).toEqual([]);
   });
 });

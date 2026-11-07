@@ -1133,7 +1133,7 @@
     "message": "Ağ günlüğü"
   },
   "netLogDesc": {
-    "message": "Eklentinin yaptığı tüm istekler yalnızca bu cihazda tutulur: sunucu, yol, durum ve zaman. Sorgu, üstbilgiler veya herhangi bir veri asla tutulmaz. Eklenti yalnızca şunlarla iletişim kurabilir: $HOSTS$.",
+    "message": "Eklentinin yaptığı tüm istekler yalnızca bu cihazda tutulur: sunucu, yol, durum ve zaman. Sorgu, üstbilgiler veya herhangi bir veri asla tutulmaz. Eklenti yalnızca şunlarla iletişim kurabilir: $HOSTS$. Tarayıcının kendi yüklediği görseller (arama küçük resimleri, PSN avatarınız) listede yer almaz.",
     "placeholders": {
       "hosts": {
         "content": "$1"
@@ -1166,5 +1166,11 @@
   },
   "reportProblemCopied": {
     "message": "Tanılama kopyalandı. Bildirime yapıştırın."
+  },
+  "reportProblemHint": {
+    "message": "Tanılama bilgilerinizi panoya kopyalar, ardından bildirim formunu açar. Bunları forma yapıştırın."
+  },
+  "reportProblemNotCopied": {
+    "message": "Bildirim formu açıldı ancak kopyalama başarısız oldu. Tanılama bölümündeki “Kopyala” düğmesini kullanın ve sonucu forma yapıştırın."
   }
 }

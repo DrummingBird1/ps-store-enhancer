@@ -1133,7 +1133,7 @@
     "message": "Registro de red"
   },
   "netLogDesc": {
-    "message": "Todas las solicitudes que hizo la extensión, guardadas solo en este dispositivo: host, ruta, estado y hora. Nunca la consulta, los encabezados ni ningún dato. La extensión solo puede contactar con: $HOSTS$.",
+    "message": "Todas las solicitudes que hizo la extensión, guardadas solo en este dispositivo: host, ruta, estado y hora. Nunca la consulta, los encabezados ni ningún dato. La extensión solo puede contactar con: $HOSTS$. Las imágenes que el navegador carga por sí mismo (miniaturas de la búsqueda, tu avatar de PSN) no aparecen en la lista.",
     "placeholders": {
       "hosts": {
         "content": "$1"
@@ -1159,12 +1159,18 @@
     "message": "Biblioteca y lista de deseos"
   },
   "chl_3_0_4": {
-    "message": "Un nuevo aspecto para todo: las tarjetas de la tienda, el popup y los ajustes, en oscuro, claro y alto contraste"
+    "message": "Un nuevo aspecto para todo: las tarjetas de la tienda, la ventana emergente y los ajustes, en oscuro, claro y alto contraste"
   },
   "reportProblem": {
     "message": "Informar de un problema"
   },
   "reportProblemCopied": {
     "message": "Diagnóstico copiado. Pégalo en el informe."
+  },
+  "reportProblemHint": {
+    "message": "Copia tu diagnóstico al portapapeles y abre el formulario de informe. Pégalo en el formulario."
+  },
+  "reportProblemNotCopied": {
+    "message": "Se abrió el formulario de informe, pero no se pudo copiar. Usa «Copiar» en Diagnóstico y pégalo en el formulario."
   }
 }

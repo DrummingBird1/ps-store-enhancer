@@ -230,7 +230,7 @@
     "message": "أقل سعر على PC على الإطلاق:"
   },
   "viewFullHistory": {
-    "message": "عرض السجل الكامل على PSPrices →"
+    "message": "عرض السجل الكامل على PSPrices ←"
   },
   "crossPlatformTitle": {
     "message": "مقارنة أسعار عبر المنصات"
@@ -266,7 +266,7 @@
     "message": "التقدم (PSN)"
   },
   "trophyGuide": {
-    "message": "دليل الكؤوس على PSNProfiles →"
+    "message": "دليل الكؤوس على PSNProfiles ←"
   },
   "markOwned": {
     "message": "تعليم كمملوكة"
@@ -305,10 +305,10 @@
     "message": "هذه الإضافة غير مرتبطة بـ Sony Interactive Entertainment أو PlayStation."
   },
   "welcomeTitle": {
-    "message": "!مرحباً بك في PS Store Enhancer"
+    "message": "مرحباً بك في PS Store Enhancer!"
   },
   "welcomeSubtitle": {
-    "message": ".متجر PlayStation™ الخاص بك أصبح أفضل"
+    "message": "متجر PlayStation™ الخاص بك أصبح أفضل."
   },
   "welcomeFeature1Title": {
     "message": "أسعار حقيقية ومقارنة"
@@ -489,7 +489,7 @@
     "message": "فشل الاستيراد — الملف ليس تصدير PS Store Enhancer صالح"
   },
   "viewChangelog": {
-    "message": "عرض سجل التغييرات →"
+    "message": "عرض سجل التغييرات ←"
   },
   "infoTitle": {
     "message": "حول والموارد"
@@ -1133,7 +1133,7 @@
     "message": "سجل الشبكة"
   },
   "netLogDesc": {
-    "message": "كل طلب أجرته الإضافة، يُحفظ على هذا الجهاز فقط: المضيف والمسار والحالة والوقت. لا يُحفظ أبدًا الاستعلام أو الترويسات أو أي بيانات. يمكن للإضافة الاتصال بما يلي فقط: $HOSTS$.",
+    "message": "كل طلب أجرته الإضافة، يُحفظ على هذا الجهاز فقط: المضيف والمسار والحالة والوقت. لا يُحفظ أبدًا الاستعلام أو الترويسات أو أي بيانات. يمكن للإضافة الاتصال بما يلي فقط: $HOSTS$. الصور التي يحمّلها المتصفح بنفسه (الصور المصغّرة في البحث وصورة حسابك على PSN) غير مدرجة.",
     "placeholders": {
       "hosts": {
         "content": "$1"
@@ -1166,5 +1166,11 @@
   },
   "reportProblemCopied": {
     "message": "تم نسخ التشخيص. الصقه في البلاغ."
+  },
+  "reportProblemHint": {
+    "message": "ينسخ التشخيص إلى الحافظة ثم يفتح نموذج البلاغ. الصقه في النموذج."
+  },
+  "reportProblemNotCopied": {
+    "message": "فُتح نموذج البلاغ، لكن تعذّر النسخ. استخدم «نسخ» ضمن «التشخيص» ثم الصقه في النموذج."
   }
 }

@@ -45,13 +45,14 @@
   };
   const ic = (name) => `<svg class="pse-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="${ICON_PATHS[name]}"/></svg>`;
 
-  /* A small monogram badge per store (no logos, no emoji). */
+  /* A small monogram badge per store (no logos, no emoji). White letters: every colour here, and the
+     fallback lightness for stores not listed, keeps at least 4.5:1 against white (tests/cards-contrast.test.js). */
   const STORE_COLORS = {
     "Steam": "#3b5a9a", "Epic Games Store": "#4a4f5c", "GOG": "#7b4fb0", "Humble Store": "#b3502f",
-    "Origin / EA App": "#c4402f", "Ubisoft Store": "#2f7bc4", "GreenManGaming": "#2f8f4f", "Fanatical": "#c93a3a"
+    "Origin / EA App": "#c4402f", "Ubisoft Store": "#2d76bc", "GreenManGaming": "#2b8348", "Fanatical": "#c93a3a"
   };
   function storeBadge(name) {
-    const color = STORE_COLORS[name] || `hsl(${[...name].reduce((h, c) => (h * 31 + c.charCodeAt(0)) % 360, 7)} 38% 42%)`;
+    const color = STORE_COLORS[name] || `hsl(${[...name].reduce((h, c) => (h * 31 + c.charCodeAt(0)) % 360, 7)} 38% 34%)`;
     const words = name.split(/[\s/]+/).filter(Boolean);
     const caps = (words[0] || "").match(/[A-Z]/g) || [];
     const letters = (words.length > 1 ? words.map((w) => w[0]).join("") : caps.length > 1 ? caps.join("") : (words[0] || "?").slice(0, 2)).slice(0, 2).toUpperCase();
@@ -75,6 +76,7 @@
   let lastProcessedUrl = "";
   let psRecorded = Promise.resolve(); // resolves once this page's PS price has been written
   let pageToken = 0; // bumps on every page (re)process so late async results can be dropped
+  let quietToken = -1; // the pageToken of a re-injection pass, which must not announce again
   let urlDebounceTimer = null;
   let gridObserver = null;
   let gridFilterTimer = null;
@@ -210,6 +212,11 @@
     if (settings.theme === "contrast") return "contrast";
     return window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
   }
+  /** Every injected element carries its theme (set where it is created); this re-stamps the ones already on the page. */
+  function restampTheme() {
+    const theme = resolvedTheme();
+    document.querySelectorAll(".pse-injected[data-pse-theme]").forEach((el) => { el.dataset.pseTheme = theme; });
+  }
 
   /* ──── Currency formatting / conversion cache ──── */
   let exchangeRates = { USD: 1 }; // base USD → others
@@ -219,8 +226,10 @@
     const r = await ask("GET_RATES", { target: cur });
     if (r?.ok && r.rates) exchangeRates = { ...exchangeRates, ...r.rates };
   }
-  // Numbers and dates follow the extension's own language, not the browser's (an English UI in a
-  // Hebrew browser must not get Hebrew month names or RTL marks around prices).
+  // Numbers and dates follow the language of the messages actually shown (PSEi18n.getActiveLang: the chosen
+  // language, or the shipped one closest to the browser's, else English), not the browser's raw language: an
+  // English UI in a Hebrew browser must not get Hebrew month names or RTL marks around prices, and a Swedish
+  // browser (English messages) must not get a Swedish countdown inside an English sentence.
   function uiLocale() {
     try {
       return PSEi18n.getActiveLang().replace("_", "-");
@@ -242,6 +251,7 @@
 
   /* ──── Screen-reader announcements ──── */
   function announce(text) {
+    if (quietToken === pageToken) return; // a re-injection pass: the first pass already said it
     let live = document.getElementById("pse-live");
     if (!live) {
       live = document.createElement("div");
@@ -255,7 +265,7 @@
     setTimeout(() => (live.textContent = text), 50);
   }
 
-  /* ──── SPA watcher: no body-wide MutationObserver, just URL checks ──── */
+  /* ──── SPA watcher: URL checks (plus the injected-blocks watcher below, which only ever looks at `isConnected`) ──── */
   function observePageChanges() {
     let currentUrl = location.href;
     const check = () => {
@@ -275,37 +285,77 @@
     chrome.storage.onChanged.addListener((changes, area) => {
       if (area === "sync" || area === "local") {
         loadSettings().then(() => {
+          // The popup / Settings theme switch applies to the cards already on this tab, not only to new ones
+          if (area === "sync" && changes.theme) restampTheme();
           if (isSearchOrBrowsePage(location.href)) isolate("searchFilters", applySearchFilters);
         });
       }
     });
+    // "Auto" follows the operating system: a light/dark switch while the page is open re-themes it too
+    try {
+      const scheme = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)");
+      if (scheme && scheme.addEventListener) scheme.addEventListener("change", restampTheme);
+    } catch { /* no matchMedia */ }
   }
 
   /* The store re-renders its own tree some seconds after load (for example when the signed-in state
-     arrives) and that removes everything injected into it. When none of our cards or buttons is left,
-     put them back (data comes from the worker's cache), a few times per page at most. */
-  const OUR_BLOCKS = ".pse-injected.pse-card, .pse-injected.pse-wishlist-btn-wrap, .pse-injected.pse-owned-btn-wrap";
-  let reinjectsLeft = 3;
+     arrives) and that removes what was injected into it: the children of one container, the container
+     itself, or an ancestor. When any of our blocks is no longer in the document, the blocks that live in the
+     store's tree are taken out (what is left of them) and built again (data comes from the worker's cache),
+     a few times per page at most. The body-level notices (tour, What's-new banner, review nudge) are not
+     the store's to remove and that pass never touches them, nor repeats their first-view side effects. */
+  const OUR_BLOCKS = ".pse-injected.pse-card, .pse-injected.pse-wishlist-btn-wrap, .pse-injected.pse-owned-btn-wrap, .pse-injected.pse-mc-link";
+  // Everything a product-page pass puts into the store's own tree, and so everything the store can remove.
+  const PAGE_BOUND = `${OUR_BLOCKS}, .pse-injected.pse-skeleton, .pse-injected.pse-inline-notice`;
+  const PAGE_FEATURES = ["reviewScores", ...DEFAULT_ORDER, "ownedButton", "wishlistButton"];
+  const REINJECT_CHECK_MS = 200; // the page may mutate constantly: look at our blocks at most this often
+  const REINJECT_DELAY_MS = 400; // let the store finish its re-render before building again
+  const REINJECT_BUDGET = 3;
+  let reinjectsLeft = REINJECT_BUDGET;
   let reinjectUrl = "";
+  let injectedWatcher = null;
+
+  function stopWatchingInjected() {
+    if (injectedWatcher) { injectedWatcher.stop(); injectedWatcher = null; }
+  }
+
   function watchInjected(token) {
-    const first = document.querySelector(OUR_BLOCKS);
+    stopWatchingInjected();
+    const blocks = [...document.querySelectorAll(OUR_BLOCKS)];
     const gone = () => {
-      if (token !== pageToken) return;
+      // The address already changed (the store's own navigation took our blocks along): the new page's pass owns it
+      if (token !== pageToken || lastProcessedUrl !== location.href) return;
       if (reinjectsLeft-- <= 0) return;
       diagLog("store-removed-injected", { left: reinjectsLeft });
-      lastProcessedUrl = "";
-      setTimeout(processCurrentPage, 400);
+      setTimeout(() => reinjectPage(token), REINJECT_DELAY_MS);
     };
-    if (!first) { gone(); return; }
-    const host = first.parentElement;
-    if (!host) return;
+    if (!blocks.length) { gone(); return; }
+    // Page-wide, but the callback only arms a timer; the check itself is `isConnected` on a handful of nodes.
+    let timer = null;
     const mo = new MutationObserver(() => {
-      if (token !== pageToken) { mo.disconnect(); return; }
-      if (document.querySelector(OUR_BLOCKS)) return;
-      mo.disconnect();
-      gone();
+      if (timer) return;
+      timer = setTimeout(() => {
+        timer = null;
+        if (token !== pageToken) { stopWatchingInjected(); return; }
+        if (blocks.every((el) => el.isConnected)) return;
+        stopWatchingInjected();
+        gone();
+      }, REINJECT_CHECK_MS);
     });
-    mo.observe(host, { childList: true });
+    mo.observe(document.documentElement, { childList: true, subtree: true });
+    injectedWatcher = { stop: () => { mo.disconnect(); clearTimeout(timer); } };
+  }
+
+  /** Build the store-tree blocks again after the store removed some or all of them. */
+  function reinjectPage(token) {
+    // Another page (or a language change) took over while we waited: its own pass owns the page now
+    if (token !== pageToken || lastProcessedUrl !== location.href || !isProductPage(location.href)) return;
+    pageToken++;
+    quietToken = pageToken;
+    stopWatchingInjected();
+    for (const f of PAGE_FEATURES) featureHealth.delete(f); // these run again; the others keep their report
+    document.querySelectorAll(PAGE_BOUND).forEach((el) => el.remove());
+    runProductPass(pageToken, true);
   }
 
   /* ──── page processor ──── */
@@ -313,44 +363,52 @@
     const url = location.href;
     if (url === lastProcessedUrl) return;
     lastProcessedUrl = url;
-    if (url !== reinjectUrl) { reinjectUrl = url; reinjectsLeft = 3; }
+    if (url !== reinjectUrl) { reinjectUrl = url; reinjectsLeft = REINJECT_BUDGET; }
     pageToken++;
+    stopWatchingInjected();
     sentGridPrices.clear();
     featureHealth.clear(); // "Check this page" reports this page's features, not an earlier page's
     removeInjectedElements();
     if (gridObserver) { gridObserver.disconnect(); gridObserver = null; }
 
-    if (isProductPage(url)) {
-      const token = pageToken;
-      waitForElement(SEL.titleFallbacks, 10000).then(async () => {
-        if (token !== pageToken) return;
-        const gameName = getGameTitle();
-        if (!gameName) return;
-        psRecorded = isolate("recordPsPrice", () => recordPsPrice(gameName));
-        const jobs = [];
-        if (settings.enableMetacritic) jobs.push(isolate("reviewScores", () => injectReviewScores(gameName)));
-        // Skeletons are placed synchronously in the user's chosen order, then filled in parallel.
-        for (const key of settings.cardOrder) {
-          if (settings.cardsHidden.includes(key)) continue;
-          const def = CARD_DEFS[key];
-          if (def && def.enabled()) jobs.push(isolate(key, () => def.run(gameName)));
-        }
-        jobs.push(isolate("ownedButton", () => injectOwnedButton(gameName)));
-        if (settings.enableWishlist) jobs.push(isolate("wishlistButton", () => injectWishlistButton(gameName)));
-        await Promise.all(jobs);
-        if (token !== pageToken) return;
-        watchInjected(token);
-        isolate("tour", maybeShowTour);
-        isolate("rateNudge", maybeRateNudge);
-      }).catch(() => {
-        try { diagLog("title-not-found", { page: "product", region: PSEStore.regionFromPath(location.pathname) }); } catch { /* page already gone */ }
-      });
-    }
+    if (isProductPage(url)) runProductPass(pageToken, false);
 
     if (isSearchOrBrowsePage(url)) {
       setTimeout(() => isolate("searchFilters", applySearchFilters), 1200);
       observeGrid();
     }
+  }
+
+  /** One product-page pass. `again` is a re-injection: the price was recorded and the tour / review nudge ran on the first pass. */
+  function runProductPass(token, again) {
+    waitForElement(SEL.titleFallbacks, 10000).then(async () => {
+      if (token !== pageToken) return;
+      const gameName = getGameTitle();
+      if (!gameName) return;
+      if (!again) psRecorded = isolate("recordPsPrice", () => recordPsPrice(gameName));
+      const jobs = [];
+      if (settings.enableMetacritic) jobs.push(isolate("reviewScores", () => injectReviewScores(gameName)));
+      // Skeletons are placed synchronously in the user's chosen order, then filled in parallel.
+      for (const key of settings.cardOrder) {
+        if (settings.cardsHidden.includes(key)) continue;
+        const def = CARD_DEFS[key];
+        if (def && def.enabled()) jobs.push(isolate(key, () => def.run(gameName)));
+      }
+      jobs.push(isolate("ownedButton", () => injectOwnedButton(gameName)));
+      if (settings.enableWishlist) jobs.push(isolate("wishlistButton", () => injectWishlistButton(gameName)));
+      await Promise.all(jobs);
+      if (token !== pageToken) return;
+      watchInjected(token);
+      if (again) {
+        // A tour that is open points at the cards the store just removed: highlight the new ones
+        try { PSEExtras.refreshTour(); } catch { /* no tour */ }
+        return;
+      }
+      isolate("tour", maybeShowTour);
+      isolate("rateNudge", maybeRateNudge);
+    }).catch(() => {
+      try { diagLog("title-not-found", { page: "product", region: PSEStore.regionFromPath(location.pathname) }); } catch { /* page already gone */ }
+    });
   }
 
   /* ──── DOM helpers ──── */
@@ -840,7 +898,8 @@
     const difficulty = local?.difficulty ?? null;
     const hours = local?.hours ?? null;
     const playthroughs = local?.playthroughs ?? null;
-    const diffColor = difficulty == null ? "#4a5568"
+    // Dark ink (.pse-diff-badge in styles.css) on all four: 9.0, 11.6 and 5.5:1 on the three colours, 8.5:1 on the grey
+    const diffColor = difficulty == null ? "#a3aec6"
       : difficulty <= 3 ? BADGE_COLORS.green
       : difficulty <= 6 ? BADGE_COLORS.yellow
       : BADGE_COLORS.red;
@@ -1250,9 +1309,14 @@
       titleEl.textContent = g.title;
       info.appendChild(titleEl);
       if (g.cheapest != null) {
+        // The sentence follows the dropdown's direction; only the formatted price is an isolated left-to-right run
+        // (forcing the whole line left-to-right scrambled the Hebrew and Arabic words around the number).
         const priceEl = document.createElement("span");
         priceEl.className = "pse-ac-price";
-        priceEl.textContent = `${t("autocompletePcFrom")} ${formatPrice(g.cheapest)}`;
+        const amount = document.createElement("bdi");
+        amount.dir = "ltr";
+        amount.textContent = formatPrice(g.cheapest);
+        priceEl.append(`${t("autocompletePcFrom")} `, amount);
         info.appendChild(priceEl);
       }
       row.appendChild(info);

@@ -1133,7 +1133,7 @@
     "message": "Dziennik sieci"
   },
   "netLogDesc": {
-    "message": "Każde żądanie wysłane przez rozszerzenie, zapisane tylko na tym urządzeniu: host, ścieżka, status i czas. Nigdy zapytanie, nagłówki ani żadne dane. Rozszerzenie może łączyć się tylko z: $HOSTS$.",
+    "message": "Każde żądanie wysłane przez rozszerzenie, zapisane tylko na tym urządzeniu: host, ścieżka, status i czas. Nigdy zapytanie, nagłówki ani żadne dane. Rozszerzenie może łączyć się tylko z: $HOSTS$. Obrazy, które przeglądarka wczytuje sama (miniatury w wyszukiwarce, awatar PSN), nie są na liście.",
     "placeholders": {
       "hosts": {
         "content": "$1"
@@ -1166,5 +1166,11 @@
   },
   "reportProblemCopied": {
     "message": "Diagnostyka skopiowana. Wklej ją do zgłoszenia."
+  },
+  "reportProblemHint": {
+    "message": "Kopiuje diagnostykę do schowka, a potem otwiera formularz zgłoszenia. Wklej ją do formularza."
+  },
+  "reportProblemNotCopied": {
+    "message": "Formularz zgłoszenia został otwarty, ale kopiowanie się nie udało. Użyj „Kopiuj” w sekcji Diagnostyka i wklej dane do formularza."
   }
 }

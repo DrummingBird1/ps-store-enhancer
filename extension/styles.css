@@ -21,6 +21,7 @@
   --pse-warning: #f3c65a;
   --pse-warning-soft: rgba(243,198,90,0.14);
   --pse-danger: #ff6b6b;
+  --pse-danger-soft: rgba(255,64,64,0.10);   /* the hover tint of an active owned / wishlist button ("click to remove") */
   --pse-radius: 20px;
   --pse-radius-sm: 12px;
   --pse-shadow: 0 10px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.06);
@@ -48,6 +49,7 @@
   --pse-warning: #7a5000;
   --pse-warning-soft: rgba(122,80,0,0.12);
   --pse-danger: #b3201f;
+  --pse-danger-soft: rgba(179,32,31,0.10);
   --pse-solid: #ffffff;
   --pse-shadow: 0 10px 34px rgba(30,50,110,0.14), inset 0 1px 0 rgba(255,255,255,0.7);
   --pse-shadow-sm: 0 2px 8px rgba(30,50,110,0.10);
@@ -75,6 +77,7 @@
   --pse-warning: #ffd400;
   --pse-warning-soft: #000;
   --pse-danger: #ff6b6b;
+  --pse-danger-soft: rgba(0,0,0,0);
   --pse-shadow: none;
   --pse-shadow-sm: none;
   --pse-blur: none;
@@ -137,12 +140,17 @@
   background: var(--pse-accent-soft); color: var(--pse-accent-light);
 }
 .pse-card-title { flex: 1; }
+/* The chevron is its bottom-right corner (physical borders, so it is the same shape in both directions), turned:
+   45deg = down (expanded); collapsed points to where the content flows from: -45deg = right in LTR, 135deg = left in RTL.
+   Logical borders (border-inline-end) moved the corner to the bottom-left in RTL and inverted both states. */
+.pse-card { --pse-chev-closed: -45deg; }
+.pse-card[dir="rtl"] { --pse-chev-closed: 135deg; }
 .pse-card-chevron {
   width: 8px; height: 8px; flex-shrink: 0;
-  border-inline-end: 2px solid var(--pse-text-muted); border-bottom: 2px solid var(--pse-text-muted);
+  border-right: 2px solid var(--pse-text-muted); border-bottom: 2px solid var(--pse-text-muted);
   transform: rotate(45deg); transition: transform 0.2s;
 }
-.pse-card .pse-card-head[aria-expanded="false"] .pse-card-chevron { transform: rotate(-45deg); }
+.pse-card .pse-card-head[aria-expanded="false"] .pse-card-chevron { transform: rotate(var(--pse-chev-closed)); }
 .pse-card .pse-card-head[aria-expanded="false"] { margin-bottom: 4px; }
 .pse-card-summary { font-size: 12px; color: var(--pse-text-secondary); }
 .pse-card-note { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--pse-text-muted); margin: 8px 0 0; }
@@ -224,7 +232,7 @@
 .pse-xp-savings { font-size:11px; font-weight:700; color:var(--pse-success); background:var(--pse-success-soft); padding:2px 7px; border-radius:6px; }
 .pse-xp-original { font-size:11px; color:var(--pse-text-secondary); text-decoration:line-through; }
 .pse-xp-current { font-size:15px; font-weight:600; color:var(--pse-text-primary); font-variant-numeric:tabular-nums; }
-.pse-xp-note { font-size:11px; color:var(--pse-text-muted); text-align:center; margin:0; direction:ltr; }
+.pse-xp-note { font-size:11px; color:var(--pse-text-muted); text-align:center; margin:0; }
 .pse-sale-note { text-align:center; }
 .pse-injected .pse-share-btn { display:flex; align-items:center; justify-content:center; gap:8px; width:100%; margin-top:12px; padding:10px 14px; font:inherit; font-size:13px; font-weight:600; color:var(--pse-text-secondary); background:var(--pse-panel); border:1px solid var(--pse-border); border-radius:999px; cursor:pointer; transition:color 0.2s, border-color 0.2s; }
 .pse-injected .pse-share-btn:hover { color:var(--pse-accent-light); border-color:var(--pse-border-accent); }
@@ -235,11 +243,14 @@
 .pse-trophy-stat { background:var(--pse-panel); border-radius:var(--pse-radius-sm); padding:10px 12px; border:1px solid var(--pse-border); }
 .pse-trophy-stat-label { display:flex; align-items:center; gap:6px; font-size:10px; text-transform:uppercase; letter-spacing:0.8px; color:var(--pse-text-muted); margin-bottom:4px; }
 .pse-trophy-stat-value { display:flex; align-items:center; gap:6px; font-size:15px; font-weight:600; color:var(--pse-text-primary); }
-.pse-diff-badge { display:inline-block; color:#fff; font-size:13px; font-weight:700; padding:2px 10px; border-radius:999px; min-width:32px; text-align:center; }
-.pse-tier-quick { background:#2e8b3d; }
-.pse-tier-moderate { background:#9a7d0a; }
-.pse-tier-demanding { background:#c4620a; }
-.pse-tier-grind { background:#b32424; }
+/* Badge text, all at 4.5:1 or better (guarded by tests/cards-contrast.test.js).
+   Difficulty: dark ink on the light colours content.js sets inline (BADGE_COLORS green/yellow/red and the grey for "no data").
+   Tier: white on colours dark enough for it. */
+.pse-diff-badge { display:inline-block; color:#0b1020; font-size:13px; font-weight:700; padding:2px 10px; border-radius:999px; min-width:32px; text-align:center; }
+.pse-tier-quick { background:#2b833a; color:#fff; }
+.pse-tier-moderate { background:#8b7009; color:#fff; }
+.pse-tier-demanding { background:#b55b09; color:#fff; }
+.pse-tier-grind { background:#b32424; color:#fff; }
 .pse-yes { color:var(--pse-success); }
 .pse-no { color:var(--pse-text-muted); }
 .pse-trophy-notes { margin:0 0 12px; padding:0; list-style:none; font-size:12px; color:var(--pse-text-secondary); display:flex; flex-direction:column; gap:6px; }
@@ -248,10 +259,11 @@
 .pse-trophy-link { display:block; color:var(--pse-accent-light); text-decoration:none; font-size:13px; font-weight:600; padding:10px 14px; background:var(--pse-accent-soft); border:1px solid var(--pse-border-accent); border-radius:999px; text-align:center; transition:background 0.2s; }
 .pse-trophy-link:hover { background:var(--pse-panel-hi); }
 
-/* PSN trophy progress bar */
+/* PSN trophy progress bar: the label is a solid chip (card surface colour, primary text) so it reads the same over the fill, the track
+   and the gradient in every theme; text straight on the gradient was 2.3 to 3.2:1 */
 .pse-trophy-progress-bar { position:relative; height:20px; background:var(--pse-panel-hi); border-radius:10px; overflow:hidden; margin-top:4px; }
 .pse-trophy-progress-fill { height:100%; background:linear-gradient(90deg,#1769e0,#5aa3ff); border-radius:10px; transition:width 0.5s ease; }
-.pse-trophy-progress-text { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:600; color:var(--pse-text-primary); text-shadow:0 1px 2px rgba(0,0,0,0.35); }
+.pse-trophy-progress-text { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); padding:0 8px; border-radius:999px; white-space:nowrap; direction:ltr; font-size:10px; font-weight:600; line-height:14px; color:var(--pse-text-primary); background:var(--pse-bg-card); border:1px solid var(--pse-border); }
 
 /* ─── "Mark as owned" button ───
    Buttons are written as ".pse-injected .pse-x": the store resets padding, border, colour and font on every <button>
@@ -265,7 +277,8 @@
 }
 .pse-injected .pse-owned-btn:hover { border-color:var(--pse-border-accent); background:linear-gradient(var(--pse-accent-soft), var(--pse-accent-soft)), var(--pse-solid); color:var(--pse-accent-light); }
 .pse-injected .pse-owned-btn.pse-owned-active { background:linear-gradient(var(--pse-success-soft), var(--pse-success-soft)), var(--pse-solid); border-color:color-mix(in srgb, var(--pse-success) 40%, transparent); color:var(--pse-success); }
-.pse-injected .pse-owned-btn.pse-owned-active:hover { background:rgba(255,64,64,0.1); border-color:rgba(255,64,64,0.3); color:var(--pse-danger); }
+/* Hover keeps the same underlay as every other state: the shorthand alone would drop var(--pse-solid) and leave a see-through pill (unreadable in the light theme, over the store's dark page) */
+.pse-injected .pse-owned-btn.pse-owned-active:hover { background:linear-gradient(var(--pse-danger-soft), var(--pse-danger-soft)), var(--pse-solid); border-color:rgba(255,64,64,0.3); color:var(--pse-danger); }
 .pse-injected .pse-owned-btn:disabled { opacity:0.5; cursor:wait; }
 
 /* ─── Wishlist button ─── */
@@ -278,7 +291,7 @@
 }
 .pse-injected .pse-wishlist-btn:hover { background:linear-gradient(var(--pse-panel-hi), var(--pse-panel-hi)), var(--pse-solid); border-color:var(--pse-warning); }
 .pse-injected .pse-wishlist-btn.pse-wishlist-active { background:linear-gradient(var(--pse-success-soft), var(--pse-success-soft)), var(--pse-solid); border-color:color-mix(in srgb, var(--pse-success) 40%, transparent); color:var(--pse-success); }
-.pse-injected .pse-wishlist-btn.pse-wishlist-active:hover { background:rgba(255,64,64,0.08); border-color:rgba(255,64,64,0.3); color:var(--pse-danger); }
+.pse-injected .pse-wishlist-btn.pse-wishlist-active:hover { background:linear-gradient(var(--pse-danger-soft), var(--pse-danger-soft)), var(--pse-solid); border-color:rgba(255,64,64,0.3); color:var(--pse-danger); }
 .pse-injected .pse-wishlist-btn:disabled { opacity:0.5; cursor:wait; }
 
 /* ─── Inline notice (API down etc.) ─── */
@@ -324,7 +337,7 @@
 .pse-ac-thumb { width:40px; height:40px; object-fit:cover; border-radius:8px; flex-shrink:0; background:var(--pse-panel); }
 .pse-ac-info { display:flex; flex-direction:column; gap:2px; min-width:0; flex:1; }
 .pse-ac-title { font-size:12px; font-weight:600; color:var(--pse-text-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.pse-ac-price { font-size:11px; color:var(--pse-success); direction:ltr; }
+.pse-ac-price { font-size:11px; color:var(--pse-success); }
 .pse-ac-flag { font-size:14px; font-weight:700; color:var(--pse-warning); flex-shrink:0; }
 
 /* ─── "What's new" banner and review nudge ─── */

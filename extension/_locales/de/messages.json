@@ -1133,7 +1133,7 @@
     "message": "Netzwerkprotokoll"
   },
   "netLogDesc": {
-    "message": "Jede Anfrage der Erweiterung, nur auf diesem Gerät gespeichert: Host, Pfad, Status und Zeit. Niemals die Abfrage, Header oder sonstige Daten. Die Erweiterung darf nur diese Hosts kontaktieren: $HOSTS$.",
+    "message": "Jede Anfrage der Erweiterung, nur auf diesem Gerät gespeichert: Host, Pfad, Status und Zeit. Niemals die Abfrage, Header oder sonstige Daten. Die Erweiterung darf nur diese Hosts kontaktieren: $HOSTS$. Bilder, die Ihr Browser selbst lädt (Vorschaubilder der Suche, Ihr PSN-Avatar), werden nicht aufgeführt.",
     "placeholders": {
       "hosts": {
         "content": "$1"
@@ -1166,5 +1166,11 @@
   },
   "reportProblemCopied": {
     "message": "Diagnose kopiert. Füge sie in die Meldung ein."
+  },
+  "reportProblemHint": {
+    "message": "Kopiert deine Diagnose in die Zwischenablage und öffnet das Meldeformular. Füge sie dort ein."
+  },
+  "reportProblemNotCopied": {
+    "message": "Das Meldeformular wurde geöffnet, aber das Kopieren hat nicht geklappt. Klicke unter „Diagnose“ auf „Kopieren“ und füge den Text in das Formular ein."
   }
 }

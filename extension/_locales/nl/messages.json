@@ -1133,7 +1133,7 @@
     "message": "Netwerklog"
   },
   "netLogDesc": {
-    "message": "Elk verzoek van de extensie, alleen op dit apparaat bewaard: host, pad, status en tijd. Nooit de query, headers of andere gegevens. De extensie mag alleen contact opnemen met: $HOSTS$.",
+    "message": "Elk verzoek van de extensie, alleen op dit apparaat bewaard: host, pad, status en tijd. Nooit de query, headers of andere gegevens. De extensie mag alleen contact opnemen met: $HOSTS$. Afbeeldingen die je browser zelf laadt (zoekminiaturen, je PSN-avatar) staan niet in de lijst.",
     "placeholders": {
       "hosts": {
         "content": "$1"
@@ -1166,5 +1166,11 @@
   },
   "reportProblemCopied": {
     "message": "Diagnose gekopieerd. Plak die in de melding."
+  },
+  "reportProblemHint": {
+    "message": "Kopieert je diagnostiek naar het klembord en opent daarna het meldingsformulier. Plak die in het formulier."
+  },
+  "reportProblemNotCopied": {
+    "message": "Het meldingsformulier is geopend, maar kopiëren is mislukt. Gebruik „Kopiëren” onder Diagnostiek en plak de tekst in het formulier."
   }
 }

@@ -1133,7 +1133,7 @@
     "message": "Journal réseau"
   },
   "netLogDesc": {
-    "message": "Toutes les requêtes de l'extension, conservées uniquement sur cet appareil : hôte, chemin, statut et heure. Jamais les paramètres de requête, les en-têtes ni aucune donnée. L'extension ne peut contacter que : $HOSTS$.",
+    "message": "Toutes les requêtes de l'extension, conservées uniquement sur cet appareil : hôte, chemin, statut et heure. Jamais les paramètres de requête, les en-têtes ni aucune donnée. L'extension ne peut contacter que : $HOSTS$. Les images que votre navigateur charge lui-même (miniatures de la recherche, votre avatar PSN) ne figurent pas dans la liste.",
     "placeholders": {
       "hosts": {
         "content": "$1"
@@ -1159,12 +1159,18 @@
     "message": "Bibliothèque et liste de souhaits"
   },
   "chl_3_0_4": {
-    "message": "Un nouveau look partout : les cartes des pages du store, la fenêtre de l'extension et les réglages, en sombre, clair et contraste élevé"
+    "message": "Un nouveau look partout : les cartes des pages du store, la fenêtre contextuelle et les réglages, en sombre, clair et contraste élevé"
   },
   "reportProblem": {
     "message": "Signaler un problème"
   },
   "reportProblemCopied": {
     "message": "Diagnostic copié. Collez-le dans le signalement."
+  },
+  "reportProblemHint": {
+    "message": "Le diagnostic est copié dans le presse-papiers, puis le formulaire de signalement s'ouvre. Collez-le dans le formulaire."
+  },
+  "reportProblemNotCopied": {
+    "message": "Le formulaire de signalement s'est ouvert, mais la copie a échoué. Utilisez « Copier » sous Diagnostic et collez le résultat dans le formulaire."
   }
 }

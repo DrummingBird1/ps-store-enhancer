@@ -433,7 +433,7 @@
     "message": "支持开发"
   },
   "supportDevDesc": {
-    "message": "喜欢 PS Store Enhancer 吗?欢迎在 Ko-fi 上支持开发。"
+    "message": "喜欢 PS Store Enhancer 吗？欢迎在 Ko-fi 上支持开发。"
   },
   "currencyTitle": {
     "message": "显示货币"
@@ -1133,7 +1133,7 @@
     "message": "网络日志"
   },
   "netLogDesc": {
-    "message": "扩展发出的每个请求，仅保存在此设备上：主机、路径、状态和时间。绝不保存查询参数、请求头或任何数据。扩展只会连接：$HOSTS$。",
+    "message": "扩展发出的每个请求，仅保存在此设备上：主机、路径、状态和时间。绝不保存查询参数、请求头或任何数据。扩展只会连接：$HOSTS$。浏览器自行加载的图片（搜索缩略图、你的 PSN 头像）不会列出。",
     "placeholders": {
       "hosts": {
         "content": "$1"
@@ -1156,15 +1156,21 @@
     "message": "外观和语言"
   },
   "navLibrary": {
-    "message": "游戏库和心愿单"
+    "message": "游戏库和愿望单"
   },
   "chl_3_0_4": {
-    "message": "全新外观:商店页面卡片、弹出窗口和设置页面,支持深色、浅色和高对比度"
+    "message": "全新外观：商店页面卡片、弹出窗口和设置页面，支持深色、浅色和高对比度"
   },
   "reportProblem": {
     "message": "报告问题"
   },
   "reportProblemCopied": {
-    "message": "诊断信息已复制,请粘贴到报告中。"
+    "message": "诊断信息已复制，请粘贴到报告中。"
+  },
+  "reportProblemHint": {
+    "message": "将诊断信息复制到剪贴板，然后打开报告表单。请将其粘贴到表单中。"
+  },
+  "reportProblemNotCopied": {
+    "message": "报告表单已打开，但复制失败。请使用“诊断”中的“复制”，并粘贴到表单中。"
   }
 }
