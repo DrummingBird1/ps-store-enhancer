@@ -40,12 +40,26 @@ v2.7.1 that the old test pages could not show, and they are fixed here.
   does not show a warning for and which the extension uses for nothing else.
 
 **New**
+- **Auto / Dark / Light in the popup.** Three small buttons in the popup header switch the colour theme (the
+  same setting as Settings → Theme; high contrast stays in Settings).
+- **Report a problem** (popup and Settings → Diagnostics): copies the version, the browser and the diagnostics
+  log (already free of tokens) and opens the GitHub bug-report form. Nothing is put in the address.
+- **How long the sale has left** next to its end date: "Offer ends Nov 21 (in 14 days)", in your language.
+- **The Rubik font is bundled** (SIL Open Font License, about 110 KB, Latin, Hebrew, Cyrillic and Arabic), so
+  the look no longer depends on the fonts installed on your computer. Nothing is fetched from the network.
+- **Contrast checked** on every page in dark, light and high contrast (text at least 4.5:1); the light theme's
+  accent, grey, green, amber and red text were darkened where they fell short.
 - **A new look, "Midnight Glass".** The cards on store pages, the toolbar popup, the settings page, the
   welcome page and this changelog share one design: glass surfaces, a bigger headline number for the
   lowest price, one icon set instead of emoji, and the same colours in dark, light and high contrast
   (including right-to-left languages). The settings page gets a side navigation. Nothing was removed.
 - **Cards stay on the page.** The store re-renders its page a few seconds after it loads (for example
   once it knows you are signed in) and that removed the cards. They are now put back.
+- **The wishlist, owned and share buttons were squashed.** The store resets padding, border and colour on
+  every button with a rule the extension's own styles lost against, so they showed as thin pills with white
+  text. They are styled with a stronger selector now.
+- **Prices looked wrong in a manually chosen language.** "$29.99" was shown as "209.99" in "Was $29.99 · 20% off"
+  because the second argument was substituted into the first. Fixed, with a test in all 16 languages.
 - **Support links that led nowhere were removed.** The Buy Me a Coffee and Patreon pages returned "not found",
   so the popup, settings, welcome page, website and readmes now show only Ko-fi.
 - **PlayStation price history** in the Price Insight card: the lowest PlayStation price you have seen,
