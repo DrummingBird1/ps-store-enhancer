@@ -83,8 +83,8 @@ v2.7.1 that the old test pages could not show, and they are fixed here.
   readable in the light theme.
 - **Prices looked wrong in a manually chosen language.** "$29.99" was shown as "209.99" in "Was $29.99 · 20% off"
   because the second argument was substituted into the first. Fixed, with a test in all 16 languages.
-- **Support links that led nowhere were removed.** The Buy Me a Coffee and Patreon pages returned "not found",
-  so the popup, settings, welcome page, website and readmes now show only Ko-fi.
+- **Support links work again.** The old Buy Me a Coffee and Patreon pages no longer exist; the popup, settings,
+  welcome page, website and readmes now point to the current ones, next to Ko-fi.
 - **PlayStation price history** in the Price Insight card: the lowest PlayStation price you have seen,
   today's price, the sale (was, % off, when it ends), the PlayStation Plus price when the page shows
   one, the store's own "lowest price in the last 30 days", a trend, and how far the price is from the

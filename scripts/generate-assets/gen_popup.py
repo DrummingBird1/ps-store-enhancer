@@ -48,9 +48,10 @@ for _lang, _v in T.items():
     _v["check_btn"] = loc(_lang, "checkPageBtn")
     _v["check_items"] = [f"{loc(_lang, k)} — {loc(_lang, 'checkOk')}" for k in ("chk_title", "chk_price", "chk_anchor")]
     _v["check_sum"] = loc(_lang, "checkPageSummary")
+    _v["coffee"] = loc(_lang, "supportCoffee")
     _v["wipe"] = loc(_lang, "popupWipe")
     if _v["rtl"]:
-        for k in ("psn_sec", "psn_name", "psn_sub", "filter_sec", "status", "footer", "opts", "check_btn", "check_sum", "wipe"):
+        for k in ("psn_sec", "psn_name", "psn_sub", "filter_sec", "status", "footer", "opts", "check_btn", "check_sum", "coffee", "wipe"):
             _v[k] = rtl_visual(_v[k])
         _v["filters"] = [rtl_visual(x) for x in _v["filters"]]
         _v["tags"] = [rtl_visual(x) for x in _v["tags"]]
@@ -141,12 +142,12 @@ def popup(lang, out_name):
     text(d, (sx(32), y + 5), t["status"], font(F_REG, 9), GOOD, anchor=f"{start}m")
     y += 15
 
-    # support links: the real popup has one (Ko-fi)
-    labels = ["Ko-fi"]
+    # support links: the real popup has three (Ko-fi, Coffee, Patreon), in reading order
+    labels = ["Ko-fi", t["coffee"], "Patreon"]
     if rtl:
         labels = labels[::-1]
     gap = 6
-    bw = (W - 36 - (len(labels) - 1) * gap) / len(labels)
+    bw = (W - 36 - 2 * gap) / 3
     for i, label in enumerate(labels):
         x0 = 18 + i * (bw + gap)
         rrect(d, (x0, y, x0 + bw, y + 20), 8, fill=(255, 126, 182, 20), outline=(255, 126, 182, 60), width=1)

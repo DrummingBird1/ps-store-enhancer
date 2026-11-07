@@ -433,7 +433,7 @@
     "message": "支持開發"
   },
   "supportDevDesc": {
-    "message": "喜歡 PS Store Enhancer 嗎？歡迎在 Ko-fi 上支持開發。"
+    "message": "喜歡 PS Store Enhancer 嗎？歡迎透過 Ko-fi、Buy Me a Coffee 或 Patreon 支持開發。"
   },
   "currencyTitle": {
     "message": "顯示貨幣"
@@ -562,6 +562,9 @@
         "content": "$1"
       }
     }
+  },
+  "supportCoffee": {
+    "message": "咖啡"
   },
   "noPcData": {
     "message": "找不到此遊戲的 PC 價格 — 它可能是 PlayStation 獨佔。"

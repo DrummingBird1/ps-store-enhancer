@@ -433,7 +433,7 @@
     "message": "Soutenir le développement"
   },
   "supportDevDesc": {
-    "message": "Vous aimez PS Store Enhancer ? Soutenez son développement sur Ko-fi."
+    "message": "Vous aimez PS Store Enhancer ? Soutenez son développement sur Ko-fi, Buy Me a Coffee ou Patreon."
   },
   "currencyTitle": {
     "message": "Devise d'affichage"
@@ -562,6 +562,9 @@
         "content": "$1"
       }
     }
+  },
+  "supportCoffee": {
+    "message": "Café"
   },
   "noPcData": {
     "message": "Aucun prix PC trouvé pour ce titre — il s'agit peut-être d'une exclusivité PlayStation."
