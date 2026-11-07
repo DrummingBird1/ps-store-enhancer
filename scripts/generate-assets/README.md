@@ -18,8 +18,11 @@ python scripts/generate-assets/gen_badges.py        # one badge per released ver
 ```
 
 Needs `Pillow` (`pip install Pillow`) and Windows' bundled Segoe UI / Arial fonts (used for
-Latin + Hebrew text — Pillow doesn't do bidi reordering, so `mockkit.rtl_fix()` pre-reverses
-Hebrew runs before drawing).
+Latin + Hebrew text — Pillow doesn't do bidi reordering, so Hebrew is converted to visual order
+before drawing). `gen_popup.py` uses `mockkit.rtl_visual()`, which runs the real Unicode bidi
+algorithm through `python-bidi` (`pip install python-bidi`) and falls back to the rougher
+`rtl_fix()` without it; the other generators still call `rtl_fix()`. The popup's wording comes
+straight from `extension/_locales`, so it follows the extension instead of drifting from it.
 
 Everything is written to `dist/asset-drafts/` (git-ignored, safe to regenerate anytime) — review
 the output, then copy whatever you're keeping into `assets/` (and `extension/icons/` for a new
