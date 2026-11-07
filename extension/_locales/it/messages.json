@@ -1133,7 +1133,7 @@
     "message": "Log di rete"
   },
   "netLogDesc": {
-    "message": "Ogni richiesta fatta dall'estensione, conservata solo su questo dispositivo: host, percorso, stato e ora. Mai la query, le intestazioni o altri dati. L'estensione può contattare solo: $HOSTS$.",
+    "message": "Ogni richiesta fatta dall'estensione, conservata solo su questo dispositivo: host, percorso, stato e ora. Mai la query, le intestazioni o altri dati. L'estensione può contattare solo: $HOSTS$. Le immagini che il browser carica da sé (miniature della ricerca, il tuo avatar PSN) non sono elencate.",
     "placeholders": {
       "hosts": {
         "content": "$1"
@@ -1166,5 +1166,11 @@
   },
   "reportProblemCopied": {
     "message": "Diagnostica copiata. Incollala nella segnalazione."
+  },
+  "reportProblemHint": {
+    "message": "Copia la diagnostica negli appunti e apre il modulo di segnalazione. Incollala nel modulo."
+  },
+  "reportProblemNotCopied": {
+    "message": "Il modulo di segnalazione si è aperto, ma la copia non è riuscita. Usa «Copia» in Diagnostica e incollala nel modulo."
   }
 }

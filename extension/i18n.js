@@ -16,6 +16,7 @@ const PSEi18n = (() => {
   let _messages = null;   // loaded translations (null = use native)
   let _useNative = true;  // true = chrome.i18n, false = custom
   let _currentLang = "auto";
+  let _shownLang = null;  // the chosen language, once its messages are really loaded (null = Chrome picks the messages)
   let _ready = false;
 
   const SUPPORTED = ["en","he","ar","es","fr","de","it","pt_BR","nl","pl","tr","ru","ja","ko","zh_CN","zh_TW"];
@@ -53,6 +54,7 @@ const PSEi18n = (() => {
       }
     }
 
+    _shownLang = !_useNative && SUPPORTED.includes(_currentLang) ? _currentLang : null;
     _ready = true;
   }
 
@@ -135,14 +137,31 @@ const PSEi18n = (() => {
   }
 
   /**
-   * Get the currently active language code.
+   * The shipped locale Chrome serves messages from for a browser UI language ("en-US" -> "en",
+   * "pt-BR" -> "pt_BR", "he-IL" -> "he"); a language we do not ship ("sv", "uk") gets the English
+   * fallback messages, so it resolves to "en".
+   */
+  function resolveSupported(raw) {
+    const code = String(raw || "").replace(/-/g, "_").toLowerCase();
+    const base = code.split("_")[0];
+    return SUPPORTED.find((s) => s.toLowerCase() === code) || SUPPORTED.find((s) => s.toLowerCase() === base) || "en";
+  }
+
+  /**
+   * Get the language of the messages actually shown: the chosen language (when its file loaded), or
+   * the supported language closest to the browser's (never a raw browser language we have no messages
+   * for, because dates, countdowns and directions must match the sentence they sit in).
    */
   function getActiveLang() {
-    if (_currentLang !== "auto" && SUPPORTED.includes(_currentLang)) {
-      return _currentLang;
-    }
+    if (_shownLang) return _shownLang;
     try {
-      return chrome.i18n.getUILanguage() || "en";
+      const raw = String(chrome.i18n.getUILanguage() || "");
+      const shipped = resolveSupported(raw);
+      const base = raw.replace(/-/g, "_").toLowerCase().split("_")[0];
+      // a language we ship nothing for ("sv", "uk", "") is shown in English
+      if (shipped === "en" && base !== "en") return "en";
+      // keep the region of a shipped language ("es-419", "en-GB", "de-AT"): it decides number and date formats
+      return shipped.includes("_") ? shipped : raw;
     } catch {
       return "en";
     }

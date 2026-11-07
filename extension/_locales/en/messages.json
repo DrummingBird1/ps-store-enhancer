@@ -1133,7 +1133,7 @@
     "message": "Network log"
   },
   "netLogDesc": {
-    "message": "Every request the extension made, kept on this device only: host, path, status and time. Never the query, headers or any data. The extension may contact only: $HOSTS$.",
+    "message": "Every request the extension made, kept on this device only: host, path, status and time. Never the query, headers or any data. The extension may contact only: $HOSTS$. Pictures that your browser loads by itself (search thumbnails, your PSN avatar) are not listed.",
     "placeholders": {
       "hosts": {
         "content": "$1"
@@ -1166,5 +1166,11 @@
   },
   "reportProblemCopied": {
     "message": "Diagnostics copied. Paste them into the report."
+  },
+  "reportProblemHint": {
+    "message": "Copies your diagnostics to the clipboard, then opens the report form. Paste them into the form."
+  },
+  "reportProblemNotCopied": {
+    "message": "The report form opened, but copying failed. Use Copy under Diagnostics and paste it into the form."
   }
 }

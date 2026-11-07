@@ -565,7 +565,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     } catch { toast(t("genericError")); }
   });
   el.diagClear.addEventListener("click", async () => { await send({ type: "DIAG_CLEAR" }); await refreshDiag(); });
-  $("reportBtn").addEventListener("click", async () => { toast((await PSEDiag.reportProblem()) ? t("reportProblemCopied") : t("genericError")); });
+  $("reportBtn").addEventListener("click", async () => { toast((await PSEDiag.reportProblem()) ? t("reportProblemCopied") : t("reportProblemNotCopied")); });
 
   /* ═══ Network log (every request the extension made: host, path, status, time — never the query) ═══ */
   el.netLogDesc.textContent = t("netLogDesc", Object.keys(PSENet.ALLOWED_HOSTS).join(", "));
@@ -605,6 +605,15 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (first) markNav(first.target.id);
     }, { rootMargin: "-10% 0px -70% 0px" });
     navSections.forEach((sec) => io.observe(sec));
+  }
+  /* Narrow windows: the navigation is a sticky bar over the page. Tell the CSS how tall it really is (scrollbar, zoom
+     and fonts change that), so a section picked in it is not scrolled under it. */
+  const navBar = document.querySelector(".nav");
+  if (navBar) {
+    const setNavHeight = () => document.documentElement.style.setProperty("--nav-h", `${navBar.offsetHeight}px`);
+    setNavHeight();
+    if ("ResizeObserver" in window) new ResizeObserver(setNavHeight).observe(navBar, { box: "border-box" });
+    else window.addEventListener("resize", setNavHeight);
   }
 
   let toastTimer;

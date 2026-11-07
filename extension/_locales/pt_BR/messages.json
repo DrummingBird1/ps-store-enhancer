@@ -1133,7 +1133,7 @@
     "message": "Registro de rede"
   },
   "netLogDesc": {
-    "message": "Todas as solicitações feitas pela extensão, guardadas só neste dispositivo: host, caminho, status e horário. Nunca a consulta, os cabeçalhos ou qualquer dado. A extensão só pode contatar: $HOSTS$.",
+    "message": "Todas as solicitações feitas pela extensão, guardadas só neste dispositivo: host, caminho, status e horário. Nunca a consulta, os cabeçalhos ou qualquer dado. A extensão só pode contatar: $HOSTS$. As imagens que o navegador carrega por conta própria (miniaturas da busca, seu avatar do PSN) não aparecem na lista.",
     "placeholders": {
       "hosts": {
         "content": "$1"
@@ -1166,5 +1166,11 @@
   },
   "reportProblemCopied": {
     "message": "Diagnóstico copiado. Cole no relatório."
+  },
+  "reportProblemHint": {
+    "message": "Copia o diagnóstico para a área de transferência e abre o formulário de relatório. Cole no formulário."
+  },
+  "reportProblemNotCopied": {
+    "message": "O formulário de relatório foi aberto, mas não foi possível copiar. Use “Copiar” em Diagnóstico e cole no formulário."
   }
 }

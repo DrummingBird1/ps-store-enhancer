@@ -91,6 +91,13 @@ const PSEExtras = (() => {
 
   /* ───────────── first-run tour ───────────── */
 
+  let activeTour = null; // { highlight, panel } while a tour is open
+
+  /** After the cards were built again (the store re-rendered): put the highlight back on the current step's card. */
+  function refreshTour() {
+    if (activeTour && activeTour.panel.isConnected) activeTour.highlight();
+  }
+
   /**
    * A short, skippable walkthrough of the injected cards. Shown once per install (the caller
    * stores `pse_tour_done`); every step is optional and skipped when its card is absent.
@@ -102,8 +109,9 @@ const PSEExtras = (() => {
       [".pse-trophy-box", "tourStepTrophies"],
       [".pse-wishlist-btn-wrap", "tourStepWishlist"]
     ];
+    // Steps keep the selector, not the element: the store may re-render and the cards are then built again
     const steps = defs
-      .map(([sel, key]) => ({ el: document.querySelector(sel), key }))
+      .map(([sel, key]) => ({ sel, key, el: document.querySelector(sel) }))
       .filter((s) => s.el);
     if (!steps.length || document.querySelector(".pse-tour")) return;
 
@@ -136,17 +144,24 @@ const PSEExtras = (() => {
     function finish() {
       clearHighlight();
       panel.remove();
+      activeTour = null;
       ctx.onDone();
     }
-    function render() {
+    /** The current step's card, looked up now (it may be a newer node than the one the tour started with). */
+    function highlight() {
       clearHighlight();
-      const s = steps[i];
-      s.el.classList.add("pse-tour-highlight");
-      s.el.scrollIntoView({ block: "center", behavior: "auto" });
+      const el = document.querySelector(steps[i].sel);
+      if (el) el.classList.add("pse-tour-highlight");
+      return el;
+    }
+    function render() {
+      const el = highlight();
+      if (el) el.scrollIntoView({ block: "center", behavior: "auto" });
       title.textContent = `${ctx.t("tourTitle")} · ${i + 1}/${steps.length}`;
-      text.textContent = ctx.t(s.key);
+      text.textContent = ctx.t(steps[i].key);
       next.textContent = i === steps.length - 1 ? ctx.t("tourDone") : ctx.t("tourNext");
     }
+    activeTour = { highlight, panel };
     skip.addEventListener("click", finish);
     next.addEventListener("click", () => {
       if (i === steps.length - 1) finish();
@@ -215,7 +230,7 @@ const PSEExtras = (() => {
     try { await ctx.storage.set({ pse_rate: st }); } catch {}
   }
 
-  return { drawDealImage, downloadBlob, showTour, maybeRateNudge, NUDGE_MIN_VIEWS, NUDGE_MIN_DAYS };
+  return { drawDealImage, downloadBlob, showTour, refreshTour, maybeRateNudge, NUDGE_MIN_VIEWS, NUDGE_MIN_DAYS };
 })();
 
 self.PSEExtras = PSEExtras;

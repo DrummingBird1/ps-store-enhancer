@@ -433,7 +433,7 @@
     "message": "支持開發"
   },
   "supportDevDesc": {
-    "message": "喜歡 PS Store Enhancer 嗎?歡迎在 Ko-fi 上支持開發。"
+    "message": "喜歡 PS Store Enhancer 嗎？歡迎在 Ko-fi 上支持開發。"
   },
   "currencyTitle": {
     "message": "顯示貨幣"
@@ -1133,7 +1133,7 @@
     "message": "網路記錄"
   },
   "netLogDesc": {
-    "message": "擴充功能發出的每個請求，只儲存在此裝置上：主機、路徑、狀態與時間。絕不儲存查詢參數、標頭或任何資料。擴充功能只會連線至：$HOSTS$。",
+    "message": "擴充功能發出的每個請求，只儲存在此裝置上：主機、路徑、狀態與時間。絕不儲存查詢參數、標頭或任何資料。擴充功能只會連線至：$HOSTS$。瀏覽器自行載入的圖片（搜尋縮圖、你的 PSN 頭像）不會列出。",
     "placeholders": {
       "hosts": {
         "content": "$1"
@@ -1159,12 +1159,18 @@
     "message": "遊戲庫與願望清單"
   },
   "chl_3_0_4": {
-    "message": "全新外觀:商店頁面卡片、彈出視窗和設定頁面,支援深色、淺色和高對比"
+    "message": "全新外觀：商店頁面卡片、彈出視窗和設定頁面，支援深色、淺色和高對比"
   },
   "reportProblem": {
     "message": "回報問題"
   },
   "reportProblemCopied": {
-    "message": "診斷資訊已複製,請貼到回報中。"
+    "message": "診斷資訊已複製，請貼到回報中。"
+  },
+  "reportProblemHint": {
+    "message": "將診斷資訊複製到剪貼簿，然後開啟回報表單。請將其貼到表單中。"
+  },
+  "reportProblemNotCopied": {
+    "message": "回報表單已開啟，但複製失敗。請使用「診斷」中的「複製」，並貼到表單中。"
   }
 }

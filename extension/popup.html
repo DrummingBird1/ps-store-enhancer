@@ -23,7 +23,7 @@ body.theme-light{
   --panel:rgba(255,255,255,.8); --panel2:rgba(15,30,70,.07); --line:rgba(15,30,70,.12);
   --text:#0d1630; --dim:#4b5878; --faint:#5b6784;
   --accent:#1257c8; --accent-deep:#1769e0; --accent-ink:#ffffff; --accent-soft:rgba(23,105,224,.12);
-  --good:#096843; --good-soft:rgba(15,127,85,.12); --warn:#7a5000; --bad:#b3201f; --pink:#c2185b;
+  --good:#096843; --good-soft:rgba(15,127,85,.12); --warn:#7a5000; --bad:#b3201f; --pink:#a8124f;
   --head:linear-gradient(135deg,rgba(23,105,224,.18),rgba(23,105,224,.03));
 }
 body.theme-contrast{
@@ -69,6 +69,10 @@ body.theme-contrast .tr{border-width:2px}
 [dir="rtl"] .sw input:checked+.sl::before{transform:translateX(-18px)}
 body.theme-contrast .sl{outline:2px solid #fff;box-shadow:none}
 body.theme-contrast .sw input:checked+.sl{background:#ffd400;box-shadow:none}
+/* light theme: the off switch is an outlined pill with a dark knob (3:1 or more against the panel); on stays blue with a white knob */
+body.theme-light .sl{box-shadow:inset 0 0 0 1.5px var(--faint)}
+body.theme-light .sl::before{background:var(--faint);box-shadow:none;transition:transform .25s,background .25s}
+body.theme-light .sw input:checked+.sl::before{background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.35)}
 
 /* PSN row */
 .psn-row{cursor:pointer}
@@ -124,6 +128,18 @@ body.theme-contrast .wn-card{background:#000;border:2px solid #fff}
 .wn-card li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:6px;flex:none}
 body.theme-contrast .wn-card ul{color:#fff}
 @media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}}
+/* Windows contrast themes drop background colours and shadows: draw the switch with a border and system colours instead
+   (!important so that the extension's own theme classes above cannot out-rank them) */
+@media (forced-colors: active){
+  .sl{background:Canvas !important;border:2px solid CanvasText}
+  .sl::before{top:3px;width:14px;height:14px;background:CanvasText !important}
+  .sw input:checked+.sl{background:Highlight !important}
+  .sw input:checked+.sl::before{background:HighlightText !important}
+  /* the chosen theme must stay distinguishable: a colour-only highlight is dropped, so use system colours */
+  .theme-seg{background:Canvas !important;border:1px solid CanvasText}
+  .theme-seg button{border:1px solid transparent;color:ButtonText !important}
+  .theme-seg button[aria-pressed="true"]{forced-color-adjust:none;background:Highlight !important;color:HighlightText !important;border-color:HighlightText}
+}
 </style>
 </head>
 <body>
@@ -183,8 +199,8 @@ body.theme-contrast .wn-card ul{color:#fff}
 <div class="support-row">
   <a class="support-link" href="https://ko-fi.com/idanlights" target="_blank" rel="noopener noreferrer">Ko-fi</a>
 </div>
-<div class="ft" style="border-top:0;padding-top:0"><button type="button" class="wipe" id="wipeBtn" data-i18n="popupWipe">Erase all my data</button><button type="button" class="opt opt-btn" id="reportBtn" data-i18n="reportProblem">Report a problem</button></div>
-<div class="ft"><span>v3.0.0 · <a id="openChangelog" class="opt" data-i18n="viewChangelog">What's new</a></span><a id="openOptions" class="opt" data-i18n="advancedSettings">Advanced settings</a></div>
+<div class="ft" style="border-top:0;padding-top:0"><button type="button" class="wipe" id="wipeBtn" data-i18n="popupWipe">Erase all my data</button><button type="button" class="opt opt-btn" id="reportBtn" data-i18n="reportProblem" data-i18n-title="reportProblemHint" title="Copies your diagnostics to the clipboard, then opens the report form. Paste them into the form.">Report a problem</button></div>
+<div class="ft"><span>v3.0.0 · <button type="button" id="openChangelog" class="opt opt-btn" data-i18n="viewChangelog">What's new</button></span><button type="button" id="openOptions" class="opt opt-btn" data-i18n="advancedSettings">Advanced settings</button></div>
 
 <script src="i18n.js"></script>
 <script src="diag.js"></script>
