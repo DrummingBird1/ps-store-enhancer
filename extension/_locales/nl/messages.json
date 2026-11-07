@@ -1160,5 +1160,11 @@
   },
   "chl_3_0_4": {
     "message": "Een nieuwe look voor alles: de kaarten in de winkel, de popup en de instellingen, donker, licht en hoog contrast"
+  },
+  "reportProblem": {
+    "message": "Probleem melden"
+  },
+  "reportProblemCopied": {
+    "message": "Diagnose gekopieerd. Plak die in de melding."
   }
 }

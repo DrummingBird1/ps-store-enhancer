@@ -1160,5 +1160,11 @@
   },
   "chl_3_0_4": {
     "message": "Her şey için yeni bir görünüm: mağaza sayfalarındaki kartlar, açılır pencere ve ayarlar; koyu, açık ve yüksek kontrastlı"
+  },
+  "reportProblem": {
+    "message": "Sorun bildir"
+  },
+  "reportProblemCopied": {
+    "message": "Tanılama kopyalandı. Bildirime yapıştırın."
   }
 }

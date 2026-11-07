@@ -1160,5 +1160,11 @@
   },
   "chl_3_0_4": {
     "message": "全新外观:商店页面卡片、弹出窗口和设置页面,支持深色、浅色和高对比度"
+  },
+  "reportProblem": {
+    "message": "报告问题"
+  },
+  "reportProblemCopied": {
+    "message": "诊断信息已复制,请粘贴到报告中。"
   }
 }

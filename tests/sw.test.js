@@ -619,6 +619,36 @@ describe("PSN", () => {
   });
 });
 
+describe("report a problem", () => {
+  test("the report is the version, the browser and the redacted log; it goes to the clipboard and never into the URL", async () => {
+    const env = createEnv().loadServiceWorker();
+    await self.PSEDiag.log("psn", "auth-failed", { reason: "redirect-not-observed", access_token: "abcdefghijklmnopqrstuvwxyz0123456789ABCDEF" });
+    const text = self.PSEDiag.buildReport(await self.PSEDiag.get(), "3.0.0", "Chrome/157");
+    expect(text.split(String.fromCharCode(10)).slice(0, 2)).toEqual(["PS Store Enhancer 3.0.0", "Chrome/157"]);
+    expect(text).toContain("[psn] auth-failed");
+    expect(text).toContain("redirect-not-observed");
+    expect(text).not.toContain("abcdefghijklmnopqrstuvwxyz");
+    const url = new URL(self.PSEDiag.ISSUE_URL);
+    expect(url.origin + url.pathname).toBe("https://github.com/DrummingBird1/ps-store-enhancer/issues/new");
+    expect(url.search).toBe("?template=bug_report.yml"); // nothing from the log is ever placed in the address
+    expect(env).toBeTruthy();
+  });
+
+  test("reportProblem copies, opens the form, and still opens it when the clipboard refuses", async () => {
+    const env = createEnv().loadServiceWorker();
+    const opened = [];
+    env.chrome.tabs.create = (o) => opened.push(o.url);
+    const written = [];
+    global.navigator = { userAgent: "Chrome/157", clipboard: { writeText: async (x) => written.push(x) } };
+    expect(await self.PSEDiag.reportProblem()).toBe(true);
+    expect(written[0]).toContain("PS Store Enhancer 9.9.9");
+    expect(opened).toEqual([self.PSEDiag.ISSUE_URL]);
+    global.navigator = { userAgent: "Chrome/157", clipboard: { writeText: async () => { throw new Error("denied"); } } };
+    expect(await self.PSEDiag.reportProblem()).toBe(false);
+    expect(opened).toHaveLength(2);
+  });
+});
+
 describe("diagnostics log", () => {
   test("never records secrets and keeps only the newest 120 entries", async () => {
     const env = createEnv().loadServiceWorker();

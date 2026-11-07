@@ -94,7 +94,27 @@ const PSEDiag = (() => {
       .join("\n");
   }
 
-  return { log, get, clear, flush, urlInfo, redact, formatEntries, KEY, MAX };
+  const ISSUE_URL = "https://github.com/DrummingBird1/ps-store-enhancer/issues/new?template=bug_report.yml";
+
+  /** What "Report a problem" copies: version, browser and the (already redacted) log. It is pasted into the issue by the user, never put in the URL. */
+  function buildReport(entries, version, userAgent) {
+    return `PS Store Enhancer ${version}\n${userAgent || ""}\n${formatEntries(entries)}`.trim();
+  }
+
+  /** Copy the report, then open the bug-report form. Call it from a click (the clipboard needs one). Resolves to whether the copy worked. */
+  async function reportProblem() {
+    let copied = false;
+    try {
+      await navigator.clipboard.writeText(buildReport(await get(), chrome.runtime.getManifest().version, navigator.userAgent));
+      copied = true;
+    } catch {
+      /* clipboard refused: the form still opens, and Settings → Diagnostics → Copy remains */
+    }
+    chrome.tabs.create({ url: ISSUE_URL });
+    return copied;
+  }
+
+  return { log, get, clear, flush, urlInfo, redact, formatEntries, buildReport, reportProblem, ISSUE_URL, KEY, MAX };
 })();
 
 self.PSEDiag = PSEDiag;

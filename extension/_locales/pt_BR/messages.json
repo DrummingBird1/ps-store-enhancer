@@ -1160,5 +1160,11 @@
   },
   "chl_3_0_4": {
     "message": "Visual novo para tudo: os cartões da loja, o popup e as configurações, em escuro, claro e alto contraste"
+  },
+  "reportProblem": {
+    "message": "Relatar um problema"
+  },
+  "reportProblemCopied": {
+    "message": "Diagnóstico copiado. Cole no relatório."
   }
 }

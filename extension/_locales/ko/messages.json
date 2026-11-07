@@ -1160,5 +1160,11 @@
   },
   "chl_3_0_4": {
     "message": "모든 화면의 새 디자인: 스토어 카드, 팝업, 설정 페이지 (다크, 라이트, 고대비)"
+  },
+  "reportProblem": {
+    "message": "문제 신고"
+  },
+  "reportProblemCopied": {
+    "message": "진단 정보를 복사했습니다. 신고에 붙여넣으세요."
   }
 }

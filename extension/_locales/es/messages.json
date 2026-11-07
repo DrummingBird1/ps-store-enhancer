@@ -1160,5 +1160,11 @@
   },
   "chl_3_0_4": {
     "message": "Un nuevo aspecto para todo: las tarjetas de la tienda, el popup y los ajustes, en oscuro, claro y alto contraste"
+  },
+  "reportProblem": {
+    "message": "Informar de un problema"
+  },
+  "reportProblemCopied": {
+    "message": "Diagnóstico copiado. Pégalo en el informe."
   }
 }

@@ -4,20 +4,31 @@ document.addEventListener("DOMContentLoaded", async () => {
   const $ = (id) => document.getElementById(id);
   const toggles = { hideAddons: $("hideAddons"), hideDlc: $("hideDlc"), hideOwned: $("hideOwned") };
 
+  /* Theme: "auto" follows the system; the choice is the same setting as Settings → Theme. */
+  const themeButtons = [...document.querySelectorAll("#themeSeg button")];
+  function applyTheme(mode) {
+    const resolved = mode === "light" || mode === "dark" || mode === "contrast"
+      ? mode
+      : window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    document.body.classList.toggle("theme-light", resolved === "light");
+    document.body.classList.toggle("theme-contrast", resolved === "contrast");
+    // "contrast" is chosen in Settings only: none of the three buttons is pressed then
+    themeButtons.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.theme === mode)));
+  }
   try {
     const r = await chrome.storage.sync.get(["hideAddons", "hideDlc", "hideOwned", "theme"]);
     toggles.hideAddons.checked = r.hideAddons ?? false;
     toggles.hideDlc.checked = r.hideDlc ?? false;
     toggles.hideOwned.checked = r.hideOwned ?? false;
-    const mode = r.theme || "auto";
-    const resolved = mode === "light" || mode === "dark" || mode === "contrast"
-      ? mode
-      : window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
-    if (resolved === "light") document.body.classList.add("theme-light");
-    if (resolved === "contrast") document.body.classList.add("theme-contrast");
+    applyTheme(r.theme || "auto");
   } catch {}
+  themeButtons.forEach((b) => b.addEventListener("click", () => {
+    applyTheme(b.dataset.theme);
+    chrome.storage.sync.set({ theme: b.dataset.theme }).catch(() => {});
+  }));
   for (const [k, el] of Object.entries(toggles)) el.addEventListener("change", () => chrome.storage.sync.set({ [k]: el.checked }));
 
+  $("reportBtn").addEventListener("click", () => { PSEDiag.reportProblem(); });
   $("openOptions").addEventListener("click", (e) => { e.preventDefault(); chrome.runtime.openOptionsPage(); });
   const psnRow = $("psnStatus");
   psnRow.addEventListener("click", () => chrome.runtime.openOptionsPage());
