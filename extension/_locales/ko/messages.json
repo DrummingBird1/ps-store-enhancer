@@ -386,10 +386,10 @@
     "message": "위시리스트가 비어있습니다"
   },
   "wishlistAddBtn": {
-    "message": "★ 위시리스트에 추가"
+    "message": "위시리스트에 추가"
   },
   "wishlistInBtn": {
-    "message": "★ 위시리스트에 있음 (클릭하여 제거)"
+    "message": "위시리스트에 있음 (클릭하여 제거)"
   },
   "wishlistRemoved": {
     "message": "위시리스트에서 제거됨"
@@ -421,7 +421,7 @@
     "message": "현재 가격"
   },
   "wishlistCheckNow": {
-    "message": "🔄 지금 가격 확인"
+    "message": "지금 가격 확인"
   },
   "wishlistChecking": {
     "message": "확인 중…"
@@ -430,7 +430,7 @@
     "message": "가격이 업데이트됨"
   },
   "supportDev": {
-    "message": "❤️ 개발 지원하기"
+    "message": "개발 지원하기"
   },
   "supportDevDesc": {
     "message": "PS Store Enhancer가 마음에 드시나요? Ko-fi, Buy Me a Coffee, 또는 Patreon에서 개발을 지원해 주세요."
@@ -469,10 +469,10 @@
     "message": "수동으로 표시한 게임을 JSON으로 내보내거나 이전 백업에서 복원하세요."
   },
   "exportBtn": {
-    "message": "📤 JSON 내보내기"
+    "message": "JSON 내보내기"
   },
   "importBtn": {
-    "message": "📥 JSON 가져오기"
+    "message": "JSON 가져오기"
   },
   "exportSuccess": {
     "message": "내보냄"
@@ -519,7 +519,7 @@
     "message": "PC 최저"
   },
   "whatsNewTitle": {
-    "message": "🎉 v$VERSION$ 새 기능",
+    "message": "v$VERSION$ 새 기능",
     "placeholders": {
       "version": {
         "content": "$1"
@@ -788,13 +788,13 @@
     "message": "API 호출과 PSN 연결의 최근 이벤트이며 이 기기에만 저장됩니다. 토큰과 비밀번호는 기록되지 않습니다. 문제를 신고할 때 복사해 주세요."
   },
   "diagRefresh": {
-    "message": "🔄 새로고침"
+    "message": "새로고침"
   },
   "diagCopy": {
-    "message": "📋 복사"
+    "message": "복사"
   },
   "diagClear": {
-    "message": "🗑 로그 지우기"
+    "message": "로그 지우기"
   },
   "diagEmpty": {
     "message": "아직 기록된 이벤트가 없습니다."
@@ -899,7 +899,7 @@
     "message": "주간 요약"
   },
   "shareWishlistBtn": {
-    "message": "🔗 공유 링크 복사"
+    "message": "공유 링크 복사"
   },
   "shareWishlistDesc": {
     "message": "링크에는 게임 이름과 마지막으로 확인한 PC 가격만 포함되며(목표가·메모 제외) 읽기 전용입니다. 링크가 있는 사람은 누구나 목록을 볼 수 있습니다."
@@ -985,28 +985,28 @@
     "message": "괜찮아요"
   },
   "chl_2_7_0_1": {
-    "message": "🎯 정확한 플랫폼별 가격 — DLC나 맵, 속편이 아닌 바로 그 게임"
+    "message": "정확한 플랫폼별 가격 — DLC나 맵, 속편이 아닌 바로 그 게임"
   },
   "chl_2_7_0_2": {
-    "message": "📊 CheapShark에서 Metacritic·Steam 점수 제공 (OpenCritic은 API 키가 필요해져 작동하지 않았습니다)"
+    "message": "CheapShark에서 Metacritic·Steam 점수 제공 (OpenCritic은 API 키가 필요해져 작동하지 않았습니다)"
   },
   "chl_2_7_0_3": {
-    "message": "📉 가격 인사이트는 실제 데이터만 사용: PC 역대 최저가, 오늘의 최저가, 내가 기록한 추이"
+    "message": "가격 인사이트는 실제 데이터만 사용: PC 역대 최저가, 오늘의 최저가, 내가 기록한 추이"
   },
   "chl_2_7_0_4": {
-    "message": "🛠 진단 로그, 더 안전한 PSN 로그인, % 목표, 메모, 정렬, 주간 요약, '내 데이터 모두 삭제' 버튼"
+    "message": "진단 로그, 더 안전한 PSN 로그인, % 목표, 메모, 정렬, 주간 요약, '내 데이터 모두 삭제' 버튼"
   },
   "chl_2_7_0_5": {
-    "message": "🧩 상품 페이지 카드를 순서 변경·숨김·접기 가능, 새로운 고대비 테마"
+    "message": "상품 페이지 카드를 순서 변경·숨김·접기 가능, 새로운 고대비 테마"
   },
   "chl_2_7_0_6": {
-    "message": "🌍 새 언어 6개: Italiano, Polski, Türkçe, Nederlands, 简体中文, 繁體中文"
+    "message": "새 언어 6개: Italiano, Polski, Türkçe, Nederlands, 简体中文, 繁體中文"
   },
   "chl_2_7_1_1": {
-    "message": "🔌 PSN 연결 수정 — 확장 프로그램이 잘못된 앱 ID를 사용해 Sony가 항상 거부했습니다"
+    "message": "PSN 연결 수정 — 확장 프로그램이 잘못된 앱 ID를 사용해 Sony가 항상 거부했습니다"
   },
   "chl_2_7_1_2": {
-    "message": "🛠 실패한 단계를 알려 주는 더 명확한 PSN 오류, Chrome이 Sony 리디렉션을 숨길 때 한 번의 클릭으로 허용"
+    "message": "실패한 단계를 알려 주는 더 명확한 PSN 오류, Chrome이 Sony 리디렉션을 숨길 때 한 번의 클릭으로 허용"
   },
   "psHistLabel": {
     "message": "PlayStation Store · 브라우저가 기록함"
@@ -1075,7 +1075,7 @@
     "message": "PlayStation 가격 기록이 아직 충분하지 않습니다. 이 게임 페이지를 방문할 때마다 쌓입니다."
   },
   "checkPageBtn": {
-    "message": "🔍 이 페이지 확인"
+    "message": "이 페이지 확인"
   },
   "checkPageNoStore": {
     "message": "먼저 PlayStation Store 페이지를 연 다음 다시 시도하세요."
@@ -1147,12 +1147,21 @@
     "message": "기록된 요청이 아직 없습니다."
   },
   "chl_3_0_1": {
-    "message": "🛡️ 실제 PlayStation Store에서 검증: 잘못 기록된 가격, 애드온·DLC·보유 게임 필터, 검색 결과의 빈 공간을 수정"
+    "message": "실제 PlayStation Store에서 검증: 잘못 기록된 가격, 애드온·DLC·보유 게임 필터, 검색 결과의 빈 공간을 수정"
   },
   "chl_3_0_2": {
-    "message": "📈 PlayStation 가격 기록: 지금까지 본 최저가, 할인 정보, 가격 추이를 브라우저가 기록한 가격으로 구성 (검색 결과와 위시리스트에서도 기록)"
+    "message": "PlayStation 가격 기록: 지금까지 본 최저가, 할인 정보, 가격 추이를 브라우저가 기록한 가격으로 구성 (검색 결과와 위시리스트에서도 기록)"
   },
   "chl_3_0_3": {
-    "message": "🔍 팝업의 새 “이 페이지 확인”과 설정의 로컬 네트워크 로그: 무엇이 작동하는지, 확장 프로그램이 무엇을 요청했는지 확인하세요"
+    "message": "팝업의 새 “이 페이지 확인”과 설정의 로컬 네트워크 로그: 무엇이 작동하는지, 확장 프로그램이 무엇을 요청했는지 확인하세요"
+  },
+  "navAppearance": {
+    "message": "모양 및 언어"
+  },
+  "navLibrary": {
+    "message": "라이브러리 및 위시리스트"
+  },
+  "chl_3_0_4": {
+    "message": "모든 화면의 새 디자인: 스토어 카드, 팝업, 설정 페이지 (다크, 라이트, 고대비)"
   }
 }

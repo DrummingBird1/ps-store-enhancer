@@ -1,10 +1,10 @@
 # Assets
 
-Everything used for the Chrome Web Store listing and social/community posts. All images are
-original mockups built from the extension's own real CSS classes and color palette (see
-`scripts/generate-assets/`) — not live captures, since this project's tooling can't load
-store.playstation.com directly — so they accurately represent the real UI without depending on
-Sony's actual page markup or trademarked assets.
+Everything used for the Chrome Web Store listing and social/community posts. The four screenshots per
+language (and the website's copies) are real captures of the extension running in Chrome on the real
+PlayStation Store (taken from the "Midnight Glass" build, scaled to 1280×800; the wishlist and the price
+history in them are sample data). The promo tiles, the icon and the version badges are still drawn by the
+scripts in `scripts/generate-assets/`, from the extension's own colour palette.
 
 ## Layout
 
@@ -33,10 +33,14 @@ Each screenshot language folder has the same four shots, same order:
 1. `1-product-page.png` (1280×800) — price history, cross-platform prices, trophy info
 2. `2-live-search.png` (1280×800) — the live search-suggestions dropdown
 3. `3-stats-dashboard.png` (1280×800) — the Library & Wishlist stats card in settings
-4. `4-popup.png` (640×400) — the toolbar popup
+4. `4-popup.png` (1280×800) — the toolbar popup on the extension's own backdrop
 
-Chrome Web Store accepts 1280×800 or 640×400 for screenshots (don't mix ratios within one upload
-if it complains — these are grouped by size already: 1–3 are 1280×800, 4 is 640×400).
+Chrome Web Store accepts 1280×800 or 640×400 for screenshots; all eight here are 1280×800.
+
+To retake them: load `extension/` unpacked in Chrome (the `chrome-devtools` tooling can do it), set the
+language in Settings, sample data in storage (a wishlist, a few owned games and a short PlayStation price
+history), open a store product page / the search box / Settings / the popup page, capture at 1.5× and
+scale to 1280×800. Hide the signed-in account menu before capturing.
 
 ## Why `docs/assets/` has its own copies of a few images
 

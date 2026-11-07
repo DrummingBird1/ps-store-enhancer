@@ -386,10 +386,10 @@
     "message": "Deine Wunschliste ist leer"
   },
   "wishlistAddBtn": {
-    "message": "★ Zur Wunschliste"
+    "message": "Zur Wunschliste"
   },
   "wishlistInBtn": {
-    "message": "★ Auf Wunschliste (klick zum Entfernen)"
+    "message": "Auf Wunschliste (klick zum Entfernen)"
   },
   "wishlistRemoved": {
     "message": "Von der Wunschliste entfernt"
@@ -421,7 +421,7 @@
     "message": "Aktueller Preis"
   },
   "wishlistCheckNow": {
-    "message": "🔄 Preise jetzt prüfen"
+    "message": "Preise jetzt prüfen"
   },
   "wishlistChecking": {
     "message": "Prüfe…"
@@ -430,7 +430,7 @@
     "message": "Preise aktualisiert"
   },
   "supportDev": {
-    "message": "❤️ Entwicklung unterstützen"
+    "message": "Entwicklung unterstützen"
   },
   "supportDevDesc": {
     "message": "Gefällt dir PS Store Enhancer? Unterstütze die Entwicklung auf Ko-fi, Buy Me a Coffee oder Patreon."
@@ -469,10 +469,10 @@
     "message": "Exportiere deine manuell markierten Spiele als JSON oder stelle aus einer früheren Sicherung wieder her."
   },
   "exportBtn": {
-    "message": "📤 JSON exportieren"
+    "message": "JSON exportieren"
   },
   "importBtn": {
-    "message": "📥 JSON importieren"
+    "message": "JSON importieren"
   },
   "exportSuccess": {
     "message": "Exportiert"
@@ -519,7 +519,7 @@
     "message": "Am PC ab"
   },
   "whatsNewTitle": {
-    "message": "🎉 Neu in v$VERSION$",
+    "message": "Neu in v$VERSION$",
     "placeholders": {
       "version": {
         "content": "$1"
@@ -788,13 +788,13 @@
     "message": "Die letzten Ereignisse von API-Aufrufen und der PSN-Verbindung, nur auf diesem Gerät gespeichert. Tokens und Passwörter werden nie aufgezeichnet. Kopiere dies, wenn du ein Problem meldest."
   },
   "diagRefresh": {
-    "message": "🔄 Aktualisieren"
+    "message": "Aktualisieren"
   },
   "diagCopy": {
-    "message": "📋 Kopieren"
+    "message": "Kopieren"
   },
   "diagClear": {
-    "message": "🗑 Protokoll löschen"
+    "message": "Protokoll löschen"
   },
   "diagEmpty": {
     "message": "Noch keine Ereignisse aufgezeichnet."
@@ -899,7 +899,7 @@
     "message": "Wöchentliche Zusammenfassung"
   },
   "shareWishlistBtn": {
-    "message": "🔗 Link zum Teilen kopieren"
+    "message": "Link zum Teilen kopieren"
   },
   "shareWishlistDesc": {
     "message": "Der Link enthält nur Spielnamen und zuletzt gesehene PC-Preise (keine Ziele oder Notizen) und ist schreibgeschützt. Jeder mit dem Link kann die Liste sehen."
@@ -985,28 +985,28 @@
     "message": "Nein danke"
   },
   "chl_2_7_0_1": {
-    "message": "🎯 Exakte Preise im Plattformvergleich – genau das richtige Spiel, nie ein DLC, eine Karte oder ein Nachfolger"
+    "message": "Exakte Preise im Plattformvergleich – genau das richtige Spiel, nie ein DLC, eine Karte oder ein Nachfolger"
   },
   "chl_2_7_0_2": {
-    "message": "📊 Metacritic- und Steam-Bewertungen von CheapShark (OpenCritic verlangt jetzt einen API-Schlüssel und funktionierte nicht mehr)"
+    "message": "Metacritic- und Steam-Bewertungen von CheapShark (OpenCritic verlangt jetzt einen API-Schlüssel und funktionierte nicht mehr)"
   },
   "chl_2_7_0_3": {
-    "message": "📉 Der Preis-Einblick nutzt nur echte Daten: PC-Tiefstpreis, heute günstigster Preis und dein aufgezeichneter Verlauf"
+    "message": "Der Preis-Einblick nutzt nur echte Daten: PC-Tiefstpreis, heute günstigster Preis und dein aufgezeichneter Verlauf"
   },
   "chl_2_7_0_4": {
-    "message": "🛠 Diagnoseprotokoll, sicherere PSN-Anmeldung, Rabatt-Ziele in %, Notizen, Sortierung, Wochenübersicht und „Alle meine Daten löschen“"
+    "message": "Diagnoseprotokoll, sicherere PSN-Anmeldung, Rabatt-Ziele in %, Notizen, Sortierung, Wochenübersicht und „Alle meine Daten löschen“"
   },
   "chl_2_7_0_5": {
-    "message": "🧩 Karten der Produktseite umsortieren, ausblenden oder einklappen; neues Design mit hohem Kontrast"
+    "message": "Karten der Produktseite umsortieren, ausblenden oder einklappen; neues Design mit hohem Kontrast"
   },
   "chl_2_7_0_6": {
-    "message": "🌍 Sechs neue Sprachen: Italiano, Polski, Türkçe, Nederlands, 简体中文 und 繁體中文"
+    "message": "Sechs neue Sprachen: Italiano, Polski, Türkçe, Nederlands, 简体中文 und 繁體中文"
   },
   "chl_2_7_1_1": {
-    "message": "🔌 PSN-Verbindung repariert – die Erweiterung nutzte die falsche App-Identität, daher lehnte Sony sie immer ab"
+    "message": "PSN-Verbindung repariert – die Erweiterung nutzte die falsche App-Identität, daher lehnte Sony sie immer ab"
   },
   "chl_2_7_1_2": {
-    "message": "🛠 Klarere PSN-Fehler, die den fehlgeschlagenen Schritt nennen, und Freigabe mit einem Klick, wenn Chrome Sonys Weiterleitung verbirgt"
+    "message": "Klarere PSN-Fehler, die den fehlgeschlagenen Schritt nennen, und Freigabe mit einem Klick, wenn Chrome Sonys Weiterleitung verbirgt"
   },
   "psHistLabel": {
     "message": "PlayStation Store · von deinem Browser aufgezeichnet"
@@ -1075,7 +1075,7 @@
     "message": "Noch nicht genug PlayStation-Preisverlauf. Er wächst mit jedem Tag, an dem du die Seite dieses Spiels besuchst."
   },
   "checkPageBtn": {
-    "message": "🔍 Seite prüfen"
+    "message": "Seite prüfen"
   },
   "checkPageNoStore": {
     "message": "Öffne zuerst eine Seite im PlayStation Store und versuche es dann erneut."
@@ -1147,12 +1147,21 @@
     "message": "Noch keine Anfragen aufgezeichnet."
   },
   "chl_3_0_1": {
-    "message": "🛡️ Am echten PlayStation Store geprüft: falsch aufgezeichneten Preis, die Filter für Add-ons, DLC und besessene Spiele sowie leere Lücken in den Suchergebnissen behoben"
+    "message": "Am echten PlayStation Store geprüft: falsch aufgezeichneten Preis, die Filter für Add-ons, DLC und besessene Spiele sowie leere Lücken in den Suchergebnissen behoben"
   },
   "chl_3_0_2": {
-    "message": "📈 PlayStation-Preisverlauf: der niedrigste Preis, den du gesehen hast, Angebotsdetails und Trend, erstellt aus den Preisen, die dein Browser aufzeichnet (auch aus Suchergebnissen und deiner Wunschliste)"
+    "message": "PlayStation-Preisverlauf: der niedrigste Preis, den du gesehen hast, Angebotsdetails und Trend, erstellt aus den Preisen, die dein Browser aufzeichnet (auch aus Suchergebnissen und deiner Wunschliste)"
   },
   "chl_3_0_3": {
-    "message": "🔍 Neu: „Seite prüfen“ im Popup und ein lokales Netzwerkprotokoll in den Einstellungen: sieh nach, was funktioniert und was die Erweiterung angefragt hat"
+    "message": "Neu: „Seite prüfen“ im Popup und ein lokales Netzwerkprotokoll in den Einstellungen: sieh nach, was funktioniert und was die Erweiterung angefragt hat"
+  },
+  "navAppearance": {
+    "message": "Darstellung & Sprache"
+  },
+  "navLibrary": {
+    "message": "Bibliothek & Wunschliste"
+  },
+  "chl_3_0_4": {
+    "message": "Neues Design für alles: die Karten im Store, das Popup und die Einstellungen, dunkel, hell und mit hohem Kontrast"
   }
 }

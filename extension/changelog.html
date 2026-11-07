@@ -5,31 +5,40 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>PS Store Enhancer — Changelog</title>
 <style>
+/* "Midnight Glass" changelog. Tokens first; themes are body classes set by changelog.js. */
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#0a0f1a;color:#e2e8f0;line-height:1.65;min-height:100vh;transition:background .25s,color .25s}
-body.theme-light{background:#f5f7fb;color:#1a202c}
+body{
+  --bg:#070b16; --glow:radial-gradient(60% 35% at 50% 0%,rgba(61,125,255,.22),transparent 70%);
+  --panel:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.03)); --code:rgba(255,255,255,.09); --line:rgba(255,255,255,.10);
+  --text:#eef2fb; --dim:#a3aec6; --faint:#8590a8; --accent:#5aa3ff; --accent-soft:rgba(90,163,255,.16);
+  font-family:"Rubik","SST","Segoe UI Variable Text","Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,Roboto,"Noto Sans Hebrew","Arial Hebrew",sans-serif;
+  background:var(--bg);background-image:var(--glow);background-repeat:no-repeat;color:var(--text);line-height:1.65;min-height:100vh;transition:background .25s,color .25s}
+body.theme-light{--bg:#eef2fa;--glow:radial-gradient(60% 35% at 50% 0%,rgba(61,125,255,.16),transparent 70%);--panel:linear-gradient(180deg,rgba(255,255,255,.95),rgba(255,255,255,.75));--code:rgba(15,30,70,.07);--line:rgba(15,30,70,.12);--text:#0d1630;--dim:#4b5878;--faint:#66728f;--accent:#1769e0;--accent-soft:rgba(23,105,224,.10)}
+body.theme-contrast{--bg:#000;--glow:none;--panel:#000;--code:#333;--line:#fff;--text:#fff;--dim:#fff;--faint:#e6e6e6;--accent:#ffd400;--accent-soft:#000}
+body.theme-contrast a{color:#ffd400;text-decoration:underline}
+body.theme-contrast .release{border-width:2px}
+a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 .container{max-width:720px;margin:0 auto;padding:40px 24px 80px}
-h1{font-size:28px;font-weight:800;background:linear-gradient(135deg,#4da6ff,#0070d1,#003087);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
-.subtitle{color:#718096;font-size:14px;margin-bottom:32px}
-.release{background:#131b2e;border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:24px;margin-bottom:20px;transition:background .25s,border-color .25s}
-body.theme-light .release{background:#fff;border-color:rgba(0,0,0,.06)}
-body.theme-contrast{background:#000;color:#fff}
-body.theme-contrast .release{background:#000;border:2px solid #fff}
-body.theme-contrast .release p,body.theme-contrast .subtitle,body.theme-contrast .release h3{color:#fff}
-body.theme-contrast a,body.theme-contrast .release h2,body.theme-contrast .release h2 .ver{color:#ffd400}
-.release h2{font-size:18px;color:#4da6ff;margin-bottom:4px;display:flex;align-items:center;gap:10px}
-.release h2 .ver{background:rgba(0,112,209,.15);color:#4da6ff;padding:2px 10px;border-radius:6px;font-size:13px}
-.release .date{font-size:12px;color:#718096;margin-bottom:14px}
-.release h3{font-size:14px;font-weight:600;color:#a0aec0;margin:14px 0 6px;text-transform:uppercase;letter-spacing:.5px}
-body.theme-light .release h3{color:#4a5568}
-.release ul{padding-left:20px;font-size:14px}
-.release li{margin-bottom:5px}
-.release li code{background:rgba(255,255,255,.08);padding:1px 6px;border-radius:4px;font-size:12px}
-body.theme-light .release li code{background:rgba(0,0,0,.06)}
-.release p{font-size:14px;color:#a0aec0;margin-top:6px}
-.back{display:inline-block;color:#4da6ff;text-decoration:none;margin-bottom:24px;font-size:13px}
+h1{font-size:30px;line-height:1.15;font-weight:600;letter-spacing:-.01em;background:linear-gradient(135deg,#8ec0ff,#5aa3ff 45%,#8fe4ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
+body.theme-light h1{background:linear-gradient(135deg,#1769e0,#4a8dff);-webkit-background-clip:text;background-clip:text}
+body.theme-contrast h1{background:none;-webkit-text-fill-color:#ffd400;color:#ffd400}
+.subtitle{color:var(--dim);font-size:14px;margin-bottom:32px}
+.release{background:var(--panel);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border:1px solid var(--line);border-radius:20px;padding:24px;margin-bottom:20px;box-shadow:0 10px 40px rgba(0,0,0,.25);transition:border-color .25s}
+body.theme-light .release{box-shadow:0 10px 34px rgba(30,50,110,.10)}
+.release h2{font-size:19px;font-weight:600;color:var(--text);margin-bottom:4px;display:flex;align-items:center;gap:10px}
+.release h2 .ver{background:var(--accent-soft);color:var(--accent);padding:3px 12px;border-radius:999px;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums}
+.release .date{font-size:13px;color:var(--faint);margin-bottom:14px}
+.release h3{font-size:12px;font-weight:600;color:var(--faint);margin:18px 0 8px;text-transform:uppercase;letter-spacing:.08em}
+[dir="rtl"] .release h3{letter-spacing:0}
+.release ul{list-style:none;padding:0;font-size:14px;display:grid;gap:8px}
+.release li{position:relative;padding-inline-start:20px}
+.release li::before{content:"";position:absolute;inset-inline-start:2px;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.release li code{background:var(--code);padding:1px 7px;border-radius:6px;font-size:12px}
+.release p{font-size:14px;color:var(--dim);margin-top:6px}
+.back{display:inline-block;color:var(--accent);text-decoration:none;margin-bottom:24px;font-size:14px;font-weight:500}
 .back:hover{text-decoration:underline}
-.foot{margin-top:40px;font-size:11px;color:#4a5568;text-align:center}
+.foot{margin-top:40px;font-size:12px;color:var(--faint);text-align:center}
+@media (prefers-reduced-motion: reduce){*{transition:none !important}}
 </style>
 </head>
 <body>
@@ -53,6 +62,8 @@ body.theme-light .release li code{background:rgba(0,0,0,.06)}
     </ul>
     <h3>New</h3>
     <ul>
+      <li><strong>A new look, "Midnight Glass".</strong> The cards on store pages, the toolbar popup, the settings page, the welcome page and this changelog share one design: glass surfaces, a bigger headline number for the lowest price, one icon set instead of emoji, and the same colours in dark, light and high contrast (including right-to-left languages). The settings page gets a side navigation. Nothing was removed.</li>
+      <li><strong>Cards stay on the page.</strong> The store re-renders its page a few seconds after it loads (for example once it knows you are signed in) and that removed the cards. They are now put back.</li>
       <li><strong>PlayStation price history</strong> in the Price Insight card: the lowest PlayStation price you have seen, today's price, the sale (was, % off, when it ends), the PlayStation Plus price when shown, the store's own 30-day low, a trend and the gap to the cheapest PC price. Built only from prices your browser recorded; it says "not enough history yet" until there are two different days. Keeps the latest 400 days with a recorded price (it was 120) and is included in the JSON backup.</li>
       <li><strong>Prices are recorded from more places:</strong> search results update the history of games you already looked at or wishlisted, and once a day the saved page of each wishlisted game is read in the background (at most 20 pages a day, no cookies, store.playstation.com only). Turning off <em>Price insight</em> in Settings stops the search-result recording and the daily read.</li>
       <li><strong>Check this page</strong> (toolbar popup): runs every lookup the extension depends on in the current store tab and shows which work, which work through a fallback and which are not found. If a store redesign breaks one lookup, only that card is switched off on that page and the Diagnostics log says why.</li>

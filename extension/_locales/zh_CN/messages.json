@@ -386,10 +386,10 @@
     "message": "您的愿望单是空的"
   },
   "wishlistAddBtn": {
-    "message": "★ 加入愿望单"
+    "message": "加入愿望单"
   },
   "wishlistInBtn": {
-    "message": "★ 已在愿望单（点击移除）"
+    "message": "已在愿望单（点击移除）"
   },
   "wishlistRemoved": {
     "message": "已从愿望单移除"
@@ -421,7 +421,7 @@
     "message": "最近看到"
   },
   "wishlistCheckNow": {
-    "message": "🔄 立即检查价格"
+    "message": "立即检查价格"
   },
   "wishlistChecking": {
     "message": "正在检查…"
@@ -430,7 +430,7 @@
     "message": "价格已更新"
   },
   "supportDev": {
-    "message": "❤️ 支持开发"
+    "message": "支持开发"
   },
   "supportDevDesc": {
     "message": "喜欢 PS Store Enhancer 吗？欢迎通过 Ko-fi、Buy Me a Coffee 或 Patreon 支持开发。"
@@ -469,10 +469,10 @@
     "message": "将手动标记的已拥有游戏导出为 JSON 文件，或从之前的备份恢复。"
   },
   "exportBtn": {
-    "message": "📤 导出 JSON"
+    "message": "导出 JSON"
   },
   "importBtn": {
-    "message": "📥 导入 JSON"
+    "message": "导入 JSON"
   },
   "exportSuccess": {
     "message": "已导出"
@@ -519,7 +519,7 @@
     "message": "PC 起售价"
   },
   "whatsNewTitle": {
-    "message": "🎉 v$VERSION$ 新功能",
+    "message": "v$VERSION$ 新功能",
     "placeholders": {
       "version": {
         "content": "$1"
@@ -788,13 +788,13 @@
     "message": "最近的 API 调用和 PSN 连接事件，仅保存在此设备上。绝不会记录令牌和密码。报告问题时请复制此内容。"
   },
   "diagRefresh": {
-    "message": "🔄 刷新"
+    "message": "刷新"
   },
   "diagCopy": {
-    "message": "📋 复制"
+    "message": "复制"
   },
   "diagClear": {
-    "message": "🗑 清除日志"
+    "message": "清除日志"
   },
   "diagEmpty": {
     "message": "尚无记录的事件。"
@@ -899,7 +899,7 @@
     "message": "每周摘要"
   },
   "shareWishlistBtn": {
-    "message": "🔗 复制分享链接"
+    "message": "复制分享链接"
   },
   "shareWishlistDesc": {
     "message": "链接只包含游戏名称和最近看到的 PC 价格（不含目标价和备注），且为只读。任何拿到链接的人都能查看该列表。"
@@ -985,28 +985,28 @@
     "message": "不用了"
   },
   "chl_2_7_0_1": {
-    "message": "🎯 跨平台价格更准确 — 就是对应的那款游戏，不会再混入 DLC、地图或续作"
+    "message": "跨平台价格更准确 — 就是对应的那款游戏，不会再混入 DLC、地图或续作"
   },
   "chl_2_7_0_2": {
-    "message": "📊 评分改用 CheapShark 提供的 Metacritic 和 Steam 评分（OpenCritic 现需 API 密钥，已无法使用）"
+    "message": "评分改用 CheapShark 提供的 Metacritic 和 Steam 评分（OpenCritic 现需 API 密钥，已无法使用）"
   },
   "chl_2_7_0_3": {
-    "message": "📉 价格洞察只使用真实数据：PC 历史最低价、今日最低价和您自己记录的走势"
+    "message": "价格洞察只使用真实数据：PC 历史最低价、今日最低价和您自己记录的走势"
   },
   "chl_2_7_0_4": {
-    "message": "🛠 诊断日志、更安全的 PSN 登录、按折扣百分比设定目标、备注、排序、每周摘要和“清除我的所有数据”按钮"
+    "message": "诊断日志、更安全的 PSN 登录、按折扣百分比设定目标、备注、排序、每周摘要和“清除我的所有数据”按钮"
   },
   "chl_2_7_0_5": {
-    "message": "🧩 可重新排序、隐藏或折叠商品页卡片；新增高对比度主题"
+    "message": "可重新排序、隐藏或折叠商品页卡片；新增高对比度主题"
   },
   "chl_2_7_0_6": {
-    "message": "🌍 新增六种语言：Italiano、Polski、Türkçe、Nederlands、简体中文和繁體中文"
+    "message": "新增六种语言：Italiano、Polski、Türkçe、Nederlands、简体中文和繁體中文"
   },
   "chl_2_7_1_1": {
-    "message": "🔌 修复 PSN 连接 — 扩展使用了错误的应用身份，因此 Sony 一直拒绝连接"
+    "message": "修复 PSN 连接 — 扩展使用了错误的应用身份，因此 Sony 一直拒绝连接"
   },
   "chl_2_7_1_2": {
-    "message": "🛠 更清晰的 PSN 错误提示（会指出失败的步骤），Chrome 隐藏 Sony 重定向时可一键授权"
+    "message": "更清晰的 PSN 错误提示（会指出失败的步骤），Chrome 隐藏 Sony 重定向时可一键授权"
   },
   "psHistLabel": {
     "message": "PlayStation Store · 由您的浏览器记录"
@@ -1075,7 +1075,7 @@
     "message": "PlayStation 价格历史还不够多。您每天访问该游戏页面都会积累一点。"
   },
   "checkPageBtn": {
-    "message": "🔍 检查此页面"
+    "message": "检查此页面"
   },
   "checkPageNoStore": {
     "message": "请先打开 PlayStation Store 页面，然后重试。"
@@ -1147,12 +1147,21 @@
     "message": "尚未记录任何请求。"
   },
   "chl_3_0_1": {
-    "message": "🛡️ 已在真实的 PlayStation Store 上验证：修复了记录错误的价格、附加内容、DLC 和已拥有游戏的筛选，以及搜索结果中的空白"
+    "message": "已在真实的 PlayStation Store 上验证：修复了记录错误的价格、附加内容、DLC 和已拥有游戏的筛选，以及搜索结果中的空白"
   },
   "chl_3_0_2": {
-    "message": "📈 PlayStation 价格历史：您见过的最低价、优惠详情和走势，根据浏览器记录的价格生成（也包括搜索结果和您的愿望单）"
+    "message": "PlayStation 价格历史：您见过的最低价、优惠详情和走势，根据浏览器记录的价格生成（也包括搜索结果和您的愿望单）"
   },
   "chl_3_0_3": {
-    "message": "🔍 弹出窗口新增“检查此页面”，设置中新增本地网络日志：查看哪些功能正常，以及扩展发出了哪些请求"
+    "message": "弹出窗口新增“检查此页面”，设置中新增本地网络日志：查看哪些功能正常，以及扩展发出了哪些请求"
+  },
+  "navAppearance": {
+    "message": "外观和语言"
+  },
+  "navLibrary": {
+    "message": "游戏库和心愿单"
+  },
+  "chl_3_0_4": {
+    "message": "全新外观:商店页面卡片、弹出窗口和设置页面,支持深色、浅色和高对比度"
   }
 }
