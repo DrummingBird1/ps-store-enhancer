@@ -88,6 +88,9 @@ def build_firefox() -> int:
         json.dumps(firefox_manifest(manifest), indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
     )
     (unpacked_path / "types.d.ts").unlink(missing_ok=True)
+    # content-script CSS names the extension by its own URL scheme
+    fonts_css = unpacked_path / "fonts-content.css"
+    fonts_css.write_text(fonts_css.read_text(encoding="utf-8").replace("chrome-extension://", "moz-extension://"), encoding="utf-8")
 
     n = zip_dir(unpacked_path, zip_path, "ps-store-enhancer-firefox")
     print(f"{zip_name}: {n} files, {zip_path.stat().st_size} bytes")

@@ -51,6 +51,7 @@
         "content.js"
       ],
       "css": [
+        "fonts-content.css",
         "styles.css"
       ],
       "run_at": "document_idle"
@@ -72,6 +73,7 @@
     {
       "resources": [
         "styles.css",
+        "fonts/*.woff2",
         "data/trophies.json",
         "_locales/*/messages.json"
       ],
