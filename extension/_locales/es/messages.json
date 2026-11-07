@@ -386,10 +386,10 @@
     "message": "Tu lista de deseos está vacía"
   },
   "wishlistAddBtn": {
-    "message": "★ Añadir a deseos"
+    "message": "Añadir a deseos"
   },
   "wishlistInBtn": {
-    "message": "★ En deseos (clic para quitar)"
+    "message": "En deseos (clic para quitar)"
   },
   "wishlistRemoved": {
     "message": "Eliminado de la lista de deseos"
@@ -421,7 +421,7 @@
     "message": "Precio actual"
   },
   "wishlistCheckNow": {
-    "message": "🔄 Comprobar precios ahora"
+    "message": "Comprobar precios ahora"
   },
   "wishlistChecking": {
     "message": "Comprobando…"
@@ -430,7 +430,7 @@
     "message": "Precios actualizados"
   },
   "supportDev": {
-    "message": "❤️ Apoya el desarrollo"
+    "message": "Apoya el desarrollo"
   },
   "supportDevDesc": {
     "message": "¿Te gusta PS Store Enhancer? Apoya su desarrollo en Ko-fi, Buy Me a Coffee o Patreon."
@@ -469,10 +469,10 @@
     "message": "Exporta tus juegos marcados manualmente a JSON, o restaura desde una copia anterior."
   },
   "exportBtn": {
-    "message": "📤 Exportar JSON"
+    "message": "Exportar JSON"
   },
   "importBtn": {
-    "message": "📥 Importar JSON"
+    "message": "Importar JSON"
   },
   "exportSuccess": {
     "message": "Exportado"
@@ -519,7 +519,7 @@
     "message": "En PC desde"
   },
   "whatsNewTitle": {
-    "message": "🎉 Novedades de la v$VERSION$",
+    "message": "Novedades de la v$VERSION$",
     "placeholders": {
       "version": {
         "content": "$1"
@@ -788,13 +788,13 @@
     "message": "Los últimos eventos de las llamadas a API y de la conexión PSN, guardados solo en este dispositivo. Nunca se registran tokens ni contraseñas. Cópialo al informar de un problema."
   },
   "diagRefresh": {
-    "message": "🔄 Actualizar"
+    "message": "Actualizar"
   },
   "diagCopy": {
-    "message": "📋 Copiar"
+    "message": "Copiar"
   },
   "diagClear": {
-    "message": "🗑 Borrar registro"
+    "message": "Borrar registro"
   },
   "diagEmpty": {
     "message": "Aún no se han registrado eventos."
@@ -899,7 +899,7 @@
     "message": "Resumen semanal"
   },
   "shareWishlistBtn": {
-    "message": "🔗 Copiar enlace para compartir"
+    "message": "Copiar enlace para compartir"
   },
   "shareWishlistDesc": {
     "message": "El enlace solo contiene nombres de juegos y los últimos precios de PC (sin objetivos ni notas) y es de solo lectura. Cualquiera con el enlace puede ver la lista."
@@ -985,28 +985,28 @@
     "message": "No, gracias"
   },
   "chl_2_7_0_1": {
-    "message": "🎯 Precios multiplataforma exactos: el juego correcto, nunca un DLC, un mapa o una secuela"
+    "message": "Precios multiplataforma exactos: el juego correcto, nunca un DLC, un mapa o una secuela"
   },
   "chl_2_7_0_2": {
-    "message": "📊 Puntuaciones de Metacritic y Steam desde CheapShark (OpenCritic ahora exige una clave API y había dejado de funcionar)"
+    "message": "Puntuaciones de Metacritic y Steam desde CheapShark (OpenCritic ahora exige una clave API y había dejado de funcionar)"
   },
   "chl_2_7_0_3": {
-    "message": "📉 El análisis de precio usa solo datos reales: mínimo histórico en PC, el más barato hoy y tu tendencia registrada"
+    "message": "El análisis de precio usa solo datos reales: mínimo histórico en PC, el más barato hoy y tu tendencia registrada"
   },
   "chl_2_7_0_4": {
-    "message": "🛠 Registro de diagnóstico, inicio de sesión PSN más seguro, objetivos en %, notas, orden, resumen semanal y botón «Borrar todos mis datos»"
+    "message": "Registro de diagnóstico, inicio de sesión PSN más seguro, objetivos en %, notas, orden, resumen semanal y botón «Borrar todos mis datos»"
   },
   "chl_2_7_0_5": {
-    "message": "🧩 Reordena, oculta o contrae las tarjetas de la página del producto; nuevo tema de alto contraste"
+    "message": "Reordena, oculta o contrae las tarjetas de la página del producto; nuevo tema de alto contraste"
   },
   "chl_2_7_0_6": {
-    "message": "🌍 Seis idiomas nuevos: Italiano, Polski, Türkçe, Nederlands, 简体中文 y 繁體中文"
+    "message": "Seis idiomas nuevos: Italiano, Polski, Türkçe, Nederlands, 简体中文 y 繁體中文"
   },
   "chl_2_7_1_1": {
-    "message": "🔌 Conexión con PSN corregida: la extensión usaba una identidad de aplicación incorrecta y Sony siempre la rechazaba"
+    "message": "Conexión con PSN corregida: la extensión usaba una identidad de aplicación incorrecta y Sony siempre la rechazaba"
   },
   "chl_2_7_1_2": {
-    "message": "🛠 Errores de PSN más claros que indican el paso que falló y acceso con un clic cuando Chrome oculta la redirección de Sony"
+    "message": "Errores de PSN más claros que indican el paso que falló y acceso con un clic cuando Chrome oculta la redirección de Sony"
   },
   "psHistLabel": {
     "message": "PlayStation Store · registrado por tu navegador"
@@ -1075,7 +1075,7 @@
     "message": "Aún no hay suficiente historial de precios de PlayStation. Se va creando cada día que visitas la página de este juego."
   },
   "checkPageBtn": {
-    "message": "🔍 Comprobar esta página"
+    "message": "Comprobar esta página"
   },
   "checkPageNoStore": {
     "message": "Abre primero una página de PlayStation Store y vuelve a intentarlo."
@@ -1147,12 +1147,21 @@
     "message": "Aún no se ha registrado ninguna solicitud."
   },
   "chl_3_0_1": {
-    "message": "🛡️ Probado con la PlayStation Store real: se corrigió un precio mal registrado, los filtros de add-ons, DLC y juegos que ya tienes, y los huecos en blanco en los resultados de búsqueda"
+    "message": "Probado con la PlayStation Store real: se corrigió un precio mal registrado, los filtros de add-ons, DLC y juegos que ya tienes, y los huecos en blanco en los resultados de búsqueda"
   },
   "chl_3_0_2": {
-    "message": "📈 Historial de precios de PlayStation: el precio más bajo que has visto, detalles de las ofertas y tendencia, creado con los precios que registra tu navegador (también de los resultados de búsqueda y de tu lista de deseos)"
+    "message": "Historial de precios de PlayStation: el precio más bajo que has visto, detalles de las ofertas y tendencia, creado con los precios que registra tu navegador (también de los resultados de búsqueda y de tu lista de deseos)"
   },
   "chl_3_0_3": {
-    "message": "🔍 Nuevo «Comprobar esta página» en la ventana emergente y un registro de red local en Ajustes: mira qué funciona y qué solicitó la extensión"
+    "message": "Nuevo «Comprobar esta página» en la ventana emergente y un registro de red local en Ajustes: mira qué funciona y qué solicitó la extensión"
+  },
+  "navAppearance": {
+    "message": "Aspecto e idioma"
+  },
+  "navLibrary": {
+    "message": "Biblioteca y lista de deseos"
+  },
+  "chl_3_0_4": {
+    "message": "Un nuevo aspecto para todo: las tarjetas de la tienda, el popup y los ajustes, en oscuro, claro y alto contraste"
   }
 }

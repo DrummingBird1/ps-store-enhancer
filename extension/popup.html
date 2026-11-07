@@ -3,72 +3,132 @@
 <head>
 <meta charset="utf-8">
 <style>
+/* "Midnight Glass" popup. Tokens first; themes are body classes set by popup.js (theme-light, theme-contrast). */
 *{margin:0;padding:0;box-sizing:border-box}
-body{width:330px;font-family:"SST","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#0d1b2a;color:#fff;transition:background .25s,color .25s}
-body.theme-light{background:#fff;color:#1a202c}
-body.theme-light .tr{background:#f5f7fb;border-color:rgba(0,0,0,.06)}
-body.theme-light .tl span:last-child{color:#4a5568}
-body.theme-light .sec-t,body.theme-light .ft span{color:#718096}
-body.theme-light .sl{background:#cbd5e0}
-.hdr{background:linear-gradient(135deg,#003087,#0070d1);padding:16px 20px;display:flex;align-items:center;gap:10px}
-.hdr h1{font-size:15px;font-weight:700}.hdr p{font-size:10px;opacity:.7;margin-top:2px}
-.sec{padding:14px 18px 4px}.sec-t{font-size:9px;text-transform:uppercase;letter-spacing:1.2px;color:#718096;margin-bottom:8px}
-.tr{display:flex;align-items:center;justify-content:space-between;background:#1b2838;border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:10px 14px;margin-bottom:6px;transition:border-color .2s}
-.tr:hover{border-color:rgba(0,112,209,.25)}
-.tl span:first-child{font-size:12px;font-weight:600;display:block}.tl span:last-child{font-size:9px;color:#a0aec0}
-.sw{position:relative;width:40px;height:22px;flex-shrink:0}.sw input{opacity:0;width:0;height:0}
-.sl{position:absolute;cursor:pointer;inset:0;background:#333;border-radius:22px;transition:background .25s}
-.sl::before{content:"";position:absolute;height:16px;width:16px;right:3px;bottom:3px;background:#fff;border-radius:50%;transition:transform .25s}
-.sw input:checked+.sl{background:#0070d1}.sw input:checked+.sl::before{transform:translateX(-18px)}
-[dir="ltr"] .sl::before{right:auto;left:3px}
-[dir="ltr"] .sw input:checked+.sl::before{transform:translateX(18px)}
-.psn-row{cursor:pointer}.psn-icon{font-size:18px}
-.tags{padding:6px 18px 10px;display:flex;flex-wrap:wrap;gap:5px}
-.tag{font-size:9px;padding:3px 8px;background:rgba(0,112,209,.1);color:#4da6ff;border-radius:20px;border:1px solid rgba(0,112,209,.15)}
-.status{display:flex;align-items:center;gap:5px;padding:6px 18px 10px;font-size:10px;color:#6dc849}
-.dot{width:5px;height:5px;background:#6dc849;border-radius:50%;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-.ft{padding:10px 18px;border-top:1px solid rgba(255,255,255,.05);display:flex;justify-content:space-between;align-items:center}
-.ft span{font-size:9px;color:#4a5568}
-.opt{font-size:10px;color:#4da6ff;text-decoration:none;cursor:pointer}.opt:hover{color:#fff}
-.support-row{display:flex;gap:6px;margin:0 18px 10px}
-.support-link{flex:1;display:block;padding:8px 6px;text-align:center;font-size:10px;font-weight:600;color:#ff7eb6;background:rgba(255,126,182,.08);border:1px solid rgba(255,126,182,.25);border-radius:8px;text-decoration:none;transition:background .2s,border-color .2s;white-space:nowrap}
-.support-link:hover{background:rgba(255,126,182,.16);border-color:rgba(255,126,182,.45)}
-body.theme-light .support-link{color:#d6336c;background:rgba(214,51,108,.06);border-color:rgba(214,51,108,.2)}
-body.theme-contrast{background:#000;color:#fff}
-body.theme-contrast .tr,body.theme-contrast .wn-card{background:#000;border:2px solid #fff}
-body.theme-contrast .tl span:last-child,body.theme-contrast .sec-t,body.theme-contrast .ft span,body.theme-contrast .wn-card ul{color:#fff}
-body.theme-contrast .tag,body.theme-contrast .support-link{background:#000;border:2px solid #fff;color:#fff}
-body.theme-contrast .opt,body.theme-contrast .wn-top,body.theme-contrast .wn-top button{color:#ffd400;text-decoration:underline}
-body.theme-contrast .sl{background:#555;outline:2px solid #fff}
-body.theme-contrast .sw input:checked+.sl{background:#ffd400}
-a:focus-visible,button:focus-visible,[tabindex]:focus-visible,.sw input:focus-visible+.sl{outline:3px solid #4da6ff;outline-offset:2px}
+body{
+  --bg:#070b16; --glow:radial-gradient(80% 60% at 15% 0%,rgba(61,125,255,.28),transparent 70%);
+  --panel:rgba(255,255,255,.05); --panel2:rgba(255,255,255,.09); --line:rgba(255,255,255,.10);
+  --text:#eef2fb; --dim:#a3aec6; --faint:#8590a8;
+  --accent:#5aa3ff; --accent-deep:#1769e0; --accent-ink:#04122a; --accent-soft:rgba(90,163,255,.16);
+  --good:#5fd6a2; --good-soft:rgba(95,214,162,.14); --warn:#f3c65a; --bad:#ff6b6b; --pink:#f27ab0;
+  --head:linear-gradient(135deg,rgba(61,125,255,.40),rgba(61,125,255,.06));
+  --r:18px; --r-sm:12px;
+  width:330px; background:var(--bg); background-image:var(--glow); color:var(--text);
+  font-family:"Rubik","SST","Segoe UI Variable Text","Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,Roboto,"Noto Sans Hebrew","Arial Hebrew",sans-serif;
+  transition:background .25s,color .25s;
+}
+body.theme-light{
+  --bg:#eef2fa; --glow:radial-gradient(80% 60% at 15% 0%,rgba(61,125,255,.20),transparent 70%);
+  --panel:rgba(255,255,255,.8); --panel2:rgba(15,30,70,.07); --line:rgba(15,30,70,.12);
+  --text:#0d1630; --dim:#4b5878; --faint:#66728f;
+  --accent:#1769e0; --accent-deep:#1769e0; --accent-ink:#ffffff; --accent-soft:rgba(23,105,224,.12);
+  --good:#0f7f55; --good-soft:rgba(15,127,85,.12); --warn:#8f5f00; --bad:#c62828; --pink:#c2185b;
+  --head:linear-gradient(135deg,rgba(23,105,224,.18),rgba(23,105,224,.03));
+}
+body.theme-contrast{
+  --bg:#000; --glow:none; --panel:#000; --panel2:#333; --line:#fff;
+  --text:#fff; --dim:#fff; --faint:#e6e6e6;
+  --accent:#ffd400; --accent-deep:#ffd400; --accent-ink:#000; --accent-soft:#000;
+  --good:#3dff7a; --good-soft:#000; --warn:#ffd400; --bad:#ff6b6b; --pink:#fff; --head:#000;
+}
+svg.i{width:1.15em;height:1.15em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+a,button{font-family:inherit}
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible,.sw input:focus-visible+.sl{outline:3px solid var(--accent);outline-offset:2px}
+
+.hdr{display:flex;align-items:center;gap:12px;padding:16px 18px;background:var(--head)}
+body.theme-contrast .hdr{border-bottom:2px solid #fff}
+.logo{display:grid;place-items:center;width:32px;height:32px;border-radius:10px;background:var(--accent-deep);color:#fff;font-size:17px;flex:none;box-shadow:0 6px 18px rgba(23,105,224,.35)}
+body.theme-contrast .logo{background:#ffd400;color:#000;box-shadow:none}
+.hdr h1{font-size:15px;font-weight:600;line-height:1.2}
+.hdr p{font-size:11px;color:var(--dim);margin-top:2px;font-variant-numeric:tabular-nums}
+
+.sec{padding:14px 16px 0}
+.sec-t{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1.1px;color:var(--faint);margin:0 4px 8px}
+[dir="rtl"] .sec-t{letter-spacing:0}
+.tr{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:var(--r-sm);padding:10px 12px;margin-bottom:8px;transition:border-color .2s}
+body.theme-contrast .tr{border-width:2px}
+.tr:hover{border-color:color-mix(in srgb,var(--accent) 40%,transparent)}
+.tl{flex:1;min-width:0}
+.tl span:first-child{display:block;font-size:13px;font-weight:600}
+.tl span:not(:first-child){display:block;font-size:11px;color:var(--faint)}
+
+/* toggle */
+.sw{position:relative;width:42px;height:24px;flex-shrink:0}
+.sw input{opacity:0;width:0;height:0;position:absolute}
+.sl{position:absolute;cursor:pointer;inset:0;background:var(--panel2);border-radius:999px;transition:background .25s,box-shadow .25s}
+.sl::before{content:"";position:absolute;top:3px;inset-inline-start:3px;width:18px;height:18px;background:#fff;border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,.35);transition:transform .25s}
+.sw input:checked+.sl{background:var(--accent-deep);box-shadow:0 0 14px color-mix(in srgb,var(--accent) 45%,transparent)}
+.sw input:checked+.sl::before{transform:translateX(18px)}
+[dir="rtl"] .sw input:checked+.sl::before{transform:translateX(-18px)}
+body.theme-contrast .sl{outline:2px solid #fff;box-shadow:none}
+body.theme-contrast .sw input:checked+.sl{background:#ffd400;box-shadow:none}
+
+/* PSN row */
+.psn-row{cursor:pointer}
 .psn-actions{display:flex;align-items:center;gap:8px}
-.icon-btn{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:inherit;border-radius:6px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1}
-body.theme-light .icon-btn{background:#fff;border-color:rgba(0,0,0,.15)}
-.wipe{background:none;border:0;color:#ff6b6b;font-size:9px;cursor:pointer;padding:0;text-decoration:underline}
-@media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}}
-.wn-card{margin:12px 18px 0;padding:10px 14px;background:rgba(77,166,255,.08);border:1px solid rgba(77,166,255,.25);border-radius:8px}
-.wn-top{display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:700;color:#4da6ff}
-.wn-top button{background:none;border:none;color:#4da6ff;cursor:pointer;font-size:11px;padding:2px 4px}
-.check-btn{width:100%;padding:9px 10px;background:rgba(0,112,209,.12);border:1px solid rgba(0,112,209,.3);color:#4da6ff;border-radius:8px;cursor:pointer;font-size:11px;font-weight:600}
-.check-btn:hover{background:rgba(0,112,209,.2)}
-.check-list{list-style:none;margin:8px 0 0;font-size:10.5px}
-.check-list li{display:flex;align-items:baseline;gap:6px;padding:3px 0}
+.psn-icon{display:grid;place-items:center;width:30px;height:30px;border-radius:10px;background:var(--accent-soft);color:var(--accent);font-size:16px}
+.psn-icon .on,.psn-icon .off,.psn-icon .load{display:none}
+.psn-icon[data-state="on"]{background:var(--good-soft);color:var(--good)}
+.psn-icon[data-state="on"] .on,.psn-icon[data-state="off"] .off,.psn-icon[data-state="load"] .load{display:block}
+.icon-btn{display:grid;place-items:center;width:30px;height:30px;background:var(--panel2);border:1px solid var(--line);color:var(--text);border-radius:10px;cursor:pointer;font-size:15px}
+.icon-btn:hover{border-color:var(--accent)}
+.icon-btn:disabled{opacity:.5;cursor:wait}
+
+/* check this page */
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;border:1px solid transparent;border-radius:999px;cursor:pointer;font-size:13px;font-weight:600;padding:11px 14px;transition:box-shadow .2s,background .2s}
+.btn-solid{background:var(--accent);color:var(--accent-ink);box-shadow:0 6px 22px color-mix(in srgb,var(--accent) 40%,transparent)}
+.btn-solid:hover{box-shadow:0 8px 28px color-mix(in srgb,var(--accent) 55%,transparent)}
+body.theme-contrast .btn-solid{box-shadow:none;border:2px solid #fff}
+.check-list{list-style:none;margin:10px 4px 0;font-size:12px}
+.check-list li{display:flex;align-items:baseline;gap:8px;padding:3px 0;color:var(--dim)}
 .check-list .ck-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;align-self:center}
-.check-list .ck-ok{background:#6dc849}.check-list .ck-warn{background:#f5c518}.check-list .ck-fail{background:#ff4040}
-.check-list small{color:#a0aec0;font-size:9px}
-.check-msg{margin-top:6px;font-size:10px;color:#a0aec0}
-body.theme-light .check-btn{color:#0070d1}body.theme-light .check-list small,body.theme-light .check-msg{color:#4a5568}
-body.theme-contrast .check-btn{background:#000;border:2px solid #fff;color:#fff}body.theme-contrast .check-list small,body.theme-contrast .check-msg{color:#fff}
-.wn-card ul{margin:6px 0 0;padding-inline-start:16px;font-size:10px;color:#a0aec0;line-height:1.5}
-body.theme-light .wn-top,body.theme-light .wn-top button{color:#0070d1}
-body.theme-light .wn-card{background:rgba(0,112,209,.06);border-color:rgba(0,112,209,.2)}
+.check-list .ck-ok{background:var(--good)}.check-list .ck-warn{background:var(--warn)}.check-list .ck-fail{background:var(--bad)}
+.check-list small{color:var(--faint);font-size:10px}
+.check-msg{margin:6px 4px 0;font-size:12px;color:var(--faint)}
+.check-msg:empty{display:none}
+
+.tags{padding:12px 16px 4px;display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:11px;font-weight:600;padding:4px 10px;background:var(--accent-soft);color:var(--accent);border-radius:999px}
+body.theme-contrast .tag{border:2px solid #fff;color:#fff}
+.status{display:flex;align-items:center;gap:8px;padding:8px 20px 12px;font-size:12px;color:var(--good)}
+.dot{width:6px;height:6px;background:var(--good);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+.support-row{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:0 16px 10px}
+.support-link{display:flex;align-items:center;justify-content:center;padding:9px 6px;text-align:center;font-size:12px;font-weight:600;color:var(--pink);background:color-mix(in srgb,var(--pink) 10%,transparent);border:1px solid color-mix(in srgb,var(--pink) 28%,transparent);border-radius:var(--r-sm);text-decoration:none;transition:background .2s;white-space:nowrap}
+.support-link:hover{background:color-mix(in srgb,var(--pink) 18%,transparent)}
+body.theme-contrast .support-link{background:#000;border:2px solid #fff;color:#fff}
+
+.ft{padding:10px 18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px}
+.ft span{font-size:11px;color:var(--faint)}
+.opt{font-size:11px;color:var(--accent);text-decoration:none;cursor:pointer;font-weight:500}
+.opt:hover{text-decoration:underline}
+.wipe{background:none;border:0;color:var(--bad);font-size:11px;cursor:pointer;padding:0;text-decoration:underline}
+body.theme-contrast .opt,body.theme-contrast .wn-top,body.theme-contrast .wn-top button{color:#ffd400;text-decoration:underline}
+
+/* what's new */
+.wn-card{margin:12px 16px 0;padding:12px 14px;background:var(--accent-soft);border:1px solid color-mix(in srgb,var(--accent) 35%,transparent);border-radius:var(--r-sm)}
+body.theme-contrast .wn-card{background:#000;border:2px solid #fff}
+.wn-top{display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;color:var(--accent)}
+.wn-top button{background:none;border:none;color:var(--accent);cursor:pointer;font-size:12px;padding:2px 4px}
+.wn-card ul{margin:8px 0 0;padding:0;list-style:none;font-size:11px;color:var(--dim);line-height:1.5;display:grid;gap:6px}
+.wn-card li{display:flex;gap:8px;align-items:flex-start}
+.wn-card li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:6px;flex:none}
+body.theme-contrast .wn-card ul{color:#fff}
+@media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3A4 4 0 0 0 11 18.7l1-1"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7"/></symbol>
+  <symbol id="i-scan" viewBox="0 0 24 24"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-4.3-4.3M8 11l2.2 2.2L14 9"/></symbol>
+  <symbol id="i-dots" viewBox="0 0 24 24"><path d="M6 12h.01M12 12h.01M18 12h.01"/></symbol>
+</svg>
+
 <div class="hdr">
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="6" fill="rgba(255,255,255,.15)"/><path d="M7 13l3 3 7-7" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="logo"><svg class="i"><use href="#i-check"/></svg></span>
   <div><h1>PS Store Enhancer</h1><p>v3.0.0</p></div>
 </div>
 
@@ -80,8 +140,9 @@ body.theme-light .wn-card{background:rgba(0,112,209,.06);border-color:rgba(0,112
 <div class="sec">
   <div class="sec-t" data-i18n="psnAccount">PSN Account</div>
   <div class="tr psn-row" id="psnStatus" role="button" tabindex="0">
+    <span class="psn-icon" id="psnIcon" data-state="load"><svg class="i on"><use href="#i-check"/></svg><svg class="i off"><use href="#i-link"/></svg><svg class="i load"><use href="#i-dots"/></svg></span>
     <div class="tl"><span id="psnText">...</span><span id="psnSub"></span><span id="psnSynced"></span></div>
-    <span class="psn-actions"><button type="button" class="icon-btn" id="psnRefresh" style="display:none" data-i18n-title="popupRefresh" data-i18n-aria="popupRefresh">↻</button><span class="psn-icon" id="psnIcon">⏳</span></span>
+    <span class="psn-actions"><button type="button" class="icon-btn" id="psnRefresh" style="display:none" data-i18n-title="popupRefresh" data-i18n-aria="popupRefresh"><svg class="i"><use href="#i-refresh"/></svg></button></span>
   </div>
 </div>
 
@@ -93,23 +154,23 @@ body.theme-light .wn-card{background:rgba(0,112,209,.06);border-color:rgba(0,112
 </div>
 
 <div class="sec">
-  <button type="button" class="check-btn" id="checkPageBtn" data-i18n="checkPageBtn">🔍 Check this page</button>
+  <button type="button" class="btn btn-solid" id="checkPageBtn"><svg class="i"><use href="#i-scan"/></svg><span data-i18n="checkPageBtn">Check this page</span></button>
   <ul class="check-list" id="checkList" hidden></ul>
   <div class="check-msg" id="checkMsg" role="status" aria-live="polite"></div>
 </div>
 
 <div class="tags">
-  <span class="tag">🔗 <span data-i18n="chipPsn">PSN</span></span><span class="tag">📊 <span data-i18n="chipScores">Scores</span></span><span class="tag">📉 <span data-i18n="chipPrices">Prices</span></span>
-  <span class="tag">🔀 <span data-i18n="chipCompare">Compare</span></span><span class="tag">🏆 <span data-i18n="chipTrophies">Trophies</span></span><span class="tag">🧹 <span data-i18n="chipFilter">Filter</span></span>
+  <span class="tag" data-i18n="chipPsn">PSN</span><span class="tag" data-i18n="chipScores">Scores</span><span class="tag" data-i18n="chipPrices">Prices</span>
+  <span class="tag" data-i18n="chipCompare">Compare</span><span class="tag" data-i18n="chipTrophies">Trophies</span><span class="tag" data-i18n="chipFilter">Filter</span>
 </div>
 <div class="status"><span class="dot"></span><span data-i18n="activeOnStore">Active on store.playstation.com</span></div>
 <div class="support-row">
   <a class="support-link" href="https://ko-fi.com/idanlights" target="_blank" rel="noopener noreferrer">Ko-fi</a>
-  <a class="support-link" href="https://buymeacoffee.com/MrIdan" target="_blank" rel="noopener noreferrer">☕ <span data-i18n="supportCoffee">Coffee</span></a>
+  <a class="support-link" href="https://buymeacoffee.com/MrIdan" target="_blank" rel="noopener noreferrer" data-i18n="supportCoffee">Coffee</a>
   <a class="support-link" href="https://www.patreon.com/c/IdanLights" target="_blank" rel="noopener noreferrer">Patreon</a>
 </div>
 <div class="ft" style="border-top:0;padding-top:0"><button type="button" class="wipe" id="wipeBtn" data-i18n="popupWipe">Erase all my data</button></div>
-<div class="ft"><span>PS Store Enhancer v3.0.0 · <a id="openChangelog" class="opt" data-i18n="viewChangelog" style="font-size:9px">What's new</a></span><a id="openOptions" class="opt" data-i18n="advancedSettings">⚙ Advanced settings</a></div>
+<div class="ft"><span>v3.0.0 · <a id="openChangelog" class="opt" data-i18n="viewChangelog">What's new</a></span><a id="openOptions" class="opt" data-i18n="advancedSettings">Advanced settings</a></div>
 
 <script src="i18n.js"></script>
 <script src="changelog-data.js"></script>

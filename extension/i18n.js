@@ -76,22 +76,17 @@ const PSEi18n = (() => {
 
     let msg = _messages[key].message || key;
 
-    // Handle Chrome-style placeholders: $NAME$, $COUNT$ etc.
-    const placeholders = _messages[key].placeholders;
-    if (placeholders && subs.length > 0) {
-      for (const [name, def] of Object.entries(placeholders)) {
-        // def.content is like "$1", "$2" etc.
-        const idx = parseInt(def.content?.replace("$", ""), 10) - 1;
-        if (idx >= 0 && idx < subs.length) {
-          const regex = new RegExp("\\$" + name.toUpperCase() + "\\$", "g");
-          msg = msg.replace(regex, subs[idx]);
-        }
-      }
+    // Chrome-style placeholders ($NAME$ -> the "$n" it points at) and direct $1, $2 tokens, replaced in ONE
+    // pass over the message: values that contain "$" (a price such as "$29.99") are never scanned again,
+    // so "$2" inside "$29.99" cannot be mistaken for the second argument.
+    const byName = {};
+    for (const [name, def] of Object.entries(_messages[key].placeholders || {})) {
+      const idx = parseInt(String(def && def.content).replace("$", ""), 10) - 1;
+      if (idx >= 0) byName[name.toUpperCase()] = idx;
     }
-
-    // Also handle direct $1, $2 style (simpler)
-    subs.forEach((sub, i) => {
-      msg = msg.replace(new RegExp("\\$" + (i + 1), "g"), sub);
+    msg = msg.replace(/\$([A-Za-z_][A-Za-z0-9_]*)\$|\$([1-9])/g, (token, name, num) => {
+      const idx = name ? byName[name.toUpperCase()] : Number(num) - 1;
+      return idx != null && idx < subs.length ? String(subs[idx]) : token;
     });
 
     return msg;

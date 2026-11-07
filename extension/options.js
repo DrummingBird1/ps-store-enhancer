@@ -214,10 +214,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   await refreshPsnUI();
 
   function psnMsg(text, type = "info") {
-    const c = { info: ["rgba(0,112,209,.1)", "rgba(0,112,209,.25)", "#4da6ff"], success: ["rgba(109,200,73,.1)", "rgba(109,200,73,.25)", "#6dc849"], error: ["rgba(255,64,64,.1)", "rgba(255,64,64,.25)", "#ff6b6b"] };
-    const s = c[type] || c.info;
     el.psnMsg.textContent = text;
-    el.psnMsg.style.cssText = `display:block;background:${s[0]};border:1px solid ${s[1]};color:${s[2]}`;
+    el.psnMsg.className = `psn-msg psn-msg-${["success", "error"].includes(type) ? type : "info"}`;
+    el.psnMsg.style.display = "block";
     setTimeout(() => (el.psnMsg.style.display = "none"), 8000);
   }
 
@@ -247,7 +246,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           img.alt = "";
           el.psnAvatar.replaceChildren(img);
         } else {
-          el.psnAvatar.replaceChildren(document.createTextNode("🎮"));
+          el.psnAvatar.innerHTML = '<svg class="i"><use href="#i-gamepad"/></svg>';
         }
         el.psGames.textContent = s.gameCount || 0;
         el.psDlcs.textContent = s.dlcCount || 0;
@@ -299,7 +298,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   el.autoBtn.addEventListener("click", async () => {
-    el.autoBtn.disabled = true; el.autoBtn.innerHTML = `🔍 ${esc(t("psnSearching"))} <span class="spinner"></span>`;
+    el.autoBtn.disabled = true; el.autoBtn.innerHTML = `<svg class="i"><use href="#i-scan"/></svg> ${esc(t("psnSearching"))} <span class="spinner"></span>`;
     try {
       const r = await send({ type: "PSN_AUTO_DETECT" });
       if (r?.found) {
@@ -308,7 +307,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         await connectWith(r.npsso);
       } else psnMsg(t("psnTokenNotFound"), "error");
     } catch (e) { psnMsg(errMsg(e.message), "error"); }
-    el.autoBtn.disabled = false; el.autoBtn.innerHTML = `🔍 ${esc(t("psnAutoDetect"))}`;
+    el.autoBtn.disabled = false; el.autoBtn.innerHTML = `<svg class="i"><use href="#i-scan"/></svg> ${esc(t("psnAutoDetect"))}`;
   });
 
   el.connBtn.addEventListener("click", async () => {
@@ -334,13 +333,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   el.syncBtn.addEventListener("click", async () => {
-    el.syncBtn.disabled = true; el.syncBtn.innerHTML = `🔄 ${esc(t("psnSyncing"))} <span class="spinner"></span>`;
+    el.syncBtn.disabled = true; el.syncBtn.innerHTML = `<svg class="i"><use href="#i-refresh"/></svg> ${esc(t("psnSyncing"))} <span class="spinner"></span>`;
     try {
       const r = await send({ type: "PSN_FETCH_LIBRARY" });
       if (r?.success) { toast(t("psnSyncedItems", String(r.totalCount))); await refreshPsnUI(); }
       else psnMsg(errMsg(r?.error), "error");
     } catch (e) { psnMsg(errMsg(e.message), "error"); }
-    el.syncBtn.disabled = false; el.syncBtn.innerHTML = `🔄 ${esc(t("psnSyncNow"))}`;
+    el.syncBtn.disabled = false; el.syncBtn.innerHTML = `<svg class="i"><use href="#i-refresh"/></svg> ${esc(t("psnSyncNow"))}`;
   });
 
   el.disconnBtn.addEventListener("click", async () => {
@@ -593,6 +592,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     toast(t("wipeDone"));
     setTimeout(() => location.reload(), 600);
   });
+
+  /* Side navigation: highlight the section that is being read */
+  const navLinks = [...document.querySelectorAll(".nav a[href^='#sec-']")];
+  const navSections = navLinks.map((a) => document.getElementById(a.getAttribute("href").slice(1))).filter(Boolean);
+  const markNav = (id) => navLinks.forEach((a) => a.classList.toggle("on", a.getAttribute("href") === `#${id}`));
+  navLinks.forEach((a) => a.addEventListener("click", () => markNav(a.getAttribute("href").slice(1))));
+  if ("IntersectionObserver" in window && navSections.length) {
+    const io = new IntersectionObserver((entries) => {
+      const first = entries.filter((e) => e.isIntersecting).sort((x, y) => x.boundingClientRect.top - y.boundingClientRect.top)[0];
+      if (first) markNav(first.target.id);
+    }, { rootMargin: "-10% 0px -70% 0px" });
+    navSections.forEach((sec) => io.observe(sec));
+  }
 
   let toastTimer;
   function toast(msg) { el.toast.textContent = msg; el.toast.classList.add("show"); clearTimeout(toastTimer); toastTimer = setTimeout(() => el.toast.classList.remove("show"), 2200); }

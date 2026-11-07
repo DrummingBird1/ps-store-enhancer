@@ -386,10 +386,10 @@
     "message": "Your wishlist is empty"
   },
   "wishlistAddBtn": {
-    "message": "★ Add to Wishlist"
+    "message": "Add to Wishlist"
   },
   "wishlistInBtn": {
-    "message": "★ On Wishlist (click to remove)"
+    "message": "On Wishlist (click to remove)"
   },
   "wishlistRemoved": {
     "message": "Removed from wishlist"
@@ -421,7 +421,7 @@
     "message": "Last seen"
   },
   "wishlistCheckNow": {
-    "message": "🔄 Check prices now"
+    "message": "Check prices now"
   },
   "wishlistChecking": {
     "message": "Checking…"
@@ -430,7 +430,7 @@
     "message": "Prices updated"
   },
   "supportDev": {
-    "message": "❤️ Support development"
+    "message": "Support development"
   },
   "supportDevDesc": {
     "message": "Enjoying PS Store Enhancer? Support its development on Ko-fi, Buy Me a Coffee, or Patreon."
@@ -469,10 +469,10 @@
     "message": "Export your manually-marked owned games to a JSON file, or restore from a previous backup."
   },
   "exportBtn": {
-    "message": "📤 Export JSON"
+    "message": "Export JSON"
   },
   "importBtn": {
-    "message": "📥 Import JSON"
+    "message": "Import JSON"
   },
   "exportSuccess": {
     "message": "Exported"
@@ -519,7 +519,7 @@
     "message": "PC from"
   },
   "whatsNewTitle": {
-    "message": "🎉 What's new in v$VERSION$",
+    "message": "What's new in v$VERSION$",
     "placeholders": {
       "version": {
         "content": "$1"
@@ -788,13 +788,13 @@
     "message": "The last events from API calls and the PSN connection, kept on this device only. Tokens and passwords are never recorded. Copy this when reporting a problem."
   },
   "diagRefresh": {
-    "message": "🔄 Refresh"
+    "message": "Refresh"
   },
   "diagCopy": {
-    "message": "📋 Copy"
+    "message": "Copy"
   },
   "diagClear": {
-    "message": "🗑 Clear log"
+    "message": "Clear log"
   },
   "diagEmpty": {
     "message": "No events recorded yet."
@@ -899,7 +899,7 @@
     "message": "Weekly digest"
   },
   "shareWishlistBtn": {
-    "message": "🔗 Copy share link"
+    "message": "Copy share link"
   },
   "shareWishlistDesc": {
     "message": "The link contains only game names and last-seen PC prices (no targets or notes) and is read-only. Anyone with the link can see the list."
@@ -985,28 +985,28 @@
     "message": "No thanks"
   },
   "chl_2_7_0_1": {
-    "message": "🎯 Accurate cross-platform prices — exactly the right game, never a DLC, map or sequel"
+    "message": "Accurate cross-platform prices — exactly the right game, never a DLC, map or sequel"
   },
   "chl_2_7_0_2": {
-    "message": "📊 Metacritic and Steam scores from CheapShark (OpenCritic now needs an API key and had stopped working)"
+    "message": "Metacritic and Steam scores from CheapShark (OpenCritic now needs an API key and had stopped working)"
   },
   "chl_2_7_0_3": {
-    "message": "📉 Price Insight uses real data only: lowest PC price ever, today's cheapest, and your own recorded trend"
+    "message": "Price Insight uses real data only: lowest PC price ever, today's cheapest, and your own recorded trend"
   },
   "chl_2_7_0_4": {
-    "message": "🛠 Diagnostics log, safer PSN sign-in, wishlist % targets, notes, sorting, weekly digest and an 'Erase all my data' button"
+    "message": "Diagnostics log, safer PSN sign-in, wishlist % targets, notes, sorting, weekly digest and an 'Erase all my data' button"
   },
   "chl_2_7_0_5": {
-    "message": "🧩 Reorder, hide or collapse the product-page cards; new high-contrast theme"
+    "message": "Reorder, hide or collapse the product-page cards; new high-contrast theme"
   },
   "chl_2_7_0_6": {
-    "message": "🌍 Six new languages: Italiano, Polski, Türkçe, Nederlands, 简体中文 and 繁體中文"
+    "message": "Six new languages: Italiano, Polski, Türkçe, Nederlands, 简体中文 and 繁體中文"
   },
   "chl_2_7_1_1": {
-    "message": "🔌 PSN connection fixed — the extension was using the wrong app identity, so Sony always refused it"
+    "message": "PSN connection fixed — the extension was using the wrong app identity, so Sony always refused it"
   },
   "chl_2_7_1_2": {
-    "message": "🛠 Clearer PSN errors that name the failing step, and one-click access when Chrome hides Sony's redirect"
+    "message": "Clearer PSN errors that name the failing step, and one-click access when Chrome hides Sony's redirect"
   },
   "psHistLabel": {
     "message": "PlayStation Store · recorded by your browser"
@@ -1075,7 +1075,7 @@
     "message": "Not enough PlayStation price history yet. It builds each day you visit this game's page."
   },
   "checkPageBtn": {
-    "message": "🔍 Check this page"
+    "message": "Check this page"
   },
   "checkPageNoStore": {
     "message": "Open a PlayStation Store page first, then try again."
@@ -1147,12 +1147,21 @@
     "message": "No requests recorded yet."
   },
   "chl_3_0_1": {
-    "message": "🛡️ Checked against the real PlayStation Store: fixed a wrongly recorded price, the add-on, DLC and owned-games filters, and blank gaps in search results"
+    "message": "Checked against the real PlayStation Store: fixed a wrongly recorded price, the add-on, DLC and owned-games filters, and blank gaps in search results"
   },
   "chl_3_0_2": {
-    "message": "📈 PlayStation price history: the lowest price you've seen, sale details and trend, built from prices your browser records (also from search results and your wishlist)"
+    "message": "PlayStation price history: the lowest price you've seen, sale details and trend, built from prices your browser records (also from search results and your wishlist)"
   },
   "chl_3_0_3": {
-    "message": "🔍 New \"Check this page\" in the popup and a local network log in Settings: see what works and what the extension requested"
+    "message": "New \"Check this page\" in the popup and a local network log in Settings: see what works and what the extension requested"
+  },
+  "navAppearance": {
+    "message": "Look & language"
+  },
+  "navLibrary": {
+    "message": "Library & wishlist"
+  },
+  "chl_3_0_4": {
+    "message": "A new look for everything: the cards on store pages, the popup and the settings page, in dark, light and high contrast"
   }
 }

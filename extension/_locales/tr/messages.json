@@ -386,10 +386,10 @@
     "message": "İstek listeniz boş"
   },
   "wishlistAddBtn": {
-    "message": "★ İstek Listesine Ekle"
+    "message": "İstek Listesine Ekle"
   },
   "wishlistInBtn": {
-    "message": "★ İstek Listesinde (kaldırmak için tıklayın)"
+    "message": "İstek Listesinde (kaldırmak için tıklayın)"
   },
   "wishlistRemoved": {
     "message": "İstek listesinden kaldırıldı"
@@ -421,7 +421,7 @@
     "message": "Son görülen"
   },
   "wishlistCheckNow": {
-    "message": "🔄 Fiyatları şimdi kontrol et"
+    "message": "Fiyatları şimdi kontrol et"
   },
   "wishlistChecking": {
     "message": "Kontrol ediliyor…"
@@ -430,7 +430,7 @@
     "message": "Fiyatlar güncellendi"
   },
   "supportDev": {
-    "message": "❤️ Geliştirmeyi destekle"
+    "message": "Geliştirmeyi destekle"
   },
   "supportDevDesc": {
     "message": "PS Store Enhancer'ı beğendiniz mi? Geliştirilmesine Ko-fi, Buy Me a Coffee veya Patreon üzerinden destek olun."
@@ -469,10 +469,10 @@
     "message": "Elle işaretlediğiniz sahip olunan oyunları bir JSON dosyasına aktarın veya önceki bir yedekten geri yükleyin."
   },
   "exportBtn": {
-    "message": "📤 JSON olarak dışa aktar"
+    "message": "JSON olarak dışa aktar"
   },
   "importBtn": {
-    "message": "📥 JSON içe aktar"
+    "message": "JSON içe aktar"
   },
   "exportSuccess": {
     "message": "Dışa aktarıldı"
@@ -519,7 +519,7 @@
     "message": "PC'de başlangıç"
   },
   "whatsNewTitle": {
-    "message": "🎉 v$VERSION$ sürümündeki yenilikler",
+    "message": "v$VERSION$ sürümündeki yenilikler",
     "placeholders": {
       "version": {
         "content": "$1"
@@ -788,13 +788,13 @@
     "message": "API çağrıları ve PSN bağlantısından son olaylar, yalnızca bu cihazda tutulur. Belirteçler ve parolalar asla kaydedilmez. Sorun bildirirken bunu kopyalayın."
   },
   "diagRefresh": {
-    "message": "🔄 Yenile"
+    "message": "Yenile"
   },
   "diagCopy": {
-    "message": "📋 Kopyala"
+    "message": "Kopyala"
   },
   "diagClear": {
-    "message": "🗑 Günlüğü temizle"
+    "message": "Günlüğü temizle"
   },
   "diagEmpty": {
     "message": "Henüz kayıtlı olay yok."
@@ -899,7 +899,7 @@
     "message": "Haftalık özet"
   },
   "shareWishlistBtn": {
-    "message": "🔗 Paylaşım bağlantısını kopyala"
+    "message": "Paylaşım bağlantısını kopyala"
   },
   "shareWishlistDesc": {
     "message": "Bağlantı yalnızca oyun adlarını ve son görülen PC fiyatlarını içerir (hedef veya not yok) ve salt okunurdur. Bağlantıya sahip herkes listeyi görebilir."
@@ -985,28 +985,28 @@
     "message": "Hayır, teşekkürler"
   },
   "chl_2_7_0_1": {
-    "message": "🎯 Doğru platformlar arası fiyatlar — tam olarak doğru oyun; asla DLC, harita veya devam oyunu değil"
+    "message": "Doğru platformlar arası fiyatlar — tam olarak doğru oyun; asla DLC, harita veya devam oyunu değil"
   },
   "chl_2_7_0_2": {
-    "message": "📊 CheapShark'tan Metacritic ve Steam puanları (OpenCritic artık API anahtarı gerektiriyor ve çalışmıyordu)"
+    "message": "CheapShark'tan Metacritic ve Steam puanları (OpenCritic artık API anahtarı gerektiriyor ve çalışmıyordu)"
   },
   "chl_2_7_0_3": {
-    "message": "📉 Fiyat analizi yalnızca gerçek veri kullanır: PC'deki en düşük fiyat, bugünün en ucuzu ve kaydettiğiniz eğilim"
+    "message": "Fiyat analizi yalnızca gerçek veri kullanır: PC'deki en düşük fiyat, bugünün en ucuzu ve kaydettiğiniz eğilim"
   },
   "chl_2_7_0_4": {
-    "message": "🛠 Tanılama günlüğü, daha güvenli PSN girişi, % hedefleri, notlar, sıralama, haftalık özet ve \"Tüm verilerimi sil\" düğmesi"
+    "message": "Tanılama günlüğü, daha güvenli PSN girişi, % hedefleri, notlar, sıralama, haftalık özet ve \"Tüm verilerimi sil\" düğmesi"
   },
   "chl_2_7_0_5": {
-    "message": "🧩 Ürün sayfası kartlarını yeniden sıralayın, gizleyin veya daraltın; yeni yüksek kontrast tema"
+    "message": "Ürün sayfası kartlarını yeniden sıralayın, gizleyin veya daraltın; yeni yüksek kontrast tema"
   },
   "chl_2_7_0_6": {
-    "message": "🌍 Altı yeni dil: Italiano, Polski, Türkçe, Nederlands, 简体中文 ve 繁體中文"
+    "message": "Altı yeni dil: Italiano, Polski, Türkçe, Nederlands, 简体中文 ve 繁體中文"
   },
   "chl_2_7_1_1": {
-    "message": "🔌 PSN bağlantısı düzeltildi — eklenti yanlış uygulama kimliği kullandığı için Sony her seferinde reddediyordu"
+    "message": "PSN bağlantısı düzeltildi — eklenti yanlış uygulama kimliği kullandığı için Sony her seferinde reddediyordu"
   },
   "chl_2_7_1_2": {
-    "message": "🛠 Başarısız adımı gösteren daha anlaşılır PSN hataları ve Chrome Sony yönlendirmesini gizlediğinde tek tıkla izin"
+    "message": "Başarısız adımı gösteren daha anlaşılır PSN hataları ve Chrome Sony yönlendirmesini gizlediğinde tek tıkla izin"
   },
   "psHistLabel": {
     "message": "PlayStation Store · tarayıcınız tarafından kaydedildi"
@@ -1075,7 +1075,7 @@
     "message": "Henüz yeterli PlayStation fiyat geçmişi yok. Bu oyunun sayfasını ziyaret ettiğiniz her gün oluşur."
   },
   "checkPageBtn": {
-    "message": "🔍 Bu sayfayı kontrol et"
+    "message": "Bu sayfayı kontrol et"
   },
   "checkPageNoStore": {
     "message": "Önce bir PlayStation Store sayfası açın, sonra tekrar deneyin."
@@ -1147,12 +1147,21 @@
     "message": "Henüz kaydedilmiş istek yok."
   },
   "chl_3_0_1": {
-    "message": "🛡️ Gerçek PlayStation Store üzerinde doğrulandı: yanlış kaydedilen bir fiyat, eklenti, DLC ve sahip olunan oyun filtreleri ve arama sonuçlarındaki boşluklar düzeltildi"
+    "message": "Gerçek PlayStation Store üzerinde doğrulandı: yanlış kaydedilen bir fiyat, eklenti, DLC ve sahip olunan oyun filtreleri ve arama sonuçlarındaki boşluklar düzeltildi"
   },
   "chl_3_0_2": {
-    "message": "📈 PlayStation fiyat geçmişi: gördüğünüz en düşük fiyat, indirim ayrıntıları ve eğilim; tarayıcınızın kaydettiği fiyatlardan oluşturulur (arama sonuçlarından ve istek listenizden de)"
+    "message": "PlayStation fiyat geçmişi: gördüğünüz en düşük fiyat, indirim ayrıntıları ve eğilim; tarayıcınızın kaydettiği fiyatlardan oluşturulur (arama sonuçlarından ve istek listenizden de)"
   },
   "chl_3_0_3": {
-    "message": "🔍 Açılır pencerede yeni “Bu sayfayı kontrol et” ve Ayarlar’da yerel ağ günlüğü: nelerin çalıştığını ve eklentinin neleri istediğini görün"
+    "message": "Açılır pencerede yeni “Bu sayfayı kontrol et” ve Ayarlar’da yerel ağ günlüğü: nelerin çalıştığını ve eklentinin neleri istediğini görün"
+  },
+  "navAppearance": {
+    "message": "Görünüm ve dil"
+  },
+  "navLibrary": {
+    "message": "Kütüphane ve istek listesi"
+  },
+  "chl_3_0_4": {
+    "message": "Her şey için yeni bir görünüm: mağaza sayfalarındaki kartlar, açılır pencere ve ayarlar; koyu, açık ve yüksek kontrastlı"
   }
 }

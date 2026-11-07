@@ -92,3 +92,49 @@ describe("i18n keys used by the code", () => {
     }
   });
 });
+
+describe("i18n.js in a manually chosen language", () => {
+  const vm = require("vm");
+  async function start(lang) {
+    const ctx = {
+      chrome: {
+        storage: { sync: { get: async () => ({ userLanguage: lang }) } },
+        runtime: { getURL: (p) => p },
+        i18n: { getMessage: () => "native", getUILanguage: () => "en" }
+      },
+      fetch: async (url) => {
+        const l = /_locales\/([^/]+)\//.exec(url)[1];
+        return { ok: true, json: async () => load(l) };
+      },
+      document: { documentElement: {}, querySelectorAll: () => [] },
+      console
+    };
+    vm.createContext(ctx);
+    vm.runInContext(fs.readFileSync(path.join(EXT, "i18n.js"), "utf8"), ctx);
+    await vm.runInContext("initI18n()", ctx);
+    return (key, ...subs) => vm.runInContext("t", ctx)(key, ...subs);
+  }
+
+  test("a price that starts with $1-$9 is not rewritten by the next argument ($29.99 stayed 209.99)", async () => {
+    const t = await start("en");
+    expect(t("psSaleLine", "$29.99", "20")).toBe("Was $29.99 · 20% off");
+    expect(t("psSaleLine", "$19.99", "50")).toBe("Was $19.99 · 50% off");
+    expect(t("saleSoon", "Steam Autumn Sale", "$2 Nov", "19")).toBe("Steam Autumn Sale usually starts around $2 Nov (in 19 days)");
+  });
+
+  test("values with replacement patterns ($&, $1) arrive as they are, and unknown tokens stay", async () => {
+    const t = await start("en");
+    expect(t("pricePerHourLine", "$&$1")).toBe("≈ $&$1 per hour (cheapest PC price)");
+    expect(t("pricePerHourLine")).toBe("≈ $PRICE$ per hour (cheapest PC price)");
+  });
+
+  test("every language fills every message with its own placeholders, in order", async () => {
+    for (const l of LOCALES) {
+      const t = await start(l);
+      const out = t("psSaleLine", "A$2B", "C$1D");
+      expect(out).toContain("A$2B");
+      expect(out).toContain("C$1D");
+      expect(out).not.toMatch(/\$(ORIGINAL|PCT)\$/);
+    }
+  });
+});

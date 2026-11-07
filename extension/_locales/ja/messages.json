@@ -386,10 +386,10 @@
     "message": "ウィッシュリストは空です"
   },
   "wishlistAddBtn": {
-    "message": "★ ウィッシュリストに追加"
+    "message": "ウィッシュリストに追加"
   },
   "wishlistInBtn": {
-    "message": "★ ウィッシュリスト中(クリックで削除)"
+    "message": "ウィッシュリスト中(クリックで削除)"
   },
   "wishlistRemoved": {
     "message": "ウィッシュリストから削除しました"
@@ -421,7 +421,7 @@
     "message": "現在の価格"
   },
   "wishlistCheckNow": {
-    "message": "🔄 今すぐ価格を確認"
+    "message": "今すぐ価格を確認"
   },
   "wishlistChecking": {
     "message": "確認中…"
@@ -430,7 +430,7 @@
     "message": "価格を更新しました"
   },
   "supportDev": {
-    "message": "❤️ 開発を支援"
+    "message": "開発を支援"
   },
   "supportDevDesc": {
     "message": "PS Store Enhancerを気に入っていただけましたか？Ko-fi、Buy Me a Coffee、またはPatreonで開発を支援してください。"
@@ -469,10 +469,10 @@
     "message": "手動で所有マークしたゲームをJSONにエクスポート、または以前のバックアップから復元できます。"
   },
   "exportBtn": {
-    "message": "📤 JSONエクスポート"
+    "message": "JSONエクスポート"
   },
   "importBtn": {
-    "message": "📥 JSONインポート"
+    "message": "JSONインポート"
   },
   "exportSuccess": {
     "message": "エクスポート済み"
@@ -519,7 +519,7 @@
     "message": "PC版 最安"
   },
   "whatsNewTitle": {
-    "message": "🎉 v$VERSION$ の新機能",
+    "message": "v$VERSION$ の新機能",
     "placeholders": {
       "version": {
         "content": "$1"
@@ -788,13 +788,13 @@
     "message": "API呼び出しとPSN接続の直近のイベントを、この端末内にのみ保存します。トークンやパスワードは記録されません。不具合報告の際にコピーしてください。"
   },
   "diagRefresh": {
-    "message": "🔄 更新"
+    "message": "更新"
   },
   "diagCopy": {
-    "message": "📋 コピー"
+    "message": "コピー"
   },
   "diagClear": {
-    "message": "🗑 ログを消去"
+    "message": "ログを消去"
   },
   "diagEmpty": {
     "message": "まだイベントは記録されていません。"
@@ -899,7 +899,7 @@
     "message": "週間まとめ"
   },
   "shareWishlistBtn": {
-    "message": "🔗 共有リンクをコピー"
+    "message": "共有リンクをコピー"
   },
   "shareWishlistDesc": {
     "message": "リンクにはゲーム名と最後に確認したPC価格のみが含まれ(目標価格やメモは含まれません)、閲覧専用です。リンクを知っている人は誰でも一覧を見られます。"
@@ -985,28 +985,28 @@
     "message": "結構です"
   },
   "chl_2_7_0_1": {
-    "message": "🎯 クロスプラットフォーム価格が正確に — DLCやマップ、続編ではなく、正しいゲームだけ"
+    "message": "クロスプラットフォーム価格が正確に — DLCやマップ、続編ではなく、正しいゲームだけ"
   },
   "chl_2_7_0_2": {
-    "message": "📊 Metacritic・SteamのスコアをCheapSharkから取得 (OpenCriticはAPIキーが必須になり動作しなくなっていました)"
+    "message": "Metacritic・SteamのスコアをCheapSharkから取得 (OpenCriticはAPIキーが必須になり動作しなくなっていました)"
   },
   "chl_2_7_0_3": {
-    "message": "📉 価格インサイトは実データのみ使用: PC過去最安値、本日の最安値、記録した推移"
+    "message": "価格インサイトは実データのみ使用: PC過去最安値、本日の最安値、記録した推移"
   },
   "chl_2_7_0_4": {
-    "message": "🛠 診断ログ、より安全なPSNサインイン、割引率での目標設定、メモ、並べ替え、週間まとめ、「すべてのデータを消去」ボタン"
+    "message": "診断ログ、より安全なPSNサインイン、割引率での目標設定、メモ、並べ替え、週間まとめ、「すべてのデータを消去」ボタン"
   },
   "chl_2_7_0_5": {
-    "message": "🧩 商品ページのカードを並べ替え・非表示・折りたたみ可能に。新しいハイコントラストテーマ"
+    "message": "商品ページのカードを並べ替え・非表示・折りたたみ可能に。新しいハイコントラストテーマ"
   },
   "chl_2_7_0_6": {
-    "message": "🌍 新たに6言語に対応: Italiano、Polski、Türkçe、Nederlands、简体中文、繁體中文"
+    "message": "新たに6言語に対応: Italiano、Polski、Türkçe、Nederlands、简体中文、繁體中文"
   },
   "chl_2_7_1_1": {
-    "message": "🔌 PSN接続を修正 — 拡張機能が誤ったアプリIDを使っていたため、Sonyに常に拒否されていました"
+    "message": "PSN接続を修正 — 拡張機能が誤ったアプリIDを使っていたため、Sonyに常に拒否されていました"
   },
   "chl_2_7_1_2": {
-    "message": "🛠 失敗した手順がわかるPSNエラー表示と、ChromeがSonyのリダイレクトを隠す場合のワンクリック許可"
+    "message": "失敗した手順がわかるPSNエラー表示と、ChromeがSonyのリダイレクトを隠す場合のワンクリック許可"
   },
   "psHistLabel": {
     "message": "PlayStation Store · ブラウザが記録"
@@ -1075,7 +1075,7 @@
     "message": "PlayStationの価格履歴がまだ十分ではありません。このゲームのページを開くたびに蓄積されます。"
   },
   "checkPageBtn": {
-    "message": "🔍 このページを確認"
+    "message": "このページを確認"
   },
   "checkPageNoStore": {
     "message": "先にPlayStation Storeのページを開いてから、もう一度お試しください。"
@@ -1147,12 +1147,21 @@
     "message": "記録されたリクエストはまだありません。"
   },
   "chl_3_0_1": {
-    "message": "🛡️ 実際のPlayStation Storeで検証: 誤って記録される価格、アドオン・DLC・所持ゲームのフィルター、検索結果の空白を修正"
+    "message": "実際のPlayStation Storeで検証: 誤って記録される価格、アドオン・DLC・所持ゲームのフィルター、検索結果の空白を修正"
   },
   "chl_3_0_2": {
-    "message": "📈 PlayStationの価格履歴: これまでに見た最安値、セール詳細、推移を、ブラウザが記録した価格から表示(検索結果とウィッシュリストからも記録)"
+    "message": "PlayStationの価格履歴: これまでに見た最安値、セール詳細、推移を、ブラウザが記録した価格から表示(検索結果とウィッシュリストからも記録)"
   },
   "chl_3_0_3": {
-    "message": "🔍 ポップアップに新しい「このページを確認」、設定にローカルのネットワークログを追加: 動作状況と拡張機能のリクエスト内容を確認できます"
+    "message": "ポップアップに新しい「このページを確認」、設定にローカルのネットワークログを追加: 動作状況と拡張機能のリクエスト内容を確認できます"
+  },
+  "navAppearance": {
+    "message": "外観と言語"
+  },
+  "navLibrary": {
+    "message": "ライブラリとウィッシュリスト"
+  },
+  "chl_3_0_4": {
+    "message": "すべての画面を新デザインに:ストアのカード、ポップアップ、設定ページ(ダーク、ライト、ハイコントラスト対応)"
   }
 }

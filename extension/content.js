@@ -25,6 +25,38 @@
   };
 
   const BADGE_COLORS = { green: "#6dc849", yellow: "#f5c518", red: "#ff4040" };
+
+  /* Inline icons for the injected cards: one stroke style (.pse-ico in styles.css), no emoji. */
+  const ICON_PATHS = {
+    compare: "M7 7h11l-3-3M17 17H6l3 3",
+    pulse: "M3 12h4l2-6 4 12 2-6h6",
+    trophy: "M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4zM17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3",
+    check: "M5 12.5l4.2 4.2L19 7",
+    x: "M6 6l12 12M18 6L6 18",
+    gift: "M4 11h16v9H4zM3 7h18v4H3zM12 7v13M12 7c-2-4-6-3-5 0M12 7c2-4 6-3 5 0",
+    calendar: "M4 6h16v14H4zM4 10h16M8 3v4M16 3v4",
+    image: "M4 5h16v14H4zM4 16l5-5 4 4 3-3 4 4M9 9h.01",
+    star: "M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z",
+    plus: "M12 5v14M5 12h14",
+    coin: "M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16zM12 8v8M9.6 10c0-.9 1-1.5 2.4-1.5s2.4.6 2.4 1.5-1 1.4-2.4 1.7-2.4.8-2.4 1.8 1 1.6 2.4 1.6 2.4-.6 2.4-1.5",
+    target: "M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16zM12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z",
+    gem: "M6 4h12l3 5-9 11L3 9zM3 9h18M9 4l-1 5 4 11M15 4l1 5-4 11",
+    link: "M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3A4 4 0 0 0 11 18.7l1-1"
+  };
+  const ic = (name) => `<svg class="pse-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="${ICON_PATHS[name]}"/></svg>`;
+
+  /* A small monogram badge per store (no logos, no emoji). */
+  const STORE_COLORS = {
+    "Steam": "#3b5a9a", "Epic Games Store": "#4a4f5c", "GOG": "#7b4fb0", "Humble Store": "#b3502f",
+    "Origin / EA App": "#c4402f", "Ubisoft Store": "#2f7bc4", "GreenManGaming": "#2f8f4f", "Fanatical": "#c93a3a"
+  };
+  function storeBadge(name) {
+    const color = STORE_COLORS[name] || `hsl(${[...name].reduce((h, c) => (h * 31 + c.charCodeAt(0)) % 360, 7)} 38% 42%)`;
+    const words = name.split(/[\s/]+/).filter(Boolean);
+    const caps = (words[0] || "").match(/[A-Z]/g) || [];
+    const letters = (words.length > 1 ? words.map((w) => w[0]).join("") : caps.length > 1 ? caps.join("") : (words[0] || "?").slice(0, 2)).slice(0, 2).toUpperCase();
+    return `<span class="pse-xp-badge" style="--c:${color}" aria-hidden="true">${escapeHtml(letters)}</span>`;
+  }
   const DEFAULT_ORDER = ["priceInsight", "crossPlatform", "trophies"];
   const RTL_LANGS = ["he", "ar"];
 
@@ -249,11 +281,39 @@
     });
   }
 
+  /* The store re-renders its own tree some seconds after load (for example when the signed-in state
+     arrives) and that removes everything injected into it. When none of our cards or buttons is left,
+     put them back (data comes from the worker's cache), a few times per page at most. */
+  const OUR_BLOCKS = ".pse-injected.pse-card, .pse-injected.pse-wishlist-btn-wrap, .pse-injected.pse-owned-btn-wrap";
+  let reinjectsLeft = 3;
+  let reinjectUrl = "";
+  function watchInjected(token) {
+    const first = document.querySelector(OUR_BLOCKS);
+    const gone = () => {
+      if (token !== pageToken) return;
+      if (reinjectsLeft-- <= 0) return;
+      diagLog("store-removed-injected", { left: reinjectsLeft });
+      lastProcessedUrl = "";
+      setTimeout(processCurrentPage, 400);
+    };
+    if (!first) { gone(); return; }
+    const host = first.parentElement;
+    if (!host) return;
+    const mo = new MutationObserver(() => {
+      if (token !== pageToken) { mo.disconnect(); return; }
+      if (document.querySelector(OUR_BLOCKS)) return;
+      mo.disconnect();
+      gone();
+    });
+    mo.observe(host, { childList: true });
+  }
+
   /* ──── page processor ──── */
   function processCurrentPage() {
     const url = location.href;
     if (url === lastProcessedUrl) return;
     lastProcessedUrl = url;
+    if (url !== reinjectUrl) { reinjectUrl = url; reinjectsLeft = 3; }
     pageToken++;
     sentGridPrices.clear();
     featureHealth.clear(); // "Check this page" reports this page's features, not an earlier page's
@@ -279,6 +339,7 @@
         if (settings.enableWishlist) jobs.push(isolate("wishlistButton", () => injectWishlistButton(gameName)));
         await Promise.all(jobs);
         if (token !== pageToken) return;
+        watchInjected(token);
         isolate("tour", maybeShowTour);
         isolate("rateNudge", maybeRateNudge);
       }).catch(() => {
@@ -558,7 +619,7 @@
     if (token !== pageToken) return;
     const region = settings.pspricesRegion || "IL";
     const pspUrl = `https://psprices.com/search/?q=${encodeURIComponent(gameName)}&platform=PS5&region=${region}`;
-    const link = `<a href="${escapeHtml(sanitizeUrl(pspUrl))}" target="_blank" rel="noopener noreferrer" class="pse-ph-link">${escapeHtml(t("viewFullHistory"))}</a>`;
+    const link = `<a href="${escapeHtml(sanitizeUrl(pspUrl))}" target="_blank" rel="noopener noreferrer" class="pse-ph-link">${escapeHtml(t("viewFullHistory"))}${ic("link")}</a>`;
 
     let body = "";
     let summary = "";
@@ -600,7 +661,7 @@
         parts.push(`<p class="pse-card-note">${escapeHtml(t("insightRecordedSince", formatMonth(pts[0][0] * 86400000)))}</p>`);
       }
       if (d.edition) {
-        parts.push(`<p class="pse-card-note">🎁 ${escapeHtml(t("crossPlatformEditionNote", d.edition))}</p>`);
+        parts.push(`<p class="pse-card-note">${ic("gift")}<span>${escapeHtml(t("crossPlatformEditionNote", d.edition))}</span></p>`);
       }
       body = parts.join("") + link;
       summary = [
@@ -615,7 +676,7 @@
     }
     const card = buildCard({
       key: "priceInsight", cls: "pse-price-insight",
-      icon: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>',
+      icon: ic("pulse"),
       title: t("priceHistory"), tag: psSection.html ? "PS + PC" : t("insightPcLabel"), summary, body
     });
     fillSlot(slot, card);
@@ -646,14 +707,14 @@
     return `<div class="pse-sparkline-wrap">
       <svg viewBox="0 0 ${W} ${H + 18}" class="pse-sparkline-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${escapeHtml(t("priceHistory"))}">
         <defs><linearGradient id="${gradId}" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#0070d1" stop-opacity="0.35"/>
-          <stop offset="100%" stop-color="#0070d1" stop-opacity="0.02"/>
+          <stop offset="0%" stop-color="var(--pse-accent-light)" stop-opacity="0.35"/>
+          <stop offset="100%" stop-color="var(--pse-accent-light)" stop-opacity="0.02"/>
         </linearGradient></defs>
         <path d="${areaD}" fill="url(#${gradId})" />
-        <path d="${pathD}" fill="none" stroke="#4da6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-        ${coords.map((c) => `<circle cx="${c.x.toFixed(1)}" cy="${c.y.toFixed(1)}" r="3" fill="#1b2838" stroke="#4da6ff" stroke-width="1.5" class="pse-spark-dot"><title>${escapeHtml(fmt(c.price))} — ${escapeHtml(c.month)}</title></circle>`).join("")}
-        <circle cx="${lowest.x.toFixed(1)}" cy="${lowest.y.toFixed(1)}" r="4.5" fill="#6dc849" stroke="#fff" stroke-width="1.5"><title>${escapeHtml(fmt(lowest.price))}</title></circle>
-        ${lCoords.map((c, i) => `<text x="${c.x.toFixed(1)}" y="${H + 14}" fill="#718096" font-size="8" text-anchor="middle">${escapeHtml(labels[i].month)}</text>`).join("")}
+        <path d="${pathD}" class="pse-spark-line" />
+        ${coords.map((c) => `<circle cx="${c.x.toFixed(1)}" cy="${c.y.toFixed(1)}" r="3" class="pse-spark-dot"><title>${escapeHtml(fmt(c.price))} — ${escapeHtml(c.month)}</title></circle>`).join("")}
+        <circle cx="${lowest.x.toFixed(1)}" cy="${lowest.y.toFixed(1)}" r="4.5" class="pse-spark-low"><title>${escapeHtml(fmt(lowest.price))}</title></circle>
+        ${lCoords.map((c, i) => `<text x="${c.x.toFixed(1)}" y="${H + 14}" class="pse-spark-label" text-anchor="middle">${escapeHtml(labels[i].month)}</text>`).join("")}
       </svg>
     </div>`;
   }
@@ -682,19 +743,17 @@
       return;
     }
 
-    const icons = { "Steam": "🟦", "Epic Games Store": "🟪", "GOG": "🟩", "Humble Store": "🟧", "Origin / EA App": "🟥", "Ubisoft Store": "⬜", "GreenManGaming": "🟢", "Fanatical": "🔴" };
     const cur = settings.displayCurrency || "USD";
     const tagText = cur === "USD" ? "USD" : `${cur} (≈USD)`;
 
-    const rowsHTML = d.deals.map((deal) => {
-      const icon = icons[deal.store] || "🏪";
+    const rowsHTML = d.deals.map((deal, i) => {
       const savings = deal.savings > 0 ? `<span class="pse-xp-savings">-${deal.savings}%</span>` : "";
       const original = deal.normalPrice > deal.price ? `<span class="pse-xp-original">${escapeHtml(formatPrice(deal.normalPrice))}</span>` : "";
       const editionTag = d.edition
-        ? `<span class="pse-xp-edition" title="${escapeHtml(t("crossPlatformEditionNote", d.edition))}">🎁 ${escapeHtml(d.edition)}</span>`
+        ? `<span class="pse-xp-edition" title="${escapeHtml(t("crossPlatformEditionNote", d.edition))}">${escapeHtml(d.edition)}</span>`
         : "";
-      return `<a href="${escapeHtml(sanitizeUrl(deal.dealLink))}" target="_blank" rel="noopener noreferrer" class="pse-xp-row">
-        <span class="pse-xp-store">${icon} ${escapeHtml(deal.store)}${editionTag}</span>
+      return `<a href="${escapeHtml(sanitizeUrl(deal.dealLink))}" target="_blank" rel="noopener noreferrer" class="pse-xp-row${i === 0 ? " pse-xp-best" : ""}">
+        <span class="pse-xp-store">${storeBadge(deal.store)}<span>${escapeHtml(deal.store)}</span>${editionTag}</span>
         <span class="pse-xp-price-group">${savings}${original}<span class="pse-xp-current">${escapeHtml(formatPrice(deal.price))}</span></span>
       </a>`;
     }).join("");
@@ -705,18 +764,18 @@
     if (sale && (sale.underway || sale.daysUntil <= 90)) {
       const dateText = new Date(2000, sale.month - 1, sale.day).toLocaleDateString(uiLocale(), { month: "short", day: "numeric" });
       const text = sale.underway ? t("saleNow", sale.name) : t("saleSoon", sale.name, dateText, String(sale.daysUntil));
-      saleHTML = `<p class="pse-card-note pse-sale-note">🗓 ${escapeHtml(text)}</p>`;
+      saleHTML = `<p class="pse-card-note pse-sale-note">${ic("calendar")}<span>${escapeHtml(text)}</span></p>`;
     }
 
     const body = `
       <div class="pse-xp-list">${rowsHTML}</div>
       <p class="pse-xp-note">${escapeHtml(t("crossPlatformSource"))}${cur === "USD" ? ` · ${escapeHtml(t("crossPlatformUSD"))}` : ""}</p>
       ${saleHTML}
-      <button type="button" class="pse-share-btn">🖼 ${escapeHtml(t("shareDealBtn"))}</button>`;
+      <button type="button" class="pse-share-btn">${ic("image")}<span>${escapeHtml(t("shareDealBtn"))}</span></button>`;
 
     const best = d.deals[0];
     const card = buildCard({
-      key: "crossPlatform", cls: "pse-xplatform", icon: "🔀",
+      key: "crossPlatform", cls: "pse-xplatform", icon: ic("compare"),
       title: t("crossPlatformTitle"), tag: tagText,
       summary: `${best.store} ${formatPrice(best.price)}`, body
     });
@@ -780,7 +839,7 @@
       : difficulty <= 3 ? BADGE_COLORS.green
       : difficulty <= 6 ? BADGE_COLORS.yellow
       : BADGE_COLORS.red;
-    const platIcon = hasPlatinum ? "🏆" : "❌";
+    const platIcon = hasPlatinum ? ic("trophy") : ic("x");
 
     // Extras that need other data (all best-effort, all cached by the worker)
     const [ownedResp, insightResp, rarityResp] = await Promise.all([
@@ -800,7 +859,7 @@
     let progressHTML = "";
     if (psnTrophy) {
       const pct = Math.max(0, Math.min(100, Number(psnTrophy.progress) || 0));
-      const earnedPlat = psnTrophy.earnedPlatinum ? "✅" : "";
+      const earnedPlat = psnTrophy.earnedPlatinum ? `<span class="pse-yes">${ic("check")}</span>` : "";
       progressHTML = `
         <div class="pse-trophy-stat" style="grid-column:1/-1">
           <div class="pse-trophy-stat-label">${escapeHtml(t("psnProgress"))} ${earnedPlat}</div>
@@ -814,15 +873,15 @@
     const lines = [];
     const pc = insightResp?.data?.cheapest;
     const perHour = pc != null ? PSEHelpers.pricePerHour(pc, hours) : null;
-    if (perHour != null) lines.push(`💲 ${escapeHtml(t("pricePerHourLine", formatPrice(perHour)))}`);
+    if (perHour != null) lines.push(`${ic("coin")}<span>${escapeHtml(t("pricePerHourLine", formatPrice(perHour)))}</span>`);
     if (local && ownedResp?.list?.length) {
       const similar = PSEHelpers.similarOwned(PSEMatch.baseKey(gameName), difficulty, ownedResp.list, Object.fromEntries([...index.entries()].map(([k, v]) => [k, v])), (s) => PSEMatch.baseKey(s), 3);
-      if (similar.length) lines.push(`🎯 ${escapeHtml(t("similarOwnedLine", similar.map((s) => s.name).join(", ")))}`);
+      if (similar.length) lines.push(`${ic("target")}<span>${escapeHtml(t("similarOwnedLine", similar.map((s) => s.name).join(", ")))}</span>`);
     }
     const rar = rarityResp?.success ? rarityResp.data : null;
     if (rar && rar.rarestRemaining) {
       const nm = rar.rarestRemaining.name ? `${rar.rarestRemaining.name} ` : "";
-      lines.push(`💎 ${escapeHtml(t("rarestRemainingLine", `${nm}(${rar.rarestRemaining.rate}%)`.trim()))}`);
+      lines.push(`${ic("gem")}<span>${escapeHtml(t("rarestRemainingLine", `${nm}(${rar.rarestRemaining.rate}%)`.trim()))}</span>`);
     }
     const linesHTML = lines.length ? `<ul class="pse-trophy-notes">${lines.map((l) => `<li>${l}</li>`).join("")}</ul>` : "";
 
@@ -831,7 +890,7 @@
       <div class="pse-trophy-grid">
         <div class="pse-trophy-stat">
           <div class="pse-trophy-stat-label">${escapeHtml(t("platinum"))}</div>
-          <div class="pse-trophy-stat-value">${platIcon} ${hasPlatinum ? escapeHtml(t("yes")) : escapeHtml(t("no"))}</div>
+          <div class="pse-trophy-stat-value ${hasPlatinum ? "pse-yes" : "pse-no"}">${platIcon}<span>${hasPlatinum ? escapeHtml(t("yes")) : escapeHtml(t("no"))}</span></div>
         </div>
         <div class="pse-trophy-stat">
           <div class="pse-trophy-stat-label">${escapeHtml(t("difficulty"))}</div>
@@ -853,9 +912,9 @@
       <a href="https://howlongtobeat.com/?q=${encodeURIComponent(gameName)}" target="_blank" rel="noopener noreferrer" class="pse-trophy-link" style="margin-top:6px">${escapeHtml(t("hltbLink"))}</a>`;
 
     const card = buildCard({
-      key: "trophies", cls: "pse-trophy-box", icon: "🎮",
+      key: "trophies", cls: "pse-trophy-box", icon: ic("trophy"),
       title: t("completionistInfo"), tag: psnTrophy ? "PSN" : "",
-      summary: `${hasPlatinum ? "🏆" : "❌"} ${difficulty != null ? `${difficulty}/10` : ""} ${hours ? `· ${hours} ${t("hours")}` : ""}`.trim(),
+      summary: `${t("platinum")} ${hasPlatinum ? "✓" : "✕"}${difficulty != null ? ` · ${difficulty}/10` : ""}${hours ? ` · ${hours} ${t("hours")}` : ""}`,
       body
     });
     fillSlot(slot, card);
@@ -890,7 +949,7 @@
     let isOwned = resp?.owned || false;
     const paint = () => {
       btn.className = "pse-owned-btn" + (isOwned ? " pse-owned-active" : "");
-      btn.textContent = isOwned ? `✓ ${t("iOwnThis")}` : `➕ ${t("markOwned")}`;
+      btn.innerHTML = isOwned ? `${ic("check")}<span>${escapeHtml(t("iOwnThis"))}</span>` : `${ic("plus")}<span>${escapeHtml(t("markOwned"))}</span>`;
       btn.title = isOwned ? t("gameRemoved", gameName) : t("gameAdded", gameName);
       btn.disabled = false;
     };
@@ -923,7 +982,7 @@
     let inList = r?.inWishlist || false;
     const paint = () => {
       btn.className = "pse-wishlist-btn" + (inList ? " pse-wishlist-active" : "");
-      btn.textContent = inList ? t("wishlistInBtn") : t("wishlistAddBtn");
+      btn.innerHTML = `${ic("star")}<span>${escapeHtml(inList ? t("wishlistInBtn") : t("wishlistAddBtn"))}</span>`;
       btn.disabled = false;
     };
     paint();

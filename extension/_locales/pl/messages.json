@@ -386,10 +386,10 @@
     "message": "Twoja lista życzeń jest pusta"
   },
   "wishlistAddBtn": {
-    "message": "★ Dodaj do listy życzeń"
+    "message": "Dodaj do listy życzeń"
   },
   "wishlistInBtn": {
-    "message": "★ Na liście życzeń (kliknij, aby usunąć)"
+    "message": "Na liście życzeń (kliknij, aby usunąć)"
   },
   "wishlistRemoved": {
     "message": "Usunięto z listy życzeń"
@@ -421,7 +421,7 @@
     "message": "Ostatnio widziano"
   },
   "wishlistCheckNow": {
-    "message": "🔄 Sprawdź ceny teraz"
+    "message": "Sprawdź ceny teraz"
   },
   "wishlistChecking": {
     "message": "Sprawdzam…"
@@ -430,7 +430,7 @@
     "message": "Ceny zaktualizowane"
   },
   "supportDev": {
-    "message": "❤️ Wesprzyj rozwój"
+    "message": "Wesprzyj rozwój"
   },
   "supportDevDesc": {
     "message": "Podoba Ci się PS Store Enhancer? Wesprzyj jego rozwój na Ko-fi, Buy Me a Coffee lub Patreon."
@@ -469,10 +469,10 @@
     "message": "Wyeksportuj ręcznie oznaczone posiadane gry do pliku JSON lub przywróć je z wcześniejszej kopii."
   },
   "exportBtn": {
-    "message": "📤 Eksportuj JSON"
+    "message": "Eksportuj JSON"
   },
   "importBtn": {
-    "message": "📥 Importuj JSON"
+    "message": "Importuj JSON"
   },
   "exportSuccess": {
     "message": "Wyeksportowano"
@@ -519,7 +519,7 @@
     "message": "PC od"
   },
   "whatsNewTitle": {
-    "message": "🎉 Co nowego w wersji v$VERSION$",
+    "message": "Co nowego w wersji v$VERSION$",
     "placeholders": {
       "version": {
         "content": "$1"
@@ -788,13 +788,13 @@
     "message": "Ostatnie zdarzenia wywołań API i połączenia z PSN, przechowywane tylko na tym urządzeniu. Tokeny i hasła nigdy nie są zapisywane. Skopiuj to, zgłaszając problem."
   },
   "diagRefresh": {
-    "message": "🔄 Odśwież"
+    "message": "Odśwież"
   },
   "diagCopy": {
-    "message": "📋 Kopiuj"
+    "message": "Kopiuj"
   },
   "diagClear": {
-    "message": "🗑 Wyczyść dziennik"
+    "message": "Wyczyść dziennik"
   },
   "diagEmpty": {
     "message": "Nie zapisano jeszcze żadnych zdarzeń."
@@ -899,7 +899,7 @@
     "message": "Tygodniowe podsumowanie"
   },
   "shareWishlistBtn": {
-    "message": "🔗 Kopiuj link do udostępnienia"
+    "message": "Kopiuj link do udostępnienia"
   },
   "shareWishlistDesc": {
     "message": "Link zawiera tylko nazwy gier i ostatnio widziane ceny PC (bez celów i notatek) i jest tylko do odczytu. Każdy, kto ma link, zobaczy listę."
@@ -985,28 +985,28 @@
     "message": "Nie, dziękuję"
   },
   "chl_2_7_0_1": {
-    "message": "🎯 Dokładne ceny między platformami — dokładnie ta gra, nigdy DLC, mapa ani sequel"
+    "message": "Dokładne ceny między platformami — dokładnie ta gra, nigdy DLC, mapa ani sequel"
   },
   "chl_2_7_0_2": {
-    "message": "📊 Oceny Metacritic i Steam z CheapShark (OpenCritic wymaga teraz klucza API i przestał działać)"
+    "message": "Oceny Metacritic i Steam z CheapShark (OpenCritic wymaga teraz klucza API i przestał działać)"
   },
   "chl_2_7_0_3": {
-    "message": "📉 Analiza ceny używa tylko prawdziwych danych: najniższa cena na PC w historii, najtańsza dziś i Twój zapisany trend"
+    "message": "Analiza ceny używa tylko prawdziwych danych: najniższa cena na PC w historii, najtańsza dziś i Twój zapisany trend"
   },
   "chl_2_7_0_4": {
-    "message": "🛠 Dziennik diagnostyczny, bezpieczniejsze logowanie PSN, cele w %, notatki, sortowanie, tygodniowe podsumowanie i przycisk „Usuń wszystkie moje dane”"
+    "message": "Dziennik diagnostyczny, bezpieczniejsze logowanie PSN, cele w %, notatki, sortowanie, tygodniowe podsumowanie i przycisk „Usuń wszystkie moje dane”"
   },
   "chl_2_7_0_5": {
-    "message": "🧩 Zmieniaj kolejność, ukrywaj i zwijaj karty na stronie produktu; nowy motyw wysokiego kontrastu"
+    "message": "Zmieniaj kolejność, ukrywaj i zwijaj karty na stronie produktu; nowy motyw wysokiego kontrastu"
   },
   "chl_2_7_0_6": {
-    "message": "🌍 Sześć nowych języków: Italiano, Polski, Türkçe, Nederlands, 简体中文 i 繁體中文"
+    "message": "Sześć nowych języków: Italiano, Polski, Türkçe, Nederlands, 简体中文 i 繁體中文"
   },
   "chl_2_7_1_1": {
-    "message": "🔌 Naprawiono połączenie z PSN — rozszerzenie używało niewłaściwej tożsamości aplikacji, więc Sony zawsze je odrzucało"
+    "message": "Naprawiono połączenie z PSN — rozszerzenie używało niewłaściwej tożsamości aplikacji, więc Sony zawsze je odrzucało"
   },
   "chl_2_7_1_2": {
-    "message": "🛠 Czytelniejsze błędy PSN wskazujące nieudany krok oraz zgoda jednym kliknięciem, gdy Chrome ukrywa przekierowanie Sony"
+    "message": "Czytelniejsze błędy PSN wskazujące nieudany krok oraz zgoda jednym kliknięciem, gdy Chrome ukrywa przekierowanie Sony"
   },
   "psHistLabel": {
     "message": "PlayStation Store · zapisane przez Twoją przeglądarkę"
@@ -1075,7 +1075,7 @@
     "message": "Za mało historii cen PlayStation. Buduje się z każdym dniem, w którym odwiedzasz stronę tej gry."
   },
   "checkPageBtn": {
-    "message": "🔍 Sprawdź tę stronę"
+    "message": "Sprawdź tę stronę"
   },
   "checkPageNoStore": {
     "message": "Najpierw otwórz stronę PlayStation Store i spróbuj ponownie."
@@ -1147,12 +1147,21 @@
     "message": "Nie zapisano jeszcze żadnych żądań."
   },
   "chl_3_0_1": {
-    "message": "🛡️ Sprawdzone na prawdziwym PlayStation Store: naprawiono błędnie zapisaną cenę, filtry dodatków, DLC i posiadanych gier oraz puste luki w wynikach wyszukiwania"
+    "message": "Sprawdzone na prawdziwym PlayStation Store: naprawiono błędnie zapisaną cenę, filtry dodatków, DLC i posiadanych gier oraz puste luki w wynikach wyszukiwania"
   },
   "chl_3_0_2": {
-    "message": "📈 Historia cen PlayStation: najniższa widziana cena, szczegóły promocji i trend, zbudowane z cen zapisywanych przez Twoją przeglądarkę (także z wyników wyszukiwania i Twojej listy życzeń)"
+    "message": "Historia cen PlayStation: najniższa widziana cena, szczegóły promocji i trend, zbudowane z cen zapisywanych przez Twoją przeglądarkę (także z wyników wyszukiwania i Twojej listy życzeń)"
   },
   "chl_3_0_3": {
-    "message": "🔍 Nowy przycisk „Sprawdź tę stronę” w oknie rozszerzenia i lokalny dziennik sieci w Ustawieniach: zobacz, co działa i o co prosiło rozszerzenie"
+    "message": "Nowy przycisk „Sprawdź tę stronę” w oknie rozszerzenia i lokalny dziennik sieci w Ustawieniach: zobacz, co działa i o co prosiło rozszerzenie"
+  },
+  "navAppearance": {
+    "message": "Wygląd i język"
+  },
+  "navLibrary": {
+    "message": "Biblioteka i lista życzeń"
+  },
+  "chl_3_0_4": {
+    "message": "Nowy wygląd wszystkiego: karty w sklepie, okno rozszerzenia i ustawienia, w trybie ciemnym, jasnym i wysokiego kontrastu"
   }
 }

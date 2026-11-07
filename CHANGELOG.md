@@ -40,6 +40,12 @@ v2.7.1 that the old test pages could not show, and they are fixed here.
   does not show a warning for and which the extension uses for nothing else.
 
 **New**
+- **A new look, "Midnight Glass".** The cards on store pages, the toolbar popup, the settings page, the
+  welcome page and this changelog share one design: glass surfaces, a bigger headline number for the
+  lowest price, one icon set instead of emoji, and the same colours in dark, light and high contrast
+  (including right-to-left languages). The settings page gets a side navigation. Nothing was removed.
+- **Cards stay on the page.** The store re-renders its page a few seconds after it loads (for example
+  once it knows you are signed in) and that removed the cards. They are now put back.
 - **PlayStation price history** in the Price Insight card: the lowest PlayStation price you have seen,
   today's price, the sale (was, % off, when it ends), the PlayStation Plus price when the page shows
   one, the store's own "lowest price in the last 30 days", a trend, and how far the price is from the

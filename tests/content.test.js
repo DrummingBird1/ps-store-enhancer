@@ -105,6 +105,27 @@ describe("product page: GTA VI (an edition upsell sits above the real price in t
     expect(page.doc.querySelector('[data-qa^="mfeUpsell"] .pse-injected')).toBeNull();
   });
 
+  test("when the store re-renders its tree and removes the cards, they are put back, three times at most", async () => {
+    const page = loadPage("gta6-concept-en-us.html", PATH);
+    const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+    const cards = () => page.doc.querySelector(".pse-price-insight.pse-card");
+    const wipe = () => page.doc.querySelectorAll(".pse-injected").forEach((el) => el.remove());
+    await until(cards, "price insight card");
+    await wait(700); // the watcher is attached once every card and button has been placed
+    const restored = [];
+    for (let i = 0; i < 3; i++) {
+      wipe();
+      await until(cards, `cards back after removal ${i + 1}`);
+      restored.push(true);
+      await wait(700);
+    }
+    expect(restored).toHaveLength(3);
+    expect(page.of("DIAG_LOG").filter((m) => m.event === "store-removed-injected")).toHaveLength(3);
+    wipe(); // the fourth removal on the same page is left alone: no endless fight with the store
+    await wait(1800);
+    expect(cards()).toBeNull();
+  });
+
   test("with fewer than two recorded days the card says there is not enough PlayStation history", async () => {
     const page = loadPage("gta6-concept-en-us.html", PATH, {
       respond: { PS_PRICE_HISTORY: () => ({ ok: true, points: [[20400, 99.99]], stats: { count: 1, enough: false } }) }

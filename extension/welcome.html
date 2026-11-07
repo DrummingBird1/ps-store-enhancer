@@ -5,28 +5,45 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>PS Store Enhancer — Welcome</title>
 <style>
+/* "Midnight Glass" welcome page: dark by default, light when the system asks for it. */
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#0a0f1a;color:#e2e8f0;min-height:100vh;display:flex;align-items:center;justify-content:center}
-.wrap{max-width:680px;padding:48px 32px;text-align:center}
-.logo{width:80px;height:80px;margin:0 auto 24px;border-radius:20px;overflow:hidden}
-.logo img{width:100%;height:100%}
-h1{font-size:32px;font-weight:800;margin-bottom:8px}
-h1 span{background:linear-gradient(135deg,#4da6ff,#0070d1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.sub{color:#718096;font-size:16px;margin-bottom:48px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:40px;text-align:left}
-.feat{background:#131b2e;border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:20px;transition:border-color .2s}
-.feat:hover{border-color:rgba(0,112,209,.3)}
-.feat-icon{font-size:28px;margin-bottom:10px}
-.feat-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:4px}
-.feat-desc{font-size:12px;color:#a0aec0;line-height:1.5}
-.cta{display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#003087,#0070d1);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s}
-.cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,112,209,.3)}
-.note{margin-top:20px;font-size:12px;color:#4a5568}
-.support-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px}
-.support{display:inline-block;padding:10px 20px;font-size:13px;font-weight:600;color:#ff7eb6;background:rgba(255,126,182,.08);border:1px solid rgba(255,126,182,.25);border-radius:10px;text-decoration:none;transition:background .2s,border-color .2s}
-.support:hover{background:rgba(255,126,182,.16);border-color:rgba(255,126,182,.45)}
-.disclaimer{margin-top:32px;font-size:10px;color:#2d3748;padding:12px;border:1px solid rgba(255,255,255,.03);border-radius:8px}
+:root{
+  --bg:#070b16; --glow:radial-gradient(60% 45% at 50% 0%,rgba(61,125,255,.28),transparent 70%);
+  --panel:rgba(255,255,255,.05); --line:rgba(255,255,255,.10);
+  --text:#eef2fb; --dim:#a3aec6; --faint:#8590a8;
+  --accent:#5aa3ff; --accent-deep:#1769e0; --accent-soft:rgba(90,163,255,.16); --pink:#f27ab0;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){
+  :root{ --bg:#eef2fa; --glow:radial-gradient(60% 45% at 50% 0%,rgba(61,125,255,.20),transparent 70%);
+    --panel:rgba(255,255,255,.8); --line:rgba(15,30,70,.12); --text:#0d1630; --dim:#4b5878; --faint:#66728f;
+    --accent:#1769e0; --accent-soft:rgba(23,105,224,.10); --pink:#c2185b; color-scheme:light; }
+}
+body{font-family:"Rubik","SST","Segoe UI Variable Text","Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,Roboto,"Noto Sans Hebrew","Arial Hebrew",sans-serif;background:var(--bg);background-image:var(--glow);color:var(--text);min-height:100vh;display:flex;align-items:center;justify-content:center}
+svg.i{width:1.2em;height:1.2em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:700px;padding:56px 28px;text-align:center}
+.logo{width:76px;height:76px;margin:0 auto 24px;border-radius:22px;overflow:hidden;box-shadow:0 14px 40px rgba(23,105,224,.4)}
+.logo img{width:100%;height:100%;display:block}
+h1{font-size:34px;line-height:1.15;font-weight:600;letter-spacing:-.01em;margin-bottom:10px}
+h1 span{background:linear-gradient(135deg,#8ec0ff,#5aa3ff 45%,#8fe4ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+@media (prefers-color-scheme: light){h1 span{background:linear-gradient(135deg,#1769e0,#4a8dff);-webkit-background-clip:text;background-clip:text}}
+.sub{color:var(--dim);font-size:16px;margin-bottom:44px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:40px;text-align:start}
+.feat{background:var(--panel);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border:1px solid var(--line);border-radius:20px;padding:20px;transition:border-color .2s}
+.feat:hover{border-color:color-mix(in srgb,var(--accent) 40%,transparent)}
+.feat-icon{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:var(--accent-soft);color:var(--accent);font-size:20px;margin-bottom:12px}
+.feat-title{font-size:15px;font-weight:600;margin-bottom:4px}
+.feat-desc{font-size:13px;color:var(--dim);line-height:1.55}
+.cta{display:inline-block;padding:14px 38px;background:var(--accent-deep);color:#fff;border:none;border-radius:999px;font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;box-shadow:0 8px 28px rgba(23,105,224,.4);transition:transform .2s,box-shadow .2s}
+.cta:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(23,105,224,.55)}
+.note{margin-top:20px;font-size:13px;color:var(--faint)}
+.support-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.support{display:inline-block;padding:10px 22px;font-size:13px;font-weight:600;color:var(--pink);background:color-mix(in srgb,var(--pink) 10%,transparent);border:1px solid color-mix(in srgb,var(--pink) 28%,transparent);border-radius:999px;text-decoration:none;transition:background .2s}
+.support:hover{background:color-mix(in srgb,var(--pink) 20%,transparent)}
+.disclaimer{margin-top:32px;font-size:11px;color:var(--faint);padding:12px;border:1px solid var(--line);border-radius:12px}
 @media(max-width:600px){.grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion: reduce){*{transition:none !important}.cta:hover{transform:none}}
 </style>
 </head>
 <body>
@@ -37,22 +54,22 @@ h1 span{background:linear-gradient(135deg,#4da6ff,#0070d1);-webkit-background-cl
 
   <div class="grid">
     <div class="feat">
-      <div class="feat-icon">📉</div>
+      <div class="feat-icon"><svg class="i" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg></div>
       <div class="feat-title" data-i18n="welcomeFeature1Title">Price History & Comparison</div>
       <div class="feat-desc" data-i18n="welcomeFeature1Desc">See price charts and compare prices across Steam, Epic, GOG and more.</div>
     </div>
     <div class="feat">
-      <div class="feat-icon">🔗</div>
+      <div class="feat-icon"><svg class="i" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3A4 4 0 0 0 11 18.7l1-1"/></svg></div>
       <div class="feat-title" data-i18n="welcomeFeature2Title">PSN Library Sync (Optional)</div>
       <div class="feat-desc" data-i18n="welcomeFeature2Desc">Power-user feature: optionally connect your PSN account to auto-hide games you already own.</div>
     </div>
     <div class="feat">
-      <div class="feat-icon">📊</div>
+      <div class="feat-icon"><svg class="i" viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4zM17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg></div>
       <div class="feat-title" data-i18n="welcomeFeature3Title">Scores & Trophies</div>
       <div class="feat-desc" data-i18n="welcomeFeature3Desc">Metacritic scores and completionist info right on the product page.</div>
     </div>
     <div class="feat">
-      <div class="feat-icon">🧹</div>
+      <div class="feat-icon"><svg class="i" viewBox="0 0 24 24"><path d="M4 5h16l-6 8v6l-4-2v-4L4 5z"/></svg></div>
       <div class="feat-title" data-i18n="welcomeFeature4Title">Smart Filters</div>
       <div class="feat-desc" data-i18n="welcomeFeature4Desc">Hide add-ons, DLC, and currency packs from search results.</div>
     </div>
@@ -62,9 +79,9 @@ h1 span{background:linear-gradient(135deg,#4da6ff,#0070d1);-webkit-background-cl
   <p class="note" data-i18n="welcomeNote">Tip: Click the extension icon in your toolbar for quick filter toggles.</p>
 
   <div class="support-row">
-    <a class="support" href="https://ko-fi.com/idanlights" target="_blank" rel="noopener noreferrer">☕ Ko-fi</a>
-    <a class="support" href="https://buymeacoffee.com/MrIdan" target="_blank" rel="noopener noreferrer">☕ Buy Me a Coffee</a>
-    <a class="support" href="https://www.patreon.com/c/IdanLights" target="_blank" rel="noopener noreferrer">❤️ Patreon</a>
+    <a class="support" href="https://ko-fi.com/idanlights" target="_blank" rel="noopener noreferrer">Ko-fi</a>
+    <a class="support" href="https://buymeacoffee.com/MrIdan" target="_blank" rel="noopener noreferrer">Buy Me a Coffee</a>
+    <a class="support" href="https://www.patreon.com/c/IdanLights" target="_blank" rel="noopener noreferrer">Patreon</a>
   </div>
 
   <div class="disclaimer" data-i18n="disclaimer">This extension is not affiliated with, endorsed by, or connected to Sony Interactive Entertainment, PlayStation, or any of their subsidiaries.</div>

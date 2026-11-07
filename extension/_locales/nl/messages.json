@@ -386,10 +386,10 @@
     "message": "Je verlanglijst is leeg"
   },
   "wishlistAddBtn": {
-    "message": "★ Toevoegen aan verlanglijst"
+    "message": "Toevoegen aan verlanglijst"
   },
   "wishlistInBtn": {
-    "message": "★ Op verlanglijst (klik om te verwijderen)"
+    "message": "Op verlanglijst (klik om te verwijderen)"
   },
   "wishlistRemoved": {
     "message": "Verwijderd van verlanglijst"
@@ -421,7 +421,7 @@
     "message": "Laatst gezien"
   },
   "wishlistCheckNow": {
-    "message": "🔄 Prijzen nu controleren"
+    "message": "Prijzen nu controleren"
   },
   "wishlistChecking": {
     "message": "Controleren…"
@@ -430,7 +430,7 @@
     "message": "Prijzen bijgewerkt"
   },
   "supportDev": {
-    "message": "❤️ Steun de ontwikkeling"
+    "message": "Steun de ontwikkeling"
   },
   "supportDevDesc": {
     "message": "Bevalt PS Store Enhancer? Steun de ontwikkeling via Ko-fi, Buy Me a Coffee of Patreon."
@@ -469,10 +469,10 @@
     "message": "Exporteer je handmatig gemarkeerde games naar een JSON-bestand of herstel vanaf een eerdere back-up."
   },
   "exportBtn": {
-    "message": "📤 JSON exporteren"
+    "message": "JSON exporteren"
   },
   "importBtn": {
-    "message": "📥 JSON importeren"
+    "message": "JSON importeren"
   },
   "exportSuccess": {
     "message": "Geëxporteerd"
@@ -519,7 +519,7 @@
     "message": "Pc vanaf"
   },
   "whatsNewTitle": {
-    "message": "🎉 Nieuw in v$VERSION$",
+    "message": "Nieuw in v$VERSION$",
     "placeholders": {
       "version": {
         "content": "$1"
@@ -788,13 +788,13 @@
     "message": "De laatste gebeurtenissen van API-aanroepen en de PSN-verbinding, alleen op dit apparaat bewaard. Tokens en wachtwoorden worden nooit vastgelegd. Kopieer dit als je een probleem meldt."
   },
   "diagRefresh": {
-    "message": "🔄 Vernieuwen"
+    "message": "Vernieuwen"
   },
   "diagCopy": {
-    "message": "📋 Kopiëren"
+    "message": "Kopiëren"
   },
   "diagClear": {
-    "message": "🗑 Log wissen"
+    "message": "Log wissen"
   },
   "diagEmpty": {
     "message": "Nog geen gebeurtenissen vastgelegd."
@@ -899,7 +899,7 @@
     "message": "Wekelijks overzicht"
   },
   "shareWishlistBtn": {
-    "message": "🔗 Deellink kopiëren"
+    "message": "Deellink kopiëren"
   },
   "shareWishlistDesc": {
     "message": "De link bevat alleen gamenamen en laatst geziene pc-prijzen (geen doelen of notities) en is alleen-lezen. Iedereen met de link kan de lijst zien."
@@ -985,28 +985,28 @@
     "message": "Nee, bedankt"
   },
   "chl_2_7_0_1": {
-    "message": "🎯 Nauwkeurige prijzen tussen platformen — precies de juiste game, nooit een DLC, kaart of vervolg"
+    "message": "Nauwkeurige prijzen tussen platformen — precies de juiste game, nooit een DLC, kaart of vervolg"
   },
   "chl_2_7_0_2": {
-    "message": "📊 Metacritic- en Steam-scores van CheapShark (OpenCritic vereist nu een API-sleutel en werkte niet meer)"
+    "message": "Metacritic- en Steam-scores van CheapShark (OpenCritic vereist nu een API-sleutel en werkte niet meer)"
   },
   "chl_2_7_0_3": {
-    "message": "📉 Prijsinzicht gebruikt alleen echte data: laagste pc-prijs ooit, goedkoopste van vandaag en je eigen vastgelegde trend"
+    "message": "Prijsinzicht gebruikt alleen echte data: laagste pc-prijs ooit, goedkoopste van vandaag en je eigen vastgelegde trend"
   },
   "chl_2_7_0_4": {
-    "message": "🛠 Diagnostieklog, veiliger PSN-inloggen, %-doelen, notities, sorteren, wekelijks overzicht en een knop \"Al mijn gegevens wissen\""
+    "message": "Diagnostieklog, veiliger PSN-inloggen, %-doelen, notities, sorteren, wekelijks overzicht en een knop \"Al mijn gegevens wissen\""
   },
   "chl_2_7_0_5": {
-    "message": "🧩 Kaarten op de productpagina herordenen, verbergen of inklappen; nieuw thema met hoog contrast"
+    "message": "Kaarten op de productpagina herordenen, verbergen of inklappen; nieuw thema met hoog contrast"
   },
   "chl_2_7_0_6": {
-    "message": "🌍 Zes nieuwe talen: Italiano, Polski, Türkçe, Nederlands, 简体中文 en 繁體中文"
+    "message": "Zes nieuwe talen: Italiano, Polski, Türkçe, Nederlands, 简体中文 en 繁體中文"
   },
   "chl_2_7_1_1": {
-    "message": "🔌 PSN-verbinding gerepareerd: de extensie gebruikte de verkeerde app-identiteit, waardoor Sony altijd weigerde"
+    "message": "PSN-verbinding gerepareerd: de extensie gebruikte de verkeerde app-identiteit, waardoor Sony altijd weigerde"
   },
   "chl_2_7_1_2": {
-    "message": "🛠 Duidelijkere PSN-fouten die de mislukte stap noemen, en toegang met één klik als Chrome de omleiding van Sony verbergt"
+    "message": "Duidelijkere PSN-fouten die de mislukte stap noemen, en toegang met één klik als Chrome de omleiding van Sony verbergt"
   },
   "psHistLabel": {
     "message": "PlayStation Store · vastgelegd door je browser"
@@ -1075,7 +1075,7 @@
     "message": "Nog te weinig PlayStation-prijsgeschiedenis. Die groeit elke dag dat je de pagina van deze game bezoekt."
   },
   "checkPageBtn": {
-    "message": "🔍 Pagina controleren"
+    "message": "Pagina controleren"
   },
   "checkPageNoStore": {
     "message": "Open eerst een pagina van de PlayStation Store en probeer het dan opnieuw."
@@ -1147,12 +1147,21 @@
     "message": "Nog geen verzoeken vastgelegd."
   },
   "chl_3_0_1": {
-    "message": "🛡️ Getest op de echte PlayStation Store: een verkeerd vastgelegde prijs, de filters voor add-ons, DLC en games in bezit en lege plekken in zoekresultaten zijn verholpen"
+    "message": "Getest op de echte PlayStation Store: een verkeerd vastgelegde prijs, de filters voor add-ons, DLC en games in bezit en lege plekken in zoekresultaten zijn verholpen"
   },
   "chl_3_0_2": {
-    "message": "📈 PlayStation-prijsgeschiedenis: de laagste prijs die je hebt gezien, aanbiedingsdetails en trend, opgebouwd uit prijzen die je browser vastlegt (ook uit zoekresultaten en je verlanglijst)"
+    "message": "PlayStation-prijsgeschiedenis: de laagste prijs die je hebt gezien, aanbiedingsdetails en trend, opgebouwd uit prijzen die je browser vastlegt (ook uit zoekresultaten en je verlanglijst)"
   },
   "chl_3_0_3": {
-    "message": "🔍 Nieuwe knop „Pagina controleren” in de popup en een lokaal netwerklog in Instellingen: zie wat werkt en wat de extensie heeft opgevraagd"
+    "message": "Nieuwe knop „Pagina controleren” in de popup en een lokaal netwerklog in Instellingen: zie wat werkt en wat de extensie heeft opgevraagd"
+  },
+  "navAppearance": {
+    "message": "Uiterlijk en taal"
+  },
+  "navLibrary": {
+    "message": "Bibliotheek en verlanglijst"
+  },
+  "chl_3_0_4": {
+    "message": "Een nieuwe look voor alles: de kaarten in de winkel, de popup en de instellingen, donker, licht en hoog contrast"
   }
 }

@@ -75,19 +75,19 @@ document.addEventListener("DOMContentLoaded", async () => {
         $("psnText").textContent = s.profile?.onlineId || "PSN User";
         $("psnSub").textContent = `${s.gameCount} ${t("psnGames")} · ${s.dlcCount} ${t("psnDlcs")}`;
         $("psnSynced").textContent = s.lastSync ? t("popupSyncedAgo", relativeTime(s.lastSync)) : t("psnNotSynced");
-        $("psnIcon").textContent = "✅";
-        $("psnRefresh").style.display = "inline-block";
+        $("psnIcon").dataset.state = "on";
+        $("psnRefresh").style.display = "grid";
       } else {
         $("psnText").textContent = t("psnNotConnected");
         $("psnSub").textContent = t("psnClickToConnect");
         $("psnSynced").textContent = "";
-        $("psnIcon").textContent = "🔗";
+        $("psnIcon").dataset.state = "off";
         $("psnRefresh").style.display = "none";
       }
     } catch {
       $("psnText").textContent = t("psnNotConnected");
       $("psnSub").textContent = t("psnClickToConnect");
-      $("psnIcon").textContent = "🔗";
+      $("psnIcon").dataset.state = "off";
     }
   }
   await renderPsn();

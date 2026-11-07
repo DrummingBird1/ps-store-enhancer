@@ -386,10 +386,10 @@
     "message": "您的願望清單是空的"
   },
   "wishlistAddBtn": {
-    "message": "★ 加入願望清單"
+    "message": "加入願望清單"
   },
   "wishlistInBtn": {
-    "message": "★ 已在願望清單（點擊移除）"
+    "message": "已在願望清單（點擊移除）"
   },
   "wishlistRemoved": {
     "message": "已從願望清單移除"
@@ -421,7 +421,7 @@
     "message": "最近看到"
   },
   "wishlistCheckNow": {
-    "message": "🔄 立即檢查價格"
+    "message": "立即檢查價格"
   },
   "wishlistChecking": {
     "message": "檢查中…"
@@ -430,7 +430,7 @@
     "message": "價格已更新"
   },
   "supportDev": {
-    "message": "❤️ 支持開發"
+    "message": "支持開發"
   },
   "supportDevDesc": {
     "message": "喜歡 PS Store Enhancer 嗎？歡迎透過 Ko-fi、Buy Me a Coffee 或 Patreon 支持開發。"
@@ -469,10 +469,10 @@
     "message": "將手動標記的已擁有遊戲匯出為 JSON 檔，或從先前的備份還原。"
   },
   "exportBtn": {
-    "message": "📤 匯出 JSON"
+    "message": "匯出 JSON"
   },
   "importBtn": {
-    "message": "📥 匯入 JSON"
+    "message": "匯入 JSON"
   },
   "exportSuccess": {
     "message": "已匯出"
@@ -519,7 +519,7 @@
     "message": "PC 起價"
   },
   "whatsNewTitle": {
-    "message": "🎉 v$VERSION$ 新功能",
+    "message": "v$VERSION$ 新功能",
     "placeholders": {
       "version": {
         "content": "$1"
@@ -788,13 +788,13 @@
     "message": "最近的 API 呼叫與 PSN 連線事件，僅儲存在此裝置上。絕不會記錄權杖與密碼。回報問題時請複製此內容。"
   },
   "diagRefresh": {
-    "message": "🔄 重新整理"
+    "message": "重新整理"
   },
   "diagCopy": {
-    "message": "📋 複製"
+    "message": "複製"
   },
   "diagClear": {
-    "message": "🗑 清除記錄"
+    "message": "清除記錄"
   },
   "diagEmpty": {
     "message": "尚無記錄的事件。"
@@ -899,7 +899,7 @@
     "message": "每週摘要"
   },
   "shareWishlistBtn": {
-    "message": "🔗 複製分享連結"
+    "message": "複製分享連結"
   },
   "shareWishlistDesc": {
     "message": "連結只包含遊戲名稱與最近看到的 PC 價格（不含目標價與備註），且為唯讀。任何拿到連結的人都能查看此清單。"
@@ -985,28 +985,28 @@
     "message": "不用了"
   },
   "chl_2_7_0_1": {
-    "message": "🎯 跨平台價格更準確 — 就是對應的那款遊戲，不會再混入 DLC、地圖或續作"
+    "message": "跨平台價格更準確 — 就是對應的那款遊戲，不會再混入 DLC、地圖或續作"
   },
   "chl_2_7_0_2": {
-    "message": "📊 評分改用 CheapShark 提供的 Metacritic 與 Steam 評分（OpenCritic 現在需要 API 金鑰，已無法使用）"
+    "message": "評分改用 CheapShark 提供的 Metacritic 與 Steam 評分（OpenCritic 現在需要 API 金鑰，已無法使用）"
   },
   "chl_2_7_0_3": {
-    "message": "📉 價格洞察只使用真實資料：PC 歷史最低價、今日最低價與您自己記錄的走勢"
+    "message": "價格洞察只使用真實資料：PC 歷史最低價、今日最低價與您自己記錄的走勢"
   },
   "chl_2_7_0_4": {
-    "message": "🛠 診斷記錄、更安全的 PSN 登入、以折扣百分比設定目標、備註、排序、每週摘要與「清除我的所有資料」按鈕"
+    "message": "診斷記錄、更安全的 PSN 登入、以折扣百分比設定目標、備註、排序、每週摘要與「清除我的所有資料」按鈕"
   },
   "chl_2_7_0_5": {
-    "message": "🧩 可重新排序、隱藏或收合商品頁卡片；新增高對比主題"
+    "message": "可重新排序、隱藏或收合商品頁卡片；新增高對比主題"
   },
   "chl_2_7_0_6": {
-    "message": "🌍 新增六種語言：Italiano、Polski、Türkçe、Nederlands、简体中文與繁體中文"
+    "message": "新增六種語言：Italiano、Polski、Türkçe、Nederlands、简体中文與繁體中文"
   },
   "chl_2_7_1_1": {
-    "message": "🔌 修正 PSN 連線 — 擴充功能使用了錯誤的應用程式身分，因此 Sony 一律拒絕連線"
+    "message": "修正 PSN 連線 — 擴充功能使用了錯誤的應用程式身分，因此 Sony 一律拒絕連線"
   },
   "chl_2_7_1_2": {
-    "message": "🛠 更清楚的 PSN 錯誤訊息（會指出失敗的步驟），Chrome 隱藏 Sony 重新導向時可一鍵授權"
+    "message": "更清楚的 PSN 錯誤訊息（會指出失敗的步驟），Chrome 隱藏 Sony 重新導向時可一鍵授權"
   },
   "psHistLabel": {
     "message": "PlayStation Store · 由您的瀏覽器記錄"
@@ -1075,7 +1075,7 @@
     "message": "PlayStation 價格歷史還不夠多。您每天瀏覽該遊戲頁面都會累積一點。"
   },
   "checkPageBtn": {
-    "message": "🔍 檢查此頁面"
+    "message": "檢查此頁面"
   },
   "checkPageNoStore": {
     "message": "請先開啟 PlayStation Store 頁面，然後再試一次。"
@@ -1147,12 +1147,21 @@
     "message": "尚未記錄任何請求。"
   },
   "chl_3_0_1": {
-    "message": "🛡️ 已在真實的 PlayStation Store 上驗證：修正了記錄錯誤的價格、附加內容、DLC 與已擁有遊戲的篩選，以及搜尋結果中的空白"
+    "message": "已在真實的 PlayStation Store 上驗證：修正了記錄錯誤的價格、附加內容、DLC 與已擁有遊戲的篩選，以及搜尋結果中的空白"
   },
   "chl_3_0_2": {
-    "message": "📈 PlayStation 價格歷史：您見過的最低價、優惠詳情與走勢，依據瀏覽器記錄的價格產生（也包括搜尋結果與您的願望清單）"
+    "message": "PlayStation 價格歷史：您見過的最低價、優惠詳情與走勢，依據瀏覽器記錄的價格產生（也包括搜尋結果與您的願望清單）"
   },
   "chl_3_0_3": {
-    "message": "🔍 彈出視窗新增「檢查此頁面」，設定中新增本機網路記錄：查看哪些功能正常，以及擴充功能發出了哪些請求"
+    "message": "彈出視窗新增「檢查此頁面」，設定中新增本機網路記錄：查看哪些功能正常，以及擴充功能發出了哪些請求"
+  },
+  "navAppearance": {
+    "message": "外觀與語言"
+  },
+  "navLibrary": {
+    "message": "遊戲庫與願望清單"
+  },
+  "chl_3_0_4": {
+    "message": "全新外觀:商店頁面卡片、彈出視窗和設定頁面,支援深色、淺色和高對比"
   }
 }
