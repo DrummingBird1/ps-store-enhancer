@@ -72,6 +72,18 @@ Also new in v2.7: the PSN sign-in now **restores the user's previous `npsso` coo
 - **`notifications`** — used solely by the Wishlist feature: when a user adds a game to their wishlist with a target price, a once-daily background alarm checks the cross-platform cheapest price via CheapShark. If it has dropped below the target, a single local desktop notification is fired. No remote push, no analytics, no third-party services.
 - **`contextMenus`** — adds a single right-click menu item ("Find on PS Store Enhancer price compare") that only appears on `store.playstation.com` and only when text is selected. Selecting it opens CheapShark with the selected text as a search query.
 
+### Bundled font, `web_accessible_resources`, "Report a problem" (v3.0.0)
+
+- **Font.** Rubik (SIL Open Font License 1.1, licence text in `fonts/OFL.txt`) ships inside the package as five
+  `woff2` subsets (about 110 KB). The pages load them with `fonts.css`; the cards on store pages load them with
+  `fonts-content.css`, which names the files by the extension's own URL and needs `fonts/*.woff2` in
+  `web_accessible_resources` for `https://store.playstation.com/*` (the existing entry for `styles.css`,
+  `data/trophies.json` and the locale files). No font or other resource is requested from a server.
+- **Report a problem.** A button in the popup and in Settings → Diagnostics. On a click it copies the version, the
+  browser string and the local diagnostics log (tokens and codes are redacted when written) to the clipboard and
+  opens `https://github.com/DrummingBird1/ps-store-enhancer/issues/new?template=bug_report.yml` in a new tab. The
+  user pastes the text into the form; nothing from the log is put in the address and nothing is sent by the extension.
+
 ### Single purpose
 
 The extension's single purpose is enhancing the PlayStation Store website with price intelligence, review scores, trophy information, and search filters to help users make informed purchasing decisions. (Wishlist alerts, the share link, collapsible cards and the diagnostics log all serve that same purpose; none sends user data anywhere.)
