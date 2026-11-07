@@ -10,6 +10,14 @@ const FIX = path.join(__dirname, "..", "fixtures");
 
 const fixture = (name) => JSON.parse(fs.readFileSync(path.join(FIX, name), "utf8"));
 const clone = (o) => (o === undefined ? undefined : JSON.parse(JSON.stringify(o)));
+/** Host name of a URL ("" when it is not one): tests compare hosts exactly instead of searching the URL text. */
+const hostOf = (url) => {
+  try {
+    return new URL(url).hostname;
+  } catch {
+    return "";
+  }
+};
 
 function jsonResponse(data, status = 200, headers = {}) {
   return {
@@ -165,4 +173,4 @@ function createEnv() {
   return env;
 }
 
-module.exports = { createEnv, fixture, jsonResponse, EXT };
+module.exports = { createEnv, fixture, jsonResponse, hostOf, EXT };

@@ -7,7 +7,7 @@ const path = require("path");
 const { JSDOM } = require("jsdom");
 const H = require("../extension/helpers.js");
 const Store = require("../extension/store-adapter.js");
-const { createEnv, jsonResponse } = require("./support/sw-env");
+const { createEnv, jsonResponse, hostOf } = require("./support/sw-env");
 
 jest.setTimeout(20000);
 afterEach(() => jest.restoreAllMocks());
@@ -137,15 +137,15 @@ describe("the daily wishlist refresh is polite", () => {
     noSleep();
     const env = createEnv().loadServiceWorker();
     await env.chrome.storage.local.set({ wishlist: LIST(2) });
-    env.route((u) => (u.startsWith("https://store.playstation.com/") ? jsonResponse(page(u.endsWith("G0") ? "Game 0" : "Game 1", 20)) : undefined));
+    env.route((u) => (hostOf(u) === "store.playstation.com" ? jsonResponse(page(u.endsWith("G0") ? "Game 0" : "Game 1", 20)) : undefined));
     await env.send({ type: "CHECK_WISHLIST_NOW" });
-    const first = env.fetchLog.filter((u) => u.includes("store.playstation.com")).length;
+    const first = env.fetchLog.filter((u) => hostOf(u) === "store.playstation.com").length;
     expect(first).toBe(2);
     await env.send({ type: "CHECK_WISHLIST_NOW" });
-    expect(env.fetchLog.filter((u) => u.includes("store.playstation.com")).length).toBe(2); // nothing new
+    expect(env.fetchLog.filter((u) => hostOf(u) === "store.playstation.com").length).toBe(2); // nothing new
     env.advanceDays(21 / 24);
     await env.send({ type: "CHECK_WISHLIST_NOW" });
-    expect(env.fetchLog.filter((u) => u.includes("store.playstation.com")).length).toBe(4);
+    expect(env.fetchLog.filter((u) => hostOf(u) === "store.playstation.com").length).toBe(4);
   });
 
   test("a long wishlist takes turns: 20 pages per run, the next run continues where this one stopped", async () => {
@@ -171,16 +171,16 @@ describe("the daily wishlist refresh is polite", () => {
     noSleep();
     const env = createEnv().loadServiceWorker();
     await env.chrome.storage.local.set({ wishlist: LIST(10) });
-    env.route((u) => (u.startsWith("https://store.playstation.com/") ? jsonResponse({}, 403) : undefined));
+    env.route((u) => (hostOf(u) === "store.playstation.com" ? jsonResponse({}, 403) : undefined));
     await env.send({ type: "CHECK_WISHLIST_NOW" });
-    expect(env.fetchLog.filter((u) => u.includes("store.playstation.com")).length).toBe(3);
+    expect(env.fetchLog.filter((u) => hostOf(u) === "store.playstation.com").length).toBe(3);
   });
 
   test("a redirect to another host is discarded", async () => {
     noSleep();
     const env = createEnv().loadServiceWorker();
     await env.chrome.storage.local.set({ wishlist: LIST(1) });
-    env.route((u) => (u.startsWith("https://store.playstation.com/") ? { ...jsonResponse(page("Game 0", 5)), redirected: true, url: "https://evil.example/x" } : undefined));
+    env.route((u) => (hostOf(u) === "store.playstation.com" ? { ...jsonResponse(page("Game 0", 5)), redirected: true, url: "https://evil.example/x" } : undefined));
     await env.send({ type: "CHECK_WISHLIST_NOW" });
     expect(Object.keys(env.stores.local.pse_snapshots || {}).some((k) => k.startsWith("ps_"))).toBe(false);
   });
@@ -189,10 +189,10 @@ describe("the daily wishlist refresh is polite", () => {
 describe("network layer: redirects", () => {
   test("a redirect that ends on a host outside the allow-list is refused and logged", async () => {
     const env = createEnv().loadServiceWorker();
-    env.route((u) => (u.includes("api.frankfurter.dev") ? { ...jsonResponse({}), redirected: true, url: "https://evil.example/steal" } : undefined));
+    env.route((u) => (hostOf(u) === "api.frankfurter.dev" ? { ...jsonResponse({}), redirected: true, url: "https://evil.example/steal" } : undefined));
     await expect(self.PSENet.fetch("https://api.frankfurter.dev/v1/latest")).rejects.toThrow(/redirected to a host that is not allowed/);
     expect((await self.PSENet.get())[0]).toMatchObject({ h: "api.frankfurter.dev", e: "blocked-redirect", ok: false });
-    env.route((u) => (u.includes("cheapshark") ? { ...jsonResponse({}), redirected: true, url: "https://api.frankfurter.dev/x" } : undefined));
+    env.route((u) => (hostOf(u) === "www.cheapshark.com" ? { ...jsonResponse({}), redirected: true, url: "https://api.frankfurter.dev/x" } : undefined));
     await expect(self.PSENet.fetch("https://www.cheapshark.com/api/1.0/stores")).resolves.toBeTruthy(); // another allowed host is fine
   });
 
