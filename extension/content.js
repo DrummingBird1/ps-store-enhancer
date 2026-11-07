@@ -569,7 +569,12 @@
         </div>${chip}`);
     const notes = [];
     if (last.orig && last.pct) notes.push(t("psSaleLine", fmt(last.orig), String(last.pct)));
-    if (last.ends && last.ends >= localToday) notes.push(t("psSaleEnds", dayText(last.ends)));
+    if (last.ends && last.ends >= localToday) {
+      // "(in 14 days)", "(tomorrow)", "(today)": localised by Intl, so it needs no string of its own
+      let when = "";
+      try { when = new Intl.RelativeTimeFormat(uiLocale(), { numeric: "auto" }).format(last.ends - localToday, "day"); } catch { /* unsupported locale: the date alone */ }
+      notes.push(`${t("psSaleEnds", dayText(last.ends))}${when ? ` (${when})` : ""}`);
+    }
     if (last.plus) notes.push(t("psPlusPrice", fmt(last.plus)));
     const live = readPsPrice();
     if (live && live.lowest30) notes.push(t("psStoreLow30", fmt(live.lowest30)));

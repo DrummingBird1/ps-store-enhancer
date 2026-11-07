@@ -158,12 +158,13 @@ describe("product page: Valheim on the Israeli store (PlayStation Plus trial fir
   });
 
   test("with a real history the card shows the lowest price, the sale, the store's 30-day low and the gap to PC", async () => {
-    const day = dayOf("2026-11-07");
-    const points = [[day - 30, 119], [day - 10, 107.1, 119, 10], [day, 95.2, 119, 20, dayOf("2026-11-21")]];
+    const day = Math.floor(Date.now() / 86400000); // relative to the clock: a sale that ends two weeks from today
+    const ends = day + 14;
+    const points = [[day - 30, 119], [day - 10, 107.1, 119, 10], [day, 95.2, 119, 20, ends]];
     const stats = {
       count: 3, enough: true, firstDay: day - 30, spanDays: 30, atLow: true,
       low: { price: 95.2, day },
-      last: { day, price: 95.2, orig: 119, pct: 20, ends: dayOf("2026-11-21"), plus: null },
+      last: { day, price: 95.2, orig: 119, pct: 20, ends, plus: null },
       trend: { direction: "down", pct: -20, spanDays: 30, from: 119, to: 95.2 }
     };
     const page = loadPage("valheim-product-en-il.html", PATH, { respond: { PS_PRICE_HISTORY: () => ({ ok: true, points, stats }) } });
@@ -174,6 +175,7 @@ describe("product page: Valheim on the Israeli store (PlayStation Plus trial fir
       expect(text).toContain(expected);
     }
     expect(text).not.toContain("psGapAbove");
+    expect(text).toMatch(/psSaleEnds:[^(]*\(in 14 days\)/); // the countdown next to the date
     expect(text).toContain("₪95.20"); // formatted in the store's own currency (Intl), not converted to USD
     expect(page.of("PS_PRICE_HISTORY")[0].currency).toBe("ILS");
     expect(page.of("GET_RATES").some((m) => m.target === "ILS")).toBe(true); // used for the PS-vs-PC gap
