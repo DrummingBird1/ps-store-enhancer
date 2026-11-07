@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const { createEnv, jsonResponse } = require("./support/sw-env");
+const { createEnv, jsonResponse, hostOf } = require("./support/sw-env");
 
 const ROOT = path.join(__dirname, "..");
 const read = (...p) => fs.readFileSync(path.join(ROOT, ...p), "utf8");
@@ -59,7 +59,7 @@ describe("network layer: allow-list", () => {
 describe("network layer: the local request log", () => {
   test("records host and path only: never the query string, headers or body", async () => {
     const env = createEnv().loadServiceWorker();
-    env.route((u) => (u.includes("ca.account.sony.com") ? jsonResponse({ ok: 1 }) : undefined));
+    env.route((u) => (hostOf(u) === "ca.account.sony.com" ? jsonResponse({ ok: 1 }) : undefined));
     await self.PSENet.fetch("https://ca.account.sony.com/api/authz/v3/oauth/token?code=SECRETCODE&npsso=SECRETNPSSO", {
       method: "POST",
       headers: { Authorization: "Basic SECRETBASIC" },
@@ -75,11 +75,11 @@ describe("network layer: the local request log", () => {
 
   test("failed requests are logged with their status or error name, and keep the original response", async () => {
     const env = createEnv().loadServiceWorker();
-    env.route((u) => (u.includes("api.frankfurter.dev") ? jsonResponse({}, 503) : undefined));
+    env.route((u) => (hostOf(u) === "api.frankfurter.dev" ? jsonResponse({}, 503) : undefined));
     const resp = await self.PSENet.fetch("https://api.frankfurter.dev/v1/latest?base=USD");
     expect(resp.status).toBe(503);
     env.route((u) => {
-      if (u.includes("cheapshark.com/api/1.0/stores")) throw Object.assign(new Error("offline"), { name: "TypeError" });
+      if (hostOf(u) === "www.cheapshark.com" && u.includes("/api/1.0/stores")) throw Object.assign(new Error("offline"), { name: "TypeError" });
       return undefined;
     });
     await expect(self.PSENet.fetch("https://www.cheapshark.com/api/1.0/stores")).rejects.toThrow("offline");
@@ -96,7 +96,7 @@ describe("network layer: the local request log", () => {
     const env = createEnv().loadServiceWorker();
     env.route(
       (u, init) =>
-        u.includes("m.np.playstation.com")
+        hostOf(u) === "m.np.playstation.com"
           ? new Promise((_res, rej) => init.signal.addEventListener("abort", () => rej(Object.assign(new Error("aborted"), { name: "AbortError" }))))
           : undefined
     );
@@ -110,7 +110,7 @@ describe("network layer: the local request log", () => {
 
   test("keeps the newest 200 entries, can be cleared and is erased with the rest of the data", async () => {
     const env = createEnv().loadServiceWorker();
-    env.route((u) => (u.includes("frankfurter") ? jsonResponse({}) : undefined));
+    env.route((u) => (hostOf(u) === "api.frankfurter.dev" ? jsonResponse({}) : undefined));
     for (let i = 0; i < 230; i++) await self.PSENet.fetch(`https://api.frankfurter.dev/v1/latest?n=${i}`);
     await self.PSENet.flush();
     expect(await self.PSENet.get()).toHaveLength(200);

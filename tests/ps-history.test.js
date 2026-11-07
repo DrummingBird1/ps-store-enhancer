@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const { createEnv, jsonResponse } = require("./support/sw-env");
+const { createEnv, jsonResponse, hostOf } = require("./support/sw-env");
 
 jest.setTimeout(20000);
 afterEach(() => jest.restoreAllMocks());
@@ -128,7 +128,7 @@ describe("PlayStation price history (3.0): the daily wishlist refresh", () => {
     const env = createEnv().loadServiceWorker();
     await env.send({ type: "ADD_WISHLIST", gameName: "Valheim", storeUrl: "https://evil.example/en-il/product/X" });
     await env.send({ type: "CHECK_WISHLIST_NOW" });
-    expect(env.fetchLog.some((u) => u.includes("evil.example"))).toBe(false);
+    expect(env.fetchLog.some((u) => hostOf(u) === "evil.example")).toBe(false);
   });
 });
 
