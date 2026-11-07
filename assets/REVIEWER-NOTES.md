@@ -54,9 +54,18 @@ We use `chrome.cookies` solely to set the NPSSO token on `ca.account.sony.com` (
 
 ### Optional permission: `webRequest` (new in v2.7)
 
-Declared under `optional_permissions`, so it is **not granted at install and triggers no install warning**. It is requested at runtime, from the **Connect** button click, when a user connects PSN, because Chrome hides Sony's sign-in redirect from extensions (`fetch(..., {redirect: "manual"})` returns an opaque response). When granted, non-blocking `onHeadersReceived` and `onBeforeRedirect` listeners restricted to `https://ca.account.sony.com/*` read the authorization code from that one redirect (the `Location` header of Sony's response), and are removed again right after. Reviewers do not need to exercise it.
+Declared under `optional_permissions`, so it is **not granted at install and triggers no install warning**. It is requested at runtime, from the **Connect** button click, when a user connects PSN, because Chrome hides Sony's sign-in redirect from extensions (`fetch(..., {redirect: "manual"})` returns an opaque response). When granted, non-blocking `onHeadersReceived` and `onBeforeRedirect` listeners restricted to `https://ca.account.sony.com/*` read the authorization code from that one redirect (the `Location` header of Sony's response). Chrome only delivers these events for the service worker's own requests to listeners that exist when the worker starts, so the listeners are attached at start-up (and when the permission is granted); they ignore everything except the extension's own request (`tabId` -1) while a PSN connect is running, keep the code in memory only until the connect ends, and never log it. Reviewers do not need to exercise it.
+
+### Permission: `declarativeNetRequestWithHostAccess` (new in v3.0.0)
+
+Chrome shows no install warning for this permission (it only works on hosts the extension already has access to). It is used for exactly one session rule: remove the `Origin` request header from the extension's own (non-tab) POST requests to `https://ca.account.sony.com/api/authz/v3/oauth/token`. Sony's token endpoint answers 403 to any request that carries the extension's `Origin: chrome-extension://…` header and works without it (this is how Sony's own PlayStation app and the open-source psn-api client call it), and `fetch()` does not let a script omit that header. The rule blocks nothing, redirects nothing and changes no other header or URL. It is only used when a user connects PSN or when the saved sign-in is refreshed.
 
 Also new in v2.7: the PSN sign-in now **restores the user's previous `npsso` cookie** after every attempt (it used to leave the pasted token behind).
+
+### Why we use `storage` and `alarms`
+
+- **`storage`** — everything the extension remembers stays on the device: settings, the owned-games list, the wishlist, cached API answers, locally recorded prices, and the diagnostics and network logs (host and path only). Nothing is synced to a server of ours.
+- **`alarms`** — three background timers: the PSN library sync (every 2 hours, only when PSN is connected), expired-cache cleanup (every 6 hours) and the daily wishlist price check. No data leaves the device because of them.
 
 ### Why we added `notifications` and `contextMenus` (new in v2.3)
 

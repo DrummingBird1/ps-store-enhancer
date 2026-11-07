@@ -121,6 +121,8 @@ storage: Saves user preferences, cached API responses, owned-games list, wishlis
 
 webRequest (OPTIONAL permission, requested at runtime when a user clicks Connect for PSN): Used only to observe Sony's single sign-in redirect (restricted to ca.account.sony.com) and read the authorization code, because Chrome hides that redirect from extensions. Never requested at install; nothing else uses it.
 
+declarativeNetRequestWithHostAccess: Used for one rule that removes the extension's Origin header from its own sign-in request to Sony's token address (https://ca.account.sony.com/api/authz/v3/oauth/token), which Sony rejects with 403 otherwise. It blocks, redirects or modifies nothing else and applies to no other site or request.
+
 Host permissions:
 - store.playstation.com — content script injection; once a day the service worker also reads the saved page (no cookies) of each wishlisted game to record its price
 - ca.account.sony.com, m.np.playstation.com — optional PSN authentication & library sync

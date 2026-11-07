@@ -15,7 +15,8 @@
     "alarms",
     "cookies",
     "notifications",
-    "contextMenus"
+    "contextMenus",
+    "declarativeNetRequestWithHostAccess"
   ],
   "host_permissions": [
     "https://store.playstation.com/*",

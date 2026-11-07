@@ -91,7 +91,8 @@
   <tr><td><span class="badge">cookies</span></td><td>Detect/set the PSN session cookie (npsso) on Sony's domain for optional PSN login</td></tr>
   <tr><td><span class="badge">notifications</span></td><td>Show a local desktop notification when a wishlisted game's price drops below your target</td></tr>
   <tr><td><span class="badge">contextMenus</span></td><td>Add a right-click "Find on PS Store Enhancer" option on the PlayStation Store</td></tr>
-  <tr><td><span class="badge">webRequest</span> <em>(optional)</em></td><td>Only if you choose to connect PSN <em>and</em> Chrome hides Sony's sign-in redirect from extensions: lets the extension read that redirect, observation only. It is requested at that moment, never at install, and nothing else uses it.</td></tr>
+  <tr><td><span class="badge">webRequest</span> <em>(optional)</em></td><td>Only if you choose to connect PSN <em>and</em> Chrome hides Sony's sign-in redirect from extensions: lets the extension read that redirect while a connect is running, observation only. It is requested at that moment, never at install, and nothing else uses it.</td></tr>
+  <tr><td><span class="badge">declarativeNetRequestWithHostAccess</span></td><td>One rule that removes the extension's <code>Origin</code> header from its sign-in request to Sony's token address, which Sony rejects otherwise. It blocks and redirects nothing and applies to no other request.</td></tr>
 </table>
 </div>
 <p style="font-size:13px;color:#718096">Host access is limited to: <code>store.playstation.com</code> (UI injection, and the once-a-day read of wishlisted games' own pages), <code>ca.account.sony.com</code> &amp; <code>m.np.playstation.com</code> (optional PSN), <code>cheapshark.com</code> (prices, Metacritic and Steam ratings), and <code>api.frankfurter.dev</code> (currency rates). The extension requests no other site access.</p>

@@ -5,8 +5,11 @@
  *   then restores whatever cookie was there before (so a wrong token never replaces a real Sony
  *   session and nothing is left behind).
  * - Redirect handling: reads Sony's redirect Location directly; if Chrome hides it (opaque
- *   redirect) and the optional `webRequest` permission was granted, falls back to observing the
- *   redirect. Every step is written to the local diagnostics log (never any token value).
+ *   redirect) and the optional `webRequest` permission was granted, falls back to the observer that
+ *   background.js installs when the service worker starts. Every step is written to the local
+ *   diagnostics log (never any token value).
+ * - Token requests: Sony's token endpoint rejects the extension's Origin header, so a session rule removes
+ *   it (installNoOriginRule).
  * - Token requests: made as Sony's PlayStation app (its client id + Basic client auth, JWT tokens),
  *   exactly like the open-source psn-api project.
  * - Requests: one 401 → refresh-token → retry before giving up.
@@ -158,6 +161,60 @@ const PSN = (() => {
     }
   }
 
+  /* ════════════════════════════════════════════
+   * REDIRECT OBSERVER
+   * ════════════════════════════════════════════ */
+
+  // Sony answers the authorize request with a redirect to the PlayStation app's custom scheme
+  // (com.scee.psxandroid.scecompcall://…?code=…). Chrome never shows a script that Location, so the
+  // only way to read the code is webRequest, and Chrome only delivers webRequest events for the
+  // service worker's own requests to listeners that exist from the moment the worker starts: listeners
+  // added in the middle of a connect see nothing (measured in Chrome, 2026-11-07; the connect failed
+  // with "redirect-not-observed"). background.js therefore calls installRedirectObserver() at the top
+  // level. It only keeps a code while a connect is running and only from the extension's own request
+  // (tabId -1), never from the user's own sign-in pages, and it never logs the code.
+  let observerInstalled = false;
+  let observing = false;
+  let observedCode = null;
+  let onObserved = null;
+
+  function installRedirectObserver() {
+    const wr = chrome.webRequest;
+    if (observerInstalled) return true;
+    if (!wr || !wr.onBeforeRedirect) return false; // optional permission not granted (yet)
+    const filter = { urls: [`${SONY_URL}/*`] };
+    const grab = (value, tabId) => {
+      if (!observing || tabId !== -1) return;
+      const m = String(value || "").match(CODE_RE);
+      if (!m) return;
+      observedCode = m[1];
+      if (onObserved) onObserved(observedCode);
+    };
+    try {
+      wr.onBeforeRedirect.addListener((d) => grab(d && d.redirectUrl, d && d.tabId), filter);
+      if (wr.onHeadersReceived) {
+        wr.onHeadersReceived.addListener((d) => {
+          const h = ((d && d.responseHeaders) || []).find((x) => String(x && x.name).toLowerCase() === "location");
+          if (h) grab(h.value, d.tabId);
+        }, filter, ["responseHeaders"]);
+      }
+      observerInstalled = true;
+      log("webrequest-listener", { attached: true });
+    } catch (e) {
+      log("webrequest-listener", { attached: false, message: e && e.message });
+    }
+    return observerInstalled;
+  }
+
+  /** The observed code, waiting up to `ms` for the event: Chrome can report the failed fetch before it delivers the event. */
+  function waitForObservedCode(ms) {
+    if (observedCode) return Promise.resolve(observedCode);
+    return new Promise((resolve) => {
+      const timer = setTimeout(() => { onObserved = null; resolve(observedCode); }, ms);
+      onObserved = (code) => { clearTimeout(timer); onObserved = null; resolve(code); };
+    });
+  }
+
   /**
    * Ask Sony for an authorization code using the NPSSO cookie.
    * @returns {Promise<{code:string|null, reason?:string}>}
@@ -172,36 +229,10 @@ const PSN = (() => {
     });
     const url = `${AUTH_BASE}/authorize?${params}`;
 
-    // Optional fallback: observe the redirect (needs the optional `webRequest` permission). Both the
-    // 302 response headers and the redirect event are watched; whichever carries the code wins.
-    let observed = null;
-    const webRequest = chrome.webRequest;
-    const wr = webRequest && webRequest.onBeforeRedirect;
-    const grab = (value) => {
-      const m = String(value || "").match(CODE_RE);
-      if (m) observed = m[1];
-    };
-    const onRedirect = (d) => grab(d && d.redirectUrl);
-    const onHeaders = (d) => {
-      const h = ((d && d.responseHeaders) || []).find((x) => String(x && x.name).toLowerCase() === "location");
-      if (h) grab(h.value);
-    };
-    const filter = { urls: [`${SONY_URL}/*`] };
-    const attached = [];
-    if (wr) {
-      try {
-        wr.addListener(onRedirect, filter);
-        attached.push(() => wr.removeListener(onRedirect));
-        if (webRequest.onHeadersReceived) {
-          webRequest.onHeadersReceived.addListener(onHeaders, filter, ["responseHeaders"]);
-          attached.push(() => webRequest.onHeadersReceived.removeListener(onHeaders));
-        }
-        log("webrequest-listener", { attached: true });
-      } catch (e) {
-        log("webrequest-listener", { attached: false, message: e && e.message });
-      }
-    }
-
+    // The permission may have been granted a moment ago, after this worker started: attach then.
+    installRedirectObserver();
+    observing = true;
+    observedCode = null;
     let opaque = false;
     let reason = null; // why no code was found, for the Diagnostics log and the error detail
     try {
@@ -224,9 +255,10 @@ const PSN = (() => {
       } catch (e) {
         log("authorize-error", { mode: "manual", message: e && e.message });
       }
-      if (observed) return { code: observed };
+      if (observedCode) return { code: observedCode };
 
-      // Attempt 2: follow — fails on the custom scheme, but the error/URL can still carry the code
+      // Attempt 2: follow — fails on the custom scheme (net::ERR_UNSAFE_REDIRECT), but the observer
+      // sees the redirect and the error/URL can still carry the code
       try {
         const resp = await PSENet.fetch(url, { redirect: "follow", credentials: "include" });
         const m = String(resp.url || "").match(CODE_RE);
@@ -243,23 +275,57 @@ const PSN = (() => {
         const m = String(e).match(CODE_RE);
         if (m) return { code: m[1] };
       }
-      if (observed) return { code: observed };
+      if (observerInstalled && !reason) {
+        const late = await waitForObservedCode(1500);
+        if (late) return { code: late };
+      }
+      if (observedCode) return { code: observedCode };
 
-      if (opaque) return { code: null, reason: wr ? "redirect-not-observed" : "opaque-redirect" };
+      if (opaque) return { code: null, reason: observerInstalled ? "redirect-not-observed" : "opaque-redirect" };
       return { code: null, reason: reason || "no-code" };
     } finally {
-      for (const detach of attached) {
-        try {
-          detach();
-        } catch {
-          /* already gone */
-        }
-      }
+      observing = false;
+      observedCode = null;
+      onObserved = null;
     }
   }
 
+  /* ════════════════════════════════════════════
+   * TOKEN REQUESTS WITHOUT AN ORIGIN HEADER
+   * ════════════════════════════════════════════ */
+
+  // Sony's token endpoint answers 403 with an empty body to a request that carries the extension's
+  // `Origin: chrome-extension://…` header, and answers normally without it (measured in Chrome,
+  // 2026-11-07: a made-up code gives 403 with the header and 400 invalid_grant without). A fetch call adds
+  // that header to every POST and a script cannot remove it, so a session rule removes it: for this one
+  // URL only, and only for requests that do not come from a tab (tabId -1, i.e. this worker).
+  const NO_ORIGIN_RULE_ID = 1;
+  let noOriginRuleReady = false;
+
+  async function installNoOriginRule() {
+    if (noOriginRuleReady) return true;
+    const dnr = chrome.declarativeNetRequest;
+    if (!dnr || !dnr.updateSessionRules) return false;
+    try {
+      await dnr.updateSessionRules({
+        removeRuleIds: [NO_ORIGIN_RULE_ID],
+        addRules: [{
+          id: NO_ORIGIN_RULE_ID,
+          priority: 1,
+          action: { type: "modifyHeaders", requestHeaders: [{ header: "origin", operation: "remove" }] },
+          condition: { urlFilter: `||${SONY_URL.replace("https://", "")}/api/authz/v3/oauth/token`, resourceTypes: ["xmlhttprequest"], tabIds: [-1] }
+        }]
+      });
+      noOriginRuleReady = true;
+    } catch (e) {
+      log("origin-rule-failed", { message: e && e.message });
+    }
+    return noOriginRuleReady;
+  }
+
   /** POST to Sony's token endpoint as the PlayStation app (Basic client auth, JWT tokens). */
-  function tokenRequest(params) {
+  async function tokenRequest(params) {
+    await installNoOriginRule();
     return PSENet.fetch(`${AUTH_BASE}/token`, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded", Authorization: CLIENT_AUTH },
@@ -586,7 +652,7 @@ const PSN = (() => {
   return {
     authenticate, getAccessToken, fetchLibrary, fetchProfile,
     fetchTrophyInfo, fetchTrophyRarity, getStatus, getMergedOwned, disconnect,
-    tryAutoDetectNpsso, SYNC_INTERVAL
+    tryAutoDetectNpsso, installRedirectObserver, installNoOriginRule, SYNC_INTERVAL
   };
 })();
 

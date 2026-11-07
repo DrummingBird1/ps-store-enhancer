@@ -40,6 +40,22 @@ describe("network layer: allow-list", () => {
     expect(env).toBeTruthy();
   });
 
+  test("every permission the manifest declares (required or optional) is explained in the privacy texts", () => {
+    const manifest = JSON.parse(read("extension", "manifest.json"));
+    const names = [...(manifest.permissions || []), ...(manifest.optional_permissions || [])];
+    expect(names).toEqual(expect.arrayContaining(["webRequest", "declarativeNetRequestWithHostAccess"]));
+    const docs = {
+      "REVIEWER-NOTES.md": read("assets", "REVIEWER-NOTES.md"),
+      "privacy-policy.html": read("assets", "docs", "privacy-policy.html"),
+      "STORE-LISTING.txt": read("assets", "STORE-LISTING.txt")
+    };
+    const missing = [];
+    for (const name of names) {
+      for (const [file, text] of Object.entries(docs)) if (!text.includes(name)) missing.push(`${file}: ${name}`);
+    }
+    expect(missing).toEqual([]);
+  });
+
   test("no extension script outside net.js calls fetch() on the network directly", () => {
     const offenders = [];
     for (const f of fs.readdirSync(path.join(ROOT, "extension")).filter((n) => n.endsWith(".js"))) {
