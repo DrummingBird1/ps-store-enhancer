@@ -2,7 +2,7 @@ PS Store Enhancer (eski adıyla GameDeals+), PlayStation™ Store'a gerçek fiya
 
 🔍 FİYAT ZEKÂSI
 • PC'de gerçek tüm zamanların en düşük fiyatı (tarihiyle), bugünün en ucuz fiyatı ve "tüm zamanların en düşüğüne yakın" işareti — yalnızca gerçek veriler, tahmini grafik yok
-• Kendi tarayıcınızın kaydettiği fiyatlardan çizilen fiyat eğilimi
+• Kendi tarayıcınızın kaydettiği fiyatlardan çizilen PC ve PlayStation fiyat eğilimi (gördüğünüz en düşük fiyat, indirim ayrıntıları)
 • Tam olarak o oyun için platformlar arası karşılaştırma (asla DLC, harita veya devam oyunu değil): Steam, Epic Games Store, GOG, Humble Store ve daha fazlası — CheapShark verileriyle, para biriminize çevrilmiş olarak
 • Sürüm şeffaflığı: farklı bir sürüm veya paketin (Deluxe, Ultimate, GOTY…) fiyatı açıkça işaretlenir, sessizce karıştırılmaz
 • Büyük indirimlerin genellikle ne zaman başladığına dair ipuçları
@@ -32,7 +32,7 @@ PS Store Enhancer (eski adıyla GameDeals+), PlayStation™ Store'a gerçek fiya
 • Ürün sayfasında tek tıkla oyun ekleyin
 • Hedef fiyat veya "% indirim" belirleyin, not ekleyin, sıralayın ve filtreleyin
 • En düşük PC fiyatı hedefinize ulaştığında masaüstü bildirimi — ya da haftalık tek bir özet — alın
-• Her oyunun sayfasında gördüğünüz PS Store fiyatını kaydeder
+• Her oyunun sayfasında gördüğünüz PS Store fiyatını kaydeder ve geçmişini cihazınızda saklar
 • Listenizi salt okunur bağlantı olarak paylaşın: liste bağlantının içindedir, hiçbir şey yüklenmez
 • Arka planda günlük kontroller, sürekli sorgulama yok
 • Araç çubuğundaki rozet, hedefinize ulaşan veya altına düşen istek listesi fırsatlarını sayar
@@ -75,9 +75,9 @@ Yerleşik dil seçici — tarayıcı dilini Ayarlar'dan değiştirebilirsiniz.
 🔒 ÖNCE GİZLİLİK
 • Tüm verileriniz cihazınızda kalır
 • Analiz yok, izleme yok, veri paylaşımı yok
-• Kendi sunucumuz yok: tek istekler CheapShark (fiyatlar, puanlar), Frankfurter (döviz kurları) ve — yalnızca bağlanırsanız — Sony'ye gider
+• Kendi sunucumuz yok: tek istekler CheapShark (fiyatlar, puanlar), Frankfurter (döviz kurları), PlayStation Store'un kendisi (istek listesindeki her oyunun kayıtlı sayfası, günde bir kez) ve — yalnızca bağlanırsanız — Sony'ye gider
 • Açılır pencerede ve Ayarlar'da "Tüm verilerimi sil" düğmesi
-• Belirteçleri veya parolaları asla kaydetmeyen yerel tanılama günlüğü
+• Belirteçleri veya parolaları asla kaydetmeyen yerel tanılama günlüğü ve ağ günlüğü (yalnızca ana makine adı ve yol)
 • GitHub'da açık kaynak (MIT); tam gizlilik politikası mevcut
 
 ⚠️ SORUMLULUK REDDİ

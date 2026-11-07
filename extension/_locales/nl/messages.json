@@ -1007,5 +1007,152 @@
   },
   "chl_2_7_1_2": {
     "message": "🛠 Duidelijkere PSN-fouten die de mislukte stap noemen, en toegang met één klik als Chrome de omleiding van Sony verbergt"
+  },
+  "psHistLabel": {
+    "message": "PlayStation Store · vastgelegd door je browser"
+  },
+  "psLowest": {
+    "message": "Laagste PS-prijs die je hebt gezien:"
+  },
+  "psNow": {
+    "message": "Nu in de store"
+  },
+  "psAtLow": {
+    "message": "Op de laagste prijs die je hebt gezien"
+  },
+  "psSaleLine": {
+    "message": "Was $ORIGINAL$ · $PCT$% korting",
+    "placeholders": {
+      "original": {
+        "content": "$1"
+      },
+      "pct": {
+        "content": "$2"
+      }
+    }
+  },
+  "psSaleEnds": {
+    "message": "Aanbieding eindigt op $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "psPlusPrice": {
+    "message": "Prijs met PlayStation Plus: $PRICE$",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "psStoreLow30": {
+    "message": "Laagste prijs van de afgelopen 30 dagen, volgens de store: $PRICE$",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "psGapAbove": {
+    "message": "$AMOUNT$ meer dan de laagste pc-prijs van vandaag",
+    "placeholders": {
+      "amount": {
+        "content": "$1"
+      }
+    }
+  },
+  "psGapBelow": {
+    "message": "$AMOUNT$ minder dan de laagste pc-prijs van vandaag",
+    "placeholders": {
+      "amount": {
+        "content": "$1"
+      }
+    }
+  },
+  "psNotEnough": {
+    "message": "Nog te weinig PlayStation-prijsgeschiedenis. Die groeit elke dag dat je de pagina van deze game bezoekt."
+  },
+  "checkPageBtn": {
+    "message": "🔍 Pagina controleren"
+  },
+  "checkPageNoStore": {
+    "message": "Open eerst een pagina van de PlayStation Store en probeer het dan opnieuw."
+  },
+  "checkPageNotReady": {
+    "message": "De pagina reageerde niet. Laad het store-tabblad opnieuw en probeer het nog eens."
+  },
+  "checkPageOther": {
+    "message": "Op dit soort pagina valt niets te controleren. Open een gamepagina of een zoekpagina."
+  },
+  "checkPageSummary": {
+    "message": "$OK$ van de $TOTAL$ controles werken",
+    "placeholders": {
+      "ok": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
+    }
+  },
+  "checkOk": {
+    "message": "werkt"
+  },
+  "checkWarn": {
+    "message": "werkt via een terugvaloptie"
+  },
+  "checkFail": {
+    "message": "niet gevonden"
+  },
+  "chk_title": {
+    "message": "Gametitel"
+  },
+  "chk_price": {
+    "message": "Prijs"
+  },
+  "chk_anchor": {
+    "message": "Waar de kaarten komen"
+  },
+  "chk_tiles": {
+    "message": "Gametegels"
+  },
+  "chk_names": {
+    "message": "Tegeltitels"
+  },
+  "chk_prices": {
+    "message": "Tegelprijzen"
+  },
+  "checkFeatureFailed": {
+    "message": "Uitgeschakeld op deze pagina na een fout: $FEATURE$",
+    "placeholders": {
+      "feature": {
+        "content": "$1"
+      }
+    }
+  },
+  "netLogTitle": {
+    "message": "Netwerklog"
+  },
+  "netLogDesc": {
+    "message": "Elk verzoek van de extensie, alleen op dit apparaat bewaard: host, pad, status en tijd. Nooit de query, headers of andere gegevens. De extensie mag alleen contact opnemen met: $HOSTS$.",
+    "placeholders": {
+      "hosts": {
+        "content": "$1"
+      }
+    }
+  },
+  "netLogEmpty": {
+    "message": "Nog geen verzoeken vastgelegd."
+  },
+  "chl_3_0_1": {
+    "message": "🛡️ Getest op de echte PlayStation Store: een verkeerd vastgelegde prijs, de filters voor add-ons, DLC en games in bezit en lege plekken in zoekresultaten zijn verholpen"
+  },
+  "chl_3_0_2": {
+    "message": "📈 PlayStation-prijsgeschiedenis: de laagste prijs die je hebt gezien, aanbiedingsdetails en trend, opgebouwd uit prijzen die je browser vastlegt (ook uit zoekresultaten en je verlanglijst)"
+  },
+  "chl_3_0_3": {
+    "message": "🔍 Nieuwe knop „Pagina controleren” in de popup en een lokaal netwerklog in Instellingen: zie wat werkt en wat de extensie heeft opgevraagd"
   }
 }

@@ -2,7 +2,7 @@ PS Store Enhancer (früher GameDeals+) ergänzt den PlayStation™ Store um echt
 
 🔍 PREISINFORMATIONEN
 • Echter PC-Tiefstpreis aller Zeiten (mit Datum), der heute günstigste Preis und ein Hinweis „nahe am Allzeittief“ – nur echte Daten, keine geschätzten Diagramme
-• Ein Preisverlauf aus den Preisen, die dein eigener Browser aufgezeichnet hat
+• Ein PC- und PlayStation-Preisverlauf (der niedrigste Preis, den du gesehen hast, und Angebotsdetails) aus den Preisen, die dein eigener Browser aufgezeichnet hat
 • Plattformvergleich für genau dieses Spiel (nie ein DLC, eine Karte oder ein Nachfolger): Steam, Epic Games Store, GOG, Humble Store und mehr – mit Daten von CheapShark, umgerechnet in deine Währung
 • Transparenz bei Editionen: Ein Preis aus einer anderen Edition oder einem anderen Bundle (Deluxe, Ultimate, GOTY …) wird klar gekennzeichnet und nie stillschweigend vermischt
 • Hinweise, wann die großen Sales üblicherweise beginnen
@@ -32,7 +32,7 @@ PS Store Enhancer (früher GameDeals+) ergänzt den PlayStation™ Store um echt
 • Spiel mit einem Klick auf der Produktseite hinzufügen
 • Zielpreis oder „% Rabatt“ festlegen, Notizen hinzufügen, sortieren und filtern
 • Desktop-Benachrichtigung – oder eine wöchentliche Zusammenfassung –, sobald der günstigste PC-Preis dein Ziel erreicht
-• Speichert den PS-Store-Preis, den du auf der Seite jedes Spiels siehst
+• Speichert den PS-Store-Preis, den du auf der Seite jedes Spiels siehst, und bewahrt den Verlauf auf deinem Gerät auf
 • Liste als schreibgeschützten Link teilen: Die Liste steckt im Link, nichts wird hochgeladen
 • Tägliche Hintergrundprüfungen, keine Dauerabfragen
 • Das Symbol in der Symbolleiste zählt die Wunschlisten-Angebote, die dein Ziel erreicht oder unterschritten haben
@@ -75,9 +75,9 @@ Integrierte Sprachauswahl – überschreibe die Browsersprache in den Einstellun
 🔒 DATENSCHUTZ ZUERST
 • Alle Daten bleiben auf deinem Gerät
 • Keine Analyse, kein Tracking, keine Datenweitergabe
-• Keine eigenen Server: Anfragen gehen nur an CheapShark (Preise, Bewertungen), Frankfurter (Wechselkurse) und – nur wenn du dich verbindest – an Sony
+• Keine eigenen Server: Anfragen gehen nur an CheapShark (Preise, Bewertungen), Frankfurter (Wechselkurse), den PlayStation Store selbst (die gespeicherte Seite jedes Wunschlisten-Spiels, einmal täglich) und – nur wenn du dich verbindest – an Sony
 • Schaltfläche „Alle meine Daten löschen“ im Popup und in den Einstellungen
-• Lokales Diagnoseprotokoll, das nie Token oder Passwörter aufzeichnet
+• Lokale Diagnose- und Netzwerkprotokolle (nur Host und Pfad), die nie Token oder Passwörter aufzeichnen
 • Open Source (MIT) auf GitHub; vollständige Datenschutzerklärung verfügbar
 
 ⚠️ HAFTUNGSAUSSCHLUSS

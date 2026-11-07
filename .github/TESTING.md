@@ -122,6 +122,22 @@ or commit** — the Diagnostics log is safe to share, the token is not.
       rarest remaining trophy is shown (if not, Diagnostics has `rarity-*` lines to send)
 - [ ] Disconnect → manually added games (✏️) stay, PSN games (🔗) go
 
+## 3.0 checks on the real store (in Chrome with the unpacked extension)
+
+The automated tests run the real content script on saved, trimmed real pages. They do not show how the
+injected cards *look*, and they cannot load the extension itself, so look at these by eye:
+
+- [ ] Product page with an edition list (e.g. a pre-order with Standard/Ultimate editions): the cards sit
+      right under the buy button, not under the editions list
+- [ ] Popup → **Check this page** on a product page and on a search page: all lookups show ✓ (green)
+- [ ] Visit the same game's page on two different days: the Price Insight card then shows a
+      PlayStation section (before that it says there is not enough history); lowest price, trend and sale
+      line match what the store shows
+- [ ] Search results: with *Hide add-ons / DLC* on, labelled add-ons disappear and the rest moves up
+      (no empty cells); with *Hide owned* on, only the games you own (and their editions) disappear
+- [ ] Settings → **Network log** lists only the five documented hosts, with no query strings
+- [ ] Settings → Export, then Import in a fresh profile: recorded PlayStation prices come back
+
 ---
 
 ## Regression checks (things that were once broken)

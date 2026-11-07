@@ -2,7 +2,7 @@ PS Store Enhancer (formerly GameDeals+) adds real price insight, review scores a
 
 🔍 PRICE INTELLIGENCE
 • Real lowest-ever PC price (with its date), today's cheapest price and a “near the all-time low” flag — real data only, no estimated charts
-• A price trend drawn from the prices your own browser recorded
+• A PC and PlayStation price trend (lowest price you've seen, sale details) drawn from the prices your own browser recorded
 • Cross-platform comparison for the exact game (never a DLC, map or sequel): Steam, Epic Games Store, GOG, Humble Store and more — powered by CheapShark and converted to your currency
 • Edition transparency: a price from a different edition or bundle (Deluxe, Ultimate, GOTY…) is clearly flagged, never blended in silently
 • Hints about when the big sales usually start
@@ -32,7 +32,7 @@ PS Store Enhancer (formerly GameDeals+) adds real price insight, review scores a
 • Add a game with one click on its product page
 • Set a price or “% off” target, add notes, sort and filter
 • Get a desktop notification — or one weekly digest — when the cheapest PC price reaches your target
-• Records the PS Store price you see on each game's page
+• Records the PS Store price you see on each game's page, and keeps its history on your device
 • Share your list as a read-only link: the list lives inside the link, nothing is uploaded
 • Daily background checks, no constant polling
 • Toolbar badge counts the wishlist deals at or below your target
@@ -75,9 +75,9 @@ Built-in language selector — override your browser language in Settings.
 🔒 PRIVACY FIRST
 • All your data stays on your device
 • No analytics, no tracking, no data sharing
-• No servers of our own: the only requests go to CheapShark (prices, scores), Frankfurter (exchange rates) and — only if you connect — Sony
+• No servers of our own: the only requests go to CheapShark (prices, scores), Frankfurter (exchange rates), the PlayStation Store itself (the saved page of each wishlisted game, once a day) and — only if you connect — Sony
 • “Erase all my data” button in the popup and in Settings
-• A local diagnostics log that never records tokens or passwords
+• A local diagnostics log and network log (host and path only) that never record tokens or passwords
 • Open source (MIT) on GitHub; full privacy policy available
 
 ⚠️ DISCLAIMER

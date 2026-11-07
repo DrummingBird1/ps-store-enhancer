@@ -2,7 +2,7 @@ PS Store Enhancer (voorheen GameDeals+) voegt echte prijsinzichten, beoordelinge
 
 🔍 PRIJSINZICHT
 • Echte laagste pc-prijs ooit (met datum), de goedkoopste prijs van vandaag en een label “dicht bij het laagste punt ooit” — alleen echte data, geen geschatte grafieken
-• Een prijstrend op basis van prijzen die je eigen browser heeft vastgelegd
+• Een pc- en PlayStation-prijstrend (de laagste prijs die je hebt gezien en details van aanbiedingen) op basis van prijzen die je eigen browser heeft vastgelegd
 • Platformvergelijking voor precies dit spel (nooit een dlc, map of vervolg): Steam, Epic Games Store, GOG, Humble Store en meer — met data van CheapShark en omgerekend naar jouw valuta
 • Transparantie over edities: een prijs van een andere editie of bundel (Deluxe, Ultimate, GOTY…) wordt duidelijk aangegeven en nooit stilletjes gemengd
 • Hints over wanneer de grote uitverkopen meestal beginnen
@@ -32,7 +32,7 @@ PS Store Enhancer (voorheen GameDeals+) voegt echte prijsinzichten, beoordelinge
 • Voeg een game met één klik toe vanaf de productpagina
 • Stel een streefprijs of “% korting” in, voeg notities toe, sorteer en filter
 • Ontvang een bureaubladmelding — of één wekelijks overzicht — zodra de laagste pc-prijs je doel bereikt
-• Legt de PS Store-prijs vast die je op de pagina van elke game ziet
+• Legt de PS Store-prijs vast die je op de pagina van elke game ziet en bewaart de geschiedenis daarvan op je apparaat
 • Deel je lijst als link met alleen-lezentoegang: de lijst zit in de link, er wordt niets geüpload
 • Dagelijkse controles op de achtergrond, geen constante polling
 • De badge in de werkbalk telt de verlanglijstdeals die je doel hebben bereikt of eronder zitten
@@ -75,9 +75,9 @@ Ingebouwde taalkeuze — overschrijf de browsertaal in de instellingen.
 🔒 PRIVACY EERST
 • Al je gegevens blijven op je apparaat
 • Geen analyse, geen tracking, geen gegevens delen
-• Geen eigen servers: de enige verzoeken gaan naar CheapShark (prijzen, scores), Frankfurter (wisselkoersen) en — alleen als je koppelt — Sony
+• Geen eigen servers: de enige verzoeken gaan naar CheapShark (prijzen, scores), Frankfurter (wisselkoersen), de PlayStation Store zelf (de opgeslagen pagina van elke game op je verlanglijst, één keer per dag) en — alleen als je koppelt — Sony
 • Knop “Al mijn gegevens wissen” in de popup en in de instellingen
-• Een lokaal diagnoselogboek dat nooit tokens of wachtwoorden vastlegt
+• Lokale diagnose- en netwerklogboeken (alleen host en pad) die nooit tokens of wachtwoorden vastleggen
 • Open source (MIT) op GitHub; volledig privacybeleid beschikbaar
 
 ⚠️ DISCLAIMER

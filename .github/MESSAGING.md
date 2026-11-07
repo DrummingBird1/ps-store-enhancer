@@ -48,7 +48,10 @@ All writes are serialized, so a running price check never overwrites an edit.
 | `SET_WISHLIST_TARGET` | `gameName` + any of `targetPrice`, `targetPercent`, `note` (≤ 200 chars) | `{ ok, list }` — only keys present in the message change |
 | `IS_IN_WISHLIST` | `gameName` | `{ inWishlist }` |
 | `CHECK_WISHLIST_NOW` | – | `{ ok }` |
-| `RECORD_PS_PRICE` | `gameName`, `amount`, `currency` (ISO) | `{ ok }` — the price shown on the PS Store page, stored as a local snapshot and on the wishlist item |
+| `RECORD_PS_PRICE` | `gameName`, `amount`, `currency` (ISO), optional `orig`, `pct`, `ends` (UTC day number), `plus` | `{ ok }` — the price shown on the PS Store page (and its sale details), stored as a local snapshot and on the wishlist item |
+| `RECORD_PS_PRICES` | `items: [{ gameName, amount, currency, orig?, pct? }]` (max 60) | `{ ok, recorded }` — prices read from a search/category grid; only games whose history already exists or that are on the wishlist get a point |
+| `MERGE_SNAPSHOTS` | `snapshots` (the `pse_snapshots` object of a backup) | `{ ok, games }` — validates the backup's recorded prices (shape, no future days) and merges them; games already stored are merged, games only in the backup fill free slots, nothing local is evicted |
+| `PS_PRICE_HISTORY` | `gameName`, `currency` (ISO) | `{ ok, currency, points, stats }` — recorded PS prices for that game and currency; `stats` is `PSEHelpers.psHistoryStats` (`enough` is false below two days) |
 
 ## Housekeeping
 
@@ -58,5 +61,14 @@ All writes are serialized, so a running price check never overwrites an edit.
 | `CACHE_STATS` | – | `{ totalEntries, expiredEntries, activeEntries, sizeKB }` |
 | `PURGE_CACHE` / `CLEAR_CACHE` | – | `{ ok }` / `{ ok, removed }` |
 | `DIAG_GET` | – | `{ entries: [{ t, s, e, d }] }` — last 120 local diagnostic events (secrets are never recorded) |
+| `DIAG_LOG` | `event`, optional `details` | `{ ok }` — a content-script event (feature failed, price not found, "Check this page" result) appended to the local diagnostics log; at most 20 per minute, secrets redacted |
 | `DIAG_CLEAR` | – | `{ ok }` |
 | `WIPE_ALL_DATA` | – | `{ ok }` — disconnects PSN and erases everything stored locally (settings in sync storage are kept) |
+
+## Messages to the content script
+
+Sent with `chrome.tabs.sendMessage` (not handled by the service worker, so not in `HANDLERS`).
+
+| Type | Payload | Response |
+|------|---------|----------|
+| `PSE_CHECK_PAGE` | – | `{ ok, result }` — `result` is `PSEStore.selfCheck`: `{ page: "product"\|"listing"\|"other", checks: [{ id, status: "ok"\|"warn"\|"fail", strategy?, detail? }], ok, total }` plus `features: [{ feature, ok, error }]` (features switched off on this page after an error). Used by the popup's **Check this page** button. |

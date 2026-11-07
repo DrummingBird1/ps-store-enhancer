@@ -1007,5 +1007,152 @@
   },
   "chl_2_7_1_2": {
     "message": "🛠 Errori PSN più chiari che indicano il passaggio non riuscito e consenso con un clic quando Chrome nasconde il reindirizzamento di Sony"
+  },
+  "psHistLabel": {
+    "message": "PlayStation Store · registrato dal tuo browser"
+  },
+  "psLowest": {
+    "message": "Prezzo PS più basso che hai visto:"
+  },
+  "psNow": {
+    "message": "Nello store ora"
+  },
+  "psAtLow": {
+    "message": "Al prezzo più basso che hai visto"
+  },
+  "psSaleLine": {
+    "message": "Era $ORIGINAL$ · $PCT$% di sconto",
+    "placeholders": {
+      "original": {
+        "content": "$1"
+      },
+      "pct": {
+        "content": "$2"
+      }
+    }
+  },
+  "psSaleEnds": {
+    "message": "L'offerta termina il $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "psPlusPrice": {
+    "message": "Prezzo con PlayStation Plus: $PRICE$",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "psStoreLow30": {
+    "message": "Prezzo più basso degli ultimi 30 giorni, secondo lo store: $PRICE$",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "psGapAbove": {
+    "message": "$AMOUNT$ in più del prezzo PC più basso di oggi",
+    "placeholders": {
+      "amount": {
+        "content": "$1"
+      }
+    }
+  },
+  "psGapBelow": {
+    "message": "$AMOUNT$ in meno del prezzo PC più basso di oggi",
+    "placeholders": {
+      "amount": {
+        "content": "$1"
+      }
+    }
+  },
+  "psNotEnough": {
+    "message": "Storico dei prezzi PlayStation ancora insufficiente. Si costruisce ogni giorno che visiti la pagina di questo gioco."
+  },
+  "checkPageBtn": {
+    "message": "🔍 Controlla questa pagina"
+  },
+  "checkPageNoStore": {
+    "message": "Apri prima una pagina del PlayStation Store, poi riprova."
+  },
+  "checkPageNotReady": {
+    "message": "La pagina non ha risposto. Ricarica la scheda dello store e riprova."
+  },
+  "checkPageOther": {
+    "message": "Questo tipo di pagina non ha nulla da controllare. Apri la pagina di un gioco o una di ricerca."
+  },
+  "checkPageSummary": {
+    "message": "$OK$ controlli su $TOTAL$ funzionano",
+    "placeholders": {
+      "ok": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
+    }
+  },
+  "checkOk": {
+    "message": "funziona"
+  },
+  "checkWarn": {
+    "message": "funziona con un metodo alternativo"
+  },
+  "checkFail": {
+    "message": "non trovato"
+  },
+  "chk_title": {
+    "message": "Titolo del gioco"
+  },
+  "chk_price": {
+    "message": "Prezzo"
+  },
+  "chk_anchor": {
+    "message": "Dove vanno le schede"
+  },
+  "chk_tiles": {
+    "message": "Riquadri dei giochi"
+  },
+  "chk_names": {
+    "message": "Titoli dei riquadri"
+  },
+  "chk_prices": {
+    "message": "Prezzi dei riquadri"
+  },
+  "checkFeatureFailed": {
+    "message": "Disattivato in questa pagina dopo un errore: $FEATURE$",
+    "placeholders": {
+      "feature": {
+        "content": "$1"
+      }
+    }
+  },
+  "netLogTitle": {
+    "message": "Log di rete"
+  },
+  "netLogDesc": {
+    "message": "Ogni richiesta fatta dall'estensione, conservata solo su questo dispositivo: host, percorso, stato e ora. Mai la query, le intestazioni o altri dati. L'estensione può contattare solo: $HOSTS$.",
+    "placeholders": {
+      "hosts": {
+        "content": "$1"
+      }
+    }
+  },
+  "netLogEmpty": {
+    "message": "Nessuna richiesta registrata finora."
+  },
+  "chl_3_0_1": {
+    "message": "🛡️ Verificato sul vero PlayStation Store: corretti un prezzo registrato male, i filtri per add-on, DLC e giochi posseduti e i vuoti nei risultati di ricerca"
+  },
+  "chl_3_0_2": {
+    "message": "📈 Storico dei prezzi PlayStation: il prezzo più basso che hai visto, dettagli dei saldi e andamento, creato dai prezzi registrati dal tuo browser (anche dai risultati di ricerca e dalla tua lista dei desideri)"
+  },
+  "chl_3_0_3": {
+    "message": "🔍 Nuovo «Controlla questa pagina» nel popup e un log di rete locale nelle Impostazioni: vedi cosa funziona e cosa ha richiesto l’estensione"
   }
 }

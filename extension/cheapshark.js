@@ -23,7 +23,7 @@ const CheapShark = (() => {
     const url = `${BASE}/${path}`;
     let resp;
     try {
-      resp = await fetch(url);
+      resp = await PSENet.fetch(url);
     } catch (e) {
       PSEDiag.log("cheapshark", "network-error", { url: PSEDiag.urlInfo(url), message: e && e.message });
       throw e;

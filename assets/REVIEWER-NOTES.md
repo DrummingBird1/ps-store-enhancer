@@ -46,7 +46,7 @@ We use `chrome.cookies` solely to set the NPSSO token on `ca.account.sony.com` (
 
 | Host | Use |
 |------|-----|
-| `store.playstation.com` | Content-script injection (UI enhancements on product pages) |
+| `store.playstation.com` | Content-script injection (UI enhancements on product pages). Also, once a day, the service worker fetches the saved page URL of each wishlisted game (no cookies, at most 20 pages, `credentials: omit`) and reads the price from its JSON-LD to record it locally. Turned off with the *Price insight* setting. |
 | `ca.account.sony.com` | Optional PSN OAuth authorization (only when user opts in) |
 | `m.np.playstation.com` | Optional PSN library/trophy API (only when user opts in) |
 | `cheapshark.com` | Public REST API for cross-platform game prices, the all-time low and Metacritic/Steam ratings (no auth) |

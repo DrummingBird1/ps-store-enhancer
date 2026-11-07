@@ -1007,5 +1007,152 @@
   },
   "chl_2_7_1_2": {
     "message": "🛠 실패한 단계를 알려 주는 더 명확한 PSN 오류, Chrome이 Sony 리디렉션을 숨길 때 한 번의 클릭으로 허용"
+  },
+  "psHistLabel": {
+    "message": "PlayStation Store · 브라우저가 기록함"
+  },
+  "psLowest": {
+    "message": "지금까지 본 PS 최저가:"
+  },
+  "psNow": {
+    "message": "현재 스토어 가격"
+  },
+  "psAtLow": {
+    "message": "지금까지 본 최저가와 동일"
+  },
+  "psSaleLine": {
+    "message": "이전 $ORIGINAL$ · $PCT$% 할인",
+    "placeholders": {
+      "original": {
+        "content": "$1"
+      },
+      "pct": {
+        "content": "$2"
+      }
+    }
+  },
+  "psSaleEnds": {
+    "message": "$DATE$에 할인 종료",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "psPlusPrice": {
+    "message": "PlayStation Plus 가격: $PRICE$",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "psStoreLow30": {
+    "message": "스토어 기준 최근 30일 최저가: $PRICE$",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "psGapAbove": {
+    "message": "오늘 PC 최저가보다 $AMOUNT$ 비쌈",
+    "placeholders": {
+      "amount": {
+        "content": "$1"
+      }
+    }
+  },
+  "psGapBelow": {
+    "message": "오늘 PC 최저가보다 $AMOUNT$ 저렴",
+    "placeholders": {
+      "amount": {
+        "content": "$1"
+      }
+    }
+  },
+  "psNotEnough": {
+    "message": "PlayStation 가격 기록이 아직 충분하지 않습니다. 이 게임 페이지를 방문할 때마다 쌓입니다."
+  },
+  "checkPageBtn": {
+    "message": "🔍 이 페이지 확인"
+  },
+  "checkPageNoStore": {
+    "message": "먼저 PlayStation Store 페이지를 연 다음 다시 시도하세요."
+  },
+  "checkPageNotReady": {
+    "message": "페이지가 응답하지 않았습니다. 스토어 탭을 새로 고치고 다시 시도하세요."
+  },
+  "checkPageOther": {
+    "message": "이런 페이지에는 확인할 항목이 없습니다. 게임 페이지나 검색 페이지를 여세요."
+  },
+  "checkPageSummary": {
+    "message": "$TOTAL$개 중 $OK$개 항목 정상 작동",
+    "placeholders": {
+      "ok": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
+    }
+  },
+  "checkOk": {
+    "message": "정상 작동"
+  },
+  "checkWarn": {
+    "message": "대체 방식으로 작동"
+  },
+  "checkFail": {
+    "message": "찾을 수 없음"
+  },
+  "chk_title": {
+    "message": "게임 제목"
+  },
+  "chk_price": {
+    "message": "가격"
+  },
+  "chk_anchor": {
+    "message": "카드가 들어갈 위치"
+  },
+  "chk_tiles": {
+    "message": "게임 타일"
+  },
+  "chk_names": {
+    "message": "타일 제목"
+  },
+  "chk_prices": {
+    "message": "타일 가격"
+  },
+  "checkFeatureFailed": {
+    "message": "오류가 발생해 이 페이지에서 꺼짐: $FEATURE$",
+    "placeholders": {
+      "feature": {
+        "content": "$1"
+      }
+    }
+  },
+  "netLogTitle": {
+    "message": "네트워크 로그"
+  },
+  "netLogDesc": {
+    "message": "확장 프로그램이 보낸 모든 요청을 이 기기에만 저장합니다: 호스트, 경로, 상태, 시간. 쿼리, 헤더, 그 밖의 데이터는 저장하지 않습니다. 확장 프로그램은 다음에만 연결할 수 있습니다: $HOSTS$.",
+    "placeholders": {
+      "hosts": {
+        "content": "$1"
+      }
+    }
+  },
+  "netLogEmpty": {
+    "message": "기록된 요청이 아직 없습니다."
+  },
+  "chl_3_0_1": {
+    "message": "🛡️ 실제 PlayStation Store에서 검증: 잘못 기록된 가격, 애드온·DLC·보유 게임 필터, 검색 결과의 빈 공간을 수정"
+  },
+  "chl_3_0_2": {
+    "message": "📈 PlayStation 가격 기록: 지금까지 본 최저가, 할인 정보, 가격 추이를 브라우저가 기록한 가격으로 구성 (검색 결과와 위시리스트에서도 기록)"
+  },
+  "chl_3_0_3": {
+    "message": "🔍 팝업의 새 “이 페이지 확인”과 설정의 로컬 네트워크 로그: 무엇이 작동하는지, 확장 프로그램이 무엇을 요청했는지 확인하세요"
   }
 }

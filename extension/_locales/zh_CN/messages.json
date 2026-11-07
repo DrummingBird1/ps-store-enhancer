@@ -1007,5 +1007,152 @@
   },
   "chl_2_7_1_2": {
     "message": "🛠 更清晰的 PSN 错误提示（会指出失败的步骤），Chrome 隐藏 Sony 重定向时可一键授权"
+  },
+  "psHistLabel": {
+    "message": "PlayStation Store · 由您的浏览器记录"
+  },
+  "psLowest": {
+    "message": "您见过的 PS 最低价："
+  },
+  "psNow": {
+    "message": "商店现价"
+  },
+  "psAtLow": {
+    "message": "处于您见过的最低价"
+  },
+  "psSaleLine": {
+    "message": "原价 $ORIGINAL$ · 优惠 $PCT$%",
+    "placeholders": {
+      "original": {
+        "content": "$1"
+      },
+      "pct": {
+        "content": "$2"
+      }
+    }
+  },
+  "psSaleEnds": {
+    "message": "优惠截止 $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "psPlusPrice": {
+    "message": "PlayStation Plus 价格：$PRICE$",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "psStoreLow30": {
+    "message": "商店显示的近 30 天最低价：$PRICE$",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "psGapAbove": {
+    "message": "比今天 PC 最低价高 $AMOUNT$",
+    "placeholders": {
+      "amount": {
+        "content": "$1"
+      }
+    }
+  },
+  "psGapBelow": {
+    "message": "比今天 PC 最低价低 $AMOUNT$",
+    "placeholders": {
+      "amount": {
+        "content": "$1"
+      }
+    }
+  },
+  "psNotEnough": {
+    "message": "PlayStation 价格历史还不够多。您每天访问该游戏页面都会积累一点。"
+  },
+  "checkPageBtn": {
+    "message": "🔍 检查此页面"
+  },
+  "checkPageNoStore": {
+    "message": "请先打开 PlayStation Store 页面，然后重试。"
+  },
+  "checkPageNotReady": {
+    "message": "页面没有响应。请刷新商店标签页后重试。"
+  },
+  "checkPageOther": {
+    "message": "此类页面没有可检查的内容。请打开游戏页面或搜索页面。"
+  },
+  "checkPageSummary": {
+    "message": "$TOTAL$ 项检查中有 $OK$ 项正常",
+    "placeholders": {
+      "ok": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
+    }
+  },
+  "checkOk": {
+    "message": "正常"
+  },
+  "checkWarn": {
+    "message": "通过备用方式正常工作"
+  },
+  "checkFail": {
+    "message": "未找到"
+  },
+  "chk_title": {
+    "message": "游戏标题"
+  },
+  "chk_price": {
+    "message": "价格"
+  },
+  "chk_anchor": {
+    "message": "卡片显示位置"
+  },
+  "chk_tiles": {
+    "message": "游戏磁贴"
+  },
+  "chk_names": {
+    "message": "磁贴标题"
+  },
+  "chk_prices": {
+    "message": "磁贴价格"
+  },
+  "checkFeatureFailed": {
+    "message": "出错后已在此页面关闭：$FEATURE$",
+    "placeholders": {
+      "feature": {
+        "content": "$1"
+      }
+    }
+  },
+  "netLogTitle": {
+    "message": "网络日志"
+  },
+  "netLogDesc": {
+    "message": "扩展发出的每个请求，仅保存在此设备上：主机、路径、状态和时间。绝不保存查询参数、请求头或任何数据。扩展只会连接：$HOSTS$。",
+    "placeholders": {
+      "hosts": {
+        "content": "$1"
+      }
+    }
+  },
+  "netLogEmpty": {
+    "message": "尚未记录任何请求。"
+  },
+  "chl_3_0_1": {
+    "message": "🛡️ 已在真实的 PlayStation Store 上验证：修复了记录错误的价格、附加内容、DLC 和已拥有游戏的筛选，以及搜索结果中的空白"
+  },
+  "chl_3_0_2": {
+    "message": "📈 PlayStation 价格历史：您见过的最低价、优惠详情和走势，根据浏览器记录的价格生成（也包括搜索结果和您的愿望单）"
+  },
+  "chl_3_0_3": {
+    "message": "🔍 弹出窗口新增“检查此页面”，设置中新增本地网络日志：查看哪些功能正常，以及扩展发出了哪些请求"
   }
 }

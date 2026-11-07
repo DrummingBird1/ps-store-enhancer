@@ -10,25 +10,18 @@
 
   const { escapeHtml, sanitizeUrl, buildStoreSearchUrl } = PSEHelpers;
 
+  // What the page looks like is PSEStore's job (store-adapter.js); these only say what to wait for.
   const SEL = {
-    titleFallbacks: [
-      '[data-qa="mfe-game-title#name"]',
-      'h1[class*="GameTitle"]',
-      'h1[class*="psw-t-title"]',
-      "h1"
-    ],
-    ctaFallbacks: [
-      '[data-qa="mfeCtaMain#offer0#ctaWithPrice"]',
-      '[data-qa*="ctaWithPrice"]',
-      '[class*="CTAPrice"]',
-      '[class*="cta-container"]'
-    ],
-    gridItems: [
-      'li[class*="ems-sdk"]',
-      'div[data-qa*="search#productTile"]',
-      'li[data-qa*="product"]',
-      '[data-qa*="ems-sdk-grid"] li'
-    ]
+    titleFallbacks: ['[data-qa="mfe-game-title#name"]', 'h1[class*="psw-t-title"]', "main h1"],
+    buyBox: ['[data-qa="mfeCtaMain"]'],
+    grid: ['[data-qa="search-results-grid"]', "ul.psw-grid-list", "main"]
+  };
+
+  // The skeleton each card places while it loads, removed if its feature fails.
+  const FEATURE_SKELETON = {
+    priceInsight: ".pse-skeleton.pse-price-insight",
+    crossPlatform: ".pse-skeleton.pse-xplatform",
+    trophies: ".pse-skeleton.pse-trophy-box"
   };
 
   const BADGE_COLORS = { green: "#6dc849", yellow: "#f5c518", red: "#ff4040" };
@@ -48,6 +41,7 @@
   let settings = { ...DEFAULTS };
   let collapsedMap = {};
   let lastProcessedUrl = "";
+  let psRecorded = Promise.resolve(); // resolves once this page's PS price has been written
   let pageToken = 0; // bumps on every page (re)process so late async results can be dropped
   let urlDebounceTimer = null;
   let gridObserver = null;
@@ -78,6 +72,42 @@
     if (key) msgCache.set(key, { t: Date.now(), p });
     return p;
   }
+
+  /* ──── feature isolation: a broken lookup switches off only its own feature ──── */
+  const featureHealth = new Map(); // feature -> { ok, error?, at }
+  function diagLog(event, details) {
+    ask("DIAG_LOG", { source: "content", event, details });
+  }
+  function reportFeatureFailure(feature, err) {
+    const message = String((err && err.message) || err || "unknown").slice(0, 160);
+    featureHealth.set(feature, { ok: false, error: message, at: Date.now() });
+    const skeleton = FEATURE_SKELETON[feature];
+    if (skeleton) document.querySelectorAll(skeleton).forEach((n) => n.remove());
+    diagLog("feature-failed", { feature, message, region: PSEStore.regionFromPath(location.pathname) });
+  }
+  /** Run one feature; whatever it throws stays inside it and is written to the diagnostics log. */
+  function isolate(feature, fn) {
+    return Promise.resolve()
+      .then(fn)
+      .then((v) => {
+        if (!featureHealth.has(feature)) featureHealth.set(feature, { ok: true, at: Date.now() });
+        return v;
+      })
+      .catch((err) => reportFeatureFailure(feature, err));
+  }
+
+  // "Check this page" (popup / settings) asks the page to run every lookup and report which worked.
+  chrome.runtime.onMessage.addListener((msg, _sender, respond) => {
+    if (!msg || msg.type !== "PSE_CHECK_PAGE") return false;
+    try {
+      const result = PSEStore.selfCheck(document, location);
+      result.features = [...featureHealth].map(([feature, h]) => ({ feature, ok: h.ok, error: h.error || null }));
+      respond({ ok: true, result });
+    } catch (err) {
+      respond({ ok: false, error: String((err && err.message) || err) });
+    }
+    return false;
+  });
 
   /* ──── init ──── */
   async function init() {
@@ -212,7 +242,9 @@
 
     chrome.storage.onChanged.addListener((changes, area) => {
       if (area === "sync" || area === "local") {
-        loadSettings().then(() => applySearchFilters());
+        loadSettings().then(() => {
+          if (isSearchOrBrowsePage(location.href)) isolate("searchFilters", applySearchFilters);
+        });
       }
     });
   }
@@ -223,6 +255,8 @@
     if (url === lastProcessedUrl) return;
     lastProcessedUrl = url;
     pageToken++;
+    sentGridPrices.clear();
+    featureHealth.clear(); // "Check this page" reports this page's features, not an earlier page's
     removeInjectedElements();
     if (gridObserver) { gridObserver.disconnect(); gridObserver = null; }
 
@@ -232,33 +266,35 @@
         if (token !== pageToken) return;
         const gameName = getGameTitle();
         if (!gameName) return;
+        psRecorded = isolate("recordPsPrice", () => recordPsPrice(gameName));
         const jobs = [];
-        if (settings.enableMetacritic) jobs.push(injectReviewScores(gameName));
+        if (settings.enableMetacritic) jobs.push(isolate("reviewScores", () => injectReviewScores(gameName)));
         // Skeletons are placed synchronously in the user's chosen order, then filled in parallel.
         for (const key of settings.cardOrder) {
           if (settings.cardsHidden.includes(key)) continue;
           const def = CARD_DEFS[key];
-          if (def && def.enabled()) jobs.push(def.run(gameName));
+          if (def && def.enabled()) jobs.push(isolate(key, () => def.run(gameName)));
         }
-        jobs.push(injectOwnedButton(gameName));
-        if (settings.enableWishlist) jobs.push(injectWishlistButton(gameName));
+        jobs.push(isolate("ownedButton", () => injectOwnedButton(gameName)));
+        if (settings.enableWishlist) jobs.push(isolate("wishlistButton", () => injectWishlistButton(gameName)));
         await Promise.all(jobs);
         if (token !== pageToken) return;
-        recordPsPrice(gameName);
-        maybeShowTour();
-        maybeRateNudge();
-      }).catch(() => {});
+        isolate("tour", maybeShowTour);
+        isolate("rateNudge", maybeRateNudge);
+      }).catch(() => {
+        try { diagLog("title-not-found", { page: "product", region: PSEStore.regionFromPath(location.pathname) }); } catch { /* page already gone */ }
+      });
     }
 
     if (isSearchOrBrowsePage(url)) {
-      setTimeout(applySearchFilters, 1200);
+      setTimeout(() => isolate("searchFilters", applySearchFilters), 1200);
       observeGrid();
     }
   }
 
   /* ──── DOM helpers ──── */
-  function isProductPage(url) { return /\/(concept|product)\/[A-Z0-9_-]+/i.test(url); }
-  function isSearchOrBrowsePage(url) { return /\/(search|category|deals|collection)/i.test(url); }
+  function isProductPage(url) { return PSEStore.isProductPath(url); }
+  function isSearchOrBrowsePage(url) { return PSEStore.isListingPath(url); }
   function removeInjectedElements() { document.querySelectorAll(".pse-injected").forEach((el) => el.remove()); }
 
   function findElement(list) {
@@ -267,11 +303,8 @@
   }
 
   function getGameTitle() {
-    const el = findElement(SEL.titleFallbacks);
-    if (!el) return null;
-    const clone = el.cloneNode(true);
-    clone.querySelectorAll(".pse-injected").forEach((n) => n.remove());
-    return clone.textContent.replace(/[™®©]/g, "").replace(/\s+/g, " ").trim() || null;
+    const t = PSEStore.readTitle(document);
+    return t ? t.value : null;
   }
 
   function waitForElement(sels, timeout = 8000) {
@@ -290,7 +323,9 @@
 
   // Validate the anchor is still in the DOM before inserting
   function insertAfterAnchor(element) {
-    const cta = findElement(SEL.ctaFallbacks);
+    // The buy box, never an edition upsell (the old "ctaWithPrice" selector matched those first).
+    const found = PSEStore.findAnchor(document);
+    const cta = found ? found.el : null;
     const title = findElement(SEL.titleFallbacks);
     const allCards = document.querySelectorAll(".pse-injected:not(.pse-mc-link):not(.pse-owned-btn-wrap):not(.pse-sr-only):not(.pse-tour):not(.pse-wn-banner):not(.pse-rate-nudge):not(.pse-ac-dropdown)");
     const lastCard = allCards.length > 0 ? allCards[allCards.length - 1] : null;
@@ -432,18 +467,95 @@
    * Price insight — REAL data only: the all-time low, today's cheapest, and the trend of prices
    * this browser actually recorded (no synthesized history)
    * ═══════════════════════════════════════════════ */
+  /** The PlayStation Store prices this browser recorded for the game, in the page's own currency. */
+  async function loadPsHistory(gameName) {
+    const currency = PSEHelpers.currencyFromStorePath(location.pathname);
+    if (!currency) return null;
+    await psRecorded; // today's price is written before the history is read back
+    const r = await ask("PS_PRICE_HISTORY", { gameName, currency });
+    return r && r.ok ? { currency, stats: r.stats, points: r.points || [] } : null;
+  }
+
+  async function psToUsd(amount, currency) {
+    if (currency === "USD") return amount;
+    const r = await ask("GET_RATES", { target: currency }, 60000);
+    const rate = r && r.ok && r.rates ? r.rates[currency] : null;
+    return rate ? amount / rate : null;
+  }
+
+  /** The PlayStation part of the Price Insight card: only real recorded prices, and it says when there are too few. */
+  async function renderPsHistory(ps, d) {
+    if (!ps) return { html: "", summary: "" };
+    const heading = `<div class="pse-ph-heading">${escapeHtml(t("psHistLabel"))}</div>`;
+    const { currency, stats, points } = ps;
+    if (!stats || !stats.enough) {
+      return { html: `<div class="pse-ps-hist">${heading}<p class="pse-card-note">${escapeHtml(t("psNotEnough"))}</p></div>`, summary: "" };
+    }
+    const fmt = (n) => PSEHelpers.formatMoney(n, currency, 1, uiLocale());
+    const dayText = (day) => new Date(day * 86400000).toLocaleDateString(uiLocale(), { month: "short", day: "numeric", timeZone: "UTC" });
+    // Calendar day in the user's own time zone (snapshot days are UTC day numbers)
+    const localToday = Math.floor((Date.now() - new Date().getTimezoneOffset() * 60000) / 86400000);
+    const { low, last } = stats;
+    const parts = [heading];
+    parts.push(`<div class="pse-ph-cheapest">
+          <span class="pse-ph-cheapest-label">${escapeHtml(t("psLowest"))} <small>(${escapeHtml(dayText(low.day))})</small></span>
+          <span class="pse-ph-cheapest-value">${escapeHtml(fmt(low.price))}</span>
+        </div>`);
+    const chip = stats.atLow ? `<div class="pse-chip-row"><span class="pse-chip pse-chip-good">${escapeHtml(t("psAtLow"))}</span></div>` : "";
+    parts.push(`<div class="pse-insight-row">
+          <span class="pse-insight-label">${escapeHtml(t("psNow"))}</span>
+          <span class="pse-insight-value">${escapeHtml(fmt(last.price))}</span>
+        </div>${chip}`);
+    const notes = [];
+    if (last.orig && last.pct) notes.push(t("psSaleLine", fmt(last.orig), String(last.pct)));
+    if (last.ends && last.ends >= localToday) notes.push(t("psSaleEnds", dayText(last.ends)));
+    if (last.plus) notes.push(t("psPlusPrice", fmt(last.plus)));
+    const live = readPsPrice();
+    if (live && live.lowest30) notes.push(t("psStoreLow30", fmt(live.lowest30)));
+    // CheapShark's price may be for another edition (d.edition): then a PS-vs-PC gap would compare different things.
+    if (d && d.found && d.cheapest != null && !d.edition) {
+      const usd = await psToUsd(last.price, currency);
+      if (usd != null && Math.abs(usd - d.cheapest) >= 0.5) {
+        notes.push(t(usd > d.cheapest ? "psGapAbove" : "psGapBelow", formatPrice(Math.abs(usd - d.cheapest))));
+      }
+    }
+    for (const n of notes) parts.push(`<p class="pse-card-note">${escapeHtml(n)}</p>`);
+    if (stats.trend) {
+      const pct = Math.abs(stats.trend.pct).toFixed(1);
+      const key = stats.trend.direction === "down" ? "insightTrendDown" : stats.trend.direction === "up" ? "insightTrendUp" : "insightTrendFlat";
+      parts.push(`<div class="pse-trend pse-trend-${stats.trend.direction}">${escapeHtml(t(key, pct, String(stats.trend.spanDays)))}</div>`);
+    }
+    if (points.length >= 4 && stats.spanDays >= 7) {
+      // At most 60 dots: with up to 400 recorded days the dots would overlap. Keep the first, the last and the lowest.
+      let shown = points;
+      if (points.length > 60) {
+        const step = (points.length - 1) / 59;
+        const idx = new Set(Array.from({ length: 60 }, (_, i) => Math.round(i * step)));
+        idx.add(points.indexOf(points.reduce((m, pt) => (pt[1] < m[1] ? pt : m), points[0])));
+        shown = points.filter((_, i) => idx.has(i));
+      }
+      const series = shown.map(([day, price]) => ({ month: dayText(day), price }));
+      parts.push(buildSparklineSVG(series, fmt));
+    }
+    parts.push(`<p class="pse-card-note">${escapeHtml(t("insightRecordedSince", formatMonth(stats.firstDay * 86400000)))}</p>`);
+    return { html: `<div class="pse-ps-hist">${parts.join("")}</div>`, summary: `${t("psLowest")} ${fmt(low.price)}` };
+  }
+
   async function injectPriceInsight(gameName) {
     const token = pageToken;
     const slot = placeSkeleton("pse-price-insight");
     await ensureRates();
-    const resp = await ask("FETCH_PRICE_INSIGHT", { gameName }, 60000);
+    const [resp, ps] = await Promise.all([ask("FETCH_PRICE_INSIGHT", { gameName }, 60000), loadPsHistory(gameName)]);
     if (token !== pageToken) return;
-    if (!resp?.success) {
+    const pcOk = !!(resp && resp.success);
+    if (!pcOk && !(ps && ps.stats && ps.stats.enough)) {
       slot.remove();
       showInlineNotice("pse-price-insight", t("errorApiDown"));
       return;
     }
-    const d = resp.data;
+    const d = pcOk ? resp.data : { found: false, failed: true };
+    const psSection = await renderPsHistory(ps, d);
+    if (token !== pageToken) return;
     const region = settings.pspricesRegion || "IL";
     const pspUrl = `https://psprices.com/search/?q=${encodeURIComponent(gameName)}&platform=PS5&region=${region}`;
     const link = `<a href="${escapeHtml(sanitizeUrl(pspUrl))}" target="_blank" rel="noopener noreferrer" class="pse-ph-link">${escapeHtml(t("viewFullHistory"))}</a>`;
@@ -451,8 +563,8 @@
     let body = "";
     let summary = "";
     if (!d.found) {
-      body = `<p class="pse-card-note">${escapeHtml(t("noPcData"))}</p>${link}`;
-      summary = t("noPcData");
+      body = `<p class="pse-card-note">${escapeHtml(d.failed ? t("errorApiDown") : t("noPcData"))}</p>${link}`;
+      summary = d.failed ? t("errorApiDown") : t("noPcData");
     } else {
       const parts = [];
       if (d.cheapestEver) {
@@ -497,17 +609,21 @@
       ].filter(Boolean).join(" · ");
     }
 
+    if (psSection.html) {
+      body = psSection.html + `<div class="pse-ph-heading">${escapeHtml(t("insightPcLabel"))}</div>` + body;
+      summary = [psSection.summary, summary].filter(Boolean).join(" · ");
+    }
     const card = buildCard({
       key: "priceInsight", cls: "pse-price-insight",
       icon: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>',
-      title: t("priceHistory"), tag: t("insightPcLabel"), summary, body
+      title: t("priceHistory"), tag: psSection.html ? "PS + PC" : t("insightPcLabel"), summary, body
     });
     fillSlot(slot, card);
     announce(t("priceHistory"));
   }
 
   // Unique gradient ID per sparkline
-  function buildSparklineSVG(points) {
+  function buildSparklineSVG(points, fmt = formatPrice) {
     sparklineIdCounter++;
     const gradId = `pse-spark-grad-${sparklineIdCounter}`;
     const W = 320, H = 80, PAD = 8;
@@ -535,8 +651,8 @@
         </linearGradient></defs>
         <path d="${areaD}" fill="url(#${gradId})" />
         <path d="${pathD}" fill="none" stroke="#4da6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-        ${coords.map((c) => `<circle cx="${c.x.toFixed(1)}" cy="${c.y.toFixed(1)}" r="3" fill="#1b2838" stroke="#4da6ff" stroke-width="1.5" class="pse-spark-dot"><title>${escapeHtml(formatPrice(c.price))} — ${escapeHtml(c.month)}</title></circle>`).join("")}
-        <circle cx="${lowest.x.toFixed(1)}" cy="${lowest.y.toFixed(1)}" r="4.5" fill="#6dc849" stroke="#fff" stroke-width="1.5"><title>${escapeHtml(formatPrice(lowest.price))}</title></circle>
+        ${coords.map((c) => `<circle cx="${c.x.toFixed(1)}" cy="${c.y.toFixed(1)}" r="3" fill="#1b2838" stroke="#4da6ff" stroke-width="1.5" class="pse-spark-dot"><title>${escapeHtml(fmt(c.price))} — ${escapeHtml(c.month)}</title></circle>`).join("")}
+        <circle cx="${lowest.x.toFixed(1)}" cy="${lowest.y.toFixed(1)}" r="4.5" fill="#6dc849" stroke="#fff" stroke-width="1.5"><title>${escapeHtml(fmt(lowest.price))}</title></circle>
         ${lCoords.map((c, i) => `<text x="${c.x.toFixed(1)}" y="${H + 14}" fill="#718096" font-size="8" text-anchor="middle">${escapeHtml(labels[i].month)}</text>`).join("")}
       </svg>
     </div>`;
@@ -814,7 +930,10 @@
     btn.addEventListener("click", async () => {
       btn.disabled = true;
       if (inList) await ask("REMOVE_WISHLIST", { gameName });
-      else await ask("ADD_WISHLIST", { gameName, storeUrl: location.href, psPrice: readPsPrice() || undefined });
+      else {
+        const seen = readPsPrice();
+        await ask("ADD_WISHLIST", { gameName, storeUrl: location.origin + location.pathname, psPrice: seen ? { amount: seen.amount, currency: seen.currency } : undefined });
+      }
       inList = !inList;
       msgCache.clear();
       paint();
@@ -824,34 +943,33 @@
   /* ═══════════════════════════════════════════════
    * PS Store price shown on the page (best effort — recorded locally as a snapshot)
    * ═══════════════════════════════════════════════ */
+  /** What this page itself costs (see PSEStore.readPrice): amount, currency, original, % off, sale end… */
   function readPsPrice() {
-    const hint = PSEHelpers.currencyFromStorePath(location.pathname);
-    for (const sel of SEL.ctaFallbacks) {
-      const el = document.querySelector(sel);
-      const p = el && PSEHelpers.parsePsPrice(el.textContent, hint);
-      if (p) return p;
-    }
-    for (const s of document.querySelectorAll('script[type="application/ld+json"]')) {
-      try {
-        const j = JSON.parse(s.textContent);
-        const nodes = Array.isArray(j) ? j : [j];
-        for (const n of nodes) {
-          for (const o of [].concat((n && n.offers) || [])) {
-            const price = Number(o && o.price);
-            if (price > 0 && /^[A-Z]{3}$/.test((o && o.priceCurrency) || "")) return { amount: price, currency: o.priceCurrency };
-          }
-        }
-      } catch { /* not JSON-LD we understand */ }
-    }
-    return null;
+    return PSEStore.readPrice(document, {
+      hint: PSEHelpers.currencyFromStorePath(location.pathname),
+      region: PSEStore.regionFromPath(location.pathname),
+      title: getGameTitle()
+    });
   }
 
   async function recordPsPrice(gameName) {
     const token = pageToken;
-    try { await waitForElement(SEL.ctaFallbacks, 6000); } catch { /* price may live in JSON-LD */ }
-    if (token !== pageToken) return;
-    const p = readPsPrice();
-    if (p) ask("RECORD_PS_PRICE", { gameName, amount: p.amount, currency: p.currency });
+    let p = readPsPrice();
+    if (!p) {
+      // The buy box renders after the first paint on some pages; wait for it, then read again.
+      try { await waitForElement(SEL.buyBox, 6000); } catch { /* nothing to wait for */ }
+      if (token !== pageToken) return;
+      p = readPsPrice();
+    }
+    if (!p) {
+      diagLog("price-not-found", { region: PSEStore.regionFromPath(location.pathname) });
+      return;
+    }
+    if (p.mismatch) diagLog("price-differs-from-json-ld", { amount: p.amount, currency: p.currency });
+    await ask("RECORD_PS_PRICE", {
+      gameName, amount: p.amount, currency: p.currency,
+      orig: p.original, pct: p.pct, ends: p.ends, plus: p.plusAmount
+    });
   }
 
   /* ═══════════════════════════════════════════════
@@ -877,62 +995,56 @@
   }
 
   /* ═══════════════════════════════════════════════
-   * Search filters
+   * Search filters (decided per tile by PSEStore: the store's own type label and the clean title)
    * ═══════════════════════════════════════════════ */
   async function applySearchFilters() {
-    const addonPatterns = [
-      /\bcurrency\b/i, /\bcoins?\b/i, /\btokens?\b/i, /\bcredits?\b/i,
-      /\bpoints?\s*pack/i, /\badd[\s-]?on\b/i, /\bv[\s-]?bucks\b/i,
-      /\bgold\s*(bars?|pack)/i, /\bstarter\s*pack\b/i, /\bboost(er)?\s*pack\b/i,
-      /\b\d+[\s,.]?\d*\s*(coins?|tokens?|credits?|gems?|gold|points)\b/i,
-      /\bמטבעות\b/, /\bאסימונים\b/
-    ];
-    const dlcPatterns = [
-      /\bdlc\b/i, /\bexpansion\b/i, /\bseason\s*pass\b/i,
-      /\bbundle\b/i, /\bdeluxe\s*upgrade\b/i, /\bתוסף\b/, /\bחבילת\b/
-    ];
+    const token = pageToken;
+    const tiles = PSEStore.readTiles(document, { hint: PSEHelpers.currencyFromStorePath(location.pathname) });
 
     // Owned games compared by normalized identity (curly quotes, ™, editions, … all agree)
     let ownedKeys = new Set();
     if (settings.hideOwned) {
       const resp = await ask("GET_MERGED_OWNED", {}, 30000);
+      if (token !== pageToken) return;
       if (resp?.list) ownedKeys = new Set(resp.list.map((g) => PSEMatch.baseKey(g)).filter(Boolean));
     }
 
-    const items = document.querySelectorAll(SEL.gridItems.join(", "));
-    items.forEach((item) => {
-      const text = (item.textContent || "").trim();
-      let hide = false;
+    const opts = {
+      hideAddons: settings.hideAddons, hideDlc: settings.hideDlc, hideOwned: settings.hideOwned,
+      ownedKeys, baseKey: PSEMatch.baseKey
+    };
+    // Hide the grid cell (li), not the tile inside it, so the next tiles move up instead of leaving a gap.
+    for (const tile of tiles) tile.unit.classList.toggle("pse-hidden-addon", !!PSEStore.shouldHideTile(tile, opts));
+    recordGridPrices(tiles);
+  }
 
-      if (settings.hideAddons && addonPatterns.some((p) => p.test(text))) hide = true;
-      if (!hide && settings.hideDlc && dlcPatterns.some((p) => p.test(text))) hide = true;
-
-      if (!hide && settings.hideOwned && ownedKeys.size > 0) {
-        const titleEl = item.querySelector('[data-qa*="game-title"], [class*="Title"], span[class*="name"]');
-        const itemTitle = titleEl ? titleEl.textContent.trim() : "";
-        if (itemTitle) {
-          if (ownedKeys.has(PSEMatch.baseKey(itemTitle))) hide = true;
-        } else {
-          // No title element: whole-word containment of an owned game's name in the tile text
-          const padded = ` ${PSEMatch.normalizeTitle(text)} `;
-          for (const key of ownedKeys) {
-            if (key.length > 3 && padded.includes(` ${key} `)) { hide = true; break; }
-          }
-        }
-      }
-
-      item.classList.toggle("pse-hidden-addon", hide);
-    });
+  /** Prices already sent for this page view, so infinite scroll does not re-send the same tiles. */
+  const sentGridPrices = new Set();
+  function recordGridPrices(tiles) {
+    if (!settings.enablePriceHistory) return;
+    const items = [];
+    for (const t of tiles) {
+      if (t.price == null || !t.currency || !t.name) continue;
+      const kind = PSEStore.classifyTile(t);
+      if (kind.addon || kind.dlc) continue;
+      const mark = `${t.id || t.name}|${t.price}`;
+      if (sentGridPrices.has(mark)) continue;
+      sentGridPrices.add(mark);
+      items.push({ gameName: t.name, amount: t.price, currency: t.currency, orig: t.original, pct: t.pct });
+    }
+    // The worker only adds points to games whose history already exists or that are on the wishlist.
+    for (let i = 0; i < items.length; i += 50) ask("RECORD_PS_PRICES", { items: items.slice(i, i + 50) });
   }
 
   // Debounce grid observer (500ms + idle callback to reduce CPU)
   function observeGrid() {
     if (gridObserver) { gridObserver.disconnect(); gridObserver = null; }
-    const grid = document.querySelector('[data-qa*="grid"], [class*="SearchResults"], main');
+    const grid = findElement(SEL.grid);
     if (!grid) return;
+    const run = () => isolate("searchFilters", applySearchFilters);
     const schedule = () => {
-      if (typeof requestIdleCallback === "function") requestIdleCallback(applySearchFilters, { timeout: 800 });
-      else applySearchFilters();
+      if (typeof requestIdleCallback === "function") requestIdleCallback(run, { timeout: 800 });
+      else run();
     };
     gridObserver = new MutationObserver(() => {
       clearTimeout(gridFilterTimer);

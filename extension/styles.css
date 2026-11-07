@@ -233,6 +233,11 @@
 /* ─── filter ─── */
 .pse-hidden-addon { display:none !important; }
 
+/* ─── Price Insight: PlayStation / PC sections ─── */
+.pse-ph-heading { margin:12px 0 6px; font-size:10px; font-weight:700; letter-spacing:.8px; text-transform:uppercase; opacity:.7; }
+.pse-ph-heading:first-child { margin-top:0; }
+.pse-ps-hist { padding-bottom:4px; }
+
 /* ─── Live search autocomplete ─── */
 .pse-ac-dropdown {
   font-family: var(--pse-font);

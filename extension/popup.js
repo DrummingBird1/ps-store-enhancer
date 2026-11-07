@@ -104,6 +104,58 @@ document.addEventListener("DOMContentLoaded", async () => {
     btn.disabled = false;
   });
 
+  /* "Check this page": runs every lookup the extension relies on in the active PlayStation Store tab. */
+  const CHECK_LABELS = { title: "chk_title", price: "chk_price", anchor: "chk_anchor", tiles: "chk_tiles", names: "chk_names", prices: "chk_prices" };
+  const CHECK_STATUS = { ok: "checkOk", warn: "checkWarn", fail: "checkFail" };
+  $("checkPageBtn").addEventListener("click", async () => {
+    const list = $("checkList");
+    const msg = $("checkMsg");
+    list.hidden = true;
+    list.textContent = "";
+    msg.textContent = "";
+    let tab = null;
+    try { [tab] = await chrome.tabs.query({ active: true, currentWindow: true }); } catch {}
+    let host = "";
+    try { host = new URL(tab && tab.url).hostname; } catch {}
+    if (!tab || host !== "store.playstation.com") { msg.textContent = t("checkPageNoStore"); return; }
+    let resp = null;
+    try { resp = await chrome.tabs.sendMessage(tab.id, { type: "PSE_CHECK_PAGE" }); } catch {}
+    if (!resp || !resp.ok) { msg.textContent = t("checkPageNotReady"); return; }
+    const r = resp.result;
+    if (!r.checks.length) { msg.textContent = t("checkPageOther"); return; }
+    for (const c of r.checks) {
+      const li = document.createElement("li");
+      const dot = document.createElement("span");
+      dot.className = `ck-dot ck-${c.status}`;
+      const label = document.createElement("span");
+      label.textContent = `${t(CHECK_LABELS[c.id] || c.id)} — ${t(CHECK_STATUS[c.status])}`;
+      li.append(dot, label);
+      const extra = [c.detail && c.id !== "title" ? c.detail : "", c.strategy || ""].filter(Boolean).join(" · ");
+      if (extra) {
+        const small = document.createElement("small");
+        small.textContent = extra;
+        li.append(small);
+      }
+      list.appendChild(li);
+    }
+    for (const f of r.features || []) {
+      if (f.ok) continue;
+      const li = document.createElement("li");
+      const dot = document.createElement("span");
+      dot.className = "ck-dot ck-fail";
+      const label = document.createElement("span");
+      label.textContent = t("checkFeatureFailed", f.feature);
+      li.append(dot, label);
+      list.appendChild(li);
+    }
+    list.hidden = false;
+    msg.textContent = t("checkPageSummary", String(r.ok), String(r.total));
+    // Kept in the local diagnostics log (statuses and strategy names only) so "Copy" in Settings includes it.
+    try {
+      chrome.runtime.sendMessage({ type: "DIAG_LOG", event: "check-page", details: { page: r.page, checks: r.checks.map((c) => `${c.id}:${c.status}:${c.strategy || ""}`) } });
+    } catch {}
+  });
+
   /* One-click panic button: disconnect PSN and erase everything stored locally. */
   $("wipeBtn").addEventListener("click", async () => {
     if (!confirm(t("wipeConfirm"))) return;

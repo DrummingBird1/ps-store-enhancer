@@ -6,6 +6,14 @@ What has shipped in **PS Store Enhancer**, what is partly done, and what is only
 
 ## Shipped
 
+**v3.0.0 — Checked against the real store**
+- Four bugs found on real store pages are fixed: a wrongly recorded PlayStation price, the add-on / DLC / owned-games filters, cards placed below the editions list, and blank gaps where results were hidden.
+- PlayStation price history in Price Insight: lowest price you have seen, sale details, PlayStation Plus price, the store's own 30-day low, trend and the gap to the cheapest PC price. Real recorded prices only, the latest 400 days with a price, included in the backup.
+- Prices are also recorded from search results (for games you already track) and, once a day, from the saved page of each wishlisted game.
+- "Check this page" in the popup tests every lookup on the current store page; a broken lookup switches off only its own card.
+- Local network log in Settings, and a single allow-list for the hosts the extension may contact.
+- Tests now run on saved real store pages.
+
 **v2.7.1 — PSN connection fix**
 - Connecting to PSN follows the documented sign-in flow of the open-source [psn-api](https://github.com/achievements-app/psn-api) project ([#1](https://github.com/DrummingBird1/ps-store-enhancer/issues/1)).
 - Connection errors name the failing step, and the local Diagnostics log records Sony's short error name.
@@ -34,6 +42,8 @@ What has shipped in **PS Store Enhancer**, what is partly done, and what is only
 
 ## Planned
 
+- **3.1 (idea):** a "buy or wait" verdict with visible rules and an honest "not enough data" state, and a library screen from the PSN played-games list. Both depend on a verified PSN connection.
+- **3.2 (idea):** a full-tab dashboard and a first-run wizard.
 - Native-speaker review of translations, and a visual check of right-to-left layouts (Hebrew, Arabic) on the newest features.
 - Refresh the PSN access token shortly before it expires instead of only after a 401.
 - Edge support (same code base as Chrome).

@@ -2,7 +2,7 @@ PS Store Enhancer (antes GameDeals+) añade a PlayStation™ Store información 
 
 🔍 INTELIGENCIA DE PRECIOS
 • Mínimo histórico real en PC (con su fecha), el precio más bajo de hoy y un aviso de «cerca del mínimo histórico»: solo datos reales, sin gráficos estimados
-• Una tendencia de precios dibujada con los precios que registró tu propio navegador
+• Una tendencia de precios de PC y PlayStation (el precio más bajo que has visto y detalles de las ofertas) dibujada con los precios que registró tu propio navegador
 • Comparación multiplataforma del juego exacto (nunca un DLC, un mapa o una secuela): Steam, Epic Games Store, GOG, Humble Store y más, con datos de CheapShark y convertidos a tu moneda
 • Transparencia de ediciones: un precio de otra edición o paquete (Deluxe, Ultimate, GOTY…) se marca claramente y nunca se mezcla en silencio
 • Pistas sobre cuándo suelen empezar las grandes rebajas
@@ -32,7 +32,7 @@ PS Store Enhancer (antes GameDeals+) añade a PlayStation™ Store información 
 • Añade un juego con un clic desde su página de producto
 • Fija un precio objetivo o un «% de descuento», añade notas, ordena y filtra
 • Recibe una notificación de escritorio —o un único resumen semanal— cuando el precio más bajo en PC alcance tu objetivo
-• Registra el precio de PS Store que ves en la página de cada juego
+• Registra el precio de PS Store que ves en la página de cada juego y conserva su historial en tu dispositivo
 • Comparte tu lista como enlace de solo lectura: la lista va dentro del enlace y no se sube nada
 • Comprobaciones diarias en segundo plano, sin consultas constantes
 • La insignia de la barra de herramientas cuenta las ofertas de tu lista que han llegado a tu objetivo o lo han mejorado
@@ -75,9 +75,9 @@ Selector de idioma integrado: cambia el idioma del navegador desde Ajustes.
 🔒 PRIVACIDAD ANTE TODO
 • Todos tus datos se quedan en tu dispositivo
 • Sin analíticas, sin seguimiento, sin compartir datos
-• Sin servidores propios: las únicas peticiones van a CheapShark (precios y valoraciones), Frankfurter (tipos de cambio) y, solo si te conectas, a Sony
+• Sin servidores propios: las únicas peticiones van a CheapShark (precios y valoraciones), Frankfurter (tipos de cambio), la propia PlayStation Store (la página guardada de cada juego de tu lista de deseos, una vez al día) y, solo si te conectas, a Sony
 • Botón «Borrar todos mis datos» en la ventana emergente y en Ajustes
-• Registro de diagnóstico local que nunca guarda tokens ni contraseñas
+• Registros de diagnóstico y de red locales (solo host y ruta) que nunca guardan tokens ni contraseñas
 • Código abierto (MIT) en GitHub; política de privacidad completa disponible
 
 ⚠️ AVISO LEGAL

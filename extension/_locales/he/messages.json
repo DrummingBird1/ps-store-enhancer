@@ -1007,5 +1007,152 @@
   },
   "chl_2_7_1_2": {
     "message": "🛠 שגיאות PSN ברורות יותר שמציינות באיזה שלב נכשל החיבור, והרשאה בלחיצה אחת כש-Chrome מסתיר את ההפניה של Sony"
+  },
+  "psHistLabel": {
+    "message": "PlayStation Store · נרשם בדפדפן שלכם"
+  },
+  "psLowest": {
+    "message": "המחיר הנמוך ביותר ב-PS שראיתם:"
+  },
+  "psNow": {
+    "message": "בחנות עכשיו"
+  },
+  "psAtLow": {
+    "message": "במחיר הנמוך ביותר שראיתם"
+  },
+  "psSaleLine": {
+    "message": "היה $ORIGINAL$ · $PCT$% הנחה",
+    "placeholders": {
+      "original": {
+        "content": "$1"
+      },
+      "pct": {
+        "content": "$2"
+      }
+    }
+  },
+  "psSaleEnds": {
+    "message": "המבצע מסתיים ב-$DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "psPlusPrice": {
+    "message": "מחיר PlayStation Plus: $PRICE$",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "psStoreLow30": {
+    "message": "המחיר הנמוך ביותר ב-30 הימים האחרונים, לפי החנות: $PRICE$",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "psGapAbove": {
+    "message": "$AMOUNT$ יותר מהמחיר הזול ביותר ב-PC היום",
+    "placeholders": {
+      "amount": {
+        "content": "$1"
+      }
+    }
+  },
+  "psGapBelow": {
+    "message": "$AMOUNT$ פחות מהמחיר הזול ביותר ב-PC היום",
+    "placeholders": {
+      "amount": {
+        "content": "$1"
+      }
+    }
+  },
+  "psNotEnough": {
+    "message": "אין עדיין מספיק היסטוריית מחירים של PlayStation. היא נבנית בכל יום שבו אתם נכנסים לדף של המשחק הזה."
+  },
+  "checkPageBtn": {
+    "message": "🔍 בדוק את הדף"
+  },
+  "checkPageNoStore": {
+    "message": "פתחו קודם דף של PlayStation Store ונסו שוב."
+  },
+  "checkPageNotReady": {
+    "message": "הדף לא הגיב. טענו מחדש את טאב החנות ונסו שוב."
+  },
+  "checkPageOther": {
+    "message": "בסוג כזה של דף אין מה לבדוק. פתחו דף משחק או דף חיפוש."
+  },
+  "checkPageSummary": {
+    "message": "$OK$ מתוך $TOTAL$ בדיקות עובדות",
+    "placeholders": {
+      "ok": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
+    }
+  },
+  "checkOk": {
+    "message": "עובד"
+  },
+  "checkWarn": {
+    "message": "עובד דרך מנגנון חלופי"
+  },
+  "checkFail": {
+    "message": "לא נמצא"
+  },
+  "chk_title": {
+    "message": "שם המשחק"
+  },
+  "chk_price": {
+    "message": "מחיר"
+  },
+  "chk_anchor": {
+    "message": "מיקום הכרטיסים"
+  },
+  "chk_tiles": {
+    "message": "אריחי משחקים"
+  },
+  "chk_names": {
+    "message": "כותרות האריחים"
+  },
+  "chk_prices": {
+    "message": "מחירי האריחים"
+  },
+  "checkFeatureFailed": {
+    "message": "כובה בדף הזה אחרי שגיאה: $FEATURE$",
+    "placeholders": {
+      "feature": {
+        "content": "$1"
+      }
+    }
+  },
+  "netLogTitle": {
+    "message": "יומן רשת"
+  },
+  "netLogDesc": {
+    "message": "כל בקשה שהתוסף שלח, נשמרת במכשיר הזה בלבד: שרת, נתיב, סטטוס וזמן. אף פעם לא מחרוזת השאילתה, הכותרות או נתונים כלשהם. התוסף רשאי לפנות רק אל: $HOSTS$.",
+    "placeholders": {
+      "hosts": {
+        "content": "$1"
+      }
+    }
+  },
+  "netLogEmpty": {
+    "message": "עדיין לא נרשמו בקשות."
+  },
+  "chl_3_0_1": {
+    "message": "🛡️ נבדק מול PlayStation Store האמיתית: תוקנו מחיר שנרשם בטעות, מסנני Add-ons, DLC ומשחקים בבעלות, ורווחים ריקים בתוצאות החיפוש"
+  },
+  "chl_3_0_2": {
+    "message": "📈 היסטוריית מחירי PlayStation: המחיר הנמוך ביותר שראיתם, פרטי המבצעים והמגמה, על סמך מחירים שהדפדפן שלכם רושם (גם מתוצאות חיפוש ומרשימת המשאלות שלכם)"
+  },
+  "chl_3_0_3": {
+    "message": "🔍 חדש: „בדוק את הדף“ בחלון הקופץ ויומן רשת מקומי בהגדרות: ראו מה עובד ומה התוסף ביקש"
   }
 }

@@ -1007,5 +1007,152 @@
   },
   "chl_2_7_1_2": {
     "message": "🛠 Erros da PSN mais claros, que indicam a etapa que falhou, e permissão com um clique quando o Chrome oculta o redirecionamento da Sony"
+  },
+  "psHistLabel": {
+    "message": "PlayStation Store · registrado pelo seu navegador"
+  },
+  "psLowest": {
+    "message": "Menor preço de PS que você já viu:"
+  },
+  "psNow": {
+    "message": "Na loja agora"
+  },
+  "psAtLow": {
+    "message": "No menor preço que você já viu"
+  },
+  "psSaleLine": {
+    "message": "Era $ORIGINAL$ · $PCT$% de desconto",
+    "placeholders": {
+      "original": {
+        "content": "$1"
+      },
+      "pct": {
+        "content": "$2"
+      }
+    }
+  },
+  "psSaleEnds": {
+    "message": "A oferta termina em $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "psPlusPrice": {
+    "message": "Preço com PlayStation Plus: $PRICE$",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "psStoreLow30": {
+    "message": "Menor preço dos últimos 30 dias, segundo a loja: $PRICE$",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "psGapAbove": {
+    "message": "$AMOUNT$ a mais que o menor preço no PC hoje",
+    "placeholders": {
+      "amount": {
+        "content": "$1"
+      }
+    }
+  },
+  "psGapBelow": {
+    "message": "$AMOUNT$ a menos que o menor preço no PC hoje",
+    "placeholders": {
+      "amount": {
+        "content": "$1"
+      }
+    }
+  },
+  "psNotEnough": {
+    "message": "Ainda não há histórico de preços do PlayStation suficiente. Ele se forma a cada dia em que você visita a página deste jogo."
+  },
+  "checkPageBtn": {
+    "message": "🔍 Verificar esta página"
+  },
+  "checkPageNoStore": {
+    "message": "Abra primeiro uma página da PlayStation Store e tente de novo."
+  },
+  "checkPageNotReady": {
+    "message": "A página não respondeu. Recarregue a aba da loja e tente de novo."
+  },
+  "checkPageOther": {
+    "message": "Esse tipo de página não tem nada para verificar. Abra a página de um jogo ou de busca."
+  },
+  "checkPageSummary": {
+    "message": "$OK$ de $TOTAL$ verificações funcionam",
+    "placeholders": {
+      "ok": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
+    }
+  },
+  "checkOk": {
+    "message": "funciona"
+  },
+  "checkWarn": {
+    "message": "funciona por um método alternativo"
+  },
+  "checkFail": {
+    "message": "não encontrado"
+  },
+  "chk_title": {
+    "message": "Título do jogo"
+  },
+  "chk_price": {
+    "message": "Preço"
+  },
+  "chk_anchor": {
+    "message": "Onde ficam os cartões"
+  },
+  "chk_tiles": {
+    "message": "Blocos de jogos"
+  },
+  "chk_names": {
+    "message": "Títulos dos blocos"
+  },
+  "chk_prices": {
+    "message": "Preços dos blocos"
+  },
+  "checkFeatureFailed": {
+    "message": "Desativado nesta página após um erro: $FEATURE$",
+    "placeholders": {
+      "feature": {
+        "content": "$1"
+      }
+    }
+  },
+  "netLogTitle": {
+    "message": "Registro de rede"
+  },
+  "netLogDesc": {
+    "message": "Todas as solicitações feitas pela extensão, guardadas só neste dispositivo: host, caminho, status e horário. Nunca a consulta, os cabeçalhos ou qualquer dado. A extensão só pode contatar: $HOSTS$.",
+    "placeholders": {
+      "hosts": {
+        "content": "$1"
+      }
+    }
+  },
+  "netLogEmpty": {
+    "message": "Nenhuma solicitação registrada ainda."
+  },
+  "chl_3_0_1": {
+    "message": "🛡️ Verificado na PlayStation Store real: corrigidos um preço registrado errado, os filtros de add-ons, DLC e jogos que você já possui, e os espaços em branco nos resultados de busca"
+  },
+  "chl_3_0_2": {
+    "message": "📈 Histórico de preços do PlayStation: o menor preço que você já viu, detalhes das promoções e tendência, criado a partir dos preços que seu navegador registra (também dos resultados de busca e da sua lista de desejos)"
+  },
+  "chl_3_0_3": {
+    "message": "🔍 Novo “Verificar esta página” no popup e um registro de rede local em Configurações: veja o que funciona e o que a extensão solicitou"
   }
 }

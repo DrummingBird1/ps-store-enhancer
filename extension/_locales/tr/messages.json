@@ -1007,5 +1007,152 @@
   },
   "chl_2_7_1_2": {
     "message": "🛠 Başarısız adımı gösteren daha anlaşılır PSN hataları ve Chrome Sony yönlendirmesini gizlediğinde tek tıkla izin"
+  },
+  "psHistLabel": {
+    "message": "PlayStation Store · tarayıcınız tarafından kaydedildi"
+  },
+  "psLowest": {
+    "message": "Gördüğünüz en düşük PS fiyatı:"
+  },
+  "psNow": {
+    "message": "Şu an mağazada"
+  },
+  "psAtLow": {
+    "message": "Gördüğünüz en düşük fiyatta"
+  },
+  "psSaleLine": {
+    "message": "Önceden $ORIGINAL$ · %$PCT$ indirim",
+    "placeholders": {
+      "original": {
+        "content": "$1"
+      },
+      "pct": {
+        "content": "$2"
+      }
+    }
+  },
+  "psSaleEnds": {
+    "message": "Fırsat $DATE$ tarihinde sona eriyor",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "psPlusPrice": {
+    "message": "PlayStation Plus fiyatı: $PRICE$",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "psStoreLow30": {
+    "message": "Mağazaya göre son 30 günün en düşük fiyatı: $PRICE$",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "psGapAbove": {
+    "message": "Bugünkü en ucuz PC fiyatından $AMOUNT$ daha pahalı",
+    "placeholders": {
+      "amount": {
+        "content": "$1"
+      }
+    }
+  },
+  "psGapBelow": {
+    "message": "Bugünkü en ucuz PC fiyatından $AMOUNT$ daha ucuz",
+    "placeholders": {
+      "amount": {
+        "content": "$1"
+      }
+    }
+  },
+  "psNotEnough": {
+    "message": "Henüz yeterli PlayStation fiyat geçmişi yok. Bu oyunun sayfasını ziyaret ettiğiniz her gün oluşur."
+  },
+  "checkPageBtn": {
+    "message": "🔍 Bu sayfayı kontrol et"
+  },
+  "checkPageNoStore": {
+    "message": "Önce bir PlayStation Store sayfası açın, sonra tekrar deneyin."
+  },
+  "checkPageNotReady": {
+    "message": "Sayfa yanıt vermedi. Mağaza sekmesini yenileyin ve tekrar deneyin."
+  },
+  "checkPageOther": {
+    "message": "Bu tür bir sayfada kontrol edilecek bir şey yok. Bir oyun sayfası veya arama sayfası açın."
+  },
+  "checkPageSummary": {
+    "message": "$TOTAL$ kontrolden $OK$ tanesi çalışıyor",
+    "placeholders": {
+      "ok": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
+    }
+  },
+  "checkOk": {
+    "message": "çalışıyor"
+  },
+  "checkWarn": {
+    "message": "yedek yöntemle çalışıyor"
+  },
+  "checkFail": {
+    "message": "bulunamadı"
+  },
+  "chk_title": {
+    "message": "Oyun adı"
+  },
+  "chk_price": {
+    "message": "Fiyat"
+  },
+  "chk_anchor": {
+    "message": "Kartların yeri"
+  },
+  "chk_tiles": {
+    "message": "Oyun kutucukları"
+  },
+  "chk_names": {
+    "message": "Kutucuk adları"
+  },
+  "chk_prices": {
+    "message": "Kutucuk fiyatları"
+  },
+  "checkFeatureFailed": {
+    "message": "Bir hatadan sonra bu sayfada kapatıldı: $FEATURE$",
+    "placeholders": {
+      "feature": {
+        "content": "$1"
+      }
+    }
+  },
+  "netLogTitle": {
+    "message": "Ağ günlüğü"
+  },
+  "netLogDesc": {
+    "message": "Eklentinin yaptığı tüm istekler yalnızca bu cihazda tutulur: sunucu, yol, durum ve zaman. Sorgu, üstbilgiler veya herhangi bir veri asla tutulmaz. Eklenti yalnızca şunlarla iletişim kurabilir: $HOSTS$.",
+    "placeholders": {
+      "hosts": {
+        "content": "$1"
+      }
+    }
+  },
+  "netLogEmpty": {
+    "message": "Henüz kaydedilmiş istek yok."
+  },
+  "chl_3_0_1": {
+    "message": "🛡️ Gerçek PlayStation Store üzerinde doğrulandı: yanlış kaydedilen bir fiyat, eklenti, DLC ve sahip olunan oyun filtreleri ve arama sonuçlarındaki boşluklar düzeltildi"
+  },
+  "chl_3_0_2": {
+    "message": "📈 PlayStation fiyat geçmişi: gördüğünüz en düşük fiyat, indirim ayrıntıları ve eğilim; tarayıcınızın kaydettiği fiyatlardan oluşturulur (arama sonuçlarından ve istek listenizden de)"
+  },
+  "chl_3_0_3": {
+    "message": "🔍 Açılır pencerede yeni “Bu sayfayı kontrol et” ve Ayarlar’da yerel ağ günlüğü: nelerin çalıştığını ve eklentinin neleri istediğini görün"
   }
 }

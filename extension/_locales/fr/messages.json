@@ -1007,5 +1007,152 @@
   },
   "chl_2_7_1_2": {
     "message": "🛠 Erreurs PSN plus claires qui indiquent l’étape en échec, et autorisation en un clic quand Chrome masque la redirection de Sony"
+  },
+  "psHistLabel": {
+    "message": "PlayStation Store · enregistré par votre navigateur"
+  },
+  "psLowest": {
+    "message": "Prix PS le plus bas que vous ayez vu :"
+  },
+  "psNow": {
+    "message": "Actuellement dans la boutique"
+  },
+  "psAtLow": {
+    "message": "Au prix le plus bas que vous ayez vu"
+  },
+  "psSaleLine": {
+    "message": "Avant $ORIGINAL$ · -$PCT$ %",
+    "placeholders": {
+      "original": {
+        "content": "$1"
+      },
+      "pct": {
+        "content": "$2"
+      }
+    }
+  },
+  "psSaleEnds": {
+    "message": "L'offre se termine le $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "psPlusPrice": {
+    "message": "Prix avec PlayStation Plus : $PRICE$",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "psStoreLow30": {
+    "message": "Prix le plus bas des 30 derniers jours, selon la boutique : $PRICE$",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "psGapAbove": {
+    "message": "$AMOUNT$ de plus que le prix PC le plus bas aujourd'hui",
+    "placeholders": {
+      "amount": {
+        "content": "$1"
+      }
+    }
+  },
+  "psGapBelow": {
+    "message": "$AMOUNT$ de moins que le prix PC le plus bas aujourd'hui",
+    "placeholders": {
+      "amount": {
+        "content": "$1"
+      }
+    }
+  },
+  "psNotEnough": {
+    "message": "Historique des prix PlayStation encore insuffisant. Il se construit chaque jour où vous visitez la page de ce jeu."
+  },
+  "checkPageBtn": {
+    "message": "🔍 Vérifier cette page"
+  },
+  "checkPageNoStore": {
+    "message": "Ouvrez d'abord une page du PlayStation Store, puis réessayez."
+  },
+  "checkPageNotReady": {
+    "message": "La page n'a pas répondu. Rechargez l'onglet de la boutique et réessayez."
+  },
+  "checkPageOther": {
+    "message": "Ce type de page n'a rien à vérifier. Ouvrez la page d'un jeu ou une page de recherche."
+  },
+  "checkPageSummary": {
+    "message": "$OK$ vérifications sur $TOTAL$ fonctionnent",
+    "placeholders": {
+      "ok": {
+        "content": "$1"
+      },
+      "total": {
+        "content": "$2"
+      }
+    }
+  },
+  "checkOk": {
+    "message": "fonctionne"
+  },
+  "checkWarn": {
+    "message": "fonctionne via une solution de repli"
+  },
+  "checkFail": {
+    "message": "introuvable"
+  },
+  "chk_title": {
+    "message": "Titre du jeu"
+  },
+  "chk_price": {
+    "message": "Prix"
+  },
+  "chk_anchor": {
+    "message": "Emplacement des cartes"
+  },
+  "chk_tiles": {
+    "message": "Vignettes de jeux"
+  },
+  "chk_names": {
+    "message": "Titres des vignettes"
+  },
+  "chk_prices": {
+    "message": "Prix des vignettes"
+  },
+  "checkFeatureFailed": {
+    "message": "Désactivé sur cette page après une erreur : $FEATURE$",
+    "placeholders": {
+      "feature": {
+        "content": "$1"
+      }
+    }
+  },
+  "netLogTitle": {
+    "message": "Journal réseau"
+  },
+  "netLogDesc": {
+    "message": "Toutes les requêtes de l'extension, conservées uniquement sur cet appareil : hôte, chemin, statut et heure. Jamais les paramètres de requête, les en-têtes ni aucune donnée. L'extension ne peut contacter que : $HOSTS$.",
+    "placeholders": {
+      "hosts": {
+        "content": "$1"
+      }
+    }
+  },
+  "netLogEmpty": {
+    "message": "Aucune requête enregistrée pour l'instant."
+  },
+  "chl_3_0_1": {
+    "message": "🛡️ Vérifié sur le vrai PlayStation Store : correction d’un prix mal enregistré, des filtres des add-ons, DLC et jeux possédés, et des vides dans les résultats de recherche"
+  },
+  "chl_3_0_2": {
+    "message": "📈 Historique des prix PlayStation : le prix le plus bas que vous ayez vu, détails des promotions et tendance, construits à partir des prix enregistrés par votre navigateur (aussi depuis les résultats de recherche et votre liste de souhaits)"
+  },
+  "chl_3_0_3": {
+    "message": "🔍 Nouveau « Vérifier cette page » dans la fenêtre contextuelle et un journal réseau local dans les Paramètres : voyez ce qui fonctionne et ce que l’extension a demandé"
   }
 }

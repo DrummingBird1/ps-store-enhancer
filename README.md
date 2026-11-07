@@ -5,7 +5,7 @@
 <p align="center">Formerly GameDeals+, then PS Store Insight. Enhance your PlayStation™ Store experience with real lowest-ever prices, exact cross-platform comparison, Metacritic and Steam scores, trophy info, wishlist alerts, currency conversion, and smart filters — no invented data.</p>
 
 <p align="center">
-<img src="https://img.shields.io/badge/version-2.7.1-blue" alt="Version">
+<img src="https://img.shields.io/badge/version-3.0.0-blue" alt="Version">
 <img src="https://img.shields.io/badge/manifest-v3-green" alt="Manifest V3">
 <img src="https://img.shields.io/badge/languages-16-orange" alt="16 languages">
 <img src="https://img.shields.io/badge/license-MIT-brightgreen" alt="MIT License">
@@ -32,7 +32,7 @@
 | Feature | Description |
 |---------|-------------|
 | 🔎 **Live Search Suggestions** | Enriched dropdown (thumbnail + PC price) as you type in the store search box |
-| 📉 **Price Insight** | Real lowest-ever PC price (with date), today's cheapest, "near the all-time low" flag, and a trend from prices your own browser recorded — never an invented chart |
+| 📉 **Price Insight** | Real lowest-ever PC price (with date), today's cheapest, "near the all-time low" flag, and a trend from prices your own browser recorded — never an invented chart. New in 3.0: a **PlayStation Store** part with the lowest PS price you have seen, the sale (was / % off / ends), PlayStation Plus price, the store's own 30-day low, the trend and the gap to the cheapest PC price — built only from real recorded prices (the latest 400 days with a recorded price) |
 | 🔀 **Cross-Platform** | Price comparison for the **exact game** — Steam, Epic, GOG, Humble (CheapShark) — never a DLC, map or sequel; plus usual-sale hints |
 | 🎁 **Edition Transparency** | Flags cross-platform prices that are for a different bundle/edition (Deluxe, GOTY, etc.) than the page you're on |
 | 📊 **Review Scores** | Metacritic (PC) and Steam rating badges next to the game title, via CheapShark |
@@ -43,7 +43,7 @@
 | 📈 **Library & Wishlist Stats** | Dashboard: games owned, wishlist size, total wishlist value, deals ready to buy |
 | 🔔 **Toolbar Badge** | Live count of wishlist deals at/below target price on the extension icon |
 | ⭐ **Wishlist** | Price or % targets, notes, sort/filter, weekly digest, read-only share link, PS Store price seen on the page |
-| 🛠 **Diagnostics & privacy** | Local diagnostics log (no secrets) and a one-click "Erase all my data" |
+| 🛠 **Diagnostics & privacy** | Local diagnostics log (no secrets), a local **network log** of every request (host and path only), a **Check this page** button in the popup that tests every lookup on the current store page, and a one-click "Erase all my data" |
 | 🧹 **Smart Filters** | Hide add-ons, DLC, currency packs, and owned games |
 | 🗣️ **16 Languages** | EN, HE, AR, ES, FR, DE, IT, PT-BR, NL, PL, TR, RU, JA, KO, ZH-CN, ZH-TW + manual selector |
 | 💾 **Smart Cache** | TTL-based caching (4h–7d) with cache management UI |
@@ -58,6 +58,8 @@ gamedeals-plus/
 │   ├── manifest.json           Manifest V3
 │   ├── background.js           Service worker — message router, wishlist, alarms
 │   ├── cheapshark.js           Exact-game lookup: deals, all-time low, Metacritic/Steam ratings
+│   ├── store-adapter.js        The one place that knows the store's page structure: title, price, tiles, "Check this page"
+│   ├── net.js                  Network layer — allow-listed hosts, timeout, local request log
 │   ├── content.js              DOM injection — cards, badges, filters, live search
 │   ├── content-extras.js       Share-deal image, first-run tour, one-time review prompt
 │   ├── styles.css              PlayStation-themed styles (light, dark, high contrast)

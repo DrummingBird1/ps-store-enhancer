@@ -207,7 +207,7 @@ const PSN = (() => {
     try {
       // Attempt 1: redirect:"manual" — read the Location header directly when Chrome exposes it
       try {
-        const resp = await fetch(url, { redirect: "manual", credentials: "include" });
+        const resp = await PSENet.fetch(url, { redirect: "manual", credentials: "include" });
         const loc = resp.headers.get("location") || "";
         opaque = resp.type === "opaqueredirect" || resp.status === 0;
         const errorCode = resp.status >= 400 ? await sonyErrorCode(resp) : null;
@@ -228,7 +228,7 @@ const PSN = (() => {
 
       // Attempt 2: follow — fails on the custom scheme, but the error/URL can still carry the code
       try {
-        const resp = await fetch(url, { redirect: "follow", credentials: "include" });
+        const resp = await PSENet.fetch(url, { redirect: "follow", credentials: "include" });
         const m = String(resp.url || "").match(CODE_RE);
         if (m) return { code: m[1] };
         try {
@@ -260,7 +260,7 @@ const PSN = (() => {
 
   /** POST to Sony's token endpoint as the PlayStation app (Basic client auth, JWT tokens). */
   function tokenRequest(params) {
-    return fetch(`${AUTH_BASE}/token`, {
+    return PSENet.fetch(`${AUTH_BASE}/token`, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded", Authorization: CLIENT_AUTH },
       body: new URLSearchParams({ ...params, token_format: "jwt" }).toString()
@@ -340,7 +340,7 @@ const PSN = (() => {
   async function authedFetch(url, retried = false) {
     const token = await getAccessToken();
     if (!token) return null;
-    const resp = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
+    const resp = await PSENet.fetch(url, { headers: { Authorization: `Bearer ${token}` } });
     if (resp.status === 401 && !retried) {
       log("401-retry", { url: PSEDiag.urlInfo(url) });
       await chrome.storage.local.set({ psn_token_expiry: 0 }); // force the refresh path
@@ -512,7 +512,7 @@ const PSN = (() => {
 
   async function fetchProfile(accessToken) {
     try {
-      const resp = await fetch(PROFILE_URL, { headers: { Authorization: `Bearer ${accessToken}` } });
+      const resp = await PSENet.fetch(PROFILE_URL, { headers: { Authorization: `Bearer ${accessToken}` } });
       if (!resp.ok) {
         log("profile-http-error", { status: resp.status });
         return null;

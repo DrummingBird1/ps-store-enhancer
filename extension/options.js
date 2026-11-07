@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     autoBtn: $("autoBtn"), npssoIn: $("npssoIn"), connBtn: $("connBtn"), syncBtn: $("syncBtn"),
     disconnBtn: $("disconnBtn"), psnMsg: $("psnMsg"), grantBtn: $("grantBtn"),
     diagBox: $("diagBox"), diagRefresh: $("diagRefresh"), diagCopy: $("diagCopy"), diagClear: $("diagClear"),
+    netLogDesc: $("netLogDesc"), netLogBox: $("netLogBox"), netLogRefresh: $("netLogRefresh"), netLogCopy: $("netLogCopy"), netLogClear: $("netLogClear"),
     wipeBtn: $("wipeBtn"), cardOrder: $("cardOrder")
   };
 
@@ -455,13 +456,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   /* ═══ Export / Import ═══ */
   el.exportBtn.addEventListener("click", async () => {
-    const data = await chrome.storage.local.get(["manual_owned", "wishlist"]);
+    const data = await chrome.storage.local.get(["manual_owned", "wishlist", "pse_snapshots"]);
     const payload = {
       app: "PS Store Enhancer",
       version: chrome.runtime.getManifest().version,
       exportedAt: new Date().toISOString(),
       manual_owned: data.manual_owned || [],
-      wishlist: data.wishlist || []
+      wishlist: data.wishlist || [],
+      pse_snapshots: data.pse_snapshots || {} // prices recorded by this browser (PC and PlayStation)
     };
     const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
@@ -520,6 +522,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
         await chrome.storage.local.set({ wishlist: merged });
       }
+      if (data.pse_snapshots && typeof data.pse_snapshots === "object") {
+        await send({ type: "MERGE_SNAPSHOTS", snapshots: data.pse_snapshots }); // validated and merged by the worker
+      }
       const after = await chrome.storage.local.get(["manual_owned"]);
       manualOwned = after.manual_owned || [];
       renderOwnedList();
@@ -561,6 +566,25 @@ document.addEventListener("DOMContentLoaded", async () => {
     } catch { toast(t("genericError")); }
   });
   el.diagClear.addEventListener("click", async () => { await send({ type: "DIAG_CLEAR" }); await refreshDiag(); });
+
+  /* ═══ Network log (every request the extension made: host, path, status, time — never the query) ═══ */
+  el.netLogDesc.textContent = t("netLogDesc", Object.keys(PSENet.ALLOWED_HOSTS).join(", "));
+  async function refreshNetLog() {
+    const entries = await PSENet.get();
+    el.netLogBox.textContent = entries.length ? PSENet.formatEntries(entries) : t("netLogEmpty");
+    el.netLogBox.scrollTop = el.netLogBox.scrollHeight;
+    return entries;
+  }
+  await refreshNetLog();
+  el.netLogRefresh.addEventListener("click", refreshNetLog);
+  el.netLogCopy.addEventListener("click", async () => {
+    const entries = await refreshNetLog();
+    try {
+      await navigator.clipboard.writeText(`PS Store Enhancer ${chrome.runtime.getManifest().version}\n${PSENet.formatEntries(entries)}`);
+      toast(t("diagCopied"));
+    } catch { toast(t("genericError")); }
+  });
+  el.netLogClear.addEventListener("click", async () => { await PSENet.clear(); await refreshNetLog(); });
 
   /* ═══ Privacy: erase everything ═══ */
   el.wipeBtn.addEventListener("click", async () => {

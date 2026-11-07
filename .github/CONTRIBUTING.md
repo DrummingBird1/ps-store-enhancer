@@ -30,6 +30,8 @@ ps-store-enhancer/
 │   ├── manifest.json       Manifest V3
 │   ├── background.js       Service worker — message router (see .github/MESSAGING.md), wishlist, alarms
 │   ├── cheapshark.js       Exact-game lookup: deals, all-time low, Metacritic/Steam ratings
+│   ├── store-adapter.js    The one place that knows the store's page structure (title, price, tiles, "Check this page")
+│   ├── net.js              Network layer: allow-listed hosts, timeout, local request log
 │   ├── content.js          DOM injection on store.playstation.com
 │   ├── content-extras.js   Share-deal image, first-run tour, one-time review prompt
 │   ├── psn.js              PSN OAuth + library/trophy API

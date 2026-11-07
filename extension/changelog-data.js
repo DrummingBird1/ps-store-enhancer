@@ -5,6 +5,15 @@
  */
 const PSE_CHANGELOG = [
   {
+    version: "3.0.0",
+    keys: ["chl_3_0_1", "chl_3_0_2", "chl_3_0_3"],
+    highlights: [
+      "🛡️ Checked against the real PlayStation Store: fixed a wrongly recorded price, the add-on, DLC and owned-games filters, and blank gaps in search results",
+      "📈 PlayStation price history: the lowest price you've seen, sale details and trend, built from prices your browser records (also from search results and your wishlist)",
+      "🔍 New \"Check this page\" in the popup and a local network log in Settings: see what works and what the extension requested"
+    ]
+  },
+  {
     version: "2.7.1",
     keys: ["chl_2_7_1_1", "chl_2_7_1_2", "chl_2_7_0_1", "chl_2_7_0_2", "chl_2_7_0_3", "chl_2_7_0_4", "chl_2_7_0_5", "chl_2_7_0_6"],
     highlights: [

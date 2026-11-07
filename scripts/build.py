@@ -55,7 +55,10 @@ def zip_dir(src_dir: Path, dest_zip: Path, root_name: str) -> int:
     return count
 
 
-BACKGROUND_SCRIPTS = ["match.js", "helpers.js", "cache.js", "diag.js", "cheapshark.js", "psn.js", "background.js"]
+BACKGROUND_SCRIPTS = [
+    "match.js", "helpers.js", "store-adapter.js", "cache.js", "diag.js", "net.js",
+    "cheapshark.js", "psn.js", "background.js",
+]
 
 
 def firefox_manifest(manifest: dict) -> dict:
