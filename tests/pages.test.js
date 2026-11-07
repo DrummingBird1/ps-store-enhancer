@@ -89,6 +89,17 @@ describe("popup: the Auto / Dark / Light switch", () => {
   });
 });
 
+describe("popup: the PSN row once connected", () => {
+  test("'synced a minute ago' in Hebrew has no stray '(1)' (CLDR 48 writes Hebrew singular forms with one)", async () => {
+    const respond = { PSN_STATUS: () => ({ connected: true, profile: { onlineId: "Tester" }, gameCount: 12, dlcCount: 3, lastSync: Date.now() - 60000 }) };
+    const page = loadExtensionPage("popup.html", { sync: { userLanguage: "he" }, respond });
+    await until(() => page.$("psnSynced").textContent !== "", "the PSN row to be drawn");
+    expect(page.$("psnText").textContent).toBe("Tester");
+    expect(page.$("psnSynced").textContent).toMatch(/דקה/);
+    expect(page.$("psnSynced").textContent).not.toMatch(/\(1\)/);
+  });
+});
+
 describe("popup: Report a problem and the page links", () => {
   test("the button copies the diagnostics (version first), then opens the report form", async () => {
     const page = await popup();
