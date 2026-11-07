@@ -51,6 +51,7 @@ function fakeSony(env, opts = {}) {
       }
       if (u.pathname.endsWith("/token")) {
         state.tokenCalls++;
+        if (opts.rejectOrigin && !env.originRemovedFor(url)) return jsonResponse("", 403);
         const body = String(init.body || "");
         const headers = init.headers || {};
         if (headers.Authorization !== REF_BASIC) return jsonResponse({ error: "invalid_client" }, 401);
@@ -404,20 +405,20 @@ describe("PSN", () => {
     expect(entries.some((e) => e.e === "authorize-response" && e.d.type === "opaqueredirect")).toBe(true);
   });
 
+  const OWN = -1; // tabId of the extension's own requests
+  const REDIRECT_URL = "com.scee.psxandroid.scecompcall://redirect?code=v3.TESTCODE";
+
   test("opaque redirect + webRequest permission → code observed from the redirect", async () => {
     const env = createEnv();
     env.enableWebRequest();
     env.loadServiceWorker();
     fakeSony(env, { opaque: true });
     env.route(async (url) => {
-      if (url.includes("/authorize")) {
-        env.fireWebRequest("onBeforeRedirect", { redirectUrl: "com.scee.psxandroid.scecompcall://redirect?code=v3.TESTCODE" });
-      }
+      if (url.includes("/authorize")) env.fireWebRequest("onBeforeRedirect", { tabId: OWN, redirectUrl: REDIRECT_URL });
       return undefined;
     });
     const r = await env.send({ type: "PSN_AUTHENTICATE", npsso: GOOD });
     expect(r.success).toBe(true);
-    expect(env.webRequestListeners.length).toBe(0); // listeners removed again
   });
 
   test("opaque redirect + webRequest permission → code read from the 302 response headers", async () => {
@@ -428,16 +429,73 @@ describe("PSN", () => {
     env.route(async (url) => {
       if (url.includes("/authorize")) {
         env.fireWebRequest("onHeadersReceived", {
+          tabId: OWN,
           responseHeaders: [{ name: "Content-Type", value: "text/html" }, { name: "Location", value: "com.scee.psxandroid.scecompcall://redirect/?code=v3.TESTCODE&cid=1" }]
         });
       }
       return undefined;
     });
     expect((await env.send({ type: "PSN_AUTHENTICATE", npsso: GOOD })).success).toBe(true);
-    expect(env.webRequestListeners.length).toBe(0);
   });
 
-  test("permission granted but Chrome still hides the redirect → says so instead of a vague failure", async () => {
+  test("the observer is attached when the worker starts (Chrome ignores listeners added later), restricted to Sony's host", () => {
+    const env = createEnv();
+    env.enableWebRequest();
+    env.loadServiceWorker();
+    expect(env.webRequestListeners.map((l) => l.__event).sort()).toEqual(["onBeforeRedirect", "onHeadersReceived"]);
+    expect(env.webRequestListeners.every((l) => l.__filter && l.__filter.urls.join() === "https://ca.account.sony.com/*")).toBe(true);
+  });
+
+  test("permission granted after the worker started → the observer attaches when the connect begins", async () => {
+    const env = createEnv();
+    env.loadServiceWorker(); // no chrome.webRequest yet: nothing to attach
+    expect(env.webRequestListeners.length).toBe(0);
+    fakeSony(env, { opaque: true });
+    env.enableWebRequest(); // the user accepts the permission prompt
+    env.route(async (url) => {
+      if (url.includes("/authorize")) env.fireWebRequest("onBeforeRedirect", { tabId: OWN, redirectUrl: REDIRECT_URL });
+      return undefined;
+    });
+    expect((await env.send({ type: "PSN_AUTHENTICATE", npsso: GOOD })).success).toBe(true);
+    expect(env.webRequestListeners.length).toBe(2); // attached once, not once per connect
+    expect((await env.send({ type: "PSN_AUTHENTICATE", npsso: GOOD })).success).toBe(true);
+    expect(env.webRequestListeners.length).toBe(2);
+  });
+
+  test("a redirect event is only used for the extension's own request while connecting", async () => {
+    const env = createEnv();
+    env.enableWebRequest();
+    env.loadServiceWorker();
+    fakeSony(env, { opaque: true });
+    // not connecting: ignored, and nothing is kept for the next connect
+    env.fireWebRequest("onBeforeRedirect", { tabId: OWN, redirectUrl: REDIRECT_URL });
+    // connecting, but the redirect belongs to a tab (the user's own sign-in page): ignored
+    env.route(async (url) => {
+      if (url.includes("/authorize")) env.fireWebRequest("onBeforeRedirect", { tabId: 7, redirectUrl: REDIRECT_URL });
+      return undefined;
+    });
+    expect(await env.send({ type: "PSN_AUTHENTICATE", npsso: GOOD })).toEqual({
+      success: false, error: "psnErrAuthCode", detail: "authorize/redirect-not-observed"
+    });
+  });
+
+  test("an event that arrives just after the failed fetch still counts", async () => {
+    const env = createEnv();
+    env.enableWebRequest();
+    env.loadServiceWorker();
+    fakeSony(env, { opaque: true });
+    env.route(async (url, init = {}) => {
+      if (url.includes("/authorize") && init.redirect === "follow") {
+        // Chrome reports ERR_UNSAFE_REDIRECT to the fetch before it delivers the webRequest event
+        setTimeout(() => env.fireWebRequest("onBeforeRedirect", { tabId: OWN, redirectUrl: REDIRECT_URL }), 40);
+        throw new TypeError("Failed to fetch");
+      }
+      return undefined;
+    });
+    expect((await env.send({ type: "PSN_AUTHENTICATE", npsso: GOOD })).success).toBe(true);
+  });
+
+  test("permission granted but no event ever arrives → says so instead of a vague failure", async () => {
     const env = createEnv();
     env.enableWebRequest();
     env.loadServiceWorker();
@@ -445,7 +503,30 @@ describe("PSN", () => {
     expect(await env.send({ type: "PSN_AUTHENTICATE", npsso: GOOD })).toEqual({
       success: false, error: "psnErrAuthCode", detail: "authorize/redirect-not-observed"
     });
-    expect(env.webRequestListeners.length).toBe(0);
+  }, 10000);
+
+  test("Sony's token endpoint rejects the extension's Origin header: a session rule removes it for that URL, for non-tab requests only", async () => {
+    const env = createEnv();
+    env.enableDnr();
+    env.loadServiceWorker();
+    expect(env.dnrRules).toHaveLength(1); // installed when the worker starts
+    expect(env.dnrRules[0]).toMatchObject({
+      action: { type: "modifyHeaders", requestHeaders: [{ header: "origin", operation: "remove" }] },
+      condition: { urlFilter: "||ca.account.sony.com/api/authz/v3/oauth/token", resourceTypes: ["xmlhttprequest"], tabIds: [-1] }
+    });
+    fakeSony(env, { rejectOrigin: true });
+    expect((await env.send({ type: "PSN_AUTHENTICATE", npsso: GOOD })).success).toBe(true);
+    expect(env.dnrRules).toHaveLength(1);
+    expect(env.dnrCalls).toBe(1); // not re-installed for every request
+  });
+
+  test("without the rule that Sony rejects the token request (403), and the failure is reported with its step", async () => {
+    const env = createEnv();
+    env.loadServiceWorker(); // no declarativeNetRequest (for example a browser without it)
+    fakeSony(env, { rejectOrigin: true });
+    expect(await env.send({ type: "PSN_AUTHENTICATE", npsso: GOOD })).toEqual({
+      success: false, error: "psnErrAccessToken", detail: "token/403"
+    });
   });
 
   test("Sony rejecting the request at the authorize step reports its error code (never a token)", async () => {

@@ -49,6 +49,7 @@ body.theme-light .release li code{background:rgba(0,0,0,.06)}
       <li><strong>"Hide add-ons" and "Hide DLC" missed almost everything</strong> on the live search page. They now use the store's own label on each tile (Add-on, Add-On Pack, Level, Episode…) and the clean title; a full game sold as a "Game Bundle" is no longer treated as DLC.</li>
       <li><strong>"Hide games I already own" hid the wrong games:</strong> owning "God of War" hid its sequels and kept the game itself. It now compares exact titles (a Deluxe Edition counts as the same game).</li>
       <li><strong>Hidden search results left blank gaps</strong> in the grid; the whole grid cell is hidden now.</li>
+      <li><strong>Connecting PSN failed in Chrome, every time.</strong> Chrome only gives the sign-in redirect to a listener that exists when the background worker starts, and Sony's token endpoint answers 403 to a request that carries the extension's <code>Origin</code> header. The listener is now attached at start-up, and a rule removes that header from the one request to Sony's token URL. This adds the permission <code>declarativeNetRequestWithHostAccess</code> (no warning in Chrome; used for nothing else).</li>
     </ul>
     <h3>New</h3>
     <ul>
@@ -57,7 +58,7 @@ body.theme-light .release li code{background:rgba(0,0,0,.06)}
       <li><strong>Check this page</strong> (toolbar popup): runs every lookup the extension depends on in the current store tab and shows which work, which work through a fallback and which are not found. If a store redesign breaks one lookup, only that card is switched off on that page and the Diagnostics log says why.</li>
       <li><strong>Network log</strong> (Settings): every request the extension makes — host, path, status and time, never the query, headers or data — kept on your device. The extension can only reach its five documented hosts.</li>
     </ul>
-    <p><strong>Please note:</strong> like v2.7.1, a live PSN sign-in has not been checked against a real account, and the injected cards were checked by tests against the real page structure rather than by eye in a browser with the extension loaded.</p>
+    <p><strong>Please note:</strong> the PSN sign-in was checked on one real account (connect, library sync of 2,034 games, token refresh, <em>Hide games I already own</em>), and the injected cards were checked by tests against the real page structure and by eye in Chrome with the extension loaded.</p>
   </div>
 
   <div class="release">

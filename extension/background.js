@@ -10,6 +10,11 @@ if (typeof importScripts === "function") {
   importScripts("match.js", "helpers.js", "store-adapter.js", "cache.js", "diag.js", "net.js", "cheapshark.js", "psn.js");
 }
 
+// webRequest listeners only work for the worker's own requests when they exist from the moment the
+// worker starts, so this runs at the top level (it does nothing until the optional permission is granted).
+PSN.installRedirectObserver();
+PSN.installNoOriginRule();
+
 const PSE_DEFAULTS_SYNC = {
   hideAddons: false, hideDlc: false, hideOwned: false,
   pspricesRegion: "IL", displayCurrency: "USD",

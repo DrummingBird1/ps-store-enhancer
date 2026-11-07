@@ -129,10 +129,32 @@ function createEnv() {
     route(fn) { env.routes.unshift(fn); },
     enableWebRequest() {
       const event = (name) => ({
-        addListener: (fn) => { fn.__event = name; webRequestListeners.push(fn); },
+        addListener: (fn, filter) => { fn.__event = name; fn.__filter = filter; webRequestListeners.push(fn); },
         removeListener: (fn) => { const i = webRequestListeners.indexOf(fn); if (i >= 0) webRequestListeners.splice(i, 1); }
       });
       chrome.webRequest = { onBeforeRedirect: event("onBeforeRedirect"), onHeadersReceived: event("onHeadersReceived") };
+    },
+    /** declarativeNetRequest session rules, as the extension installs them. */
+    enableDnr() {
+      env.dnrRules = [];
+      env.dnrCalls = 0;
+      chrome.declarativeNetRequest = {
+        updateSessionRules: async ({ removeRuleIds = [], addRules = [] }) => {
+          env.dnrCalls++;
+          env.dnrRules = env.dnrRules.filter((r) => !removeRuleIds.includes(r.id)).concat(addRules);
+        }
+      };
+    },
+    /** True when an installed session rule strips the Origin header from this URL for non-tab requests. */
+    originRemovedFor(url) {
+      const bare = String(url).replace(/^https:\/\//, "");
+      return (env.dnrRules || []).some(
+        (r) =>
+          r.action.type === "modifyHeaders" &&
+          r.action.requestHeaders.some((h) => h.header === "origin" && h.operation === "remove") &&
+          bare.startsWith(r.condition.urlFilter.replace(/^\|\|/, "")) &&
+          (r.condition.tabIds || []).includes(-1)
+      );
     },
     /** Deliver a webRequest event to the listeners registered for it. */
     fireWebRequest(name, details) {

@@ -30,6 +30,14 @@ v2.7.1 that the old test pages could not show, and they are fixed here.
   the game itself. It now compares exact titles (a Deluxe Edition counts as the same game).
 - **Hidden search results left blank gaps** in the grid. The whole grid cell is hidden now, so the
   next games move up.
+- **Connecting PSN failed in Chrome, every time.** Two things were wrong, both found by signing in to
+  a real account for the first time. Chrome only hands the sign-in redirect to the extension's
+  listener if the listener exists when the background worker starts (it was attached in the middle of
+  the connect, so it saw nothing: `redirect-not-observed`), and Sony's token endpoint answers 403 to a
+  request that carries the extension's `Origin` header. The listener is now attached at start-up (and
+  again when you accept the permission), and a rule removes the `Origin` header from that one request
+  to Sony's token URL. This adds one permission, `declarativeNetRequestWithHostAccess`, which Chrome
+  does not show a warning for and which the extension uses for nothing else.
 
 **New**
 - **PlayStation price history** in the Price Insight card: the lowest PlayStation price you have seen,
@@ -56,9 +64,9 @@ v2.7.1 that the old test pages could not show, and they are fixed here.
 - The automated tests now run the real content script against saved real store pages (product pages in
   two regions, a search grid) with `jsdom`.
 
-**Please note:** like v2.7.1, a live PSN sign-in has not been checked against a real account. The
-injected cards were checked by tests against the real page structure, not by eye in a browser with the
-extension loaded.
+**Please note:** the PSN sign-in was checked on one real account (connect, library sync of 2,034
+games, token refresh, *Hide games I already own*). The injected cards were checked by tests against the
+real page structure and by eye in Chrome with the extension loaded.
 
 ---
 
