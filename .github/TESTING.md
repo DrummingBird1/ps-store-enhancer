@@ -141,6 +141,34 @@ injected cards *look*, and they cannot load the extension itself, so look at the
 - [ ] Settings → **Network log** lists only the five documented hosts, with no query strings
 - [ ] Settings → Export, then Import in a fresh profile: recorded PlayStation prices come back
 
+### 3.0 look: theme switch, Report a problem, sale countdown, bundled font
+
+- [ ] **Theme switch in the popup**: the three header buttons (Auto / Dark / Light) change the popup at once
+      and the pressed one is marked; the choice is the same setting as Settings → Theme (change it in one,
+      reopen the other: it follows); *Auto* follows the OS light/dark setting; the cards on a store page
+      follow it too
+- [ ] **Report a problem** (popup footer, and Settings → Diagnostics): the clipboard then holds the
+      version, the browser string and the diagnostics log (paste it somewhere and read it: no token, code
+      or query string), a new tab opens the GitHub bug-report form, and nothing is typed into it for you
+- [ ] **Sale countdown**: on a product page whose recorded PlayStation sale has an end date, the Price
+      Insight card shows "Offer ends <date> (in N days)" (also "tomorrow" / "today"); an end date that has
+      passed shows no such line; switching the extension language changes the wording
+- [ ] **Cards come back after the store re-renders**: open a product page, wait about ten seconds (the
+      store rebuilds part of its page after load, for example when the signed-in state arrives), and the
+      cards are still there or reappear within a second or two; then go to another product page: its cards
+      appear too
+- [ ] **Font is packaged**: in DevTools → Network on the Settings page, the popup and a store page, the
+      font requests are only `chrome-extension://…/fonts/rubik-*.woff2` and none goes to a web server; with
+      the *Offline* throttle on, reload Settings and the popup and the text is still Rubik (Computed →
+      Rendered Fonts); in Hebrew, Arabic and Russian the matching subset loads
+- [ ] **Pictures are the only remote loads** (as the privacy policy's "Pictures" section says): with live
+      search open, the only requests to other servers are the thumbnails (mostly `steamstatic.com`); in
+      Settings with PSN connected, the avatar picture from Sony; no other third-party request from an
+      extension page
+- [ ] **Keyboard only**: Tab reaches the popup's theme buttons, *Report a problem* and *Erase all my
+      data*, then in Settings the *Report a problem* button, and on a store product page the header button
+      that collapses each card; each shows a visible focus ring, and Enter / Space activates it
+
 ---
 
 ## Regression checks (things that were once broken)

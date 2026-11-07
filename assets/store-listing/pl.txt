@@ -75,7 +75,7 @@ Wbudowany wybór języka — zmień język przeglądarki w ustawieniach.
 🔒 PRYWATNOŚĆ NA PIERWSZYM MIEJSCU
 • Wszystkie dane zostają na Twoim urządzeniu
 • Bez analityki, bez śledzenia, bez udostępniania danych
-• Bez własnych serwerów: jedyne żądania trafiają do CheapShark (ceny, oceny), Frankfurter (kursy walut), samego PlayStation Store (zapisana strona każdej gry z listy życzeń, raz dziennie) i — tylko jeśli się połączysz — do Sony
+• Bez własnych serwerów: rozszerzenie wysyła żądania tylko do CheapShark (ceny, oceny), Frankfurter (kursy walut), samego PlayStation Store (zapisana strona każdej gry z listy życzeń, raz dziennie) i — tylko jeśli się połączysz — do Sony. Przeglądarka ładuje też obrazy z serwerów, na których się znajdują: małe miniatury w wyszukiwaniu na żywo (głównie z serwera obrazów Steam) oraz Twój awatar PSN w Ustawieniach
 • Przycisk „Usuń wszystkie moje dane” w oknie podręcznym i w ustawieniach
 • Lokalne dzienniki diagnostyczne i sieciowe (tylko host i ścieżka), które nigdy nie zapisują tokenów ani haseł
 • Otwarte oprogramowanie (MIT) na GitHubie; dostępna pełna polityka prywatności

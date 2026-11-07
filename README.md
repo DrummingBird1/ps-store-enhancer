@@ -43,7 +43,7 @@
 | 📈 **Library & Wishlist Stats** | Dashboard: games owned, wishlist size, total wishlist value, deals ready to buy |
 | 🔔 **Toolbar Badge** | Live count of wishlist deals at/below target price on the extension icon |
 | ⭐ **Wishlist** | Price or % targets, notes, sort/filter, weekly digest, read-only share link, PS Store price seen on the page |
-| 🛠 **Diagnostics & privacy** | Local diagnostics log (no secrets), a local **network log** of every request (host and path only), a **Check this page** button in the popup that tests every lookup on the current store page, and a one-click "Erase all my data" |
+| 🛠 **Diagnostics & privacy** | Local diagnostics log (no secrets), a local **network log** of every request the extension sends (host and path only), a **Check this page** button in the popup that tests every lookup on the current store page, and a one-click "Erase all my data" |
 | 🧹 **Smart Filters** | Hide add-ons, DLC, currency packs, and owned games |
 | 🗣️ **16 Languages** | EN, HE, AR, ES, FR, DE, IT, PT-BR, NL, PL, TR, RU, JA, KO, ZH-CN, ZH-TW + manual selector |
 | 💾 **Smart Cache** | TTL-based caching (4h–7d) with cache management UI |
@@ -62,28 +62,33 @@ gamedeals-plus/
 │   ├── net.js                  Network layer — allow-listed hosts, timeout, local request log
 │   ├── content.js              DOM injection — cards, badges, filters, live search
 │   ├── content-extras.js       Share-deal image, first-run tour, one-time review prompt
-│   ├── styles.css              PlayStation-themed styles (light, dark, high contrast)
+│   ├── styles.css              "Midnight Glass" styles of the injected cards (dark, light, high contrast)
+│   ├── fonts.css               @font-face for the bundled font on the extension's own pages
+│   ├── fonts-content.css       The same for the cards on store pages (files named by the extension's URL)
+│   ├── fonts/                  Rubik (SIL OFL 1.1): five woff2 subsets + OFL.txt — packaged, never downloaded
 │   ├── psn.js                  PSN authentication & library API
 │   ├── cache.js, diag.js       Smart cache with TTL; local diagnostics log
 │   ├── match.js, helpers.js    Pure helpers (title matching, snapshots, scores, …), unit-tested
 │   ├── data/trophies.json      Community-maintained trophy / completionist data
 │   ├── i18n.js                 Multi-language support with manual override
-│   ├── popup.html / .js        Quick controls popup
+│   ├── popup.html / .js        Quick controls popup (Auto / Dark / Light switch, Report a problem)
 │   ├── options.html / .js      Full settings page + Library & Wishlist stats
+│   ├── options.css             Styles of the settings page
 │   ├── welcome.html            Onboarding page (shown on first install)
 │   ├── changelog.html / .js    In-extension "what's new" page
 │   ├── icons/                  Extension icons (16, 48, 128)
-│   └── _locales/               16 language translations (278 keys each)
+│   └── _locales/               16 language translations (the same keys in every language, checked by the `validate-locales` script)
 │
 ├── assets/                     ← Everything for the Chrome Web Store listing, social media & website
 │   ├── README.md               What's here and why (incl. why docs/assets/ duplicates a few files)
 │   ├── EDGE-LISTING.md         How to publish the same build to Microsoft Edge Add-ons
 │   ├── STORE-LISTING.txt       Full description, privacy justifications
+│   ├── store-listing/          The detailed store description in all 16 languages (one .txt each)
 │   ├── REVIEWER-NOTES.md       Notes for Chrome Web Store reviewers
 │   ├── icon.png, store-icon-128.png   Logo / store listing icon
 │   ├── badges/                 One graphic per released version, used in CHANGELOG.md
-│   ├── promo/                  Promotional tiles (440×280 small, 1400×560 marquee)
-│   ├── screenshots/en, /he     Store screenshots, per language
+│   ├── promo/                  Promotional tiles (440×280 small, 1400×560 marquee); promo/src = the two real captures they are built from
+│   ├── screenshots/en, /he     Store screenshots (real 1280×800 captures), per language
 │   └── docs/                   GitHub Pages site — self-contained (own assets/ subfolder)
 │       ├── index.html          Landing page (feature tour + screenshots)
 │       ├── wishlist.html       Read-only viewer for shared wishlist links (list lives in the URL #fragment)
@@ -99,9 +104,10 @@ gamedeals-plus/
 ├── scripts/
 │   ├── build.py                Builds dist/ (Chrome; `--target firefox` is experimental/untested)
 │   ├── check-apis.py           Live check of CheapShark/Frankfurter (nightly in CI)
-│   └── check-csp.py            MV3 CSP guard (no inline scripts/handlers/eval)
+│   ├── check-csp.py            MV3 CSP guard (no inline scripts/handlers/eval)
+│   └── generate-assets/        Pillow scripts for the promo tiles, icon and version badges (see its README)
 │
-├── tests/                      Jest suites (matching, helpers, service worker, i18n, trophy data) + fixtures
+├── tests/                      Jest suites (matching, helpers, service worker, content script on saved store pages, network layer, i18n, theme contrast, trophy data) + fixtures
 │   └── harness/                Browser harness: real pages + mocked chrome.* (see its README)
 ├── .github/
 │   ├── workflows/              CI (lint+tests on PR) + Release (build + publish on tag)
@@ -182,6 +188,8 @@ Language can be set manually in Settings → Extension Language.
 | [PSPrices](https://psprices.com/) | Price history link | Link only |
 | [PSNProfiles](https://psnprofiles.com/) | Trophy guide link | Link only |
 | [HowLongToBeat](https://howlongtobeat.com/) | Completion-time link | Link only |
+
+Pictures are the one thing the browser loads straight from other servers: the live-search thumbnails (mostly Steam's image server) and, if PSN is connected, your PSN avatar in Settings. The extension adds nothing to those requests; see the [privacy policy](https://drummingbird1.github.io/ps-store-enhancer/privacy-policy.html).
 
 ---
 

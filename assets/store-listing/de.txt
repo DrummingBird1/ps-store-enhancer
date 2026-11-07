@@ -75,7 +75,7 @@ Integrierte Sprachauswahl – überschreibe die Browsersprache in den Einstellun
 🔒 DATENSCHUTZ ZUERST
 • Alle Daten bleiben auf deinem Gerät
 • Keine Analyse, kein Tracking, keine Datenweitergabe
-• Keine eigenen Server: Anfragen gehen nur an CheapShark (Preise, Bewertungen), Frankfurter (Wechselkurse), den PlayStation Store selbst (die gespeicherte Seite jedes Wunschlisten-Spiels, einmal täglich) und – nur wenn du dich verbindest – an Sony
+• Keine eigenen Server: Die Erweiterung sendet Anfragen nur an CheapShark (Preise, Bewertungen), Frankfurter (Wechselkurse), den PlayStation Store selbst (die gespeicherte Seite jedes Wunschlisten-Spiels, einmal täglich) und – nur wenn du dich verbindest – an Sony. Dein Browser lädt außerdem Bilder von den Servern, auf denen sie liegen: die kleinen Vorschaubilder der Live-Suche (meist vom Bildserver von Steam) und dein PSN-Avatar in den Einstellungen
 • Schaltfläche „Alle meine Daten löschen“ im Popup und in den Einstellungen
 • Lokale Diagnose- und Netzwerkprotokolle (nur Host und Pfad), die nie Token oder Passwörter aufzeichnen
 • Open Source (MIT) auf GitHub; vollständige Datenschutzerklärung verfügbar

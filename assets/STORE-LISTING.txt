@@ -97,7 +97,7 @@ Built-in language selector — override your browser language in Settings.
 🔒 PRIVACY FIRST
 • All your data stays on your device
 • No analytics, no tracking, no data sharing
-• No servers of our own: the only requests go to CheapShark (prices, scores), Frankfurter (exchange rates), the PlayStation Store itself (the saved page of each wishlisted game, once a day) and — only if you connect — Sony
+• No servers of our own: the extension only sends requests to CheapShark (prices, scores), Frankfurter (exchange rates), the PlayStation Store itself (the saved page of each wishlisted game, once a day) and — only if you connect — Sony. Your browser also loads pictures from the servers that host them: the small thumbnails in live search (mostly Steam's image server) and your PSN avatar in Settings
 • “Erase all my data” button in the popup and in Settings
 • A local diagnostics log and network log (host and path only) that never record tokens or passwords
 • Open source (MIT) on GitHub; full privacy policy available
@@ -128,6 +128,7 @@ Host permissions:
 - ca.account.sony.com, m.np.playstation.com — optional PSN authentication & library sync
 - cheapshark.com — cross-platform prices, all-time low, Metacritic and Steam ratings
 - api.frankfurter.dev — daily currency exchange rates for display
+- Pictures (live-search thumbnails, mostly from Steam's image server; the PSN avatar on the Settings page, from Sony) are plain image loads made by the browser. They need no host permission, and the extension adds nothing to them.
 
 Remote code: This extension does not use any remotely hosted code.
 
