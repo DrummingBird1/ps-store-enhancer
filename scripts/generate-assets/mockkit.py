@@ -20,6 +20,17 @@ def rtl_fix(s):
     return "".join(reversed(fixed))
 
 
+def rtl_visual(s):
+    """Visual-order string for an RTL paragraph, to be drawn left-to-right. Uses python-bidi (the real
+    Unicode bidi algorithm) when it is installed, so spaces, hyphens, digits and Latin words next to
+    Hebrew land where a browser would put them; otherwise falls back to the approximation above."""
+    try:
+        from bidi import get_display
+    except ImportError:
+        return rtl_fix(s)
+    return get_display(s, base_dir="R")
+
+
 FONT_DIR = "C:/Windows/Fonts/"
 F_REG = FONT_DIR + "segoeui.ttf"
 F_BOLD = FONT_DIR + "segoeuib.ttf"
