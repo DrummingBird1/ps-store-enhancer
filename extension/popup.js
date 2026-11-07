@@ -73,9 +73,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     const lang = PSEi18n.getActiveLang().replace("_", "-");
     try {
       const rtf = new Intl.RelativeTimeFormat(lang, { numeric: "auto" });
-      if (Math.abs(mins) < 60) return rtf.format(mins, "minute");
-      if (Math.abs(mins) < 60 * 48) return rtf.format(Math.round(mins / 60), "hour");
-      return rtf.format(Math.round(mins / 1440), "day");
+      // CLDR 48 writes Hebrew singular forms with a trailing " (1)" ("לפני דקה (1)"): drop it
+      const plain = (s) => s.replace(/\s*\(1\)\s*$/, "");
+      if (Math.abs(mins) < 60) return plain(rtf.format(mins, "minute"));
+      if (Math.abs(mins) < 60 * 48) return plain(rtf.format(Math.round(mins / 60), "hour"));
+      return plain(rtf.format(Math.round(mins / 1440), "day"));
     } catch { return new Date(ts).toLocaleString(); }
   }
 
