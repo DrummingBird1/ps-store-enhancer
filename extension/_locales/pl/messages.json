@@ -1160,5 +1160,11 @@
   },
   "chl_3_0_4": {
     "message": "Nowy wygląd wszystkiego: karty w sklepie, okno rozszerzenia i ustawienia, w trybie ciemnym, jasnym i wysokiego kontrastu"
+  },
+  "reportProblem": {
+    "message": "Zgłoś problem"
+  },
+  "reportProblemCopied": {
+    "message": "Diagnostyka skopiowana. Wklej ją do zgłoszenia."
   }
 }

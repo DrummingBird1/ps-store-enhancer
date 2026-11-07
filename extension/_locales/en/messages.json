@@ -1160,5 +1160,11 @@
   },
   "chl_3_0_4": {
     "message": "A new look for everything: the cards on store pages, the popup and the settings page, in dark, light and high contrast"
+  },
+  "reportProblem": {
+    "message": "Report a problem"
+  },
+  "reportProblemCopied": {
+    "message": "Diagnostics copied. Paste them into the report."
   }
 }

@@ -565,6 +565,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     } catch { toast(t("genericError")); }
   });
   el.diagClear.addEventListener("click", async () => { await send({ type: "DIAG_CLEAR" }); await refreshDiag(); });
+  $("reportBtn").addEventListener("click", async () => { toast((await PSEDiag.reportProblem()) ? t("reportProblemCopied") : t("genericError")); });
 
   /* ═══ Network log (every request the extension made: host, path, status, time — never the query) ═══ */
   el.netLogDesc.textContent = t("netLogDesc", Object.keys(PSENet.ALLOWED_HOSTS).join(", "));

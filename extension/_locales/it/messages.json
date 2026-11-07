@@ -1160,5 +1160,11 @@
   },
   "chl_3_0_4": {
     "message": "Un nuovo aspetto per tutto: le schede nello store, il popup e le impostazioni, in scuro, chiaro e alto contrasto"
+  },
+  "reportProblem": {
+    "message": "Segnala un problema"
+  },
+  "reportProblemCopied": {
+    "message": "Diagnostica copiata. Incollala nella segnalazione."
   }
 }

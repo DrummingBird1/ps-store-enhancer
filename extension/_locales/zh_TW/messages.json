@@ -1160,5 +1160,11 @@
   },
   "chl_3_0_4": {
     "message": "全新外觀:商店頁面卡片、彈出視窗和設定頁面,支援深色、淺色和高對比"
+  },
+  "reportProblem": {
+    "message": "回報問題"
+  },
+  "reportProblemCopied": {
+    "message": "診斷資訊已複製,請貼到回報中。"
   }
 }

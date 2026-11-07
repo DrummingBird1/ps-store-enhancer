@@ -40,6 +40,12 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible,.sw input:focus-vi
 body.theme-contrast .hdr{border-bottom:2px solid #fff}
 .logo{display:grid;place-items:center;width:32px;height:32px;border-radius:10px;background:var(--accent-deep);color:#fff;font-size:17px;flex:none;box-shadow:0 6px 18px rgba(23,105,224,.35)}
 body.theme-contrast .logo{background:#ffd400;color:#000;box-shadow:none}
+.theme-seg{margin-inline-start:auto;display:flex;gap:2px;padding:3px;background:var(--panel2);border-radius:999px}
+.theme-seg button{display:grid;place-items:center;width:28px;height:28px;border:0;border-radius:50%;background:transparent;color:var(--dim);font-size:15px;cursor:pointer;transition:background .2s,color .2s}
+.theme-seg button:hover{color:var(--text)}
+.theme-seg button[aria-pressed="true"]{background:var(--accent-deep);color:#fff}
+body.theme-contrast .theme-seg{background:#000;border:2px solid #fff}
+body.theme-contrast .theme-seg button[aria-pressed="true"]{background:#ffd400;color:#000}
 .hdr h1{font-size:15px;font-weight:600;line-height:1.2}
 .hdr p{font-size:11px;color:var(--dim);margin-top:2px;font-variant-numeric:tabular-nums}
 
@@ -104,6 +110,7 @@ body.theme-contrast .support-link{background:#000;border:2px solid #fff;color:#f
 .ft span{font-size:11px;color:var(--faint)}
 .opt{font-size:11px;color:var(--accent);text-decoration:none;cursor:pointer;font-weight:500}
 .opt:hover{text-decoration:underline}
+.opt-btn{background:none;border:0;padding:0;font-family:inherit}
 .wipe{background:none;border:0;color:var(--bad);font-size:11px;cursor:pointer;padding:0;text-decoration:underline}
 body.theme-contrast .opt,body.theme-contrast .wn-top,body.theme-contrast .wn-top button{color:#ffd400;text-decoration:underline}
 
@@ -126,11 +133,19 @@ body.theme-contrast .wn-card ul{color:#fff}
   <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7"/></symbol>
   <symbol id="i-scan" viewBox="0 0 24 24"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-4.3-4.3M8 11l2.2 2.2L14 9"/></symbol>
   <symbol id="i-dots" viewBox="0 0 24 24"><path d="M6 12h.01M12 12h.01M18 12h.01"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4L7 17M17 7l1.4-1.4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></symbol>
+  <symbol id="i-auto" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM12 3v18"/></symbol>
 </svg>
 
 <div class="hdr">
   <span class="logo"><svg class="i"><use href="#i-check"/></svg></span>
   <div><h1>PS Store Enhancer</h1><p>v3.0.0</p></div>
+  <div class="theme-seg" id="themeSeg" role="group" data-i18n-aria="themeLabel" aria-label="Color theme">
+    <button type="button" data-theme="auto" aria-pressed="false" data-i18n-title="themeAuto" data-i18n-aria="themeAuto" title="Auto (match system)" aria-label="Auto (match system)"><svg class="i"><use href="#i-auto"/></svg></button>
+    <button type="button" data-theme="dark" aria-pressed="false" data-i18n-title="themeDark" data-i18n-aria="themeDark" title="Dark" aria-label="Dark"><svg class="i"><use href="#i-moon"/></svg></button>
+    <button type="button" data-theme="light" aria-pressed="false" data-i18n-title="themeLight" data-i18n-aria="themeLight" title="Light" aria-label="Light"><svg class="i"><use href="#i-sun"/></svg></button>
+  </div>
 </div>
 
 <div class="wn-card" id="whatsNewCard" style="display:none">
@@ -168,10 +183,11 @@ body.theme-contrast .wn-card ul{color:#fff}
 <div class="support-row">
   <a class="support-link" href="https://ko-fi.com/idanlights" target="_blank" rel="noopener noreferrer">Ko-fi</a>
 </div>
-<div class="ft" style="border-top:0;padding-top:0"><button type="button" class="wipe" id="wipeBtn" data-i18n="popupWipe">Erase all my data</button></div>
+<div class="ft" style="border-top:0;padding-top:0"><button type="button" class="wipe" id="wipeBtn" data-i18n="popupWipe">Erase all my data</button><button type="button" class="opt opt-btn" id="reportBtn" data-i18n="reportProblem">Report a problem</button></div>
 <div class="ft"><span>v3.0.0 · <a id="openChangelog" class="opt" data-i18n="viewChangelog">What's new</a></span><a id="openOptions" class="opt" data-i18n="advancedSettings">Advanced settings</a></div>
 
 <script src="i18n.js"></script>
+<script src="diag.js"></script>
 <script src="changelog-data.js"></script>
 <script src="popup.js"></script>
 </body>

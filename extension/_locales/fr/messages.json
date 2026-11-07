@@ -1160,5 +1160,11 @@
   },
   "chl_3_0_4": {
     "message": "Un nouveau look partout : les cartes des pages du store, la fenêtre de l'extension et les réglages, en sombre, clair et contraste élevé"
+  },
+  "reportProblem": {
+    "message": "Signaler un problème"
+  },
+  "reportProblemCopied": {
+    "message": "Diagnostic copié. Collez-le dans le signalement."
   }
 }
