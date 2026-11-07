@@ -52,6 +52,13 @@ We use `chrome.cookies` solely to set the NPSSO token on `ca.account.sony.com` (
 | `cheapshark.com` | Public REST API for cross-platform game prices, the all-time low and Metacritic/Steam ratings (no auth) |
 | `api.frankfurter.dev` | Daily currency exchange rates (no auth, public ECB-backed API) |
 
+**Pictures are the one other thing the browser loads from other servers.** They are plain `<img>` loads, not `fetch()` calls, so
+their servers are neither in `host_permissions` nor in the network log, and the loads need no permission: (1) the thumbnails in the
+live-search dropdown on store pages, whose address is the `thumb` field of CheapShark's answer (mostly Steam's image CDN,
+`shared.fastly.steamstatic.com`; for some games another shop's image server), only while *Live Search Suggestions* is on;
+(2) the PSN avatar on the Settings page, at the address Sony's profile API returns, only while PSN is connected. The extension
+adds nothing to these requests (no token, no account detail, no search text). The privacy policy discloses both under "Pictures".
+
 ### Optional permission: `webRequest` (new in v2.7)
 
 Declared under `optional_permissions`, so it is **not granted at install and triggers no install warning**. It is requested at runtime, from the **Connect** button click, when a user connects PSN, because Chrome hides Sony's sign-in redirect from extensions (`fetch(..., {redirect: "manual"})` returns an opaque response). When granted, non-blocking `onHeadersReceived` and `onBeforeRedirect` listeners restricted to `https://ca.account.sony.com/*` read the authorization code from that one redirect (the `Location` header of Sony's response). Chrome only delivers these events for the service worker's own requests to listeners that exist when the worker starts, so the listeners are attached at start-up (and when the permission is granted); they ignore everything except the extension's own request (`tabId` -1) while a PSN connect is running, keep the code in memory only until the connect ends, and never log it. Reviewers do not need to exercise it.
@@ -78,7 +85,8 @@ Also new in v2.7: the PSN sign-in now **restores the user's previous `npsso` coo
   `woff2` subsets (about 110 KB). The pages load them with `fonts.css`; the cards on store pages load them with
   `fonts-content.css`, which names the files by the extension's own URL and needs `fonts/*.woff2` in
   `web_accessible_resources` for `https://store.playstation.com/*` (the existing entry for `styles.css`,
-  `data/trophies.json` and the locale files). No font or other resource is requested from a server.
+  `data/trophies.json` and the locale files). The font is read from the package and is never downloaded: no font,
+  script or stylesheet is requested from a server.
 - **Report a problem.** A button in the popup and in Settings → Diagnostics. On a click it copies the version, the
   browser string and the local diagnostics log (tokens and codes are redacted when written) to the clipboard and
   opens `https://github.com/DrummingBird1/ps-store-enhancer/issues/new?template=bug_report.yml` in a new tab. The

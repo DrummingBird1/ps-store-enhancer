@@ -75,7 +75,7 @@ Selettore di lingua integrato: cambia la lingua del browser dalle Impostazioni.
 🔒 PRIVACY PRIMA DI TUTTO
 • Tutti i tuoi dati restano sul tuo dispositivo
 • Nessuna analisi, nessun tracciamento, nessuna condivisione dei dati
-• Nessun server nostro: le uniche richieste vanno a CheapShark (prezzi, voti), Frankfurter (tassi di cambio), allo stesso PlayStation Store (la pagina salvata di ogni gioco della lista dei desideri, una volta al giorno) e — solo se ti colleghi — a Sony
+• Nessun server nostro: l'estensione invia richieste solo a CheapShark (prezzi, voti), Frankfurter (tassi di cambio), allo stesso PlayStation Store (la pagina salvata di ogni gioco della lista dei desideri, una volta al giorno) e — solo se ti colleghi — a Sony. Il tuo browser carica inoltre le immagini dai server che le ospitano: le miniature della ricerca in tempo reale (per lo più dal server di immagini di Steam) e il tuo avatar PSN nelle Impostazioni
 • Pulsante «Cancella tutti i miei dati» nel popup e nelle Impostazioni
 • Registro diagnostico e registro di rete locali (solo host e percorso) che non memorizzano mai token o password
 • Open source (MIT) su GitHub; informativa sulla privacy completa disponibile

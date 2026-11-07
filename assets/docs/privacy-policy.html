@@ -28,7 +28,7 @@
 <div class="container">
 
 <h1>🔒 PS Store Enhancer — Privacy Policy</h1>
-<p class="subtitle">Last updated: October 2026 · Formerly known as GameDeals+, then PS Store Insight</p>
+<p class="subtitle">Last updated: November 2026 · Formerly known as GameDeals+, then PS Store Insight</p>
 
 <h2>Overview</h2>
 <p>PS Store Enhancer (formerly GameDeals+, then PS Store Insight) is a browser extension that enhances the PlayStation Store website. Your privacy is important to us. This policy explains what data the extension accesses, how it's used, and how it's stored.</p>
@@ -67,10 +67,13 @@
   <tr><td>CheapShark API</td><td>Game title, a CheapShark game ID or Steam app ID, or search text as you type (text only)</td><td>Exact-game lookup, cross-platform prices, the all-time low, Metacritic and Steam ratings; live search suggestions; daily wishlist price checks</td></tr>
   <tr><td>Frankfurter API</td><td>None (currency codes only, e.g. USD→EUR)</td><td>Daily exchange rates for price display</td></tr>
   <tr><td>PlayStation Store (store.playstation.com)</td><td>None beyond the page address you already saved with a wishlisted game (no cookies, no account)</td><td>Once a day, in the background, the saved page of each wishlisted game (at most 20) is read to record its PlayStation price on this device. Turned off with the <em>Price insight</em> setting.</td></tr>
+  <tr><td>Image servers of the game shops (mostly Steam's, <code>steamstatic.com</code>)</td><td>Nothing from the extension. Your browser itself requests each thumbnail picture, so that server sees what any image request shows: your IP address, your browser version, which picture was asked for and, as the referrer, the address of the PlayStation Store site (unless the browser withholds it)</td><td>The small game thumbnails in the live search dropdown, at the picture address CheapShark returned. Turned off with the <em>Live Search Suggestions</em> setting.</td></tr>
+  <tr><td>Sony image server (PSN avatar)</td><td>Nothing from the extension. Your browser itself requests your avatar picture, at the address Sony's profile service returned</td><td>Show your PSN avatar on the settings page, only while PSN is connected</td></tr>
   <tr><td>PSPrices / PSNProfiles / HowLongToBeat</td><td>None (link only)</td><td>External reference links</td></tr>
 </table>
 </div>
-<p>No personal or identifying information is sent to these services. Only game titles are used as search queries. If you add games to your wishlist, their titles are sent to CheapShark once per day in the background to check for price drops; this can be disabled by removing items from your wishlist or turning the feature off in settings. As you type in the PlayStation Store's own search box, the text you've typed so far (2+ characters) is sent to CheapShark to show enriched suggestions (thumbnail, title, cheapest PC price) in a dropdown; this happens only while the search box has focus and can be turned off in settings ("Live Search Suggestions").</p>
+<p>The extension adds no personal or identifying information to these requests; as with any web request, the server still sees your IP address and your browser's details (see also &ldquo;Pictures&rdquo; below). Only game titles are used as search queries. If you add games to your wishlist, their titles are sent to CheapShark once per day in the background to check for price drops; this can be disabled by removing items from your wishlist or turning the feature off in settings. As you type in the PlayStation Store's own search box, the text you've typed so far (2+ characters) is sent to CheapShark to show enriched suggestions (thumbnail, title, cheapest PC price) in a dropdown; this happens only while the search box has focus and can be turned off in settings ("Live Search Suggestions").</p>
+<p><strong>Pictures.</strong> Two kinds of pictures are loaded by your browser itself, from the server that hosts them, as on any web page: the small game thumbnails in the live search dropdown (the picture address comes from CheapShark's answer; it is usually on Steam's image server, <code>steamstatic.com</code>, and for some games on the image server of another shop such as GOG, Green Man Gaming, GamersGate, Humble Bundle or WinGameStore) and, if you connected PSN, your PSN avatar on the settings page (the address comes from Sony's profile service). Those servers can see what any image request shows them, such as your IP address, your browser version, which picture was asked for and, as the browser's referrer information, the page it is shown on (unless the browser withholds it). Nothing from the extension (no token, no account detail, no search text) is added to these requests. Because the browser makes them, they need no host permission and do not appear in the extension's network log. Turn off <em>Live Search Suggestions</em> to stop the thumbnails; the avatar goes when you disconnect PSN.</p>
 
 <h2>PSN Account Connection</h2>
 <p>Connecting your PSN account is <strong>entirely optional</strong>. If you choose to connect:</p>
@@ -95,13 +98,13 @@
   <tr><td><span class="badge">declarativeNetRequestWithHostAccess</span></td><td>One rule that removes the extension's <code>Origin</code> header from its sign-in request to Sony's token address, which Sony rejects otherwise. It blocks and redirects nothing and applies to no other request.</td></tr>
 </table>
 </div>
-<p style="font-size:13px;color:#718096">Host access is limited to: <code>store.playstation.com</code> (UI injection, and the once-a-day read of wishlisted games' own pages), <code>ca.account.sony.com</code> &amp; <code>m.np.playstation.com</code> (optional PSN), <code>cheapshark.com</code> (prices, Metacritic and Steam ratings), and <code>api.frankfurter.dev</code> (currency rates). The extension requests no other site access.</p>
+<p style="font-size:13px;color:#718096">Host access is limited to: <code>store.playstation.com</code> (UI injection, and the once-a-day read of wishlisted games' own pages), <code>ca.account.sony.com</code> &amp; <code>m.np.playstation.com</code> (optional PSN), <code>cheapshark.com</code> (prices, Metacritic and Steam ratings), and <code>api.frankfurter.dev</code> (currency rates). The extension requests no other site access (showing a picture from another server, see <em>Pictures</em> above, needs none).</p>
 
 <h2>Reporting a problem</h2>
 <p>"Report a problem" (popup and settings page) copies the extension version, your browser string and the local diagnostics log to your clipboard and opens the project's bug-report form on GitHub in a new tab. The log never contains tokens, codes or query strings. Nothing is sent by the extension itself: you decide whether to paste the text into the form.</p>
 
 <h2>Fonts</h2>
-<p>The font used by the extension (Rubik, SIL Open Font License) is packaged with it. No font, script or other resource is loaded from a server.</p>
+<p>The font used by the extension (Rubik, SIL Open Font License) is packaged with it and is never downloaded: the extension's pages and the cards on store pages read the font files from the extension's own package. No font, script or stylesheet is loaded from a server. The only things your browser loads from other servers are the pictures described under <em>Pictures</em> above.</p>
 
 <h2>Sharing a wishlist</h2>
 <p>"Copy share link" (settings page, your action only) builds a link to a static page on this website with your wishlist <em>encoded in the part of the URL after the <code>#</code></em> — game names and last-seen PC prices only, no targets or notes. Browsers never send that part of a URL to a server, so nothing is uploaded or stored; anyone you give the link to can read the list.</p>
@@ -128,7 +131,7 @@
 <p>If you have questions about this privacy policy, you can open an issue on the extension's support page or contact the developer through the Chrome Web Store listing.</p>
 
 <footer>
-  PS Store Enhancer (formerly GameDeals+, then PS Store Insight) · Privacy Policy · August 2026
+  PS Store Enhancer (formerly GameDeals+, then PS Store Insight) · Privacy Policy · November 2026
 </footer>
 
 </div>

@@ -75,7 +75,7 @@ Sélecteur de langue intégré — remplacez la langue du navigateur dans les R�
 🔒 CONFIDENTIALITÉ D’ABORD
 • Toutes vos données restent sur votre appareil
 • Aucune analyse, aucun suivi, aucun partage de données
-• Aucun serveur à nous : les seules requêtes vont à CheapShark (prix, notes), Frankfurter (taux de change), au PlayStation Store lui-même (la page enregistrée de chaque jeu de la liste de souhaits, une fois par jour) et — uniquement si vous vous connectez — à Sony
+• Aucun serveur à nous : l’extension n’envoie de requêtes qu’à CheapShark (prix, notes), Frankfurter (taux de change), au PlayStation Store lui-même (la page enregistrée de chaque jeu de la liste de souhaits, une fois par jour) et — uniquement si vous vous connectez — à Sony. Votre navigateur charge aussi des images depuis les serveurs qui les hébergent : les miniatures de la recherche en direct (surtout depuis le serveur d’images de Steam) et votre avatar PSN dans les Réglages
 • Bouton « Effacer toutes mes données » dans la fenêtre contextuelle et dans les Réglages
 • Journaux de diagnostic et de réseau locaux (hôte et chemin uniquement) qui n’enregistrent jamais de jetons ni de mots de passe
 • Open source (MIT) sur GitHub ; politique de confidentialité complète disponible

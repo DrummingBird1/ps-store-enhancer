@@ -6,26 +6,26 @@ language in the store dashboard. The files are named like the folders in `extens
 
 | File | Store language | Characters |
 |------|----------------|-----------:|
-| `en.txt` | English | 5,454 |
-| `he.txt` | Hebrew | 4,786 |
-| `ar.txt` | Arabic | 5,069 |
-| `de.txt` | German | 6,381 |
-| `es.txt` | Spanish | 6,447 |
-| `fr.txt` | French | 6,737 |
-| `it.txt` | Italian | 6,474 |
-| `ja.txt` | Japanese | 3,116 |
-| `ko.txt` | Korean | 3,211 |
-| `nl.txt` | Dutch | 6,208 |
-| `pl.txt` | Polish | 6,329 |
-| `pt_BR.txt` | Portuguese (Brazil) | 6,378 |
-| `ru.txt` | Russian | 6,339 |
-| `tr.txt` | Turkish | 6,022 |
-| `zh_CN.txt` | Chinese (Simplified) | 2,420 |
-| `zh_TW.txt` | Chinese (Traditional) | 2,445 |
+| `en.txt` | English | 5,632 |
+| `he.txt` | Hebrew | 4,940 |
+| `ar.txt` | Arabic | 5,226 |
+| `de.txt` | German | 6,588 |
+| `es.txt` | Spanish | 6,642 |
+| `fr.txt` | French | 6,955 |
+| `it.txt` | Italian | 6,679 |
+| `ja.txt` | Japanese | 3,210 |
+| `ko.txt` | Korean | 3,305 |
+| `nl.txt` | Dutch | 6,411 |
+| `pl.txt` | Polish | 6,516 |
+| `pt_BR.txt` | Portuguese (Brazil) | 6,586 |
+| `ru.txt` | Russian | 6,532 |
+| `tr.txt` | Turkish | 6,213 |
+| `zh_CN.txt` | Chinese (Simplified) | 2,493 |
+| `zh_TW.txt` | Chinese (Traditional) | 2,520 |
 
 Characters are counted the way the dashboards count them (an emoji is two). Chrome Web Store allows
 up to 16,000 characters and Microsoft Edge Add-ons up to 10,000; the longest file here is
-6,737. Check the dashboards if those limits change.
+6,955. Check the dashboards if those limits change.
 
 ## Where the other listing fields come from
 
@@ -48,6 +48,11 @@ up to 16,000 characters and Microsoft Edge Add-ons up to 10,000; the longest fil
 
 Only claim what the extension does; if a feature depends on something that has not been verified
 (for example a live PSN connection), say so in the pull request, not in the store text.
+
+The "No servers of our own" bullet names every host the extension contacts and the pictures the browser
+loads on its own (live-search thumbnails, the PSN avatar). Keep it equal to the third-party table and the
+"Pictures" section of `../docs/privacy-policy.html`: when a host or a picture source is added, change it
+in all 16 files and recount the characters.
 
 ## Status
 

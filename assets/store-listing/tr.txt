@@ -75,7 +75,7 @@ Yerleşik dil seçici — tarayıcı dilini Ayarlar'dan değiştirebilirsiniz.
 🔒 ÖNCE GİZLİLİK
 • Tüm verileriniz cihazınızda kalır
 • Analiz yok, izleme yok, veri paylaşımı yok
-• Kendi sunucumuz yok: tek istekler CheapShark (fiyatlar, puanlar), Frankfurter (döviz kurları), PlayStation Store'un kendisi (istek listesindeki her oyunun kayıtlı sayfası, günde bir kez) ve — yalnızca bağlanırsanız — Sony'ye gider
+• Kendi sunucumuz yok: eklenti yalnızca CheapShark (fiyatlar, puanlar), Frankfurter (döviz kurları), PlayStation Store'un kendisi (istek listesindeki her oyunun kayıtlı sayfası, günde bir kez) ve — yalnızca bağlanırsanız — Sony'ye istek gönderir. Tarayıcınız ayrıca görselleri barındıran sunuculardan yükler: canlı aramadaki küçük önizleme görselleri (çoğunlukla Steam'in görsel sunucusundan) ve Ayarlar'daki PSN avatarınız
 • Açılır pencerede ve Ayarlar'da "Tüm verilerimi sil" düğmesi
 • Belirteçleri veya parolaları asla kaydetmeyen yerel tanılama günlüğü ve ağ günlüğü (yalnızca ana makine adı ve yol)
 • GitHub'da açık kaynak (MIT); tam gizlilik politikası mevcut

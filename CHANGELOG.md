@@ -41,23 +41,46 @@ v2.7.1 that the old test pages could not show, and they are fixed here.
 
 **New**
 - **Auto / Dark / Light in the popup.** Three small buttons in the popup header switch the colour theme (the
-  same setting as Settings → Theme; high contrast stays in Settings).
+  same setting as Settings → Theme; high contrast stays in Settings). Cards already open on a store tab
+  change at once, and Auto follows your system's light or dark setting as it changes.
 - **Report a problem** (popup and Settings → Diagnostics): copies the version, the browser and the diagnostics
-  log (already free of tokens) and opens the GitHub bug-report form. Nothing is put in the address.
-- **How long the sale has left** next to its end date: "Offer ends Nov 21 (in 14 days)", in your language.
+  log (already free of tokens) to the clipboard, then opens the GitHub bug-report form, where you paste it
+  into the Diagnostics field. Settings says so if the copy failed. Nothing is put in the address.
+- **How long the sale has left** next to its end date in the Price Insight card: "Offer ends Nov 21
+  (in 14 days)", or "(tomorrow)" or "(today)", in the language the extension is shown in.
 - **The Rubik font is bundled** (SIL Open Font License, about 110 KB, Latin, Hebrew, Cyrillic and Arabic), so
-  the look no longer depends on the fonts installed on your computer. Nothing is fetched from the network.
-- **Contrast checked** on every page in dark, light and high contrast (text at least 4.5:1); the light theme's
-  accent, grey, green, amber and red text were darkened where they fell short.
+  the look no longer depends on the fonts installed on your computer. The font files are read from the
+  extension itself and never downloaded.
+- **Contrast checked.** The text colours of the cards, the popup, the settings page, the welcome page and
+  this changelog are at least 4.5:1 against their flat backgrounds in dark and light, and in high contrast on
+  the pages that have it (a few small captions that sit over the soft background glow measure between 4.2
+  and 4.5:1, and the large gradient headlines at least 3:1). The welcome page has none: it follows your system's light or dark setting. Where
+  a colour fell short it was adjusted: the light theme's accent, grey, green, amber and red text, the
+  difficulty, trophy-tier and store badges, and the Ko-fi button.
 - **A new look, "Midnight Glass".** The cards on store pages, the toolbar popup, the settings page, the
   welcome page and this changelog share one design: glass surfaces, a bigger headline number for the
-  lowest price, one icon set instead of emoji, and the same colours in dark, light and high contrast
-  (including right-to-left languages). The settings page gets a side navigation. Nothing was removed.
+  lowest price and one set of line icons in place of most emoji. Dark, light and high contrast are on the
+  cards, the popup, the settings page and this changelog; the welcome page follows your system's light or
+  dark setting. The settings page gets a side navigation (a bar across the top in narrow windows, where a
+  section you pick is no longer hidden under it). Nothing was removed.
+- **Hebrew and Arabic read right to left** on the cards, the popup, the settings page and the welcome
+  page. That includes the card's collapse arrow, which pointed the wrong way, and the prices in the search
+  suggestions and the cross-platform note, which came out scrambled.
 - **Cards stay on the page.** The store re-renders its page a few seconds after it loads (for example
-  once it knows you are signed in) and that removed the cards. They are now put back.
+  once it knows you are signed in) and that removed the cards, or the box they sit in. They are now put
+  back (up to three times per page) without starting the page over: the first-run tour keeps its step and
+  the price is not recorded twice.
+- **The popup and the welcome page can be used from the keyboard.** "Advanced settings" and "View changelog"
+  in the popup and "Open Settings" on the welcome page were not reachable with Tab; they are buttons now.
+  The NPSSO and "add a game" fields in Settings show the focus ring again, and so does the welcome page's
+  button.
+- **An off switch can be seen in the light theme and in Windows high-contrast mode.** In the popup and in
+  Settings it is now an outlined pill with a dark knob in the light theme (it was almost the colour of the
+  panel), and Windows high-contrast mode draws the switches with the system colours.
 - **The wishlist, owned and share buttons were squashed.** The store resets padding, border and colour on
   every button with a rule the extension's own styles lost against, so they showed as thin pills with white
-  text. They are styled with a stronger selector now.
+  text. They are styled with a stronger selector now, and the "click to remove" hover of an active one is
+  readable in the light theme.
 - **Prices looked wrong in a manually chosen language.** "$29.99" was shown as "209.99" in "Was $29.99 · 20% off"
   because the second argument was substituted into the first. Fixed, with a test in all 16 languages.
 - **Support links that led nowhere were removed.** The Buy Me a Coffee and Patreon pages returned "not found",
@@ -77,9 +100,11 @@ v2.7.1 that the old test pages could not show, and they are fixed here.
   tab and shows which ones work, which work through a fallback and which are not found. If a store
   redesign breaks one lookup, only that card is switched off on that page and the Diagnostics log says
   why, instead of the whole page failing.
-- **Network log** (Settings): every request the extension makes — host, path, status and time, never
-  the query, headers or data — kept on your device. The extension can only reach its five documented
-  hosts, and a test fails if that list and the privacy texts ever disagree.
+- **Network log** (Settings): every request the extension sends to a server — host, path, status and time,
+  never the query, headers or data — kept on your device. Those requests can only go to the five
+  documented hosts, and a test fails if that list and the privacy texts ever disagree. Pictures that your
+  browser loads itself (the game thumbnails in live search and your PSN avatar) are not part of the log;
+  the privacy policy describes them.
 
 **Under the hood**
 - One store adapter (`store-adapter.js`) replaces the scattered selectors.

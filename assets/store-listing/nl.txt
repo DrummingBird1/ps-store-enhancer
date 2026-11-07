@@ -75,7 +75,7 @@ Ingebouwde taalkeuze — overschrijf de browsertaal in de instellingen.
 🔒 PRIVACY EERST
 • Al je gegevens blijven op je apparaat
 • Geen analyse, geen tracking, geen gegevens delen
-• Geen eigen servers: de enige verzoeken gaan naar CheapShark (prijzen, scores), Frankfurter (wisselkoersen), de PlayStation Store zelf (de opgeslagen pagina van elke game op je verlanglijst, één keer per dag) en — alleen als je koppelt — Sony
+• Geen eigen servers: de extensie stuurt alleen verzoeken naar CheapShark (prijzen, scores), Frankfurter (wisselkoersen), de PlayStation Store zelf (de opgeslagen pagina van elke game op je verlanglijst, één keer per dag) en — alleen als je koppelt — Sony. Je browser laadt daarnaast afbeeldingen van de servers waar ze op staan: de kleine miniaturen in live zoeken (meestal van de afbeeldingsserver van Steam) en je PSN-avatar in de instellingen
 • Knop “Al mijn gegevens wissen” in de popup en in de instellingen
 • Lokale diagnose- en netwerklogboeken (alleen host en pad) die nooit tokens of wachtwoorden vastleggen
 • Open source (MIT) op GitHub; volledig privacybeleid beschikbaar

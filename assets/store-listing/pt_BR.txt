@@ -75,7 +75,7 @@ Seletor de idioma integrado — troque o idioma do navegador nas Configurações
 🔒 PRIVACIDADE EM PRIMEIRO LUGAR
 • Todos os seus dados ficam no seu dispositivo
 • Sem análises, sem rastreamento, sem compartilhamento de dados
-• Sem servidores próprios: as únicas solicitações vão para o CheapShark (preços, notas), o Frankfurter (taxas de câmbio), a própria PlayStation Store (a página salva de cada jogo da lista de desejos, uma vez por dia) e — somente se você conectar — a Sony
+• Sem servidores próprios: a extensão só envia solicitações para o CheapShark (preços, notas), o Frankfurter (taxas de câmbio), a própria PlayStation Store (a página salva de cada jogo da lista de desejos, uma vez por dia) e — somente se você conectar — a Sony. O navegador também carrega imagens dos servidores que as hospedam: as miniaturas pequenas da busca em tempo real (principalmente do servidor de imagens da Steam) e o seu avatar da PSN em Configurações
 • Botão “Apagar todos os meus dados” no popup e nas Configurações
 • Registros de diagnóstico e de rede locais (somente host e caminho) que nunca gravam tokens ou senhas
 • Código aberto (MIT) no GitHub; política de privacidade completa disponível

@@ -111,6 +111,8 @@
 | [PSNProfiles](https://psnprofiles.com/) | מדריך גביעים | לינק בלבד |
 | [HowLongToBeat](https://howlongtobeat.com/) | זמני סיום | לינק בלבד |
 
+תמונות הן הדבר היחיד שהדפדפן טוען ישירות משרתים אחרים: התמונות הממוזערות בחיפוש החי (בעיקר משרת התמונות של Steam) ותמונת הפרופיל שלכם ב-PSN בהגדרות, אם חיברתם PSN. התוסף לא מוסיף דבר לבקשות האלה; פרטים ב[מדיניות הפרטיות](https://drummingbird1.github.io/ps-store-enhancer/privacy-policy.html).
+
 ---
 
 ## 🛠 פיתוח
