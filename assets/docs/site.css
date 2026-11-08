@@ -1,0 +1,408 @@
+/* PS Store Enhancer website: "Midnight Glass".
+   Shared by every page of the site (home, privacy policy, wishlist view). Page-specific rules live in the page.
+   Dark by default; the light set is under @media (prefers-color-scheme: light). No external resources:
+   Rubik is served from ./fonts (SIL Open Font License 1.1, see fonts/OFL.txt).
+
+   Contents: 1 fonts, 2 tokens, 3 base, 4 icons, 5 skip link + top bar + nav, 6 buttons + badges + chips,
+             7 glass panels + cards + grid, 8 sections + headings, 9 footer, 10 prose / table / callout (inner pages),
+             11 reduced motion, 12 forced colors */
+
+/* ── 1. Rubik (variable weight 300-900), five subsets chosen by unicode-range ── */
+@font-face {
+  font-family: "Rubik";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300 900;
+  src: url(fonts/rubik-arabic-wght-normal.woff2) format("woff2");
+  unicode-range: U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC,U+102E0-102FB,U+10E60-10E7E,U+10EC2-10EC4,U+10EFC-10EFF,U+1EE00-1EE03,U+1EE05-1EE1F,U+1EE21-1EE22,U+1EE24,U+1EE27,U+1EE29-1EE32,U+1EE34-1EE37,U+1EE39,U+1EE3B,U+1EE42,U+1EE47,U+1EE49,U+1EE4B,U+1EE4D-1EE4F,U+1EE51-1EE52,U+1EE54,U+1EE57,U+1EE59,U+1EE5B,U+1EE5D,U+1EE5F,U+1EE61-1EE62,U+1EE64,U+1EE67-1EE6A,U+1EE6C-1EE72,U+1EE74-1EE77,U+1EE79-1EE7C,U+1EE7E,U+1EE80-1EE89,U+1EE8B-1EE9B,U+1EEA1-1EEA3,U+1EEA5-1EEA9,U+1EEAB-1EEBB,U+1EEF0-1EEF1;
+}
+@font-face {
+  font-family: "Rubik";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300 900;
+  src: url(fonts/rubik-cyrillic-wght-normal.woff2) format("woff2");
+  unicode-range: U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;
+}
+@font-face {
+  font-family: "Rubik";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300 900;
+  src: url(fonts/rubik-hebrew-wght-normal.woff2) format("woff2");
+  unicode-range: U+0307-0308,U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F;
+}
+@font-face {
+  font-family: "Rubik";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300 900;
+  src: url(fonts/rubik-latin-ext-wght-normal.woff2) format("woff2");
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: "Rubik";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300 900;
+  src: url(fonts/rubik-latin-wght-normal.woff2) format("woff2");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+/* ── 2. Tokens ── */
+:root {
+  color-scheme: dark;
+  --bg: #070b16;
+  --glow: radial-gradient(70% 100% at 50% 0%, rgba(61,125,255,.26), transparent 70%);
+  --bar-bg: rgba(7,11,22,.72);          /* sticky top bar over the page */
+  --bar-solid: #0a1020;                 /* ...and when backdrop-filter is unsupported */
+  --glass: linear-gradient(180deg, rgba(255,255,255,.065), rgba(255,255,255,.03));
+  --glass-solid: #0f1628;               /* glass panel when backdrop-filter is unsupported */
+  --panel: rgba(255,255,255,.05);
+  --panel2: rgba(255,255,255,.09);
+  --line: rgba(255,255,255,.10);
+  --line-strong: rgba(255,255,255,.20);
+  --text: #eef2fb;
+  --dim: #a3aec6;
+  --faint: #929db5;
+  --accent: #5aa3ff;
+  --accent-deep: #1769e0;
+  --accent-ink: #04122a;                /* text on a solid accent button */
+  --accent-soft: rgba(90,163,255,.16);
+  --accent-line: rgba(90,163,255,.38);
+  --accent-glow: rgba(90,163,255,.40);
+  --good: #5fd6a2;
+  --good-soft: rgba(95,214,162,.14);
+  --warn: #f3c65a;
+  --warn-soft: rgba(243,198,90,.12);
+  --warn-line: rgba(243,198,90,.34);
+  --bad: #ff6b6b;
+  --pink: #f27ab0;
+  --pink-soft: rgba(242,122,176,.10);
+  --pink-line: rgba(242,122,176,.30);
+  --grad: linear-gradient(135deg, #8ec0ff, #5aa3ff 45%, #8fe4ff);   /* gradient headline text */
+  --shadow: 0 10px 40px rgba(0,0,0,.35);
+  --r: 20px;
+  --r-sm: 12px;
+  --max: 1120px;                        /* content width */
+  --gutter: 16px;
+  --bar-h: 64px;
+  --font: "Rubik", "SST", "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, Roboto, "Noto Sans Hebrew", "Arial Hebrew", sans-serif;
+  --mono: ui-monospace, "Cascadia Code", "SF Mono", Consolas, "Liberation Mono", monospace;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+    --bg: #eef2fa;
+    --glow: radial-gradient(70% 100% at 50% 0%, rgba(61,125,255,.20), transparent 70%);
+    --bar-bg: rgba(238,242,250,.80);
+    --bar-solid: #eaf0fa;
+    --glass: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.72));
+    --glass-solid: #f9fbff;
+    --panel: rgba(255,255,255,.80);
+    --panel2: rgba(15,30,70,.07);
+    --line: rgba(15,30,70,.12);
+    --line-strong: rgba(15,30,70,.24);
+    --text: #0d1630;
+    --dim: #4b5878;
+    --faint: #505c79;
+    --accent: #1257c8;
+    --accent-deep: #1769e0;
+    --accent-ink: #ffffff;
+    --accent-soft: rgba(23,105,224,.12);
+    --accent-line: rgba(18,87,200,.36);
+    --accent-glow: rgba(23,105,224,.30);
+    --good: #096843;
+    --good-soft: rgba(15,127,85,.12);
+    --warn: #7a5000;
+    --warn-soft: rgba(143,95,0,.10);
+    --warn-line: rgba(122,80,0,.34);
+    --bad: #b3201f;
+    --pink: #a8124f;
+    --pink-soft: rgba(168,18,79,.07);
+    --pink-line: rgba(168,18,79,.28);
+    --grad: linear-gradient(135deg, #1257c8, #2f78e8);
+    --shadow: 0 10px 34px rgba(30,50,110,.12);
+  }
+}
+@media (min-width: 640px) { :root { --gutter: 24px; } }
+
+/* ── 3. Base ── */
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--bar-h) + 16px);   /* anchors land below the sticky bar */
+}
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--glow) top center / 100% 760px no-repeat, var(--bg);   /* the one hero glow */
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, p, ul, ol, dl, dd, figure, blockquote { margin: 0; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: var(--accent); text-decoration-thickness: .08em; text-underline-offset: .2em; }
+a:hover { text-decoration-thickness: .15em; }
+code {
+  font-family: var(--mono);
+  font-size: .88em;
+  padding: .12em .5em;
+  border-radius: 7px;
+  background: var(--panel2);
+  overflow-wrap: anywhere;
+}
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+:focus:not(:focus-visible) { outline: none; }
+[hidden] { display: none !important; }
+main:focus { outline: none; }
+.wrap { max-width: calc(var(--max) + 2 * var(--gutter)); margin-inline: auto; padding-inline: var(--gutter); }
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0; border: 0;
+  overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+}
+
+/* ── 4. Icons: SVG line icons, stroke 1.8, round caps (use <svg class="i"><use href="#i-name"/></svg>) ── */
+svg.i {
+  width: 1.15em; height: 1.15em; flex: none;
+  fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+}
+.icon-tile {
+  display: grid; place-items: center; flex: none;
+  width: 44px; height: 44px; border-radius: 14px;
+  background: var(--accent-soft); color: var(--accent); font-size: 22px;
+}
+.icon-tile svg.i { width: 1em; height: 1em; }
+.icon-tile.is-good { background: var(--good-soft); color: var(--good); }
+.icon-tile.is-warn { background: var(--warn-soft); color: var(--warn); }
+.icon-tile.is-pink { background: var(--pink-soft); color: var(--pink); }
+
+/* ── 5. Skip link, sticky top bar, section navigation ── */
+.skip-link {
+  position: fixed; inset-block-start: 12px; inset-inline-start: 12px; z-index: 100;
+  transform: translateY(-250%);
+  padding: .7em 1.3em; border-radius: 999px;
+  background: var(--accent); color: var(--accent-ink);
+  font-weight: 600; text-decoration: none;
+}
+.skip-link:focus { transform: none; }
+
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--bar-solid);
+  border-block-end: 1px solid var(--line);
+}
+@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .site-header {
+    background: var(--bar-bg);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    backdrop-filter: blur(16px) saturate(150%);
+  }
+}
+.bar { display: flex; align-items: center; gap: 12px; min-height: var(--bar-h); }
+.brand {
+  display: inline-flex; align-items: center; gap: 10px; flex: none;
+  color: var(--text); font-weight: 600; text-decoration: none; white-space: nowrap;
+}
+.brand img { width: 32px; height: 32px; border-radius: 10px; box-shadow: 0 4px 14px var(--accent-glow); }
+@media (max-width: 479px) {
+  .brand-name { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+}
+.nav { margin-inline-start: auto; }
+
+/* The menu is a <details>: a dropdown on narrow screens, an inline row on wide ones (no JavaScript needed).
+   Browsers without ::details-content keep the dropdown at every width. */
+.nav-menu > summary {
+  display: inline-flex; align-items: center; gap: 8px; list-style: none; cursor: pointer;
+  min-height: 40px; padding: .4em 1em; border-radius: 999px;
+  background: var(--panel2); border: 1px solid var(--line);
+  color: var(--text); font-size: .9rem; font-weight: 600;
+}
+.nav-menu > summary::-webkit-details-marker { display: none; }
+.nav-menu > summary::marker { content: ""; }
+.nav-menu ul {
+  list-style: none; margin: 0; padding: 0;
+}
+.nav-menu[open] ul {
+  position: absolute; z-index: 60;
+  inset-inline-end: var(--gutter); inset-block-start: calc(100% + 8px);
+  width: min(340px, calc(100% - 2 * var(--gutter)));
+  display: grid; gap: 2px; padding: 8px;
+  background: var(--glass-solid); border: 1px solid var(--line-strong);
+  border-radius: var(--r); box-shadow: var(--shadow);
+}
+.nav-menu a {
+  display: block; padding: .6em 1em; border-radius: 12px;
+  color: var(--dim); font-size: .95rem; font-weight: 500; text-decoration: none; white-space: nowrap;
+  transition: background .2s, color .2s;
+}
+.nav-menu a:hover { background: var(--panel2); color: var(--text); }
+.nav-menu a[aria-current] { color: var(--accent); background: var(--accent-soft); }
+@media (min-width: 960px) {
+  @supports selector(::details-content) {
+    .nav-menu > summary { display: none; }
+    .nav-menu::details-content { content-visibility: visible; }
+    .nav-menu ul, .nav-menu[open] ul {
+      position: static; width: auto; display: flex; gap: 2px; padding: 0;
+      background: none; border: 0; border-radius: 0; box-shadow: none;
+    }
+    .nav-menu a { padding: .45em .85em; font-size: .9rem; border-radius: 999px; }
+  }
+}
+
+/* ── 6. Buttons, badges, chips ── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .55em;
+  min-height: 44px; padding: .65em 1.45em; border-radius: 999px;
+  border: 1px solid transparent;
+  font: inherit; font-size: .95rem; font-weight: 600; line-height: 1.2; text-align: center; text-decoration: none;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s, background .2s, border-color .2s;
+}
+.btn svg.i { width: 1.2em; height: 1.2em; }
+.btn-primary { background: var(--accent); color: var(--accent-ink); box-shadow: 0 6px 22px var(--accent-glow); }
+.btn-glass { background: var(--panel2); border-color: var(--line-strong); color: var(--text); }
+.btn-support { background: var(--pink-soft); border-color: var(--pink-line); color: var(--pink); }
+.btn-sm { min-height: 40px; padding: .45em 1.1em; font-size: .9rem; }
+@media (hover: hover) {
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary:hover { box-shadow: 0 10px 30px var(--accent-glow); }
+  .btn-glass:hover { border-color: var(--accent-line); }
+  .btn-support:hover { border-color: var(--pink); }
+}
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.badge {
+  display: inline-flex; align-items: center; gap: .4em;
+  padding: .18em .8em; border-radius: 999px;
+  background: var(--accent-soft); border: 1px solid var(--accent-line);
+  color: var(--accent); font-size: .8rem; font-weight: 600; line-height: 1.5; white-space: nowrap;
+}
+.badge svg.i { width: 1em; height: 1em; }
+.badge-soon { background: var(--warn-soft); border-color: var(--warn-line); color: var(--warn); }
+.badge-good { background: var(--good-soft); border-color: transparent; color: var(--good); }
+.badges { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; }
+
+/* chips: language names, supporters (supporters.js creates <span class="lang-tag">) */
+.chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; list-style: none; padding: 0; }
+.chip, .lang-tag {
+  display: inline-flex; align-items: baseline; gap: .55em;
+  padding: .45em 1em; border-radius: 999px;
+  background: var(--panel); border: 1px solid var(--line);
+  color: var(--text); font-size: .92rem;
+}
+
+/* ── 7. Glass panels, cards, grid ── */
+.glass {
+  background: var(--glass-solid);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  box-shadow: var(--shadow);
+}
+@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .glass {
+    background: var(--glass);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    backdrop-filter: blur(18px) saturate(140%);
+  }
+}
+.lift { transition: transform .25s ease, border-color .25s ease; }
+@media (hover: hover) {
+  .lift:hover { transform: translateY(-3px); border-color: var(--accent-line); }
+}
+.card { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: clamp(18px, 2.6vw, 26px); }
+.card h3 { font-size: 1.12rem; font-weight: 600; line-height: 1.3; letter-spacing: -.005em; }
+.card p { color: var(--dim); font-size: .95rem; }
+.card p strong { color: var(--text); font-weight: 600; }
+
+.grid { display: grid; gap: 16px; grid-template-columns: minmax(0, 1fr); grid-auto-flow: row dense; }
+@media (min-width: 640px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid > .span-2 { grid-column: span 2; }
+}
+@media (min-width: 960px) {
+  .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .grid > .span-2-tablet { grid-column: auto; }
+}
+@media (min-width: 640px) and (max-width: 959px) {
+  .grid > .span-2-tablet { grid-column: span 2; }
+}
+
+/* ── 8. Sections and headings ── */
+.section { padding-block: clamp(44px, 7vw, 84px); }
+.section-head { max-width: 44rem; margin: 0 auto clamp(26px, 4.5vw, 44px); text-align: center; }
+.eyebrow {
+  display: inline-block; margin-bottom: 10px;
+  color: var(--accent); font-size: .78rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+}
+h1, h2, h3 { font-weight: 600; line-height: 1.15; letter-spacing: -.015em; text-wrap: balance; }
+h2 { font-size: clamp(1.75rem, 1.2rem + 2.3vw, 2.6rem); }
+.lede { margin-top: 14px; color: var(--dim); font-size: clamp(1rem, .95rem + .3vw, 1.15rem); text-wrap: pretty; }
+.grad {
+  padding-block: .12em; margin-block: -.12em;         /* room for descenders inside the clipped gradient */
+  background: var(--grad); -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+.page-head { padding-block: clamp(36px, 7vw, 72px) clamp(16px, 3vw, 28px); text-align: center; }
+.page-head h1 { font-size: clamp(2rem, 1.2rem + 3.6vw, 3.2rem); font-weight: 700; letter-spacing: -.025em; }
+.page-head .lede { max-width: 40rem; margin-inline: auto; }
+
+/* ── 9. Footer ── */
+.site-footer {
+  margin-top: clamp(24px, 5vw, 48px); padding-block: 44px 56px;
+  border-block-start: 1px solid var(--line);
+  color: var(--dim); font-size: .9rem; text-align: center;
+}
+.footer-brand { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 20px; color: var(--text); font-weight: 600; }
+.footer-brand img { width: 28px; height: 28px; border-radius: 8px; }
+.footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 22px; list-style: none; margin: 0 0 22px; padding: 0; }
+.footer-links a { display: inline-block; padding: .2em 0; text-decoration: none; }
+.footer-links a:hover { text-decoration: underline; }
+.site-footer p { max-width: 46rem; margin-inline: auto; margin-bottom: 10px; }
+.site-footer .disclaimer { margin-top: 22px; padding: 14px 18px; border: 1px solid var(--line); border-radius: var(--r-sm); font-size: .82rem; }
+
+/* ── 10. Inner pages: prose, tables, callouts ── */
+.prose { max-width: 46rem; margin-inline: auto; }
+.prose > * + * { margin-top: 1em; }
+.prose h2 { margin-top: 2.2em; font-size: 1.5rem; }
+.prose h3 { margin-top: 1.6em; font-size: 1.15rem; }
+.prose p, .prose li { color: var(--dim); }
+.prose strong { color: var(--text); font-weight: 600; }
+.prose ul, .prose ol { display: grid; gap: .5em; padding-inline-start: 1.4em; }
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--r-sm); }
+.table-wrap table { width: 100%; min-width: 34rem; border-collapse: collapse; font-size: .92rem; }
+.table-wrap th, .table-wrap td { padding: .75em 1em; text-align: start; vertical-align: top; border-block-end: 1px solid var(--line); }
+.table-wrap th { color: var(--text); font-weight: 600; background: var(--panel2); }
+.table-wrap td { color: var(--dim); }
+.table-wrap tr:last-child td { border-block-end: 0; }
+.callout {
+  padding: 16px 20px; border-radius: var(--r-sm);
+  background: var(--accent-soft); border: 1px solid var(--accent-line); color: var(--text);
+}
+.callout.is-warn { background: var(--warn-soft); border-color: var(--warn-line); }
+
+/* ── 11. Reduced motion: nothing moves, nothing slides ── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  .btn:hover, .lift:hover { transform: none !important; }
+}
+
+/* ── 12. Forced colors (Windows high contrast): the system palette is used; keep every shape visible ── */
+@media (forced-colors: active) {
+  .grad { background: none; -webkit-text-fill-color: currentColor; color: CanvasText; }
+  .glass, .card, .chip, .lang-tag, .badge, .callout, .nav-menu > summary { border: 1px solid CanvasText; }
+  .btn { border: 2px solid ButtonText; }
+  .btn-primary { background: Highlight; color: HighlightText; border-color: HighlightText; forced-color-adjust: none; }
+  .icon-tile { border: 1px solid CanvasText; }
+  .site-header { border-block-end: 1px solid CanvasText; }
+  .nav-menu a[aria-current] { outline: 2px solid Highlight; }
+  .skip-link { border: 2px solid ButtonText; }
+}

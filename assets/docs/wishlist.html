@@ -5,34 +5,165 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Shared wishlist — PS Store Enhancer</title>
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#070b16" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#eef2fa" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="assets/icon.png">
+<link rel="apple-touch-icon" href="assets/icon.png">
+<link rel="preload" href="fonts/rubik-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="site.css">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#0a0f1a;color:#e2e8f0;line-height:1.6;min-height:100vh}
-.wrap{max-width:640px;margin:0 auto;padding:48px 24px}
-h1{font-size:28px;font-weight:800;background:linear-gradient(135deg,#4da6ff,#0070d1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px}
-.sub{color:#a0aec0;font-size:14px;margin-bottom:24px}
-#count{color:#718096;font-size:13px;margin-bottom:12px}
-ul{list-style:none;display:flex;flex-direction:column;gap:8px}
-li{display:flex;justify-content:space-between;align-items:center;gap:12px;background:#131b2e;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:12px 16px}
-li a{color:#e2e8f0;text-decoration:none;font-weight:600}
-li a:hover{color:#4da6ff;text-decoration:underline}
-li a:focus-visible{outline:3px solid #4da6ff;outline-offset:2px}
-.price{color:#6dc849;font-size:13px;white-space:nowrap}
-#empty{background:#131b2e;border:1px dashed rgba(255,255,255,.12);border-radius:10px;padding:24px;color:#a0aec0}
-.note{margin-top:28px;font-size:12px;color:#718096}
-.note a{color:#4da6ff}
+/* ===== Shared wishlist page only. Everything shared (tokens, header, footer, buttons, glass, callout, focus) is in site.css. =====
+   wishlist-view.js fills #count and #list and shows or hides #empty; it creates <li><a>name</a><span class="price">…</span></li>. */
+
+.wl-page { padding-bottom: clamp(40px, 7vw, 80px); }
+.wl-page .page-head { padding-bottom: clamp(22px, 4vw, 38px); }
+.wl-page .page-head .icon-tile { width: 56px; height: 56px; margin: 0 auto 20px; border-radius: 18px; font-size: 28px; }
+.wl { max-width: 42rem; margin-inline: auto; }
+
+/* how many games (a live region: it stays in the layout, empty, until the script writes into it) */
+#count {
+  display: flex; width: fit-content; align-items: center; margin: 0 0 14px 4px; padding: .2em .95em;
+  border: 1px solid var(--accent-line); border-radius: 999px; background: var(--accent-soft);
+  color: var(--accent); font-size: .85rem; font-weight: 600; font-variant-numeric: tabular-nums;
+}
+#count:empty { margin: 0; padding: 0; border: 0; background: none; }
+
+/* the list is one glass panel; every row is a single link target (the link's ::after covers the row) */
+#list { list-style: none; margin: 0; padding: 6px; }
+#list:empty { display: none; }
+#list li {
+  position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px 16px; align-items: center;
+  padding: 14px 52px 14px 16px; border-radius: 14px;
+}
+@media (min-width: 480px) { #list li { grid-template-columns: minmax(0, 1fr) auto; } }
+#list li + li::before { content: ""; position: absolute; inset: -1px 16px auto; border-top: 1px solid var(--line); }
+@media (hover: hover) { #list li:hover { background: var(--panel2); } }
+#list li a {
+  color: var(--text); font-size: 1.02rem; font-weight: 600; line-height: 1.35; text-decoration: none; overflow-wrap: anywhere;
+}
+#list li a::after { content: ""; position: absolute; inset: 0; border-radius: 14px; }
+#list li a:focus-visible { outline: none; }
+#list li a:focus-visible::after { outline: 3px solid var(--accent); outline-offset: -3px; }
+#list li .price {
+  justify-self: start; padding: .12em .8em; border-radius: 999px;
+  background: var(--good-soft); color: var(--good); font-size: .84rem; font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums;
+}
+@media (min-width: 480px) { #list li .price { justify-self: end; } }
+/* "opens in a new tab" arrow at the end of the row */
+#list li::after {
+  content: ""; position: absolute; inset-inline-end: 18px; top: 50%; width: 16px; height: 16px; margin-top: -8px;
+  background: var(--faint);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17L17 7M9 7h8v8'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17L17 7M9 7h8v8'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+@media (hover: hover) { #list li:hover::after { background: var(--accent); } }
+
+/* nothing to show: no list in the link, or the link is damaged */
+.empty {
+  display: grid; justify-items: center; gap: 14px; padding: clamp(30px, 6vw, 52px) clamp(20px, 5vw, 44px);
+  border: 1px dashed var(--line-strong); text-align: center;
+}
+.empty .icon-tile { width: 52px; height: 52px; border-radius: 16px; font-size: 26px; }
+.empty p { max-width: 30rem; color: var(--dim); }
+.empty strong { display: block; margin-bottom: 4px; color: var(--text); font-size: 1.15rem; font-weight: 600; }
+
+.wl-note { display: flex; gap: 14px; align-items: flex-start; margin-top: 22px; }
+.wl-note .icon-tile { width: 34px; height: 34px; border-radius: 11px; font-size: 18px; }
+.wl-note p { color: var(--dim); font-size: .93rem; }
+.wl-cta { display: flex; justify-content: center; margin-top: 26px; }
+noscript .callout { margin-top: 18px; }
+
+@media (forced-colors: active) {
+  #count { border: 1px solid CanvasText; }
+  #list li::after { forced-color-adjust: none; background: CanvasText; }
+  #list li + li::before { border-top-color: CanvasText; }
+}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <h1>Shared wishlist</h1>
-  <p class="sub">A read-only list shared from the PS Store Enhancer extension.</p>
-  <div id="count" role="status"></div>
-  <ul id="list"></ul>
-  <div id="empty" hidden>No list found in this link. Ask the sender to copy the share link again from PS Store Enhancer → Settings → Wishlist.</div>
-  <p class="note">The list is stored in the link itself and never sent to a server. Prices are the cheapest PC prices the sender's extension last saw (via CheapShark), not PS Store prices.
-  <a href="index.html">Get PS Store Enhancer</a></p>
-</div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3A4 4 0 0 0 11 18.7l1-1"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.5h.01"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7.5 10.5L12 15l4.5-4.5M5 20h14"/></symbol>
+</svg>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="index.html"><img src="assets/icon.png" alt="" width="32" height="32"><span class="brand-name">PS Store Enhancer</span></a>
+    <nav class="nav" aria-label="Sections">
+      <details class="nav-menu">
+        <summary><svg class="i" aria-hidden="true"><use href="#i-menu"/></svg>Menu</summary>
+        <ul>
+          <li><a href="index.html#new">New in 3.0</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#tour">Screenshots</a></li>
+          <li><a href="index.html#languages">Languages</a></li>
+          <li><a href="index.html#privacy">Privacy</a></li>
+          <li><a href="index.html#support">Support</a></li>
+        </ul>
+      </details>
+    </nav>
+    <a class="btn btn-primary btn-sm" href="index.html#install">Install</a>
+  </div>
+</header>
+
+<main id="main" tabindex="-1" class="wrap wl-page">
+  <header class="page-head">
+    <div class="icon-tile is-pink"><svg class="i" aria-hidden="true"><use href="#i-heart"/></svg></div>
+    <h1 class="grad">Shared wishlist</h1>
+    <p class="sub lede">A read-only list shared from the PS Store Enhancer extension.</p>
+  </header>
+
+  <div class="wl">
+    <div id="count" role="status"></div>
+    <ul id="list" class="glass"></ul>
+    <div id="empty" class="empty glass" hidden>
+      <div class="icon-tile is-warn"><svg class="i" aria-hidden="true"><use href="#i-link"/></svg></div>
+      <p><strong>No list found in this link.</strong> Ask the sender to copy the share link again from PS Store Enhancer → Settings → Wishlist.</p>
+    </div>
+    <noscript><p class="callout is-warn">This page needs JavaScript to read the list from the link.</p></noscript>
+
+    <div class="callout wl-note">
+      <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-info"/></svg></span>
+      <p class="note">The list is stored in the link itself and never sent to a server. Prices are the cheapest PC prices the sender's extension last saw (via CheapShark), not PS Store prices.</p>
+    </div>
+    <p class="wl-cta"><a class="btn btn-primary" href="index.html#install"><svg class="i" aria-hidden="true"><use href="#i-download"/></svg>Get PS Store Enhancer</a></p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-brand"><img src="assets/icon.png" alt="" width="28" height="28" loading="lazy">PS Store Enhancer</div>
+    <ul class="footer-links">
+      <li><a href="https://github.com/DrummingBird1/ps-store-enhancer" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://github.com/DrummingBird1/ps-store-enhancer/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a></li>
+      <li><a href="https://ko-fi.com/idanlights" target="_blank" rel="noopener">Ko-fi</a></li>
+      <li><a href="https://buymeacoffee.com/solvaris" target="_blank" rel="noopener">Buy Me a Coffee</a></li>
+      <li><a href="https://www.patreon.com/c/Solvaris" target="_blank" rel="noopener">Patreon</a></li>
+      <li><a href="https://github.com/DrummingBird1/ps-store-enhancer/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a></li>
+      <li><a href="privacy-policy.html">Privacy Policy</a></li>
+      <li><a href="https://github.com/DrummingBird1/ps-store-enhancer/issues" target="_blank" rel="noopener">Report a bug</a></li>
+    </ul>
+    <p>Data: <a href="https://www.cheapshark.com/" target="_blank" rel="noopener">CheapShark</a> (prices, Metacritic and Steam ratings) · <a href="https://frankfurter.dev/" target="_blank" rel="noopener">Frankfurter</a> (exchange rates, European Central Bank data). Reference links: <a href="https://psprices.com/" target="_blank" rel="noopener">PSPrices</a>, <a href="https://psnprofiles.com/" target="_blank" rel="noopener">PSNProfiles</a>.</p>
+    <p>Font: Rubik, under the <a href="fonts/OFL.txt">SIL Open Font License 1.1</a>. Formerly GameDeals+, then PS Store Insight.</p>
+    <p class="disclaimer">This extension is not affiliated with, endorsed by, or connected to Sony Interactive Entertainment, PlayStation, or any of their subsidiaries. PlayStation is a registered trademark of Sony Interactive Entertainment.</p>
+  </div>
+</footer>
+
+<script>
+// The list lives in the URL fragment and wishlist-view.js re-reads it on every hashchange, so the skip link
+// must not follow "#main" (that would replace the fragment and show the empty state). Move focus instead.
+(function () {
+  var skip = document.querySelector(".skip-link"), main = document.getElementById("main");
+  if (skip && main) skip.addEventListener("click", function (e) { e.preventDefault(); main.focus(); });
+})();
+</script>
 <script src="wishlist-view.js"></script>
+<script src="site.js"></script>
 </body>
 </html>

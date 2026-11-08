@@ -5,218 +5,652 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PS Store Enhancer (formerly GameDeals+, then PS Store Insight)</title>
 <meta name="description" content="Chrome extension that enhances the PlayStation Store with real lowest-ever prices, exact cross-platform comparison, Metacritic and Steam scores, trophy info, wishlist alerts, and smart filters. 16 languages.">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#070b16" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#eef2fa" media="(prefers-color-scheme: light)">
 <meta property="og:title" content="PS Store Enhancer — smart shopping for the PlayStation Store">
 <meta property="og:description" content="Smart shopping for the PlayStation Store: real lowest-ever prices, exact cross-platform comparison, Metacritic and Steam scores, trophies, wishlist alerts.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://drummingbird1.github.io/ps-store-enhancer/assets/og-image.png">
+<meta property="og:url" content="https://drummingbird1.github.io/ps-store-enhancer/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="assets/icon.png">
+<link rel="apple-touch-icon" href="assets/icon.png">
+<link rel="preload" href="fonts/rubik-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="site.css">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#0a0f1a;color:#e2e8f0;line-height:1.6;min-height:100vh}
-.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-header{padding:80px 0 60px;text-align:center}
-.logo{width:96px;height:96px;margin:0 auto 24px;border-radius:24px;box-shadow:0 12px 40px rgba(0,112,209,0.25);display:block}
-h1{font-size:56px;font-weight:800;background:linear-gradient(135deg,#4da6ff,#0070d1,#003087);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px;letter-spacing:-1px}
-.tagline{font-size:20px;color:#a0aec0;max-width:640px;margin:0 auto 32px}
-.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:linear-gradient(135deg,#003087,#0070d1);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s}
-.btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,112,209,0.35)}
-.btn-secondary{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12)}
-.btn-secondary:hover{background:rgba(255,255,255,0.1)}
-.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:8px}
-.badge{font-size:12px;padding:4px 10px;background:rgba(0,112,209,0.15);color:#4da6ff;border-radius:20px;border:1px solid rgba(0,112,209,0.25)}
-section{padding:60px 0}
-h2{font-size:36px;font-weight:800;margin-bottom:8px;text-align:center}
-.sub-h2{color:#718096;text-align:center;max-width:560px;margin:0 auto 48px;font-size:16px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
-.feat{background:#131b2e;border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:28px;transition:border-color .2s,transform .2s}
-.feat:hover{border-color:rgba(0,112,209,0.3);transform:translateY(-3px)}
-.feat-icon{font-size:36px;margin-bottom:14px;display:block}
-.feat-title{font-size:18px;font-weight:700;color:#fff;margin-bottom:6px}
-.feat-desc{font-size:14px;color:#a0aec0;line-height:1.65}
-.demo-row{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;margin-bottom:48px}
-.demo-row.reverse{direction:rtl}
-.demo-row.reverse > *{direction:ltr}
-.demo-text h3{font-size:24px;margin-bottom:10px}
-.demo-text p{font-size:15px;color:#a0aec0;margin-bottom:14px}
-.demo-img{background:#131b2e;border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:0;overflow:hidden}
-.demo-img img{width:100%;display:block}
-.langs{background:#131b2e;border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:32px;text-align:center}
-.langs-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:18px}
-.lang-tag{padding:8px 14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:20px;font-size:13px}
-footer{padding:48px 0 60px;border-top:1px solid rgba(255,255,255,0.06);text-align:center}
-footer p{color:#4a5568;font-size:13px;margin-bottom:8px}
-footer a{color:#4da6ff;text-decoration:none;margin:0 6px}
-footer a:hover{text-decoration:underline}
-.disclaimer{font-size:11px;color:#2d3748;max-width:560px;margin:24px auto 0}
-@media(max-width:768px){
-  h1{font-size:38px}
-  .demo-row{grid-template-columns:1fr}
-  header{padding:48px 0 40px}
-  section{padding:40px 0}
+/* ===== Home page only. Everything shared (tokens, header, footer, buttons, glass, grid, focus) is in site.css. ===== */
+
+/* hero */
+.hero { padding-block: clamp(32px, 6vw, 84px) clamp(28px, 5vw, 56px); }
+.hero-grid { display: grid; gap: clamp(28px, 5vw, 56px); align-items: center; }
+@media (min-width: 960px) { .hero-grid { grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); } }
+.hero-logo { width: 80px; height: 80px; border-radius: 22px; box-shadow: 0 14px 40px var(--accent-glow); }
+.hero h1 {
+  margin-top: 22px;
+  font-size: clamp(2.6rem, 1.4rem + 5.4vw, 4.6rem);
+  font-weight: 700; letter-spacing: -.03em; line-height: 1.08;
 }
+.tagline { max-width: 38rem; margin-top: 18px; color: var(--dim); font-size: clamp(1.05rem, 1rem + .45vw, 1.3rem); text-wrap: pretty; }
+.formerly { margin-top: 12px; color: var(--dim); font-size: .92rem; }
+.hero .btn-row { margin-top: 28px; }
+.hero .badges { margin-top: 22px; }
+.glance { padding: clamp(20px, 3vw, 30px); }
+.glance h2 { font-size: 1.15rem; letter-spacing: -.005em; }
+.glance ul { list-style: none; padding: 0; margin-top: 8px; }
+.glance li { display: flex; gap: 14px; align-items: flex-start; padding: 14px 0; border-top: 1px solid var(--line); }
+.glance li:first-child { border-top: 0; }
+.glance .icon-tile { width: 40px; height: 40px; font-size: 20px; border-radius: 12px; }
+.glance strong { display: block; font-size: .98rem; font-weight: 600; line-height: 1.35; }
+.glance span.d { display: block; margin-top: 2px; color: var(--dim); font-size: .88rem; line-height: 1.5; }
+
+/* facts strip */
+.facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 6px; }
+@media (min-width: 760px) { .facts { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.fact { padding: 18px 12px; text-align: center; }
+.fact b { display: block; color: var(--accent); font-size: clamp(2rem, 1.3rem + 2.8vw, 3.1rem); font-weight: 700; line-height: 1.1; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.fact span { display: block; margin-top: 6px; color: var(--dim); font-size: .9rem; }
+
+/* new in 3.0 */
+.hl .fine { color: var(--dim); font-size: .86rem; }
+.mini-chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 2px 0 0; }
+.mini-chips li { padding: .28em .85em; border-radius: 999px; background: var(--panel2); border: 1px solid var(--line); color: var(--text); font-size: .82rem; }
+.swatches { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 2px 0 0; }
+.swatches li { display: inline-flex; align-items: center; gap: 8px; padding: .3em .9em .3em .4em; border-radius: 999px; background: var(--panel2); border: 1px solid var(--line); font-size: .84rem; }
+.sw { width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--line-strong); flex: none; }
+.sw-dark { background: radial-gradient(circle at 30% 25%, #3d7dff 0 28%, #070b16 30%); }
+.sw-light { background: radial-gradient(circle at 30% 25%, #1257c8 0 28%, #eef2fa 30%); }
+.sw-contrast { background: #000; border: 2px solid #ffd400; }
+.sw-auto { background: linear-gradient(90deg, #070b16 50%, #eef2fa 50%); }
+
+/* feature grid */
+.feat { gap: 10px; }
+.feat .icon-tile { margin-bottom: 4px; }
+
+/* screenshots */
+.shots { display: grid; gap: 20px; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 800px) {
+  .shots { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  .shots .lead { grid-column: 1 / -1; }
+}
+.shot { padding: 10px; }
+.shot img { width: 100%; aspect-ratio: 1280 / 800; border-radius: calc(var(--r) - 8px); border: 1px solid var(--line); background: #070b16; }
+.shot figcaption { padding: 16px 10px 8px; }
+.shot h3 { font-size: 1.1rem; }
+.shot p { margin-top: 6px; color: var(--dim); font-size: .93rem; }
+
+/* languages */
+.langs { padding: clamp(20px, 3.5vw, 36px); text-align: center; }
+.langs .chip small { color: var(--dim); font-size: .78rem; }
+.langs .note { max-width: 40rem; margin: 22px auto 0; color: var(--dim); font-size: .93rem; }
+
+/* privacy */
+.privacy-grid { display: grid; gap: 20px; align-items: start; }
+@media (min-width: 960px) { .privacy-grid { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 24px; } }
+.checks { list-style: none; padding: 0; display: grid; gap: 4px; }
+.checks li { display: flex; gap: 14px; align-items: flex-start; padding: 14px 0; border-top: 1px solid var(--line); }
+.checks li:first-child { border-top: 0; }
+.checks .icon-tile { width: 40px; height: 40px; font-size: 20px; border-radius: 12px; }
+.checks strong { display: block; font-size: 1rem; font-weight: 600; line-height: 1.35; }
+.checks span.d { display: block; margin-top: 3px; color: var(--dim); font-size: .92rem; }
+.hosts-card h3 { font-size: 1.15rem; }
+.hosts { list-style: none; padding: 0; margin-top: 6px; width: 100%; }
+.hosts li { padding: 14px 0; border-top: 1px solid var(--line); }
+.hosts li:first-child { border-top: 0; }
+.hosts .h { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
+.hosts p { margin-top: 6px; color: var(--dim); font-size: .9rem; }
+.privacy-cta { margin-top: 24px; justify-content: center; }
+
+/* install */
+.install-grid { display: grid; gap: 20px; align-items: stretch; }
+@media (min-width: 860px) { .install-grid { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 24px; } }
+.install-grid .card { height: 100%; }
+.install-grid .card h3 { font-size: 1.25rem; }
+.store-slot .btn-row { margin-top: 6px; }
+.steps { counter-reset: step; list-style: none; padding: 0; display: grid; gap: 14px; width: 100%; margin-top: 4px; }
+.steps li { counter-increment: step; display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 14px; align-items: start; color: var(--text); font-size: .98rem; }
+.steps li::before {
+  content: counter(step); display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%;
+  background: var(--accent-soft); color: var(--accent); font-weight: 600; font-size: .92rem;
+}
+.steps li > span { padding-top: 4px; }
+
+/* support */
+.support { text-align: center; }
+.support .btn-row { justify-content: center; margin-top: 26px; }
+#supporters .chips { margin-top: 4px; }
 </style>
 </head>
-<body>
-<div class="wrap">
+<body id="top">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></symbol>
+  <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M4.5 17.5a8.5 8.5 0 1 1 15 0"/><path d="M12 14l3.8-4.6M12 14h.01"/></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24"><path d="M3 7l6 6 4-4 8 8M15 17h6v-6"/></symbol>
+  <symbol id="i-swap" viewBox="0 0 24 24"><path d="M4 8h14l-3-3.5M20 16H6l3 3.5"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3.5l8.5 4.5-8.5 4.5L3.5 8 12 3.5z"/><path d="M3.5 12.5L12 17l8.5-4.5M3.5 16.5L12 21l8.5-4.5"/></symbol>
+  <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4zM17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L12 17l-5.2 2.7 1-5.9L3.5 9.7l5.9-.8L12 3.5z"/></symbol>
+  <symbol id="i-bars" viewBox="0 0 24 24"><path d="M5 20v-8M12 20V5M19 20v-5"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15l1.5-2z"/><path d="M10 21h4"/></symbol>
+  <symbol id="i-coins" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M14.6 9.3c-.5-.9-1.4-1.3-2.6-1.3-1.6 0-2.6.8-2.6 2s1 1.7 2.6 2 2.6.8 2.6 2-1 2-2.6 2c-1.2 0-2.1-.4-2.6-1.3M12 6.2V8M12 16v1.8"/></symbol>
+  <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 5h16l-6 8v6l-4-2v-4L4 5z"/></symbol>
+  <symbol id="i-contrast" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M12 8h4.5M12 12h6.5M12 16h4.5"/></symbol>
+  <symbol id="i-cards" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.8"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.8"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.8"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.8"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2.2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-scan" viewBox="0 0 24 24"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-4.3-4.3M8 11l2.2 2.2L14 9"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></symbol>
+  <symbol id="i-type" viewBox="0 0 24 24"><path d="M5 7V4.5h14V7M12 4.5v15M9 19.5h6"/></symbol>
+  <symbol id="i-rtl" viewBox="0 0 24 24"><path d="M20 6H4M20 12H10M20 18H7"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3A4 4 0 0 0 11 18.7l1-1"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.2 7.8-8 9-4.8-1.2-8-4.5-8-9V6l8-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></symbol>
+  <symbol id="i-github" viewBox="0 0 24 24"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7.5 10.5L12 15l4.5-4.5M5 20h14"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M11 3.5l1.9 5.6 5.6 1.9-5.6 1.9L11 18.5l-1.9-5.6L3.5 11l5.6-1.9L11 3.5zM19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15z"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></symbol>
+  <symbol id="i-eye-off" viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"/><circle cx="12" cy="12" r="2.8"/><path d="M4 4l16 16"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></symbol>
+  <symbol id="i-database" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7.5" ry="3"/><path d="M4.5 6v6c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3V6M4.5 12v6c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-6"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24"><rect x="3.5" y="4" width="17" height="6.5" rx="2"/><rect x="3.5" y="13.5" width="17" height="6.5" rx="2"/><path d="M7.5 7.25h.01M7.5 16.75h.01"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><circle cx="9" cy="10" r="1.8"/><path d="M4 17l5-4.5 4 3.5 3-2.5 4 3.5"/></symbol>
+</svg>
 
-<header>
-  <img class="logo" src="assets/icon.png" alt="PS Store Enhancer icon" width="96" height="96">
-  <h1>PS Store Enhancer</h1>
-  <p class="tagline">Smart shopping for the PlayStation™ Store. Real lowest-ever prices, exact cross-platform comparison, Metacritic and Steam scores, trophy info, wishlist alerts and 16 languages — all in your browser, with no invented data.</p>
-  <p style="color:#4a5568;font-size:13px;margin:-20px 0 24px">Formerly known as GameDeals+, then PS Store Insight — same extension, same developer, better name.</p>
-  <div class="cta-row">
-    <a class="btn" href="#install">Install</a>
-    <a class="btn btn-secondary" href="https://github.com/DrummingBird1/ps-store-enhancer" target="_blank" rel="noopener">⭐ Star on GitHub</a>
-  </div>
-  <div class="badges">
-    <span class="badge">v3.0.0</span>
-    <span class="badge">Manifest V3</span>
-    <span class="badge">16 languages</span>
-    <span class="badge">MIT License</span>
-    <span class="badge">No tracking</span>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="#top"><img src="assets/icon.png" alt="" width="32" height="32"><span class="brand-name">PS Store Enhancer</span></a>
+    <nav class="nav" aria-label="Sections">
+      <details class="nav-menu">
+        <summary><svg class="i" aria-hidden="true"><use href="#i-menu"/></svg>Menu</summary>
+        <ul>
+          <li><a href="#new">New in 3.0</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#tour">Screenshots</a></li>
+          <li><a href="#languages">Languages</a></li>
+          <li><a href="#privacy">Privacy</a></li>
+          <li><a href="#support">Support</a></li>
+        </ul>
+      </details>
+    </nav>
+    <a class="btn btn-primary btn-sm" href="#install">Install</a>
   </div>
 </header>
 
-<section>
-  <h2>Everything the PS Store should already do</h2>
-  <p class="sub-h2">All core features work without sign-in. PSN integration is opt-in.</p>
-  <div class="grid">
-    <div class="feat"><span class="feat-icon">🔎</span><div class="feat-title">Live search suggestions</div><div class="feat-desc">Type in the store's own search box and see an enriched dropdown with box art and the cheapest PC price, before you even hit enter.</div></div>
-    <div class="feat"><span class="feat-icon">📊</span><div class="feat-title">Review scores at a glance</div><div class="feat-desc">Metacritic (PC) and Steam user-rating badges next to the game title, color-coded green/yellow/red. Shown only when real scores exist — never a guess.</div></div>
-    <div class="feat"><span class="feat-icon">📉</span><div class="feat-title">Price insight, real facts only</div><div class="feat-desc">The lowest PC price ever (with its date), today's cheapest, a "near the all-time low" flag — plus a trend drawn from prices your own browser recorded. Never an invented chart.</div></div>
-    <div class="feat"><span class="feat-icon">🔀</span><div class="feat-title">Exact cross-platform comparison</div><div class="feat-desc">The same game's prices on Steam, Epic, GOG, Humble and more — matched to the exact game, never a DLC, map or sequel — converted to your currency.</div></div>
-    <div class="feat"><span class="feat-icon">🎁</span><div class="feat-title">Edition transparency</div><div class="feat-desc">Cross-platform prices are flagged when they're for a different bundle/edition (Deluxe, GOTY, etc.) than the page you're viewing.</div></div>
-    <div class="feat"><span class="feat-icon">🏆</span><div class="feat-title">Trophy info</div><div class="feat-desc">Platinum availability, difficulty (1-10), estimated hours, a one-glance completionist effort score and price per hour for 75+ popular titles (community-maintained data), plus your own PSN progress when connected.</div></div>
-    <div class="feat"><span class="feat-icon">⭐</span><div class="feat-title">Wishlist alerts</div><div class="feat-desc">Track games, set a price or "% off" target, add notes, and get a desktop notification (or one weekly digest) when the cheapest PC price drops below it. Share the list as a read-only link — nothing is uploaded.</div></div>
-    <div class="feat"><span class="feat-icon">📈</span><div class="feat-title">Library & wishlist stats</div><div class="feat-desc">Games owned, wishlist size, total wishlist value, and deals ready to buy — one dashboard, zero extra API calls.</div></div>
-    <div class="feat"><span class="feat-icon">🔔</span><div class="feat-title">Toolbar deal badge</div><div class="feat-desc">The extension icon shows a live count of wishlist items currently at or below your target price.</div></div>
-    <div class="feat"><span class="feat-icon">💱</span><div class="feat-title">18 currencies</div><div class="feat-desc">EUR, GBP, ILS, JPY, BRL, KRW, INR, and more — daily rates from the European Central Bank.</div></div>
-    <div class="feat"><span class="feat-icon">🧹</span><div class="feat-title">Smart filters</div><div class="feat-desc">Hide add-ons, currency packs, DLC, and games you already own — works with infinite scroll.</div></div>
-    <div class="feat"><span class="feat-icon">🎨</span><div class="feat-title">Light, Dark & High contrast</div><div class="feat-desc">Auto-match your system, or pick manually. Reduced-motion and keyboard focus are respected everywhere.</div></div>
-    <div class="feat"><span class="feat-icon">🧩</span><div class="feat-title">Your page, your cards</div><div class="feat-desc">Reorder, hide or collapse the product-page cards; share a deal as an image; skippable first-run tour.</div></div>
-    <div class="feat"><span class="feat-icon">🔒</span><div class="feat-title">Privacy first</div><div class="feat-desc">No analytics. No tracking. No remote code. All your data lives in browser storage on your device — and one click erases it.</div></div>
-  </div>
-</section>
+<main id="main" tabindex="-1">
 
-<section id="tour">
-  <h2>See it in action</h2>
-  <p class="sub-h2">Every screenshot below is the extension's real UI, its real colors, its real components.</p>
-
-  <div class="demo-row">
-    <div class="demo-text">
-      <h3>Everything, right on the product page</h3>
-      <p>The lowest price your browser has seen, the sale and how long it has left, the store's own 30-day low, the gap to the cheapest PC price, and Metacritic and Steam scores — all injected directly into the PlayStation Store page you're already looking at. Exact cross-platform prices from Steam/Epic/GOG and full trophy info sit right below.</p>
+<section class="hero" aria-labelledby="hero-title">
+  <div class="wrap hero-grid">
+    <div>
+      <img class="hero-logo" src="assets/icon.png" alt="PS Store Enhancer icon" width="80" height="80">
+      <h1 id="hero-title" class="grad">PS Store Enhancer</h1>
+      <p class="tagline">Smart shopping for the PlayStation™ Store. See the lowest PlayStation price your browser has recorded, the real lowest-ever PC price, exact cross-platform comparison, review scores, trophy info and wishlist alerts, in 16 languages and with no invented data.</p>
+      <p class="formerly">Formerly known as GameDeals+, then PS Store Insight: same extension, same developer, better name.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="#install"><svg class="i" aria-hidden="true"><use href="#i-download"/></svg>Install</a>
+        <a class="btn btn-glass" href="https://github.com/DrummingBird1/ps-store-enhancer" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-github"/></svg>GitHub</a>
+      </div>
+      <ul class="badges" aria-label="At a glance">
+        <li class="badge">v3.0.0</li>
+        <li class="badge">Manifest V3</li>
+        <li class="badge">16 languages</li>
+        <li class="badge">MIT License</li>
+        <li class="badge">No tracking</li>
+      </ul>
     </div>
-    <div class="demo-img"><img src="assets/screenshot-product.png" alt="Review-score badges and the Price Insight card injected on a PS Store product page" loading="lazy"></div>
-  </div>
 
-  <div class="demo-row reverse">
-    <div class="demo-text">
-      <h3>Search suggestions that show the price first</h3>
-      <p>Start typing in the store's own search box and a dropdown appears with box art and the cheapest PC price for each match — with a ✓ on games you own — before you've even opened a single product page.</p>
-    </div>
-    <div class="demo-img"><img src="assets/screenshot-search.png" alt="Live search suggestions dropdown showing game thumbnails and prices" loading="lazy"></div>
-  </div>
-
-  <div class="demo-row">
-    <div class="demo-text">
-      <h3>A dashboard for your whole library</h3>
-      <p>Games owned, wishlist size, total wishlist value, and how many deals are ready to buy right now — computed entirely from data already on your device.</p>
-    </div>
-    <div class="demo-img"><img src="assets/screenshot-stats.png" alt="Library and wishlist stats dashboard in the settings page" loading="lazy"></div>
-  </div>
-
-  <div class="demo-row reverse">
-    <div class="demo-text">
-      <h3>Quick controls, one click away</h3>
-      <p>PSN status and last sync, search filters, a one-click "erase my data" and a link to support the project — all in a popup that opens instantly from the toolbar.</p>
-    </div>
-    <div class="demo-img"><img src="assets/screenshot-popup.png" alt="The extension's toolbar popup with filters and PSN status" loading="lazy"></div>
-  </div>
-</section>
-
-<section>
-  <h2>16 languages, ready out of the box</h2>
-  <div class="langs">
-    <p>English, עברית, العربية, Español, Français, Deutsch, Italiano, Português (BR), Nederlands, Polski, Türkçe, Русский, 日本語, 한국어, 简体中文, 繁體中文</p>
-    <div class="langs-grid">
-      <span class="lang-tag">🇬🇧 EN</span>
-      <span class="lang-tag">🇮🇱 עברית</span>
-      <span class="lang-tag">🇸🇦 العربية</span>
-      <span class="lang-tag">🇪🇸 ES</span>
-      <span class="lang-tag">🇫🇷 FR</span>
-      <span class="lang-tag">🇩🇪 DE</span>
-      <span class="lang-tag">🇮🇹 IT</span>
-      <span class="lang-tag">🇧🇷 PT-BR</span>
-      <span class="lang-tag">🇳🇱 NL</span>
-      <span class="lang-tag">🇵🇱 PL</span>
-      <span class="lang-tag">🇹🇷 TR</span>
-      <span class="lang-tag">🇷🇺 RU</span>
-      <span class="lang-tag">🇯🇵 JA</span>
-      <span class="lang-tag">🇰🇷 KO</span>
-      <span class="lang-tag">🇨🇳 简体</span>
-      <span class="lang-tag">🇹🇼 繁體</span>
+    <div class="glass glance">
+      <h2>What it adds to the store</h2>
+      <ul>
+        <li>
+          <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-trend"/></svg></span>
+          <span><strong>The lowest price you have seen</strong><span class="d">PlayStation prices recorded by your own browser, next to the real lowest-ever PC price.</span></span>
+        </li>
+        <li>
+          <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-swap"/></svg></span>
+          <span><strong>Exact cross-platform prices</strong><span class="d">Steam, Epic, GOG, Humble and more, matched to the exact game.</span></span>
+        </li>
+        <li>
+          <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-gauge"/></svg></span>
+          <span><strong>Review scores</strong><span class="d">Metacritic (PC) and Steam badges next to the title, only when a real score exists.</span></span>
+        </li>
+        <li>
+          <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-trophy"/></svg></span>
+          <span><strong>Trophy info</strong><span class="d">Platinum availability, difficulty and estimated hours.</span></span>
+        </li>
+        <li>
+          <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-bell"/></svg></span>
+          <span><strong>Wishlist alerts</strong><span class="d">A desktop notification when a price reaches your target.</span></span>
+        </li>
+      </ul>
     </div>
   </div>
 </section>
 
-<section id="install">
-  <h2>Install</h2>
-  <p class="sub-h2">Chrome Web Store listing coming soon. Developer install in the meantime:</p>
-  <div class="grid">
-    <div class="feat">
-      <span class="feat-icon">⚡</span>
-      <div class="feat-title">Developer install</div>
-      <div class="feat-desc">
-        1. Download the latest <a href="https://github.com/DrummingBird1/ps-store-enhancer/releases" target="_blank" rel="noopener" style="color:#4da6ff">release zip</a><br>
-        2. Unzip it<br>
-        3. Open <code>chrome://extensions</code><br>
-        4. Toggle <strong>Developer mode</strong> on<br>
-        5. Click <strong>Load unpacked</strong>, select the unzipped folder<br>
-        6. Visit <a href="https://store.playstation.com" target="_blank" rel="noopener" style="color:#4da6ff">store.playstation.com</a>
+<div class="wrap">
+  <div class="glass facts" role="list" aria-label="The extension in numbers">
+    <div class="fact" role="listitem"><b>16</b><span>languages</span></div>
+    <div class="fact" role="listitem"><b>18</b><span>display currencies</span></div>
+    <div class="fact" role="listitem"><b>5</b><span>documented hosts it talks to</span></div>
+    <div class="fact" role="listitem"><b>0</b><span>analytics or trackers</span></div>
+  </div>
+</div>
+
+<section class="section" id="new" aria-labelledby="new-title">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">v3.0.0 · Checked against the real store</span>
+      <h2 id="new-title">New in 3.0</h2>
+      <p class="lede">This release was built by opening real PlayStation Store pages and testing the extension against them. Here is what changed, in plain words.</p>
+    </div>
+
+    <div class="grid grid-3">
+      <article class="glass card lift hl span-2">
+        <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-trend"/></svg></span>
+        <h3>PlayStation price history, built in your browser</h3>
+        <p>The Price Insight card now shows the <strong>lowest PlayStation price you have seen</strong>, today's price and the sale: what it was, the percent off, when it ends and how long it has left (“Offer ends Nov 21 (in 14 days)”). It adds the PlayStation Plus price when the page shows one, the store's own “lowest price in the last 30 days”, a trend, and how far the price is from the cheapest PC price.</p>
+        <ul class="mini-chips" aria-label="What the card shows">
+          <li>Lowest PS price you've seen</li>
+          <li>Today's price</li>
+          <li>Sale and time left</li>
+          <li>PS Plus price</li>
+          <li>Store's 30-day low</li>
+          <li>Trend</li>
+          <li>Gap to the cheapest PC price</li>
+        </ul>
+        <p class="fine">It is built only from prices your browser recorded, and says “not enough history yet” until there are two different days. History keeps the latest 400 days with a recorded price and is included in the JSON backup. Prices are also recorded from search results (for games you have already looked at or wishlisted) and, once a day, from the saved page of each wishlisted game: at most 20 pages, no cookies, <code>store.playstation.com</code> only. Turning off Price insight in Settings stops both.</p>
+      </article>
+
+      <article class="glass card lift hl">
+        <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-scan"/></svg></span>
+        <h3>Check this page</h3>
+        <p>A button in the toolbar popup that runs every lookup the extension depends on in the current store tab and shows which ones work, which work through a fallback and which are not found.</p>
+        <p class="fine">If a store redesign breaks one lookup, only that card is switched off on that page and the Diagnostics log says why, instead of the whole page failing.</p>
+      </article>
+
+      <article class="glass card lift hl">
+        <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-rtl"/></svg></span>
+        <h3>Hebrew and Arabic read right to left</h3>
+        <p>On the cards, the popup, the settings page and the welcome page. That includes the card's collapse arrow, which used to point the wrong way, and the prices in the search suggestions and the cross-platform note, which used to come out scrambled.</p>
+        <p class="fine"><a href="#shot-he">See the Hebrew screenshot</a></p>
+      </article>
+
+      <article class="glass card lift hl span-2">
+        <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-sparkle"/></svg></span>
+        <h3>A new look: Midnight Glass</h3>
+        <p>The cards on store pages, the toolbar popup, the settings page, the welcome page and the changelog now share one design: glass surfaces, a bigger headline number for the lowest price and one set of line icons in place of most emoji. Dark, light and high contrast are on the cards, the popup, the settings page and the changelog; the welcome page follows your system's light or dark setting.</p>
+        <p>Three small buttons in the popup header switch between Auto, Dark and Light. Cards already open on a store tab change at once, and Auto follows your system. High contrast stays in Settings.</p>
+        <ul class="swatches" aria-label="Themes">
+          <li><span class="sw sw-auto" aria-hidden="true"></span>Auto</li>
+          <li><span class="sw sw-dark" aria-hidden="true"></span>Dark</li>
+          <li><span class="sw sw-light" aria-hidden="true"></span>Light</li>
+          <li><span class="sw sw-contrast" aria-hidden="true"></span>High contrast</li>
+        </ul>
+      </article>
+
+      <article class="glass card lift hl">
+        <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-refresh"/></svg></span>
+        <h3>Cards stay on the page</h3>
+        <p>The store re-renders its page a few seconds after it loads, which used to remove the cards. They are now put back (up to three times per page) without starting the page over: the first-run tour keeps its step and the price is not recorded twice.</p>
+      </article>
+
+      <article class="glass card lift hl">
+        <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-link"/></svg></span>
+        <h3>PSN connect works in Chrome</h3>
+        <p>Connecting PSN failed in Chrome every time; it is fixed. It stays opt-in, and everything else works without it. The fix adds one permission, <code>declarativeNetRequestWithHostAccess</code>, which Chrome shows no warning for and which the extension uses for nothing else.</p>
+        <p class="fine">Checked on one real account.</p>
+      </article>
+
+      <article class="glass card lift hl">
+        <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-flag"/></svg></span>
+        <h3>Report a problem</h3>
+        <p>A button in the popup and in Settings → Diagnostics copies the version, the browser and the diagnostics log (already free of tokens) to the clipboard, then opens the GitHub bug-report form, where you paste it.</p>
+        <p class="fine">Nothing is put in the address, and the extension sends nothing itself.</p>
+      </article>
+
+      <article class="glass card lift hl">
+        <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-type"/></svg></span>
+        <h3>The Rubik font is bundled</h3>
+        <p>Rubik (SIL Open Font License) ships inside the extension, about 110 KB covering Latin, Hebrew, Cyrillic and Arabic, so the look no longer depends on the fonts installed on your computer. It is read from the extension itself and never downloaded. This site uses the same font files, served from the site itself.</p>
+      </article>
+
+      <article class="glass card lift hl span-2">
+        <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg></span>
+        <h3>Checked against real store pages</h3>
+        <p>The automated tests now run the real content script against saved real store pages (product pages in two regions and a search grid). That found bugs in v2.7.1 that the old test pages could not show, among them a wrong PlayStation price that could be recorded on pages with an edition list, the “Hide add-ons”, “Hide DLC” and “Hide games I already own” filters missing or hiding the wrong games, and blank gaps left in the search grid by hidden results. They are fixed.</p>
+        <p class="fine">What was checked, exactly: the PSN sign-in on one real account, and the injected cards by tests against the real page structure and by eye in Chrome with the extension loaded.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="features" aria-labelledby="features-title">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Features</span>
+      <h2 id="features-title">Everything the PS Store should already do</h2>
+      <p class="lede">All core features work without sign-in. PSN integration is opt-in.</p>
+    </div>
+
+    <div class="grid grid-3">
+      <article class="glass card feat lift span-2">
+        <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-trend"/></svg></span>
+        <h3>Price insight, real facts only</h3>
+        <p>The real lowest PC price ever (with its date), today's cheapest and a “near the all-time low” flag, plus a trend drawn from prices your own browser recorded and a one-click link to PSPrices for the full PlayStation price history. Never an invented chart.</p>
+      </article>
+      <article class="glass card feat lift">
+        <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-gauge"/></svg></span>
+        <h3>Review scores at a glance</h3>
+        <p>Metacritic (PC) and Steam user-rating badges next to the game title, colour-coded green, yellow or red. Shown only when a real score exists, never a guess.</p>
+      </article>
+      <article class="glass card feat lift">
+        <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-swap"/></svg></span>
+        <h3>Exact cross-platform comparison</h3>
+        <p>The same game's prices on Steam, Epic, GOG, Humble and more, matched to the exact game (never a DLC, map or sequel) and converted to your currency.</p>
+      </article>
+      <article class="glass card feat lift">
+        <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-layers"/></svg></span>
+        <h3>Edition transparency</h3>
+        <p>A price for a different bundle or edition (Deluxe, Ultimate, GOTY…) than the page you are viewing is flagged, never blended in silently.</p>
+      </article>
+      <article class="glass card feat lift">
+        <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-search"/></svg></span>
+        <h3>Live search suggestions</h3>
+        <p>Type in the store's own search box and see a dropdown with a thumbnail and the cheapest PC price for each match, before you even hit enter.</p>
+      </article>
+      <article class="glass card feat lift">
+        <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-trophy"/></svg></span>
+        <h3>Trophy info</h3>
+        <p>Platinum availability, difficulty (1–10), estimated hours, a one-glance completionist effort score and price per hour for 75 popular titles (a community-maintained database), plus your own live trophy progress when PSN is connected.</p>
+      </article>
+      <article class="glass card feat lift">
+        <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-star"/></svg></span>
+        <h3>Wishlist alerts</h3>
+        <p>Track games, set a price or “% off” target, add notes, and get a desktop notification (or one weekly digest) when the cheapest PC price reaches it. Share the list as a read-only link: nothing is uploaded.</p>
+      </article>
+      <article class="glass card feat lift">
+        <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-bars"/></svg></span>
+        <h3>Library and wishlist stats</h3>
+        <p>Games owned, wishlist size, total wishlist value and deals ready to buy: one dashboard, computed from data on your device.</p>
+      </article>
+      <article class="glass card feat lift">
+        <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-bell"/></svg></span>
+        <h3>Toolbar deal badge</h3>
+        <p>The extension icon shows a count of the wishlist deals at or below your target price.</p>
+      </article>
+      <article class="glass card feat lift">
+        <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-coins"/></svg></span>
+        <h3>18 currencies</h3>
+        <p>EUR, GBP, ILS, JPY, BRL, KRW, MXN, INR and more, set from your store region, with daily rates from Frankfurter (European Central Bank data).</p>
+      </article>
+      <article class="glass card feat lift">
+        <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-filter"/></svg></span>
+        <h3>Smart filters</h3>
+        <p>Hide add-ons, currency packs, DLC and games you already own. It works with infinite scroll.</p>
+      </article>
+      <article class="glass card feat lift">
+        <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-contrast"/></svg></span>
+        <h3>Dark, light and high contrast</h3>
+        <p>Auto matches your system, or choose Dark or Light in the popup; high contrast is in Settings. Reduced motion and visible keyboard focus are respected.</p>
+      </article>
+      <article class="glass card feat lift">
+        <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-cards"/></svg></span>
+        <h3>Your page, your cards</h3>
+        <p>Reorder, hide or collapse the product-page cards, share a deal as an image, and take a first-run tour that you can skip.</p>
+      </article>
+      <article class="glass card feat lift span-2-tablet">
+        <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-lock"/></svg></span>
+        <h3>Privacy first</h3>
+        <p>No analytics, no tracking, no remote code. What the extension remembers lives in your browser's extension storage, and one click erases it.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="tour" aria-labelledby="tour-title">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Screenshots</span>
+      <h2 id="tour-title">See it in action</h2>
+      <p class="lede">Every screenshot is the extension's real interface on a real page, in its real colours.</p>
+    </div>
+
+    <div class="shots">
+      <figure class="glass shot lead">
+        <img src="assets/screenshot-product.png" alt="A PlayStation Store product page for Valheim with Metacritic and Steam score badges next to the title and the Price Insight card below the buy button" width="1280" height="800" loading="lazy" decoding="async">
+        <figcaption>
+          <h3>Everything, right on the product page</h3>
+          <p>Metacritic and Steam score badges beside the title, and the Price Insight card under the buy button: the lowest PlayStation price your browser has recorded, the sale and how long it has left, the store's own 30-day low and the gap to the cheapest PC price. The cross-platform prices and trophy info follow below it.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="glass shot">
+        <img src="assets/screenshot-search.png" alt="The PlayStation Store search page with the extension's live results dropdown listing games with thumbnails and PC prices" width="1280" height="800" loading="lazy" decoding="async">
+        <figcaption>
+          <h3>Search suggestions that show the price first</h3>
+          <p>Start typing in the store's own search box and a dropdown lists matching games with a thumbnail and the cheapest PC price, with a check mark on games you own, before you open a single product page.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="glass shot">
+        <img src="assets/screenshot-stats.png" alt="The extension's settings page showing the Library and Wishlist Stats card above the wishlist" width="1280" height="800" loading="lazy" decoding="async">
+        <figcaption>
+          <h3>A dashboard for your library and wishlist</h3>
+          <p>Games owned, wishlist size, total wishlist value and deals ready to buy, computed from data already on your device. The value is the sum of the last-checked cheapest PC prices, not PlayStation prices.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="glass shot">
+        <img src="assets/screenshot-popup.png" alt="The extension's toolbar popup with the Auto, Dark and Light buttons, PSN status, three search filters and the Check this page button" width="1280" height="800" loading="lazy" decoding="async">
+        <figcaption>
+          <h3>Quick controls, one click away</h3>
+          <p>The Auto, Dark and Light buttons, PSN status, the three search filters, Check this page with the result of each lookup, support links, “Erase all my data” and “Report a problem”, in a popup that opens from the toolbar.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="glass shot" id="shot-he">
+        <img src="assets/screenshot-product-he.png" alt="The same Valheim product page with the extension set to Hebrew: the Price Insight card is laid out right to left" width="1280" height="800" loading="lazy" decoding="async">
+        <figcaption>
+          <h3>Right to left in Hebrew and Arabic</h3>
+          <p>The same page with the extension set to Hebrew: the Price Insight card reads right to left, including its collapse arrow and its prices. The rest of the page is the store's own.</p>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="languages" aria-labelledby="languages-title">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Languages</span>
+      <h2 id="languages-title">16 languages, ready out of the box</h2>
+    </div>
+    <div class="glass langs">
+      <ul class="chips">
+        <li class="chip" lang="en">English</li>
+        <li class="chip"><span lang="he" dir="rtl">עברית</span><small>Hebrew</small></li>
+        <li class="chip"><span lang="ar" dir="rtl">العربية</span><small>Arabic</small></li>
+        <li class="chip"><span lang="es">Español</span><small>Spanish</small></li>
+        <li class="chip"><span lang="fr">Français</span><small>French</small></li>
+        <li class="chip"><span lang="de">Deutsch</span><small>German</small></li>
+        <li class="chip"><span lang="it">Italiano</span><small>Italian</small></li>
+        <li class="chip"><span lang="pt-BR">Português (BR)</span><small>Portuguese</small></li>
+        <li class="chip"><span lang="nl">Nederlands</span><small>Dutch</small></li>
+        <li class="chip"><span lang="pl">Polski</span><small>Polish</small></li>
+        <li class="chip"><span lang="tr">Türkçe</span><small>Turkish</small></li>
+        <li class="chip"><span lang="ru">Русский</span><small>Russian</small></li>
+        <li class="chip"><span lang="ja">日本語</span><small>Japanese</small></li>
+        <li class="chip"><span lang="ko">한국어</span><small>Korean</small></li>
+        <li class="chip"><span lang="zh-Hans">简体中文</span><small>Chinese, simplified</small></li>
+        <li class="chip"><span lang="zh-Hant">繁體中文</span><small>Chinese, traditional</small></li>
+      </ul>
+      <p class="note">Hebrew and Arabic read right to left. A built-in language selector in Settings overrides your browser's language.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="privacy" aria-labelledby="privacy-title">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Privacy</span>
+      <h2 id="privacy-title">Private by design</h2>
+      <p class="lede">No analytics, no tracking, no data sharing, and no servers of our own.</p>
+    </div>
+
+    <div class="privacy-grid">
+      <div class="glass card">
+        <ul class="checks">
+          <li>
+            <span class="icon-tile is-good"><svg class="i" aria-hidden="true"><use href="#i-eye-off"/></svg></span>
+            <span><strong>No analytics, no tracking</strong><span class="d">No Google Analytics, no telemetry, no tracking service of any kind.</span></span>
+          </li>
+          <li>
+            <span class="icon-tile is-good"><svg class="i" aria-hidden="true"><use href="#i-code"/></svg></span>
+            <span><strong>No remote code</strong><span class="d">The extension does not use any remotely hosted code, and its fonts are packaged with it.</span></span>
+          </li>
+          <li>
+            <span class="icon-tile is-good"><svg class="i" aria-hidden="true"><use href="#i-database"/></svg></span>
+            <span><strong>Your data stays on your device</strong><span class="d">Settings, wishlist, owned games, recorded prices and logs are kept in your browser's extension storage, not on a server of ours.</span></span>
+          </li>
+          <li>
+            <span class="icon-tile is-good"><svg class="i" aria-hidden="true"><use href="#i-trash"/></svg></span>
+            <span><strong>One click erases it</strong><span class="d">“Erase all my data” (popup and Settings) disconnects PSN and deletes the wishlist, owned games, caches, recorded prices and logs. Your preference settings are kept.</span></span>
+          </li>
+          <li>
+            <span class="icon-tile is-good"><svg class="i" aria-hidden="true"><use href="#i-image"/></svg></span>
+            <span><strong>Pictures are loaded by your browser</strong><span class="d">The small thumbnails in live search (mostly from Steam's image server) and, if you connect PSN, your avatar are plain image loads made by the browser itself, so those servers see what any image request shows, such as your IP address. Turn off Live Search Suggestions to stop the thumbnails.</span></span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="glass card hosts-card">
+        <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-server"/></svg></span>
+        <h3>The only servers it talks to</h3>
+        <p>Five documented hosts. The network layer refuses any other, a test fails if this list and the privacy texts disagree, and Settings shows a log of every request (host, path, status and time, never the query, headers or data).</p>
+        <ul class="hosts">
+          <li>
+            <div class="h"><code>www.cheapshark.com</code></div>
+            <p>Exact-game lookup, cross-platform prices, the lowest-ever PC price, Metacritic and Steam scores, and live search suggestions (text only).</p>
+          </li>
+          <li>
+            <div class="h"><code>api.frankfurter.dev</code></div>
+            <p>Daily exchange rates. Only currency codes are sent.</p>
+          </li>
+          <li>
+            <div class="h"><code>store.playstation.com</code></div>
+            <p>The store itself. Once a day the saved page of each wishlisted game is read (at most 20, no cookies) to record its price.</p>
+          </li>
+          <li>
+            <div class="h"><code>ca.account.sony.com</code><span class="badge">Optional</span></div>
+            <p>PSN sign-in, only if you connect PSN.</p>
+          </li>
+          <li>
+            <div class="h"><code>m.np.playstation.com</code><span class="badge">Optional</span></div>
+            <p>PSN library and trophies, only if you connect PSN.</p>
+          </li>
+        </ul>
       </div>
     </div>
-    <div class="feat">
-      <span class="feat-icon">📦</span>
-      <div class="feat-title">Chrome Web Store</div>
-      <div class="feat-desc">Coming soon — listing in review. Star the GitHub repo to be notified.</div>
+
+    <div class="btn-row privacy-cta">
+      <a class="btn btn-glass" href="privacy-policy.html"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Read the full privacy policy</a>
     </div>
   </div>
 </section>
 
-<section id="supporters" style="text-align:center" hidden>
-  <h2>🙏 Supporters</h2>
-  <p class="sub-h2">Thank you to everyone who chose to be listed here.</p>
-  <div class="langs-grid" id="supporters-list"></div>
-</section>
+<section class="section" id="install" aria-labelledby="install-title">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Install</span>
+      <h2 id="install-title">Get PS Store Enhancer</h2>
+      <p class="lede">The Chrome Web Store listing is not live yet. Until it is, you can install the extension yourself from the GitHub release.</p>
+    </div>
 
-<section style="text-align:center">
-  <h2>❤️ Support development</h2>
-  <p class="sub-h2">PS Store Enhancer is free and open-source. If it saves you money or time, consider supporting its development.</p>
-  <div class="cta-row">
-    <a class="btn" href="https://ko-fi.com/idanlights" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#00b4f0,#0091d5)">☕ Ko-fi</a>
-    <a class="btn" href="https://buymeacoffee.com/solvaris" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#ffdd00,#e0bd00);color:#1a1a05">☕ Buy Me a Coffee</a>
-    <a class="btn" href="https://www.patreon.com/c/Solvaris" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#ff5a5f,#d6336c)">❤️ Patreon</a>
+    <div class="install-grid">
+      <!-- ===== CHROME WEB STORE LINK: swap this one element when the listing goes live. =====
+           Replace the badge and the paragraph below with:
+             <a class="btn btn-primary" href="THE-STORE-URL" target="_blank" rel="noopener">Add to Chrome</a>
+           and change the heading's wording if you like. Nothing else on the page refers to the store listing. -->
+      <div class="glass card store-slot" id="store-link">
+        <span class="icon-tile is-warn"><svg class="i" aria-hidden="true"><use href="#i-clock"/></svg></span>
+        <h3>Chrome Web Store</h3>
+        <span class="badge badge-soon"><svg class="i" aria-hidden="true"><use href="#i-clock"/></svg>Coming soon</span>
+        <p>The listing is not live yet, so there is no store link to give you. Until it is, install the extension yourself from the GitHub release, with the steps next to this card.</p>
+      </div>
+      <!-- ===== end of the Chrome Web Store slot ===== -->
+
+      <div class="glass card">
+        <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-download"/></svg></span>
+        <h3>Developer install</h3>
+        <ol class="steps">
+          <li><span>Download the zip from the <a href="https://github.com/DrummingBird1/ps-store-enhancer/releases/latest" target="_blank" rel="noopener">latest GitHub release</a>.</span></li>
+          <li><span>Unzip it.</span></li>
+          <li><span>Open <code>chrome://extensions</code> in Chrome.</span></li>
+          <li><span>Turn on <strong>Developer mode</strong> (top right).</span></li>
+          <li><span>Click <strong>Load unpacked</strong> and choose the unzipped folder (the one that contains <code>manifest.json</code>).</span></li>
+          <li><span>Visit <a href="https://store.playstation.com" target="_blank" rel="noopener">store.playstation.com</a> and open a game.</span></li>
+        </ol>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="https://github.com/DrummingBird1/ps-store-enhancer/releases/latest" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-github"/></svg>Open the latest release</a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<footer>
-  <p>
-    <a href="https://github.com/DrummingBird1/ps-store-enhancer">GitHub</a> ·
-    <a href="https://github.com/DrummingBird1/ps-store-enhancer/blob/main/CHANGELOG.md">Changelog</a> ·
-    <a href="https://ko-fi.com/idanlights">Ko-fi</a> ·
-    <a href="https://buymeacoffee.com/solvaris">Buy Me a Coffee</a> ·
-    <a href="https://www.patreon.com/c/Solvaris">Patreon</a> ·
-    <a href="https://github.com/DrummingBird1/ps-store-enhancer/blob/main/LICENSE">MIT License</a> ·
-    <a href="privacy-policy.html">Privacy Policy</a> ·
-    <a href="https://github.com/DrummingBird1/ps-store-enhancer/issues">Report a bug</a>
-  </p>
-  <p>Data: <a href="https://www.cheapshark.com/" target="_blank" rel="noopener">CheapShark</a> (prices, Metacritic &amp; Steam ratings) · <a href="https://psprices.com/" target="_blank" rel="noopener">PSPrices</a> · <a href="https://psnprofiles.com/" target="_blank" rel="noopener">PSNProfiles</a> · <a href="https://frankfurter.dev/" target="_blank" rel="noopener">Frankfurter</a></p>
-  <div class="disclaimer">This extension is not affiliated with, endorsed by, or connected to Sony Interactive Entertainment, PlayStation, or any of their subsidiaries. PlayStation is a registered trademark of Sony Interactive Entertainment.</div>
+<section class="section" id="supporters" aria-labelledby="supporters-title" hidden>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Thank you</span>
+      <h2 id="supporters-title">Supporters</h2>
+      <p class="lede">Thank you to everyone who chose to be listed here.</p>
+    </div>
+    <div class="chips" id="supporters-list"></div>
+  </div>
+</section>
+
+<section class="section support" id="support" aria-labelledby="support-title">
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom:0">
+      <span class="eyebrow">Support</span>
+      <h2 id="support-title">Support development</h2>
+      <p class="lede">PS Store Enhancer is free and open source. If it saves you money or time, consider supporting its development.</p>
+    </div>
+    <div class="btn-row">
+      <a class="btn btn-support" href="https://ko-fi.com/idanlights" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-heart"/></svg>Ko-fi</a>
+      <a class="btn btn-support" href="https://buymeacoffee.com/solvaris" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-heart"/></svg>Buy Me a Coffee</a>
+      <a class="btn btn-support" href="https://www.patreon.com/c/Solvaris" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-heart"/></svg>Patreon</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-brand"><img src="assets/icon.png" alt="" width="28" height="28" loading="lazy">PS Store Enhancer</div>
+    <ul class="footer-links">
+      <li><a href="https://github.com/DrummingBird1/ps-store-enhancer" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://github.com/DrummingBird1/ps-store-enhancer/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a></li>
+      <li><a href="https://ko-fi.com/idanlights" target="_blank" rel="noopener">Ko-fi</a></li>
+      <li><a href="https://buymeacoffee.com/solvaris" target="_blank" rel="noopener">Buy Me a Coffee</a></li>
+      <li><a href="https://www.patreon.com/c/Solvaris" target="_blank" rel="noopener">Patreon</a></li>
+      <li><a href="https://github.com/DrummingBird1/ps-store-enhancer/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a></li>
+      <li><a href="privacy-policy.html">Privacy Policy</a></li>
+      <li><a href="https://github.com/DrummingBird1/ps-store-enhancer/issues" target="_blank" rel="noopener">Report a bug</a></li>
+    </ul>
+    <p>Data: <a href="https://www.cheapshark.com/" target="_blank" rel="noopener">CheapShark</a> (prices, Metacritic and Steam ratings) · <a href="https://frankfurter.dev/" target="_blank" rel="noopener">Frankfurter</a> (exchange rates, European Central Bank data). Reference links: <a href="https://psprices.com/" target="_blank" rel="noopener">PSPrices</a>, <a href="https://psnprofiles.com/" target="_blank" rel="noopener">PSNProfiles</a>.</p>
+    <p>Font: Rubik, under the <a href="fonts/OFL.txt">SIL Open Font License 1.1</a>. Formerly GameDeals+, then PS Store Insight.</p>
+    <p class="disclaimer">This extension is not affiliated with, endorsed by, or connected to Sony Interactive Entertainment, PlayStation, or any of their subsidiaries. PlayStation is a registered trademark of Sony Interactive Entertainment.</p>
+  </div>
 </footer>
 
-</div>
 <script src="supporters.js"></script>
+<script src="site.js"></script>
 </body>
 </html>

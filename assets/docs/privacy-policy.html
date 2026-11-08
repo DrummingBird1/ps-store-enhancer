@@ -4,77 +4,236 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PS Store Enhancer — Privacy Policy</title>
+<meta name="description" content="What PS Store Enhancer accesses, what it stores on your device and which services it contacts. No analytics, no tracking, no servers of its own.">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#070b16" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#eef2fa" media="(prefers-color-scheme: light)">
+<meta property="og:title" content="PS Store Enhancer — Privacy Policy">
+<meta property="og:description" content="What PS Store Enhancer accesses, what it stores on your device and which services it contacts. No analytics, no tracking, no servers of its own.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://drummingbird1.github.io/ps-store-enhancer/assets/og-image.png">
+<meta property="og:url" content="https://drummingbird1.github.io/ps-store-enhancer/privacy-policy.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="assets/icon.png">
+<link rel="apple-touch-icon" href="assets/icon.png">
+<link rel="preload" href="fonts/rubik-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="site.css">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0a0f1a; color: #c9d1d9; line-height: 1.7; }
-  .container { max-width: 720px; margin: 0 auto; padding: 48px 24px 80px; }
-  h1 { font-size: 28px; color: #fff; margin-bottom: 8px; }
-  .subtitle { color: #718096; font-size: 14px; margin-bottom: 40px; }
-  h2 { font-size: 18px; color: #4da6ff; margin: 32px 0 12px; }
-  p, li { font-size: 15px; margin-bottom: 12px; }
-  ul { padding-left: 24px; }
-  li { margin-bottom: 8px; }
-  a { color: #4da6ff; text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  .badge { display: inline-block; background: rgba(0,112,209,0.15); color: #4da6ff; padding: 2px 8px; border-radius: 4px; font-size: 12px; }
-  .card { background: #131b2e; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 20px; margin: 16px 0; }
-  table { width: 100%; border-collapse: collapse; margin: 12px 0; }
-  th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 14px; }
-  th { color: #4da6ff; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
-  footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); color: #4a5568; font-size: 12px; text-align: center; }
+/* ===== Privacy policy page only. Everything shared (tokens, header, footer, glass, tables, callout, focus) is in site.css. ===== */
+
+.policy-page { padding-block: clamp(12px, 3vw, 28px) clamp(40px, 7vw, 80px); }
+.policy { max-width: 70ch; margin-inline: auto; }
+
+.back-link {
+  display: inline-flex; align-items: center; gap: .5em; min-height: 44px;
+  color: var(--dim); font-size: .92rem; font-weight: 500; text-decoration: none;
+}
+.back-link:hover { color: var(--accent); text-decoration: underline; }
+.back-link svg.i { width: 1.2em; height: 1.2em; }
+
+.policy-head { padding-block: 4px clamp(20px, 3.5vw, 32px); }
+.policy-head .icon-tile { width: 52px; height: 52px; margin-top: 12px; border-radius: 16px; font-size: 26px; }
+.policy h1 {
+  margin-top: 18px;
+  font-size: clamp(2rem, 1.3rem + 3.2vw, 3rem);
+  font-weight: 700; letter-spacing: -.025em; line-height: 1.1;
+}
+.policy h1 .nb { white-space: nowrap; }
+.subtitle { margin-top: 14px; color: var(--dim); font-size: .95rem; }
+
+/* contents: small link pills */
+.toc { padding: 16px 18px 18px; }
+.toc-title { margin-bottom: 12px; color: var(--dim); font-size: .78rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+.toc .chips { justify-content: flex-start; gap: 8px; }
+.toc a.chip { min-height: 36px; padding: .3em .9em; align-items: center; font-size: .88rem; text-decoration: none; transition: border-color .2s, color .2s, background .2s; }
+.toc a.chip:hover { border-color: var(--accent-line); background: var(--accent-soft); color: var(--accent); }
+
+/* sections */
+.policy-body > section { margin-top: clamp(34px, 5.5vw, 52px); }
+.policy h2 { font-size: clamp(1.4rem, 1.15rem + 1vw, 1.75rem); font-weight: 600; }
+.policy section > * + * { margin-top: 1em; }
+.policy section > h2 + * { margin-top: .8em; }
+.policy section p, .policy section li { color: var(--dim); }
+.policy strong { color: var(--text); font-weight: 600; }
+.policy em { color: var(--text); font-style: italic; }
+.policy section ul { display: grid; gap: .6em; padding-inline-start: 1.3em; }
+.policy section li::marker { color: var(--accent); }
+.policy .fine { font-size: .88rem; }
+
+/* "does not collect": a check in front of every line */
+.policy section ul.no-list { list-style: none; padding: 0; gap: 12px; }
+.policy section ul.no-list li { display: flex; gap: 14px; align-items: flex-start; }
+.policy section ul.no-list .icon-tile { width: 32px; height: 32px; margin-top: 1px; border-radius: 10px; font-size: 17px; }
+
+/* tables: a glass panel that scrolls sideways by itself on narrow screens */
+.policy .table-wrap {
+  border-radius: var(--r);
+  /* edge shadows that show only on the side that still has more to scroll (the "local" layers cover them at the ends) */
+  background-image:
+    linear-gradient(to right, var(--glass-solid) 25%, transparent),
+    linear-gradient(to left, var(--glass-solid) 25%, transparent),
+    linear-gradient(to right, var(--accent-soft), transparent),
+    linear-gradient(to left, var(--accent-soft), transparent),
+    var(--glass);
+  background-position: left center, right center, left center, right center, 0 0;
+  background-size: 40px 100%, 40px 100%, 28px 100%, 28px 100%, auto;
+  background-repeat: no-repeat;
+  background-attachment: local, local, scroll, scroll, scroll;
+}
+.policy .table-wrap table { min-width: 36rem; font-size: .9rem; line-height: 1.5; }
+.policy .table-wrap th, .policy .table-wrap td { padding: .8em 1.05em; }
+.policy .table-wrap thead th { color: var(--dim); font-size: .74rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+.policy .table-wrap tbody th { color: var(--text); font-weight: 600; background: none; }
+.policy .table-wrap tbody tr:last-child th { border-block-end: 0; }
+.policy .table-wrap table.perm { min-width: 32rem; }
+.policy .table-wrap table.perm tbody th { width: 38%; }
+.policy .table-wrap .badge { white-space: normal; overflow-wrap: anywhere; border-radius: 10px; font-size: .78rem; font-family: var(--mono); font-weight: 500; }
+.policy code { padding: .1em .38em; }
+
+.policy .callout { color: var(--dim); }
+.policy .callout strong { color: var(--text); }
+
+.policy-end {
+  margin-top: clamp(40px, 6vw, 60px); padding-top: 22px;
+  border-top: 1px solid var(--line);
+  color: var(--dim); font-size: .85rem;
+}
+.policy-end .back-link { margin-top: 8px; }
+
+.site-footer .footer-links a[aria-current="page"] { color: var(--text); text-decoration: underline; }
+
+/* Printed on paper: dark tokens would give white-on-white, so print with a plain light set */
+@media print {
+  :root { --bg: #fff; --glow: none; --glass: none; --glass-solid: #fff; --panel: #fff; --panel2: #eee; --line: #bbb; --line-strong: #888; --text: #000; --dim: #222; --faint: #333; --accent: #0b3d91; --accent-soft: #eef2fa; --accent-line: #0b3d91; --good: #0a5a38; --good-soft: #eaf6f0; --shadow: none; }
+  body { background: #fff; }
+  .site-header, .skip-link, .toc, .back-link, .site-footer .footer-links { display: none !important; }
+  .glass, .table-wrap { box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .table-wrap { overflow: visible; }
+  .policy .table-wrap table { min-width: 0; }
+  .policy-body > section, .table-wrap tr { break-inside: avoid; }
+}
 </style>
 </head>
-<body>
-<div class="container">
+<body id="top">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2.2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></symbol>
+  <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+</svg>
 
-<h1>🔒 PS Store Enhancer — Privacy Policy</h1>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="index.html"><img src="assets/icon.png" alt="" width="32" height="32"><span class="brand-name">PS Store Enhancer</span></a>
+    <nav class="nav" aria-label="Sections">
+      <details class="nav-menu">
+        <summary><svg class="i" aria-hidden="true"><use href="#i-menu"/></svg>Menu</summary>
+        <ul>
+          <li><a href="index.html#new">New in 3.0</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#tour">Screenshots</a></li>
+          <li><a href="index.html#languages">Languages</a></li>
+          <li><a href="index.html#privacy">Privacy</a></li>
+          <li><a href="index.html#support">Support</a></li>
+        </ul>
+      </details>
+    </nav>
+    <a class="btn btn-primary btn-sm" href="index.html#install">Install</a>
+  </div>
+</header>
+
+<main id="main" tabindex="-1" class="wrap policy-page">
+<article class="policy">
+
+<header class="policy-head">
+<a class="back-link" href="index.html"><svg class="i" aria-hidden="true"><use href="#i-arrow-left"/></svg>Back to home</a>
+<div class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-lock"/></svg></div>
+<h1>PS Store <span class="nb">Enhancer —</span> Privacy Policy</h1>
 <p class="subtitle">Last updated: November 2026 · Formerly known as GameDeals+, then PS Store Insight</p>
+</header>
 
+<nav class="toc glass" aria-label="On this page">
+<p class="toc-title">On this page</p>
+<ul class="chips">
+  <li><a class="chip" href="#overview">Overview</a></li>
+  <li><a class="chip" href="#data-we-collect">Data We Collect</a></li>
+  <li><a class="chip" href="#data-we-do-not-collect">Data We Do NOT Collect</a></li>
+  <li><a class="chip" href="#third-party-apis">Third-Party APIs</a></li>
+  <li><a class="chip" href="#psn-account-connection">PSN Account Connection</a></li>
+  <li><a class="chip" href="#permissions">Permissions</a></li>
+  <li><a class="chip" href="#reporting-a-problem">Reporting a problem</a></li>
+  <li><a class="chip" href="#fonts">Fonts</a></li>
+  <li><a class="chip" href="#sharing-a-wishlist">Sharing a wishlist</a></li>
+  <li><a class="chip" href="#data-retention">Data Retention</a></li>
+  <li><a class="chip" href="#childrens-privacy">Children's Privacy</a></li>
+  <li><a class="chip" href="#changes">Changes to This Policy</a></li>
+  <li><a class="chip" href="#disclaimer">Disclaimer</a></li>
+  <li><a class="chip" href="#contact">Contact</a></li>
+</ul>
+</nav>
+
+<div class="policy-body">
+
+<section id="overview">
 <h2>Overview</h2>
 <p>PS Store Enhancer (formerly GameDeals+, then PS Store Insight) is a browser extension that enhances the PlayStation Store website. Your privacy is important to us. This policy explains what data the extension accesses, how it's used, and how it's stored.</p>
+</section>
 
+<section id="data-we-collect">
 <h2>Data We Collect</h2>
-<div class="card">
+<div class="table-wrap glass" role="region" aria-label="Data the extension stores" tabindex="0">
 <table>
-  <tr><th>Data</th><th>Purpose</th><th>Storage</th></tr>
-  <tr><td>User preferences</td><td>Filter toggles, region, language settings</td><td>Local (chrome.storage.sync)</td></tr>
-  <tr><td>PSN session token</td><td>Optional PSN account authentication</td><td>Local (chrome.storage.local)</td></tr>
-  <tr><td>Game library</td><td>Showing owned games, hiding them from search</td><td>Local (chrome.storage.local)</td></tr>
-  <tr><td>Manually added games</td><td>User's custom owned games list</td><td>Local (chrome.storage.local)</td></tr>
-  <tr><td>Wishlist</td><td>Game titles, your price or % targets, optional notes, and the last prices seen (cheapest PC price, and the PS Store price shown on the game's page)</td><td>Local (chrome.storage.local)</td></tr>
-  <tr><td>Recorded prices</td><td>One price per game per day (price, and for PlayStation prices the sale details shown on the page: original price, percent off, end date, PlayStation Plus price) for games you view or wishlist, the latest 400 days with a recorded price are kept and used to draw your own price trend. Included in the JSON backup you can export. Never uploaded.</td><td>Local (chrome.storage.local)</td></tr>
-  <tr><td>Network log</td><td>The last 200 requests the extension made: host, path, status and duration. Never the query string, headers, tokens or any data sent or received. You can view, copy or clear it in Settings.</td><td>Local (chrome.storage.local)</td></tr>
-  <tr><td>Diagnostics log</td><td>The last 120 events of API calls and the PSN connection (host, path, status — never tokens, passwords or full URLs with parameters), to help you troubleshoot. You can copy or clear it in Settings.</td><td>Local (chrome.storage.local)</td></tr>
-  <tr><td>Small UI state</td><td>Which cards are collapsed, whether the first-run tour or the one-time review prompt was shown</td><td>Local (chrome.storage.local)</td></tr>
-  <tr><td>API response cache</td><td>Reduce API calls, improve performance</td><td>Local (chrome.storage.local)</td></tr>
+  <thead><tr><th scope="col">Data</th><th scope="col">Purpose</th><th scope="col">Storage</th></tr></thead>
+  <tbody>
+  <tr><th scope="row">User preferences</th><td>Filter toggles, region, language settings</td><td>Local (chrome.storage.sync)</td></tr>
+  <tr><th scope="row">PSN session token</th><td>Optional PSN account authentication</td><td>Local (chrome.storage.local)</td></tr>
+  <tr><th scope="row">Game library</th><td>Showing owned games, hiding them from search</td><td>Local (chrome.storage.local)</td></tr>
+  <tr><th scope="row">Manually added games</th><td>User's custom owned games list</td><td>Local (chrome.storage.local)</td></tr>
+  <tr><th scope="row">Wishlist</th><td>Game titles, your price or % targets, optional notes, and the last prices seen (cheapest PC price, and the PS Store price shown on the game's page)</td><td>Local (chrome.storage.local)</td></tr>
+  <tr><th scope="row">Recorded prices</th><td>One price per game per day (price, and for PlayStation prices the sale details shown on the page: original price, percent off, end date, PlayStation Plus price) for games you view or wishlist, the latest 400 days with a recorded price are kept and used to draw your own price trend. Included in the JSON backup you can export. Never uploaded.</td><td>Local (chrome.storage.local)</td></tr>
+  <tr><th scope="row">Network log</th><td>The last 200 requests the extension made: host, path, status and duration. Never the query string, headers, tokens or any data sent or received. You can view, copy or clear it in Settings.</td><td>Local (chrome.storage.local)</td></tr>
+  <tr><th scope="row">Diagnostics log</th><td>The last 120 events of API calls and the PSN connection (host, path, status — never tokens, passwords or full URLs with parameters), to help you troubleshoot. You can copy or clear it in Settings.</td><td>Local (chrome.storage.local)</td></tr>
+  <tr><th scope="row">Small UI state</th><td>Which cards are collapsed, whether the first-run tour or the one-time review prompt was shown</td><td>Local (chrome.storage.local)</td></tr>
+  <tr><th scope="row">API response cache</th><td>Reduce API calls, improve performance</td><td>Local (chrome.storage.local)</td></tr>
+  </tbody>
 </table>
 </div>
+</section>
 
+<section id="data-we-do-not-collect">
 <h2>Data We Do NOT Collect</h2>
-<ul>
-  <li><strong>No personal information</strong> — we do not collect your name, email, address, or payment information.</li>
-  <li><strong>No analytics or tracking</strong> — we do not use Google Analytics, telemetry, or any tracking service.</li>
-  <li><strong>No data sharing</strong> — we do not sell, share, or transmit your data to any third party.</li>
-  <li><strong>No remote servers</strong> — all data is stored locally on your device. We do not operate any backend servers.</li>
+<ul class="no-list">
+  <li><span class="icon-tile is-good"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span><span><strong>No personal information</strong> — we do not collect your name, email, address, or payment information.</span></li>
+  <li><span class="icon-tile is-good"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span><span><strong>No analytics or tracking</strong> — we do not use Google Analytics, telemetry, or any tracking service.</span></li>
+  <li><span class="icon-tile is-good"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span><span><strong>No data sharing</strong> — we do not sell, share, or transmit your data to any third party.</span></li>
+  <li><span class="icon-tile is-good"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span><span><strong>No remote servers</strong> — all data is stored locally on your device. We do not operate any backend servers.</span></li>
 </ul>
+</section>
 
+<section id="third-party-apis">
 <h2>Third-Party APIs</h2>
 <p>The extension communicates with the following external services to provide its features:</p>
-<div class="card">
+<div class="table-wrap glass" role="region" aria-label="External services the extension uses" tabindex="0">
 <table>
-  <tr><th>Service</th><th>Data Sent</th><th>Purpose</th></tr>
-  <tr><td>Sony / PSN API</td><td>Authentication token (user-initiated)</td><td>Fetch game library and trophy data</td></tr>
-  <tr><td>CheapShark API</td><td>Game title, a CheapShark game ID or Steam app ID, or search text as you type (text only)</td><td>Exact-game lookup, cross-platform prices, the all-time low, Metacritic and Steam ratings; live search suggestions; daily wishlist price checks</td></tr>
-  <tr><td>Frankfurter API</td><td>None (currency codes only, e.g. USD→EUR)</td><td>Daily exchange rates for price display</td></tr>
-  <tr><td>PlayStation Store (store.playstation.com)</td><td>None beyond the page address you already saved with a wishlisted game (no cookies, no account)</td><td>Once a day, in the background, the saved page of each wishlisted game (at most 20) is read to record its PlayStation price on this device. Turned off with the <em>Price insight</em> setting.</td></tr>
-  <tr><td>Image servers of the game shops (mostly Steam's, <code>steamstatic.com</code>)</td><td>Nothing from the extension. Your browser itself requests each thumbnail picture, so that server sees what any image request shows: your IP address, your browser version, which picture was asked for and, as the referrer, the address of the PlayStation Store site (unless the browser withholds it)</td><td>The small game thumbnails in the live search dropdown, at the picture address CheapShark returned. Turned off with the <em>Live Search Suggestions</em> setting.</td></tr>
-  <tr><td>Sony image server (PSN avatar)</td><td>Nothing from the extension. Your browser itself requests your avatar picture, at the address Sony's profile service returned</td><td>Show your PSN avatar on the settings page, only while PSN is connected</td></tr>
-  <tr><td>PSPrices / PSNProfiles / HowLongToBeat</td><td>None (link only)</td><td>External reference links</td></tr>
+  <thead><tr><th scope="col">Service</th><th scope="col">Data Sent</th><th scope="col">Purpose</th></tr></thead>
+  <tbody>
+  <tr><th scope="row">Sony / PSN API</th><td>Authentication token (user-initiated)</td><td>Fetch game library and trophy data</td></tr>
+  <tr><th scope="row">CheapShark API</th><td>Game title, a CheapShark game ID or Steam app ID, or search text as you type (text only)</td><td>Exact-game lookup, cross-platform prices, the all-time low, Metacritic and Steam ratings; live search suggestions; daily wishlist price checks</td></tr>
+  <tr><th scope="row">Frankfurter API</th><td>None (currency codes only, e.g. USD→EUR)</td><td>Daily exchange rates for price display</td></tr>
+  <tr><th scope="row">PlayStation Store (store.playstation.com)</th><td>None beyond the page address you already saved with a wishlisted game (no cookies, no account)</td><td>Once a day, in the background, the saved page of each wishlisted game (at most 20) is read to record its PlayStation price on this device. Turned off with the <em>Price insight</em> setting.</td></tr>
+  <tr><th scope="row">Image servers of the game shops (mostly Steam's, <code>steamstatic.com</code>)</th><td>Nothing from the extension. Your browser itself requests each thumbnail picture, so that server sees what any image request shows: your IP address, your browser version, which picture was asked for and, as the referrer, the address of the PlayStation Store site (unless the browser withholds it)</td><td>The small game thumbnails in the live search dropdown, at the picture address CheapShark returned. Turned off with the <em>Live Search Suggestions</em> setting.</td></tr>
+  <tr><th scope="row">Sony image server (PSN avatar)</th><td>Nothing from the extension. Your browser itself requests your avatar picture, at the address Sony's profile service returned</td><td>Show your PSN avatar on the settings page, only while PSN is connected</td></tr>
+  <tr><th scope="row">PSPrices / PSNProfiles / HowLongToBeat</th><td>None (link only)</td><td>External reference links</td></tr>
+  </tbody>
 </table>
 </div>
 <p>The extension adds no personal or identifying information to these requests; as with any web request, the server still sees your IP address and your browser's details (see also &ldquo;Pictures&rdquo; below). Only game titles are used as search queries. If you add games to your wishlist, their titles are sent to CheapShark once per day in the background to check for price drops; this can be disabled by removing items from your wishlist or turning the feature off in settings. As you type in the PlayStation Store's own search box, the text you've typed so far (2+ characters) is sent to CheapShark to show enriched suggestions (thumbnail, title, cheapest PC price) in a dropdown; this happens only while the search box has focus and can be turned off in settings ("Live Search Suggestions").</p>
 <p><strong>Pictures.</strong> Two kinds of pictures are loaded by your browser itself, from the server that hosts them, as on any web page: the small game thumbnails in the live search dropdown (the picture address comes from CheapShark's answer; it is usually on Steam's image server, <code>steamstatic.com</code>, and for some games on the image server of another shop such as GOG, Green Man Gaming, GamersGate, Humble Bundle or WinGameStore) and, if you connected PSN, your PSN avatar on the settings page (the address comes from Sony's profile service). Those servers can see what any image request shows them, such as your IP address, your browser version, which picture was asked for and, as the browser's referrer information, the page it is shown on (unless the browser withholds it). Nothing from the extension (no token, no account detail, no search text) is added to these requests. Because the browser makes them, they need no host permission and do not appear in the extension's network log. Turn off <em>Live Search Suggestions</em> to stop the thumbnails; the avatar goes when you disconnect PSN.</p>
+</section>
 
+<section id="psn-account-connection">
 <h2>PSN Account Connection</h2>
 <p>Connecting your PSN account is <strong>entirely optional</strong>. If you choose to connect:</p>
 <ul>
@@ -84,31 +243,43 @@
   <li>You can disconnect your PSN account at any time from the extension's settings page, which immediately deletes all PSN-related data from local storage.</li>
   <li>No PSN credentials or data are ever sent to any server other than Sony's official API endpoints.</li>
 </ul>
+</section>
 
+<section id="permissions">
 <h2>Permissions</h2>
-<div class="card">
-<table>
-  <tr><th>Permission</th><th>Why It's Needed</th></tr>
-  <tr><td><span class="badge">storage</span></td><td>Save your preferences, owned-games list, wishlist, and cached API data locally</td></tr>
-  <tr><td><span class="badge">alarms</span></td><td>Schedule periodic library sync, cache cleanup, and daily wishlist price checks</td></tr>
-  <tr><td><span class="badge">cookies</span></td><td>Detect/set the PSN session cookie (npsso) on Sony's domain for optional PSN login</td></tr>
-  <tr><td><span class="badge">notifications</span></td><td>Show a local desktop notification when a wishlisted game's price drops below your target</td></tr>
-  <tr><td><span class="badge">contextMenus</span></td><td>Add a right-click "Find on PS Store Enhancer" option on the PlayStation Store</td></tr>
-  <tr><td><span class="badge">webRequest</span> <em>(optional)</em></td><td>Only if you choose to connect PSN <em>and</em> Chrome hides Sony's sign-in redirect from extensions: lets the extension read that redirect while a connect is running, observation only. It is requested at that moment, never at install, and nothing else uses it.</td></tr>
-  <tr><td><span class="badge">declarativeNetRequestWithHostAccess</span></td><td>One rule that removes the extension's <code>Origin</code> header from its sign-in request to Sony's token address, which Sony rejects otherwise. It blocks and redirects nothing and applies to no other request.</td></tr>
+<div class="table-wrap glass" role="region" aria-label="Browser permissions the extension requests" tabindex="0">
+<table class="perm">
+  <thead><tr><th scope="col">Permission</th><th scope="col">Why It's Needed</th></tr></thead>
+  <tbody>
+  <tr><th scope="row"><span class="badge">storage</span></th><td>Save your preferences, owned-games list, wishlist, and cached API data locally</td></tr>
+  <tr><th scope="row"><span class="badge">alarms</span></th><td>Schedule periodic library sync, cache cleanup, and daily wishlist price checks</td></tr>
+  <tr><th scope="row"><span class="badge">cookies</span></th><td>Detect/set the PSN session cookie (npsso) on Sony's domain for optional PSN login</td></tr>
+  <tr><th scope="row"><span class="badge">notifications</span></th><td>Show a local desktop notification when a wishlisted game's price drops below your target</td></tr>
+  <tr><th scope="row"><span class="badge">contextMenus</span></th><td>Add a right-click "Find on PS Store Enhancer" option on the PlayStation Store</td></tr>
+  <tr><th scope="row"><span class="badge">webRequest</span> <em>(optional)</em></th><td>Only if you choose to connect PSN <em>and</em> Chrome hides Sony's sign-in redirect from extensions: lets the extension read that redirect while a connect is running, observation only. It is requested at that moment, never at install, and nothing else uses it.</td></tr>
+  <tr><th scope="row"><span class="badge">declarativeNetRequestWithHostAccess</span></th><td>One rule that removes the extension's <code>Origin</code> header from its sign-in request to Sony's token address, which Sony rejects otherwise. It blocks and redirects nothing and applies to no other request.</td></tr>
+  </tbody>
 </table>
 </div>
-<p style="font-size:13px;color:#718096">Host access is limited to: <code>store.playstation.com</code> (UI injection, and the once-a-day read of wishlisted games' own pages), <code>ca.account.sony.com</code> &amp; <code>m.np.playstation.com</code> (optional PSN), <code>cheapshark.com</code> (prices, Metacritic and Steam ratings), and <code>api.frankfurter.dev</code> (currency rates). The extension requests no other site access (showing a picture from another server, see <em>Pictures</em> above, needs none).</p>
+<p class="fine">Host access is limited to: <code>store.playstation.com</code> (UI injection, and the once-a-day read of wishlisted games' own pages), <code>ca.account.sony.com</code> &amp; <code>m.np.playstation.com</code> (optional PSN), <code>cheapshark.com</code> (prices, Metacritic and Steam ratings), and <code>api.frankfurter.dev</code> (currency rates). The extension requests no other site access (showing a picture from another server, see <em>Pictures</em> above, needs none).</p>
+</section>
 
+<section id="reporting-a-problem">
 <h2>Reporting a problem</h2>
 <p>"Report a problem" (popup and settings page) copies the extension version, your browser string and the local diagnostics log to your clipboard and opens the project's bug-report form on GitHub in a new tab. The log never contains tokens, codes or query strings. Nothing is sent by the extension itself: you decide whether to paste the text into the form.</p>
+</section>
 
+<section id="fonts">
 <h2>Fonts</h2>
 <p>The font used by the extension (Rubik, SIL Open Font License) is packaged with it and is never downloaded: the extension's pages and the cards on store pages read the font files from the extension's own package. No font, script or stylesheet is loaded from a server. The only things your browser loads from other servers are the pictures described under <em>Pictures</em> above.</p>
+</section>
 
+<section id="sharing-a-wishlist">
 <h2>Sharing a wishlist</h2>
 <p>"Copy share link" (settings page, your action only) builds a link to a static page on this website with your wishlist <em>encoded in the part of the URL after the <code>#</code></em> — game names and last-seen PC prices only, no targets or notes. Browsers never send that part of a URL to a server, so nothing is uploaded or stored; anyone you give the link to can read the list.</p>
+</section>
 
+<section id="data-retention">
 <h2>Data Retention</h2>
 <ul>
   <li>All data is stored locally on your device using Chrome's storage API.</li>
@@ -117,23 +288,57 @@
   <li>You can manually clear all cached data from the extension's settings page.</li>
   <li><strong>Erase all my data</strong> (settings page and popup) disconnects PSN and deletes everything the extension stored locally — wishlist, owned games, caches, recorded prices and the diagnostics and network logs. Your preference settings are kept.</li>
 </ul>
+</section>
 
+<section id="childrens-privacy">
 <h2>Children's Privacy</h2>
 <p>This extension does not knowingly collect data from children under 13. The extension does not collect personal information from any user.</p>
+</section>
 
+<section id="changes">
 <h2>Changes to This Policy</h2>
 <p>We may update this privacy policy from time to time. Changes will be reflected by updating the "Last updated" date at the top of this page.</p>
+</section>
 
+<section id="disclaimer">
 <h2>Disclaimer</h2>
-<p><strong>This extension is not affiliated with, endorsed by, or connected to Sony Interactive Entertainment, PlayStation, or any of their subsidiaries.</strong> PlayStation is a registered trademark of Sony Interactive Entertainment. All product names, logos, and brands are property of their respective owners.</p>
+<p class="callout"><strong>This extension is not affiliated with, endorsed by, or connected to Sony Interactive Entertainment, PlayStation, or any of their subsidiaries.</strong> PlayStation is a registered trademark of Sony Interactive Entertainment. All product names, logos, and brands are property of their respective owners.</p>
+</section>
 
+<section id="contact">
 <h2>Contact</h2>
 <p>If you have questions about this privacy policy, you can open an issue on the extension's support page or contact the developer through the Chrome Web Store listing.</p>
-
-<footer>
-  PS Store Enhancer (formerly GameDeals+, then PS Store Insight) · Privacy Policy · November 2026
-</footer>
+</section>
 
 </div>
+
+<footer class="policy-end">
+  PS Store Enhancer (formerly GameDeals+, then PS Store Insight) · Privacy Policy · November 2026
+  <br><a class="back-link" href="index.html"><svg class="i" aria-hidden="true"><use href="#i-arrow-left"/></svg>Back to home</a>
+</footer>
+
+</article>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-brand"><img src="assets/icon.png" alt="" width="28" height="28" loading="lazy">PS Store Enhancer</div>
+    <ul class="footer-links">
+      <li><a href="https://github.com/DrummingBird1/ps-store-enhancer" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://github.com/DrummingBird1/ps-store-enhancer/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a></li>
+      <li><a href="https://ko-fi.com/idanlights" target="_blank" rel="noopener">Ko-fi</a></li>
+      <li><a href="https://buymeacoffee.com/solvaris" target="_blank" rel="noopener">Buy Me a Coffee</a></li>
+      <li><a href="https://www.patreon.com/c/Solvaris" target="_blank" rel="noopener">Patreon</a></li>
+      <li><a href="https://github.com/DrummingBird1/ps-store-enhancer/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a></li>
+      <li><a href="privacy-policy.html" aria-current="page">Privacy Policy</a></li>
+      <li><a href="https://github.com/DrummingBird1/ps-store-enhancer/issues" target="_blank" rel="noopener">Report a bug</a></li>
+    </ul>
+    <p>Data: <a href="https://www.cheapshark.com/" target="_blank" rel="noopener">CheapShark</a> (prices, Metacritic and Steam ratings) · <a href="https://frankfurter.dev/" target="_blank" rel="noopener">Frankfurter</a> (exchange rates, European Central Bank data). Reference links: <a href="https://psprices.com/" target="_blank" rel="noopener">PSPrices</a>, <a href="https://psnprofiles.com/" target="_blank" rel="noopener">PSNProfiles</a>.</p>
+    <p>Font: Rubik, under the <a href="fonts/OFL.txt">SIL Open Font License 1.1</a>. Formerly GameDeals+, then PS Store Insight.</p>
+    <p class="disclaimer">This extension is not affiliated with, endorsed by, or connected to Sony Interactive Entertainment, PlayStation, or any of their subsidiaries. PlayStation is a registered trademark of Sony Interactive Entertainment.</p>
+  </div>
+</footer>
+
+<script src="site.js"></script>
 </body>
 </html>
