@@ -1104,7 +1104,14 @@ function boot(file, { hash = "", edit = () => {}, scripts = {}, supporters, atTo
   const errors = [];
   const virtualConsole = new VirtualConsole();
   virtualConsole.on("jsdomError", (e) => errors.push(e.message));
-  const html = serialize(variant(pageOf(file), edit).doc).replace(/<script src="([^"]+)"><\/script>/g, (_m, src) => `<script>${scripts[src] ?? readDocs(src)}</script>`);
+  // The scripts the page loads by address are run inline (jsdom does not fetch them): done on the DOM, not by matching tags in the serialized text.
+  const doc = variant(pageOf(file), edit).doc;
+  for (const el of doc.querySelectorAll("script[src]")) {
+    const src = el.getAttribute("src");
+    el.removeAttribute("src");
+    el.textContent = scripts[src] ?? readDocs(src);
+  }
+  const html = serialize(doc);
   const dom = new JSDOM(html, {
     runScripts: "dangerously",
     pretendToBeVisual: true,
