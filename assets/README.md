@@ -26,7 +26,8 @@ screenshots/
   en/                           English screenshots (upload these as the default set)
   he/                           Hebrew screenshots (upload under the Hebrew locale in the
                                  dashboard: Store Listing → language dropdown → Hebrew)
-docs/                           The GitHub Pages website — self-contained, see below
+docs/                           The GitHub Pages website (index.html, privacy-policy.html, wishlist.html,
+                                 site.css, site.js, fonts/) — self-contained, see below
 STORE-LISTING.txt               English description + permission justifications, copy-paste ready
 store-listing/                  The detailed description in all 16 languages, one .txt per language
 REVIEWER-NOTES.md               Notes for the Chrome Web Store review team
@@ -52,7 +53,8 @@ account. The steps are in `scripts/generate-assets/README.md`.
 ## Why `docs/assets/` has its own copies of a few images
 
 `docs/` (the website, deployed by `.github/workflows/pages.yml`) is kept self-contained — its
-icon, og-image, and four feature screenshots live in `docs/assets/` rather than reaching up into
+icon, og-image, the feature screenshots (the four English ones and a Hebrew product page) and the bundled Rubik
+font (`docs/fonts/`, with its licence) live inside it rather than reaching up into
 the folders above. That's a deliberate simplicity choice, not a hard constraint (the Pages deploy
 uploads `assets/docs/` as its own artifact, so it could reference sibling folders): keeping the
 site's asset set small and separate means a change to the store-listing screenshots doesn't

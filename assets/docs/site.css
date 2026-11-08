@@ -4,7 +4,7 @@
    Rubik is served from ./fonts (SIL Open Font License 1.1, see fonts/OFL.txt).
 
    Contents: 1 fonts, 2 tokens, 3 base, 4 icons, 5 skip link + top bar + nav, 6 buttons + badges + chips,
-             7 glass panels + cards + grid, 8 sections + headings, 9 footer, 10 prose / table / callout (inner pages),
+             7 glass panels + cards + grid, 8 sections + headings, 9 footer, 10 table / callout (inner pages),
              11 reduced motion, 12 forced colors */
 
 /* ── 1. Rubik (variable weight 300-900), five subsets chosen by unicode-range ── */
@@ -66,7 +66,6 @@
   --dim: #a3aec6;
   --faint: #929db5;
   --accent: #5aa3ff;
-  --accent-deep: #1769e0;
   --accent-ink: #04122a;                /* text on a solid accent button */
   --accent-soft: rgba(90,163,255,.16);
   --accent-line: rgba(90,163,255,.38);
@@ -76,7 +75,6 @@
   --warn: #f3c65a;
   --warn-soft: rgba(243,198,90,.12);
   --warn-line: rgba(243,198,90,.34);
-  --bad: #ff6b6b;
   --pink: #f27ab0;
   --pink-soft: rgba(242,122,176,.10);
   --pink-line: rgba(242,122,176,.30);
@@ -107,7 +105,6 @@
     --dim: #4b5878;
     --faint: #505c79;
     --accent: #1257c8;
-    --accent-deep: #1769e0;
     --accent-ink: #ffffff;
     --accent-soft: rgba(23,105,224,.12);
     --accent-line: rgba(18,87,200,.36);
@@ -117,7 +114,6 @@
     --warn: #7a5000;
     --warn-soft: rgba(143,95,0,.10);
     --warn-line: rgba(122,80,0,.34);
-    --bad: #b3201f;
     --pink: #a8124f;
     --pink-soft: rgba(168,18,79,.07);
     --pink-line: rgba(168,18,79,.28);
@@ -146,7 +142,7 @@ body {
   overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
-h1, h2, h3, h4, p, ul, ol, dl, dd, figure, blockquote { margin: 0; }
+h1, h2, h3, p, ul, ol, figure { margin: 0; }
 img { display: block; max-width: 100%; height: auto; }
 a { color: var(--accent); text-decoration-thickness: .08em; text-underline-offset: .2em; }
 a:hover { text-decoration-thickness: .15em; }
@@ -163,10 +159,6 @@ code {
 [hidden] { display: none !important; }
 main:focus { outline: none; }
 .wrap { max-width: calc(var(--max) + 2 * var(--gutter)); margin-inline: auto; padding-inline: var(--gutter); }
-.visually-hidden {
-  position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0; border: 0;
-  overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
-}
 
 /* ── 4. Icons: SVG line icons, stroke 1.8, round caps (use <svg class="i"><use href="#i-name"/></svg>) ── */
 svg.i {
@@ -236,6 +228,11 @@ svg.i {
   display: grid; gap: 2px; padding: 8px;
   background: var(--glass-solid); border: 1px solid var(--line-strong);
   border-radius: var(--r); box-shadow: var(--shadow);
+  /* On a short screen (a phone on its side, 400% zoom) the list is taller than the room under the bar. The bar is
+     sticky, so the page cannot scroll it into view: the list scrolls inside itself instead. */
+  max-height: calc(100vh - var(--bar-h) - 24px);
+  max-height: calc(100dvh - var(--bar-h) - 24px);
+  overflow-y: auto; overscroll-behavior: contain;
 }
 .nav-menu a {
   display: block; padding: .6em 1em; border-radius: 12px;
@@ -250,6 +247,7 @@ svg.i {
     .nav-menu::details-content { content-visibility: visible; }
     .nav-menu ul, .nav-menu[open] ul {
       position: static; width: auto; display: flex; gap: 2px; padding: 0;
+      max-height: none; overflow: visible;
       background: none; border: 0; border-radius: 0; box-shadow: none;
     }
     .nav-menu a { padding: .45em .85em; font-size: .9rem; border-radius: 999px; }
@@ -286,13 +284,13 @@ svg.i {
 }
 .badge svg.i { width: 1em; height: 1em; }
 .badge-soon { background: var(--warn-soft); border-color: var(--warn-line); color: var(--warn); }
-.badge-good { background: var(--good-soft); border-color: transparent; color: var(--good); }
 .badges { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; }
 
 /* chips: language names, supporters (supporters.js creates <span class="lang-tag">) */
 .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; list-style: none; padding: 0; }
 .chip, .lang-tag {
   display: inline-flex; align-items: baseline; gap: .55em;
+  min-width: 0; max-width: 100%; overflow-wrap: anywhere;   /* a long name with no spaces wraps instead of widening the page */
   padding: .45em 1em; border-radius: 999px;
   background: var(--panel); border: 1px solid var(--line);
   color: var(--text); font-size: .92rem;
@@ -323,12 +321,11 @@ svg.i {
 
 .grid { display: grid; gap: 16px; grid-template-columns: minmax(0, 1fr); grid-auto-flow: row dense; }
 @media (min-width: 640px) {
-  .grid-2, .grid-3, .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .grid > .span-2 { grid-column: span 2; }
 }
 @media (min-width: 960px) {
   .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .grid > .span-2-tablet { grid-column: auto; }
 }
 @media (min-width: 640px) and (max-width: 959px) {
@@ -368,14 +365,7 @@ h2 { font-size: clamp(1.75rem, 1.2rem + 2.3vw, 2.6rem); }
 .site-footer p { max-width: 46rem; margin-inline: auto; margin-bottom: 10px; }
 .site-footer .disclaimer { margin-top: 22px; padding: 14px 18px; border: 1px solid var(--line); border-radius: var(--r-sm); font-size: .82rem; }
 
-/* ── 10. Inner pages: prose, tables, callouts ── */
-.prose { max-width: 46rem; margin-inline: auto; }
-.prose > * + * { margin-top: 1em; }
-.prose h2 { margin-top: 2.2em; font-size: 1.5rem; }
-.prose h3 { margin-top: 1.6em; font-size: 1.15rem; }
-.prose p, .prose li { color: var(--dim); }
-.prose strong { color: var(--text); font-weight: 600; }
-.prose ul, .prose ol { display: grid; gap: .5em; padding-inline-start: 1.4em; }
+/* ── 10. Inner pages: tables, callouts (the pages style their own prose) ── */
 .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--r-sm); }
 .table-wrap table { width: 100%; min-width: 34rem; border-collapse: collapse; font-size: .92rem; }
 .table-wrap th, .table-wrap td { padding: .75em 1em; text-align: start; vertical-align: top; border-block-end: 1px solid var(--line); }
