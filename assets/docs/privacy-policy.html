@@ -87,6 +87,8 @@
 .policy .table-wrap tbody tr:last-child th { border-block-end: 0; }
 .policy .table-wrap table.perm { min-width: 32rem; }
 .policy .table-wrap table.perm tbody th { width: 38%; }
+/* the long permission name stays in one piece: break-word (unlike anywhere) makes the cell as wide as the name, and the table scrolls inside its panel on narrow screens */
+.policy .table-wrap table.perm .badge { overflow-wrap: break-word; }
 .policy .table-wrap .badge { white-space: normal; overflow-wrap: anywhere; border-radius: 10px; font-size: .78rem; font-family: var(--mono); font-weight: 500; }
 .policy code { padding: .1em .38em; }
 

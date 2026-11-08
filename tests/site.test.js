@@ -15,13 +15,15 @@
  *  - both themes keep 4.5:1 for text (3:1 for large headlines and icons) on every surface text can sit on, measured from the
  *    custom properties of site.css, and the rules of site.css and of every page <style> block are checked pair by pair;
  *  - site.css keeps its focus ring, reduced-motion and forced-colors handling; the bundled fonts and licence are there;
- *  - the install section says "Coming soon" exactly as long as there is no Chrome Web Store link;
+ *  - the install section says "Coming soon" exactly as long as there is no Chrome Web Store link, and every element marked
+ *    data-store-pending goes with it;
+ *  - site.js, supporters.js and the wishlist page's skip-link script really run (jsdom) on the pages that load them;
  *  - the privacy policy says what it said before the restyle.
  */
 const fs = require("fs");
 const path = require("path");
 const { execFileSync } = require("child_process");
-const { JSDOM } = require("jsdom");
+const { JSDOM, VirtualConsole } = require("jsdom");
 const { parseRules, declarations, declaration, declared, layered, ratio, flatten, parseColor, gradientStops } = require("./support/css");
 
 /* ── the site as files ── */
@@ -365,7 +367,7 @@ const MIN_TEXT = 4.5;
 const MIN_LARGE = 3; // large headlines
 const MIN_UI = 3; // icons, focus ring
 const BLACK = [0, 0, 0];
-const TEXT_TOKENS = ["--text", "--dim", "--faint", "--accent", "--good", "--warn", "--bad", "--pink"];
+const TEXT_TOKENS = ["--text", "--dim", "--faint", "--accent", "--good", "--warn", "--pink"];
 const GLOW_TEXT = ["--text", "--dim", "--accent"]; // the text tokens used in the hero, where the glow is
 const LAYOUT_TOKENS = new Set(["--r", "--r-sm", "--max", "--gutter", "--bar-h", "--font", "--mono"]);
 const stopsOf = (value, vars) => (/gradient\(/i.test(value) ? gradientStops(value, vars) : [parseColor(value, vars)]);
@@ -423,13 +425,11 @@ const COMPONENTS = [
   { name: "the support button", sel: [".btn", ".btn-support"], on: "base" },
   { name: "a badge", sel: [".badge"], on: "base" },
   { name: "the Coming soon badge", sel: [".badge", ".badge-soon"], on: "base" },
-  { name: "the good badge", sel: [".badge", ".badge-good"], on: "base" },
   { name: "a chip or a supporter's name", sel: [".chip"], on: "base" },
   { name: "the lede", sel: [".lede"], on: "top", noBackground: true },
   { name: "the eyebrow", sel: [".eyebrow"], on: "top", noBackground: true },
   { name: "card text", sel: [".card p"], on: "base", noBackground: true },
   { name: "bold text in a card", sel: [".card p strong"], on: "base", noBackground: true },
-  { name: "prose", sel: [".prose p"], on: "base", noBackground: true },
   { name: "the footer", sel: [".site-footer"], on: "page", noBackground: true },
   { name: "table headings", sel: [".table-wrap th"], on: "base" },
   { name: "table cells", sel: [".table-wrap td"], on: "base", noBackground: true },
@@ -641,7 +641,9 @@ function installProblems(pages) {
   const problems = [];
   const links = pages.flatMap(({ file, doc }) => [...doc.querySelectorAll("a[href]")].filter((a) => STORE_URL.test(a.getAttribute("href"))).map((a) => ({ file, href: a.getAttribute("href"), inInstall: file === "index.html" && section.contains(a) })));
   const spoken = words(section);
+  const pending = pages.flatMap(({ file, doc }) => [...doc.querySelectorAll("[data-store-pending]")].map((el) => `${file}: <${el.localName}${el.id ? ` id="${el.id}"` : ""}${el.classList.length ? ` class="${el.getAttribute("class")}"` : ""}>`));
   if (!links.length) {
+    if (!pending.length) problems.push("there is no Chrome Web Store link, but nothing is marked data-store-pending any more: the elements that say the listing is not live yet must carry it, so the swap check can find them (see the comment above #store-link in index.html)");
     if (!/coming soon/i.test(spoken)) problems.push('there is no Chrome Web Store link, so #install must say "Coming soon" (it does not): visitors would look for an install button that is not there');
     if (!section.querySelector('a[href^="https://github.com/DrummingBird1/ps-store-enhancer/releases"]')) problems.push("there is no Chrome Web Store link, so #install must offer the GitHub release instead (it has no link to it)");
     for (const { file, doc } of pages) {
@@ -655,8 +657,11 @@ function installProblems(pages) {
   const stale = [...new Set([...spoken.matchAll(NOT_LIVE)].map((m) => `"${m[0].toLowerCase()}"`))];
   if (section.querySelector(".badge-soon")) stale.push("a .badge-soon badge");
   if (stale.length) {
-    problems.push(`a Chrome Web Store link was added (${links[0].href}) but #install still says ${stale.join(", ")}: remove the "Coming soon" badge and every "not live yet" sentence (the #store-link card and the lede above the cards), see the comment in index.html`);
+    problems.push(`a Chrome Web Store link was added (${links[0].href}) but #install still says ${stale.join(", ")}: remove the "Coming soon" badge and every "not live yet" sentence, see the comment in index.html`);
   }
+  if (pending.length) problems.push(`a Chrome Web Store link was added (${links[0].href}) but these elements are still marked data-store-pending (they say the listing is not live yet; replace or reword them): ${pending.join(", ")}`);
+  const primary = section.querySelectorAll(".btn-primary").length;
+  if (primary > 1) problems.push(`a Chrome Web Store link was added but #install has ${primary} primary buttons: the store link is the primary one, make "Open the latest release" a .btn-glass`);
   return problems;
 }
 
@@ -1053,7 +1058,7 @@ describe("the install section says Coming soon exactly as long as there is no Ch
     const LISTING = "https://chromewebstore.google.com/detail/ps-store-enhancer/abcdefghijklmnopabcdefghijklmnop";
     const RELEASE = '<a href="https://github.com/DrummingBird1/ps-store-enhancer/releases/latest">Open the latest release</a>';
     const NOT_LIVE_LEDE = "The Chrome Web Store listing is not live yet. Until it is, install the extension from the GitHub release.";
-    const SOON_CARD = '<div id="store-link"><span class="badge badge-soon">Coming soon</span><p>The listing is not live yet, so there is no store link to give you.</p></div>';
+    const SOON_CARD = '<div id="store-link" data-store-pending><span class="badge badge-soon" data-store-pending>Coming soon</span><p>The listing is not live yet, so there is no store link to give you.</p></div>';
     const LIVE_LINK = (href = LISTING) => `<a id="store-link" class="btn btn-primary" href="${href}" target="_blank" rel="noopener">Add to Chrome</a>`;
     const home = ({ lede, cards, outside = "" }) => ({ file: "index.html", doc: parse(`<!DOCTYPE html><title>t</title><body><main>${outside}<section id="install"><p class="lede">${lede}</p>${cards}</section></main></body>`) });
     const other = (html) => ({ file: "privacy-policy.html", doc: parse(`<!DOCTYPE html><title>t</title><body><main>${html}</main></body>`) });
@@ -1071,6 +1076,11 @@ describe("the install section says Coming soon exactly as long as there is no Ch
       ["a store link added while #install still says Coming soon", () => installProblems([home({ lede: NOT_LIVE_LEDE, cards: SOON_CARD + LIVE_LINK().replace('id="store-link" ', "") + RELEASE })]), /a Chrome Web Store link was added .* still says .*"coming soon"/],
       ["the card swapped for a live link but the lede still saying it is not live", () => installProblems([home({ lede: NOT_LIVE_LEDE, cards: LIVE_LINK() + RELEASE })]), /still says "not live yet"/],
       ["a Coming soon badge left next to a live link", () => installProblems([home({ lede: "Add it.", cards: LIVE_LINK() + '<span class="badge badge-soon">soon</span>' + RELEASE })]), /still says a \.badge-soon badge/],
+      ["a marked element left after the swap (even one with no wording the text check knows)", () => installProblems([home({ lede: "Add it.", cards: LIVE_LINK() + '<p data-store-pending>Check back later.</p>' + RELEASE })]), /still marked data-store-pending.*<p>/],
+      ["the whole #store-link card left marked after the swap", () => installProblems([home({ lede: "Add it.", cards: '<div id="store-link" data-store-pending>' + LIVE_LINK().replace('id="store-link" ', "") + "</div>" + RELEASE })]), /still marked data-store-pending.*id="store-link"/],
+      ["a marked element on another page after the swap", () => installProblems([AFTER, other('<p data-store-pending>Not live yet.</p>')]), /privacy-policy\.html: <p>/],
+      ["two primary buttons in #install after the swap", () => installProblems([home({ lede: "Add it.", cards: LIVE_LINK() + RELEASE.replace("<a ", '<a class="btn btn-primary" ') })]), /2 primary buttons/],
+      ["the markers lost while there is still no store link", () => installProblems([home({ lede: NOT_LIVE_LEDE, cards: SOON_CARD.replace(/ data-store-pending/g, "") + RELEASE })]), /nothing is marked data-store-pending/],
       ["a store link that is a placeholder", () => installProblems([home({ lede: "Add it.", cards: LIVE_LINK("https://chromewebstore.google.com/detail/THE-STORE-URL") + RELEASE })]), /is not a listing URL/],
       ["a store link outside the install section", () => installProblems([home({ lede: "Add it.", cards: RELEASE, outside: LIVE_LINK() })]), /is not inside #install/],
       ["a store link only in another page's footer", () => installProblems([BEFORE, other(`<a href="${LISTING}">store</a>`)]), /is not inside #install/],
@@ -1080,6 +1090,295 @@ describe("the install section says Coming soon exactly as long as there is no Ch
       ["no GitHub release to fall back on", () => installProblems([home({ lede: NOT_LIVE_LEDE, cards: SOON_CARD })]), /offer the GitHub release/],
       ["no install section at all", () => installProblems([{ file: "index.html", doc: parse("<!DOCTYPE html><title>t</title><body><main></main></body>") }]), /no #install section/]
     ])("catches %s", (_what, problems, re) => flagged(problems(), re));
+  });
+});
+
+/* ── the scripts, really run ── */
+/**
+ * A page with its scripts running in jsdom: every <script src="x.js"> is replaced by the file's own text (so the page needs no
+ * network), the window has requestAnimationFrame (pretendToBeVisual), IntersectionObserver is a stub (jsdom has none, and
+ * site.js stops early without it) and an uncaught error in any script lands in `errors`.
+ * jsdom has no layout: scrollHeight is 0 and scrollY is 0, so the window counts as "at the bottom" unless a test says otherwise.
+ */
+function boot(file, { hash = "", edit = () => {}, scripts = {}, supporters, atTop = false } = {}) {
+  const errors = [];
+  const virtualConsole = new VirtualConsole();
+  virtualConsole.on("jsdomError", (e) => errors.push(e.message));
+  const html = serialize(variant(pageOf(file), edit).doc).replace(/<script src="([^"]+)"><\/script>/g, (_m, src) => `<script>${scripts[src] ?? readDocs(src)}</script>`);
+  const dom = new JSDOM(html, {
+    runScripts: "dangerously",
+    pretendToBeVisual: true,
+    url: SITE + file + hash,
+    virtualConsole,
+    beforeParse(w) {
+      w.IntersectionObserver = class {
+        observe() {}
+        unobserve() {}
+        disconnect() {}
+      };
+      w.fetch = () => Promise.resolve({ ok: true, json: () => Promise.resolve({ supporters: supporters || [] }) }); // supporters.json
+      w.TextDecoder = TextDecoder; // jsdom's window has none; the wishlist viewer decodes the link with it
+      if (atTop) {
+        Object.defineProperty(w.Element.prototype, "scrollHeight", { configurable: true, get: () => 5000 });
+        Object.defineProperty(w, "scrollY", { configurable: true, value: 0 });
+      }
+    }
+  });
+  const { window } = dom;
+  const frame = () => new Promise((resolve) => window.requestAnimationFrame(() => setTimeout(resolve, 0)));
+  const scroll = async () => {
+    window.dispatchEvent(new window.Event("scroll"));
+    await frame();
+  };
+  const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  // scripts that wait for DOMContentLoaded (the wishlist list) have run once the window has loaded
+  const ready = new Promise((resolve) => (window.document.readyState === "complete" ? resolve() : window.addEventListener("load", () => resolve())));
+  return { window, document: window.document, errors, frame, scroll, wait, ready, close: () => window.close() };
+}
+const withoutLine = (js, re) => {
+  if (!re.test(js)) throw new Error(`the self-test needs a line matching ${re} in the script and it is gone: update the test`);
+  return js.replace(re, "");
+};
+const shareFragment = (items) => "#" + Buffer.from(JSON.stringify({ v: 1, i: items })).toString("base64").replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+
+describe("site.js runs on every page that loads it", () => {
+  const SITE_JS = readDocs("site.js");
+  const LOADS_SITE_JS = PAGES.filter((p) => p.doc.querySelector('script[src="site.js"]')).map((p) => [p.file]);
+
+  test("all three pages load it", () => {
+    expect(LOADS_SITE_JS.map(([f]) => f).sort()).toEqual(["index.html", "privacy-policy.html", "wishlist.html"]);
+  });
+  test.each(LOADS_SITE_JS)("%s: loading, scrolling to the bottom and pressing Escape throw nothing", async (file) => {
+    const page = boot(file);
+    try {
+      await page.scroll();
+      page.document.dispatchEvent(new page.window.KeyboardEvent("keydown", { key: "Escape", bubbles: true }));
+      await page.scroll();
+      expect(page.errors).toEqual([]);
+    } finally {
+      page.close();
+    }
+  });
+  test("the inner pages have no section links of their own, so the script marks nothing there", async () => {
+    for (const file of ["privacy-policy.html", "wishlist.html"]) {
+      const page = boot(file);
+      await page.scroll();
+      expect(page.document.querySelectorAll(".nav-menu [aria-current]").length).toBe(0);
+      page.close();
+    }
+  });
+
+  describe("the home page", () => {
+    const open = (page) => {
+      const menu = page.document.querySelector(".nav-menu");
+      menu.open = true;
+      return menu;
+    };
+    test("the last section's link is marked at the bottom of the page", async () => {
+      const page = boot("index.html");
+      await page.scroll();
+      const current = [...page.document.querySelectorAll(".nav-menu a[aria-current]")];
+      expect(current.map((a) => a.getAttribute("href"))).toEqual(["#support"]);
+      expect(current[0].getAttribute("aria-current")).toBe("location");
+      expect(page.errors).toEqual([]);
+      page.close();
+    });
+    test("near the top of the page no section link is current", async () => {
+      const page = boot("index.html", { atTop: true });
+      page.document.querySelector('.nav-menu a[href="#new"]').setAttribute("aria-current", "location");
+      await page.scroll();
+      expect(page.document.querySelectorAll(".nav-menu [aria-current]").length).toBe(0);
+      page.close();
+    });
+    test("choosing a link closes the menu", () => {
+      const page = boot("index.html");
+      const menu = open(page);
+      menu.querySelector('a[href="#features"]').dispatchEvent(new page.window.MouseEvent("click", { bubbles: true, cancelable: true }));
+      expect(menu.open).toBe(false);
+      page.close();
+    });
+    test("Escape closes the menu and puts the focus back on its button", () => {
+      const page = boot("index.html");
+      const menu = open(page);
+      page.document.dispatchEvent(new page.window.KeyboardEvent("keydown", { key: "Escape", bubbles: true }));
+      expect(menu.open).toBe(false);
+      expect(page.document.activeElement).toBe(menu.querySelector("summary"));
+      page.close();
+    });
+    test("a click outside the menu closes it, a click inside it (not on a link) does not", () => {
+      const page = boot("index.html");
+      const menu = open(page);
+      menu.querySelector("ul").dispatchEvent(new page.window.MouseEvent("click", { bubbles: true }));
+      expect(menu.open).toBe(true);
+      page.document.querySelector("main").dispatchEvent(new page.window.MouseEvent("click", { bubbles: true }));
+      expect(menu.open).toBe(false);
+      page.close();
+    });
+  });
+
+  describe("the check itself", () => {
+    test("without the guard for pages that have no section links, the script throws on the inner pages", async () => {
+      const broken = withoutLine(SITE_JS, /^[ \t]*if \(!ids\.length\) return;.*\r?\n/m);
+      for (const file of ["privacy-policy.html", "wishlist.html"]) {
+        const page = boot(file, { scripts: { "site.js": broken } });
+        await page.scroll();
+        flagged(page.errors, /setAttribute/);
+        page.close();
+      }
+    });
+    test("a script that throws while loading is reported", () => {
+      const page = boot("index.html", { scripts: { "site.js": "throw new Error('boom');" } });
+      flagged(page.errors, /boom/);
+      page.close();
+    });
+  });
+});
+
+describe("the wishlist page: the list survives the skip link", () => {
+  const LIST = shareFragment([{ n: "Hades", p: 9.99 }, { n: "Celeste", p: 4.5 }]);
+  const names = (page) => [...page.document.querySelectorAll("#list li a")].map((a) => a.textContent);
+
+  test("the shared list is drawn from the link", async () => {
+    const page = boot("wishlist.html", { hash: LIST });
+    await page.ready;
+    expect(names(page)).toEqual(["Hades", "Celeste"]);
+    expect(page.document.getElementById("empty").hidden).toBe(true);
+    expect(page.errors).toEqual([]);
+    page.close();
+  });
+  test("a click on the skip link moves the focus to <main> and leaves the link's #fragment, and with it the list, alone", async () => {
+    const page = boot("wishlist.html", { hash: LIST });
+    await page.ready;
+    const click = new page.window.MouseEvent("click", { bubbles: true, cancelable: true });
+    page.document.querySelector(".skip-link").dispatchEvent(click);
+    await page.wait(20);
+    expect(click.defaultPrevented).toBe(true);
+    expect(page.window.location.hash).toBe(LIST);
+    expect(page.document.activeElement).toBe(page.document.getElementById("main"));
+    expect(names(page)).toEqual(["Hades", "Celeste"]);
+    page.close();
+  });
+  test("a page with no list in its link says so", async () => {
+    const page = boot("wishlist.html");
+    await page.ready;
+    expect(page.document.getElementById("empty").hidden).toBe(false);
+    page.close();
+  });
+  test("the check itself: without its inline script the skip link follows #main and the list is gone", async () => {
+    const page = boot("wishlist.html", { hash: LIST, edit: (d) => d.querySelectorAll("script:not([src])").forEach((s) => s.remove()) });
+    await page.ready;
+    page.document.querySelector(".skip-link").dispatchEvent(new page.window.MouseEvent("click", { bubbles: true, cancelable: true }));
+    await page.wait(50);
+    expect(page.window.location.hash).toBe("#main");
+    expect(names(page)).toEqual([]);
+    page.close();
+  });
+  test("a game name in Hebrew or Arabic takes the direction of its own letters and starts on its own side", () => {
+    const css = [...pageOf("wishlist.html").doc.querySelectorAll("style")].map((s) => s.textContent).join("\n");
+    const row = declared(parseRules(css), "#list li a");
+    expect(row["unicode-bidi"]).toBe("plaintext");
+    expect(row["text-align"]).toBe("start");
+  });
+});
+
+describe("supporters: names from supporters.json are shown as chips that wrap", () => {
+  const render = async (names) => {
+    const page = boot("index.html", { supporters: names });
+    await page.wait(20);
+    return page;
+  };
+  test("a 60-character name with no spaces, a longer one and a blank one: the wall opens with the real names, cut at 60", async () => {
+    const page = await render(["W".repeat(60), "Q".repeat(80), "   ", 42, "Ann"]);
+    const chips = [...page.document.querySelectorAll("#supporters-list .lang-tag")];
+    expect(chips.map((c) => c.textContent.length)).toEqual([60, 60, 3]);
+    expect(page.document.getElementById("supporters").hidden).toBe(false);
+    expect(page.errors).toEqual([]);
+    page.close();
+  });
+  test("a name is text, never markup", async () => {
+    const page = await render(["<img src=x onerror=alert(1)>"]);
+    expect(page.document.querySelectorAll("#supporters-list img").length).toBe(0);
+    expect(page.document.querySelector("#supporters-list .lang-tag").textContent).toBe("<img src=x onerror=alert(1)>");
+    page.close();
+  });
+  test("with no names the wall stays hidden", async () => {
+    const page = await render([]);
+    expect(page.document.getElementById("supporters").hidden).toBe(true);
+    page.close();
+  });
+
+  /** jsdom has no layout, so the guard for a long name is read from the stylesheet: a chip may shrink, never exceeds its row, and breaks inside a word when it must. */
+  function chipProblems(css) {
+    const chip = declared(parseRules(css), ".lang-tag");
+    const problems = [];
+    if (chip["max-width"] !== "100%") problems.push(`.chip, .lang-tag has max-width: ${chip["max-width"]} (it needs 100%)`);
+    if (!/^0(?:px)?$/.test(chip["min-width"] || "")) problems.push(`.chip, .lang-tag has min-width: ${chip["min-width"]} (it needs 0)`);
+    if (!/^(?:anywhere|break-word)$/.test(chip["overflow-wrap"] || "")) problems.push("a .chip or .lang-tag with a long name that has no spaces would widen the page (it needs overflow-wrap: anywhere)");
+    return problems;
+  }
+  test("site.css lets a chip wrap a long name", () => {
+    expect(chipProblems(CSS)).toEqual([]);
+  });
+  test.each([
+    ["no max-width", setDecl(CSS, ".chip, .lang-tag", "max-width", "none"), /max-width/],
+    ["no min-width", setDecl(CSS, ".chip, .lang-tag", "min-width", "auto"), /min-width/],
+    ["no wrapping inside a word", setDecl(CSS, ".chip, .lang-tag", "overflow-wrap", "normal"), /widen the page/]
+  ])("the check itself: a chip with %s is caught", (_what, css, re) => flagged(chipProblems(css), re));
+});
+
+describe("site.css: the open menu scrolls inside itself on a short screen", () => {
+  const menuProblems = (css) => {
+    const rules = parseRules(css);
+    const open = declared(rules, ".nav-menu[open] ul");
+    const problems = [];
+    if (!/calc\(100d?vh - var\(--bar-h\)/.test(open["max-height"] || "")) problems.push(`.nav-menu[open] ul has max-height: ${open["max-height"]} (it needs the viewport minus the bar)`);
+    if (!/^(?:auto|scroll)$/.test(open["overflow-y"] || open.overflow || "")) problems.push("the open menu does not scroll (overflow-y: auto)");
+    if (open["overscroll-behavior"] !== "contain") problems.push("scrolling the open menu would scroll the page behind it (overscroll-behavior: contain)");
+    const wide = declared(rules, ".nav-menu[open] ul", (at) => at.some((a) => /min-width:\s*960px/.test(a)));
+    if (wide["max-height"] !== "none") problems.push("the inline menu on wide screens keeps the dropdown's max-height");
+    return problems;
+  };
+  test("max-height, overflow and overscroll are set, and the wide inline row is unaffected", () => {
+    expect(menuProblems(CSS)).toEqual([]);
+  });
+  test.each([
+    ["no max-height", CSS.replace(/ {2}max-height: calc\(100vh[^;]*;\n/, "").replace(/ {2}max-height: calc\(100dvh[^;]*;\n/, ""), /max-height/],
+    ["no scrolling", CSS.replace("overflow-y: auto; overscroll-behavior: contain;", "overscroll-behavior: contain;"), /does not scroll/],
+    ["no overscroll containment", CSS.replace("overflow-y: auto; overscroll-behavior: contain;", "overflow-y: auto;"), /page behind/]
+  ])("the check itself: a menu with %s is caught", (_what, css, re) => flagged(menuProblems(css), re));
+});
+
+describe("words in quotation marks are the extension's real strings", () => {
+  // “Like this” on the home page and the wishlist page names something the visitor will see in the extension: it has to be the
+  // English string of extension/_locales/en/messages.json (a $PLACEHOLDER$ stands for any text, so a sale's end date can be an
+  // example). The privacy policy's wording is pinned to an older commit and is checked by the test below instead.
+  const MESSAGES = Object.values(JSON.parse(fs.readFileSync(path.join(REPO, "extension", "_locales", "en", "messages.json"), "utf8"))).map((m) => m.message);
+  // A quote has to be a WHOLE message or a whole sentence of one (anchored): an unanchored match would let a paraphrase through
+  // as soon as it contains some short message ("No", "Add", "Price", "games"...).
+  const MESSAGE_RES = MESSAGES.flatMap((m) => [m, ...m.split(/(?<=[.!?])\s+/)]).map((m) => new RegExp("^" + m.split(/\$[A-Z0-9_]+\$/).map((part) => esc(part)).join(".+") + "$"));
+  const quotedProblems = ({ file, doc }) => {
+    const root = doc.querySelector("main");
+    const quotes = [...text(root).matchAll(/“([^”]+)”/g)].map((m) => m[1]);
+    return quotes.filter((q) => !MESSAGE_RES.some((re) => re.test(q))).map((q) => `${file}: “${q}” is not a string of the extension (check extension/_locales/en/messages.json, or drop the quotation marks)`);
+  };
+  test.each(PAGE_ROWS.filter(([file]) => file !== "privacy-policy.html"))("%s", (_file, page) => {
+    expect(quotedProblems(page)).toEqual([]);
+  });
+  test("the home page really quotes a few of them", () => {
+    expect([...text(pageOf("index.html").doc.querySelector("main")).matchAll(/“/g)].length).toBeGreaterThanOrEqual(8);
+  });
+  test("the check itself: a paraphrase, a lower-cased label and a shortened label are caught; the real strings and a dated example are not", () => {
+    const index = pageOf("index.html");
+    const run = (html) => quotedProblems(variant(index, (d) => pick(d, "main").insertAdjacentHTML("beforeend", html)));
+    flagged(run("<p>It says “not enough history yet”.</p>"), /not enough history yet/);
+    flagged(run("<p>The “Hide add-ons” filter</p>"), /Hide add-ons/);
+    flagged(run("<p>A “near the all-time low” flag</p>"), /near the all-time low/);
+    // paraphrases that merely CONTAIN a short real message ("No", "Add", "games", "Price")
+    flagged(run("<p>“Not enough history yet”</p>"), /Not enough history yet/);
+    flagged(run("<p>The “Hide Add-ons” filter</p>"), /Hide Add-ons/);
+    flagged(run("<p>“Hide games you own”</p>"), /Hide games you own/);
+    flagged(run("<p>“Near the all-time Price low”</p>"), /Near the all-time Price low/);
+    expect(run("<p>“Report a problem”, “Offer ends Mar 3 (tomorrow)” and “Hide DLC &amp; Expansions”</p>")).toEqual(quotedProblems(index));
   });
 });
 

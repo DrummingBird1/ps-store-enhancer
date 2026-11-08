@@ -40,8 +40,9 @@
   });
 
   // The last section can never reach the observer's band when the page ends below it: mark it at the bottom.
-  // Near the top (the hero) no section link is current.
+  // Near the top (the hero) no section link is current. Only on a page that has section links of its own.
   var ids = Object.keys(links), ticking = false;
+  if (!ids.length) return;   // the inner pages link to index.html#..., not to sections of their own: nothing to mark
   window.addEventListener("scroll", function () {
     if (ticking) return;
     ticking = true;

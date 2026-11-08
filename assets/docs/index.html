@@ -78,6 +78,7 @@
 .shot figcaption { padding: 16px 10px 8px; }
 .shot h3 { font-size: 1.1rem; }
 .shot p { margin-top: 6px; color: var(--dim); font-size: .93rem; }
+.shot.lead figcaption p { max-width: 70ch; }   /* the lead picture spans both columns: keep its caption to a readable line */
 
 /* languages */
 .langs { padding: clamp(20px, 3.5vw, 36px); text-align: center; }
@@ -102,11 +103,9 @@
 .privacy-cta { margin-top: 24px; justify-content: center; }
 
 /* install */
-.install-grid { display: grid; gap: 20px; align-items: stretch; }
+.install-grid { display: grid; gap: 20px; align-items: start; }
 @media (min-width: 860px) { .install-grid { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 24px; } }
-.install-grid .card { height: 100%; }
 .install-grid .card h3 { font-size: 1.25rem; }
-.store-slot .btn-row { margin-top: 6px; }
 .steps { counter-reset: step; list-style: none; padding: 0; display: grid; gap: 14px; width: 100%; margin-top: 4px; }
 .steps li { counter-increment: step; display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 14px; align-items: start; color: var(--text); font-size: .98rem; }
 .steps li::before {
@@ -253,7 +252,7 @@
       <article class="glass card lift hl span-2">
         <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-trend"/></svg></span>
         <h3>PlayStation price history, built in your browser</h3>
-        <p>The Price Insight card now shows the <strong>lowest PlayStation price you have seen</strong>, today's price and the sale: what it was, the percent off, when it ends and how long it has left (“Offer ends Nov 21 (in 14 days)”). It adds the PlayStation Plus price when the page shows one, the store's own “lowest price in the last 30 days”, a trend, and how far the price is from the cheapest PC price.</p>
+        <p>The Price Insight card now shows the <strong>lowest PlayStation price you have seen</strong>, today's price and the sale: what it was, the percent off, when it ends and how long it has left (“Offer ends Nov 21 (in 14 days)”). It adds the PlayStation Plus price when the page shows one, the store's own lowest price in the last 30 days, a trend, and how far the price is from the cheapest PC price.</p>
         <ul class="mini-chips" aria-label="What the card shows">
           <li>Lowest PS price you've seen</li>
           <li>Today's price</li>
@@ -263,7 +262,7 @@
           <li>Trend</li>
           <li>Gap to the cheapest PC price</li>
         </ul>
-        <p class="fine">It is built only from prices your browser recorded, and says “not enough history yet” until there are two different days. History keeps the latest 400 days with a recorded price and is included in the JSON backup. Prices are also recorded from search results (for games you have already looked at or wishlisted) and, once a day, from the saved page of each wishlisted game: at most 20 pages, no cookies, <code>store.playstation.com</code> only. Turning off Price insight in Settings stops both.</p>
+        <p class="fine">It is built only from prices your browser recorded, and says “Not enough PlayStation price history yet.” until there are two different days. History keeps the latest 400 days with a recorded price and is included in the JSON backup. Prices are also recorded from search results (for games you have already looked at or wishlisted) and, once a day, from the saved page of each wishlisted game: at most 20 pages, no cookies, <code>store.playstation.com</code> only. Turning off Price insight in Settings stops both.</p>
       </article>
 
       <article class="glass card lift hl">
@@ -302,7 +301,7 @@
       <article class="glass card lift hl">
         <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-link"/></svg></span>
         <h3>PSN connect works in Chrome</h3>
-        <p>Connecting PSN failed in Chrome every time; it is fixed. It stays opt-in, and everything else works without it. The fix adds one permission, <code>declarativeNetRequestWithHostAccess</code>, which Chrome shows no warning for and which the extension uses for nothing else.</p>
+        <p>Connecting PSN failed in Chrome every time; it is fixed. It stays opt-in, and everything else works without it. The fix adds one permission, <code>declarativeNetRequest<wbr>WithHostAccess</code>, which Chrome shows no warning for and which the extension uses for nothing else.</p>
         <p class="fine">Checked on one real account.</p>
       </article>
 
@@ -322,7 +321,7 @@
       <article class="glass card lift hl span-2">
         <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg></span>
         <h3>Checked against real store pages</h3>
-        <p>The automated tests now run the real content script against saved real store pages (product pages in two regions and a search grid). That found bugs in v2.7.1 that the old test pages could not show, among them a wrong PlayStation price that could be recorded on pages with an edition list, the “Hide add-ons”, “Hide DLC” and “Hide games I already own” filters missing or hiding the wrong games, and blank gaps left in the search grid by hidden results. They are fixed.</p>
+        <p>The automated tests now run the real content script against saved real store pages (product pages in two regions and a search grid). That found bugs in v2.7.1 that the old test pages could not show, among them a wrong PlayStation price that could be recorded on pages with an edition list, the “Hide Add-ons &amp; Currency”, “Hide DLC &amp; Expansions” and “Hide games I already own” filters missing or hiding the wrong games, and blank gaps left in the search grid by hidden results. They are fixed.</p>
         <p class="fine">What was checked, exactly: the PSN sign-in on one real account, and the injected cards by tests against the real page structure and by eye in Chrome with the extension loaded.</p>
       </article>
     </div>
@@ -341,7 +340,7 @@
       <article class="glass card feat lift span-2">
         <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-trend"/></svg></span>
         <h3>Price insight, real facts only</h3>
-        <p>The real lowest PC price ever (with its date), today's cheapest and a “near the all-time low” flag, plus a trend drawn from prices your own browser recorded and a one-click link to PSPrices for the full PlayStation price history. Never an invented chart.</p>
+        <p>The real lowest PC price ever (with its date), today's cheapest and a “Near the all-time low” flag, plus a trend drawn from prices your own browser recorded and a one-click link to PSPrices for the full PlayStation price history. Never an invented chart.</p>
       </article>
       <article class="glass card feat lift">
         <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-gauge"/></svg></span>
@@ -438,7 +437,7 @@
       </figure>
 
       <figure class="glass shot">
-        <img src="assets/screenshot-stats.png" alt="The extension's settings page showing the Library and Wishlist Stats card above the wishlist" width="1280" height="800" loading="lazy" decoding="async">
+        <img src="assets/screenshot-stats.png" alt="The extension's settings page showing the Library &amp; Wishlist Stats card above the wishlist" width="1280" height="800" loading="lazy" decoding="async">
         <figcaption>
           <h3>A dashboard for your library and wishlist</h3>
           <p>Games owned, wishlist size, total wishlist value and deals ready to buy, computed from data already on your device. The value is the sum of the last-checked cheapest PC prices, not PlayStation prices.</p>
@@ -499,7 +498,7 @@
     <div class="section-head">
       <span class="eyebrow">Privacy</span>
       <h2 id="privacy-title">Private by design</h2>
-      <p class="lede">No analytics, no tracking, no data sharing, and no servers of our own.</p>
+      <p class="lede">Nothing is shared with us: no analytics, no tracking and no servers of our own. The few lookups the extension makes go to the hosts listed below.</p>
     </div>
 
     <div class="privacy-grid">
@@ -535,7 +534,7 @@
         <ul class="hosts">
           <li>
             <div class="h"><code>www.cheapshark.com</code></div>
-            <p>Exact-game lookup, cross-platform prices, the lowest-ever PC price, Metacritic and Steam scores, and live search suggestions (text only).</p>
+            <p>Receives game titles and IDs, and the text you type in the store's search box (text only). Used for exact-game lookup, cross-platform prices, the lowest-ever PC price, Metacritic and Steam scores, live search suggestions and a daily price check of wishlisted games.</p>
           </li>
           <li>
             <div class="h"><code>api.frankfurter.dev</code></div>
@@ -568,19 +567,30 @@
     <div class="section-head">
       <span class="eyebrow">Install</span>
       <h2 id="install-title">Get PS Store Enhancer</h2>
-      <p class="lede">The Chrome Web Store listing is not live yet. Until it is, you can install the extension yourself from the GitHub release.</p>
+      <p class="lede">You can install the extension yourself from the GitHub release in a few steps.</p>
     </div>
 
     <div class="install-grid">
-      <!-- ===== CHROME WEB STORE LINK: swap this one element when the listing goes live. =====
-           Replace the badge and the paragraph below with:
-             <a class="btn btn-primary" href="THE-STORE-URL" target="_blank" rel="noopener">Add to Chrome</a>
-           and change the heading's wording if you like. Nothing else on the page refers to the store listing. -->
-      <div class="glass card store-slot" id="store-link">
+      <!-- ===== CHROME WEB STORE LINK: what to change the day the listing goes live =====
+           Everything on the site that says the listing is not live yet carries the attribute data-store-pending: today the
+           #store-link card and the "Coming soon" badge inside it. tests/site.test.js fails while any element still has that
+           attribute next to a Chrome Web Store link, and names it. The steps:
+             1. Replace the whole #store-link card below with a card that holds the link (keep id="store-link"):
+                  <div class="glass card store-slot" id="store-link">
+                    <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-download"/></svg></span>
+                    <h3>Chrome Web Store</h3>
+                    <a class="btn btn-primary" href="THE-STORE-URL" target="_blank" rel="noopener">Add to Chrome</a>
+                  </div>
+                THE-STORE-URL is https://chromewebstore.google.com/detail/NAME/EXTENSION-ID (32 letters).
+             2. In the Developer install card, change "Open the latest release" from btn-primary to btn-glass: #install
+                has one primary button, the store link (the test counts them).
+             3. Nothing else on the site says it: the install lede, the hero, the meta tags and the Open Graph tags do not
+                name the store, and there is no JSON-LD. The privacy policy's Contact section already mentions the listing
+                (policy wording: leave it). Then run: npx jest tests/site.test.js -->
+      <div class="glass card store-slot" id="store-link" data-store-pending>
         <span class="icon-tile is-warn"><svg class="i" aria-hidden="true"><use href="#i-clock"/></svg></span>
         <h3>Chrome Web Store</h3>
-        <span class="badge badge-soon"><svg class="i" aria-hidden="true"><use href="#i-clock"/></svg>Coming soon</span>
-        <p>The listing is not live yet, so there is no store link to give you. Until it is, install the extension yourself from the GitHub release, with the steps next to this card.</p>
+        <span class="badge badge-soon" data-store-pending><svg class="i" aria-hidden="true"><use href="#i-clock"/></svg>Coming soon</span>
       </div>
       <!-- ===== end of the Chrome Web Store slot ===== -->
 

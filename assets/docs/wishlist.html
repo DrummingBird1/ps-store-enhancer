@@ -41,6 +41,8 @@
 @media (hover: hover) { #list li:hover { background: var(--panel2); } }
 #list li a {
   color: var(--text); font-size: 1.02rem; font-weight: 600; line-height: 1.35; text-decoration: none; overflow-wrap: anywhere;
+  /* the names come from the link and may be Hebrew or Arabic: each one takes the direction of its own first letter */
+  unicode-bidi: plaintext; text-align: start;
 }
 #list li a::after { content: ""; position: absolute; inset: 0; border-radius: 14px; }
 #list li a:focus-visible { outline: none; }
